@@ -50,6 +50,40 @@ export interface Session {
 export const TEACHER_NAME = 'T. Henry'
 
 /** The message sent to a game when it opens (HANDOFF section 6). */
+/**
+ * A class tool (Name Picker): no team setup. Every present student plays as themselves and the
+ * session starts straight away.
+ */
+export function quickSession(
+  cls: { name: string; level: Level | null },
+  game: string,
+  roster: { id: number; no: number; nick: string; active: boolean }[],
+  absent: number[],
+  now = new Date(),
+): Session {
+  const present = roster.filter((s) => s.active && !absent.includes(s.id))
+  return {
+    id: newSessionId(now),
+    createdAt: now.getTime(),
+    updatedAt: now.getTime(),
+    status: 'playing',
+    class: cls.name,
+    game,
+    level: cls.level ?? 'M.2',
+    mode: 'solo',
+    size: 1,
+    bins: [],
+    absent,
+    teacher: false,
+    leaveOut: false,
+    teams: present.map((s) => ({ id: `s${s.id}`, name: s.nick, members: [{ no: s.no, nick: s.nick }] })),
+    teacherTeam: null,
+    log: [],
+    scores: null,
+    notes: '',
+  }
+}
+
 export function initMessage(s: Session) {
   return {
     type: 'kru:init',

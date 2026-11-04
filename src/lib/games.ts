@@ -22,6 +22,8 @@ export interface GameInfo {
   type?: string
   /** 'scored' = only students who got points are written to Results (e.g. Name Picker) */
   results?: 'scored'
+  /** true = a class tool (Name Picker): pick a class, then it opens straight away with no team setup */
+  classTool?: boolean
   /** true = the game gets the Sheet's Questions tab sets for its level (Quiz Battle) */
   sheetQuestions?: boolean
   /** ready = playable; migrate / new = coming in a later phase */

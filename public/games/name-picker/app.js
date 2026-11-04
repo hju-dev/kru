@@ -1,14 +1,13 @@
-/* Name Picker: spins a random present student. Nobody is picked twice until everyone has had a turn,
-   and "picked" is remembered for this class for the rest of the day (Kru.saveDay).
-   Optional +1 / +2 for the picked student. */
+/* Name Picker (a tool): spins a random present student. Nobody is picked twice until everyone has had a
+   turn, and "picked" + "absent" are remembered for this class for the rest of the day (Kru.saveDay).
+   Points (+1 / +2) are hidden unless Henry turns on "Show points". */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
 
-  var INTRO = [];
   var students = [];   // solo teams: { id, name, members:[{no, nick}] }
-  var S = null;        // saved: { v, current, pts, log, history, introDone }
-  var day = null;      // { picked: [key] } for this class today
+  var S = null;        // saved: { v, current, pts, log, history, showPoints }
+  var day = null;      // { picked: [key], absent: [key] } for this class today
   var spinning = false, audio = null;
 
   function esc(s) {
@@ -19,7 +18,8 @@
   function pts(id) { return S.pts[id] || 0; }
   function save() { Kru.saveState(S); }
   function saveDay() { Kru.saveDay(day); }
-  function pool() { return students.filter(function (t) { return day.picked.indexOf(key(t)) < 0; }); }
+  function here() { return students.filter(function (t) { return day.absent.indexOf(key(t)) < 0; }); }
+  function pool() { return here().filter(function (t) { return day.picked.indexOf(key(t)) < 0; }); }
 
   // ---------- sound (started inside a tap) ----------
   function unlockAudio() {
@@ -59,32 +59,36 @@
   function render() {
     var t = S.current ? byId(S.current) : null;
     if (!spinning) showName(t);
-    $('pts').textContent = t && pts(t.id) ? '+' + pts(t.id) : '';
+    var showPts = !!S.showPoints;
+    $('pts').textContent = showPts && t && pts(t.id) ? '+' + pts(t.id) : '';
+    $('plus1').hidden = $('plus2').hidden = !showPts;
+    $('togglePoints').textContent = 'Show points: ' + (showPts ? 'on' : 'off');
     $('stage').classList.toggle('picked', !!t && !spinning);
     $('plus1').disabled = $('plus2').disabled = !t || spinning;
     $('again').disabled = !t || spinning;
-    $('spin').disabled = spinning || !students.length;
-    var left = pool().length;
-    $('left').textContent = left + ' of ' + students.length + ' left today';
+    $('spin').disabled = spinning || !here().length;
+    var left = pool().length, n = here().length, away = students.length - n;
+    $('left').textContent = left + ' of ' + n + ' left today' + (away ? ' · ' + away + ' absent' : '');
     var recent = S.history.slice(-8).map(function (id) {
       var x = byId(id);
-      return x ? esc(x.name) + (pts(id) ? ' <b>+' + pts(id) + '</b>' : '') : '';
+      return x ? esc(x.name) + (showPts && pts(id) ? ' <b>+' + pts(id) + '</b>' : '') : '';
     }).filter(Boolean);
     $('history').innerHTML = recent.length ? 'Picked: ' + recent.join(' · ') : '';
     $('undo').disabled = !S.log.length;
+    $('backAbsent').disabled = !day.absent.length;
     fitName();
   }
 
   // ---------- picking ----------
   function spin() {
-    if (spinning || !students.length) return;
+    if (spinning || !here().length) return;
     unlockAudio();
     var list = pool();
     var restarted = false;
     if (!list.length) {
       // everyone has had a turn today: start a new round
       day.picked = [];
-      list = students.slice();
+      list = here();
       restarted = true;
     }
     var pick = list[Math.floor(Math.random() * list.length)];
@@ -117,11 +121,12 @@
     })();
   }
   function pickAgain() {
-    // the picked student isn't here (or can't answer): put them back and spin again
+    // the picked student is absent: leave them out for the rest of today, and spin again
     var t = byId(S.current);
     if (!t) return;
     var i = day.picked.lastIndexOf(key(t));
     if (i >= 0) day.picked.splice(i, 1);
+    if (day.absent.indexOf(key(t)) < 0) day.absent.push(key(t));
     saveDay();
     if (S.history[S.history.length - 1] === t.id) S.history.pop();
     S.current = null;
@@ -132,7 +137,7 @@
   // ---------- points ----------
   function give(d) {
     var t = byId(S.current);
-    if (!t) return;
+    if (!t || !S.showPoints) return;
     S.pts[t.id] = pts(t.id) + d;
     S.log.push({ t: t.id, d: d });
     save();
@@ -171,7 +176,8 @@
   $('more').addEventListener('click', function () { disarm(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Name Picker' }); });
+  $('togglePoints').addEventListener('click', function () { S.showPoints = !S.showPoints; save(); render(); });
+  $('backAbsent').addEventListener('click', function () { day.absent = []; saveDay(); closeMenu(); render(); toast('Absent students are back in the list.', false); });
   $('undo').addEventListener('click', function () { undo(); closeMenu(); });
   $('resetDay').addEventListener('click', function () {
     var btn = this;
@@ -199,21 +205,17 @@
   });
 
   // ---------- start ----------
-  var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
-    contentReady.then(function (content) {
-      INTRO = content.intro || [];
+    (function () {
       // solo: one team per present student (the teacher isn't picked)
       students = session.teams.filter(function (t) { return t.members && t.members.length; });
       var saved = session.resume;
       if (saved && (saved.v === 1 || saved.v === 2) && Array.isArray(saved.history)) S = saved;
-      else S = { v: 2, current: null, pts: {}, log: [], history: [], introDone: false };
+      else S = { v: 2, current: null, pts: {}, log: [], history: [], showPoints: false };
       day = session.day && Array.isArray(session.day.picked) ? session.day : { picked: [] };
+      day.absent = Array.isArray(day.absent) ? day.absent : [];
       if (S.current && !byId(S.current)) S.current = null;
       render();
-      if (!S.introDone) KruIntro.show(INTRO, { title: 'Name Picker' }).then(function () { S.introDone = true; save(); });
-    }).catch(function () {
-      $('name').textContent = 'Could not load. Close and open again.';
-    });
+    })();
   });
 })();

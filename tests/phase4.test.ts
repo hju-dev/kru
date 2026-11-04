@@ -184,3 +184,16 @@ describe('Tag-Team topics', () => {
     })
   }
 })
+
+describe('class tools (Name Picker) skip team setup', () => {
+  it('quickSession: everyone present plays as themselves, straight into play', async () => {
+    const { quickSession } = await import('../src/lib/session')
+    const roster = [1, 2, 3, 4].map((n) => ({ id: n, no: n, nick: 'S' + n, active: n !== 4 }))
+    const s = quickSession({ name: 'M.1/2', level: 'M.1' }, 'name-picker', roster, [2], new Date(2026, 10, 5, 9, 0))
+    expect(s.status).toBe('playing')
+    expect(s.mode).toBe('solo')
+    expect(s.level).toBe('M.1')
+    expect(s.teams.map((t) => t.name)).toEqual(['S1', 'S3']) // absent 2 and inactive 4 left out
+    expect(s.teams[0]).toEqual({ id: 's1', name: 'S1', members: [{ no: 1, nick: 'S1' }] })
+  })
+})

@@ -92,13 +92,14 @@
     "modes": [
       "solo"
     ],
-    "minutes": 5,
+    "minutes": null,
     "status": "ready",
-    "description": "Spins a random present student. Nobody is picked twice until everyone has had a turn (remembered for the day). Optional +1 / +2.",
+    "description": "A tool: picks a random present student. Nobody is picked twice until everyone has had a turn (remembered for the day). Points only if you turn them on.",
     "type": "tool",
     "phoneLandscape": true,
     "results": "scored",
-    "section": "tools"
+    "section": "tools",
+    "classTool": true
   },
   {
     "slug": "sentence-scramble",
