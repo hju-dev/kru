@@ -115,3 +115,21 @@ describe('Code.gs buildBootstrap_', () => {
     ])
   })
 })
+
+describe('Code.gs submitResults helpers', () => {
+  const plan = sandbox.planSubmission_ as (r: string[], s: string[], id: string) => { duplicate: boolean; writeResults: boolean }
+  const toValues = sandbox.objectsToValues_ as (h: string[], o: object[]) => unknown[][]
+
+  it('writes everything for a new session', () => {
+    expect(plan(['a'], ['a'], 'b')).toEqual({ duplicate: false, writeResults: true })
+  })
+  it('writes nothing when the session was already saved (resend after a timeout)', () => {
+    expect(plan(['b', 'b'], ['b'], 'b')).toEqual({ duplicate: true, writeResults: false })
+  })
+  it('only adds the Sessions row when a previous attempt stopped halfway', () => {
+    expect(plan(['b', 'b'], [], 'b')).toEqual({ duplicate: false, writeResults: false })
+  })
+  it('lines values up with the header order and leaves gaps blank', () => {
+    expect(toValues(['SessionID', '', 'Points', 'Deleted'], [{ Points: 0, SessionID: 'x', Extra: 1 }])).toEqual([['x', '', 0, '']])
+  })
+})

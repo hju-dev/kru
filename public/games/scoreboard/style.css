@@ -1,0 +1,109 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  /* keep the top-right corner clear for Kru's home button */
+  padding-right: 56px;
+}
+.bar h1 {
+  margin: 0;
+  font: 800 22px/1 var(--display);
+}
+.meta {
+  color: var(--muted);
+  font-size: 15px;
+  flex: 1;
+}
+button.small {
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: transparent;
+  font-weight: 700;
+}
+button:disabled {
+  opacity: 0.4;
+}
+
+.teams {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.team {
+  background: var(--stage);
+  border: 2px solid var(--line);
+  border-top: 6px solid var(--c, var(--gold));
+  border-radius: 14px;
+  padding: 6px 10px 8px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 8px;
+  align-items: center;
+}
+.team.lead {
+  box-shadow: 0 0 0 3px var(--gold);
+}
+.team.teacher {
+  border-style: dashed;
+}
+.name {
+  font: 800 19px/1.15 var(--display);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pts {
+  font: 500 38px/1 var(--mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  grid-row: span 2;
+}
+.members {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.btns {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr 1.3fr;
+  gap: 6px;
+  margin-top: 4px;
+}
+.btns button {
+  min-height: var(--tap);
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font: 800 18px var(--body);
+}
+.btns .plus {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+
+/* Solo mode: many players, smaller cards */
+.teams.solo {
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+}
+.teams.solo .name {
+  font-size: 18px;
+}
+.teams.solo .pts {
+  font-size: 28px;
+}
+.teams.solo .members {
+  display: none;
+}
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0 0;
+}

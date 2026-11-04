@@ -2,9 +2,15 @@ import { useEffect } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
 import { UpdateToast } from './components/UpdateToast'
 import { Home } from './routes/Home'
+import { Play } from './routes/Play'
+import { Results } from './routes/Results'
+import { Setup } from './routes/Setup'
 import { SignIn } from './routes/SignIn'
 import { Settings } from './routes/admin/Settings'
 import { useApp } from './store/app'
+import { useSessions } from './store/sessions'
+
+const OUTBOX_RETRY_MS = 60_000
 
 /** Shows Sign in until Henry is connected; after that, the requested screen. */
 function Root() {
@@ -12,10 +18,21 @@ function Root() {
 
   useEffect(() => {
     void useApp.getState().init()
-    // refresh from the Sheet when the connection comes back
-    const onOnline = () => void useApp.getState().sync()
+    void useSessions.getState().load()
+    // when the connection comes back: refresh rosters and send any waiting results
+    const onOnline = () => {
+      void useApp.getState().sync()
+      void useApp.getState().sendOutbox()
+    }
     window.addEventListener('online', onOnline)
-    return () => window.removeEventListener('online', onOnline)
+    // retry the outbox every 60 s while Kru is open
+    const timer = setInterval(() => {
+      if (useApp.getState().outbox.length) void useApp.getState().sendOutbox()
+    }, OUTBOX_RETRY_MS)
+    return () => {
+      window.removeEventListener('online', onOnline)
+      clearInterval(timer)
+    }
   }, [])
 
   return (
@@ -32,6 +49,9 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       { index: true, element: <Home /> },
+      { path: 'setup/:game', element: <Setup /> },
+      { path: 'play/:id', element: <Play /> },
+      { path: 'results/:id', element: <Results /> },
       { path: 'admin', element: <Settings /> },
       { path: 'admin/settings', element: <Settings /> },
       { path: '*', element: <Home /> },

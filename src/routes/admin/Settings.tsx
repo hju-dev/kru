@@ -88,6 +88,8 @@ export function Settings() {
           </div>
         </section>
 
+        <Outbox />
+
         <section className="card">
           <h2>This device</h2>
           <dl>
@@ -106,7 +108,10 @@ export function Settings() {
               {armed ? 'Tap again to sign out' : 'Sign out'}
             </button>
           </div>
-          <p className="muted small">Signing out removes the key and saved rosters from this device. Your Sheet is not changed.</p>
+          <p className="muted small">
+            Signing out removes the key and saved rosters from this device. Results waiting to send are kept. Your Sheet
+            is not changed.
+          </p>
         </section>
 
         <section className="card tips">
@@ -127,5 +132,54 @@ export function Settings() {
         </section>
       </div>
     </main>
+  )
+}
+
+/** Results saved on the phone that haven't reached the Sheet yet. */
+function Outbox() {
+  const { outbox, sending, sendOutbox, removeFromOutbox } = useApp()
+  const [armed, setArmed] = useState<string | null>(null)
+
+  return (
+    <section className="card">
+      <h2>
+        Outbox{' '}
+        {outbox.length > 0 && (
+          <span className="error">
+            · {outbox.length} waiting to send
+          </span>
+        )}
+      </h2>
+      {outbox.length === 0 ? (
+        <p className="muted">All results have reached your Sheet.</p>
+      ) : (
+        <>
+          <ul className="outbox">
+            {outbox.map((e) => (
+              <li key={e.id}>
+                <div>
+                  <b>{e.label}</b>
+                  <span className="muted small">
+                    {e.payload.rows.length} students · tried {e.attempts}×{e.lastError ? ` · ${e.lastError}` : ''}
+                  </span>
+                </div>
+                <button
+                  className={`btn small ${armed === e.id ? 'danger' : 'ghost'}`}
+                  onClick={() => (armed === e.id ? void removeFromOutbox(e.id) : setArmed(e.id))}
+                >
+                  {armed === e.id ? 'Delete for good?' : 'Delete'}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="row">
+            <button className="btn primary" onClick={() => void sendOutbox()} disabled={sending}>
+              {sending ? 'Sending…' : 'Send now'}
+            </button>
+          </div>
+          <p className="muted small">Kru retries by itself when the phone is back online and every minute while open.</p>
+        </>
+      )}
+    </section>
   )
 }

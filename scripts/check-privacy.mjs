@@ -34,8 +34,8 @@ const readLines = (path) =>
 const denylist = readLines('.privacy-denylist.txt')
 const allowlist = new Set(readLines('scripts/privacy-allowlist.txt').map((s) => s.toLowerCase()))
 
-// Placeholder names that are always fine in code and demo data
-const isPlaceholder = (name) => /^(S\d{1,2}|Student \d{1,2}|T\. ?Henry|Team \d+)$/i.test(name) || allowlist.has(name.toLowerCase())
+// Placeholder names that are always fine in code and demo data ("S" covers code like 'S' + number)
+const isPlaceholder = (name) => /^(S\d{0,2}|Student \d{1,2}|T\. ?Henry|Team \d+)$/i.test(name) || allowlist.has(name.toLowerCase())
 
 const BLOCKED_FILES = [
   [/(^|\/)\.env(\.|$)/, 'environment file (may hold secrets)'],

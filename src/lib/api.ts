@@ -1,4 +1,5 @@
-import type { Bootstrap, Connection } from '../types'
+import type { Bootstrap, Connection, TeamSet } from '../types'
+import type { Submission } from './results'
 import { normalizeBootstrap } from './bootstrap'
 import { DEMO_URL, demoBootstrap } from './demo'
 
@@ -98,4 +99,27 @@ export async function fetchBootstrap(conn: Connection): Promise<Bootstrap> {
   if (conn.url === DEMO_URL) return demoBootstrap()
   const reply = await callScript(conn, 'bootstrap')
   return normalizeBootstrap(reply)
+}
+
+export interface SubmitReply {
+  duplicate: boolean
+  rowsWritten: number
+}
+
+/** Sends one finished game to the Sheet. Safe to repeat: the script ignores a SessionID it already has. */
+export async function submitResults(conn: Connection, payload: Submission): Promise<SubmitReply> {
+  if (conn.url === DEMO_URL) return { duplicate: false, rowsWritten: payload.rows.length }
+  const r = await callScript(conn, 'submitResults', { session: payload.session, rows: payload.rows })
+  return { duplicate: r.duplicate === true, rowsWritten: Number(r.rowsWritten) || 0 }
+}
+
+export async function saveTeamSet(conn: Connection, set: Omit<TeamSet, 'savedAt'>): Promise<string> {
+  if (conn.url === DEMO_URL) return new Date().toISOString()
+  const r = await callScript(conn, 'saveTeamSet', { set })
+  return String(r.savedAt ?? new Date().toISOString())
+}
+
+export async function deleteTeamSet(conn: Connection, setId: string): Promise<void> {
+  if (conn.url === DEMO_URL) return
+  await callScript(conn, 'deleteTeamSet', { setId })
 }

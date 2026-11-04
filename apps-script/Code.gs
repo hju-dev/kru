@@ -11,7 +11,7 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 3;
+var KRU_SCRIPT_VERSION = 4;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
@@ -24,11 +24,17 @@ var TABS = {
     'SubmittedAt', 'Deleted', 'EditedAt'],
 };
 
-/** Actions the app can call. More are added in later phases (submitResults, saveTeamSet, …). */
+/** Actions the app can call. Admin actions are added in Phase 2b. */
 var ACTIONS = {
   ping: actionPing_,
   bootstrap: actionBootstrap_,
+  submitResults: actionSubmitResults_,
+  saveTeamSet: actionSaveTeamSet_,
+  deleteTeamSet: actionDeleteTeamSet_,
 };
+
+/** Columns written as plain text so Sheets doesn't turn "1/2" or a nickname into a date or number. */
+var TEXT_COLUMNS = ['SessionID', 'SetID', 'Class', 'Game', 'Level', 'Mode', 'Team', 'Name', 'Nickname', 'Teammates', 'Notes'];
 
 // ───────────────────────────── Web app entry points ─────────────────────────────
 
@@ -72,6 +78,79 @@ function actionBootstrap_() {
   result.version = KRU_SCRIPT_VERSION;
   result.sheetUrl = ss.getUrl();
   return result;
+}
+
+/**
+ * Saves one finished game: one Results row per student, one Sessions row.
+ * Safe to send twice (e.g. after a timeout): a SessionID already in Sessions is not written again.
+ */
+function actionSubmitResults_(req) {
+  var s = req.session;
+  var rows = req.rows;
+  if (!s || !s.id || !Array.isArray(rows)) throw new Error('submitResults needs a session and rows');
+  return withLock_(function () {
+    var ss = sheet_();
+    var results = tab_(ss, 'Results');
+    var sessions = tab_(ss, 'Sessions');
+    var plan = planSubmission_(columnValues_(results, 'SessionID'), columnValues_(sessions, 'SessionID'), String(s.id));
+    if (plan.duplicate) return { ok: true, duplicate: true, sessionId: s.id, rowsWritten: 0 };
+    if (plan.writeResults && rows.length) {
+      appendObjects_(results, rows.map(function (r) {
+        var o = { SessionID: s.id };
+        Object.keys(r).forEach(function (k) { o[k] = r[k]; });
+        return o;
+      }));
+    }
+    appendObjects_(sessions, [{
+      SessionID: s.id,
+      Date: s.Date,
+      Class: s.Class,
+      Game: s.Game,
+      Level: s.Level,
+      Mode: s.Mode,
+      TeamCount: s.TeamCount,
+      TeacherTeamPoints: s.TeacherTeamPoints,
+      SubmittedAt: new Date(),
+    }]);
+    return { ok: true, duplicate: false, sessionId: s.id, rowsWritten: plan.writeResults ? rows.length : 0 };
+  });
+}
+
+/**
+ * Pure: decides what to write for a SessionID, given the IDs already in each tab.
+ * Sessions is written last, so "in Sessions" means the whole submission already landed.
+ * "In Results but not Sessions" means a previous attempt stopped halfway: only add the Sessions row.
+ */
+function planSubmission_(resultIds, sessionIds, id) {
+  if (sessionIds.indexOf(id) !== -1) return { duplicate: true, writeResults: false };
+  return { duplicate: false, writeResults: resultIds.indexOf(id) === -1 };
+}
+
+/** Saves (or replaces) a named team set: one TeamSets row per student. */
+function actionSaveTeamSet_(req) {
+  var set = req.set;
+  if (!set || !set.id || !set.class || !Array.isArray(set.teams)) throw new Error('saveTeamSet needs a set');
+  return withLock_(function () {
+    var sh = tab_(sheet_(), 'TeamSets');
+    deleteRowsWhere_(sh, 'SetID', String(set.id));
+    var savedAt = new Date();
+    var rows = [];
+    set.teams.forEach(function (t) {
+      (t.members || []).forEach(function (m) {
+        rows.push({ SetID: set.id, Class: set.class, Name: set.name, Team: t.name, No: m.no, Nickname: m.nick, SavedAt: savedAt });
+      });
+    });
+    if (rows.length) appendObjects_(sh, rows);
+    return { ok: true, id: set.id, savedAt: savedAt.toISOString() };
+  });
+}
+
+function actionDeleteTeamSet_(req) {
+  if (!req.setId) throw new Error('deleteTeamSet needs a setId');
+  return withLock_(function () {
+    var removed = deleteRowsWhere_(tab_(sheet_(), 'TeamSets'), 'SetID', String(req.setId));
+    return { ok: true, removed: removed };
+  });
 }
 
 /**
@@ -243,6 +322,71 @@ function readTable_(ss, name) {
     if (!empty) rows.push(obj);
   }
   return rows;
+}
+
+/** Runs fn while holding the script lock, so two quick submissions (phone + laptop) can't interleave. */
+function withLock_(fn) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    return fn();
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function tab_(ss, name) {
+  var sh = ss.getSheetByName(name);
+  if (!sh) throw new Error('The ' + name + ' tab is missing. In the Sheet, use Kru → Set up tabs.');
+  return sh;
+}
+
+function headers_(sh) {
+  return sh.getRange(1, 1, 1, Math.max(sh.getLastColumn(), 1)).getValues()[0].map(function (h) { return String(h).trim(); });
+}
+
+/** All values in one column (by header name), as text, without the header. */
+function columnValues_(sh, header) {
+  var col = headers_(sh).indexOf(header) + 1;
+  if (col < 1 || sh.getLastRow() < 2) return [];
+  return sh.getRange(2, col, sh.getLastRow() - 1, 1).getValues().map(function (r) { return String(r[0]); });
+}
+
+/** Pure: turns row objects into a grid matching the header order. Unknown fields are ignored. */
+function objectsToValues_(headers, objects) {
+  return objects.map(function (o) {
+    return headers.map(function (h) { return h && o[h] != null ? o[h] : ''; });
+  });
+}
+
+/** Appends row objects under the matching headers in one write. Text columns stay text. */
+function appendObjects_(sh, objects) {
+  var headers = headers_(sh);
+  var values = objectsToValues_(headers, objects);
+  var start = sh.getLastRow() + 1;
+  var needed = start + values.length - 1 - sh.getMaxRows();
+  if (needed > 0) sh.insertRowsAfter(sh.getMaxRows(), needed);
+  headers.forEach(function (h, i) {
+    if (TEXT_COLUMNS.indexOf(h) !== -1) sh.getRange(start, i + 1, values.length, 1).setNumberFormat('@');
+  });
+  sh.getRange(start, 1, values.length, headers.length).setValues(values);
+}
+
+/** Deletes every row whose column `header` equals `value`. Returns how many were deleted. */
+function deleteRowsWhere_(sh, header, value) {
+  var col = headers_(sh).indexOf(header) + 1;
+  if (col < 1 || sh.getLastRow() < 2) return 0;
+  var values = sh.getRange(2, col, sh.getLastRow() - 1, 1).getValues();
+  var removed = 0;
+  // bottom-up so row numbers stay valid; delete runs of matching rows together
+  for (var i = values.length - 1; i >= 0; i--) {
+    if (String(values[i][0]) !== value) continue;
+    var end = i;
+    while (i - 1 >= 0 && String(values[i - 1][0]) === value) i--;
+    sh.deleteRows(i + 2, end - i + 1);
+    removed += end - i + 1;
+  }
+  return removed;
 }
 
 function ensureTab_(ss, name, headers) {

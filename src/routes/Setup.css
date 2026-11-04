@@ -1,0 +1,365 @@
+/* Team setup: landscape-first (812 x 375). Top bar, tool row, then pool | teams. */
+.setup {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: max(var(--sa-top), 6px) max(var(--sa-right), 10px) max(var(--sa-bottom), 6px) max(var(--sa-left), 10px);
+  overflow: hidden;
+}
+
+.setup-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+}
+.setup-title {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
+.setup-title b {
+  font-family: var(--display);
+  font-size: 18px;
+}
+.setup .start {
+  min-width: 96px;
+}
+
+.seg {
+  display: inline-flex;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.seg button {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+.seg button[aria-pressed='true'] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+.stepper b {
+  color: var(--fg);
+  font-size: 16px;
+}
+.stepper button {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font-weight: 800;
+  font-size: 18px;
+  cursor: pointer;
+}
+.stepper button:disabled {
+  opacity: 0.35;
+}
+
+/* tool row scrolls sideways inside itself if it doesn't fit */
+.setup-tools {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+.setup-tools::-webkit-scrollbar {
+  display: none;
+}
+.tool {
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  font-weight: 700;
+  font-size: 13.5px;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.tool.on {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+.tool:disabled {
+  opacity: 0.4;
+}
+.setup-tools .hint {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.setup-body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(170px, 0.32fr) minmax(0, 1fr);
+  gap: 8px;
+}
+.setup-body.solo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pool,
+.bins {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.pool {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 6px;
+}
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+  padding: 0 2px 6px;
+}
+.panel-head b {
+  color: var(--fg);
+}
+.mode-hint {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.solo .chips .chip {
+  flex: 0 0 auto;
+}
+.chip {
+  min-height: 38px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--panel);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  /* long-press to drag: no iOS callout or text selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+.chip b {
+  font-family: var(--mono);
+  color: var(--gold);
+  font-weight: 500;
+}
+.chip.small {
+  min-height: 34px;
+  font-size: 14px;
+  padding: 0 8px;
+}
+.chip.selected {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgb(0 0 0 / 0.45);
+}
+.chip.selected b {
+  color: var(--bg);
+}
+.chip.absent {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+.chip.dragging {
+  opacity: 0.35;
+}
+.absent-label {
+  width: 100%;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* flex-wrap (not grid) so each team box grows to fit its names */
+.bins {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.bins > .bin {
+  flex: 1 1 150px;
+  max-width: 100%;
+}
+.bin {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 4px 6px 8px;
+  min-height: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bin.empty {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--coral) 55%, var(--line));
+}
+.bin.teacher {
+  border-color: var(--violet);
+}
+.bin.over,
+.pool.over {
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 12%, var(--surface));
+}
+/* while a student is selected, every team lights up as a place to drop */
+.placing .bin:not(.teacher):not(.add) {
+  border-color: color-mix(in srgb, var(--gold) 70%, var(--line));
+  cursor: pointer;
+}
+.placing .pool {
+  cursor: pointer;
+}
+.bin-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 34px;
+}
+.bin-name {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  background: none;
+  border: 0;
+  padding: 0 2px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.pencil {
+  color: var(--muted);
+  font-size: 12px;
+}
+.rename {
+  flex: 1;
+  min-width: 0;
+  min-height: 32px;
+  border-radius: 8px;
+  border: 2px solid var(--gold);
+  background: var(--bg);
+  padding: 0 6px;
+}
+.count {
+  font-size: 12px;
+  color: var(--muted);
+}
+.remove {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.bin.add {
+  align-items: center;
+  justify-content: center;
+  border-style: dashed;
+  color: var(--muted);
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+}
+.bin .small {
+  font-size: 12px;
+  margin: 0;
+}
+
+.setup-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.setup-status .warn {
+  color: var(--coral);
+}
+
+.drag-ghost {
+  position: fixed;
+  z-index: 60;
+  pointer-events: none;
+  transform: translate(-50%, -130%);
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 800;
+  box-shadow: 0 10px 24px rgb(0 0 0 / 0.5);
+  white-space: nowrap;
+}
+
+.set-row {
+  display: flex;
+  gap: 6px;
+}
+.set-pick {
+  flex: 1;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Phone held upright: stack the pool above the teams */
+@media (orientation: portrait) {
+  .setup-bar {
+    flex-wrap: wrap;
+  }
+  .setup-body {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(90px, 0.4fr) minmax(0, 1fr);
+  }
+}

@@ -1,5 +1,7 @@
 import { createStore, del, get, set } from 'idb-keyval'
 import type { Bootstrap, Connection } from '../types'
+import type { OutboxEntry } from './outbox'
+import type { Session } from './session'
 
 /**
  * Everything Kru keeps on the phone lives in one IndexedDB database.
@@ -19,7 +21,17 @@ export const storage = {
   setBootstrap: (b: CachedBootstrap) => set('bootstrap', b, store),
   getLastClass: () => get<string>('lastClass', store),
   setLastClass: (name: string) => set('lastClass', name, store),
-  /** Sign out: forget the connection and the cached Sheet data. */
+  getSessions: () => get<Record<string, Session>>('sessions', store),
+  setSessions: (s: Record<string, Session>) => set('sessions', s, store),
+  getOutbox: () => get<OutboxEntry[]>('outbox', store),
+  setOutbox: (o: OutboxEntry[]) => set('outbox', o, store),
+  /** Students marked absent today in a class, so the next game that day remembers them. */
+  getAbsent: (cls: string, day: string) => get<number[]>(`absent:${cls}:${day}`, store),
+  setAbsent: (cls: string, day: string, nos: number[]) => set(`absent:${cls}:${day}`, nos, store),
+  /**
+   * Sign out: forget the connection and the cached Sheet data.
+   * Unsent results (outbox) and games in progress are kept, so nothing is lost.
+   */
   async clearAll() {
     await Promise.all([del('connection', store), del('bootstrap', store), del('lastClass', store)])
   },

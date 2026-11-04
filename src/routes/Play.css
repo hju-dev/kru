@@ -1,0 +1,86 @@
+.play {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+}
+.game-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Translucent home button, top-right, clear of the notch. Fades after 3 s; any tap brings it back. */
+.home-btn {
+  position: absolute;
+  z-index: 10;
+  top: max(var(--sa-top), 6px);
+  right: max(var(--sa-right), 8px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgb(255 255 255 / 0.25);
+  background: rgb(23 21 31 / 0.6);
+  color: var(--fg);
+  font-size: 22px;
+  cursor: pointer;
+  transition: opacity 0.4s;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.home-btn.faded {
+  opacity: 0.15;
+}
+
+.play-menu-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgb(0 0 0 / 0.55);
+  display: grid;
+  place-items: center;
+  padding: max(var(--sa-top), 8px) max(var(--sa-right), 12px) max(var(--sa-bottom), 8px) max(var(--sa-left), 12px);
+}
+.play-menu {
+  width: min(380px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.play-menu p {
+  margin: 0 0 2px;
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Games are landscape-only: in portrait, ask to turn the phone */
+.turn-hint {
+  display: none;
+}
+@media (orientation: portrait) {
+  .turn-hint {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: grid;
+    place-content: center;
+    gap: 10px;
+    text-align: center;
+    background: var(--bg);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+  }
+  .turn-hint span {
+    font-size: 64px;
+    color: var(--gold);
+  }
+}

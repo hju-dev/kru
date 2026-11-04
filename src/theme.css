@@ -59,8 +59,9 @@ body {
 /* Every screen pads itself away from the notch and the home bar */
 .screen {
   min-height: 100%;
-  padding: calc(var(--sa-top) + 10px) calc(var(--sa-right) + var(--gutter)) calc(var(--sa-bottom) + 12px)
-    calc(var(--sa-left) + var(--gutter));
+  /* the notch inset already gives room; only add a gutter where there is no inset */
+  padding: max(var(--sa-top), 10px) max(var(--sa-right), var(--gutter)) max(var(--sa-bottom), 10px)
+    max(var(--sa-left), var(--gutter));
   display: flex;
   flex-direction: column;
   gap: 12px;

@@ -1,0 +1,131 @@
+.results {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  gap: 8px;
+}
+.results-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  flex-wrap: wrap;
+}
+.results-bar h1 {
+  flex: 1;
+  min-width: 0;
+  font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.results-bar h1 .muted {
+  font-family: var(--body);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.done {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-color: var(--teal);
+  flex-wrap: wrap;
+}
+.done.waiting {
+  border-color: var(--gold);
+}
+.done p {
+  margin: 0;
+  flex: 1;
+  min-width: 220px;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.result-row {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 6px 8px 6px 10px;
+}
+.result-row.first {
+  border-color: var(--gold);
+}
+.result-row.teacher {
+  border-style: dashed;
+  border-color: var(--violet);
+}
+.rank {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--panel);
+  font-family: var(--mono);
+  font-size: 16px;
+}
+.first .rank {
+  background: var(--gold);
+  color: var(--bg);
+}
+.result-team {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.result-team b {
+  font-family: var(--display);
+  font-size: 18px;
+}
+.result-team .muted {
+  font-size: 12.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.points {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.points button {
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.points input {
+  width: 64px;
+  height: var(--tap);
+  text-align: center;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--bg);
+  font-family: var(--mono);
+  font-size: 20px;
+}
+.points input:focus {
+  border-color: var(--gold);
+  outline: none;
+}
+.points :disabled {
+  opacity: 0.6;
+}
+.notes {
+  max-width: 480px;
+}

@@ -1,0 +1,30 @@
+/* Shared base for every Kru game: self-hosted fonts, reset, dark tokens, safe areas. */
+@font-face { font-family: 'Poppins'; font-weight: 500; font-display: swap; src: url('/fonts/poppins-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 700; font-display: swap; src: url('/fonts/poppins-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Poppins'; font-weight: 800; font-display: swap; src: url('/fonts/poppins-latin-800-normal.woff2') format('woff2'); }
+@font-face { font-family: 'DM Mono'; font-weight: 500; font-display: swap; src: url('/fonts/dm-mono-latin-500-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Bricolage Grotesque'; font-weight: 200 800; font-display: swap; src: url('/fonts/bricolage-grotesque-latin-wght-normal.woff2') format('woff2'); }
+
+:root {
+  --bg: #17151f; --stage: #221f2e; --panel: #2c2839; --line: #3e3950; --fg: #f6f3ec; --muted: #a49fb5;
+  --gold: #ffb703; --coral: #ff6b6b; --teal: #2ec4b6; --violet: #9b7bff; --lime: #a7d129; --sky: #4cc9f0;
+  --display: 'Bricolage Grotesque', 'Poppins', system-ui, sans-serif;
+  --body: 'Poppins', system-ui, -apple-system, sans-serif;
+  --mono: 'DM Mono', ui-monospace, Menlo, monospace;
+  --tap: 44px;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg); font: 500 16px/1.4 var(--body);
+  -webkit-text-size-adjust: 100%; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none; user-select: none; overscroll-behavior: none;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+/* The shell's home button sits top-right; games keep that corner clear. */
+.game {
+  min-height: 100%;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}

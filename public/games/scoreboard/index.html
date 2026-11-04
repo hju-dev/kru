@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game">
+      <header class="bar">
+        <h1>Scoreboard</h1>
+        <span class="meta" id="meta"></span>
+        <button class="small" id="undo" disabled>Undo</button>
+      </header>
+      <section class="teams" id="teams" aria-live="polite"></section>
+      <p class="hint" id="hint">Loading…</p>
+    </main>
+    <script src="/sdk/kru.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

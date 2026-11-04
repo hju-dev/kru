@@ -76,6 +76,12 @@ Demo mode: on the Sign-in screen, "Try demo" uses made-up students (S1…S30) wi
 - `Classes` tab (Class · Archived · DefaultTeamSize · Order) is optional; classes found only in `Rosters` still appear.
 - Splash images are 1125×2436 / 2436×1125 (iPhone 13 mini is 375×812 CSS px @3x), not the 1080×2340 in HANDOFF.
 - Service worker uses `registerType: 'prompt'`: updates wait for Henry to tap Reload in the toast.
+- Sessions (setup → playing → review → submitted/discarded) live in IndexedDB (`sessions` key, `src/store/sessions.ts`). Results go to the IndexedDB `outbox` before any network call (`src/store/app.ts` `queueResults`).
+- Team-setup logic is pure in `src/lib/teams.ts`; Sheet rows are built in `src/lib/results.ts` (`buildSubmission`, the Joe test lives in `tests/phase2.test.ts`). Ranks are among student teams only; the teacher team's points go to `Sessions.TeacherTeamPoints`.
+- Drag (`src/lib/useChipDrag.ts`) needs a ~280 ms hold on touch, so taps and scrolling are never mistaken for drags.
+- Games: plain HTML in `public/games/<slug>/` with **external** JS files (CSP `script-src 'self'` forbids inline scripts). Shared fonts/reset: `public/games/shared/kru-game.css`. `public/games/scoreboard/` is the reference game for the SDK.
+- `tests/appsScriptWrites.test.ts` runs the real `Code.gs` against an in-memory fake Sheet (`tests/fakeSheet.ts`); bump `KRU_SCRIPT_VERSION` whenever Code.gs changes, since Henry must redeploy it.
+- Browser-automation gotcha: scripted `.blur()` doesn't trigger React `onBlur`; test inputs with real typing.
 
 ## graphify
 
