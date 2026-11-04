@@ -62,7 +62,7 @@ function ToolFrame({ slug, title }: { slug: string; title: string }) {
 
   return (
     <main className="play">
-      <iframe ref={frame} className="game-frame" src={gameUrl(slug)} title={title} onLoad={onFrameLoad} allow="screen-wake-lock" />
+      <iframe ref={frame} className="game-frame" src={gameUrl(slug)} title={title} onLoad={onFrameLoad} allow="screen-wake-lock; microphone" />
       <button
         className={`home-btn${showHome ? '' : ' faded'}`}
         onClick={() => {

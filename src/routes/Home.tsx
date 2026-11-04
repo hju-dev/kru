@@ -34,7 +34,10 @@ export function Home() {
       return
     }
     if (g.classTool) {
-      // Name Picker: no team setup; today's absent students (from team setup) are left out
+      // already open for this class? go back to it (no pile of "game in progress" banners)
+      const open = Object.values(sessions).find((s) => s.status === 'playing' && s.game === g.slug && s.class === selected.name)
+      if (open) return navigate(`/play/${open.id}`)
+      // Name Picker / Class Order: no team setup; today's absent students (from team setup) are left out
       const roster = data?.rosters[selected.name] ?? []
       void storage.getAbsent(selected.name, todayKey()).then((absent = []) => {
         const s = quickSession(selected, g.slug, roster, absent)

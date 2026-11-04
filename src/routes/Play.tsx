@@ -78,12 +78,13 @@ function PlayFrame({ session }: { session: Session }) {
         case 'kru:ready': {
           // the game's memory for this class today (e.g. who Name Picker has already picked)
           const target = frame.current?.contentWindow
-          void storage
-            .getDayState(current.game, classKeyOf(current.class), todayKey())
-            .catch(() => undefined)
-            .then((day) => {
+          const ck = classKeyOf(current.class)
+          void Promise.all([
+            storage.getDayState(current.game, ck, todayKey()).catch(() => undefined),
+            storage.getKeepState(current.game, ck).catch(() => undefined),
+          ]).then(([day, keep]) => {
               const msg = initMessage(current)
-              const extra: Record<string, unknown> = { day: day ?? null }
+              const extra: Record<string, unknown> = { day: day ?? null, keep: keep ?? null }
               if (findGame(current.game)?.sheetQuestions) {
                 // Quiz Battle: the Questions tab sets for this level (from the last Sync)
                 const data = useApp.getState().data
@@ -94,6 +95,9 @@ function PlayFrame({ session }: { session: Session }) {
             })
           break
         }
+        case 'kru:keep':
+          void storage.setKeepState(current.game, classKeyOf(current.class), (d as { data?: unknown }).data).catch(() => undefined)
+          break
         case 'kru:day':
           void storage.setDayState(current.game, classKeyOf(current.class), todayKey(), (d as { data?: unknown }).data).catch(() => undefined)
           break

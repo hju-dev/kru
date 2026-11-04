@@ -22,3 +22,13 @@ describe('vercel.json', () => {
     expect(headers.find((h) => h.key === 'X-Frame-Options')!.value).toBe('SAMEORIGIN')
   })
 })
+
+describe('microphone (Noise light tool)', () => {
+  it('only Kru itself may use the microphone, and the tool frame is allowed to ask', () => {
+    const cfg = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8')) as { headers: { headers: { key: string; value: string }[] }[] }
+    const pp = cfg.headers.flatMap((h) => h.headers).find((h) => h.key === 'Permissions-Policy')?.value ?? ''
+    expect(pp).toContain('microphone=(self)')
+    expect(pp).toContain('camera=()')
+    expect(readFileSync(new URL('../src/routes/Tool.tsx', import.meta.url), 'utf8')).toContain('allow="screen-wake-lock; microphone"')
+  })
+})
