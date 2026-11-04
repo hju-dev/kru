@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router'
-import { SyncPill } from '../../components/SyncPill'
 import { ApiError, ping } from '../../lib/api'
+import { loadPrefs, savePrefs, type Prefs } from '../../lib/prefs'
 import { DEMO_URL } from '../../lib/demo'
 import { requestPersistentStorage } from '../../lib/storage'
 import { timeAgo } from '../../lib/time'
 import { useApp } from '../../store/app'
+import { ClassDefaults } from './ClassDefaults'
 import './Settings.css'
 
 /** Shows the start and end of the URL only, so it's recognisable but not readable over a shoulder. */
@@ -49,14 +49,8 @@ export function Settings() {
   const students = data ? Object.values(data.rosters).reduce((n, r) => n + r.filter((s) => s.active).length, 0) : 0
 
   return (
-    <main className="screen settings">
-      <header className="topbar">
-        <Link className="btn small ghost" to="/">
-          ← Library
-        </Link>
-        <h1>Settings</h1>
-        <SyncPill />
-      </header>
+    <main className="admin-page settings">
+      <h1>Settings</h1>
 
       <div className="settings-grid">
         <section className="card">
@@ -91,6 +85,10 @@ export function Settings() {
         <Outbox />
 
         <RosterCheck />
+
+        <ClassDefaults />
+
+        <DevicePrefs />
 
         <section className="card">
           <h2>This device</h2>
@@ -137,8 +135,58 @@ export function Settings() {
   )
 }
 
+/** Per-device options: keep the screen on during games, when this term started, check for an update. */
+function DevicePrefs() {
+  const [prefs, setPrefs] = useState<Prefs | null>(null)
+  const [checked, setChecked] = useState<string | null>(null)
+  useEffect(() => void loadPrefs().then(setPrefs), [])
+  if (!prefs) return null
+
+  function change(p: Partial<Prefs>) {
+    const next = { ...prefs!, ...p }
+    setPrefs(next)
+    void savePrefs(next)
+  }
+
+  async function checkUpdate() {
+    setChecked('Checking…')
+    try {
+      const reg = await navigator.serviceWorker?.getRegistration()
+      await reg?.update()
+      setChecked(reg?.waiting || reg?.installing ? 'A new version is ready: tap Reload in the message at the bottom.' : 'You have the latest version.')
+    } catch {
+      setChecked('Couldn’t check right now (are you online?).')
+    }
+  }
+
+  return (
+    <section className="card">
+      <h2>Options</h2>
+      <label className="check-row">
+        <input type="checkbox" checked={prefs.keepAwake} onChange={(e) => change({ keepAwake: e.target.checked })} />
+        <span>
+          Keep the screen awake during games
+          <span className="muted small"> (if the screen still sleeps, set Auto-Lock to Never)</span>
+        </span>
+      </label>
+      <div className="field">
+        <label htmlFor="term">This term started on</label>
+        <input id="term" type="date" value={prefs.termStart} onChange={(e) => e.target.value && change({ termStart: e.target.value })} />
+        <span className="muted small">Used for “top students this term” on the Overview.</span>
+      </div>
+      <div className="row">
+        <button className="btn" onClick={() => void checkUpdate()}>
+          Check for update
+        </button>
+        <span className="muted small">Version {__APP_VERSION__}</span>
+      </div>
+      {checked && <p className="muted small">{checked}</p>}
+    </section>
+  )
+}
+
 /** Results saved on the phone that haven't reached the Sheet yet. */
-function Outbox() {
+export function Outbox() {
   const { outbox, sending, sendOutbox, removeFromOutbox } = useApp()
   const [armed, setArmed] = useState<string | null>(null)
 
@@ -188,7 +236,8 @@ function Outbox() {
 
 /** Rows in the Rosters tab that look wrong, so Henry can tidy the Sheet. Kru copes either way. */
 function RosterCheck() {
-  const issues = useApp((s) => s.data?.rosterIssues ?? [])
+  const stored = useApp((s) => s.data?.rosterIssues)
+  const issues = stored ?? []
   if (issues.length === 0) return null
   return (
     <section className="card">

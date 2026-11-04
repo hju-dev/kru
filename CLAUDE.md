@@ -82,6 +82,11 @@ Demo mode: on the Sign-in screen, "Try demo" uses made-up students (S1…S30) wi
 - Games: plain HTML in `public/games/<slug>/` with **external** JS files (CSP `script-src 'self'` forbids inline scripts). Shared fonts/reset: `public/games/shared/kru-game.css`. `public/games/scoreboard/` is the reference game for the SDK.
 - `tests/appsScriptWrites.test.ts` runs the real `Code.gs` against an in-memory fake Sheet (`tests/fakeSheet.ts`); bump `KRU_SCRIPT_VERSION` whenever Code.gs changes, since Henry must redeploy it.
 - Browser-automation gotcha: scripted `.blur()` doesn't trigger React `onBlur`; test inputs with real typing.
+- Students have an internal `id` (= `no` unless two students in a class share a number; then 1000+). Team setup, bins and absent lists use ids; the Sheet only ever gets `no` + nickname. See `cleanRoster` in `src/lib/bootstrap.ts`.
+- Zustand selectors must return stable values: never `useApp((s) => s.x ?? [])` or `.map()` inside a selector (React error #185, endless re-render). Select the stored value, then derive with `useMemo`.
+- Admin dashboard (`/admin/*`, `src/routes/admin/`): `AdminLayout` = sidebar ≥ 1024 px, bottom tabs below. Results are loaded whole (`results` action, including deleted) into `src/store/admin.ts`, cached in IndexedDB (`kru-admin`), and filtered/aggregated on the device (`src/lib/stats.ts`). Admin writes need internet; failed edits stay on screen (roster drafts in `kru-prefs` IndexedDB) for retry.
+- Code.gs v5 admin actions: `results`, `updateSession`, `deleteSession` (soft), `saveRoster`, `saveClass` (add/archive/default team size), `renameClass` (renames in every tab). Class matching everywhere ignores spaces and capitals.
+- Per-device prefs (`src/lib/prefs.ts`): keep screen awake, term start date.
 
 ## graphify
 

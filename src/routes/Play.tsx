@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { findGame, gameUrl } from '../lib/games'
+import { loadPrefs } from '../lib/prefs'
 import { initMessage, type Session } from '../lib/session'
 import { useSessions } from '../store/sessions'
 import './Play.css'
@@ -20,8 +21,13 @@ function useWakeLock() {
         /* not supported or not allowed: Auto-Lock → Never is the backup */
       }
     }
-    const onVisible = () => document.visibilityState === 'visible' && void request()
-    void request()
+    let enabled = false
+    const onVisible = () => enabled && document.visibilityState === 'visible' && void request()
+    // respects Settings → Options → Keep the screen awake
+    void loadPrefs().then((p) => {
+      enabled = p.keepAwake
+      if (enabled) void request()
+    })
     document.addEventListener('visibilitychange', onVisible)
     return () => {
       document.removeEventListener('visibilitychange', onVisible)

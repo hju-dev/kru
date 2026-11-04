@@ -106,7 +106,8 @@ interface BoardProps {
 }
 
 function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, onStart }: BoardProps) {
-  const teamSets = useApp((st) => st.data?.teamSets ?? [])
+  const allSets = useApp((st) => st.data?.teamSets)
+  const teamSets = allSets ?? []
   const [selected, setSelected] = useState<number[]>([])
   const [several, setSeveral] = useState(false)
   const [absentMode, setAbsentMode] = useState(false)

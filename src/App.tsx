@@ -6,7 +6,13 @@ import { Play } from './routes/Play'
 import { Results } from './routes/Results'
 import { Setup } from './routes/Setup'
 import { SignIn } from './routes/SignIn'
+import { AdminLayout } from './routes/admin/AdminLayout'
+import { Content } from './routes/admin/Content'
+import { Overview } from './routes/admin/Overview'
+import { ResultsAdmin } from './routes/admin/ResultsAdmin'
+import { Rosters } from './routes/admin/Rosters'
 import { Settings } from './routes/admin/Settings'
+import { TeamsAdmin } from './routes/admin/TeamsAdmin'
 import { useApp } from './store/app'
 import { useSessions } from './store/sessions'
 
@@ -52,8 +58,18 @@ const router = createBrowserRouter([
       { path: 'setup/:game', element: <Setup /> },
       { path: 'play/:id', element: <Play /> },
       { path: 'results/:id', element: <Results /> },
-      { path: 'admin', element: <Settings /> },
-      { path: 'admin/settings', element: <Settings /> },
+      {
+        path: 'admin',
+        element: <AdminLayout />,
+        children: [
+          { index: true, element: <Overview /> },
+          { path: 'rosters', element: <Rosters /> },
+          { path: 'teams', element: <TeamsAdmin /> },
+          { path: 'results', element: <ResultsAdmin /> },
+          { path: 'content', element: <Content /> },
+          { path: 'settings', element: <Settings /> },
+        ],
+      },
       { path: '*', element: <Home /> },
     ],
   },

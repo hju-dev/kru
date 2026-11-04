@@ -1,8 +1,3 @@
-.settings {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
 .settings .topbar h1 {
   font-size: 22px;
   flex: 1;
@@ -98,4 +93,46 @@
   flex-direction: column;
   gap: 6px;
   font-size: 14px;
+}
+.check-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.check-row input {
+  width: 22px;
+  height: 22px;
+  margin-top: 2px;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+}
+.size-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.size-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.size-row .stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.size-row .stepper button {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font-weight: 800;
+  font-size: 18px;
+  cursor: pointer;
+}
+.size-row .stepper button:disabled {
+  opacity: 0.35;
 }

@@ -131,3 +131,8 @@ export function upgradeCachedBootstrap(data: Bootstrap): Bootstrap {
   }
   return { ...data, rosters, rosterIssues }
 }
+
+/** Class names match ignoring spaces and capitals (same rule as the Sheet script). */
+export function classKeyOf(name: string): string {
+  return name.replace(/\s+/g, '').toUpperCase()
+}

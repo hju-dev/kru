@@ -123,3 +123,77 @@ export async function deleteTeamSet(conn: Connection, setId: string): Promise<vo
   if (conn.url === DEMO_URL) return
   await callScript(conn, 'deleteTeamSet', { setId })
 }
+
+// ───────────── Admin dashboard ─────────────
+
+export interface ResultSession {
+  id: string
+  date: string // YYYY-MM-DD
+  time: string // HH:mm
+  class: string
+  game: string
+  level: string
+  mode: string
+  teamCount: number | null
+  teacherTeamPoints: number | null
+  submittedAt: string
+  deleted: boolean
+  editedAt: string
+}
+
+export interface ResultRowLite {
+  s: string // session id
+  team: string
+  no: number | null
+  nick: string
+  points: number
+  rank: number | null
+  notes: string
+}
+
+export interface ResultsFilter {
+  class?: string
+  game?: string
+  level?: string
+  from?: string
+  to?: string
+  includeDeleted?: boolean
+}
+
+export interface ResultsData {
+  sessions: ResultSession[]
+  rows: ResultRowLite[]
+}
+
+const demoOnly = (conn: Connection) => conn.url === DEMO_URL
+
+export async function fetchResults(conn: Connection, filter: ResultsFilter = {}): Promise<ResultsData> {
+  if (demoOnly(conn)) return { sessions: [], rows: [] }
+  const r = await callScript(conn, 'results', { ...filter })
+  return { sessions: (r.sessions as ResultSession[]) ?? [], rows: (r.rows as ResultRowLite[]) ?? [] }
+}
+
+export async function updateSession(conn: Connection, sessionId: string, teams: { team: string; points: number; rank: number }[], teacherTeamPoints?: number | null) {
+  if (demoOnly(conn)) return
+  await callScript(conn, 'updateSession', { sessionId, teams, teacherTeamPoints })
+}
+
+export async function setSessionDeleted(conn: Connection, sessionId: string, deleted: boolean) {
+  if (demoOnly(conn)) return
+  await callScript(conn, 'deleteSession', { sessionId, deleted })
+}
+
+export async function saveRoster(conn: Connection, cls: string, students: { no: number; nick: string; active: boolean }[]) {
+  if (demoOnly(conn)) return
+  await callScript(conn, 'saveRoster', { class: cls, students })
+}
+
+export async function saveClass(conn: Connection, cls: string, change: { archived?: boolean; defaultTeamSize?: number | null; order?: number | null }) {
+  if (demoOnly(conn)) return
+  await callScript(conn, 'saveClass', { class: cls, ...change })
+}
+
+export async function renameClass(conn: Connection, from: string, to: string) {
+  if (demoOnly(conn)) return
+  await callScript(conn, 'renameClass', { from, to })
+}

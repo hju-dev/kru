@@ -96,7 +96,7 @@ function ResultsView({ session: s }: { session: Session }) {
           ) : waiting ? (
             <p>
               <b>Saved on this phone.</b> No connection to the Sheet right now; it will send automatically. You can check
-              it in Dashboard → Outbox.
+              it in Dashboard → Settings → Outbox.
             </p>
           ) : (
             <p>

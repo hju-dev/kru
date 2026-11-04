@@ -11,7 +11,7 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 4;
+var KRU_SCRIPT_VERSION = 5;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
@@ -31,6 +31,13 @@ var ACTIONS = {
   submitResults: actionSubmitResults_,
   saveTeamSet: actionSaveTeamSet_,
   deleteTeamSet: actionDeleteTeamSet_,
+  // admin dashboard
+  results: actionResults_,
+  updateSession: actionUpdateSession_,
+  deleteSession: actionDeleteSession_,
+  saveRoster: actionSaveRoster_,
+  saveClass: actionSaveClass_,
+  renameClass: actionRenameClass_,
 };
 
 /** Columns written as plain text so Sheets doesn't turn "1/2" or a nickname into a date or number. */
@@ -150,6 +157,178 @@ function actionDeleteTeamSet_(req) {
   return withLock_(function () {
     var removed = deleteRowsWhere_(tab_(sheet_(), 'TeamSets'), 'SetID', String(req.setId));
     return { ok: true, removed: removed };
+  });
+}
+
+// ───────────────────────────── Admin dashboard actions ─────────────────────────────
+
+/**
+ * Sessions and their student rows, newest first, for the Results screen.
+ * Filters (all optional): class, game, level, from, to ("YYYY-MM-DD"), includeDeleted.
+ */
+function actionResults_(req) {
+  var ss = sheet_();
+  var tz = ss.getSpreadsheetTimeZone();
+  var out = filterResults_(readTable_(ss, 'Sessions'), readTable_(ss, 'Results'), req || {}, function (v, fmt) {
+    return v instanceof Date ? Utilities.formatDate(v, tz, fmt) : text_(v);
+  });
+  out.ok = true;
+  return out;
+}
+
+/** Pure: filters and shapes Sessions + Results rows. `fmt(value, pattern)` turns Sheet dates into text. */
+function filterResults_(sessionRows, resultRows, f, fmt) {
+  var classKey = f.class ? classKey_(f.class) : '';
+  var sessions = [];
+  var keep = {};
+  sessionRows.forEach(function (r) {
+    var id = text_(r.SessionID);
+    if (!id) return;
+    var s = {
+      id: id,
+      date: fmt(r.Date, 'yyyy-MM-dd'),
+      class: text_(r.Class),
+      game: text_(r.Game),
+      level: text_(r.Level),
+      mode: text_(r.Mode),
+      teamCount: int_(r.TeamCount),
+      teacherTeamPoints: r.TeacherTeamPoints === '' || r.TeacherTeamPoints == null ? null : Number(r.TeacherTeamPoints),
+      submittedAt: r.SubmittedAt instanceof Date ? r.SubmittedAt.toISOString() : text_(r.SubmittedAt),
+      deleted: bool_(r.Deleted, false),
+      editedAt: r.EditedAt instanceof Date ? r.EditedAt.toISOString() : text_(r.EditedAt),
+      time: '',
+    };
+    if (s.deleted && !f.includeDeleted) return;
+    if (classKey && classKey_(s.class) !== classKey) return;
+    if (f.game && s.game !== f.game) return;
+    if (f.level && s.level !== f.level) return;
+    if (f.from && s.date < f.from) return;
+    if (f.to && s.date > f.to) return;
+    keep[id] = s;
+    sessions.push(s);
+  });
+  var rows = [];
+  resultRows.forEach(function (r) {
+    var s = keep[text_(r.SessionID)];
+    if (!s) return;
+    if (!s.time) s.time = fmt(r.Time, 'HH:mm');
+    rows.push({
+      s: s.id,
+      team: text_(r.Team),
+      no: int_(r.No),
+      nick: text_(r.Nickname),
+      points: Number(r.Points) || 0,
+      rank: int_(r.Rank),
+      notes: text_(r.Notes),
+    });
+  });
+  sessions.sort(function (a, b) {
+    return (b.date + b.time + b.submittedAt).localeCompare(a.date + a.time + a.submittedAt);
+  });
+  return { sessions: sessions, rows: rows };
+}
+
+/**
+ * Corrects a session's scores: every member of a team gets the team's new points and rank.
+ * teams: [{ team: "Team 2", points: 17, rank: 1 }], teacherTeamPoints optional.
+ */
+function actionUpdateSession_(req) {
+  var id = String(req.sessionId || '');
+  if (!id || !Array.isArray(req.teams)) throw new Error('updateSession needs sessionId and teams');
+  var byTeam = {};
+  req.teams.forEach(function (t) { byTeam[String(t.team)] = t; });
+  return withLock_(function () {
+    var ss = sheet_();
+    var now = new Date();
+    var changed = updateRows_(tab_(ss, 'Results'), function (r) { return String(r.SessionID) === id; }, function (r) {
+      var t = byTeam[String(r.Team)];
+      if (!t) return null;
+      return { Points: Number(t.points) || 0, Rank: int_(t.rank), EditedAt: now };
+    });
+    updateRows_(tab_(ss, 'Sessions'), function (r) { return String(r.SessionID) === id; }, function () {
+      var u = { EditedAt: now };
+      if (req.teacherTeamPoints !== undefined) u.TeacherTeamPoints = req.teacherTeamPoints === null ? '' : Number(req.teacherTeamPoints);
+      return u;
+    });
+    return { ok: true, rowsUpdated: changed };
+  });
+}
+
+/** Soft delete (deleted: true) or restore (deleted: false) a session. Rows stay in the Sheet. */
+function actionDeleteSession_(req) {
+  var id = String(req.sessionId || '');
+  if (!id) throw new Error('deleteSession needs sessionId');
+  var flag = req.deleted === false ? '' : true;
+  return withLock_(function () {
+    var ss = sheet_();
+    var now = new Date();
+    var match = function (r) { return String(r.SessionID) === id; };
+    var set = function () { return { Deleted: flag, EditedAt: now }; };
+    var rows = updateRows_(tab_(ss, 'Results'), match, set);
+    updateRows_(tab_(ss, 'Sessions'), match, set);
+    return { ok: true, rowsUpdated: rows, deleted: flag === true };
+  });
+}
+
+/** Replaces one class's rows in Rosters. students: [{ no, nick, active }]. Results history is untouched. */
+function actionSaveRoster_(req) {
+  var cls = text_(req.class);
+  if (!cls || !Array.isArray(req.students)) throw new Error('saveRoster needs class and students');
+  return withLock_(function () {
+    var sh = tab_(sheet_(), 'Rosters');
+    var key = classKey_(cls);
+    deleteRowsMatching_(sh, function (r) { return classKey_(r.Class) === key; });
+    var rows = req.students
+      .filter(function (s) { return text_(s.nick) && int_(s.no) != null; })
+      .map(function (s) { return { Class: cls, No: int_(s.no), Nickname: text_(s.nick), Active: s.active !== false }; });
+    if (rows.length) appendObjects_(sh, rows);
+    return { ok: true, saved: rows.length };
+  });
+}
+
+/** Adds a class or changes its settings in the Classes tab (archived, default team size, order). */
+function actionSaveClass_(req) {
+  var cls = text_(req.class);
+  if (!cls) throw new Error('saveClass needs a class');
+  return withLock_(function () {
+    var sh = tab_(sheet_(), 'Classes');
+    var key = classKey_(cls);
+    var update = function () {
+      var u = {};
+      if (req.archived !== undefined) u.Archived = req.archived ? true : '';
+      if (req.defaultTeamSize !== undefined) u.DefaultTeamSize = req.defaultTeamSize ? int_(req.defaultTeamSize) : '';
+      if (req.order !== undefined) u.Order = req.order === null ? '' : Number(req.order);
+      return u;
+    };
+    var found = updateRows_(sh, function (r) { return classKey_(r.Class) === key; }, update);
+    if (!found) {
+      var row = update();
+      row.Class = cls;
+      appendObjects_(sh, [row]);
+    }
+    return { ok: true, created: !found };
+  });
+}
+
+/** Renames a class everywhere: Classes, Rosters, TeamSets, Results and Sessions. */
+function actionRenameClass_(req) {
+  var from = text_(req.from);
+  var to = text_(req.to);
+  if (!from || !to) throw new Error('renameClass needs from and to');
+  return withLock_(function () {
+    var ss = sheet_();
+    var fromKey = classKey_(from);
+    if (classKey_(to) !== fromKey) {
+      var taken = readTable_(ss, 'Rosters').concat(readTable_(ss, 'Classes')).some(function (r) { return classKey_(r.Class) === classKey_(to); });
+      if (taken) throw new Error('There is already a class called ' + to + '.');
+    }
+    var total = 0;
+    ['Classes', 'Rosters', 'TeamSets', 'Results', 'Sessions'].forEach(function (name) {
+      var sh = ss.getSheetByName(name);
+      if (!sh) return;
+      total += updateRows_(sh, function (r) { return classKey_(r.Class) === fromKey; }, function () { return { Class: to }; });
+    });
+    return { ok: true, rowsUpdated: total };
   });
 }
 
@@ -370,6 +549,58 @@ function appendObjects_(sh, objects) {
     if (TEXT_COLUMNS.indexOf(h) !== -1) sh.getRange(start, i + 1, values.length, 1).setNumberFormat('@');
   });
   sh.getRange(start, 1, values.length, headers.length).setValues(values);
+}
+
+/**
+ * Updates rows in place. `match(rowObject)` picks rows; `change(rowObject)` returns
+ * { Header: newValue } (or null to skip). Only changed rows are written. Returns how many rows changed.
+ */
+function updateRows_(sh, match, change) {
+  if (sh.getLastRow() < 2) return 0;
+  var headers = headers_(sh);
+  var values = sh.getRange(2, 1, sh.getLastRow() - 1, headers.length).getValues();
+  var count = 0;
+  values.forEach(function (line, i) {
+    var obj = {};
+    headers.forEach(function (h, c) { if (h) obj[h] = line[c]; });
+    if (!match(obj)) return;
+    var u = change(obj);
+    if (!u) return;
+    var any = false;
+    Object.keys(u).forEach(function (h) {
+      var c = headers.indexOf(h);
+      if (c === -1) return;
+      line[c] = u[h];
+      any = true;
+    });
+    if (!any) return;
+    sh.getRange(i + 2, 1, 1, headers.length).setValues([line]);
+    count++;
+  });
+  return count;
+}
+
+/** Deletes every row where match(rowObject) is true. Returns how many were deleted. */
+function deleteRowsMatching_(sh, match) {
+  if (sh.getLastRow() < 2) return 0;
+  var headers = headers_(sh);
+  var values = sh.getRange(2, 1, sh.getLastRow() - 1, headers.length).getValues();
+  var removed = 0;
+  for (var i = values.length - 1; i >= 0; i--) {
+    var obj = {};
+    headers.forEach(function (h, c) { if (h) obj[h] = values[i][c]; });
+    if (!match(obj)) continue;
+    var end = i;
+    var nextMatches = function (k) {
+      var o = {};
+      headers.forEach(function (h, c) { if (h) o[h] = values[k][c]; });
+      return match(o);
+    };
+    while (i - 1 >= 0 && nextMatches(i - 1)) i--;
+    sh.deleteRows(i + 2, end - i + 1);
+    removed += end - i + 1;
+  }
+  return removed;
 }
 
 /** Deletes every row whose column `header` equals `value`. Returns how many were deleted. */

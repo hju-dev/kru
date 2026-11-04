@@ -39,7 +39,7 @@ export function Home() {
         </div>
         <div className="topbar-right">
           <SyncPill />
-          <Link className="btn small" to="/admin/settings">
+          <Link className="btn small" to="/admin">
             Dashboard
             {outbox.length > 0 && <span className="badge">{outbox.length}</span>}
           </Link>
