@@ -16,8 +16,8 @@
   {
     "slug": "tag-team",
     "title": "Tag-Team Talk / Debate",
-    "file": "legacy/games/tag-team.html",
-    "description": "Relay talk (M.2) and FOR vs AGAINST debate (M.3) with topic spinner, turn timer, speaking-order lane, class rosters (M.3/2, M.3/3) and scoreboard.",
+    "file": "public/games/tag-team/index.html",
+    "description": "Relay talk (M.1, M.2) and FOR vs AGAINST debate (M.3) with topic spinner, huddle and turn timer, speaking-order lane with your teams, +3 Win / +1 Challenge scoring.",
     "levels": [
       "M.1",
       "M.2",
@@ -25,15 +25,11 @@
     ],
     "type": "speaking game",
     "minutes": 40,
-    "storageKeys": [
-      "ttt",
-      "ttt2"
-    ],
     "phoneLandscape": true,
     "modes": [
       "group"
     ],
-    "status": "migrate"
+    "status": "ready"
   },
   {
     "slug": "word-rush",

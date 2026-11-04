@@ -91,6 +91,10 @@ Demo mode: on the Sign-in screen, "Try demo" uses made-up students (S1…S30) wi
 - **Tools** (games with `modes: []` in games.json, e.g. Talk Timer) skip class choice and team setup: Home → `/tool/:game` (`src/routes/Tool.tsx`). The shell answers `kru:ready` with a session that has `mode: 'tool'`, no teams, and `resume` = the tool's saved settings (IndexedDB `tool:<slug>`); `kru:state` saves them. No results.
 - `tests/games.test.ts` checks every `ready` game: file path, full document, SDK + shared CSS, no inline scripts/handlers, no Google Fonts, no localStorage.
 - Phase 3 (Henry's choices): games go live one at a time; Word Rush scores by tap buttons (no keyboard); Talk Timer presets saved on the phone only.
+- Phase 3 game pattern (all four migrated games): `fetch('content.json')` + `Kru.ready` → level section, `Kru.allTeams()`; state saved with `Kru.saveState` on every change and restored from `session.resume` only if `v` and `level` match; points via `Kru.score` + `Kru.finish` on finish request; clock-based timers (`endAt`, survive a short sleep); audio unlocked inside a tap (`navigator.audioSession.type = 'playback'` where supported); the main screen fits 712 × 354 (iPhone minus notch/home bar), long text shrinks in a fit loop; secondary actions in a ⋯ menu; top-right 56 px kept clear for the home button. Scoring: a team strip along the bottom, tap a team → points panel → Undo message. Tag-Team speaking order: tap two names to swap (primary), hold 280 ms and drag (secondary).
+- Word Rush self-hosts Fredoka + Atkinson Hyperlegible (OFL 1.1, `public/fonts/`).
+- `legacy/games/` is kept for reference until Henry has checked the migrated games; it is not served or linked.
+- Browser-test gotcha: the shell saves game state with a 300 ms debounce, so a test that reloads within ~0.3 s of a tap loses that tap. Wait ≥ 0.7 s before reloading.
 
 ## graphify
 

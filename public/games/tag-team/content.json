@@ -1,0 +1,97 @@
+{
+ "about": "Tag-Team topics per level. mode relay = one team at the front, speakers take turns on one topic; mode debate = FOR team vs AGAINST team, speakers alternate. Times in seconds. M.2 and M.3 are the original sets; M.1 was written for Kru.",
+ "M.1": {
+  "mode": "relay",
+  "title": "Talk",
+  "label": "Topic",
+  "huddle": 30,
+  "turn": 20,
+  "help": [
+   "One team at the front. Huddle 0:30, then each speaker talks for 0:20. At the chime: TAG! The next speaker continues the same talk. The last speaker finishes it.",
+   "Challenge! The audience can challenge for: 3-second silence · repeating an idea · off topic · Thai. A fair challenge = +1 to the challenging team."
+  ],
+  "topics": [
+   "My favourite food",
+   "My best friend",
+   "A perfect day at the beach",
+   "My dream house",
+   "My family",
+   "The best animal in the world",
+   "What I do at the weekend",
+   "If I had a pet dragon",
+   "My favourite season",
+   "A day at my school",
+   "My favourite sport",
+   "Things in my bedroom",
+   "My favourite film or cartoon",
+   "What I want to be in the future",
+   "My perfect birthday party",
+   "The best snack at 7-Eleven",
+   "A trip to the zoo",
+   "If I could fly",
+   "My favourite game",
+   "Things I love about my town"
+  ]
+ },
+ "M.2": {
+  "mode": "relay",
+  "title": "Talk",
+  "label": "Topic",
+  "huddle": 30,
+  "turn": 25,
+  "help": [
+   "One team at the front. Huddle 0:30, then each speaker talks for 0:25. At the chime: TAG! The next speaker continues the same talk. The last speaker finishes it.",
+   "Challenge! The audience can challenge for: 3-second silence · repeating an idea · off topic · Thai. A fair challenge = +1 to the challenging team."
+  ],
+  "topics": [
+   "If our school had a robot teacher",
+   "The perfect school day",
+   "A day in the life of a school bag",
+   "How to be a good friend",
+   "The best superpower for students",
+   "Why mornings are so hard",
+   "My dream canteen menu",
+   "How to survive exam week",
+   "If animals could talk",
+   "The best place to visit in Thailand",
+   "The most useful invention ever",
+   "Why everyone should learn to cook",
+   "Life on Mars",
+   "The perfect weekend",
+   "What makes a good teacher",
+   "Rainy season: love it or hate it?",
+   "How to become famous on the internet",
+   "A new holiday everyone should have",
+   "The best street food",
+   "If I was invisible for a day"
+  ]
+ },
+ "M.3": {
+  "mode": "debate",
+  "title": "Debate",
+  "label": "Motion",
+  "huddle": 90,
+  "turn": 30,
+  "help": [
+   "Two teams at the front: FOR vs AGAINST. Huddle 1:30, then speakers take turns for 0:30 each, starting with FOR. Every speaker must answer the last point first (\"I disagree because…\").",
+   "Challenge! 3-second silence · repeating · off topic · Thai = +1 to the challenging team. The audience votes for the winning side: +3."
+  ],
+  "topics": [
+   "Homework should be banned.",
+   "Students should be allowed to use phones in class.",
+   "School uniforms should be optional.",
+   "It's better to live in the city than the countryside.",
+   "Video games are good for teenagers.",
+   "Every student should learn to cook at school.",
+   "School should start at 10 a.m.",
+   "Social media does more harm than good.",
+   "Money can buy happiness.",
+   "Cats are better than dogs.",
+   "Robots will make the world a better place.",
+   "Exams are the best way to test students.",
+   "Everyone should play a sport at school.",
+   "Fast food should not be sold near schools.",
+   "It's better to be famous than rich."
+  ]
+ }
+}

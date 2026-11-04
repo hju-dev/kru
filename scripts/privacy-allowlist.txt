@@ -6,3 +6,5 @@ Aomsin
 Team Mild
 # Example key format shown in apps-script/README.md and Code.gs comments
 k7m2p-xq9rt-b4hwz-3nfd8
+# Generic UI labels the scanner can mistake for nicknames
+Speaker
