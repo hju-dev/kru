@@ -101,3 +101,12 @@
   border-color: var(--gold, #ffb703);
   color: var(--bg, #17151f);
 }
+
+/* Buttons that end something are red, so they're easy to spot in a menu (Henry). */
+#endGame,
+.ke-btn.go,
+button.end {
+  background: var(--coral, #ff6b6b) !important;
+  border-color: var(--coral, #ff6b6b) !important;
+  color: var(--bg, #17151f) !important;
+}

@@ -142,6 +142,12 @@ textarea {
 .btn.ghost {
   background: transparent;
 }
+/* Buttons that end something (Finish, End game) are red, so they're easy to spot in a menu. */
+.btn.end {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--bg);
+}
 .btn.small {
   min-height: 36px;
   padding: 0 12px;
