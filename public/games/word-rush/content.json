@@ -1,0 +1,480 @@
+{
+ "about": "Word Rush prompts per level. kind: cat (category), rhyme, letter (spelling / word-form challenge). <em> marks the key words. examples are shown only after Henry taps Show examples. M.1 and M.3 are the original sets; M.2 was written for Kru.",
+ "M.1": {
+  "prompts": [
+   {
+    "kind": "cat",
+    "prompt": "Items in a <em>backpack</em>",
+    "examples": "pen, pencil, book, ruler, eraser, water bottle, phone, wallet, keys, snack, tissue, notebook"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>kitchen</em>",
+    "examples": "fridge, spoon, fork, knife, plate, bowl, cup, pan, rice cooker, sink, oven, kettle"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Animals</em>",
+    "examples": "cat, dog, elephant, tiger, bird, fish, snake, monkey, cow, chicken, duck, rabbit, horse"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Food or drinks at <em>7-Eleven</em>",
+    "examples": "milk, water, bread, toast, sandwich, noodles, ice cream, chips, juice, coffee, candy, yoghurt"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Jobs</em>",
+    "examples": "teacher, doctor, nurse, police officer, farmer, chef, driver, pilot, singer, dentist, vet"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Sports</em>",
+    "examples": "football, basketball, volleyball, badminton, tennis, swimming, running, boxing, golf, table tennis"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>classroom</em>",
+    "examples": "desk, chair, board, marker, door, window, fan, clock, book, bag, teacher, light"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Clothes</em>",
+    "examples": "shirt, T-shirt, shoes, socks, hat, cap, skirt, trousers, shorts, jacket, dress, uniform"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Fruits</em> and <em>vegetables</em>",
+    "examples": "apple, banana, mango, orange, watermelon, grapes, durian, carrot, tomato, potato, onion, corn"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things at the <em>beach</em>",
+    "examples": "sand, sea, sun, shell, fish, boat, umbrella, towel, crab, swimsuit, sunglasses, wave"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Body</em> parts",
+    "examples": "head, eye, ear, nose, mouth, hand, arm, leg, foot, finger, hair, knee, tooth"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Places in a <em>city</em>",
+    "examples": "school, hospital, bank, park, market, mall, cinema, temple, restaurant, station, zoo, hotel"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things that <em>fly</em>",
+    "examples": "bird, plane, butterfly, bee, kite, helicopter, mosquito, dragon, balloon, fly, bat, drone"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>bedroom</em>",
+    "examples": "bed, pillow, blanket, lamp, wardrobe, mirror, desk, clock, fan, curtain, poster, phone"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Countries</em>",
+    "examples": "Thailand, Japan, China, Korea, Laos, Vietnam, India, England, France, USA, Brazil, Australia"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Ways to <em>travel</em>",
+    "examples": "car, bus, bike, train, plane, boat, taxi, motorbike, tuk-tuk, walk, ship, van"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things that are <em>round</em>",
+    "examples": "ball, sun, moon, wheel, coin, clock, plate, orange, egg, pizza, button, ring"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things you can <em>open</em>",
+    "examples": "door, window, box, book, bag, bottle, eyes, mouth, gift, fridge, laptop, umbrella"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Verbs: things you do <em>every day</em>",
+    "examples": "eat, sleep, drink, walk, run, read, write, study, play, cook, wash, talk"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Weather</em> words",
+    "examples": "sun, sunny, rain, rainy, wind, windy, cloud, cloudy, hot, cold, storm, snow"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>BAT</em>",
+    "examples": "cat, hat, mat, rat, sat, fat, flat, that, chat, pat"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>CAKE</em>",
+    "examples": "lake, make, take, bake, snake, wake, shake, fake, rake"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>PEN</em>",
+    "examples": "ten, hen, men, then, when, Ben, den"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>DAY</em>",
+    "examples": "play, say, way, May, stay, pay, grey, today, away, okay, hey"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>RING</em>",
+    "examples": "sing, king, thing, wing, bring, spring, swing, sting"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>NIGHT</em>",
+    "examples": "light, right, kite, white, bite, write, fight, bright, flight, height"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>FUN</em>",
+    "examples": "sun, run, one, bun, done, gun, won, son, ton, none"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>TREE</em>",
+    "examples": "see, me, bee, three, free, sea, tea, key, he, she, we, knee"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>S</em>",
+    "examples": "sun, school, snake, sister, sleep, sweet, sea, shoe, small, sing"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>B</em>",
+    "examples": "ball, book, bag, banana, bird, blue, big, bus, bed, baby"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>C</em>",
+    "examples": "cat, car, cake, cup, chair, chicken, cold, cook, city, clock"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>M</em>",
+    "examples": "mango, milk, mum, money, monkey, moon, market, music, map, mouse"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words with only <em>3 letters</em>",
+    "examples": "cat, dog, sun, pen, bag, red, hot, run, big, egg, cup, box"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words with <em>double letters</em> (book, apple)",
+    "examples": "book, apple, happy, ball, tree, sheep, coffee, letter, dinner, butter, egg, door"
+   }
+  ]
+ },
+ "M.2": {
+  "prompts": [
+   {
+    "kind": "cat",
+    "prompt": "Things you do on <em>holiday</em> (verbs)",
+    "examples": "swim, visit, relax, travel, explore, shop, sunbathe, dive, hike, camp, take photos, eat out"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>hospital</em>",
+    "examples": "doctor, nurse, bed, medicine, wheelchair, ambulance, bandage, injection, X-ray, patient, mask, thermometer"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Hobbies</em>",
+    "examples": "reading, drawing, dancing, cooking, gaming, fishing, singing, painting, cycling, photography, gardening, swimming"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>supermarket</em>",
+    "examples": "trolley, basket, cashier, shelf, receipt, bread, rice, eggs, milk, snacks, shampoo, frozen food"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things you see at a <em>festival</em>",
+    "examples": "lanterns, fireworks, music, food stalls, water guns, candles, flowers, a parade, crowds, a stage, lights, a temple"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>bathroom</em>",
+    "examples": "toothbrush, toothpaste, soap, towel, shower, mirror, toilet, sink, shampoo, comb, bath, tissue"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things that are <em>hot</em>",
+    "examples": "sun, fire, coffee, soup, chilli, oven, summer, desert, kettle, iron, tea, sand"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Musical instruments</em>",
+    "examples": "guitar, piano, drums, violin, flute, trumpet, ukulele, saxophone, keyboard, harmonica, cello, harp"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things you can <em>buy online</em>",
+    "examples": "clothes, shoes, books, phones, games, food, tickets, toys, make-up, headphones, bags, furniture"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Places in a <em>school</em>",
+    "examples": "library, canteen, gym, office, classroom, toilet, field, hall, car park, science lab, music room, nurse's room"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things that <em>make a noise</em>",
+    "examples": "dog, baby, alarm clock, car horn, phone, drum, thunder, motorbike, bell, radio, TV, whistle"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>park</em>",
+    "examples": "tree, bench, grass, swing, slide, flowers, path, lake, bird, bin, fountain, playground"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Adjectives</em> to describe a <em>place</em>",
+    "examples": "beautiful, busy, quiet, crowded, clean, dirty, modern, old, peaceful, noisy, famous, expensive"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things you do <em>before school</em> (verbs)",
+    "examples": "wake up, have a shower, brush your teeth, get dressed, eat breakfast, pack your bag, walk, catch the bus, check your phone"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Words connected to <em>money</em>",
+    "examples": "bank, coin, note, wallet, price, save, spend, pay, cash, card, cheap, expensive"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things made of <em>wood</em>",
+    "examples": "table, chair, door, pencil, desk, bed, boat, ruler, chopsticks, house, shelf, guitar"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things you can <em>break</em>",
+    "examples": "glass, plate, phone, egg, window, mirror, cup, your leg, a bone, a rule, a promise, a record"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Animals that live in the <em>sea</em>",
+    "examples": "fish, shark, whale, dolphin, octopus, crab, turtle, jellyfish, starfish, squid, shrimp, seahorse"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things in a <em>living room</em>",
+    "examples": "sofa, TV, lamp, carpet, cushion, table, fan, picture, clock, plant, remote control, shelf"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>COLD</em>",
+    "examples": "old, gold, hold, told, sold, bold, fold, rolled, controlled"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>RAIN</em>",
+    "examples": "train, brain, plane, main, pain, chain, lane, Spain, explain, drain"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>SHOP</em>",
+    "examples": "stop, top, drop, hop, mop, pop, chop, crop, laptop"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>BOOK</em>",
+    "examples": "look, cook, took, hook, shook, notebook, Facebook"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>SLEEP</em>",
+    "examples": "keep, deep, sheep, jeep, cheap, beep, weep, leap, heap"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>TR</em>",
+    "examples": "train, tree, travel, truck, trip, try, true, tropical, trousers, triangle, trumpet, trophy"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>P</em>",
+    "examples": "pen, pencil, park, pizza, purple, police, pilot, pig, paper, plane, people, phone"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words ending in <em>-y</em> (happy)",
+    "examples": "funny, sunny, rainy, family, city, party, baby, easy, money, story, candy, very"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words with exactly <em>5 letters</em>",
+    "examples": "apple, house, water, happy, chair, bread, phone, green, tiger, music, beach, train"
+   },
+   {
+    "kind": "letter",
+    "prompt": "<em>Irregular</em> past simple verbs (went, ate)",
+    "examples": "saw, came, took, made, had, got, bought, drank, ran, swam, wrote, slept"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>W</em>",
+    "examples": "water, window, white, winter, watch, wolf, world, write, work, wind, warm, wall"
+   }
+  ]
+ },
+ "M.3": {
+  "prompts": [
+   {
+    "kind": "cat",
+    "prompt": "Things to take on a <em>camping trip</em>",
+    "examples": "tent, torch, sleeping bag, matches, map, compass, first-aid kit, insect spray, rope, knife, water bottle, pillow"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Jobs that need a <em>university degree</em>",
+    "examples": "doctor, lawyer, engineer, architect, dentist, pharmacist, teacher, scientist, accountant, vet, psychologist, pilot"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things that make people <em>stressed</em>",
+    "examples": "exams, homework, traffic, deadlines, money, noise, arguments, being late, interviews, social media, work, heat"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Adjectives for <em>personality</em>",
+    "examples": "kind, friendly, shy, lazy, generous, honest, rude, patient, confident, selfish, funny, reliable"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Words connected to <em>technology</em>",
+    "examples": "computer, password, Wi-Fi, download, app, screen, battery, keyboard, website, charger, robot, software"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things that are bad for the <em>environment</em>",
+    "examples": "plastic bags, pollution, smoke, rubbish, cars, factories, burning, oil, straws, deforestation, waste, chemicals"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Excuses for being <em>late</em> for school",
+    "examples": "traffic, overslept, missed the bus, flat tyre, alarm didn't ring, rain, lost my keys, sick, forgot my bag, dog ate my homework"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things you can <em>recycle</em>",
+    "examples": "paper, cans, glass bottles, plastic bottles, cardboard, newspapers, boxes, batteries, phones, clothes"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Words connected to <em>health</em>",
+    "examples": "medicine, hospital, exercise, vitamins, fever, headache, doctor, healthy, diet, sleep, injury, nurse"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Emotions</em> and feelings",
+    "examples": "happy, sad, angry, nervous, excited, bored, jealous, proud, embarrassed, scared, relaxed, lonely"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Words you hear at an <em>airport</em>",
+    "examples": "passport, ticket, gate, flight, boarding pass, luggage, delay, pilot, security, check-in, departure, arrival"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things that are <em>invisible</em>",
+    "examples": "air, wind, gravity, Wi-Fi, love, time, sound, oxygen, germs, thoughts, electricity, smell"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things families <em>argue</em> about",
+    "examples": "money, phones, homework, chores, TV, bedtime, food, the air-con, clothes, friends, noise, the car"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Phrasal verbs with <em>GET</em>",
+    "examples": "get up, get on, get off, get in, get out, get along, get over, get back, get away, get through, get together, get rid of"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Phrasal verbs with <em>LOOK</em>",
+    "examples": "look after, look for, look up, look forward to, look out, look into, look around, look back, look down on, look like"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Compound</em> words (sunflower, football)",
+    "examples": "football, sunflower, toothbrush, bedroom, homework, rainbow, airport, classroom, birthday, notebook, weekend, sunglasses"
+   },
+   {
+    "kind": "cat",
+    "prompt": "<em>Opposite</em> pairs (hot / cold): 1 point per pair",
+    "examples": "big/small, fast/slow, happy/sad, old/new, rich/poor, easy/difficult, open/closed, early/late, cheap/expensive, full/empty"
+   },
+   {
+    "kind": "cat",
+    "prompt": "Things you can do with a <em>phone</em> (verbs)",
+    "examples": "call, text, scroll, download, record, film, search, pay, chat, share, post, charge"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>GREAT</em>",
+    "examples": "late, eight, wait, weight, plate, date, gate, straight, state, skate, mate"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>PHONE</em>",
+    "examples": "alone, bone, stone, zone, known, own, shown, grown, loan, cone, thrown"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>BLUE</em>",
+    "examples": "two, shoe, true, through, new, few, who, you, flew, threw, queue, view"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>MORE</em>",
+    "examples": "four, door, floor, war, score, before, store, shore, roar, pour, sure, snore"
+   },
+   {
+    "kind": "rhyme",
+    "prompt": "Words that rhyme with <em>AIR</em>",
+    "examples": "where, there, hair, chair, care, wear, bear, square, fair, stare, pear, their"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words with <em>3 or more syllables</em>",
+    "examples": "banana, computer, elephant, holiday, beautiful, important, hospital, chocolate, dangerous, together, interesting, family"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that start with <em>UN-</em> (unhappy)",
+    "examples": "unhappy, unkind, unfair, unusual, unlock, untidy, unknown, unlucky, unable, unfriendly, uncomfortable, unsafe"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words ending in <em>-tion</em>",
+    "examples": "station, information, education, nation, action, question, competition, invitation, pollution, solution, vacation, direction"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words ending in <em>-ful</em> or <em>-less</em>",
+    "examples": "careful, useful, helpful, beautiful, wonderful, painful, careless, homeless, useless, hopeless, helpless, endless"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words with a <em>silent letter</em> (knife)",
+    "examples": "knife, know, knee, write, wrong, island, listen, hour, half, lamb, thumb, Wednesday, castle, honest"
+   },
+   {
+    "kind": "letter",
+    "prompt": "Words that are a <em>noun AND a verb</em>",
+    "examples": "play, run, rain, cook, drink, walk, swim, dream, call, smile, watch, kick, text, email"
+   }
+  ]
+ }
+}

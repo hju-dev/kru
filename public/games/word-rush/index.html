@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Word Rush</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game wr">
+      <header class="bar">
+        <span class="logo">Word <b>Rush</b></span>
+        <span class="pill" id="roundPill">Round <b id="rnum">1</b> of <b id="rmax">8</b></span>
+        <span class="pill" id="lvl"></span>
+        <span class="grow"></span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <!-- Round: prompt + bonus card + timer -->
+      <section class="view" id="roundView">
+        <div class="stage">
+          <div class="promptbox" id="promptbox">
+            <div class="kind" id="kind">Category</div>
+            <div class="prompt" id="prompt">Loading…</div>
+            <div class="bonus" id="bonusCard"><div class="tag">Bonus<br />card</div><div><div class="bname" id="bname"></div><div class="btext" id="btext"></div></div></div>
+            <div class="examples" id="examples" hidden></div>
+          </div>
+          <div class="clockbox" id="clock" aria-live="polite">
+            <div class="phase" id="phase">Ready? Pens up!</div>
+            <div class="digits" id="digits">1:00</div>
+            <div class="progress"><i id="fill"></i></div>
+            <div class="pens" id="pens"></div>
+            <div class="clock-btns">
+              <button class="btn go" id="go">Start</button>
+              <button class="btn" id="reset" aria-label="Reset timer">↺</button>
+            </div>
+          </div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="showEx">Show examples</button>
+          <span class="grow"></span>
+          <button class="btn go" id="toScores">Score this round ▶</button>
+        </div>
+      </section>
+
+      <!-- Scores: tap buttons per team, no keyboard -->
+      <section class="view" id="scoreView" hidden>
+        <p class="scorehint" id="scoreHint"></p>
+        <div class="teams" id="teams"></div>
+        <div class="actions">
+          <button class="btn" id="toRound">◀ Back to round</button>
+          <span class="toast" id="toast" role="status"></span>
+          <span class="grow"></span>
+          <button class="btn go" id="addRound">Add round scores</button>
+          <button class="btn go" id="nextRound" hidden>Next round ▶</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Winner -->
+    <div class="backdrop" id="winBack" hidden>
+      <div class="menu win" role="dialog" aria-labelledby="winTitle">
+        <h2 id="winTitle"></h2>
+        <ol class="final" id="finalList"></ol>
+        <p class="muted">Well done, everyone. Collect the papers! Tap Kru's home button → Finish to save the scores.</p>
+        <button class="btn" id="winClose">Close</button>
+      </div>
+    </div>
+
+    <!-- ⋯ menu -->
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="menu-row">
+          <button class="btn" id="swapPrompt">New prompt</button>
+          <button class="btn" id="swapBonus">New bonus card</button>
+        </div>
+        <div class="menu-row">
+          <span class="lab">Rounds</span>
+          <button class="btn step" id="roundsDown" aria-label="Fewer rounds">−</button>
+          <output id="roundsOut">8</output>
+          <button class="btn step" id="roundsUp" aria-label="More rounds">+</button>
+        </div>
+        <div class="menu-row seg" role="group" aria-label="Writing time">
+          <span class="lab">Writing time</span>
+          <button class="btn step" data-secs="45">45 s</button>
+          <button class="btn step" data-secs="60">60 s</button>
+          <button class="btn step" data-secs="75">75 s</button>
+          <button class="btn step" data-secs="90">90 s</button>
+        </div>
+        <div class="menu-row">
+          <button class="btn" id="undoRound">Undo last round</button>
+          <button class="btn" id="showRules">Rules</button>
+        </div>
+        <button class="btn danger" id="newGame">New game (scores back to 0)</button>
+        <button class="btn" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <!-- Rules -->
+    <div class="backdrop" id="rulesBack" hidden>
+      <div class="menu rules" role="dialog" aria-label="Rules">
+        <div><h3>1 · One paper, one pen</h3><p>One writer, everyone thinks. English only.</p></div>
+        <div><h3>2 · Write fast</h3><p>When the timer starts, write as many words as you can for the prompt.</p></div>
+        <div><h3>3 · Count honestly</h3><p>1 point per correct word. No repeats. The top team reads its list aloud to prove it.</p></div>
+        <div><h3>4 · Watch the bonus card</h3><p>Every round has a bonus card that changes the scoring. Read it before you start!</p></div>
+        <button class="btn" id="rulesClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
