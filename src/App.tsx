@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
+import { ErrorScreen } from './components/ErrorScreen'
 import { UpdateToast } from './components/UpdateToast'
 import { Home } from './routes/Home'
 import { Play } from './routes/Play'
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorScreen />,
     children: [
       { index: true, element: <Home /> },
       { path: 'setup/:game', element: <Setup /> },

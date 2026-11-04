@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { SyncPill } from '../components/SyncPill'
 import { SectionIcon } from '../components/SectionIcon'
-import { findGame, librarySections, type GameInfo } from '../lib/games'
+import { findGame, librarySections, SECTIONS, type GameInfo, type SectionId } from '../lib/games'
+import { useLibrary } from '../store/library'
 import { quickSession, todayKey } from '../lib/session'
 import { storage } from '../lib/storage'
 import { useApp } from '../store/app'
@@ -18,6 +19,12 @@ export function Home() {
   const selected = classes.find((c) => c.name === lastClass) ?? null
 
   useEffect(() => void useSessions.getState().load(), [])
+  useEffect(() => void useLibrary.getState().load(), [])
+  const favorites = useLibrary((s) => s.favorites)
+  const recent = useLibrary((s) => s.recent)
+  // only games that still exist and are ready (a renamed or removed game just drops out)
+  const favGames = useMemo(() => favorites.map(findGame).filter((g): g is GameInfo => !!g && g.status === 'ready'), [favorites])
+  const recentGames = useMemo(() => recent.map(findGame).filter((g): g is GameInfo => !!g && g.status === 'ready'), [recent])
 
   // games left open (played but not reviewed) — "Back to library (keep game)"
   const open = Object.values(sessions)
@@ -27,12 +34,16 @@ export function Home() {
   function pickGame(g: GameInfo) {
     if (g.status !== 'ready') return
     // tools (no teams, no results) open straight away, no class needed
-    if (g.modes.length === 0) return navigate(`/tool/${g.slug}`)
+    if (g.modes.length === 0) {
+      useLibrary.getState().played(g.slug)
+      return navigate(`/tool/${g.slug}`)
+    }
     if (!selected) {
       setNudge(true)
       setTimeout(() => setNudge(false), 1500)
       return
     }
+    useLibrary.getState().played(g.slug)
     if (g.classTool) {
       // already open for this class? go back to it (no pile of "game in progress" banners)
       const open = Object.values(sessions).find((s) => s.status === 'playing' && s.game === g.slug && s.class === selected.name)
@@ -113,40 +124,68 @@ export function Home() {
         </section>
       )}
 
+      {classes.length > 0 && favGames.length > 0 && (
+        <GameRow id="favorites" title="Favorites" color="var(--gold)" games={favGames} favorites={favorites} onPick={pickGame} />
+      )}
+      {classes.length > 0 && recentGames.length > 0 && (
+        <GameRow id="recent" title="Recently played" color="var(--muted)" games={recentGames} favorites={favorites} onPick={pickGame} />
+      )}
       {classes.length > 0 &&
         librarySections().map((sec) => (
-          <section key={sec.id} aria-label={sec.title} className="library-section" style={{ '--sec': sec.color } as React.CSSProperties}>
-            <h2 className="section-head">
-              <SectionIcon id={sec.id} />
-              {sec.title}
-            </h2>
-            <div className="library">
-              {sec.games.map((g) => (
-                <button
-                  key={g.slug}
-                  className={`game-card${g.status === 'ready' ? '' : ' soon'}`}
-                  onClick={() => pickGame(g)}
-                  disabled={g.status !== 'ready'}
-                >
-                  <span className="game-title">{g.title}</span>
-                  <span className="game-meta">
-                    {g.modes.includes('group') && <span className="tag">Group</span>}
-                    {g.modes.includes('solo') && !g.classTool && <span className="tag">Solo</span>}
-                    {g.minutes ? <span>{g.minutes} min</span> : null}
-                    {g.status !== 'ready' && <span className="soon-label">Coming soon</span>}
-                    {g.levels.length > 0 && (
-                      <span className="dots" aria-label={`Levels ${g.levels.join(', ')}`}>
-                        {['M.1', 'M.2', 'M.3'].map((l) => (
-                          <i key={l} className={g.levels.includes(l as never) ? 'on' : ''} />
-                        ))}
-                      </span>
-                    )}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </section>
+          <GameRow key={sec.id} id={sec.id} title={sec.title} color={sec.color} games={sec.games} favorites={favorites} onPick={pickGame} />
         ))}
     </main>
+  )
+}
+
+function GameRow(props: { id: SectionId | 'favorites' | 'recent'; title: string; color: string; games: GameInfo[]; favorites: string[]; onPick: (g: GameInfo) => void }) {
+  const { id, title, color, games, favorites, onPick } = props
+  return (
+    <section aria-label={title} className={`library-section sec-${id}`}>
+      <h2 className="section-head" style={{ '--sec': color } as React.CSSProperties}>
+        <SectionIcon id={id} />
+        {title}
+      </h2>
+      <div className="library">
+        {games.map((g) => (
+          <GameCard key={g.slug} game={g} fav={favorites.includes(g.slug)} onPick={onPick} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function GameCard({ game: g, fav, onPick }: { game: GameInfo; fav: boolean; onPick: (g: GameInfo) => void }) {
+  return (
+    <div className="game-card-wrap" style={{ '--sec': SECTIONS.find((x) => x.id === g.section)?.color } as React.CSSProperties}>
+      <button className={`game-card${g.status === 'ready' ? '' : ' soon'}`} onClick={() => onPick(g)} disabled={g.status !== 'ready'}>
+        <span className="game-title">{g.title}</span>
+        <span className="game-meta">
+          {g.modes.includes('group') && <span className="tag">Group</span>}
+          {g.modes.includes('solo') && !g.classTool && <span className="tag">Solo</span>}
+          {g.minutes ? <span>{g.minutes} min</span> : null}
+          {g.status !== 'ready' && <span className="soon-label">Coming soon</span>}
+          {g.levels.length > 0 && (
+            <span className="dots" aria-label={`Levels ${g.levels.join(', ')}`}>
+              {['M.1', 'M.2', 'M.3'].map((l) => (
+                <i key={l} className={g.levels.includes(l as never) ? 'on' : ''} />
+              ))}
+            </span>
+          )}
+        </span>
+      </button>
+      {g.status === 'ready' && (
+        <button
+          className={`fav-btn${fav ? ' on' : ''}`}
+          aria-pressed={fav}
+          aria-label={fav ? `Remove ${g.title} from favorites` : `Add ${g.title} to favorites`}
+          onClick={() => useLibrary.getState().toggleFavorite(g.slug)}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill={fav ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+          </svg>
+        </button>
+      )}
+    </div>
   )
 }

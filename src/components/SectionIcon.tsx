@@ -1,7 +1,7 @@
 import type { SectionId } from '../lib/games'
 
 /** Simple line icons for the library sections (drawn, not emoji). */
-export function SectionIcon({ id }: { id: SectionId }) {
+export function SectionIcon({ id }: { id: SectionId | 'favorites' | 'recent' }) {
   const common = { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.2, strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const, 'aria-hidden': true }
   switch (id) {
     case 'quizzes': // question mark in a circle
@@ -31,6 +31,19 @@ export function SectionIcon({ id }: { id: SectionId }) {
         <svg {...common}>
           <path d="M4 20l1-4.5L15.5 5a2.1 2.1 0 0 1 3 3L8 18.5z" />
           <path d="M13.5 7l3 3" />
+        </svg>
+      )
+    case 'favorites': // star
+      return (
+        <svg {...common}>
+          <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" />
+        </svg>
+      )
+    case 'recent': // clock
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7.5V12l3 2" />
         </svg>
       )
     case 'tools': // wrench
