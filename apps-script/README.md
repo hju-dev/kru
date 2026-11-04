@@ -92,6 +92,14 @@ This keeps the **same URL**, so the app keeps working. Don't use "New deployment
 
 If the update added new tabs or columns, run **Kru → Set up tabs** once more. It only adds what's missing and never deletes data.
 
+## The Summary tab
+
+**Summary** shows live totals from **Results**, with deleted games left out:
+- **Column A onward:** each student's total points and number of games (Class · No · Nickname · Total points · Games).
+- **Column H onward:** each class's total points.
+
+It updates by itself when new results arrive. Kru writes this tab, so don't type in it. If you want your own notes, make a new tab. (If **Summary** holds something you typed yourself, Kru leaves it alone.)
+
 ## Troubleshooting
 
 | The app says… | What to check |

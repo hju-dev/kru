@@ -11,7 +11,7 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 6;
+var KRU_SCRIPT_VERSION = 7;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
@@ -734,10 +734,57 @@ function classText_(v, dates) {
   return dates && dates.monthFirst ? month + '/' + day : day + '/' + month;
 }
 
+var SUMMARY_NOTE_ = 'Kru Summary: totals from the Results tab (deleted games are left out). It updates by itself. ' +
+  'Kru writes this tab, so changes here are replaced when you run Kru → Set up tabs.';
+
+/** Column letter for a 1-based column number (1 → A, 27 → AA). */
+function colLetter_(n) {
+  var s = '';
+  for (; n > 0; n = Math.floor((n - 1) / 26)) s = String.fromCharCode(65 + ((n - 1) % 26)) + s;
+  return s;
+}
+
+/**
+ * The Summary tab's formulas, built from where the columns really are in Results (Henry may have
+ * moved them). Two tables: points per student (with number of games), and points per class.
+ * Returns null if Results is missing a column the formulas need.
+ */
+function summaryFormulas_(resultsHeaders) {
+  var h = resultsHeaders.map(function (x) { return String(x).trim(); });
+  var col = function (name) { var i = h.indexOf(name); return i < 0 ? null : colLetter_(i + 1); };
+  var C = col('Class'), N = col('No'), K = col('Nickname'), P = col('Points'), D = col('Deleted');
+  if (!C || !N || !K || !P || !D) return null;
+  var range = 'Results!A1:' + colLetter_(h.length);
+  var kept = P + ' is not null and (' + D + ' is null or ' + D + ' = false)';
+  return {
+    students: '=IFERROR(QUERY(' + range + ', "select ' + C + ', ' + N + ', ' + K + ', sum(' + P + '), count(' + P + ') where ' + kept +
+      ' group by ' + C + ', ' + N + ', ' + K + ' order by ' + C + ', ' + N +
+      ' label ' + C + ' \'Class\', ' + N + ' \'No\', ' + K + ' \'Nickname\', sum(' + P + ') \'Total points\', count(' + P + ') \'Games\'", 1), "No results yet")',
+    classes: '=IFERROR(QUERY(' + range + ', "select ' + C + ', sum(' + P + ') where ' + kept + ' group by ' + C + ' order by ' + C +
+      ' label ' + C + ' \'Class\', sum(' + P + ') \'Total points\'", 1), "")',
+  };
+}
+
+/**
+ * Summary tab: student totals and class totals, as live formulas over Results.
+ * Only writes the tab if it's new, empty, or still Kru's own (A1 starts with "Kru Summary" or the
+ * old "Student totals" placeholder), so a tab Henry made himself is never overwritten.
+ */
 function ensureSummaryTab_(ss) {
-  if (ss.getSheetByName('Summary')) return;
-  var sh = ss.insertSheet('Summary');
-  sh.getRange('A1').setValue('Student totals will appear here (added in a later Kru update).');
+  var sh = ss.getSheetByName('Summary') || ss.insertSheet('Summary');
+  var a1 = String(sh.getRange('A1').getValue());
+  var ours = a1 === '' || a1.indexOf('Kru Summary') === 0 || a1.indexOf('Student totals') === 0;
+  if (!ours) return;
+  var results = ss.getSheetByName('Results');
+  if (!results) return;
+  var f = summaryFormulas_(results.getRange(1, 1, 1, results.getLastColumn()).getValues()[0]);
+  sh.clear();
+  sh.getRange('A1').setValue(f ? SUMMARY_NOTE_ : 'Kru Summary: the Results tab is missing a column (Class, No, Nickname, Points or Deleted). Run Kru → Set up tabs.');
+  if (!f) return;
+  sh.getRange('A3').setFormula(f.students);
+  sh.getRange('H3').setFormula(f.classes);
+  sh.getRange('3:3').setFontWeight('bold');
+  sh.setFrozenRows(3);
 }
 
 /** Active column = tick boxes; No column = whole numbers. */

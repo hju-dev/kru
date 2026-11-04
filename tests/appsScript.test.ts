@@ -179,3 +179,70 @@ describe('Code.gs buildQuestions_ (Quiz Battle, Questions tab, v6)', () => {
     expect(out.problems.map((p: { row: number }) => p.row)).toEqual([3, 4, 5, 6, 7])
   })
 })
+
+describe('Code.gs v7 Summary tab formulas', () => {
+  const formulas = sandbox.summaryFormulas_ as (h: string[]) => { students: string; classes: string } | null
+  const colLetter = sandbox.colLetter_ as (n: number) => string
+  const RESULTS = ['SessionID', 'Date', 'Time', 'Class', 'Game', 'Level', 'Mode', 'Team', 'No', 'Nickname', 'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt']
+  it('column letters', () => {
+    expect([1, 2, 26, 27, 52].map(colLetter)).toEqual(['A', 'B', 'Z', 'AA', 'AZ'])
+  })
+  it('student totals: class, no, nickname, total points, games; deleted rows left out', () => {
+    const f = formulas(RESULTS)!
+    expect(f.students).toBe(
+      `=IFERROR(QUERY(Results!A1:P, "select D, I, J, sum(K), count(K) where K is not null and (O is null or O = false) group by D, I, J order by D, I label D 'Class', I 'No', J 'Nickname', sum(K) 'Total points', count(K) 'Games'", 1), "No results yet")`,
+    )
+    expect(f.classes).toContain('select D, sum(K) where K is not null and (O is null or O = false) group by D')
+  })
+  it('follows the columns if Henry moved them', () => {
+    const moved = ['Nickname', ...RESULTS.filter((h) => h !== 'Nickname')]
+    expect(formulas(moved)!.students).toContain('select E, J, A, sum(K)')
+  })
+  it('no formulas when a needed column is missing', () => {
+    expect(formulas(RESULTS.filter((h) => h !== 'Deleted'))).toBeNull()
+  })
+  it('the script version is 7 (Henry must redeploy)', () => {
+    expect(sandbox.KRU_SCRIPT_VERSION).toBe(7)
+  })
+})
+
+describe('Code.gs v7 ensureSummaryTab_', () => {
+  const ensure = sandbox.ensureSummaryTab_ as (ss: unknown) => void
+  const RESULTS = ['SessionID', 'Date', 'Time', 'Class', 'Game', 'Level', 'Mode', 'Team', 'No', 'Nickname', 'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt']
+  function fakeSs(summaryA1: string | null) {
+    const cells: Record<string, string> = {}
+    if (summaryA1 !== null) cells.A1 = summaryA1
+    const summary = {
+      cells,
+      getRange: (a: string) => ({
+        getValue: () => cells[a] ?? '',
+        setValue: (v: string) => void (cells[a] = v),
+        setFormula: (v: string) => void (cells[a] = v),
+        setFontWeight: () => undefined,
+      }),
+      clear: () => Object.keys(cells).forEach((k) => delete cells[k]),
+      setFrozenRows: () => undefined,
+    }
+    const results = { getLastColumn: () => RESULTS.length, getRange: () => ({ getValues: () => [RESULTS] }) }
+    const tabs: Record<string, unknown> = { Results: results }
+    if (summaryA1 !== null) tabs.Summary = summary
+    return { summary, getSheetByName: (n: string) => tabs[n] ?? null, insertSheet: (n: string) => ((tabs[n] = summary), summary) }
+  }
+  it('fills a new Summary tab with live formulas', () => {
+    const ss = fakeSs(null)
+    ensure(ss)
+    expect(ss.summary.cells.A1).toMatch(/^Kru Summary/)
+    expect(ss.summary.cells.A3).toMatch(/^=IFERROR\(QUERY\(Results!A1:P/)
+    expect(ss.summary.cells.H3).toMatch(/^=IFERROR\(QUERY/)
+  })
+  it('replaces the old placeholder from earlier versions', () => {
+    const ss = fakeSs('Student totals will appear here (added in a later Kru update).')
+    ensure(ss)
+    expect(ss.summary.cells.A3).toMatch(/^=IFERROR/)
+  })
+  it("never overwrites a Summary tab Henry made himself", () => {
+    const ss = fakeSs('My own notes')
+    ensure(ss)
+    expect(ss.summary.cells).toEqual({ A1: 'My own notes' })
+  })
+})
