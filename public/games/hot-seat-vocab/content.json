@@ -1,0 +1,561 @@
+{
+ "about": "Hot Seat Vocab words per level. One student per team faces away; teammates describe the word without saying it. M.1 = A2 everyday words, M.2 = B1 holidays, places and feelings, M.3 = Person / Place / Thing / Idea (B1+). Written for Kru.",
+ "M.1": {
+  "words": [
+   {
+    "word": "apple"
+   },
+   {
+    "word": "banana"
+   },
+   {
+    "word": "cat"
+   },
+   {
+    "word": "dog"
+   },
+   {
+    "word": "elephant"
+   },
+   {
+    "word": "bicycle"
+   },
+   {
+    "word": "bus"
+   },
+   {
+    "word": "teacher"
+   },
+   {
+    "word": "doctor"
+   },
+   {
+    "word": "school"
+   },
+   {
+    "word": "hospital"
+   },
+   {
+    "word": "beach"
+   },
+   {
+    "word": "phone"
+   },
+   {
+    "word": "computer"
+   },
+   {
+    "word": "chair"
+   },
+   {
+    "word": "table"
+   },
+   {
+    "word": "bed"
+   },
+   {
+    "word": "rain"
+   },
+   {
+    "word": "sun"
+   },
+   {
+    "word": "moon"
+   },
+   {
+    "word": "ice cream"
+   },
+   {
+    "word": "pizza"
+   },
+   {
+    "word": "rice"
+   },
+   {
+    "word": "water"
+   },
+   {
+    "word": "football"
+   },
+   {
+    "word": "guitar"
+   },
+   {
+    "word": "book"
+   },
+   {
+    "word": "pencil"
+   },
+   {
+    "word": "bag"
+   },
+   {
+    "word": "shoes"
+   },
+   {
+    "word": "hat"
+   },
+   {
+    "word": "kitchen"
+   },
+   {
+    "word": "bathroom"
+   },
+   {
+    "word": "park"
+   },
+   {
+    "word": "zoo"
+   },
+   {
+    "word": "monkey"
+   },
+   {
+    "word": "fish"
+   },
+   {
+    "word": "bird"
+   },
+   {
+    "word": "chicken"
+   },
+   {
+    "word": "egg"
+   },
+   {
+    "word": "milk"
+   },
+   {
+    "word": "birthday"
+   },
+   {
+    "word": "family"
+   },
+   {
+    "word": "friend"
+   },
+   {
+    "word": "run"
+   },
+   {
+    "word": "swim"
+   },
+   {
+    "word": "sleep"
+   },
+   {
+    "word": "cook"
+   },
+   {
+    "word": "sing"
+   },
+   {
+    "word": "dance"
+   }
+  ]
+ },
+ "M.2": {
+  "words": [
+   {
+    "word": "passport"
+   },
+   {
+    "word": "suitcase"
+   },
+   {
+    "word": "airport"
+   },
+   {
+    "word": "hotel"
+   },
+   {
+    "word": "souvenir"
+   },
+   {
+    "word": "sunscreen"
+   },
+   {
+    "word": "camera"
+   },
+   {
+    "word": "tourist"
+   },
+   {
+    "word": "mountain"
+   },
+   {
+    "word": "island"
+   },
+   {
+    "word": "waterfall"
+   },
+   {
+    "word": "temple"
+   },
+   {
+    "word": "market"
+   },
+   {
+    "word": "festival"
+   },
+   {
+    "word": "fireworks"
+   },
+   {
+    "word": "lantern"
+   },
+   {
+    "word": "map"
+   },
+   {
+    "word": "ticket"
+   },
+   {
+    "word": "train station"
+   },
+   {
+    "word": "motorbike"
+   },
+   {
+    "word": "tent"
+   },
+   {
+    "word": "campfire"
+   },
+   {
+    "word": "sunglasses"
+   },
+   {
+    "word": "swimming pool"
+   },
+   {
+    "word": "restaurant"
+   },
+   {
+    "word": "waiter"
+   },
+   {
+    "word": "menu"
+   },
+   {
+    "word": "receipt"
+   },
+   {
+    "word": "nervous"
+   },
+   {
+    "word": "excited"
+   },
+   {
+    "word": "bored"
+   },
+   {
+    "word": "tired"
+   },
+   {
+    "word": "homesick"
+   },
+   {
+    "word": "delicious"
+   },
+   {
+    "word": "crowded"
+   },
+   {
+    "word": "expensive"
+   },
+   {
+    "word": "thunderstorm"
+   },
+   {
+    "word": "rainbow"
+   },
+   {
+    "word": "jellyfish"
+   },
+   {
+    "word": "sandcastle"
+   },
+   {
+    "word": "backpack"
+   },
+   {
+    "word": "adventure"
+   },
+   {
+    "word": "holiday"
+   },
+   {
+    "word": "weekend"
+   },
+   {
+    "word": "neighbour"
+   },
+   {
+    "word": "library"
+   },
+   {
+    "word": "scientist"
+   },
+   {
+    "word": "police officer"
+   },
+   {
+    "word": "umbrella"
+   },
+   {
+    "word": "toothbrush"
+   }
+  ]
+ },
+ "M.3": {
+  "categories": [
+   "Person",
+   "Place",
+   "Thing",
+   "Idea"
+  ],
+  "words": [
+   {
+    "word": "astronaut",
+    "cat": "Person"
+   },
+   {
+    "word": "firefighter",
+    "cat": "Person"
+   },
+   {
+    "word": "lawyer",
+    "cat": "Person"
+   },
+   {
+    "word": "journalist",
+    "cat": "Person"
+   },
+   {
+    "word": "tour guide",
+    "cat": "Person"
+   },
+   {
+    "word": "detective",
+    "cat": "Person"
+   },
+   {
+    "word": "celebrity",
+    "cat": "Person"
+   },
+   {
+    "word": "grandparent",
+    "cat": "Person"
+   },
+   {
+    "word": "referee",
+    "cat": "Person"
+   },
+   {
+    "word": "architect",
+    "cat": "Person"
+   },
+   {
+    "word": "influencer",
+    "cat": "Person"
+   },
+   {
+    "word": "pharmacist",
+    "cat": "Person"
+   },
+   {
+    "word": "volunteer",
+    "cat": "Person"
+   },
+   {
+    "word": "inventor",
+    "cat": "Person"
+   },
+   {
+    "word": "dentist",
+    "cat": "Person"
+   },
+   {
+    "word": "museum",
+    "cat": "Place"
+   },
+   {
+    "word": "prison",
+    "cat": "Place"
+   },
+   {
+    "word": "stadium",
+    "cat": "Place"
+   },
+   {
+    "word": "desert",
+    "cat": "Place"
+   },
+   {
+    "word": "rainforest",
+    "cat": "Place"
+   },
+   {
+    "word": "volcano",
+    "cat": "Place"
+   },
+   {
+    "word": "embassy",
+    "cat": "Place"
+   },
+   {
+    "word": "university",
+    "cat": "Place"
+   },
+   {
+    "word": "factory",
+    "cat": "Place"
+   },
+   {
+    "word": "space station",
+    "cat": "Place"
+   },
+   {
+    "word": "cinema",
+    "cat": "Place"
+   },
+   {
+    "word": "airport",
+    "cat": "Place"
+   },
+   {
+    "word": "village",
+    "cat": "Place"
+   },
+   {
+    "word": "petrol station",
+    "cat": "Place"
+   },
+   {
+    "word": "aquarium",
+    "cat": "Place"
+   },
+   {
+    "word": "microwave",
+    "cat": "Thing"
+   },
+   {
+    "word": "telescope",
+    "cat": "Thing"
+   },
+   {
+    "word": "battery",
+    "cat": "Thing"
+   },
+   {
+    "word": "headphones",
+    "cat": "Thing"
+   },
+   {
+    "word": "fire extinguisher",
+    "cat": "Thing"
+   },
+   {
+    "word": "compass",
+    "cat": "Thing"
+   },
+   {
+    "word": "trophy",
+    "cat": "Thing"
+   },
+   {
+    "word": "password",
+    "cat": "Thing"
+   },
+   {
+    "word": "robot",
+    "cat": "Thing"
+   },
+   {
+    "word": "vaccine",
+    "cat": "Thing"
+   },
+   {
+    "word": "satellite",
+    "cat": "Thing"
+   },
+   {
+    "word": "parachute",
+    "cat": "Thing"
+   },
+   {
+    "word": "smartphone",
+    "cat": "Thing"
+   },
+   {
+    "word": "calendar",
+    "cat": "Thing"
+   },
+   {
+    "word": "wheelchair",
+    "cat": "Thing"
+   },
+   {
+    "word": "freedom",
+    "cat": "Idea"
+   },
+   {
+    "word": "friendship",
+    "cat": "Idea"
+   },
+   {
+    "word": "honesty",
+    "cat": "Idea"
+   },
+   {
+    "word": "success",
+    "cat": "Idea"
+   },
+   {
+    "word": "jealousy",
+    "cat": "Idea"
+   },
+   {
+    "word": "pollution",
+    "cat": "Idea"
+   },
+   {
+    "word": "happiness",
+    "cat": "Idea"
+   },
+   {
+    "word": "kindness",
+    "cat": "Idea"
+   },
+   {
+    "word": "democracy",
+    "cat": "Idea"
+   },
+   {
+    "word": "luck",
+    "cat": "Idea"
+   },
+   {
+    "word": "fear",
+    "cat": "Idea"
+   },
+   {
+    "word": "education",
+    "cat": "Idea"
+   },
+   {
+    "word": "climate change",
+    "cat": "Idea"
+   },
+   {
+    "word": "respect",
+    "cat": "Idea"
+   },
+   {
+    "word": "imagination",
+    "cat": "Idea"
+   }
+  ]
+ }
+}

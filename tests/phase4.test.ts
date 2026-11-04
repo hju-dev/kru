@@ -69,3 +69,23 @@ describe('Board Race tasks', () => {
     })
   }
 })
+
+describe('Hot Seat Vocab words', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/hot-seat-vocab/content.json', import.meta.url), 'utf8')) as Record<
+    string,
+    { words: { word: string; cat?: string }[]; categories?: string[] }
+  >
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: at least 40 words, no repeats`, () => {
+      const words = c[level].words.map((w) => w.word.toLowerCase())
+      expect(words.length).toBeGreaterThanOrEqual(40)
+      expect(new Set(words).size).toBe(words.length)
+    })
+  }
+  it('M.3 words are all Person / Place / Thing / Idea, with at least 10 of each', () => {
+    const cats = c['M.3'].categories!
+    expect(cats).toEqual(['Person', 'Place', 'Thing', 'Idea'])
+    for (const w of c['M.3'].words) expect(cats, w.word).toContain(w.cat)
+    for (const cat of cats) expect(c['M.3'].words.filter((w) => w.cat === cat).length).toBeGreaterThanOrEqual(10)
+  })
+})
