@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router'
 import { SyncPill } from '../components/SyncPill'
 import { SectionIcon } from '../components/SectionIcon'
 import { findGame, librarySections, type GameInfo } from '../lib/games'
+import { quickSession, todayKey } from '../lib/session'
+import { storage } from '../lib/storage'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import './Home.css'
@@ -29,6 +31,16 @@ export function Home() {
     if (!selected) {
       setNudge(true)
       setTimeout(() => setNudge(false), 1500)
+      return
+    }
+    if (g.classTool) {
+      // Name Picker: no team setup; today's absent students (from team setup) are left out
+      const roster = data?.rosters[selected.name] ?? []
+      void storage.getAbsent(selected.name, todayKey()).then((absent = []) => {
+        const s = quickSession(selected, g.slug, roster, absent)
+        useSessions.getState().put(s)
+        navigate(`/play/${s.id}`)
+      })
       return
     }
     navigate(`/setup/${g.slug}`)
@@ -116,7 +128,7 @@ export function Home() {
                   <span className="game-title">{g.title}</span>
                   <span className="game-meta">
                     {g.modes.includes('group') && <span className="tag">Group</span>}
-                    {g.modes.includes('solo') && <span className="tag">Solo</span>}
+                    {g.modes.includes('solo') && !g.classTool && <span className="tag">Solo</span>}
                     {g.minutes ? <span>{g.minutes} min</span> : null}
                     {g.status !== 'ready' && <span className="soon-label">Coming soon</span>}
                     {g.levels.length > 0 && (
