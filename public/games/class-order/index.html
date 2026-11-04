@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Class Order</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game co">
+      <header class="bar">
+        <span class="logo">Class <b>Order</b></span>
+        <span class="info" id="info"></span>
+        <span class="grow"></span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="now-label">Now</div>
+        <div class="now" id="now"></div>
+        <div class="deck" id="deck"></div>
+      </section>
+
+      <div class="controls">
+        <button class="btn ghost" id="back">◀ Back</button>
+        <button class="btn ghost" id="absent">Absent: skip</button>
+        <span class="grow"></span>
+        <button class="btn gold" id="done">Done ▶</button>
+      </div>
+      <div class="list" id="list" aria-label="The whole class, in order"></div>
+    </main>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <button class="btn" id="byNumber">Start again: by number</button>
+        <button class="btn" id="random">Start again: random order</button>
+        <p class="muted small">Starting again clears who has had a turn. Kru remembers where you stopped, so the next lesson carries on.</p>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

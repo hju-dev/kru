@@ -1,0 +1,46 @@
+/* Dice & Spinner (a tool) */
+.ds { height: 100%; display: flex; flex-direction: column; gap: 6px; }
+.bar { display: flex; align-items: center; gap: 10px; min-height: var(--tap); padding-right: 56px; }
+.grow { flex: 1; }
+.seg { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg button { min-height: 40px; padding: 0 18px; border: 0; background: transparent; color: var(--muted); font-weight: 800; font-size: 17px; }
+.seg button[aria-pressed='true'] { background: var(--fg); color: var(--bg); }
+button.small { min-height: 40px; padding: 0 14px; border-radius: 12px; border: 2px solid var(--line); background: var(--panel); font-weight: 700; font-size: 15px; }
+.view { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.stage { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  background: var(--stage); border: 3px solid var(--line); border-radius: 20px; padding: 8px 16px; }
+.dice { display: flex; gap: 24px; }
+.die { width: 150px; height: 150px; border-radius: 26px; background: var(--fg); display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr); padding: 18px; box-shadow: 0 6px 0 #b9b4a6; }
+.die.rolling { animation: wobble 0.12s linear infinite; }
+@keyframes wobble { 50% { transform: rotate(8deg) scale(0.96); } }
+@media (prefers-reduced-motion: reduce) { .die.rolling { animation: none; } }
+.pip { width: 26px; height: 26px; border-radius: 50%; background: var(--bg); place-self: center; visibility: hidden; }
+.pip.on { visibility: visible; }
+.total { font: 800 30px/1 var(--display); color: var(--gold); min-height: 1em; }
+.controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.lab { color: var(--muted); font-weight: 700; }
+output { font-family: var(--mono); font-size: 24px; min-width: 1.5ch; text-align: center; }
+.btn { min-height: 48px; padding: 0 18px; border-radius: 14px; border: 2px solid var(--fg); background: transparent; font-weight: 700; font-size: 18px; white-space: nowrap; }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: var(--bg); min-width: 150px; }
+.btn.ghost { border-color: var(--line); }
+.btn.step { min-width: 48px; padding: 0; }
+.btn[aria-pressed='true'] { border-color: var(--teal); color: var(--teal); }
+.btn:disabled { opacity: 0.35; }
+button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.spin-stage { flex-direction: row; gap: 18px; }
+.wheel-wrap { position: relative; height: 100%; aspect-ratio: 1; max-height: 100%; }
+#wheel { width: 100%; height: 100%; border-radius: 50%; transition: transform 3.2s cubic-bezier(0.12, 0.7, 0.18, 1); }
+.pointer { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 30px; line-height: 1; text-shadow: 0 2px 0 var(--bg); }
+.side { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.result { font: 800 48px/1.05 var(--display); color: var(--gold); text-wrap: balance; overflow-wrap: anywhere; }
+.result.waiting { color: var(--muted); font-size: 30px; }
+.note { color: var(--muted); font-size: 16px; }
+.backdrop { position: fixed; inset: 0; z-index: 5; background: rgb(0 0 0 / 0.55); display: flex; align-items: center; justify-content: center;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px); }
+.menu { width: min(560px, 100%); max-height: 100%; overflow-y: auto; background: var(--stage); border: 2px solid var(--line); border-radius: 18px; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
+.menu-head { display: flex; align-items: center; gap: 8px; position: sticky; top: -10px; background: var(--stage); padding: 4px 0; z-index: 1; font-size: 18px; }
+.small-btn { min-height: 40px; min-width: 0; padding: 0 16px; font-size: 16px; }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.presets .btn { min-height: 40px; font-size: 15px; padding: 0 12px; }
+textarea { min-height: 110px; border-radius: 10px; border: 2px solid var(--line); background: var(--panel); color: var(--fg); font: 600 16px/1.35 var(--body); padding: 8px 10px; resize: vertical; }
+.muted { color: var(--muted); margin: 0; font-size: 14px; }

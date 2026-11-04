@@ -1,0 +1,30 @@
+/* Noise Light (a tool): a full-screen traffic light, set by hand or by the microphone. */
+.nl { height: 100%; display: flex; flex-direction: column; gap: 6px; }
+.bar { display: flex; align-items: center; gap: 10px; min-height: var(--tap); padding-right: 56px; }
+.grow { flex: 1; }
+.seg { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
+.seg button { min-height: 40px; padding: 0 18px; border: 0; background: transparent; color: var(--muted); font-weight: 800; font-size: 17px; }
+.seg button[aria-pressed='true'] { background: var(--fg); color: var(--bg); }
+.light { flex: 1; min-height: 0; border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  text-align: center; color: #17151f; transition: background 0.4s; padding: 8px 16px; }
+.light.green { background: #2ec4b6; }
+.light.yellow { background: #ffb703; }
+.light.red { background: #ff5a5a; }
+.light.alarm { animation: flash 0.5s ease-in-out infinite; }
+@keyframes flash { 50% { filter: brightness(1.35); } }
+@media (prefers-reduced-motion: reduce) { .light.alarm { animation: none; } }
+.word { font: 800 92px/1 var(--display); }
+.sub { font-size: 26px; font-weight: 700; }
+.meter { position: relative; width: min(560px, 90%); height: 22px; border-radius: 999px; background: rgb(0 0 0 / 0.25); overflow: hidden; }
+.meter i { display: block; height: 100%; width: 0; background: #17151f; transition: width 0.12s linear; }
+.mark { position: absolute; top: 0; bottom: 0; width: 3px; background: #fff; }
+.controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.btn { min-height: 48px; padding: 0 18px; border-radius: 14px; border: 2px solid var(--fg); background: transparent; font-weight: 800; font-size: 18px; white-space: nowrap; }
+#signBtns .btn { flex: 1; color: #17151f; border: 0; }
+.btn.green { background: #2ec4b6; } .btn.yellow { background: #ffb703; } .btn.red { background: #ff5a5a; }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: var(--bg); min-width: 170px; }
+.btn.step { min-width: 48px; padding: 0; }
+.lab { color: var(--muted); font-weight: 700; }
+output { font-family: var(--mono); font-size: 24px; min-width: 1.5ch; text-align: center; }
+.msg { color: var(--muted); font-size: 14px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+button:focus-visible { outline: 3px solid var(--fg); outline-offset: 2px; }
