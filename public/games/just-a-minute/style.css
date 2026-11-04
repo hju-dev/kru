@@ -1,0 +1,2 @@
+.ideas { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.ideas span { border: 2px dashed var(--line); border-radius: 12px; padding: 4px 12px; font-size: 20px; color: var(--teal); }

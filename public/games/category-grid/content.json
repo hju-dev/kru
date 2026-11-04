@@ -1,0 +1,6355 @@
+{
+ "about": "Category Grid: a letter and five categories. Teams write one word for each category that starts with the letter. Reveal shows example answers. Built from word lists per level; at least 50 rounds per level, shuffled every game.",
+ "intro": [
+  {
+   "title": "Category Grid",
+   "text": [
+    "You get a letter and five categories.",
+    "Write one word for each category."
+   ],
+   "example": {
+    "label": "Letter: B",
+    "chips": [
+     "Animal",
+     "Food",
+     "Job",
+     "Colour",
+     "Sport"
+    ]
+   }
+  },
+  {
+   "title": "Start with the letter",
+   "text": [
+    "Every word must start with the letter.",
+    "Finish before the timer ends!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Animal",
+      "bear"
+     ],
+     [
+      "Food",
+      "bread"
+     ],
+     [
+      "Colour",
+      "blue"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "Each correct word: +1.",
+    "A word no other team has: +2!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Correct word",
+      "+1"
+     ],
+     [
+      "Only your team has it",
+      "+2"
+     ],
+     [
+      "All five boxes",
+      "+1"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "long",
+    "name": "Long words",
+    "text": "Words with 7 letters or more count double!"
+   },
+   {
+    "id": "full",
+    "name": "Full grid",
+    "text": "All five boxes correct: +3",
+    "points": 3
+   },
+   {
+    "id": "spell",
+    "name": "Perfect spelling",
+    "text": "Every word spelled correctly: +2",
+    "points": 2
+   }
+  ],
+  "secret": [
+   {
+    "id": "first",
+    "name": "Fastest team",
+    "text": "+2 for the team that finished first!",
+    "points": 2
+   },
+   {
+    "id": "rare",
+    "name": "Rare word",
+    "text": "+2 for the most unusual correct word!",
+    "points": 2
+   },
+   {
+    "id": "neat",
+    "name": "Neat grid",
+    "text": "+1 for the neatest board!",
+    "points": 1
+   },
+   {
+    "id": "sentence",
+    "name": "Use it!",
+    "text": "+1 for a sentence with one of your words!",
+    "points": 1
+   }
+  ]
+ },
+ "M.1": {
+  "items": [
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "guard"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "giraffe",
+       "goat",
+       "goose"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "gloves"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "grape",
+       "guava"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "garlic",
+       "grapes"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "airport"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "ask"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "apple",
+       "apricot",
+       "avocado"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "apple"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Colours",
+      "examples": [
+       "red"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "rabbit",
+       "rat"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "rambutan"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "restaurant"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "rocket"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Transport",
+      "examples": [
+       "helicopter"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "hairdresser"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "hospital",
+       "hotel"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "hockey"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Verbs",
+      "examples": [
+       "bake",
+       "build",
+       "buy"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "back"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "banana"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "bear",
+       "bee",
+       "bird"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "lemon",
+       "lime"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "laugh",
+       "learn",
+       "listen"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "leggings"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "lamp"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "lemon",
+       "lime",
+       "lychee"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "glass"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "garlic",
+       "grapes"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "give",
+       "go"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "gold",
+       "green",
+       "grey"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "grape",
+       "guava"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "hairdresser"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "help"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "hat",
+       "hoodie"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "hippo",
+       "horse"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "bath",
+       "bed",
+       "bin"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "black",
+       "blue",
+       "brown"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "bear",
+       "bee",
+       "bird"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "archery",
+       "athletics"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "aeroplane"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "ankle",
+       "arm"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "actor",
+       "artist"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Colours",
+      "examples": [
+       "silver"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "strawberry"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "scissors"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "salad",
+       "sandwich",
+       "sausage"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "sandals",
+       "scarf",
+       "shirt"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "hockey"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "hat",
+       "hoodie"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "hair",
+       "hand",
+       "head"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "hairdresser"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "helicopter"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Transport",
+      "examples": [
+       "car"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "cream"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "calculator",
+       "canteen",
+       "chair"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "cafe",
+       "cinema"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "camel",
+       "cat",
+       "chicken"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "cap",
+       "coat"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "chin"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "catch",
+       "clean",
+       "climb"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "climbing",
+       "cycling"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "car"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Body parts",
+      "examples": [
+       "hair",
+       "hand",
+       "head"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "hat",
+       "hoodie"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "help"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "homework"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "camel",
+       "cat",
+       "chicken"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "cake",
+       "carrot",
+       "cheese"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "cafe",
+       "cinema"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "catch",
+       "clean",
+       "climb"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "climbing",
+       "cycling"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "papaya",
+       "pasta",
+       "pineapple"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "paper",
+       "pen",
+       "pencil"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "papaya",
+       "peach",
+       "pear"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "pink",
+       "purple"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "panda",
+       "parrot",
+       "penguin"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Fruit",
+      "examples": [
+       "banana"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "black",
+       "blue",
+       "brown"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "bake",
+       "build",
+       "buy"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Body parts",
+      "examples": [
+       "shoulder",
+       "stomach"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "silver"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "shark",
+       "sheep",
+       "snake"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "sailor",
+       "scientist",
+       "secretary"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "shelf",
+       "shower",
+       "sink"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "rugby",
+       "running"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "restaurant"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "rocket"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "radio"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "rice"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Things at school",
+      "examples": [
+       "paper",
+       "pen",
+       "pencil"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "papaya",
+       "pasta",
+       "pineapple"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "pink",
+       "purple"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "papaya",
+       "peach",
+       "pear"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "table",
+       "television",
+       "toilet"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "table tennis",
+       "taekwondo",
+       "tennis"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "temple",
+       "theatre"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "teacher",
+       "timetable"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "teeth",
+       "thumb",
+       "toe"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Places in a town",
+      "examples": [
+       "bakery",
+       "bank"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "bag",
+       "board",
+       "book"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "black",
+       "blue",
+       "brown"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "rice"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "rugby",
+       "running"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "red"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "read",
+       "ride",
+       "run"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "rambutan"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "belt",
+       "boots"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "black",
+       "blue",
+       "brown"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "banana"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "bakery",
+       "bank"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "chef",
+       "cleaner",
+       "cook"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "cherry",
+       "coconut"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "catch",
+       "clean",
+       "climb"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "cream"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "car"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Fruit",
+      "examples": [
+       "apple",
+       "apricot",
+       "avocado"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "apple"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "armchair"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "airport"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "actor",
+       "artist"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Places in a town",
+      "examples": [
+       "mall",
+       "market",
+       "museum"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "mouth"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "map",
+       "marker"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "motorbike"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "microwave",
+       "mirror"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Fruit",
+      "examples": [
+       "rambutan"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "red"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "rocket"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "radio"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "reporter"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Body parts",
+      "examples": [
+       "teeth",
+       "thumb",
+       "toe"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "taxi",
+       "train",
+       "tram"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "tailor",
+       "teacher"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "temple",
+       "theatre"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "table",
+       "television",
+       "toilet"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "monkey",
+       "mosquito",
+       "mouse"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "mall",
+       "market",
+       "museum"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "manager",
+       "mechanic",
+       "model"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "map",
+       "marker"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "mango",
+       "melon"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Places in a town",
+      "examples": [
+       "library"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "lesson",
+       "library"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "lorry"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "lemon",
+       "lime",
+       "lychee"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "leggings"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Colours",
+      "examples": [
+       "silver"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "scissors"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "shoulder",
+       "stomach"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "shelf",
+       "shower",
+       "sink"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "school",
+       "shop",
+       "stadium"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "garlic",
+       "grapes"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "gloves"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "garage",
+       "gym"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "gold",
+       "green",
+       "grey"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "glue",
+       "gym"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "fan",
+       "fork",
+       "fridge"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "fish"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "farmer",
+       "firefighter"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "fish",
+       "fox",
+       "frog"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "fly"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "sandals",
+       "scarf",
+       "shirt"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "school",
+       "shop",
+       "stadium"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "scooter",
+       "ship"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "shoulder",
+       "stomach"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "sailing",
+       "skating",
+       "skiing"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Body parts",
+      "examples": [
+       "ankle",
+       "arm"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "armchair"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "apple",
+       "apricot",
+       "avocado"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "airport"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "aeroplane"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Things at school",
+      "examples": [
+       "bag",
+       "board",
+       "book"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "bath",
+       "bed",
+       "bin"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "bakery",
+       "bank"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Transport",
+      "examples": [
+       "helicopter"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "hockey"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "hospital",
+       "hotel"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "hairdresser"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "hair",
+       "hand",
+       "head"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "fish",
+       "fox",
+       "frog"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "fish"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "fly"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "fan",
+       "fork",
+       "fridge"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "face",
+       "finger",
+       "foot"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "bag",
+       "board",
+       "book"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "bath",
+       "bed",
+       "bin"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "bake",
+       "build",
+       "buy"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Fruit",
+      "examples": [
+       "papaya",
+       "peach",
+       "pear"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "photographer",
+       "pilot",
+       "plumber"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "panda",
+       "parrot",
+       "penguin"
+      ]
+     },
+     {
+      "name": "Things at school",
+      "examples": [
+       "paper",
+       "pen",
+       "pencil"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "plane"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Transport",
+      "examples": [
+       "ferry"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "farmer",
+       "firefighter"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "fan",
+       "fork",
+       "fridge"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "fencing",
+       "football"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "fish"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Verbs",
+      "examples": [
+       "fly"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "ferry"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "fish",
+       "fox",
+       "frog"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "fish"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "fencing",
+       "football"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Places in a town",
+      "examples": [
+       "restaurant"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "rambutan"
+      ]
+     },
+     {
+      "name": "Colours",
+      "examples": [
+       "red"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "radio"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "read",
+       "ride",
+       "run"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "sandals",
+       "scarf",
+       "shirt"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "strawberry"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "scooter",
+       "ship"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "sailor",
+       "scientist",
+       "secretary"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "sailing",
+       "skating",
+       "skiing"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Things at school",
+      "examples": [
+       "homework"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "hairdresser"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "hippo",
+       "horse"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "hat",
+       "hoodie"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Fruit",
+      "examples": [
+       "apple",
+       "apricot",
+       "avocado"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "airport"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "actor",
+       "artist"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "armchair"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "aeroplane"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "D",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "deer",
+       "dog",
+       "dolphin"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "durian"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "dress"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "desk",
+       "door"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "dancer",
+       "dentist",
+       "doctor"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "fish"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "fish",
+       "fox",
+       "frog"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "fencing",
+       "football"
+      ]
+     },
+     {
+      "name": "Body parts",
+      "examples": [
+       "face",
+       "finger",
+       "foot"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "fan",
+       "fork",
+       "fridge"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "hippo",
+       "horse"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "hat",
+       "hoodie"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "hockey"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "helicopter"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Colours",
+      "examples": [
+       "silver"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "shelf",
+       "shower",
+       "sink"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "sailor",
+       "scientist",
+       "secretary"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "see",
+       "sing",
+       "sit"
+      ]
+     },
+     {
+      "name": "Fruit",
+      "examples": [
+       "strawberry"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "M.2": {
+  "items": [
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Hobbies",
+      "examples": [
+       "reading",
+       "running"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "relaxed"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "ring"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "river",
+       "rock"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "rocket"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Adjectives",
+      "examples": [
+       "rich"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "read",
+       "ride",
+       "run"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "restaurant"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "rugby",
+       "running"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "rice"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Verbs",
+      "examples": [
+       "fly"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "fish",
+       "fox",
+       "frog"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "fishing"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "fish"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "flower",
+       "forest"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Feelings",
+      "examples": [
+       "tired"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "taxi",
+       "train",
+       "tram"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "tailor",
+       "teacher"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "table",
+       "television",
+       "toilet"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Thailand",
+       "Turkey"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "hill"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "hat",
+       "hoodie"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "hippo",
+       "horse"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "hospital",
+       "hotel"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "flower",
+       "forest"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "fish",
+       "fox",
+       "frog"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "farmer",
+       "firefighter"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "fan",
+       "fork",
+       "fridge"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "ferry"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "shelf",
+       "shower",
+       "sink"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "sad",
+       "scared",
+       "shy"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "sandals",
+       "scarf",
+       "shirt"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "singing",
+       "skating",
+       "swimming"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "sad",
+       "short",
+       "slow"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Thailand",
+       "Turkey"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "ticket",
+       "toy"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "talk",
+       "throw"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "table",
+       "television",
+       "toilet"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "table",
+       "tap",
+       "toaster"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "belt",
+       "boots"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "bag",
+       "battery",
+       "book"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "beach"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Brazil"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "bath",
+       "bed",
+       "bin"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "cake",
+       "carrot",
+       "cheese"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "camera",
+       "candle",
+       "charger"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "catch",
+       "clean",
+       "climb"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "climbing",
+       "cycling"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "calm"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "cap",
+       "coat"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "camel",
+       "cat",
+       "chicken"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "camping",
+       "chess",
+       "collecting"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "camera",
+       "candle",
+       "charger"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "clean",
+       "cold"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "golf",
+       "gymnastics"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "grass"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "giraffe",
+       "goat",
+       "goose"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "game",
+       "guitar"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "garlic",
+       "grapes"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "sailing",
+       "skating",
+       "skiing"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "sandals",
+       "scarf",
+       "shirt"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "salad",
+       "sandwich",
+       "sausage"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "school",
+       "shop",
+       "stadium"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "shelf",
+       "shower",
+       "sink"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "apple"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "aeroplane"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "armchair"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "archery",
+       "athletics"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "D",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "deer",
+       "dog",
+       "dolphin"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "desert"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Denmark"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "dress"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "diving"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "photographer",
+       "pilot",
+       "plumber"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "plane"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "pan",
+       "plate",
+       "pot"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "pillow",
+       "plate"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "glass"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "glass"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "game",
+       "guitar"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "glad"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "gaming",
+       "gardening"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "lemon",
+       "lime"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "lazy",
+       "loud"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "library"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "lake",
+       "leaf"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "lawyer"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "leggings"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "laugh",
+       "learn",
+       "listen"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "lazy",
+       "loud"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "lawyer"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "library"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Verbs",
+      "examples": [
+       "make"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "mango",
+       "meat",
+       "melon"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Malaysia",
+       "Mexico",
+       "Myanmar"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "map",
+       "milk"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "manager",
+       "mechanic",
+       "model"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "hockey"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "hat",
+       "hoodie"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "hiking"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "help"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "helicopter"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "carpet",
+       "chair",
+       "clock"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "cooker",
+       "cup"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Cambodia",
+       "Canada",
+       "Chile"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "cake",
+       "carrot",
+       "cheese"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "cap",
+       "coat"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "cloud"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "cake",
+       "carrot",
+       "cheese"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "clean",
+       "cold"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "calm"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "cap",
+       "coat"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "mango",
+       "meat",
+       "melon"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "map",
+       "milk"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "microwave"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Malaysia",
+       "Mexico",
+       "Myanmar"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "moon",
+       "mountain"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "beach"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "bear",
+       "bee",
+       "bird"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Brazil"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "baker",
+       "builder"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Adjectives",
+      "examples": [
+       "rich"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "radio"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "relaxed"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "restaurant"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "rice"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "flower",
+       "forest"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "fan",
+       "fork",
+       "fridge"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "France"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "fish",
+       "fox",
+       "frog"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "ferry"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "microwave"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "monkey",
+       "mosquito",
+       "mouse"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "map",
+       "milk"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "motorbike"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Malaysia",
+       "Mexico",
+       "Myanmar"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "rice"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "relaxed"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "rich"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Russia"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "radio"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "sailing",
+       "skating",
+       "skiing"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "sad",
+       "scared",
+       "shy"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "sandals",
+       "scarf",
+       "shirt"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "sink",
+       "spoon"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "singing",
+       "skating",
+       "swimming"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "D",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "desert"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Denmark"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "dance",
+       "drink",
+       "drive"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "desk",
+       "door"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "dangerous",
+       "dark"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Peru",
+       "Philippines",
+       "Portugal"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "photographer",
+       "pilot",
+       "plumber"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "pan",
+       "plate",
+       "pot"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "proud"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Adjectives",
+      "examples": [
+       "angry"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "angry"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Argentina",
+       "Australia"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "actor",
+       "artist"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "salad",
+       "sandwich",
+       "sausage"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "sailing",
+       "skating",
+       "skiing"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Singapore",
+       "Spain",
+       "Sweden"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "sink",
+       "spoon"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "sailor",
+       "scientist",
+       "secretary"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Adjectives",
+      "examples": [
+       "good"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "garlic",
+       "grapes"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "golf",
+       "gymnastics"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "giraffe",
+       "goat",
+       "goose"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "guard"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "bowl"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "belt",
+       "boots"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "beach"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "badminton",
+       "baseball",
+       "basketball"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "bath",
+       "bed",
+       "bin"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "golf",
+       "gymnastics"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "good"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "glad"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Germany",
+       "Greece"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "give",
+       "go"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Adjectives",
+      "examples": [
+       "tall",
+       "tired"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "ticket",
+       "toy"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "tiger",
+       "turtle"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "tree"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "T-shirt",
+       "tie",
+       "trainers"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "pillow",
+       "plate"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "pen",
+       "phone"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "pyjamas"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "pan",
+       "plate",
+       "pot"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "panda",
+       "parrot",
+       "penguin"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "sailor",
+       "scientist",
+       "secretary"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "scooter",
+       "ship"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Singapore",
+       "Spain",
+       "Sweden"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "salad",
+       "sandwich",
+       "sausage"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "shark",
+       "sheep",
+       "snake"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "lawyer"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "laugh",
+       "learn",
+       "listen"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "lamp"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "lamp"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ladybird",
+       "lion",
+       "lizard"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Places in a town",
+      "examples": [
+       "garage",
+       "gym"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "grass"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "garlic",
+       "grapes"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "glass"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "give",
+       "go"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "beautiful",
+       "big",
+       "busy"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "badminton",
+       "baseball",
+       "basketball"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "bake",
+       "build",
+       "buy"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "pan",
+       "plate",
+       "pot"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "papaya",
+       "pasta",
+       "pineapple"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Peru",
+       "Philippines",
+       "Portugal"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "play"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "lemon",
+       "lime"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "lake",
+       "leaf"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "lonely"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "library"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Laos"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "fan",
+       "fork",
+       "fridge"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "fly"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "France"
+      ]
+     },
+     {
+      "name": "Things in a kitchen",
+      "examples": [
+       "fork",
+       "fridge"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "flower",
+       "forest"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Peru",
+       "Philippines",
+       "Portugal"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "play"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "papaya",
+       "pasta",
+       "pineapple"
+      ]
+     },
+     {
+      "name": "Clothes",
+      "examples": [
+       "pyjamas"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "pillow",
+       "plate"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "apple"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Argentina",
+       "Australia"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "angry"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "ask"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Brazil"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "bakery",
+       "bank"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "bag",
+       "battery",
+       "book"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "bicycle",
+       "boat",
+       "bus"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Clothes",
+      "examples": [
+       "pyjamas"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "panda",
+       "parrot",
+       "penguin"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "plane"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "papaya",
+       "pasta",
+       "pineapple"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "pillow",
+       "plate"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Adjectives",
+      "examples": [
+       "angry"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Argentina",
+       "Australia"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Things in a house",
+      "examples": [
+       "armchair"
+      ]
+     },
+     {
+      "name": "Transport",
+      "examples": [
+       "aeroplane"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Things in a house",
+      "examples": [
+       "pillow",
+       "plate"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "panda",
+       "parrot",
+       "penguin"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Peru",
+       "Philippines",
+       "Portugal"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "papaya",
+       "pasta",
+       "pineapple"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ "M.3": {
+  "items": [
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Technology",
+      "examples": [
+       "tablet",
+       "television"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "tired"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "trumpet"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "table tennis",
+       "taekwondo",
+       "tennis"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "tailor",
+       "teacher"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Things that are round",
+      "examples": [
+       "sun"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Seoul",
+       "Singapore",
+       "Sydney"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "sad",
+       "scared",
+       "shy"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "screen",
+       "speaker"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "see",
+       "sing",
+       "sit"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "harp"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Hanoi"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "hippo",
+       "horse"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "help"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "hiking"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "hat"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "hiking"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "hospital",
+       "hotel"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "help"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Verbs",
+      "examples": [
+       "make"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "manager",
+       "mechanic",
+       "model"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "mango",
+       "meat",
+       "melon"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "moon",
+       "mountain"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "mouse"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Things that are round",
+      "examples": [
+       "circle",
+       "clock",
+       "coin"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "cake",
+       "carrot",
+       "cheese"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "catch",
+       "clean",
+       "climb"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "clean",
+       "cold"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "climbing",
+       "cycling"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Verbs",
+      "examples": [
+       "laugh",
+       "learn",
+       "listen"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ladybird",
+       "lion",
+       "lizard"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "lemon",
+       "lime"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "lazy",
+       "loud"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "laptop"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Peru",
+       "Philippines",
+       "Portugal"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "photographer",
+       "pilot",
+       "plumber"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "pen",
+       "phone"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "proud"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "G",
+    "cats": [
+     {
+      "name": "Things that are round",
+      "examples": [
+       "globe"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "giraffe",
+       "goat",
+       "goose"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "garlic",
+       "grapes"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Germany",
+       "Greece"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "guard"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Hobbies",
+      "examples": [
+       "hiking"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "happy"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "hill"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "hat"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "happy",
+       "hot"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "lake",
+       "leaf"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "library"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "lonely"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ladybird",
+       "lion",
+       "lizard"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "lawyer"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "table tennis",
+       "taekwondo",
+       "tennis"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "travelling"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "tyre"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "trumpet"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "tailor",
+       "teacher"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Feelings",
+      "examples": [
+       "happy"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "help"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "hill"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "hat"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Feelings",
+      "examples": [
+       "sad",
+       "scared",
+       "shy"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "screen",
+       "speaker"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "saxophone"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "shoes",
+       "soap"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "salad",
+       "sandwich",
+       "sausage"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "beach"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "bag",
+       "battery",
+       "book"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Brazil"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "badminton",
+       "baseball",
+       "basketball"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "baker",
+       "builder"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "beach"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Bangkok",
+       "Beijing",
+       "Berlin"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "beautiful",
+       "big",
+       "busy"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "badminton",
+       "baseball",
+       "basketball"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "manager",
+       "mechanic",
+       "model"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Malaysia",
+       "Mexico",
+       "Myanmar"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "mouse"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "moon"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Madrid",
+       "Manila",
+       "Moscow"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "chef",
+       "cleaner",
+       "cook"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "clean",
+       "cold"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "catch",
+       "clean",
+       "climb"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "camera",
+       "charger",
+       "computer"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "calm"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Things in nature",
+      "examples": [
+       "lake",
+       "leaf"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "laptop"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "library"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "lemon",
+       "lime"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "London"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "hairdresser"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "hat"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "help"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "hockey"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "hospital",
+       "hotel"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "fencing",
+       "football"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "fast",
+       "friendly",
+       "funny"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "fly"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "flower",
+       "forest"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "flute"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Verbs",
+      "examples": [
+       "catch",
+       "clean",
+       "climb"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "camera",
+       "charger",
+       "computer"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "cello",
+       "clarinet"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "cloud"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "cafe",
+       "cinema"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "D",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "deer",
+       "dog",
+       "dolphin"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "drone"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "drum"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "drink"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "donut"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "mango",
+       "meat",
+       "melon"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "manager",
+       "mechanic",
+       "model"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Malaysia",
+       "Mexico",
+       "Myanmar"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "moon",
+       "mountain"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Madrid",
+       "Manila",
+       "Moscow"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "tofu",
+       "tomato"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "travelling"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "tailor",
+       "teacher"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "temple",
+       "theatre"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "ticket",
+       "toy"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Places in a town",
+      "examples": [
+       "temple",
+       "theatre"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "table tennis",
+       "taekwondo",
+       "tennis"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "tablet",
+       "television"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "tired"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "tiger",
+       "turtle"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "climbing",
+       "cycling"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "calm"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "camel",
+       "cat",
+       "chicken"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "cafe",
+       "cinema"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "circle",
+       "clock",
+       "coin"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Thailand",
+       "Turkey"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "tree"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "tablet",
+       "television"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "tiger",
+       "turtle"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "tired"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Paris",
+       "Phuket"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "piano"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "photographer",
+       "pilot",
+       "plumber"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "password",
+       "phone",
+       "printer"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "papaya",
+       "pasta",
+       "pineapple"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "H",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "ham",
+       "honey"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "happy"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "hockey"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "hospital",
+       "hotel"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "hairdresser"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Bangkok",
+       "Beijing",
+       "Berlin"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "badminton",
+       "baseball",
+       "basketball"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "bag",
+       "battery",
+       "book"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "bear",
+       "bee",
+       "bird"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "beautiful",
+       "big",
+       "busy"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Russia"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "relaxed"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "rabbit",
+       "rat"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "rice"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "restaurant"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Singapore",
+       "Spain",
+       "Sweden"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "sand",
+       "sea",
+       "sky"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "screen",
+       "speaker"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "see",
+       "sing",
+       "sit"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "sad",
+       "short",
+       "slow"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Madrid",
+       "Manila",
+       "Moscow"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Malaysia",
+       "Mexico",
+       "Myanmar"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "mall",
+       "market",
+       "museum"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "monkey",
+       "mosquito",
+       "mouse"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "moon",
+       "mountain"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "cake",
+       "carrot",
+       "cheese"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "cafe",
+       "cinema"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "camel",
+       "cat",
+       "chicken"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "cloud"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "circle",
+       "clock",
+       "coin"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Sports",
+      "examples": [
+       "archery",
+       "athletics"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "apple"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "actor",
+       "artist"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "angry"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Animals",
+      "examples": [
+       "bear",
+       "bee",
+       "bird"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "badminton",
+       "baseball",
+       "basketball"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Brazil"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "bakery",
+       "bank"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "B",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "baker",
+       "builder"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "ball",
+       "balloon",
+       "button"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "banana",
+       "bean",
+       "bread"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "battery"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Brazil"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Amsterdam",
+       "Athens"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "archery",
+       "athletics"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "airport"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "angry"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Things that are round",
+      "examples": [
+       "pizza",
+       "plate"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "panda",
+       "parrot",
+       "penguin"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "painting",
+       "photography"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "piano"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "M",
+    "cats": [
+     {
+      "name": "Things that are round",
+      "examples": [
+       "moon"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Malaysia",
+       "Mexico",
+       "Myanmar"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "mango",
+       "meat",
+       "melon"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "map",
+       "milk"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Madrid",
+       "Manila",
+       "Moscow"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Hobbies",
+      "examples": [
+       "travelling"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "tiger",
+       "turtle"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "temple",
+       "theatre"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "tofu",
+       "tomato"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "tall",
+       "tired"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Paris",
+       "Phuket"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Peru",
+       "Philippines",
+       "Portugal"
+      ]
+     },
+     {
+      "name": "Feelings",
+      "examples": [
+       "proud"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "photographer",
+       "pilot",
+       "plumber"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "piano"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "T",
+    "cats": [
+     {
+      "name": "Technology",
+      "examples": [
+       "tablet",
+       "television"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "tyre"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "tofu",
+       "tomato"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "tall",
+       "tired"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Thailand",
+       "Turkey"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "R",
+    "cats": [
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Rome"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "rabbit",
+       "rat"
+      ]
+     },
+     {
+      "name": "Things you can buy",
+      "examples": [
+       "ring"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "rich"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Russia"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "C",
+    "cats": [
+     {
+      "name": "Feelings",
+      "examples": [
+       "calm"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "climbing",
+       "cycling"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "cake",
+       "carrot",
+       "cheese"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "cloud"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "clean",
+       "cold"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "L",
+    "cats": [
+     {
+      "name": "Feelings",
+      "examples": [
+       "lonely"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "lawyer"
+      ]
+     },
+     {
+      "name": "Technology",
+      "examples": [
+       "laptop"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Laos"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "London"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "F",
+    "cats": [
+     {
+      "name": "Jobs",
+      "examples": [
+       "farmer",
+       "firefighter"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "fly"
+      ]
+     },
+     {
+      "name": "Adjectives",
+      "examples": [
+       "fast",
+       "friendly",
+       "funny"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "flute"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "fish"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "D",
+    "cats": [
+     {
+      "name": "Food",
+      "examples": [
+       "durian"
+      ]
+     },
+     {
+      "name": "Musical instruments",
+      "examples": [
+       "drum"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Delhi",
+       "Dubai"
+      ]
+     },
+     {
+      "name": "Jobs",
+      "examples": [
+       "dancer",
+       "dentist",
+       "doctor"
+      ]
+     },
+     {
+      "name": "Things that are round",
+      "examples": [
+       "donut"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "S",
+    "cats": [
+     {
+      "name": "Countries",
+      "examples": [
+       "Singapore",
+       "Spain",
+       "Sweden"
+      ]
+     },
+     {
+      "name": "Food",
+      "examples": [
+       "salad",
+       "sandwich",
+       "sausage"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "see",
+       "sing",
+       "sit"
+      ]
+     },
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Seoul",
+       "Singapore",
+       "Sydney"
+      ]
+     },
+     {
+      "name": "Things in nature",
+      "examples": [
+       "sand",
+       "sea",
+       "sky"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "A",
+    "cats": [
+     {
+      "name": "Famous cities",
+      "examples": [
+       "Amsterdam",
+       "Athens"
+      ]
+     },
+     {
+      "name": "Sports",
+      "examples": [
+       "archery",
+       "athletics"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "ant"
+      ]
+     },
+     {
+      "name": "Verbs",
+      "examples": [
+       "ask"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Argentina",
+       "Australia"
+      ]
+     }
+    ]
+   },
+   {
+    "letter": "P",
+    "cats": [
+     {
+      "name": "Things that are round",
+      "examples": [
+       "pizza",
+       "plate"
+      ]
+     },
+     {
+      "name": "Places in a town",
+      "examples": [
+       "park",
+       "pharmacy",
+       "police station"
+      ]
+     },
+     {
+      "name": "Animals",
+      "examples": [
+       "panda",
+       "parrot",
+       "penguin"
+      ]
+     },
+     {
+      "name": "Hobbies",
+      "examples": [
+       "painting",
+       "photography"
+      ]
+     },
+     {
+      "name": "Countries",
+      "examples": [
+       "Peru",
+       "Philippines",
+       "Portugal"
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

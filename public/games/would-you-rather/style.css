@@ -1,0 +1,6 @@
+.wyr { display: flex; align-items: stretch; gap: 10px; width: 100%; }
+.opt { flex: 1; display: flex; align-items: center; justify-content: center; padding: 10px 12px; border-radius: 16px; font: 800 34px/1.12 var(--display); text-wrap: balance; color: #111; }
+.opt.a { background: var(--gold); }
+.opt.b { background: var(--teal); }
+.or { align-self: center; font: 800 22px/1 var(--display); color: var(--muted); }
+.frame { font-style: italic; }
