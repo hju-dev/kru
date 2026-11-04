@@ -11,7 +11,7 @@
     "test": "vitest run",
     "check:privacy": "node scripts/check-privacy.mjs",
     "icons": "pwa-assets-generator",
-    "prepare": "git config core.hooksPath .githooks"
+    "prepare": "node -e \"try{require('child_process').execSync('git config core.hooksPath .githooks',{stdio:'ignore'})}catch{}\""
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
