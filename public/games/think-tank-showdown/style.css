@@ -1,0 +1,323 @@
+/* Think Tank Showdown, phone landscape (812 x 375): round bar, question stage, timer + main buttons, team strip. */
+.tts {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--tap);
+  padding-right: 56px; /* Kru's home button */
+}
+.round {
+  font: 800 20px/1.1 var(--display);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.round b {
+  color: var(--gold);
+}
+.qnum {
+  flex: 1;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.qnum .spare {
+  color: var(--coral);
+  font-family: var(--body);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+button.small {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: var(--stage);
+  border: 3px solid var(--line);
+  border-radius: 18px;
+  padding: 4px 16px;
+}
+.rule {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.3;
+}
+.q {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 32px; /* shrunk by app.js until it fits */
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.q.waiting {
+  color: var(--muted);
+}
+.ans {
+  border: 2px dashed var(--line);
+  border-radius: 12px;
+  padding: 4px 12px;
+}
+.ans .a {
+  font: 800 24px/1.15 var(--display);
+  color: var(--teal);
+}
+.ans .why {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.digits {
+  font-family: var(--mono);
+  font-size: 36px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.9ch;
+}
+.digits.warn {
+  color: var(--gold);
+}
+.digits.done {
+  color: var(--coral);
+}
+.progress {
+  flex: 1;
+  min-width: 40px;
+  height: 10px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress i {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+  transform-origin: left;
+  transition: transform 0.25s linear;
+}
+.btn {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 2px solid var(--fg);
+  background: transparent;
+  font-weight: 700;
+  font-size: 17px;
+  white-space: nowrap;
+}
+.btn.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+.btn.teal {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--bg);
+}
+.btn.coral {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--bg);
+}
+.btn.ghost {
+  border-color: var(--line);
+}
+.btn.danger {
+  color: var(--coral);
+}
+.btn.danger.armed {
+  background: var(--coral);
+  color: var(--bg);
+}
+.btn:disabled {
+  opacity: 0.35;
+}
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Team strip: one tile per team (tap to give points) */
+.strip {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.strip::-webkit-scrollbar {
+  display: none;
+}
+.tile {
+  flex: 1 1 0;
+  min-width: 66px; /* 8 teams + T. Henry fit in 712 px */
+  min-height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 2px 4px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  border-top: 5px solid var(--c, var(--gold));
+  background: var(--panel);
+}
+.tile .tn {
+  max-width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tile .tp {
+  font-family: var(--mono);
+  font-size: 24px;
+  line-height: 1;
+}
+.tile .tb {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+}
+.tile.lead {
+  box-shadow: 0 0 0 3px var(--gold);
+}
+
+.toast {
+  position: absolute;
+  top: 52px; /* over the top of the stage, clear of the buttons */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 4px 14px;
+  border-radius: 14px;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 3;
+}
+.toast button.small {
+  background: var(--bg);
+  color: var(--fg);
+  border-color: var(--bg);
+  font-size: 15px;
+}
+
+/* Overlays */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background: rgb(0 0 0 / 0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}
+.panel,
+.menu {
+  width: min(560px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--stage);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 10px 12px 12px;
+}
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.panel-members {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.3;
+}
+.panel-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.panel-btns .btn {
+  flex: 1;
+  min-height: 56px;
+  font-size: 22px;
+}
+.bet {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.bet .btn {
+  flex: none;
+  min-width: 52px;
+}
+.bet output {
+  font-family: var(--mono);
+  font-size: 30px;
+  min-width: 1.4ch;
+  text-align: center;
+}
+.menu {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.menu-rounds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.menu-rounds .btn {
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menu-rounds .btn[aria-pressed='true'] {
+  background: var(--fg);
+  color: var(--bg);
+}

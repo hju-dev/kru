@@ -59,8 +59,8 @@
   {
     "slug": "think-tank-showdown",
     "title": "Think Tank Showdown",
-    "file": "legacy/games/think-tank-showdown.html",
-    "description": "Critical-thinking game show: Riddle Rush, Spot the Problem, What Would Happen If…?, Final Wager. Six-team scoreboard.",
+    "file": "public/games/think-tank-showdown/index.html",
+    "description": "Critical-thinking game show: Riddle Rush, Spot the Problem, What Would Happen If…?, Final Wager. Questions for M.1, M.2 and M.3.",
     "levels": [
       "M.1",
       "M.2",
@@ -68,14 +68,11 @@
     ],
     "type": "team quiz",
     "minutes": 17,
-    "storageKeys": [
-      "ttshow"
-    ],
-    "phoneLandscape": false,
+    "phoneLandscape": true,
     "modes": [
       "group"
     ],
-    "status": "migrate"
+    "status": "ready"
   },
   {
     "slug": "talk-timer",
