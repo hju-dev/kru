@@ -144,7 +144,10 @@
       "group"
     ],
     "minutes": 15,
-    "status": "new"
+    "status": "ready",
+    "description": "A task appears (verb forms, a category, idioms). One runner per team writes on the whiteboard before time runs out. You tap points per team.",
+    "type": "whiteboard race",
+    "phoneLandscape": true
   },
   {
     "slug": "hot-seat-vocab",

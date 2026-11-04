@@ -49,3 +49,23 @@ describe('Sentence Scramble sentences match HANDOFF word counts', () => {
     })
   }
 })
+
+describe('Board Race tasks', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/board-race/content.json', import.meta.url), 'utf8')) as Record<
+    string,
+    { tasks: { kind: string; title: string; prompt: string; items?: string[]; answers?: string[]; examples?: string }[] }
+  >
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: every forms task has one answer per item; every list task has examples`, () => {
+      expect(c[level].tasks.length).toBeGreaterThanOrEqual(10)
+      for (const t of c[level].tasks) {
+        expect(t.title && t.prompt).toBeTruthy()
+        if (t.kind === 'forms') expect(t.answers?.length, t.title).toBe(t.items?.length)
+        else {
+          expect(t.kind).toBe('list')
+          expect(t.examples, t.title).toBeTruthy()
+        }
+      }
+    })
+  }
+})
