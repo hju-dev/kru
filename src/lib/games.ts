@@ -10,6 +10,8 @@ export interface GameInfo {
   modes: Mode[]
   minutes: number | null
   type?: string
+  /** 'scored' = only students who got points are written to Results (e.g. Name Picker) */
+  results?: 'scored'
   /** ready = playable; migrate / new = coming in a later phase */
   status: 'ready' | 'migrate' | 'new'
 }

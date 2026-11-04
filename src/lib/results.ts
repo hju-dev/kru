@@ -48,13 +48,22 @@ export interface Submission {
  * Turns a finished session into Sheet rows: one row per present student, each getting their
  * team's points. The teacher team is never a student row; its points go in the Sessions tab only.
  * Ranks are among the student teams.
+ * onlyScored (games with "results": "scored", e.g. Name Picker): teams with 0 points get no rows.
  */
-export function buildSubmission(s: Session, points: Record<string, number>, notes: string, gameTitle: string, now = new Date()): Submission {
+export function buildSubmission(
+  s: Session,
+  points: Record<string, number>,
+  notes: string,
+  gameTitle: string,
+  now = new Date(),
+  opts: { onlyScored?: boolean } = {},
+): Submission {
   const date = todayKey(now)
   const time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
-  const ranks = rankTeams(s.teams.map((t) => ({ teamId: t.id, points: points[t.id] ?? 0 })))
+  const teams = submittedTeams(s, points, opts.onlyScored)
+  const ranks = rankTeams(teams.map((t) => ({ teamId: t.id, points: points[t.id] ?? 0 })))
   const rows: ResultRow[] = []
-  for (const team of s.teams) {
+  for (const team of teams) {
     for (const m of team.members) {
       rows.push({
         Date: date,
@@ -84,9 +93,14 @@ export function buildSubmission(s: Session, points: Record<string, number>, note
       Game: gameTitle,
       Level: s.level,
       Mode: s.mode,
-      TeamCount: s.teams.length,
+      TeamCount: teams.length,
       TeacherTeamPoints: s.teacherTeam ? (points[s.teacherTeam.id] ?? 0) : '',
     },
     rows,
   }
+}
+
+/** The student teams that get Results rows. */
+export function submittedTeams(s: Session, points: Record<string, number>, onlyScored = false) {
+  return onlyScored ? s.teams.filter((t) => (points[t.id] ?? 0) !== 0) : s.teams
 }

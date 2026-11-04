@@ -6,6 +6,7 @@
  *   Kru.ready(function (session) { ...build the game from session.teams, session.level... })
  *   Kru.saveState(state)                  // the shell keeps it; comes back as session.resume
  *   Kru.score(teamId, delta, reason)      // optional live log
+ *   Kru.saveDay(data)                     // memory for this class today; comes back as session.day
  *   Kru.onFinishRequest(function () { Kru.finish([{ teamId, points }], notes) })
  *
  * Opened on its own (not inside Kru) or with ?mock=1, the game gets a fake class of 30
@@ -17,6 +18,7 @@
   var inFrame = window.parent !== window;
   var mock = params.get('mock') === '1' || !inFrame;
   var mockKey = 'kru-mock-state:' + location.pathname;
+  var mockDayKey = 'kru-mock-day:' + location.pathname;
 
   var session = null;
   var readyCallbacks = [];
@@ -46,8 +48,9 @@
       for (var t = 0; t < n; t++) teams.push({ id: 't' + (t + 1), name: 'Team ' + (t + 1), members: [] });
       students.forEach(function (s, k) { teams[k % n].members.push(s); });
     }
-    var resume;
+    var resume, day = null;
     try { resume = JSON.parse(sessionStorage.getItem(mockKey) || 'null') || undefined; } catch (e) {}
+    try { day = JSON.parse(sessionStorage.getItem(mockDayKey) || 'null'); } catch (e) {}
     return {
       id: 'mock',
       class: 'M.' + level.slice(2) + '/1',
@@ -56,6 +59,7 @@
       teams: teams,
       teacherTeam: params.get('teacher') === '0' ? null : { id: 't0', name: 'T. Henry' },
       resume: resume,
+      day: day,
     };
   }
 
@@ -91,6 +95,13 @@
       if (mock) {
         try { sessionStorage.setItem(mockKey, JSON.stringify(state)); } catch (e) {}
       } else post({ type: 'kru:state', state: state });
+    },
+
+    /** Remember something for this class for the rest of today (across games). */
+    saveDay: function (data) {
+      if (mock) {
+        try { sessionStorage.setItem(mockDayKey, JSON.stringify(data)); } catch (e) {}
+      } else post({ type: 'kru:day', data: data });
     },
 
     score: function (teamId, delta, reason) {

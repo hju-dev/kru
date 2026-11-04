@@ -92,7 +92,11 @@
       "solo"
     ],
     "minutes": 5,
-    "status": "new"
+    "status": "ready",
+    "description": "Spins a random present student. Nobody is picked twice until everyone has had a turn (remembered for the day). Optional question card and +1 / +2.",
+    "type": "tool",
+    "phoneLandscape": true,
+    "results": "scored"
   },
   {
     "slug": "sentence-scramble",
