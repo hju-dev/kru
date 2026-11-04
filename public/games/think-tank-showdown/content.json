@@ -1,0 +1,87 @@
+{
+  "about": "Think Tank Showdown questions per level. Each round: kind 'answer' (one right answer), 'ideas' (example ideas, many answers) or 'wager' (teams bet 0-5 before the question is shown). 'spare': true = only used if Henry taps 'Use a spare'. 'todo' = something for Henry to check. M.3 is the original set; M.1 and M.2 were written for Kru.",
+  "M.1": {
+    "rounds": [
+      { "name": "Riddle Rush", "tag": "Round 1", "secs": 45, "kind": "answer", "rule": "45 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point", "qs": [
+        { "q": "What has a face and two hands, but no arms or legs?", "a": "A clock", "why": "A clock has a face and two hands: the hour hand and the minute hand." },
+        { "q": "What has to be broken before you can use it?", "a": "An egg", "why": "You break an egg before you cook it." },
+        { "q": "What goes up but never comes down?", "a": "Your age", "why": "Every birthday your age goes up. It never goes down!" },
+        { "q": "I have lots of teeth, but I can't bite. What am I?", "a": "A comb", "why": "Also accept: a zip / a saw." },
+        { "q": "What has legs but can't walk?", "a": "A table", "why": "Spare question. Also accept: a chair / a bed.", "spare": true },
+        { "q": "What is full of holes but can still hold water?", "a": "A sponge", "why": "Spare question.", "spare": true }
+      ]},
+      { "name": "Spot the Problem", "tag": "Round 2", "secs": 60, "kind": "answer", "rule": "60 s to talk in your team. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1", "qs": [
+        { "q": "\"My cat is black. So all cats are black.\"", "a": "One cat can't tell you about all cats.", "why": "Award 2 for: only one cat / you can't say \"all\" / there are white, orange and grey cats." },
+        { "q": "\"I ate an ice cream and then it rained. So ice cream makes it rain.\"", "a": "The two things happened together, but one didn't cause the other.", "why": "Award 2 for: it was just at the same time / ice cream can't change the weather." },
+        { "q": "\"This phone is the best because it is the most expensive.\"", "a": "Expensive doesn't always mean the best.", "why": "Award 2 for: price isn't quality / you need to check what the phone can do." },
+        { "q": "\"Everyone in my class has a phone. So every child in the world has a phone.\"", "a": "One class is too small to say something about the whole world.", "why": "Spare question. Award 2 for: small group / some children are poor / you can't say \"every\".", "spare": true },
+        { "q": "\"My brother is tall, so he must be good at basketball.\"", "a": "Being tall doesn't make you good at a sport.", "why": "Spare question. Award 2 for: you need practice / skill, not just height.", "spare": true }
+      ]},
+      { "name": "What Would Happen If…?", "tag": "Round 3", "secs": 90, "kind": "ideas", "rule": "90 s: write as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round", "qs": [
+        { "q": "What would happen if it rained every day for a month?", "a": "", "why": "Floods · no outdoor sport · wet clothes · plants grow fast · people stay at home · shops sell lots of umbrellas." },
+        { "q": "What would happen if there were no cars?", "a": "", "why": "Spare. People walk or ride bikes · cleaner air · trips take longer · quieter streets · more buses and trains.", "spare": true },
+        { "q": "What would happen if animals could talk?", "a": "", "why": "Spare. Pets tell us what they want · zoos change · farmers talk to their animals · new job: animal translator.", "spare": true }
+      ]},
+      { "name": "Final Wager", "tag": "Round 4", "secs": 60, "kind": "wager", "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it", "qs": [
+        { "q": "A farmer has 5 cows. All but 2 run away. How many cows are left?", "a": "2", "why": "\"All but 2\" means \"all of them except 2\". So 2 cows stay.", "todo": "\"All but 2\" may be new English for M.1: explain it after the answer." },
+        { "q": "Which month has 28 days?", "a": "All of them", "why": "Spare question. Every month has at least 28 days!", "spare": true }
+      ]}
+    ]
+  },
+  "M.2": {
+    "rounds": [
+      { "name": "Riddle Rush", "tag": "Round 1", "secs": 40, "kind": "answer", "rule": "40 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point", "qs": [
+        { "q": "What can travel around the world while staying in a corner?", "a": "A stamp", "why": "A stamp stays in the corner of an envelope while the letter travels." },
+        { "q": "What has a neck but no head?", "a": "A bottle", "why": "Also accept: a shirt / a guitar." },
+        { "q": "What belongs to you, but other people use it more than you do?", "a": "Your name", "why": "Other people say your name much more often than you do." },
+        { "q": "I'm tall when I'm young and short when I'm old. What am I?", "a": "A candle", "why": "A candle gets shorter as it burns." },
+        { "q": "What has one eye but can't see?", "a": "A needle", "why": "Spare question. The thread goes through the needle's eye.", "spare": true },
+        { "q": "What can you hold in your right hand but never in your left hand?", "a": "Your left hand", "why": "Spare question. Also accept: your left elbow.", "spare": true }
+      ]},
+      { "name": "Spot the Problem", "tag": "Round 2", "secs": 45, "kind": "answer", "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1", "qs": [
+        { "q": "\"My grandfather smoked all his life and lived to 95. So smoking isn't bad for you.\"", "a": "One person's story doesn't prove something for everyone.", "why": "Award 2 for: only one example / he was lucky / doctors study many people, not one." },
+        { "q": "\"9 out of 10 film stars use this shampoo. It will make your hair beautiful.\"", "a": "The stars may be paid, and their hair is beautiful for other reasons.", "why": "Award 2 for: it's an advert / who asked the stars? / no proof the shampoo did it." },
+        { "q": "\"If we let students use phones at break, soon they will use them in every lesson, and then nobody will learn anything.\"", "a": "One small change doesn't have to lead to the worst result.", "why": "Award 2 for: that's a big jump / rules can stop it / it might not happen." },
+        { "q": "\"Lots of people believe it, so it must be true.\"", "a": "Many people can still be wrong.", "why": "Spare question. Award 2 for: popular isn't the same as true / check the facts.", "spare": true },
+        { "q": "\"You don't play football, so your ideas about the team are wrong.\"", "a": "Judge the idea, not the person.", "why": "Spare question. Award 2 for: anyone can have a good idea / look at the reasons.", "spare": true }
+      ]},
+      { "name": "What Would Happen If…?", "tag": "Round 3", "secs": 90, "kind": "ideas", "rule": "90 s: list as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round", "qs": [
+        { "q": "What would happen if homework was banned in every school?", "a": "", "why": "More free time · more sleep · some students forget lessons · more time for family, sport or part-time jobs · teachers change how they teach." },
+        { "q": "What would happen if everyone in Thailand could speak only English for one day?", "a": "", "why": "Spare. Shops and taxis have problems · people use their hands to explain · lots of laughing · English improves fast · the TV news changes.", "spare": true },
+        { "q": "What would happen if people could live for 200 years?", "a": "", "why": "Spare. More people on Earth · people work for longer · families with six generations · we need more food and houses.", "spare": true }
+      ]},
+      { "name": "Final Wager", "tag": "Round 4", "secs": 60, "kind": "wager", "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it", "qs": [
+        { "q": "You are running a race and you pass the person in second place. What place are you in now?", "a": "Second place", "why": "You took their place. The person you passed is now third." },
+        { "q": "A bat and a ball cost 110 baht together. The bat costs 100 baht more than the ball. How much is the ball?", "a": "5 baht", "why": "Spare question. Ball 5 + bat 105 = 110. (Not 10 baht: then the bat is 110 and the total is 120.)", "spare": true }
+      ]}
+    ]
+  },
+  "M.3": {
+    "rounds": [
+      { "name": "Riddle Rush", "tag": "Round 1", "secs": 40, "kind": "answer", "rule": "40 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point", "qs": [
+        { "q": "What has keys but can't open locks?", "a": "A piano", "why": "Also accept: a keyboard / a computer keyboard." },
+        { "q": "The more you take, the more you leave behind. What are they?", "a": "Footsteps", "why": "Every step you take leaves a footprint behind you." },
+        { "q": "What comes once in a minute, twice in a moment, but never in a thousand years?", "a": "The letter M", "why": "Look at the spelling: minute, moMent, thousand years." },
+        { "q": "Before Mount Everest was discovered, what was the highest mountain in the world?", "a": "Mount Everest", "why": "It was still the highest. People just didn't know yet!" },
+        { "q": "What can you catch but not throw?", "a": "A cold", "why": "Spare question. Also accept: a cough / the flu.", "spare": true },
+        { "q": "What gets wetter the more it dries?", "a": "A towel", "why": "Spare question.", "spare": true }
+      ]},
+      { "name": "Spot the Problem", "tag": "Round 2", "secs": 45, "kind": "answer", "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1", "qs": [
+        { "q": "\"I wore my red socks and passed my maths test. So red socks help you pass tests.\"", "a": "Two things happened together, but one didn't cause the other.", "why": "Award 2 for: coincidence / no proof the socks did it / she passed because she studied." },
+        { "q": "\"All five of my friends love K-pop. So every teenager in Thailand loves K-pop.\"", "a": "Five people are too few to say something about everyone.", "why": "Award 2 for: small group / you can't generalise / your friends are similar to you." },
+        { "q": "\"A famous footballer drinks this energy drink. So it must make you run faster.\"", "a": "The footballer is paid to say it. He was fast before the drink.", "why": "Award 2 for: advertising / he's paid / no evidence about the drink itself." },
+        { "q": "\"Nobody has proved that ghosts are NOT real. So ghosts must be real.\"", "a": "No proof against something isn't proof for it.", "why": "Spare question. Award 2 for: the person saying 'ghosts are real' needs the evidence.", "spare": true },
+        { "q": "\"You either love this school or you hate it.\"", "a": "There are more than two choices.", "why": "Spare question. Award 2 for: you can like some parts and not others / it's in the middle.", "spare": true }
+      ]},
+      { "name": "What Would Happen If…?", "tag": "Round 3", "secs": 90, "kind": "ideas", "rule": "90 s: list as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round", "qs": [
+        { "q": "What would happen if school started at 11 a.m.?", "a": "", "why": "Students sleep more · school finishes later · more traffic in the evening · parents need childcare in the morning · less time for homework or sport." },
+        { "q": "What would happen if nobody could tell a lie for one whole day?", "a": "", "why": "Spare. Friendships break · honest reviews · surprise parties fail · politicians in trouble · fewer arguments later?", "spare": true },
+        { "q": "What would happen if every phone stopped working for one week?", "a": "", "why": "Spare. People talk face to face · get lost (no maps) · banks and shops have problems · less screen time · emergencies are harder.", "spare": true }
+      ]},
+      { "name": "Final Wager", "tag": "Round 4", "secs": 60, "kind": "wager", "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it", "qs": [
+        { "q": "A girl has as many brothers as sisters. Each brother has only half as many brothers as sisters. How many brothers and sisters are in the family?", "a": "4 sisters and 3 brothers", "why": "The girl sees 3 other sisters and 3 brothers. A brother sees 2 brothers and 4 sisters (2 is half of 4)." },
+        { "q": "How many times can you take 10 away from 100?", "a": "Once", "why": "Spare question. After that, you are taking 10 away from 90!", "spare": true }
+      ]}
+    ]
+  }
+}
