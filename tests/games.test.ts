@@ -76,3 +76,10 @@ describe('How to play slides', () => {
     })
   }
 })
+
+describe('every student game has How to play slides', () => {
+  const tools = ['scoreboard', 'talk-timer'] // teacher tools: no rules for students
+  for (const g of ready.filter((x) => !tools.includes(x.slug))) {
+    it(g.slug, () => expect(read(`public/games/${g.slug}/index.html`)).toContain('/games/shared/kru-intro.js'))
+  }
+})

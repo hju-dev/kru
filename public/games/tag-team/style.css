@@ -428,8 +428,3 @@ button:focus-visible {
   min-height: 56px;
   font-size: 19px;
 }
-.help p {
-  margin: 0 0 6px;
-  font-size: 16px;
-  line-height: 1.4;
-}

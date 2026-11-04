@@ -173,3 +173,14 @@ describe('Word Rush prompts', () => {
     })
   }
 })
+
+describe('Tag-Team topics', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/tag-team/content.json', import.meta.url), 'utf8')) as Record<string, { topics: string[] }>
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: 50+ topics, no repeats`, () => {
+      const t = c[level].topics
+      expect(t.length).toBeGreaterThanOrEqual(50)
+      expect(new Set(t.map((x) => x.toLowerCase())).size).toBe(t.length)
+    })
+  }
+})

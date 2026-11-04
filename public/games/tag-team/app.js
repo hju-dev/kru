@@ -235,7 +235,6 @@
     $('logoMode').textContent = C.title;
     $('topicLabel').textContent = C.label;
     $('topic').textContent = S.topic || 'Tap Spin to choose a ' + C.label.toLowerCase();
-    $('helpText').innerHTML = C.help.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
     renderPicks();
     renderLane();
     renderTeams();
@@ -409,8 +408,10 @@
     picked = null; save(); renderLane(); closeMenu();
   });
   $('undo').addEventListener('click', function () { undo(); closeMenu(); });
-  $('showHelp').addEventListener('click', function () { closeMenu(); $('helpBack').hidden = false; });
-  $('helpClose').addEventListener('click', function () { $('helpBack').hidden = true; });
+  // How to play slides: before the game starts, and from the ⋯ menu
+  var INTRO = [];
+  function showIntro() { return KruIntro.show(INTRO, { title: debate() ? 'Tag-Team Debate' : 'Tag-Team Talk' }); }
+  $('howTo').addEventListener('click', function () { closeMenu(); showIntro(); });
   $('resetScores').addEventListener('click', function () {
     var btn = this;
     if (!btn.classList.contains('armed')) {
@@ -424,7 +425,7 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    var open = ['menuBack', 'panelBack', 'chooseBack', 'helpBack'].some(function (id) { return !$(id).hidden; });
+    var open = ['menuBack', 'panelBack', 'chooseBack'].some(function (id) { return !$(id).hidden; });
     if (open) return;
     var k = e.key.toLowerCase();
     if (e.code === 'Space') {
@@ -460,6 +461,8 @@
       S.order = S.order || {}; S.pts = S.pts || {}; S.log = S.log || []; S.used = S.used || [];
       total = left = C.turn;
       renderAll();
+      INTRO = KruIntro.forLevel(content, level);
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
     }).catch(function () {
       $('topic').textContent = 'Could not load the topics. Close the game and open it again.';
     });

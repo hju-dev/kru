@@ -1,15 +1,11 @@
 {
- "about": "Tag-Team topics per level. mode relay = one team at the front, speakers take turns on one topic; mode debate = FOR team vs AGAINST team, speakers alternate. Times in seconds. M.2 and M.3 are the original sets; M.1 was written for Kru.",
+ "about": "Tag-Team topics per level. mode relay = one team at the front, speakers take turns on one topic; mode debate = FOR team vs AGAINST team, speakers alternate. Times in seconds. M.2 and M.3 are the original sets; M.1 and the extra topics (to 50 per level) were written for Kru. Spin picks a random topic, no repeats until all are used.",
  "M.1": {
   "mode": "relay",
   "title": "Talk",
   "label": "Topic",
   "huddle": 30,
   "turn": 20,
-  "help": [
-   "One team at the front. Huddle 0:30, then each speaker talks for 0:20. At the chime: TAG! The next speaker continues the same talk. The last speaker finishes it.",
-   "Challenge! The audience can challenge for: 3-second silence · repeating an idea · off topic · Thai. A fair challenge = +1 to the challenging team."
-  ],
   "topics": [
    "My favourite food",
    "My best friend",
@@ -30,7 +26,111 @@
    "A trip to the zoo",
    "If I could fly",
    "My favourite game",
-   "Things I love about my town"
+   "Things I love about my town",
+   "My favourite toy",
+   "A rainy day",
+   "My morning routine",
+   "My favourite subject",
+   "A day at the market",
+   "My favourite holiday",
+   "If I had a robot",
+   "A day at the swimming pool",
+   "My favourite colour and why",
+   "A day at the park",
+   "My favourite fruit",
+   "What I did last weekend",
+   "A funny animal",
+   "My dream holiday",
+   "If I was a teacher",
+   "My favourite place at school",
+   "Things I can do well",
+   "My favourite song",
+   "A day on a farm",
+   "If I was a superhero",
+   "The best ice cream flavour",
+   "My favourite clothes",
+   "A visit to my grandparents",
+   "The best day ever",
+   "If I lived in the sea",
+   "My favourite cartoon character",
+   "Things that make me happy",
+   "My best birthday present",
+   "A day without phones",
+   "My favourite breakfast"
+  ],
+  "intro": [
+   {
+    "title": "Tag-Team Talk",
+    "text": [
+     "One team comes to the front.",
+     "Speakers take turns talking about one topic."
+    ],
+    "example": {
+     "label": "Topic",
+     "big": "My favourite food"
+    }
+   },
+   {
+    "title": "Huddle first",
+    "text": [
+     "Plan with your team for 30 seconds.",
+     "Who says what? Who starts? Who finishes?"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Huddle",
+       "0:30"
+      ],
+      [
+       "Each speaker",
+       "0:20"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "TAG!",
+    "text": [
+     "At the chime, the next speaker continues.",
+     "Keep the same topic going!"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Speaker 1",
+       "starts"
+      ],
+      [
+       "Middle speakers",
+       "continue"
+      ],
+      [
+       "Last speaker",
+       "finishes"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Challenge!",
+    "text": [
+     "The audience can challenge for:",
+     "a 3-second silence, repeating an idea, off topic or Thai."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Fair challenge",
+       "+1"
+      ],
+      [
+       "Great talk",
+       "+3"
+      ]
+     ]
+    }
+   }
   ]
  },
  "M.2": {
@@ -39,10 +139,6 @@
   "label": "Topic",
   "huddle": 30,
   "turn": 25,
-  "help": [
-   "One team at the front. Huddle 0:30, then each speaker talks for 0:25. At the chime: TAG! The next speaker continues the same talk. The last speaker finishes it.",
-   "Challenge! The audience can challenge for: 3-second silence · repeating an idea · off topic · Thai. A fair challenge = +1 to the challenging team."
-  ],
   "topics": [
    "If our school had a robot teacher",
    "The perfect school day",
@@ -63,7 +159,111 @@
    "How to become famous on the internet",
    "A new holiday everyone should have",
    "The best street food",
-   "If I was invisible for a day"
+   "If I was invisible for a day",
+   "The best way to spend 1,000 baht",
+   "A day in the life of a street dog",
+   "If I could change one school rule",
+   "The best festival in Thailand",
+   "How to make a new friend",
+   "The worst holiday ever",
+   "If I won a trip anywhere in the world",
+   "A day without the internet",
+   "Why we should protect animals",
+   "The best food in my province",
+   "How to have a perfect birthday",
+   "If I was the head of the school for a day",
+   "My dream job",
+   "A story about a lost phone",
+   "The best and worst things about school",
+   "How to stay healthy",
+   "If I could meet a famous person",
+   "Life in 100 years",
+   "The best gift I ever got",
+   "How to save money",
+   "A trip to the mountains",
+   "Why sleep is important",
+   "A day in the life of my teacher",
+   "A day as a tour guide",
+   "The best thing about Thailand",
+   "How to cook my favourite dish",
+   "If I lived in another country",
+   "A scary story",
+   "The most exciting day of my life",
+   "Should we have school on Saturdays?"
+  ],
+  "intro": [
+   {
+    "title": "Tag-Team Talk",
+    "text": [
+     "One team comes to the front.",
+     "Speakers take turns talking about one topic."
+    ],
+    "example": {
+     "label": "Topic",
+     "big": "The perfect weekend"
+    }
+   },
+   {
+    "title": "Huddle first",
+    "text": [
+     "Plan with your team for 30 seconds.",
+     "Who says what? Who starts? Who finishes?"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Huddle",
+       "0:30"
+      ],
+      [
+       "Each speaker",
+       "0:25"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "TAG!",
+    "text": [
+     "At the chime, the next speaker continues.",
+     "Keep the same topic going!"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Speaker 1",
+       "starts"
+      ],
+      [
+       "Middle speakers",
+       "continue"
+      ],
+      [
+       "Last speaker",
+       "finishes"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Challenge!",
+    "text": [
+     "The audience can challenge for:",
+     "a 3-second silence, repeating an idea, off topic or Thai."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Fair challenge",
+       "+1"
+      ],
+      [
+       "Great talk",
+       "+3"
+      ]
+     ]
+    }
+   }
   ]
  },
  "M.3": {
@@ -72,10 +272,6 @@
   "label": "Motion",
   "huddle": 90,
   "turn": 30,
-  "help": [
-   "Two teams at the front: FOR vs AGAINST. Huddle 1:30, then speakers take turns for 0:30 each, starting with FOR. Every speaker must answer the last point first (\"I disagree because…\").",
-   "Challenge! 3-second silence · repeating · off topic · Thai = +1 to the challenging team. The audience votes for the winning side: +3."
-  ],
   "topics": [
    "Homework should be banned.",
    "Students should be allowed to use phones in class.",
@@ -91,7 +287,112 @@
    "Exams are the best way to test students.",
    "Everyone should play a sport at school.",
    "Fast food should not be sold near schools.",
-   "It's better to be famous than rich."
+   "It's better to be famous than rich.",
+   "Students should choose what they study.",
+   "Mobile phones should be banned for children under 12.",
+   "Zoos should be closed.",
+   "It is better to work in a team than alone.",
+   "Everyone should learn a second language.",
+   "Online learning is better than school.",
+   "Tourism is good for Thailand.",
+   "Plastic bags should be banned everywhere.",
+   "Teenagers should have a part-time job.",
+   "It's better to be a child than an adult.",
+   "Celebrities are good role models.",
+   "Space travel is a waste of money.",
+   "Cities need more parks, not more shopping malls.",
+   "Boys and girls should play sports together.",
+   "School holidays should be shorter.",
+   "Reading books is better than watching films.",
+   "Students should be allowed to dye their hair.",
+   "Artificial intelligence will help students learn.",
+   "Everyone should do volunteer work.",
+   "Sugary drinks should cost more.",
+   "It is better to grow up in a big family.",
+   "Video calls are as good as meeting in person.",
+   "People should eat less meat.",
+   "Exams should be open-book.",
+   "Weekends should be homework-free.",
+   "It's better to save money than spend it.",
+   "Every teenager should know how to swim.",
+   "Cars should be banned from city centres.",
+   "Social media apps should have a minimum age of 16.",
+   "Students should help clean their school.",
+   "Being kind is more important than being clever.",
+   "Everyone should have a pet.",
+   "It's better to travel in your own country than abroad.",
+   "Famous people deserve privacy.",
+   "Schools should teach students how to manage money."
+  ],
+  "intro": [
+   {
+    "title": "Tag-Team Debate",
+    "text": [
+     "Two teams at the front: FOR vs AGAINST.",
+     "Speakers take turns, starting with FOR."
+    ],
+    "example": {
+     "tag": "MOTION",
+     "big": "Homework should be banned."
+    }
+   },
+   {
+    "title": "Huddle first",
+    "text": [
+     "Plan your points for 1 minute 30.",
+     "Think: what will the other team say?"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Huddle",
+       "1:30"
+      ],
+      [
+       "Each speaker",
+       "0:30"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Answer, then add",
+    "text": [
+     "First answer the last point: \"I disagree because…\"",
+     "Then add a new point."
+    ],
+    "example": {
+     "rows": [
+      [
+       "FOR",
+       "Homework makes us tired."
+      ],
+      [
+       "AGAINST",
+       "I disagree because it helps us practise."
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Points",
+    "text": [
+     "Challenge for silence, repeating, off topic or Thai.",
+     "The audience votes for the winning side."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Fair challenge",
+       "+1"
+      ],
+      [
+       "Winning side",
+       "+3"
+      ]
+     ]
+    }
+   }
   ]
  }
 }
