@@ -131,3 +131,26 @@ describe('Quiz Battle questions', () => {
     }
   })
 })
+
+describe('Think Tank Showdown pools', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/think-tank-showdown/content.json', import.meta.url), 'utf8')) as Record<
+    string,
+    { rounds: { name: string; kind: string; play: number; spares: number; qs: { q: string; a: string; why: string }[] }[] }
+  >
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: 50+ questions, each round's pool is big enough for a fresh draw every game`, () => {
+      const rounds = c[level].rounds
+      expect(rounds.map((r) => r.kind)).toEqual(['answer', 'answer', 'ideas', 'wager'])
+      expect(rounds.reduce((n, r) => n + r.qs.length, 0)).toBeGreaterThanOrEqual(50)
+      for (const r of rounds) {
+        expect(r.play + r.spares, r.name).toBeLessThan(r.qs.length) // so the next game can differ
+        expect(new Set(r.qs.map((q) => q.q)).size, r.name).toBe(r.qs.length)
+        for (const q of r.qs) {
+          expect(q.q, r.name).toBeTruthy()
+          if (r.kind !== 'ideas') expect(q.a, q.q).toBeTruthy()
+          else expect(q.why, q.q).toBeTruthy()
+        }
+      }
+    })
+  }
+})

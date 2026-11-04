@@ -305,20 +305,59 @@
   });
 
   // ---------- start ----------
+  // ---------- question pools: each game draws "play" main + "spares" spare questions per round ----------
+  function shuffled(n) {
+    var a = [];
+    for (var i = 0; i < n; i++) a.push(i);
+    for (var j = n - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var x = a[j]; a[j] = a[k]; a[k] = x; }
+    return a;
+  }
+  function newDraw(pools) {
+    return pools.map(function (r) { return shuffled(r.qs.length).slice(0, (r.play || r.qs.length) + (r.spares || 0)); });
+  }
+  function validDraw(pools, draw) {
+    return Array.isArray(draw) && draw.length === pools.length && draw.every(function (d, i) {
+      return Array.isArray(d) && d.length && d.every(function (k) { return k >= 0 && k < pools[i].qs.length; });
+    });
+  }
+  function drawRounds(pools, draw) {
+    return pools.map(function (r, i) {
+      var copy = {};
+      Object.keys(r).forEach(function (k) { copy[k] = r[k]; });
+      copy.qs = draw[i].map(function (k, j) {
+        var q = r.qs[k];
+        return { q: q.q, a: q.a, why: q.why, todo: q.todo, spare: j >= (r.play || draw[i].length) };
+      });
+      return copy;
+    });
+  }
+
+  // How to play slides: before the game starts, and from the ⋯ menu
+  var INTRO = [];
+  function showIntro() { return KruIntro.show(INTRO, { title: 'Think Tank Showdown' }); }
+  $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
-      ROUNDS = content[level].rounds;
+      var pools = content[level].rounds;
       teams = Kru.allTeams();
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === level && ROUNDS[saved.r] && ROUNDS[saved.r].qs[saved.qi]) {
+      if (saved && saved.v === 2 && saved.level === level && validDraw(pools, saved.draw)) {
         S = saved;
+        ROUNDS = drawRounds(pools, S.draw);
+      }
+      if (S && ROUNDS[S.r] && ROUNDS[S.r].qs[S.qi]) {
         S.pts = S.pts || {}; S.wager = S.wager || {}; S.log = S.log || [];
         load();
       } else {
-        S = { v: 1, level: level, r: 0, qi: 0, shown: true, revealed: false, pts: {}, wager: {}, log: [] };
+        // a new game: a fresh random mix of questions from each round's pool
+        S = { v: 2, level: level, draw: newDraw(pools), r: 0, qi: 0, shown: true, revealed: false, pts: {}, wager: {}, log: [] };
+        ROUNDS = drawRounds(pools, S.draw);
         goTo(0, 0);
+      INTRO = KruIntro.forLevel(content, level);
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
       }
     }).catch(function () {
       $('q').textContent = 'Could not load the questions. Close the game and open it again.';
