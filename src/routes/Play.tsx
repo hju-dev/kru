@@ -1,40 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { findGame, gameUrl } from '../lib/games'
-import { loadPrefs } from '../lib/prefs'
 import { initMessage, type Session } from '../lib/session'
+import { useWakeLock } from '../lib/useWakeLock'
 import { useSessions } from '../store/sessions'
 import './Play.css'
 
 const FADE_MS = 3000
 const FINISH_WAIT_MS = 2000
-
-/** Keeps the screen on while a game is open (fails silently where not supported). */
-function useWakeLock() {
-  useEffect(() => {
-    let lock: { release: () => Promise<void> } | null = null
-    const request = async () => {
-      try {
-        const wl = (navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<{ release: () => Promise<void> }> } }).wakeLock
-        if (wl && document.visibilityState === 'visible') lock = await wl.request('screen')
-      } catch {
-        /* not supported or not allowed: Auto-Lock → Never is the backup */
-      }
-    }
-    let enabled = false
-    const onVisible = () => enabled && document.visibilityState === 'visible' && void request()
-    // respects Settings → Options → Keep the screen awake
-    void loadPrefs().then((p) => {
-      enabled = p.keepAwake
-      if (enabled) void request()
-    })
-    document.addEventListener('visibilitychange', onVisible)
-    return () => {
-      document.removeEventListener('visibilitychange', onVisible)
-      void lock?.release().catch(() => undefined)
-    }
-  }, [])
-}
 
 /** Totals from the live score log: used if a game doesn't answer "finish". */
 function totalsFromLog(s: Session): Record<string, number> {

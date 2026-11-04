@@ -88,6 +88,9 @@ Demo mode: on the Sign-in screen, "Try demo" uses made-up students (S1…S30) wi
 - Admin dashboard (`/admin/*`, `src/routes/admin/`): `AdminLayout` = sidebar ≥ 1024 px, bottom tabs below. Results are loaded whole (`results` action, including deleted) into `src/store/admin.ts`, cached in IndexedDB (`kru-admin`), and filtered/aggregated on the device (`src/lib/stats.ts`). Admin writes need internet; failed edits stay on screen (roster drafts in `kru-prefs` IndexedDB) for retry.
 - Code.gs v5 admin actions: `results`, `updateSession`, `deleteSession` (soft), `saveRoster`, `saveClass` (add/archive/default team size), `renameClass` (renames in every tab). Class matching everywhere ignores spaces and capitals.
 - Per-device prefs (`src/lib/prefs.ts`): keep screen awake, term start date.
+- **Tools** (games with `modes: []` in games.json, e.g. Talk Timer) skip class choice and team setup: Home → `/tool/:game` (`src/routes/Tool.tsx`). The shell answers `kru:ready` with a session that has `mode: 'tool'`, no teams, and `resume` = the tool's saved settings (IndexedDB `tool:<slug>`); `kru:state` saves them. No results.
+- `tests/games.test.ts` checks every `ready` game: file path, full document, SDK + shared CSS, no inline scripts/handlers, no Google Fonts, no localStorage.
+- Phase 3 (Henry's choices): games go live one at a time; Word Rush scores by tap buttons (no keyboard); Talk Timer presets saved on the phone only.
 
 ## graphify
 

@@ -1,0 +1,17 @@
+{
+  "about": "Starting presets for Talk Timer. Henry can edit, add and delete them in the app; his changes are saved on the phone. 'Restore starting timers' brings these back.",
+  "start": "speaking-test",
+  "presets": [
+    { "id": "speaking-test", "name": "Speaking test", "phases": [{ "label": "Speaking test: talk!", "secs": 60 }, { "label": "Change: next speaker", "secs": 10 }] },
+    { "id": "teacher-model", "name": "Teacher model", "phases": [{ "label": "Teacher model", "secs": 60 }] },
+    { "id": "20-questions", "name": "20 Questions", "phases": [{ "label": "Play 20 Questions!", "secs": 900 }] },
+    { "id": "one-word-story", "name": "One-word story round", "phases": [{ "label": "One-Word Story: one word each", "secs": 240 }] },
+    { "id": "story-fix-it", "name": "Story: fix it (R&W)", "phases": [{ "label": "Fix it: check the list", "secs": 240 }] },
+    { "id": "one-word-duel", "name": "One-Word Duel", "phases": [{ "label": "One-Word Duel", "secs": 960 }] },
+    { "id": "duel-clue", "name": "Duel clue (10 s)", "phases": [{ "label": "One clue: 10 seconds!", "secs": 10 }] },
+    { "id": "think-tank", "name": "Think Tank Showdown", "phases": [{ "label": "Think Tank Showdown", "secs": 960 }] },
+    { "id": "final-rehearsal", "name": "Final rehearsal", "phases": [{ "label": "Final rehearsal", "secs": 720 }] },
+    { "id": "pitch-qa", "name": "Pitch + Q&A", "phases": [{ "label": "Pitch", "secs": 180 }, { "label": "Investor questions", "secs": 120 }] },
+    { "id": "invest-credits", "name": "Invest credits", "phases": [{ "label": "Invest your credits", "secs": 300 }] }
+  ]
+}

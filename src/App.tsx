@@ -6,6 +6,7 @@ import { Play } from './routes/Play'
 import { Results } from './routes/Results'
 import { Setup } from './routes/Setup'
 import { SignIn } from './routes/SignIn'
+import { Tool } from './routes/Tool'
 import { AdminLayout } from './routes/admin/AdminLayout'
 import { Content } from './routes/admin/Content'
 import { Overview } from './routes/admin/Overview'
@@ -57,6 +58,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: 'setup/:game', element: <Setup /> },
       { path: 'play/:id', element: <Play /> },
+      { path: 'tool/:game', element: <Tool /> },
       { path: 'results/:id', element: <Results /> },
       {
         path: 'admin',

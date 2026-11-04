@@ -23,6 +23,8 @@ export function Home() {
 
   function pickGame(g: GameInfo) {
     if (g.status !== 'ready') return
+    // tools (no teams, no results) open straight away, no class needed
+    if (g.modes.length === 0) return navigate(`/tool/${g.slug}`)
     if (!selected) {
       setNudge(true)
       setTimeout(() => setNudge(false), 1500)
@@ -108,6 +110,7 @@ export function Home() {
               <span className="game-meta">
                 {g.modes.includes('group') && <span className="tag">Group</span>}
                 {g.modes.includes('solo') && <span className="tag">Solo</span>}
+                {g.modes.length === 0 && <span className="tag">Tool</span>}
                 {g.minutes ? <span>{g.minutes} min</span> : null}
                 {g.status !== 'ready' && <span className="soon-label">Coming soon</span>}
                 {g.levels.length > 0 && (

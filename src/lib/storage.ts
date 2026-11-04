@@ -28,6 +28,9 @@ export const storage = {
   /** Students marked absent today in a class, so the next game that day remembers them. */
   getAbsent: (cls: string, day: string) => get<number[]>(`absent:${cls}:${day}`, store),
   setAbsent: (cls: string, day: string, nos: number[]) => set(`absent:${cls}:${day}`, nos, store),
+  /** A tool's own saved settings (for example Talk Timer presets), kept on this phone. */
+  getToolState: (slug: string) => get<unknown>(`tool:${slug}`, store),
+  setToolState: (slug: string, state: unknown) => set(`tool:${slug}`, state, store),
   /**
    * Sign out: forget the connection and the cached Sheet data.
    * Unsent results (outbox) and games in progress are kept, so nothing is lost.

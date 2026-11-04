@@ -80,17 +80,14 @@
   {
     "slug": "talk-timer",
     "title": "Talk Timer",
-    "file": "legacy/games/talk-timer.html",
-    "description": "Projector timer with per-lesson presets (20 Questions, story rounds, One-Word Duel, speaking test 1:00 + 0:10 changeover).",
+    "file": "public/games/talk-timer/index.html",
+    "description": "Big classroom timer. Presets with one or more phases (for example 1:00 talk + 0:10 change over), a chime at zero. Edit your own presets.",
     "levels": [],
     "type": "tool",
     "minutes": null,
-    "storageKeys": [
-      "m3timer"
-    ],
-    "phoneLandscape": false,
+    "phoneLandscape": true,
     "modes": [],
-    "status": "migrate"
+    "status": "ready"
   },
   {
     "slug": "name-picker",
