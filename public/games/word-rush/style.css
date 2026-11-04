@@ -405,12 +405,3 @@ button:focus-visible {
   color: var(--muted);
   margin: 0;
 }
-.rules h3 {
-  margin: 0;
-  font: 700 18px/1.2 var(--display);
-  color: var(--yellow);
-}
-.rules p {
-  margin: 2px 0 0;
-  font-size: 16px;
-}
