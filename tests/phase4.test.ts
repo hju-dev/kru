@@ -154,3 +154,22 @@ describe('Think Tank Showdown pools', () => {
     })
   }
 })
+
+describe('Word Rush prompts', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/word-rush/content.json', import.meta.url), 'utf8')) as Record<
+    string,
+    { prompts: { kind: string; prompt: string; examples: string }[] }
+  >
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: 50+ prompts, no repeats, every kind used, examples for each`, () => {
+      const list = c[level].prompts
+      expect(list.length).toBeGreaterThanOrEqual(50)
+      expect(new Set(list.map((x) => x.prompt.toLowerCase())).size).toBe(list.length)
+      for (const kind of ['cat', 'rhyme', 'letter']) expect(list.some((x) => x.kind === kind), kind).toBe(true)
+      for (const x of list) {
+        expect(['cat', 'rhyme', 'letter']).toContain(x.kind)
+        expect(x.examples.split(',').length, x.prompt).toBeGreaterThanOrEqual(5)
+      }
+    })
+  }
+})

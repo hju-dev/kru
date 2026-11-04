@@ -310,8 +310,6 @@
     b.addEventListener('click', function () { S.secs = +b.dataset.secs; save(); renderMenu(); renderRound(); });
   });
   $('undoRound').addEventListener('click', function () { undoRound(); closeMenu(); showView('scores'); });
-  $('showRules').addEventListener('click', function () { closeMenu(); $('rulesBack').hidden = false; });
-  $('rulesClose').addEventListener('click', function () { $('rulesBack').hidden = true; });
   function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New game (scores back to 0)'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
@@ -342,6 +340,11 @@
     return { v: 1, level: level, rounds: rounds || 8, secs: secs || 60, round: 1, used: [], prompt: null, bonus: null, gold: 'S',
       added: false, totals: {}, last: {}, history: [], entry: {}, view: 'round' };
   }
+  // How to play slides: before the game starts, and from the ⋯ menu
+  var INTRO = [];
+  function showIntro() { return KruIntro.show(INTRO, { title: 'Word Rush' }); }
+  $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
@@ -358,6 +361,8 @@
       $('lvl').textContent = level;
       renderRound();
       renderTeams();
+      INTRO = KruIntro.forLevel(content, level);
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
       showView(S.view === 'scores' ? 'scores' : 'round');
     }).catch(function () {
       $('prompt').textContent = 'Could not load the prompts. Close the game and open it again.';
