@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { cleanRoster } from '../src/lib/bootstrap'
+import { cleanRoster, teamSetsForClass } from '../src/lib/bootstrap'
 import { buildSubmission, rankTeams } from '../src/lib/results'
 import type { Session } from '../src/lib/session'
 import {
@@ -81,6 +81,16 @@ describe('team setup', () => {
     ])
     expect(students).toEqual([{ id: 3, no: 3, nick: 'S3', active: true }])
     expect(issues).toEqual([{ class: '1/2', kind: 'duplicate-row', no: 3, nicks: ['s3'] }])
+  })
+})
+
+describe('saved team sets per class', () => {
+  const set = (id: string, cls: string) => ({ id, class: cls, name: id, savedAt: null, teams: [] })
+  it('matches class names ignoring spaces and capitals', () => {
+    const sets = [set('a', '3/2 P'), set('b', '3/2p'), set('c', '3/3P'), set('d', 'M.2/1')]
+    expect(teamSetsForClass(sets, '3/2P').map((t) => t.id)).toEqual(['a', 'b'])
+    expect(teamSetsForClass(sets, 'm.2 / 1').map((t) => t.id)).toEqual(['d'])
+    expect(teamSetsForClass(undefined, '3/2P')).toEqual([])
   })
 })
 

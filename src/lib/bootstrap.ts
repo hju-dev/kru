@@ -136,3 +136,9 @@ export function upgradeCachedBootstrap(data: Bootstrap): Bootstrap {
 export function classKeyOf(name: string): string {
   return name.replace(/\s+/g, '').toUpperCase()
 }
+
+/** The saved team sets for one class (class names match ignoring spaces and capitals). */
+export function teamSetsForClass(sets: TeamSet[] | undefined, cls: string): TeamSet[] {
+  const key = classKeyOf(cls)
+  return (sets ?? []).filter((t) => classKeyOf(t.class) === key)
+}
