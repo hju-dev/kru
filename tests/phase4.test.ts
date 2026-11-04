@@ -197,3 +197,38 @@ describe('class tools (Name Picker) skip team setup', () => {
     expect(s.teams[0]).toEqual({ id: 's1', name: 'S1', members: [{ no: 1, nick: 'S1' }] })
   })
 })
+
+describe('speaking + writing card games (shared card engine)', () => {
+  const read = (slug: string) => JSON.parse(readFileSync(new URL(`../public/games/${slug}/content.json`, import.meta.url), 'utf8'))
+  const check: Record<string, (it: Record<string, unknown>) => void> = {
+    'would-you-rather': (it) => expect(it.a && it.b).toBeTruthy(),
+    'just-a-minute': (it) => {
+      expect(it.topic).toBeTruthy()
+      expect(it.ideas).toHaveLength(3)
+    },
+    'sentence-builder': (it) => {
+      expect(it.words).toHaveLength(3)
+      expect(String(it.example)).toMatch(/^[A-Z].*[.?!]$/)
+    },
+    'category-grid': (it) => {
+      expect(String(it.letter)).toMatch(/^[A-Z]$/)
+      const cats = it.cats as { name: string; examples: string[] }[]
+      expect(cats).toHaveLength(5)
+      for (const c of cats) {
+        expect(c.examples.length, c.name).toBeGreaterThan(0)
+        for (const w of c.examples) expect(w[0].toUpperCase(), `${c.name}: ${w}`).toBe(it.letter)
+      }
+    },
+  }
+  for (const [slug, fn] of Object.entries(check)) {
+    const c = read(slug)
+    for (const level of ['M.1', 'M.2', 'M.3']) {
+      it(`${slug} ${level}: at least 50 cards, no repeats`, () => {
+        const items = c[level].items as Record<string, unknown>[]
+        expect(items.length).toBeGreaterThanOrEqual(50)
+        expect(new Set(items.map((x) => JSON.stringify(x))).size).toBe(items.length)
+        for (const it of items) fn(it)
+      })
+    }
+  }
+})

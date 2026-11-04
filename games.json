@@ -237,5 +237,81 @@
     "phoneLandscape": true,
     "status": "ready",
     "section": "tools"
+  },
+  {
+    "slug": "would-you-rather",
+    "title": "Would You Rather?",
+    "file": "public/games/would-you-rather/index.html",
+    "description": "Two choices on the board. Each team picks one and gives a reason (\"I'd rather ... because ...\"). Points for good reasons and linking words.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "speaking game",
+    "minutes": 10,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "speaking"
+  },
+  {
+    "slug": "just-a-minute",
+    "title": "Just a Minute",
+    "file": "public/games/just-a-minute/index.html",
+    "description": "One student talks on a topic until the timer ends: no long stops, no repeats. The other teams listen and challenge. Reveal shows three ideas to help.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "speaking game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "speaking"
+  },
+  {
+    "slug": "sentence-builder",
+    "title": "Sentence Builder",
+    "file": "public/games/sentence-builder/index.html",
+    "description": "Three word cards. Teams write one correct sentence that uses all three words. Reveal shows an example sentence.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "writing game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "writing"
+  },
+  {
+    "slug": "category-grid",
+    "title": "Category Grid",
+    "file": "public/games/category-grid/index.html",
+    "description": "A letter and five categories (Animals, Food, Jobs...). Teams write a word for each before the timer ends. Words no other team has score extra.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "writing game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "writing"
   }
 ]

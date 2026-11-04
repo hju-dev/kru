@@ -100,7 +100,7 @@ describe('library sections', () => {
 })
 
 describe('bonus cards', () => {
-  const withBonus = ['board-race', 'hot-seat-vocab', 'quiz-battle', 'sentence-scramble', 'tag-team', 'think-tank-showdown', 'word-rush']
+  const withBonus = ['board-race', 'category-grid', 'hot-seat-vocab', 'just-a-minute', 'sentence-builder', 'would-you-rather', 'quiz-battle', 'sentence-scramble', 'tag-team', 'think-tank-showdown', 'word-rush']
   type Card = { id: string; name: string; text: string; points?: number }
   for (const slug of withBonus) {
     it(`${slug}: loads the shared bonus cards; cards are short, with unique ids and small points`, () => {
