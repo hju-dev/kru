@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 import { Sheet } from '../components/Sheet'
 import { ApiError } from '../lib/api'
+import { teamSetsForClass } from '../lib/bootstrap'
 import { findGame } from '../lib/games'
 import { newSessionId, TEACHER_NAME, todayKey, type Mode, type Session, type Team } from '../lib/session'
 import { storage } from '../lib/storage'
@@ -295,8 +296,8 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
           <button className="tool" onClick={() => { setBins(clearBins(s.bins)); setSelected([]) }}>
             Clear
           </button>
-          <button className={`tool${s.teacher ? ' on' : ''}`} onClick={() => update({ teacher: !s.teacher })} aria-pressed={s.teacher}>
-            {TEACHER_NAME} team
+          <button className={`tool${s.teacher ? ' on' : ''}`} onClick={() => update({ teacher: !s.teacher })} aria-pressed={s.teacher} title="Add a teacher team">
+            {TEACHER_NAME}
           </button>
           <button className="tool" onClick={() => setSheet('load')}>
             Load teams
@@ -423,7 +424,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
 
       {sheet === 'load' && (
         <LoadSheet
-          sets={teamSets.filter((t) => t.class === s.class)}
+          sets={teamSetsForClass(teamSets, s.class)}
           onClose={() => setSheet(null)}
           onPick={(teams) => {
             const next = binsFromTeamSet(teams, roster, presentIds)
@@ -478,7 +479,7 @@ function SaveSheet({ session, bins, byId, onClose }: { session: Session; bins: B
   const [name, setName] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const existing = (data?.teamSets ?? []).find((t) => t.class === session.class && t.name.toLowerCase() === name.trim().toLowerCase())
+  const existing = teamSetsForClass(data?.teamSets, session.class).find((t) => t.name.toLowerCase() === name.trim().toLowerCase())
 
   async function save() {
     if (!name.trim()) return setError('Give the teams a name, like “Debate teams”.')

@@ -7,7 +7,24 @@ import { timeAgo } from '../../lib/time'
 import { adminErrorText, useAdmin } from '../../store/admin'
 import { useApp } from '../../store/app'
 
+/**
+ * On a phone, hand the file to the share sheet (Save to Files, AirDrop, Mail…), because a
+ * plain download is unreliable in an iPhone home-screen app. On a laptop, download it.
+ */
 function download(name: string, text: string) {
+  const file = new File([text], name, { type: 'text/csv' })
+  const phone = window.matchMedia('(pointer: coarse)').matches
+  if (phone && navigator.canShare?.({ files: [file] })) {
+    navigator.share({ files: [file], title: name }).catch((err: unknown) => {
+      // cancelled by the user: do nothing; anything else: fall back to a normal download
+      if (!(err instanceof DOMException && err.name === 'AbortError')) saveFile(name, text)
+    })
+    return
+  }
+  saveFile(name, text)
+}
+
+function saveFile(name: string, text: string) {
   const url = URL.createObjectURL(new Blob([text], { type: 'text/csv;charset=utf-8' }))
   const a = document.createElement('a')
   a.href = url

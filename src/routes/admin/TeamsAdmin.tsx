@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { classKeyOf } from '../../lib/bootstrap'
+import { teamSetsForClass } from '../../lib/bootstrap'
 import { binCountFor, binsFromTeamSet, clearBins, moveTo, resizeBins, shuffleTeams, unassigned, type Bin } from '../../lib/teams'
 import { adminErrorText } from '../../store/admin'
 import { useApp } from '../../store/app'
@@ -12,7 +12,7 @@ export function TeamsAdmin() {
   const [cls, setCls] = useState<string | null>(null)
   const [editing, setEditing] = useState<TeamSet | 'new' | null>(null)
   const current = classes.find((c) => c.name === cls) ?? classes.find((c) => c.name === lastClass) ?? classes[0] ?? null
-  const sets = (data?.teamSets ?? []).filter((t) => current && classKeyOf(t.class) === classKeyOf(current.name))
+  const sets = current ? teamSetsForClass(data?.teamSets, current.name) : []
 
   return (
     <main className="admin-page">
