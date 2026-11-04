@@ -29,6 +29,18 @@
 .grow {
   flex: 1;
 }
+.winners {
+  min-width: 0;
+  flex: 0 1 auto;
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.winners b {
+  color: var(--teal);
+}
 button.small {
   min-height: var(--tap);
   min-width: var(--tap);

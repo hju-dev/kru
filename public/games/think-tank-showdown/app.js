@@ -101,7 +101,8 @@
     // no bonus cards in the Final Wager (the bets are enough)
     if (R.kind === 'wager') { S.kbonus = null; KruBonus.attach(null); } else bonusRound('r' + S.r + 'q' + S.qi);
     $('round').innerHTML = esc(R.tag) + ': <b>' + esc(R.name) + '</b>';
-    $('qnum').innerHTML = Q.spare ? '<span class="spare">Spare question</span>' : 'Question ' + mainIndex() + ' / ' + mainCount();
+    $('qnum').innerHTML = Q.spare ? '<span class="spare">Spare question</span>' : '';
+    KruCorner.set($('stage'), Q.spare ? '' : mainIndex() + '/' + mainCount());
     $('rule').textContent = R.rule;
     $('rule').hidden = S.revealed; // room for the answer
     var wager = R.kind === 'wager';
@@ -350,6 +351,7 @@
       var level = content[session.level] ? session.level : 'M.2';
       var pools = content[level].rounds;
       teams = Kru.allTeams();
+      KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); } });
       var saved = session.resume;

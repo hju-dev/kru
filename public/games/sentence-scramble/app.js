@@ -87,7 +87,7 @@
   function renderStage() {
     var s = current(), w = words(s), o = tileOrder();
     bonusRound('s' + S.order[S.pos] + '-' + S.pos);
-    $('count').textContent = 'Sentence ' + (S.pos + 1) + ' of ' + S.order.length;
+    KruCorner.set($('stage'), (S.pos + 1) + '/' + S.order.length);
     $('focus').textContent = s.focus || '';
     $('tiles').innerHTML = o.map(function (i) { return '<span class="tile-w">' + esc(w[i]) + '</span>'; }).join('');
     var q = /\?\s*$/.test(s.text);
@@ -247,6 +247,7 @@
       var level = content[session.level] ? session.level : 'M.2';
       SENTENCES = content[level].sentences;
       teams = Kru.allTeams();
+      KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); renderTeams(); } });
       var saved = session.resume;

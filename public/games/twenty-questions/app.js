@@ -81,12 +81,10 @@
   function renderStrip() {
     var strip = $('strip');
     if (solo) {
-      // Solo: show the students who have won so far (points), for the board
-      var winners = teams.filter(function (t) { return pts(t.id); }).sort(function (a, b) { return pts(b.id) - pts(a.id); }).slice(0, 10);
-      strip.innerHTML = winners.map(function (t, i) {
-        return '<div class="tile" style="--c:' + COLORS[i % COLORS.length] + '"><span class="tn">' + esc(t.name) + '</span><span class="left">' + pts(t.id) + '</span><span class="tp">points</span></div>';
-      }).join('');
-      strip.hidden = !winners.length;
+      // Solo: winners so far as one small line in the top bar (never squashes the board)
+      var winners = teams.filter(function (t) { return pts(t.id); }).sort(function (a, b) { return pts(b.id) - pts(a.id); });
+      $('winners').innerHTML = winners.length ? '★ ' + winners.map(function (t) { return esc(t.name) + ' <b>' + pts(t.id) + '</b>'; }).join(' · ') : '';
+      strip.hidden = true;
       return;
     }
     strip.hidden = false;
@@ -237,6 +235,7 @@
       solo = session.mode === 'solo';
       // the teacher is thinking of the answer, so T. Henry doesn't play
       teams = session.teams.filter(function (t) { return t.members && t.members.length; });
+      KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }).filter(function (x) { return !solo || x.points > 0; }); } });
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.solo === solo) S = saved;
       else S = { v: 1, solo: solo, total: 20, round: 1, cat: null, left: {}, winner: null, done: null, pts: {}, log: [], introDone: false };
