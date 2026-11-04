@@ -12,6 +12,23 @@ const buildBootstrap = sandbox.buildBootstrap_ as (c: object[], r: object[], t: 
   teamSets: { id: string; class: string; name: string; teams: { name: string; members: { no: number; nick: string }[] }[] }[]
 }
 
+describe('Code.gs classText_', () => {
+  const classText = sandbox.classText_ as (v: unknown, d: { monthFirst: boolean }) => string
+  // Dates made inside the sandbox, as Sheets would hand them to the script
+  const sheetDate = (y: number, m: number, d: number) => runInNewContext(`new Date(${y}, ${m}, ${d})`, sandbox)
+
+  it('turns a class Sheets converted to a date back into what was typed', () => {
+    // US-style Sheet: typing "1/2" becomes 2 January
+    expect(classText(sheetDate(2026, 0, 2), { monthFirst: true })).toBe('1/2')
+    // Thai/UK-style Sheet: typing "1/2" becomes 1 February
+    expect(classText(sheetDate(2026, 1, 1), { monthFirst: false })).toBe('1/2')
+  })
+  it('leaves normal text alone', () => {
+    expect(classText(' M.3/2 ', { monthFirst: true })).toBe('M.3/2')
+    expect(classText('3/2P', { monthFirst: false })).toBe('3/2P')
+  })
+})
+
 describe('Code.gs buildBootstrap_', () => {
   it('groups rosters by class, sorts by number, and reads tick boxes', () => {
     const out = buildBootstrap(

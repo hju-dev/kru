@@ -13,3 +13,5 @@ kru_handoff.zip
 # Any roster/result exports
 *.xlsx
 *.csv
+
+.vercel

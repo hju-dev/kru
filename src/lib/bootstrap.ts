@@ -1,8 +1,8 @@
 import type { Bootstrap, ClassInfo, Level, Student, TeamSet } from '../types'
 
-/** "M.3/2" -> "M.3". Returns null if the class name has no M.1–M.3 grade in it. */
+/** "M.3/2", "3/2" or "3/2P" -> "M.3". Returns null if the class name has no M.1–M.3 grade in it. */
 export function levelFromClass(name: string): Level | null {
-  const m = /M\s*\.?\s*([1-3])/i.exec(name)
+  const m = /M\s*\.?\s*([1-3])/i.exec(name) ?? /^\s*([1-3])\s*\//.exec(name)
   return m ? (`M.${m[1]}` as Level) : null
 }
 

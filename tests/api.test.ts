@@ -82,5 +82,8 @@ describe('normalizeBootstrap', () => {
     expect(levelFromClass('M.2/3')).toBe('M.2')
     expect(levelFromClass('m3/1')).toBe('M.3')
     expect(levelFromClass('Club')).toBeNull()
+    expect(levelFromClass('1/2')).toBe('M.1')
+    expect(levelFromClass('3/2P')).toBe('M.3')
+    expect(levelFromClass('4/1')).toBeNull()
   })
 })

@@ -11,7 +11,7 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 1;
+var KRU_SCRIPT_VERSION = 2;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
@@ -161,7 +161,10 @@ function setup() {
   var props = PropertiesService.getScriptProperties();
   props.setProperty('KRU_SHEET_ID', ss.getId());
 
-  Object.keys(TABS).forEach(function (name) { ensureTab_(ss, name, TABS[name]); });
+  Object.keys(TABS).forEach(function (name) {
+    var sh = ensureTab_(ss, name, TABS[name]);
+    protectClassColumn_(ss, sh);
+  });
   ensureSummaryTab_(ss);
   formatRosters_(ss.getSheetByName('Rosters'));
   removeEmptyDefaultSheet_(ss);
@@ -219,13 +222,15 @@ function readTable_(ss, name) {
   if (!sh || sh.getLastRow() < 2) return [];
   var values = sh.getRange(1, 1, sh.getLastRow(), sh.getLastColumn()).getValues();
   var headers = values[0].map(function (h) { return String(h).trim(); });
+  var dates = dateStyle_(ss);
   var rows = [];
   for (var r = 1; r < values.length; r++) {
     var obj = {};
     var empty = true;
     for (var c = 0; c < headers.length; c++) {
       if (!headers[c]) continue;
-      obj[headers[c]] = values[r][c];
+      // Sheets turns a typed class like "1/2" into a date; turn it back into "1/2"
+      obj[headers[c]] = headers[c] === 'Class' ? classText_(values[r][c], dates) : values[r][c];
       if (values[r][c] !== '' && values[r][c] != null) empty = false;
     }
     if (!empty) rows.push(obj);
@@ -248,6 +253,53 @@ function ensureTab_(ss, name, headers) {
   sh.getRange(1, 1, 1, sh.getLastColumn()).setFontWeight('bold');
   sh.setFrozenRows(1);
   return sh;
+}
+
+/**
+ * Class names like "1/2" look like dates to Google Sheets. This sets the Class column to plain
+ * text (so new entries stay as typed) and turns any already-converted dates back into "1/2".
+ */
+function protectClassColumn_(ss, sh) {
+  var headers = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0].map(function (h) { return String(h).trim(); });
+  var col = headers.indexOf('Class') + 1;
+  if (col < 1) return;
+  var rows = Math.max(sh.getMaxRows() - 1, 1);
+  var range = sh.getRange(2, col, rows, 1);
+  var dates = dateStyle_(ss);
+  var values = range.getValues();
+  var changed = false;
+  var fixed = values.map(function (row) {
+    if (row[0] instanceof Date) {
+      changed = true;
+      return [classText_(row[0], dates)];
+    }
+    return [row[0]];
+  });
+  range.setNumberFormat('@');
+  if (changed) range.setValues(fixed);
+}
+
+/** How this Sheet reads typed dates: month first (US) or day first (Thailand, UK, …). */
+function dateStyle_(ss) {
+  var locale = String(ss.getSpreadsheetLocale() || '');
+  return {
+    monthFirst: /^(en_US|es_US|en_PH|fil_PH)/.test(locale),
+    timeZone: ss.getSpreadsheetTimeZone(),
+  };
+}
+
+/** A Class cell as text. If Sheets turned "1/2" into a date, rebuild "1/2" the way it was typed. */
+function classText_(v, dates) {
+  if (!(v instanceof Date)) return text_(v);
+  var day, month;
+  if (typeof Utilities !== 'undefined' && dates && dates.timeZone) {
+    day = Number(Utilities.formatDate(v, dates.timeZone, 'd'));
+    month = Number(Utilities.formatDate(v, dates.timeZone, 'M'));
+  } else {
+    day = v.getDate();
+    month = v.getMonth() + 1;
+  }
+  return dates && dates.monthFirst ? month + '/' + day : day + '/' + month;
 }
 
 function ensureSummaryTab_(ss) {

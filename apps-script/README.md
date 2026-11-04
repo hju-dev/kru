@@ -84,3 +84,4 @@ If the update added new tabs or columns, run **Kru → Set up tabs** once more. 
 | "The Sheet isn't set up yet" | Run **Kru → Set up tabs**. |
 | "Google couldn't find that script" | Copy the Web app URL again from **Deploy → Manage deployments**. |
 | Changes to the script don't seem to work | You probably saved but didn't make a **New version** (see above). |
+| A class shows up as a long date ("Fri Jan 02 2026…") | Sheets turned a class like `1/2` into a date. Run **Kru → Set up tabs**: it changes the Class columns to plain text and turns those dates back into `1/2`. Then tap Sync in the app. |
