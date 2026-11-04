@@ -1,5 +1,5 @@
 {
- "about": "Quiz Battle built-in question sets per level (general review, written for Kru). choices + answer index = multiple choice; answer text only = short answer (shown on Reveal). double = x2 points. Henry adds his own sets in the Questions tab of his Sheet (Code.gs v6).",
+ "about": "Quiz Battle built-in question sets per level (general review, written for Kru). 5 sets of 10 per level; questions are shuffled every game; \"All topics\" mixes all 50. choices + answer index = multiple choice; answer text only = short answer (shown on Reveal). double = x2 points. Henry adds his own sets in the Questions tab of his Sheet (Code.gs v6).",
  "M.1": {
   "sets": [
    {
@@ -204,6 +204,315 @@
      {
       "q": "Spell the number 12.",
       "answer": "twelve",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Present simple",
+    "questions": [
+     {
+      "q": "She ___ to school every day.",
+      "choices": [
+       "walk",
+       "walks",
+       "walking",
+       "walked"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "I ___ like spicy food.",
+      "choices": [
+       "don't",
+       "doesn't",
+       "isn't",
+       "aren't"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "___ your brother play football?",
+      "choices": [
+       "Do",
+       "Does",
+       "Is",
+       "Are"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "My cat ___ fish.",
+      "choices": [
+       "eat",
+       "eats",
+       "eating",
+       "is eat"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "We ___ English on Monday.",
+      "choices": [
+       "study",
+       "studies",
+       "studying",
+       "is study"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Write it for \"he\": I watch TV.",
+      "answer": "He watches TV.",
+      "double": false
+     },
+     {
+      "q": "He ___ a bike.",
+      "choices": [
+       "have",
+       "has",
+       "haves",
+       "having"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "She go to bed at 9.",
+       "She goes to bed at 9.",
+       "She going to bed at 9.",
+       "She gos to bed at 9."
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "They ___ in Bangkok.",
+      "choices": [
+       "lives",
+       "live",
+       "living",
+       "is live"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Make it negative: \"He likes milk.\"",
+      "answer": "He doesn't like milk.",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Food and animals",
+    "questions": [
+     {
+      "q": "Which one is a vegetable?",
+      "choices": [
+       "apple",
+       "carrot",
+       "banana",
+       "mango"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Which animal can fly?",
+      "choices": [
+       "a fish",
+       "a cow",
+       "a bird",
+       "a snake"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "Which animal lives in water?",
+      "choices": [
+       "a fish",
+       "a horse",
+       "a cat",
+       "a chicken"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "We get milk from a ___.",
+      "choices": [
+       "dog",
+       "cow",
+       "bird",
+       "frog"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Which one is a drink?",
+      "choices": [
+       "bread",
+       "rice",
+       "juice",
+       "egg"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "What animal is very big and grey with a long nose?",
+      "answer": "an elephant",
+      "double": false
+     },
+     {
+      "q": "Which food is sweet?",
+      "choices": [
+       "chocolate",
+       "salt",
+       "lemon",
+       "chilli"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "A baby dog is a ___.",
+      "choices": [
+       "kitten",
+       "puppy",
+       "calf",
+       "chick"
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "Which animal says \"quack\"?",
+      "choices": [
+       "a duck",
+       "a pig",
+       "a cow",
+       "a dog"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "What is the yellow fruit that monkeys love?",
+      "answer": "a banana",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Prepositions and questions",
+    "questions": [
+     {
+      "q": "The cat is ___ the box. (inside)",
+      "choices": [
+       "in",
+       "on",
+       "at",
+       "under"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "My birthday is ___ May.",
+      "choices": [
+       "on",
+       "in",
+       "at",
+       "to"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "School starts ___ 8 o'clock.",
+      "choices": [
+       "in",
+       "on",
+       "at",
+       "to"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "___ is your name?",
+      "choices": [
+       "Where",
+       "What",
+       "When",
+       "Who"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "___ do you live?",
+      "choices": [
+       "Where",
+       "What",
+       "Why",
+       "How"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Write the question word: \"___ old are you?\"",
+      "answer": "How",
+      "double": false
+     },
+     {
+      "q": "The book is ___ the table. (on top)",
+      "choices": [
+       "in",
+       "on",
+       "at",
+       "from"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "___ is your favourite teacher?",
+      "choices": [
+       "Who",
+       "Where",
+       "When",
+       "How"
+      ],
+      "answer": 0,
+      "double": true
+     },
+     {
+      "q": "We play football ___ Saturday.",
+      "choices": [
+       "in",
+       "at",
+       "on",
+       "to"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "Write the question word: \"___ is your birthday?\" (a date)",
+      "answer": "When",
       "double": false
      }
     ]
@@ -417,6 +726,315 @@
       "double": false
      }
     ]
+   },
+   {
+    "name": "Comparatives and superlatives",
+    "questions": [
+     {
+      "q": "An elephant is ___ than a dog.",
+      "choices": [
+       "big",
+       "bigger",
+       "biggest",
+       "more big"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "This is the ___ day of the year!",
+      "choices": [
+       "hot",
+       "hotter",
+       "hottest",
+       "most hot"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "Bangkok is ___ than my village.",
+      "choices": [
+       "busy",
+       "busier",
+       "busiest",
+       "more busy"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "English is ___ than maths for me.",
+      "choices": [
+       "easy",
+       "easier",
+       "easiest",
+       "more easy"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "That was the ___ film I have ever seen.",
+      "choices": [
+       "bad",
+       "worse",
+       "worst",
+       "baddest"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "Write the comparative of \"good\".",
+      "answer": "better",
+      "double": false
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "She is more tall than me.",
+       "She is taller than me.",
+       "She is tallest than me.",
+       "She is tall than me."
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "My little sister is ___ than me. (young)",
+      "choices": [
+       "more young",
+       "younger",
+       "youngest",
+       "young"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "This hotel is the ___ in town.",
+      "choices": [
+       "more expensive",
+       "most expensive",
+       "expensiver",
+       "expensive"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Write the superlative of \"beautiful\".",
+      "answer": "the most beautiful",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Linking words",
+    "questions": [
+     {
+      "q": "I was tired, ___ I went to bed early.",
+      "choices": [
+       "so",
+       "but",
+       "because",
+       "although"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "I stayed at home ___ it was raining.",
+      "choices": [
+       "so",
+       "because",
+       "but",
+       "or"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "___ it was cold, we went swimming.",
+      "choices": [
+       "Because",
+       "So",
+       "Although",
+       "And"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "I like tea, ___ I don't like coffee.",
+      "choices": [
+       "and",
+       "but",
+       "so",
+       "because"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "First we had lunch, ___ we went to the beach.",
+      "choices": [
+       "then",
+       "but",
+       "because",
+       "although"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Finish with \"because\": \"I was happy ___\"",
+      "answer": "Any good ending, e.g. because I passed the test.",
+      "double": false
+     },
+     {
+      "q": "Do you want tea ___ coffee?",
+      "choices": [
+       "but",
+       "or",
+       "so",
+       "because"
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "___ I was sleeping, someone knocked on the door.",
+      "choices": [
+       "While",
+       "So",
+       "But",
+       "Or"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "She studied hard, ___ she passed the exam.",
+      "choices": [
+       "but",
+       "so",
+       "although",
+       "or"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Join with \"but\": \"The hotel was nice. The food was bad.\"",
+      "answer": "The hotel was nice, but the food was bad.",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Places and transport",
+    "questions": [
+     {
+      "q": "You catch a train at a ___.",
+      "choices": [
+       "station",
+       "library",
+       "hospital",
+       "museum"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "You borrow books from a ___.",
+      "choices": [
+       "bank",
+       "library",
+       "market",
+       "temple"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Which one goes on water?",
+      "choices": [
+       "a bus",
+       "a boat",
+       "a plane",
+       "a taxi"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "You can see old things from history in a ___.",
+      "choices": [
+       "museum",
+       "pharmacy",
+       "garage",
+       "hotel"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "We went to Chiang Mai ___ train.",
+      "choices": [
+       "by",
+       "on",
+       "in",
+       "at"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Where do you go when you are very ill?",
+      "answer": "a hospital",
+      "double": false
+     },
+     {
+      "q": "You buy medicine at a ___.",
+      "choices": [
+       "bakery",
+       "pharmacy",
+       "post office",
+       "cinema"
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "A tuk-tuk has ___ wheels.",
+      "choices": [
+       "two",
+       "three",
+       "four",
+       "six"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "You change money at a ___.",
+      "choices": [
+       "bank",
+       "park",
+       "school",
+       "zoo"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Name a place where you can watch a film.",
+      "answer": "a cinema",
+      "double": false
+     }
+    ]
    }
   ]
  },
@@ -627,7 +1245,381 @@
       "double": false
      }
     ]
+   },
+   {
+    "name": "Relative clauses",
+    "questions": [
+     {
+      "q": "The man ___ lives next door is a doctor.",
+      "choices": [
+       "which",
+       "who",
+       "where",
+       "whose"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "This is the house ___ I was born.",
+      "choices": [
+       "who",
+       "which",
+       "where",
+       "whose"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "The phone ___ I bought is broken.",
+      "choices": [
+       "who",
+       "that",
+       "where",
+       "whose"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "She's the girl ___ brother is famous.",
+      "choices": [
+       "who",
+       "which",
+       "whose",
+       "where"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "The film ___ we watched was boring.",
+      "choices": [
+       "which",
+       "who",
+       "where",
+       "whose"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Join with \"who\": \"I have a friend. She speaks French.\"",
+      "answer": "I have a friend who speaks French.",
+      "double": false
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "The book who I read was great.",
+       "The book which I read was great.",
+       "The book where I read was great.",
+       "The book whose I read was great."
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "Bangkok, ___ is the capital of Thailand, is very busy.",
+      "choices": [
+       "that",
+       "which",
+       "who",
+       "where"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Do you know anyone ___ can fix computers?",
+      "choices": [
+       "who",
+       "which",
+       "where",
+       "whose"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Join with \"where\": \"This is the café. We met there.\"",
+      "answer": "This is the café where we met.",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Phrasal verbs",
+    "questions": [
+     {
+      "q": "\"Give up\" means ___.",
+      "choices": [
+       "start",
+       "stop trying",
+       "go up",
+       "give a present"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Please ___ the lights when you leave. (switch off)",
+      "choices": [
+       "turn on",
+       "turn off",
+       "turn up",
+       "turn in"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Can you ___ my cat while I'm away?",
+      "choices": [
+       "look for",
+       "look after",
+       "look up",
+       "look at"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "I need to ___ this word in the dictionary.",
+      "choices": [
+       "look up",
+       "look after",
+       "look out",
+       "look back"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "We've ___ milk. Can you buy some?",
+      "choices": [
+       "run out of",
+       "run into",
+       "run away",
+       "run up"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "What phrasal verb means \"discover information\"? (find ___)",
+      "answer": "find out",
+      "double": false
+     },
+     {
+      "q": "The plane ___ at 6 a.m.",
+      "choices": [
+       "took off",
+       "took up",
+       "took after",
+       "took on"
+      ],
+      "answer": 0,
+      "double": true
+     },
+     {
+      "q": "She ___ her mother: they look the same.",
+      "choices": [
+       "takes after",
+       "takes off",
+       "takes up",
+       "takes in"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Our car ___ on the way to Hua Hin.",
+      "choices": [
+       "broke up",
+       "broke down",
+       "broke in",
+       "broke out"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "What phrasal verb means \"continue\"? (carry ___)",
+      "answer": "carry on",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Word formation",
+    "questions": [
+     {
+      "q": "The noun from \"happy\" is ___.",
+      "choices": [
+       "happily",
+       "happiness",
+       "happyness",
+       "unhappy"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "The adjective from \"danger\" is ___.",
+      "choices": [
+       "dangerful",
+       "dangerous",
+       "dangery",
+       "endanger"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "The opposite of \"possible\" is ___.",
+      "choices": [
+       "unpossible",
+       "impossible",
+       "dispossible",
+       "inpossible"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "The noun from \"decide\" is ___.",
+      "choices": [
+       "decision",
+       "decidement",
+       "deciding",
+       "decisive"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "The opposite of \"honest\" is ___.",
+      "choices": [
+       "unhonest",
+       "dishonest",
+       "inhonest",
+       "imhonest"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Write the adjective from \"beauty\".",
+      "answer": "beautiful",
+      "double": false
+     },
+     {
+      "q": "The adverb from \"careful\" is ___.",
+      "choices": [
+       "carefully",
+       "carefuly",
+       "carely",
+       "careless"
+      ],
+      "answer": 0,
+      "double": true
+     },
+     {
+      "q": "A person who teaches is a ___.",
+      "choices": [
+       "teachist",
+       "teacher",
+       "teachor",
+       "teachian"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "The noun from \"free\" is ___.",
+      "choices": [
+       "freeness",
+       "freedom",
+       "freely",
+       "freement"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Write the opposite of \"legal\".",
+      "answer": "illegal",
+      "double": false
+     }
+    ]
    }
   ]
- }
+ },
+ "intro": [
+  {
+   "title": "Quiz Battle",
+   "text": [
+    "One question at a time.",
+    "Talk with your team and choose an answer."
+   ],
+   "example": {
+    "label": "Example",
+    "big": "Yesterday I ___ to the park.",
+    "rows": [
+     [
+      "A",
+      "go"
+     ],
+     [
+      "B",
+      "went"
+     ],
+     [
+      "C",
+      "gone"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Show your answer",
+   "text": [
+    "Write the letter or the answer on your board.",
+    "Hold it up when the timer ends!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Choices",
+      "write A, B, C or D"
+     ],
+     [
+      "Short answer",
+      "write the word"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "Every right team gets a point.",
+    "DOUBLE questions are worth 2!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Right",
+      "+1"
+     ],
+     [
+      "DOUBLE ×2",
+      "+2"
+     ]
+    ]
+   }
+  }
+ ]
 }

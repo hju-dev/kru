@@ -110,13 +110,14 @@ describe('Quiz Battle questions', () => {
       { q: 'ok short', answer: 'went', double: false },
     ] }])
   })
-  it('built-in sets: every level has sets of 8+ questions with valid answers', () => {
+  it('built-in sets: 5+ sets and 50+ questions per level, valid answers', () => {
     const c = JSON.parse(readFileSync(new URL('../public/games/quiz-battle/content.json', import.meta.url), 'utf8')) as Record<
       string,
       { sets: { name: string; questions: { q: string; choices?: string[]; answer: number | string; double: boolean }[] }[] }
     >
     for (const level of ['M.1', 'M.2', 'M.3']) {
-      expect(c[level].sets.length).toBeGreaterThanOrEqual(2)
+      expect(c[level].sets.length).toBeGreaterThanOrEqual(5)
+      expect(c[level].sets.reduce((n, x) => n + x.questions.length, 0)).toBeGreaterThanOrEqual(50)
       for (const s of c[level].sets) {
         expect(s.questions.length, s.name).toBeGreaterThanOrEqual(8)
         for (const q of s.questions) {

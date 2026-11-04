@@ -19,13 +19,26 @@
   function save() { Kru.saveState(S); }
   function pts(id) { return S.pts[id] || 0; }
   function team(id) { return teams.find(function (t) { return t.id === id; }); }
+  var ALL = null; // "All topics, shuffled": every built-in question for this level
   function setByKey(key) {
     if (!key) return null;
+    if (key === 'all') return ALL;
     var i = Number(key.slice(2));
     return key.charAt(0) === 'b' ? builtIn[i] || null : fromSheet[i] || null;
   }
   function set() { return setByKey(S.setKey); }
-  function question() { var s = set(); return s ? s.questions[S.pos] : null; }
+  function shuffled(n) {
+    var a = [];
+    for (var i = 0; i < n; i++) a.push(i);
+    for (var j = n - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var x = a[j]; a[j] = a[k]; a[k] = x; }
+    return a;
+  }
+  function question() {
+    var s = set();
+    if (!s) return null;
+    var i = S.order && S.order.length === s.questions.length ? S.order[S.pos] : S.pos;
+    return s.questions[i];
+  }
   function right() { return S.right[S.pos] || (S.right[S.pos] = []); }
   function worth() { var q = question(); return q && q.double ? 2 : 1; }
 
@@ -179,7 +192,7 @@
       var doubles = s.questions.filter(function (q) { return q.double; }).length;
       return '<button class="btn" data-set="' + key + '"><b>' + esc(s.name) + '</b><br /><small>' + s.questions.length + ' questions' + (doubles ? ' · ' + doubles + ' double' : '') + '</small></button>';
     }
-    var html = '<h3>Built in</h3>' + builtIn.map(function (s, i) { return btn(s, 'b:' + i); }).join('');
+    var html = '<h3>Built in</h3>' + btn(ALL, 'all') + builtIn.map(function (s, i) { return btn(s, 'b:' + i); }).join('');
     html += '<h3>From your Sheet</h3>' + (fromSheet.length
       ? fromSheet.map(function (s, i) { return btn(s, 's:' + i); }).join('')
       : '<p class="muted">None yet for this level. Add questions in the Questions tab of your Sheet, then Sync.</p>');
@@ -197,6 +210,7 @@
     if (!b) return;
     S.setKey = b.dataset.set;
     S.setName = set() ? set().name : '';
+    S.order = set() ? shuffled(set().questions.length) : [];
     S.pos = 0; S.revealed = {}; S.right = {};
     save();
     $('setsBack').hidden = true;
@@ -246,11 +260,17 @@
     Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
   });
 
+  // How to play slides: before the game starts, and from the ⋯ menu
+  var INTRO = [];
+  function showIntro() { return KruIntro.show(INTRO, { title: 'Quiz Battle' }); }
+  $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       builtIn = content[level].sets;
+      ALL = { name: 'All topics, shuffled', questions: [].concat.apply([], builtIn.map(function (s) { return s.questions; })) };
       // Henry's own sets from the Sheet (only sent by Kru; none in mock mode)
       fromSheet = Array.isArray(session.questions) ? session.questions.filter(function (s) { return s && Array.isArray(s.questions) && s.questions.length; }) : [];
       problems = Array.isArray(session.questionProblems) ? session.questionProblems : [];
@@ -267,6 +287,8 @@
         renderTeams();
         openSets();
       }
+      INTRO = KruIntro.forLevel(content, level);
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
     }).catch(function () {
       $('q').textContent = 'Could not load the questions. Close the game and open it again.';
     });
