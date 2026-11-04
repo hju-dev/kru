@@ -177,5 +177,22 @@
     "type": "vocabulary game",
     "phoneLandscape": true,
     "section": "speaking"
+  },
+  {
+    "slug": "twenty-questions",
+    "title": "20 Questions",
+    "file": "public/games/twenty-questions/index.html",
+    "description": "You think of a person, place, thing or idea; the class shows only the category. Teams (or the whole class) ask yes/no questions, with a countdown of questions left. The winner gets a point for each question left.",
+    "levels": [],
+    "type": "speaking game",
+    "minutes": 15,
+    "modes": [
+      "group",
+      "solo"
+    ],
+    "phoneLandscape": true,
+    "results": "scored-solo",
+    "status": "ready",
+    "section": "speaking"
   }
 ]

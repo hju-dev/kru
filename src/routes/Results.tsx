@@ -29,7 +29,7 @@ function ResultsView({ session: s }: { session: Session }) {
   const game = findGame(s.game)
   const scores = s.scores ?? {}
   const pts = (teamId: string) => scores[teamId] ?? 0
-  const onlyScored = game?.results === 'scored'
+  const onlyScored = game?.results === 'scored' || (game?.results === 'scored-solo' && s.mode === 'solo')
   // "scored" games (Name Picker): only students who got points are listed and saved
   const saved = submittedTeams(s, scores, onlyScored)
   // keep anyone given points in the game on the list, even if edited back to 0 here
