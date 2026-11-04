@@ -83,3 +83,18 @@ describe('every student game has How to play slides', () => {
     it(g.slug, () => expect(read(`public/games/${g.slug}/index.html`)).toContain('/games/shared/kru-intro.js'))
   }
 })
+
+describe('library sections', () => {
+  it('every game is in a known section; sections A-Z with Tools last; games A-Z inside', async () => {
+    const { SECTIONS, librarySections } = await import('../src/lib/games')
+    const ids = SECTIONS.map((s) => s.id)
+    for (const g of games) expect(ids, g.slug).toContain((g as { section?: string }).section)
+    const titles = SECTIONS.map((s) => s.title)
+    expect(titles[titles.length - 1]).toBe('Tools')
+    expect(titles.slice(0, -1)).toEqual([...titles.slice(0, -1)].sort())
+    for (const s of librarySections()) {
+      const t = s.games.map((g) => g.title)
+      expect(t).toEqual([...t].sort((a, b) => a.localeCompare(b, 'en')))
+    }
+  })
+})
