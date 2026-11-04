@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
-    <title>Name Picker / Hot Seat</title>
+    <title>Name Picker</title>
     <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -22,10 +23,6 @@
           <span class="no" id="no"></span>
           <span class="name" id="name">Tap Spin!</span>
           <span class="pts" id="pts"></span>
-        </div>
-        <div class="card" id="card" hidden>
-          <span class="eyebrow">Hot seat question</span>
-          <div class="q" id="q"></div>
         </div>
       </section>
 
@@ -44,8 +41,7 @@
 
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="More options">
-        <button class="btn" id="toggleCards">Question cards: on</button>
-        <button class="btn" id="newQ">New question</button>
+        <button class="btn" id="howTo">How to play</button>
         <button class="btn" id="undo">Undo last points</button>
         <button class="btn ghost danger" id="resetDay">Everyone can be picked again</button>
         <button class="btn ghost" id="menuClose">Close</button>
@@ -53,6 +49,7 @@
     </div>
 
     <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

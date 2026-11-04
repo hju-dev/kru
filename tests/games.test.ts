@@ -51,3 +51,28 @@ describe('Talk Timer starting presets', () => {
     }
   })
 })
+
+describe('How to play slides', () => {
+  type Slide = { title?: string; text?: string | string[]; example?: Record<string, unknown> }
+  for (const g of ready) {
+    const html = read(`public/games/${g.slug}/index.html`)
+    if (!html.includes('/games/shared/kru-intro.js')) continue
+    it(`${g.slug}: has slides (2-6, each with a short title and at most 2 short lines)`, () => {
+      expect(html).toContain('/games/shared/kru-intro.css')
+      const c = JSON.parse(read(`public/games/${g.slug}/content.json`)) as Record<string, unknown> & { intro?: Slide[] }
+      const decks: Slide[][] = [c.intro, ...['M.1', 'M.2', 'M.3'].map((l) => (c[l] as { intro?: Slide[] } | undefined)?.intro)].filter(Boolean) as Slide[][]
+      expect(decks.length).toBeGreaterThan(0)
+      for (const deck of decks) {
+        expect(deck.length).toBeGreaterThanOrEqual(2)
+        expect(deck.length).toBeLessThanOrEqual(6)
+        for (const s of deck) {
+          expect(s.title, JSON.stringify(s)).toBeTruthy()
+          expect(s.title!.length, s.title).toBeLessThanOrEqual(30)
+          const lines = Array.isArray(s.text) ? s.text : s.text ? [s.text] : []
+          expect(lines.length, s.title).toBeLessThanOrEqual(2) // not a wall of text
+          for (const l of lines) expect(l.length, l).toBeLessThanOrEqual(90)
+        }
+      }
+    })
+  }
+})

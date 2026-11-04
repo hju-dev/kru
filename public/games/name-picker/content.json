@@ -1,75 +1,20 @@
 {
-  "about": "Name Picker question cards per level. One is shown with each picked student (Henry can turn cards off). M.1 = A2 personal questions, M.2 = B1 past experiences and holidays, M.3 = B1+ opinions and 'if' questions. Written for Kru.",
-  "M.1": {
-    "questions": [
-      "What is your favourite food? Why?",
-      "What did you eat for breakfast today?",
-      "What do you do after school?",
-      "Tell me about your best friend.",
-      "What is your favourite animal? Why?",
-      "What did you do last weekend?",
-      "What time do you get up on Monday?",
-      "What is in your school bag?",
-      "Do you like rain? Why or why not?",
-      "Who is in your family?",
-      "What sport do you like?",
-      "What do you want for your birthday?",
-      "Where do you want to go on holiday?",
-      "What is your favourite subject? Why?",
-      "What did you watch on TV yesterday?",
-      "How do you come to school?",
-      "What is your favourite song?",
-      "Tell me one thing you can cook.",
-      "What can you see in this classroom?",
-      "What is your favourite colour? What things are that colour?"
-    ]
-  },
-  "M.2": {
-    "questions": [
-      "Tell me one thing you did on holiday.",
-      "What were you doing at 8 o'clock last night?",
-      "Describe your perfect weekend.",
-      "What is the best place you have ever visited?",
-      "What were you doing when the bell rang this morning?",
-      "Tell me about a time you were really happy.",
-      "If you could visit any country, where would you go? Why?",
-      "What is something you are good at?",
-      "What do you usually do in the school holidays?",
-      "What is the best present you have ever got?",
-      "What would you buy with 1,000 baht?",
-      "Describe your house in three sentences.",
-      "What was the last film you watched? Did you like it?",
-      "What do you like doing with your friends?",
-      "Tell me about a festival you enjoy.",
-      "What job do you want in the future? Why?",
-      "What were you doing at this time yesterday?",
-      "What is the most interesting place in your town?",
-      "Tell me something you learned this week.",
-      "What was the weather like on your last holiday?"
-    ]
-  },
-  "M.3": {
-    "questions": [
-      "Should students wear uniforms? Why or why not?",
-      "If you could change one thing about our school, what would it be?",
-      "What is the best way to learn English?",
-      "Would you rather be famous or rich? Why?",
-      "What will your life be like in ten years?",
-      "Is social media good or bad for teenagers?",
-      "If you had a superpower, what would you do with it?",
-      "Describe a person you admire and say why.",
-      "What is the most useful invention ever? Why?",
-      "Should homework be banned? Give one reason.",
-      "What would you do if you found 10,000 baht in the street?",
-      "What makes a good friend?",
-      "Would you rather live in the city or the countryside? Why?",
-      "What is one problem in your community, and how could we fix it?",
-      "If you could meet anyone, alive or dead, who would it be?",
-      "What is more important: money or free time?",
-      "Tell me about a mistake you learned from.",
-      "Should everyone learn to cook at school?",
-      "What jobs will robots do in the future?",
-      "What advice would you give to a new M.1 student?"
-    ]
-  }
+  "about": "Name Picker has no questions: it only picks names. 'intro' = the How to play slides students see before it starts.",
+  "intro": [
+    {
+      "title": "Name Picker",
+      "text": ["Kru picks one name at random.", "It could be you!"],
+      "example": { "label": "Example", "big": "12 · S12" }
+    },
+    {
+      "title": "Everyone gets a turn",
+      "text": ["Nobody is picked twice until everyone has had a turn today."],
+      "example": { "rows": [["Picked", "✓ S3 · S17 · S9"], ["Still to go", "everyone else"]] }
+    },
+    {
+      "title": "Be ready!",
+      "text": ["When your name comes up, answer the question.", "A good answer can win points."],
+      "example": { "rows": [["Good answer", "+1"], ["Great answer", "+2"]] }
+    }
+  ]
 }

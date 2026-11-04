@@ -1,4 +1,4 @@
-/* Name Picker / Hot Seat, phone landscape: one big name, a question card, big buttons. */
+/* Name Picker, phone landscape: one big name and big buttons. */
 .np {
   height: 100%;
   display: flex;
@@ -82,25 +82,6 @@ button.small {
 }
 .who.spinning .name {
   color: var(--muted);
-}
-.card {
-  width: min(640px, 100%);
-  border: 2px dashed var(--line);
-  border-radius: 14px;
-  padding: 6px 14px;
-  text-align: center;
-}
-.eyebrow {
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.card .q {
-  font: 700 24px/1.2 var(--display);
-  text-wrap: balance;
 }
 
 .controls {
