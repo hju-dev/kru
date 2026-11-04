@@ -73,7 +73,8 @@
     $('newRound').hidden = !S.done;
     $('minusClass').hidden = !solo || !!S.done;
     $('minusClass').disabled = left(CLASS) <= 0;
-    $('hint').textContent = S.done ? '' : !S.cat ? 'Choose the category first.' : solo ? 'Tap −1 for each question.' : 'Tap a team for each question it asks.';
+    // Solo: the winners so far go here; Group: a short reminder once the round has a category
+    if (!solo) $('hint').textContent = S.done || !S.cat ? '' : 'Tap a team for each question it asks.';
     renderStrip();
     $('totalOut').textContent = S.total;
     $('undo').disabled = !S.log.length;
@@ -81,9 +82,9 @@
   function renderStrip() {
     var strip = $('strip');
     if (solo) {
-      // Solo: winners so far as one small line in the top bar (never squashes the board)
+      // Solo: winners so far as one small line where the hint goes (never squashes the board)
       var winners = teams.filter(function (t) { return pts(t.id); }).sort(function (a, b) { return pts(b.id) - pts(a.id); });
-      $('winners').innerHTML = winners.length ? '★ ' + winners.map(function (t) { return esc(t.name) + ' <b>' + pts(t.id) + '</b>'; }).join(' · ') : '';
+      $('hint').innerHTML = winners.length ? '★ ' + winners.map(function (t) { return esc(t.name) + ' <b>' + pts(t.id) + '</b>'; }).join(' · ') : '';
       strip.hidden = true;
       return;
     }
