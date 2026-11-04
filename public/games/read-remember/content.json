@@ -1,0 +1,96 @@
+{
+ "about": "Stories come from the shared bank: games/shared/stories.json (50+ per level, shuffled every game). This file has the How to play slides and bonus cards.",
+ "intro": [
+  {
+   "title": "Read & Remember",
+   "text": [
+    "Read the story together.",
+    "Remember as much as you can!"
+   ],
+   "example": {
+    "big": "Tom got a new dog on Saturday...",
+    "tag": "Story"
+   }
+  },
+  {
+   "title": "The story disappears",
+   "text": [
+    "Then the story is hidden.",
+    "Three questions appear."
+   ],
+   "example": {
+    "rows": [
+     [
+      "1",
+      "What is the dog's name?"
+     ],
+     [
+      "2",
+      "What color is it?"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Write and win",
+   "text": [
+    "Write the answers on your board.",
+    "No looking back!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Each correct answer",
+      "+1"
+     ],
+     [
+      "All three",
+      "+3"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "one-reader",
+    "name": "One reader",
+    "text": "Only ONE student can read. They tell the team: +2",
+    "points": 2
+   },
+   {
+    "id": "full",
+    "name": "Full sentences",
+    "text": "Answer in full sentences: +2",
+    "points": 2
+   },
+   {
+    "id": "extra",
+    "name": "Extra detail",
+    "text": "Remember one more detail from the story: +1",
+    "points": 1
+   }
+  ],
+  "secret": [
+   {
+    "id": "first",
+    "name": "Fastest team",
+    "text": "+2 for the first team with all answers right!",
+    "points": 2
+   },
+   {
+    "id": "spelling",
+    "name": "Perfect spelling",
+    "text": "+1 if every answer is spelled correctly!",
+    "points": 1
+   },
+   {
+    "id": "title",
+    "name": "Remember the title",
+    "text": "+1 if your team can say the story title!",
+    "points": 1
+   }
+  ]
+ }
+}

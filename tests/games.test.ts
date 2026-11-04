@@ -100,7 +100,10 @@ describe('library sections', () => {
 })
 
 describe('bonus cards', () => {
-  const withBonus = ['board-race', 'category-grid', 'hot-seat-vocab', 'just-a-minute', 'sentence-builder', 'would-you-rather', 'quiz-battle', 'sentence-scramble', 'tag-team', 'think-tank-showdown', 'word-rush']
+  const withBonus = [
+    'board-race', 'category-grid', 'hot-seat-vocab', 'just-a-minute', 'quiz-battle', 'read-remember', 'scan-it', 'sentence-builder', 'sentence-scramble',
+    'spot-the-mistakes', 'story-order', 'tag-team', 'think-tank-showdown', 'true-false-race', 'word-rush', 'would-you-rather',
+  ]
   type Card = { id: string; name: string; text: string; points?: number }
   for (const slug of withBonus) {
     it(`${slug}: loads the shared bonus cards; cards are short, with unique ids and small points`, () => {
@@ -173,6 +176,9 @@ describe('American English (Henry)', () => {
       }
     })
   }
+  it('the shared story bank', () => {
+    for (const l of read('public/games/shared/stories.json').split('\n')) expect(l.match(british)?.[0], l.trim().slice(0, 80)).toBeUndefined()
+  })
   it('games.json descriptions', () => {
     for (const g of games) expect(JSON.stringify(g).match(british)?.[0], g.slug).toBeUndefined()
   })

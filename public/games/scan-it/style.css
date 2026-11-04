@@ -1,0 +1,15 @@
+.scan { display: flex; gap: 12px; width: 100%; align-items: center; text-align: left; }
+.doc { flex: 0 0 auto; max-width: 64%; min-width: 0; background: #f6f1e6; color: #1b1b1b; border-radius: 10px; padding: 4px 8px 6px; line-height: 1.15; }
+.doc-head { font-family: var(--display); font-weight: 800; margin-bottom: 2px; display: flex; gap: 8px; align-items: baseline; }
+.doc-head .kind { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.06em; color: #8a5a00; }
+.doc-t { border-collapse: collapse; width: 100%; }
+.doc-t th, .doc-t td { padding: 1px 6px 1px 0; text-align: left; vertical-align: top; }
+.doc-t thead th { border-bottom: 2px solid #1b1b1b33; font-size: 0.85em; color: #555; }
+.doc-t tbody tr + tr td, .doc-t tbody tr + tr th { border-top: 1px solid #1b1b1b1a; }
+.qs { flex: 1; min-width: 0; margin: 0; padding: 0 0 0 1.3em; display: flex; flex-direction: column; gap: 4px; line-height: 1.18; }
+.qs li:first-child { padding-right: 40px; }
+.qs .a { color: var(--teal); }
+.doc-t th, .doc-t td { white-space: nowrap; }
+.doc-t td.wrap { white-space: normal; }
+.qs { min-width: 190px; }
+.doc-head { flex-wrap: wrap; row-gap: 0; }

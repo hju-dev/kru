@@ -9,7 +9,12 @@
  * KruCards.start({
  *   title: 'Would You Rather?', logo: 'Would You <b>Rather?</b>',
  *   items: function (content, level) { return content[level].items; },   // the pool (50+)
- *   card: function (item, info) { return html; },     // info: { revealed, level }; use data-fit="max,min" on big text
+ *   card: function (item, info) { return html; },     // info: { step, revealed, level, esc }; use data-fit="max,min" on big text
+ *   steps: ['Hide story', 'Show answers'],             // optional: several reveal taps (default one 'Reveal'); step counts them
+ *   order: function (items) { return [indexes]; },     // optional: a new order each game (default: shuffle every card)
+ *   bonusKey: function (item) { return 'story-7'; },    // optional: cards with the same key share one bonus round
+ *   extra: '/games/shared/stories.json',               // optional: a second file, passed to items(content, level, extra)
+ *   compact: true,                                     // optional: timer + buttons in the top bar (more room for long texts)
  *   reveal: true | function (item) { return bool },    // is there an answer to reveal?
  *   timer: { secs: 60, options: [30, 60, 90] } | null,
  *   points: [{ d: 1, label: '+1 Good reason' }, ...],  // the buttons when you tap a team
@@ -39,6 +44,7 @@
     // ---------- the screen ----------
     var main = document.querySelector('main.game');
     main.classList.add('kc');
+    if (cfg.compact) main.classList.add('compact');
     main.innerHTML =
       '<header class="bar"><span class="logo">' + (cfg.logo || esc(cfg.title)) + '</span><span class="grow"></span>' +
       '<button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button></header>' +
@@ -58,10 +64,18 @@
       '<div class="menu-row"><button class="btn" id="howTo">How to play</button><button class="btn ghost danger" id="resetScores">Reset all scores</button></div>' +
       '<button class="btn ghost" id="menuClose">Close</button></div></div>');
 
+    if (cfg.compact) {
+      var bar = main.querySelector('.bar'), ctr = main.querySelector('.controls');
+      while (ctr.firstChild) bar.insertBefore(ctr.firstChild, $('more'));
+      ctr.remove();
+    }
     function save() { Kru.saveState(S); }
     function pts(id) { return S.pts[id] || 0; }
     function team(id) { return teams.find(function (t) { return t.id === id; }); }
     function item() { return ITEMS[S.order[S.pos]]; }
+    var STEPS = cfg.steps || ['Reveal'];
+    function stepOf(pos) { var r = S.revealed[pos]; return r === true ? STEPS.length : r || 0; }
+    function newOrder() { return cfg.order ? cfg.order(ITEMS) : shuffled(ITEMS.length); }
     function canReveal(it) { return typeof cfg.reveal === 'function' ? !!cfg.reveal(it) : !!cfg.reveal; }
 
     // ---------- sound (after a tap) ----------
@@ -87,7 +101,7 @@
       $('digits').textContent = fmt(left);
       $('fill').style.transform = 'scaleX(' + (total ? Math.max(0, left) / total : 0) + ')';
       $('digits').className = 'digits' + (left <= 0 ? ' done' : left <= 10 && running ? ' warn' : '');
-      $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : 'Start timer';
+      $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : cfg.compact ? 'Start' : 'Start timer';
     }
     function tick() {
       if (!running) return;
@@ -117,7 +131,7 @@
         var shrunk = false;
         els.forEach(function (el) {
           var mm = el.dataset.fit.split(','), size = parseFloat(el.style.fontSize), min = +mm[1];
-          if (size > min && stage.scrollHeight > stage.clientHeight + 1) { el.style.fontSize = (size - 2) + 'px'; shrunk = true; }
+          if (size > min && stage.scrollHeight > stage.clientHeight + 1) { el.style.fontSize = Math.max(min, size - 2) + 'px'; shrunk = true; }
         });
         if (!shrunk) break;
       }
@@ -125,20 +139,21 @@
     function render() {
       var it = item();
       if (!it) return;
-      var revealed = !!S.revealed[S.pos];
-      $('card').innerHTML = cfg.card(it, { revealed: revealed, level: S.level, esc: esc });
+      var step = stepOf(S.pos), revealed = step >= STEPS.length;
+      $('card').innerHTML = cfg.card(it, { step: step, revealed: revealed, level: S.level, esc: esc });
       KruCorner.set($('stage'), (S.pos + 1) + '/' + S.order.length);
       var r = canReveal(it);
       $('reveal').hidden = !r;
       $('reveal').disabled = revealed;
-      bonusRound('c' + S.order[S.pos] + '-' + S.pos);
+      $('reveal').textContent = STEPS[Math.min(step, STEPS.length - 1)];
+      bonusRound(cfg.bonusKey ? 'k' + cfg.bonusKey(it) + '-' + S.order.length : 'c' + S.order[S.pos] + '-' + S.pos);
       renderTeams();
       renderClock();
       fit();
     }
     function goTo(pos) {
       if (pos >= S.order.length) {
-        S.order = shuffled(ITEMS.length); S.pos = 0; S.revealed = {};
+        S.order = newOrder(); S.pos = 0; S.revealed = {};
         toast('That was the last card. Starting again with a new order.', false);
       } else S.pos = Math.max(0, pos);
       save(); resetTimer(); render();
@@ -210,7 +225,11 @@
     // ---------- main buttons ----------
     if (hasTimer) $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
     $('reveal').addEventListener('click', function () {
-      unlockAudio(); stopTimer(); S.revealed[S.pos] = true; save(); tone([523, 659]); render();
+      unlockAudio();
+      var step = stepOf(S.pos) + 1;
+      S.revealed[S.pos] = step; save();
+      if (step < STEPS.length) { resetTimer(); render(); return; } // a middle step (e.g. hide the story): the timer can run again
+      stopTimer(); tone([523, 659]); render();
       KruBonus.reveal();
       if (cfg.onReveal) cfg.onReveal(item());
     });
@@ -259,19 +278,21 @@
       Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
     });
 
-    var contentReady = fetch('content.json').then(function (r) { return r.json(); });
+    var getJson = function (u) { return fetch(u).then(function (r) { if (!r.ok) throw new Error(u + ' ' + r.status); return r.json(); }); };
+    var contentReady = Promise.all([getJson('content.json'), cfg.extra ? getJson(cfg.extra) : null]);
     Kru.ready(function (session) {
-      contentReady.then(function (c) {
+      contentReady.then(function (both) {
+        var c = both[0], extra = both[1];
         content = c;
-        var level = c[session.level] ? session.level : 'M.2';
-        ITEMS = cfg.items(c, level);
+        var level = c[session.level] || (extra && extra[session.level]) ? session.level : 'M.2';
+        ITEMS = cfg.items(c, level, extra);
         teams = Kru.allTeams();
         KruBonus.setup({ cards: c.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
           award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); } });
         KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
         var saved = session.resume;
         if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === ITEMS.length) S = saved;
-        else S = { v: 1, level: level, order: shuffled(ITEMS.length), pos: 0, revealed: {}, secs: hasTimer ? cfg.timer.secs : 0, pts: {}, log: [], introDone: false };
+        else S = { v: 1, level: level, order: newOrder(), pos: 0, revealed: {}, secs: hasTimer ? cfg.timer.secs : 0, pts: {}, log: [], introDone: false };
         total = left = S.secs;
         render();
         INTRO = KruIntro.forLevel(c, level);

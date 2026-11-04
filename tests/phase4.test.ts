@@ -232,3 +232,65 @@ describe('speaking + writing card games (shared card engine)', () => {
     }
   }
 })
+
+describe('reading games: shared story bank', () => {
+  type Story = {
+    id: string
+    title: string
+    sentences: string[]
+    tf: { s: string; a: boolean; fix?: string }[]
+    questions: { q: string; a: string }[]
+    mistakes: { i: number; right: string; wrong: string }[]
+  }
+  const bank = JSON.parse(readFileSync(new URL('../public/games/shared/stories.json', import.meta.url), 'utf8')) as Record<string, Story[]>
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: at least 50 stories, each complete`, () => {
+      const list = bank[level]
+      expect(list.length).toBeGreaterThanOrEqual(50)
+      expect(new Set(list.map((s) => s.id)).size).toBe(list.length)
+      expect(new Set(list.map((s) => s.title)).size).toBe(list.length)
+      for (const s of list) {
+        expect(s.sentences, s.title).toHaveLength(5) // Story Order: A-E
+        expect(new Set(s.sentences).size, s.title).toBe(5)
+        expect(s.tf, s.title).toHaveLength(4) // True or False Race: four per story
+        expect(s.tf.filter((t) => t.a), s.title).toHaveLength(2)
+        for (const t of s.tf) if (!t.a) expect(t.fix, `${s.title}: ${t.s}`).toBeTruthy()
+        expect(s.questions, s.title).toHaveLength(3) // Read & Remember
+        expect(s.mistakes, s.title).toHaveLength(3) // Spot the Mistakes: three, in three different sentences
+        expect(new Set(s.mistakes.map((m) => m.i)).size, s.title).toBe(3)
+        for (const m of s.mistakes) {
+          expect(m.wrong, s.title).not.toBe(m.right)
+          const esc = m.right.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+          expect(s.sentences[m.i], `${s.title}: "${m.right}"`).toMatch(new RegExp(`(^|[^\\w'])${esc}(?![\\w])`))
+        }
+      }
+    })
+  }
+  it('the four story games load the shared bank', () => {
+    for (const slug of ['story-order', 'read-remember', 'true-false-race', 'spot-the-mistakes'])
+      expect(readFileSync(new URL(`../public/games/${slug}/app.js`, import.meta.url), 'utf8')).toContain("'/games/shared/stories.json'")
+  })
+})
+
+describe('Scan It! texts', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/scan-it/content.json', import.meta.url), 'utf8')) as Record<
+    string,
+    { items: { kind: string; head: string; cols: string[]; rows: string[][]; qs: { q: string; a: string }[] }[] }
+  >
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: at least 50 texts, 3 questions each, tidy tables`, () => {
+      const items = c[level].items
+      expect(items.length).toBeGreaterThanOrEqual(50)
+      expect(new Set(items.map((x) => x.kind)).size).toBeGreaterThanOrEqual(6)
+      for (const it of items) {
+        expect(it.qs, it.head).toHaveLength(3)
+        for (const q of it.qs) {
+          expect(q.a, q.q).toBeTruthy()
+          expect(q.q, q.q).not.toMatch(/\.\.|\s\s/)
+        }
+        for (const r of it.rows) if (it.cols.length) expect(r, it.head).toHaveLength(it.cols.length)
+        expect(it.rows.length, it.head).toBeLessThanOrEqual(7) // fits the phone at 18 px
+      }
+    })
+  }
+})
