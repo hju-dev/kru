@@ -6,7 +6,7 @@ dev-dist/
 .env.*
 .vercel/
 coverage/
-# handoff bundle (originals now live in legacy/)
+# handoff bundle (the original games were migrated in Phase 3; see git history)
 kru_handoff.zip
 # Local-only list of real student nicknames used by check:privacy. NEVER commit.
 .privacy-denylist.txt

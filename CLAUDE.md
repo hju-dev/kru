@@ -42,7 +42,6 @@ The owner (Henry) is an ESL teacher, not a full-time developer. Explain things i
 
 ```
 apps-script/        Code.gs (Sheet back end) + README.md (deploy steps for Henry)
-legacy/games/       the four original claude.ai games, untouched, for reference until Phase 3
 public/
   games/<slug>/     index.html + content.json per game
   sdk/kru.js        shell ⇄ game contract
@@ -93,7 +92,7 @@ Demo mode: on the Sign-in screen, "Try demo" uses made-up students (S1…S30) wi
 - Phase 3 (Henry's choices): games go live one at a time; Word Rush scores by tap buttons (no keyboard); Talk Timer presets saved on the phone only.
 - Phase 3 game pattern (all four migrated games): `fetch('content.json')` + `Kru.ready` → level section, `Kru.allTeams()`; state saved with `Kru.saveState` on every change and restored from `session.resume` only if `v` and `level` match; points via `Kru.score` + `Kru.finish` on finish request; clock-based timers (`endAt`, survive a short sleep); audio unlocked inside a tap (`navigator.audioSession.type = 'playback'` where supported); the main screen fits 712 × 354 (iPhone minus notch/home bar), long text shrinks in a fit loop; secondary actions in a ⋯ menu; top-right 56 px kept clear for the home button. Scoring: a team strip along the bottom, tap a team → points panel → Undo message. Tag-Team speaking order: tap two names to swap (primary), hold 280 ms and drag (secondary).
 - Word Rush self-hosts Fredoka + Atkinson Hyperlegible (OFL 1.1, `public/fonts/`).
-- `legacy/games/` is kept for reference until Henry has checked the migrated games; it is not served or linked.
+- The four original claude.ai games (`legacy/games/`) were removed after Henry checked the migrated versions (2026-11-04). They are in git history before commit `dcf95bb` if ever needed.
 - Browser-test gotcha: the shell saves game state with a 300 ms debounce, so a test that reloads within ~0.3 s of a tap loses that tap. Wait ≥ 0.7 s before reloading.
 
 ## graphify
