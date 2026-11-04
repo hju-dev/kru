@@ -144,3 +144,28 @@ describe('Code.gs admin actions (against a fake Sheet)', () => {
     expect(sheets.Rosters.objects().map((r) => r.Class).sort()).toEqual(['1/3', 'M.1/2'])
   })
 })
+
+describe('Code.gs v6 Questions tab', () => {
+  it('bootstrap still works on a Sheet with no Questions tab (before Set up tabs)', () => {
+    const boot = post({ action: 'bootstrap' }) as { ok: boolean; version: number; questions: unknown[]; questionProblems: unknown[] }
+    expect(boot.ok).toBe(true)
+    expect(boot.version).toBe(6)
+    expect(boot.questions).toEqual([])
+    expect(boot.questionProblems).toEqual([])
+  })
+  it('bootstrap sends the question sets from the Questions tab', () => {
+    const q = new FakeSheet('Questions', ['Level', 'Set', 'Question', 'A', 'B', 'C', 'D', 'Answer', 'Double'])
+    q.rows.push(['M.1', 'Animals', 'Which one can fly?', 'cat', 'bird', 'fish', '', 'B', true])
+    q.rows.push(['M.1', 'Animals', 'Spell the animal: c-a-t', '', '', '', '', 'cat', ''])
+    q.rows.push(['M.9', 'Oops', 'bad', '', '', '', '', 'x', ''])
+    const sandbox: Record<string, unknown> = { ...fakeGoogle([...Object.values(sheets), q]) }
+    runInNewContext(code, sandbox)
+    const doPost = sandbox.doPost as (e: object) => { text: string }
+    const boot = JSON.parse(doPost({ postData: { contents: JSON.stringify({ key: 'test-key', action: 'bootstrap' }) } }).text)
+    expect(boot.questions).toEqual([{ level: 'M.1', name: 'Animals', questions: [
+      { q: 'Which one can fly?', double: true, choices: ['cat', 'bird', 'fish'], answer: 1 },
+      { q: 'Spell the animal: c-a-t', double: false, answer: 'cat' },
+    ] }])
+    expect(boot.questionProblems).toEqual([{ row: 4, problem: 'Level must be M.1, M.2 or M.3' }])
+  })
+})

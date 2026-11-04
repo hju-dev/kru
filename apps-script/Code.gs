@@ -11,7 +11,7 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 5;
+var KRU_SCRIPT_VERSION = 6;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
@@ -22,6 +22,8 @@ var TABS = {
     'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt'],
   Sessions: ['SessionID', 'Date', 'Class', 'Game', 'Level', 'Mode', 'TeamCount', 'TeacherTeamPoints',
     'SubmittedAt', 'Deleted', 'EditedAt'],
+  // Quiz Battle question sets Henry types in (v6). A-D filled = multiple choice; A-D empty = short answer.
+  Questions: ['Level', 'Set', 'Question', 'A', 'B', 'C', 'D', 'Answer', 'Double'],
 };
 
 /** Actions the app can call. Admin actions are added in Phase 2b. */
@@ -81,10 +83,57 @@ function actionBootstrap_() {
     readTable_(ss, 'Rosters'),
     readTable_(ss, 'TeamSets')
   );
+  var quiz = buildQuestions_(readTable_(ss, 'Questions'));
+  result.questions = quiz.sets;
+  result.questionProblems = quiz.problems;
   result.ok = true;
   result.version = KRU_SCRIPT_VERSION;
   result.sheetUrl = ss.getUrl();
   return result;
+}
+
+/**
+ * Pure: Questions tab rows -> question sets per level, plus the rows that couldn't be used (and why).
+ * Level accepts "M.1", "m1", "1"... Answer is a letter (A-D) or the text of a choice; for a
+ * short-answer question (A-D empty) it is the answer to show. Double = tick box or "yes".
+ */
+function buildQuestions_(rows) {
+  var sets = [];
+  var byKey = {};
+  var problems = [];
+  rows.forEach(function (row, i) {
+    var line = i + 2; // Sheet row number (row 1 is the header)
+    var q = text_(row.Question);
+    if (!q) return; // a row with no question is just skipped
+    var m = text_(row.Level).match(/([123])/);
+    if (!m) { problems.push({ row: line, problem: 'Level must be M.1, M.2 or M.3' }); return; }
+    var level = 'M.' + m[1];
+    var setName = text_(row.Set) || 'My questions';
+    var choices = ['A', 'B', 'C', 'D'].map(function (k) { return text_(row[k]); });
+    while (choices.length && choices[choices.length - 1] === '') choices.pop();
+    if (choices.indexOf('') !== -1) { problems.push({ row: line, problem: 'Fill the choices in order (A, B, C, D) with no gaps' }); return; }
+    var answer = text_(row.Answer);
+    if (!answer) { problems.push({ row: line, problem: 'Answer is empty' }); return; }
+    var item = { q: q, double: bool_(row.Double, false) };
+    if (choices.length) {
+      if (choices.length < 2) { problems.push({ row: line, problem: 'Multiple choice needs at least A and B' }); return; }
+      var idx = /^[A-Da-d]$/.test(answer) ? 'ABCD'.indexOf(answer.toUpperCase()) : -1;
+      if (idx === -1) {
+        var lower = answer.toLowerCase();
+        idx = choices.map(function (c) { return c.toLowerCase(); }).indexOf(lower);
+      }
+      if (idx < 0 || idx >= choices.length) { problems.push({ row: line, problem: 'Answer must be a letter that has a choice (A-' + 'ABCD'.charAt(choices.length - 1) + ')' }); return; }
+      item.choices = choices;
+      item.answer = idx;
+    } else {
+      item.answer = answer;
+    }
+    var key = level + '|' + setName.toLowerCase();
+    var set = byKey[key];
+    if (!set) { set = byKey[key] = { level: level, name: setName, questions: [] }; sets.push(set); }
+    set.questions.push(item);
+  });
+  return { sets: sets, problems: problems };
 }
 
 /**
@@ -432,6 +481,7 @@ function setup() {
   });
   ensureSummaryTab_(ss);
   formatRosters_(ss.getSheetByName('Rosters'));
+  formatQuestions_(ss.getSheetByName('Questions'));
   removeEmptyDefaultSheet_(ss);
 
   var key = props.getProperty('KRU_KEY');
@@ -698,6 +748,17 @@ function formatRosters_(sh) {
   if (activeCol > 0) {
     sh.getRange(2, activeCol, 999, 1).setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
   }
+}
+
+/** Questions tab: plain text everywhere (so "1/2" stays "1/2"), tick boxes in Double. */
+function formatQuestions_(sh) {
+  if (!sh) return;
+  var headers = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0];
+  headers.forEach(function (h, i) {
+    var range = sh.getRange(2, i + 1, 999, 1);
+    if (String(h).trim() === 'Double') range.setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
+    else range.setNumberFormat('@');
+  });
 }
 
 function removeEmptyDefaultSheet_(ss) {
