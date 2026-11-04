@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { readFileSync } from 'node:fs'
 import { buildSubmission, submittedTeams } from '../src/lib/results'
 import type { Session } from '../src/lib/session'
 
@@ -29,4 +30,22 @@ describe('games that only save students with points ("results": "scored")', () =
   it('other games still save every student', () => {
     expect(buildSubmission(solo, { s2: 2 }, '', 'Scoreboard').rows).toHaveLength(4)
   })
+})
+
+describe('Sentence Scramble sentences match HANDOFF word counts', () => {
+  const read = (p: string) => JSON.parse(readFileSync(new URL(`../${p}`, import.meta.url), 'utf8'))
+  const c = read('public/games/sentence-scramble/content.json') as Record<string, { sentences: { text: string }[] }>
+  const range: Record<string, [number, number]> = { 'M.1': [5, 7], 'M.2': [8, 10], 'M.3': [11, 14] }
+  for (const [level, [min, max]] of Object.entries(range)) {
+    it(`${level}: ${min}-${max} words, at least 15 sentences, each ends with . or ?`, () => {
+      const list = c[level].sentences
+      expect(list.length).toBeGreaterThanOrEqual(15)
+      for (const s of list) {
+        const n = s.text.trim().split(/\s+/).length
+        expect(n, s.text).toBeGreaterThanOrEqual(min)
+        expect(n, s.text).toBeLessThanOrEqual(max)
+        expect(s.text, s.text).toMatch(/[.?]$/)
+      }
+    })
+  }
 })
