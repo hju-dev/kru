@@ -81,6 +81,23 @@ describe('Code.gs buildBootstrap_', () => {
     expect(out.rosters['M.3/3']).toEqual([])
   })
 
+  it('treats class names that differ only in spaces or capitals as one class', () => {
+    const out = buildBootstrap(
+      [{ Class: '3/2P', Archived: '', DefaultTeamSize: '', Order: 1 }],
+      [
+        { Class: '3/2 P', No: 2, Nickname: 'S2', Active: true },
+        { Class: '3/2p', No: 1, Nickname: 'S1', Active: true },
+        { Class: '3/3 P', No: 1, Nickname: 'S1', Active: true },
+      ],
+      [{ SetID: 'x', Class: '3/2 p', Name: 'Teams', Team: 'A', No: 1, Nickname: 'S1', SavedAt: '' }],
+    )
+    expect(out.classes.map((c) => c.name)).toEqual(['3/2P', '3/3 P'])
+    expect(out.rosters['3/2P'].map((s) => s.no)).toEqual([1, 2])
+    expect(out.rosters['3/3 P']).toHaveLength(1)
+    expect(Object.keys(out.rosters)).toEqual(['3/2P', '3/3 P'])
+    expect(out.teamSets[0].class).toBe('3/2P')
+  })
+
   it('rebuilds saved team sets from one row per member', () => {
     const out = buildBootstrap(
       [],

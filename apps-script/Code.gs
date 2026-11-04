@@ -11,7 +11,7 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 2;
+var KRU_SCRIPT_VERSION = 3;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
@@ -79,11 +79,18 @@ function actionBootstrap_() {
  * Each argument is an array of row objects keyed by header name.
  */
 function buildBootstrap_(classRows, rosterRows, teamSetRows) {
-  var classes = {};
+  var classes = {}; // keyed by classKey_ so "3/2 P" and "3/2p" are the same class as "3/2P"
   var classList = [];
 
+  /** The spelling to show for a class: the first one seen (Classes tab first, then Rosters). */
+  function canonical(name) {
+    var c = classes[classKey_(name)];
+    return c ? c.name : name;
+  }
+
   function addClass(name, row, index) {
-    if (classes[name]) return classes[name];
+    var key = classKey_(name);
+    if (classes[key]) return classes[key];
     var order = row && row.Order !== '' && row.Order != null ? Number(row.Order) : 1000 + index;
     var c = {
       name: name,
@@ -91,7 +98,7 @@ function buildBootstrap_(classRows, rosterRows, teamSetRows) {
       defaultTeamSize: row ? int_(row.DefaultTeamSize) : null,
       order: isFinite(order) ? order : 1000 + index,
     };
-    classes[name] = c;
+    classes[key] = c;
     classList.push(c);
     return c;
   }
@@ -108,7 +115,7 @@ function buildBootstrap_(classRows, rosterRows, teamSetRows) {
     var no = int_(row.No);
     if (!cls || !nick || no == null) return; // skip blank or half-filled rows
     // A class typed only in Rosters still appears (sorted after the Classes tab ones)
-    addClass(cls, null, 2000 + classList.length);
+    cls = addClass(cls, null, 2000 + classList.length).name;
     (rosters[cls] = rosters[cls] || []).push({ no: no, nick: nick, active: bool_(row.Active, true) });
   });
   Object.keys(rosters).forEach(function (cls) {
@@ -123,7 +130,7 @@ function buildBootstrap_(classRows, rosterRows, teamSetRows) {
     if (!id) return;
     var set = sets[id];
     if (!set) {
-      set = sets[id] = { id: id, class: text_(row.Class), name: text_(row.Name), savedAt: iso_(row.SavedAt), teams: [], _byName: {} };
+      set = sets[id] = { id: id, class: canonical(text_(row.Class)), name: text_(row.Name), savedAt: iso_(row.SavedAt), teams: [], _byName: {} };
       setList.push(set);
     }
     var teamName = text_(row.Team) || 'Team';
@@ -345,6 +352,11 @@ function newKey_() {
     if (i % 5 === 4 && i < 19) out += '-';
   }
   return out;
+}
+
+/** Class names match ignoring spaces and capitals: "3/2 P" = "3/2p" = "3/2P". */
+function classKey_(name) {
+  return text_(name).replace(/\s+/g, '').toUpperCase();
 }
 
 function text_(v) {
