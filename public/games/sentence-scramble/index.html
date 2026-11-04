@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Sentence Scramble Race</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game ss">
+      <header class="bar">
+        <span class="logo">Sentence <b>Scramble</b></span>
+        <span class="count" id="count"></span>
+        <span class="focus" id="focus"></span>
+        <span class="grow"></span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="tiles" id="tiles"></div>
+        <div class="hint" id="hint"></div>
+        <div class="answer" id="answer" hidden></div>
+      </section>
+
+      <div class="controls">
+        <span class="clock" id="clock">0:00</span>
+        <span class="places" id="places"></span>
+        <span class="grow"></span>
+        <button class="btn teal" id="reveal">Reveal</button>
+        <button class="btn gold" id="next">Next ▶</button>
+      </div>
+
+      <div class="strip" id="strip" role="group" aria-label="Teams: tap the first, second and third correct team"></div>
+      <div class="toast" id="toast" role="status" hidden>
+        <span id="toastText"></span>
+        <button class="small" id="toastUndo">Undo</button>
+      </div>
+    </main>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <button class="btn" id="reshuffle">Shuffle the words again</button>
+        <button class="btn" id="prev">◀ Previous sentence</button>
+        <button class="btn" id="undo">Undo last points</button>
+        <button class="btn" id="minus">Take 1 point from a team…</button>
+        <button class="btn ghost danger" id="resetScores">Reset all scores</button>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <div class="backdrop" id="minusBack" hidden>
+      <div class="menu" role="dialog" aria-label="Take 1 point">
+        <p class="muted">Tap a team to take 1 point away (for a correction).</p>
+        <div class="choose" id="minusList"></div>
+        <button class="btn ghost" id="minusClose">Done</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

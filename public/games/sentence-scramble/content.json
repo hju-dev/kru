@@ -1,0 +1,71 @@
+{
+  "about": "Sentence Scramble sentences per level. The game shows the words as shuffled tiles (commas and the end mark hidden; the first word in lower case unless keepCap is true). M.1: 5-7 words, past simple. M.2: 8-10 words, past continuous and linking words. M.3: 11-14 words, relative clauses and conditionals. Written for Kru.",
+  "M.1": {
+    "sentences": [
+      { "text": "I played football with my friends.", "focus": "past simple" },
+      { "text": "She went to the market yesterday.", "focus": "past simple" },
+      { "text": "We watched a film last night.", "focus": "past simple" },
+      { "text": "My dad cooked rice for dinner.", "focus": "past simple" },
+      { "text": "They visited their grandmother on Sunday.", "focus": "past simple" },
+      { "text": "He didn't finish his homework.", "focus": "past simple: negative" },
+      { "text": "Did you see the elephant?", "focus": "past simple: question" },
+      { "text": "The cat slept on my bed.", "focus": "past simple" },
+      { "text": "I bought a new bag yesterday.", "focus": "past simple" },
+      { "text": "We swam in the sea last summer.", "focus": "past simple" },
+      { "text": "She drank a glass of milk.", "focus": "past simple" },
+      { "text": "My brother broke the window.", "focus": "past simple" },
+      { "text": "Where did you go last weekend?", "focus": "past simple: question" },
+      { "text": "The teacher gave us a test.", "focus": "past simple" },
+      { "text": "I woke up at six o'clock.", "focus": "past simple" },
+      { "text": "They ate noodles at the canteen.", "focus": "past simple" },
+      { "text": "It rained all day on Monday.", "focus": "past simple" },
+      { "text": "We didn't go to school yesterday.", "focus": "past simple: negative" },
+      { "text": "Tom rode his bike to school.", "focus": "past simple", "keepCap": true },
+      { "text": "What did you have for breakfast?", "focus": "past simple: question" }
+    ]
+  },
+  "M.2": {
+    "sentences": [
+      { "text": "I was watching TV when my mum came home.", "focus": "past continuous + when" },
+      { "text": "While we were swimming, it started to rain.", "focus": "past continuous + while" },
+      { "text": "She was reading a book, but her brother was sleeping.", "focus": "past continuous + but" },
+      { "text": "They were playing football when the bell rang.", "focus": "past continuous + when" },
+      { "text": "It was raining, so we stayed in the hotel.", "focus": "past continuous + so" },
+      { "text": "What were you doing at eight o'clock last night?", "focus": "past continuous: question" },
+      { "text": "We were walking on the beach when we saw dolphins.", "focus": "past continuous + when" },
+      { "text": "Although it was hot, we were climbing the mountain.", "focus": "past continuous + although" },
+      { "text": "My dad was driving while my sister was singing loudly.", "focus": "past continuous + while" },
+      { "text": "I was sleeping when my phone suddenly rang.", "focus": "past continuous + when" },
+      { "text": "Because the bus was late, we waited for an hour.", "focus": "because" },
+      { "text": "They were eating dinner when the lights went out.", "focus": "past continuous + when" },
+      { "text": "She was taking photos while we were buying souvenirs.", "focus": "past continuous + while" },
+      { "text": "Were you sleeping when I called you last night?", "focus": "past continuous: question" },
+      { "text": "We were going to Phuket when the car broke down.", "focus": "past continuous + when" },
+      { "text": "I wasn't listening, so I didn't hear the question.", "focus": "past continuous + so" },
+      { "text": "The children were laughing because the clown fell over.", "focus": "past continuous + because" },
+      { "text": "While I was cooking, my brother was cleaning the kitchen.", "focus": "past continuous + while" }
+    ]
+  },
+  "M.3": {
+    "sentences": [
+      { "text": "If I had more free time, I would learn to play the guitar.", "focus": "second conditional" },
+      { "text": "The girl who sits next to me is the best singer in our class.", "focus": "relative clause: who" },
+      { "text": "If it rains tomorrow, we will watch a film instead of playing football.", "focus": "first conditional" },
+      { "text": "This is the restaurant where my family celebrated my grandmother's birthday last year.", "focus": "relative clause: where" },
+      { "text": "I would travel around the world if I won the lottery.", "focus": "second conditional" },
+      { "text": "The phone that I bought last month has already stopped working.", "focus": "relative clause: that" },
+      { "text": "If you heat ice, it melts and turns into water very quickly.", "focus": "zero conditional" },
+      { "text": "My uncle, who lives in Bangkok, works as a doctor at a hospital.", "focus": "relative clause: who (extra information)" },
+      { "text": "If she had studied harder, she would have passed the exam.", "focus": "third conditional" },
+      { "text": "The book which you lent me was more interesting than the film.", "focus": "relative clause: which" },
+      { "text": "What would you do if you saw a ghost in your bedroom?", "focus": "second conditional: question" },
+      { "text": "Students who use their phones in class will have to stay after school.", "focus": "relative clause: who" },
+      { "text": "If we don't protect the forests, many animals will lose their homes.", "focus": "first conditional" },
+      { "text": "The town where I grew up has changed a lot since then.", "focus": "relative clause: where" },
+      { "text": "I wouldn't eat that fish if I were you, because it smells strange.", "focus": "second conditional: advice" },
+      { "text": "The man whose car was stolen yesterday called the police immediately.", "focus": "relative clause: whose" },
+      { "text": "Unless you hurry, you will miss the last bus home tonight.", "focus": "first conditional: unless" },
+      { "text": "The festival that we went to was crowded but really fun.", "focus": "relative clause: that" }
+    ]
+  }
+}

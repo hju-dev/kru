@@ -1,0 +1,267 @@
+/* Sentence Scramble Race, phone landscape: word tiles on the board, place buttons, team strip. */
+.ss {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--tap);
+  padding-right: 56px; /* Kru's home button */
+}
+.logo {
+  font: 800 20px/1 var(--display);
+  white-space: nowrap;
+}
+.logo b {
+  color: var(--gold);
+}
+.count {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.focus {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bg);
+  background: var(--violet);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.focus:empty {
+  display: none;
+}
+.grow {
+  flex: 1;
+}
+button.small {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--stage);
+  border: 3px solid var(--line);
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  --tile: 30px; /* shrunk by app.js until everything fits */
+}
+.tile-w {
+  font: 800 var(--tile) / 1.1 var(--display);
+  padding: 0.18em 0.45em;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-bottom-width: 5px;
+}
+.hint {
+  color: var(--muted);
+  font-size: 16px;
+}
+.answer {
+  font: 800 26px/1.15 var(--display);
+  color: var(--teal);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.clock {
+  font-family: var(--mono);
+  font-size: 26px;
+  color: var(--muted);
+  min-width: 2.9ch;
+}
+.places {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.places b {
+  color: var(--gold);
+}
+.btn {
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 2px solid var(--fg);
+  background: transparent;
+  font-weight: 700;
+  font-size: 17px;
+  white-space: nowrap;
+}
+.btn.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+.btn.teal {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--bg);
+}
+.btn.ghost {
+  border-color: var(--line);
+}
+.btn.danger {
+  color: var(--coral);
+}
+.btn.danger.armed {
+  background: var(--coral);
+  color: var(--bg);
+}
+.btn:disabled {
+  opacity: 0.35;
+}
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Team strip: tap = next place (1st +3, 2nd +2, 3rd +1) */
+.strip {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.strip::-webkit-scrollbar {
+  display: none;
+}
+.tile {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 66px;
+  min-height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 4px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  border-top: 5px solid var(--c, var(--gold));
+  background: var(--panel);
+}
+.tile .tn {
+  max-width: 100%;
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tile .tp {
+  font-family: var(--mono);
+  font-size: 22px;
+  line-height: 1;
+}
+.tile.placed {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+}
+.tile .badge {
+  position: absolute;
+  top: -2px;
+  right: 2px;
+  font-size: 11px;
+  font-weight: 800;
+}
+.tile.lead:not(.placed) {
+  box-shadow: 0 0 0 3px var(--gold);
+}
+
+.toast {
+  position: absolute;
+  top: 2px; /* over the top bar, so it never covers the word tiles */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 4px 14px;
+  border-radius: 14px;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 3;
+}
+.toast button.small {
+  background: var(--bg);
+  color: var(--fg);
+  border-color: var(--bg);
+  font-size: 15px;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background: rgb(0 0 0 / 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}
+.menu {
+  width: min(520px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--stage);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.muted {
+  color: var(--muted);
+  margin: 0;
+}
+.choose {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 6px;
+}
