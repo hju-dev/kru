@@ -20,5 +20,15 @@ export function demoBootstrap(): Bootstrap {
     teamSets: [],
     sheetUrl: null,
     rosterIssues: [],
+    // what a set typed into the Sheet's Questions tab looks like in Quiz Battle
+    questions: (['M.1', 'M.2', 'M.3'] as const).map((level) => ({
+      level,
+      name: 'Demo set from the Sheet',
+      questions: [
+        { q: 'This set comes from the Questions tab in your Sheet. Which letter is the answer?', choices: ['A', 'B', 'C'], answer: 1, double: false },
+        { q: 'Short answer: what is 2 + 3?', answer: 'five (5)', double: true },
+      ],
+    })),
+    questionProblems: [{ row: 5, problem: 'Answer is empty' }],
   }
 }

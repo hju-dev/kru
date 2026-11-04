@@ -12,6 +12,8 @@ export interface GameInfo {
   type?: string
   /** 'scored' = only students who got points are written to Results (e.g. Name Picker) */
   results?: 'scored'
+  /** true = the game gets the Sheet's Questions tab sets for its level (Quiz Battle) */
+  sheetQuestions?: boolean
   /** ready = playable; migrate / new = coming in a later phase */
   status: 'ready' | 'migrate' | 'new'
 }

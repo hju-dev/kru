@@ -40,6 +40,25 @@ export interface Bootstrap {
   sheetUrl: string | null
   /** Roster rows that look wrong (duplicates, shared numbers), to show Henry in Settings. */
   rosterIssues: RosterIssue[]
+  /** Quiz Battle sets from the Questions tab (Code.gs v6+; missing with older scripts or old caches). */
+  questions?: QuizSet[]
+  /** Questions tab rows that couldn't be used. */
+  questionProblems?: { row: number; problem: string }[]
+}
+
+export interface QuizQuestion {
+  q: string
+  /** multiple choice; absent = short answer */
+  choices?: string[]
+  /** index into choices, or the short answer text */
+  answer: number | string
+  double: boolean
+}
+
+export interface QuizSet {
+  level: Level
+  name: string
+  questions: QuizQuestion[]
 }
 
 export interface RosterIssue {

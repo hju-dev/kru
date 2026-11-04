@@ -89,3 +89,43 @@ describe('Hot Seat Vocab words', () => {
     for (const cat of cats) expect(c['M.3'].words.filter((w) => w.cat === cat).length).toBeGreaterThanOrEqual(10)
   })
 })
+
+describe('Quiz Battle questions', () => {
+  it('normalizeQuestions keeps only well-formed Sheet questions', async () => {
+    const { normalizeQuestions } = await import('../src/lib/bootstrap')
+    expect(normalizeQuestions(undefined)).toEqual([])
+    const sets = normalizeQuestions([
+      { level: 'M.2', name: 'Unit 3', questions: [
+        { q: 'ok mc', choices: ['a', 'b'], answer: 1, double: true },
+        { q: 'bad index', choices: ['a', 'b'], answer: 5 },
+        { q: 'ok short', answer: 'went' },
+        { q: '', answer: 'x' },
+      ] },
+      { level: 'M.9', name: 'bad level', questions: [{ q: 'x', answer: 'y' }] },
+      { level: 'M.1', name: 'empty', questions: [] },
+    ])
+    expect(sets).toEqual([{ level: 'M.2', name: 'Unit 3', questions: [
+      { q: 'ok mc', choices: ['a', 'b'], answer: 1, double: true },
+      { q: 'ok short', answer: 'went', double: false },
+    ] }])
+  })
+  it('built-in sets: every level has sets of 8+ questions with valid answers', () => {
+    const c = JSON.parse(readFileSync(new URL('../public/games/quiz-battle/content.json', import.meta.url), 'utf8')) as Record<
+      string,
+      { sets: { name: string; questions: { q: string; choices?: string[]; answer: number | string; double: boolean }[] }[] }
+    >
+    for (const level of ['M.1', 'M.2', 'M.3']) {
+      expect(c[level].sets.length).toBeGreaterThanOrEqual(2)
+      for (const s of c[level].sets) {
+        expect(s.questions.length, s.name).toBeGreaterThanOrEqual(8)
+        for (const q of s.questions) {
+          if (q.choices) {
+            expect(typeof q.answer, q.q).toBe('number')
+            expect(q.answer as number, q.q).toBeLessThan(q.choices.length)
+            expect(new Set(q.choices).size, q.q).toBe(q.choices.length)
+          } else expect(String(q.answer).length, q.q).toBeGreaterThan(0)
+        }
+      }
+    }
+  })
+})

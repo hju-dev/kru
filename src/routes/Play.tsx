@@ -5,6 +5,7 @@ import { initMessage, todayKey, type Session } from '../lib/session'
 import { classKeyOf } from '../lib/bootstrap'
 import { storage } from '../lib/storage'
 import { useWakeLock } from '../lib/useWakeLock'
+import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import './Play.css'
 
@@ -82,7 +83,14 @@ function PlayFrame({ session }: { session: Session }) {
             .catch(() => undefined)
             .then((day) => {
               const msg = initMessage(current)
-              target?.postMessage({ ...msg, session: { ...msg.session, day: day ?? null } }, location.origin)
+              const extra: Record<string, unknown> = { day: day ?? null }
+              if (findGame(current.game)?.sheetQuestions) {
+                // Quiz Battle: the Questions tab sets for this level (from the last Sync)
+                const data = useApp.getState().data
+                extra.questions = (data?.questions ?? []).filter((q) => q.level === current.level)
+                extra.questionProblems = data?.questionProblems ?? []
+              }
+              target?.postMessage({ ...msg, session: { ...msg.session, ...extra } }, location.origin)
             })
           break
         }

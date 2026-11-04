@@ -129,7 +129,11 @@
       "group"
     ],
     "minutes": 20,
-    "status": "new"
+    "status": "ready",
+    "description": "One question at a time with a timer (multiple choice or short answer). Teams hold up answers; tap the teams that were right. Built-in sets, or your own from the Questions tab of your Sheet.",
+    "type": "team quiz",
+    "phoneLandscape": true,
+    "sheetQuestions": true
   },
   {
     "slug": "board-race",
