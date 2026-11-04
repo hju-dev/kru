@@ -56,7 +56,7 @@ describe('How to play slides', () => {
   type Slide = { title?: string; text?: string | string[]; example?: Record<string, unknown> }
   for (const g of ready) {
     const html = read(`public/games/${g.slug}/index.html`)
-    if (!html.includes('/games/shared/kru-intro.js')) continue
+    if (!html.includes('/games/shared/kru-intro.js') || g.slug === 'talk-timer') continue // Talk Timer: rules per timer, tested below
     it(`${g.slug}: has slides (2-6, each with a short title and at most 2 short lines)`, () => {
       expect(html).toContain('/games/shared/kru-intro.css')
       const c = JSON.parse(read(`public/games/${g.slug}/content.json`)) as Record<string, unknown> & { intro?: Slide[] }
@@ -136,5 +136,22 @@ describe('bonus cards', () => {
     for (let i = 0; i < 3000; i++) if (draw(cards, null, String(i), Math.random).before) n++
     expect(n / 3000).toBeGreaterThan(0.28)
     expect(n / 3000).toBeLessThan(0.39)
+  })
+})
+
+describe('Talk Timer rules', () => {
+  type Slide = { title?: string; text?: string | string[] }
+  const c = JSON.parse(read('public/games/talk-timer/content.json')) as { presets: { id: string; name: string; rules?: Slide[] }[] }
+  it('every starting timer has 2-6 short rules slides', () => {
+    for (const p of c.presets) {
+      expect(p.rules?.length, p.id).toBeGreaterThanOrEqual(2)
+      expect(p.rules!.length, p.id).toBeLessThanOrEqual(6)
+      for (const s of p.rules!) {
+        expect(s.title!.length, s.title).toBeLessThanOrEqual(30)
+        const lines = Array.isArray(s.text) ? s.text : [s.text ?? '']
+        expect(lines.length, s.title).toBeLessThanOrEqual(2)
+        for (const l of lines) expect(l.length, l).toBeLessThanOrEqual(90)
+      }
+    }
   })
 })

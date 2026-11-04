@@ -21,6 +21,19 @@
   function newId() { return 'p' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
   function clone(x) { return JSON.parse(JSON.stringify(x)); }
   function save() { Kru.saveState(data); }
+  /** Rules slides for a timer: Henry's own (one per line) or the built-in ones for that timer. */
+  function rulesFor(p) {
+    if (!p) return [];
+    var own = String(p.rulesText || '').split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+    if (own.length) {
+      var slides = [];
+      for (var i = 0; i < own.length; i += 2) slides.push({ title: p.name, text: own.slice(i, i + 2) });
+      if (slides.length === 1) slides.push({ title: p.name, text: ['Ready? Tap Start!'] });
+      return slides;
+    }
+    var built = starting && starting.presets.find(function (x) { return x.id === p.id; });
+    return (built && built.rules) || [];
+  }
   function preset() {
     return data.presets.find(function (p) { return p.id === data.current; }) || data.presets[0] || null;
   }
@@ -105,6 +118,7 @@
     if (!p) return;
     var ph = p.phases[phaseIdx], nxt = p.phases[phaseIdx + 1];
     $('pickName').textContent = p.name;
+    $('rules').hidden = !rulesFor(p).length;
     $('steps').textContent = p.phases.length > 1 ? 'Phase ' + (phaseIdx + 1) + ' of ' + p.phases.length : '';
     $('phase').textContent = ph.label;
     $('digits').textContent = fmt(left);
@@ -177,6 +191,7 @@
     draft = p ? clone(p) : { id: newId(), name: '', phases: [{ label: 'Talk!', secs: 60 }] };
     $('editTitle').textContent = draftIsNew ? 'New timer' : 'Edit timer';
     $('editName').value = draft.name;
+    $('editRules').value = draft.rulesText || '';
     $('editDelete').hidden = draftIsNew || data.presets.length < 2;
     disarm($('editDelete'), 'Delete timer');
     renderPhases();
@@ -223,6 +238,7 @@
   $('editCancel').addEventListener('click', closeEditor);
   $('editSave').addEventListener('click', function () {
     draft.name = $('editName').value.trim() || 'My timer';
+    draft.rulesText = $('editRules').value.trim();
     draft.phases.forEach(function (ph, k) { ph.label = ph.label.trim() || 'Phase ' + (k + 1); });
     var i = data.presets.findIndex(function (x) { return x.id === draft.id; });
     if (i >= 0) data.presets[i] = draft; else data.presets.push(draft);
@@ -246,6 +262,7 @@
 
   // ---------- main controls ----------
   $('pick').addEventListener('click', openList);
+  $('rules').addEventListener('click', function () { KruIntro.show(rulesFor(preset()), { title: preset().name, done: 'Close' }); });
   $('go').addEventListener('click', function () { running ? pause() : start(); });
   $('reset').addEventListener('click', function () { pause(); loadPhase(0); });
   $('skip').addEventListener('click', function () {
