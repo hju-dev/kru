@@ -239,3 +239,19 @@ textarea {
     animation: none !important;
   }
 }
+
+/* Something went wrong (route error screen) */
+.error-screen {
+  max-width: 560px;
+  margin: 0 auto;
+  gap: 12px;
+}
+.error-screen .row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.error-screen .small {
+  font-size: 13px;
+  word-break: break-word;
+}

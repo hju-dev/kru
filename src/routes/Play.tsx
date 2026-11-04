@@ -7,6 +7,8 @@ import { storage } from '../lib/storage'
 import { useWakeLock } from '../lib/useWakeLock'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
+import { FrameStuck } from '../components/FrameStuck'
+import { useFrameReady } from '../lib/useFrameReady'
 import './Play.css'
 
 const FADE_MS = 3000
@@ -45,6 +47,7 @@ function PlayFrame({ session }: { session: Session }) {
   const finishTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const fadeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const game = findGame(session.game)
+  const { stuck, markReady } = useFrameReady(reloadKey)
   useWakeLock()
 
   const wake = useCallback(() => {
@@ -76,6 +79,7 @@ function PlayFrame({ session }: { session: Session }) {
       if (!current) return
       switch (d?.type) {
         case 'kru:ready': {
+          markReady()
           // the game's memory for this class today (e.g. who Name Picker has already picked)
           const target = frame.current?.contentWindow
           const ck = classKeyOf(current.class)
@@ -119,7 +123,7 @@ function PlayFrame({ session }: { session: Session }) {
     }
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
-  }, [goToResults, patch, session.id])
+  }, [goToResults, patch, session.id, markReady])
 
   // Taps inside the game bring the home button back
   function onFrameLoad() {
@@ -156,6 +160,7 @@ function PlayFrame({ session }: { session: Session }) {
         onLoad={onFrameLoad}
         allow="screen-wake-lock"
       />
+      {stuck && <FrameStuck title={game?.title ?? 'The game'} onRetry={() => setReloadKey((k) => k + 1)} />}
       <button
         className={`home-btn${showHome ? '' : ' faded'}`}
         onClick={() => {

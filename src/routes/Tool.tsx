@@ -3,6 +3,8 @@ import { Link, Navigate, useParams } from 'react-router'
 import { findGame, gameUrl } from '../lib/games'
 import { storage } from '../lib/storage'
 import { useWakeLock } from '../lib/useWakeLock'
+import { FrameStuck } from '../components/FrameStuck'
+import { useFrameReady } from '../lib/useFrameReady'
 import './Play.css'
 
 const FADE_MS = 3000
@@ -23,6 +25,8 @@ function ToolFrame({ slug, title }: { slug: string; title: string }) {
   const frame = useRef<HTMLIFrameElement>(null)
   const [showHome, setShowHome] = useState(true)
   const [menu, setMenu] = useState(false)
+  const [reloadKey, setReloadKey] = useState(0)
+  const { stuck, markReady } = useFrameReady(reloadKey)
   const fadeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   useWakeLock()
 
@@ -41,6 +45,7 @@ function ToolFrame({ slug, title }: { slug: string; title: string }) {
       if (e.origin !== location.origin || e.source !== frame.current?.contentWindow) return
       const d = e.data as { type?: string; state?: unknown }
       if (d?.type === 'kru:ready') {
+        markReady()
         const resume = (await storage.getToolState(slug).catch(() => undefined)) ?? undefined
         const session = { id: `tool:${slug}`, class: '', level: null, mode: 'tool', teams: [], teacherTeam: null, resume }
         frame.current?.contentWindow?.postMessage({ type: 'kru:init', session }, location.origin)
@@ -50,7 +55,7 @@ function ToolFrame({ slug, title }: { slug: string; title: string }) {
     }
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
-  }, [slug])
+  }, [slug, markReady])
 
   function onFrameLoad() {
     try {
@@ -62,7 +67,8 @@ function ToolFrame({ slug, title }: { slug: string; title: string }) {
 
   return (
     <main className="play">
-      <iframe ref={frame} className="game-frame" src={gameUrl(slug)} title={title} onLoad={onFrameLoad} allow="screen-wake-lock; microphone" />
+      <iframe key={reloadKey} ref={frame} className="game-frame" src={gameUrl(slug)} title={title} onLoad={onFrameLoad} allow="screen-wake-lock; microphone" />
+      {stuck && <FrameStuck title={title} onRetry={() => setReloadKey((k) => k + 1)} />}
       <button
         className={`home-btn${showHome ? '' : ' faded'}`}
         onClick={() => {

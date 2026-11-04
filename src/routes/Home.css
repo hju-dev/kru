@@ -181,3 +181,32 @@
   font-size: 11px;
   color: var(--muted);
 }
+
+/* Favorites: a star in the corner of every game card (its own 44 px button, separate from the card tap). */
+.game-card-wrap {
+  position: relative;
+  display: grid;
+}
+.game-card-wrap .game-card {
+  padding-right: 40px;
+}
+.fav-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.fav-btn.on {
+  color: var(--gold);
+}
+.sec-recent .section-head,
+.sec-favorites .section-head {
+  color: var(--sec);
+}
