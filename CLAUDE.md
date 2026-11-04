@@ -96,6 +96,7 @@ Demo mode: on the Sign-in screen, "Try demo" uses made-up students (S1…S30) wi
 - The four original claude.ai games (`legacy/games/`) were removed after Henry checked the migrated versions (2026-11-04). They are in git history before commit `dcf95bb` if ever needed.
 - **Day memory** (Phase 4): `Kru.saveDay(data)` → shell stores IndexedDB `day:<game>:<classKey>:<YYYY-MM-DD>`; it comes back as `session.day` in `kru:init` (Play.tsx). Name Picker uses it for "already picked today".
 - games.json `"results": "scored"` (Name Picker): only teams with non-zero points get Results rows (`buildSubmission(..., { onlyScored: true })`, `submittedTeams` in `src/lib/results.ts`); if nobody scored, the review screen offers "Close (nothing to save)".
+- games.json `"sheetQuestions": true` (Quiz Battle): Play.tsx adds `session.questions` (the Sheet's Questions-tab sets for the session's level, from the last Sync, cleaned by `normalizeQuestions`) and `session.questionProblems` to `kru:init`. Demo mode has one fake "Demo set from the Sheet" per level.
 - Browser-test gotcha: the shell saves game state with a 300 ms debounce, so a test that reloads within ~0.3 s of a tap loses that tap. Wait ≥ 0.7 s before reloading.
 
 ## graphify

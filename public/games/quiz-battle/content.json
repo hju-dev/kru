@@ -1,0 +1,633 @@
+{
+ "about": "Quiz Battle built-in question sets per level (general review, written for Kru). choices + answer index = multiple choice; answer text only = short answer (shown on Reveal). double = x2 points. Henry adds his own sets in the Questions tab of his Sheet (Code.gs v6).",
+ "M.1": {
+  "sets": [
+   {
+    "name": "Past simple",
+    "questions": [
+     {
+      "q": "Yesterday I ___ to the park.",
+      "choices": [
+       "go",
+       "went",
+       "gone",
+       "going"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "She ___ a sandwich for lunch yesterday.",
+      "choices": [
+       "eat",
+       "eats",
+       "ate",
+       "eating"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "What is the past of \"buy\"?",
+      "choices": [
+       "buyed",
+       "bought",
+       "brought",
+       "buys"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "We didn't ___ TV last night.",
+      "choices": [
+       "watch",
+       "watched",
+       "watching",
+       "watches"
+      ],
+      "answer": 0,
+      "double": true
+     },
+     {
+      "q": "___ you see the film last weekend?",
+      "choices": [
+       "Do",
+       "Did",
+       "Does",
+       "Was"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Write the past simple of \"swim\".",
+      "answer": "swam",
+      "double": false
+     },
+     {
+      "q": "They ___ football yesterday after school.",
+      "choices": [
+       "play",
+       "playing",
+       "played",
+       "plays"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "My mum ___ happy yesterday.",
+      "choices": [
+       "is",
+       "was",
+       "were",
+       "be"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "The children ___ tired after the trip.",
+      "choices": [
+       "was",
+       "is",
+       "were",
+       "am"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "Make it negative: \"I ate breakfast.\"",
+      "answer": "I didn't eat breakfast.",
+      "double": true
+     }
+    ]
+   },
+   {
+    "name": "Everyday words",
+    "questions": [
+     {
+      "q": "Which one is a fruit?",
+      "choices": [
+       "carrot",
+       "mango",
+       "rice",
+       "bread"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Where do you sleep?",
+      "choices": [
+       "kitchen",
+       "bathroom",
+       "bedroom",
+       "garage"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "What do you wear on your feet?",
+      "choices": [
+       "gloves",
+       "a hat",
+       "shoes",
+       "a scarf"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "Which animal says \"moo\"?",
+      "choices": [
+       "a cow",
+       "a dog",
+       "a duck",
+       "a cat"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "A doctor works in a ___.",
+      "choices": [
+       "school",
+       "hospital",
+       "bank",
+       "shop"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "What colour is the sky on a sunny day?",
+      "answer": "blue",
+      "double": false
+     },
+     {
+      "q": "Which is the opposite of \"big\"?",
+      "choices": [
+       "tall",
+       "small",
+       "long",
+       "heavy"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "How many days are there in a week?",
+      "choices": [
+       "five",
+       "six",
+       "seven",
+       "eight"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "Which word is a verb?",
+      "choices": [
+       "happy",
+       "run",
+       "table",
+       "blue"
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "Spell the number 12.",
+      "answer": "twelve",
+      "double": false
+     }
+    ]
+   }
+  ]
+ },
+ "M.2": {
+  "sets": [
+   {
+    "name": "Past continuous",
+    "questions": [
+     {
+      "q": "At 8 p.m. last night I ___ TV.",
+      "choices": [
+       "watch",
+       "was watching",
+       "were watching",
+       "watching"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "They ___ when the phone rang.",
+      "choices": [
+       "were sleeping",
+       "was sleeping",
+       "sleep",
+       "are sleeping"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "While she ___ home, it started to rain.",
+      "choices": [
+       "walks",
+       "was walking",
+       "were walking",
+       "walk"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "What ___ you doing at 9 o'clock last night?",
+      "choices": [
+       "was",
+       "were",
+       "did",
+       "are"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "We were playing football ___ the teacher arrived.",
+      "choices": [
+       "while",
+       "when",
+       "so",
+       "but"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Make it negative: \"He was running.\"",
+      "answer": "He wasn't running.",
+      "double": false
+     },
+     {
+      "q": "Choose the correct sentence.",
+      "choices": [
+       "I was eat dinner.",
+       "I was eating dinner.",
+       "I were eating dinner.",
+       "I eating dinner."
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "___ I was cooking, my brother was cleaning.",
+      "choices": [
+       "While",
+       "So",
+       "But",
+       "Or"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "It was raining, ___ we stayed at home.",
+      "choices": [
+       "because",
+       "so",
+       "but",
+       "while"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Write the past continuous: they / swim",
+      "answer": "they were swimming",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Holidays",
+    "questions": [
+     {
+      "q": "Which one is a document with your photo, for travelling to other countries?",
+      "choices": [
+       "a passport",
+       "a suitcase",
+       "a souvenir",
+       "sunscreen"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "You put your clothes in a ___ for a trip.",
+      "choices": [
+       "suitcase",
+       "passport",
+       "ticket",
+       "tent"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Something you buy to remember a trip is a ___.",
+      "choices": [
+       "souvenir",
+       "receipt",
+       "menu",
+       "map"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Where do planes take off?",
+      "choices": [
+       "a station",
+       "a port",
+       "an airport",
+       "a garage"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "You use ___ to protect your skin from the sun.",
+      "choices": [
+       "sunglasses",
+       "sunscreen",
+       "an umbrella",
+       "a towel"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Name an island in Thailand.",
+      "answer": "Any island: Phuket, Koh Samui, Koh Chang, Koh Lanta…",
+      "double": false
+     },
+     {
+      "q": "A person who visits a place on holiday is a ___.",
+      "choices": [
+       "tourist",
+       "guide",
+       "waiter",
+       "pilot"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "I goed to Krabi last year.",
+       "I went to Krabi last year.",
+       "I go to Krabi last year.",
+       "I going to Krabi last year."
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "You sleep in a ___ when you go camping.",
+      "choices": [
+       "hotel",
+       "tent",
+       "cave",
+       "car"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Write the past simple of \"fly\".",
+      "answer": "flew",
+      "double": false
+     }
+    ]
+   }
+  ]
+ },
+ "M.3": {
+  "sets": [
+   {
+    "name": "Conditionals",
+    "questions": [
+     {
+      "q": "If it rains tomorrow, we ___ at home.",
+      "choices": [
+       "stay",
+       "will stay",
+       "would stay",
+       "stayed"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "If I ___ rich, I would buy a big house.",
+      "choices": [
+       "am",
+       "will be",
+       "were",
+       "be"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "If you heat water to 100°C, it ___.",
+      "choices": [
+       "boils",
+       "will boiled",
+       "boiled",
+       "boiling"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "If she had studied, she ___ the exam.",
+      "choices": [
+       "will pass",
+       "would pass",
+       "would have passed",
+       "passed"
+      ],
+      "answer": 2,
+      "double": false
+     },
+     {
+      "q": "What would you do if you ___ a million baht?",
+      "choices": [
+       "win",
+       "won",
+       "will win",
+       "winning"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Finish: \"If I were you, I ___ (go) to the doctor.\"",
+      "answer": "would go",
+      "double": false
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "If I will see him, I tell him.",
+       "If I see him, I will tell him.",
+       "If I saw him, I will tell him.",
+       "If I see him, I would told him."
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "Unless you hurry, you ___ the bus.",
+      "choices": [
+       "miss",
+       "will miss",
+       "missed",
+       "would missed"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "I wouldn't do that if I ___ you.",
+      "choices": [
+       "am",
+       "were",
+       "will be",
+       "is"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Finish: \"If I had more time, I ___ (learn) Korean.\"",
+      "answer": "would learn",
+      "double": false
+     }
+    ]
+   },
+   {
+    "name": "Idioms and collocations",
+    "questions": [
+     {
+      "q": "\"It's a piece of cake\" means it is ___.",
+      "choices": [
+       "delicious",
+       "very easy",
+       "expensive",
+       "sweet"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "\"I'm feeling under the weather\" means I feel ___.",
+      "choices": [
+       "cold",
+       "ill",
+       "happy",
+       "wet"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "We ___ a mistake.",
+      "choices": [
+       "did",
+       "made",
+       "took",
+       "had"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Can you ___ me a favour?",
+      "choices": [
+       "make",
+       "do",
+       "give",
+       "take"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "\"Once in a blue moon\" means ___.",
+      "choices": [
+       "every night",
+       "very rarely",
+       "at night",
+       "every month"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Finish the idiom: \"Break the ___\" (start a friendly conversation).",
+      "answer": "ice",
+      "double": false
+     },
+     {
+      "q": "Which is correct?",
+      "choices": [
+       "strong rain",
+       "heavy rain",
+       "big rain",
+       "tall rain"
+      ],
+      "answer": 1,
+      "double": true
+     },
+     {
+      "q": "\"Hit the books\" means ___.",
+      "choices": [
+       "study hard",
+       "fight",
+       "read slowly",
+       "buy books"
+      ],
+      "answer": 0,
+      "double": false
+     },
+     {
+      "q": "I need to ___ a decision.",
+      "choices": [
+       "do",
+       "make",
+       "have",
+       "give"
+      ],
+      "answer": 1,
+      "double": false
+     },
+     {
+      "q": "Finish: \"Actions speak louder than ___.\"",
+      "answer": "words",
+      "double": false
+     }
+    ]
+   }
+  ]
+ }
+}
