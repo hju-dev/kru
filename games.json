@@ -38,8 +38,8 @@
   {
     "slug": "word-rush",
     "title": "Word Rush",
-    "file": "legacy/games/word-rush.html",
-    "description": "Teams of 3 write as many words as they can for a prompt in 60 seconds. Bonus cards, M.1 and M.3 levels, scoreboard for up to 12 teams.",
+    "file": "public/games/word-rush/index.html",
+    "description": "Teams write as many words as they can for a prompt before the timer ends. Bonus cards change the scoring each round. Prompts for M.1, M.2 and M.3.",
     "levels": [
       "M.1",
       "M.2",
@@ -47,14 +47,11 @@
     ],
     "type": "vocabulary game",
     "minutes": 30,
-    "storageKeys": [
-      "wordrush"
-    ],
     "phoneLandscape": true,
     "modes": [
       "group"
     ],
-    "status": "migrate"
+    "status": "ready"
   },
   {
     "slug": "think-tank-showdown",
