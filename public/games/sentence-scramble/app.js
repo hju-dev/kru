@@ -230,6 +230,11 @@
     Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
   });
 
+  // How to play slides: before the game starts, and from the ⋯ menu
+  var INTRO = [];
+  function showIntro() { return KruIntro.show(INTRO, { title: 'Sentence Scramble' }); }
+  $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
@@ -240,6 +245,8 @@
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === SENTENCES.length) S = saved;
       else S = { v: 1, level: level, order: shuffled(SENTENCES.length), pos: 0, shuffles: {}, places: {}, revealed: {}, shownAt: {}, revealedAt: {}, pts: {}, log: [] };
       renderStage();
+      INTRO = KruIntro.forLevel(content, level);
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
     }).catch(function () {
       $('tiles').textContent = 'Could not load the sentences. Close the game and open it again.';
     });

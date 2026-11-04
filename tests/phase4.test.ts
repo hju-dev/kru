@@ -37,9 +37,10 @@ describe('Sentence Scramble sentences match HANDOFF word counts', () => {
   const c = read('public/games/sentence-scramble/content.json') as Record<string, { sentences: { text: string }[] }>
   const range: Record<string, [number, number]> = { 'M.1': [5, 7], 'M.2': [8, 10], 'M.3': [11, 14] }
   for (const [level, [min, max]] of Object.entries(range)) {
-    it(`${level}: ${min}-${max} words, at least 15 sentences, each ends with . or ?`, () => {
+    it(`${level}: ${min}-${max} words, at least 50 sentences, no repeats, each ends with . or ?`, () => {
       const list = c[level].sentences
-      expect(list.length).toBeGreaterThanOrEqual(15)
+      expect(list.length).toBeGreaterThanOrEqual(50)
+      expect(new Set(list.map((s) => s.text)).size).toBe(list.length)
       for (const s of list) {
         const n = s.text.trim().split(/\s+/).length
         expect(n, s.text).toBeGreaterThanOrEqual(min)
