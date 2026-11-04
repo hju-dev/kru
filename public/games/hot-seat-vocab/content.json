@@ -1,5 +1,5 @@
 {
- "about": "Hot Seat Vocab words per level. One student per team faces away; teammates describe the word without saying it. M.1 = A2 everyday words, M.2 = B1 holidays, places and feelings, M.3 = Person / Place / Thing / Idea (B1+). Written for Kru.",
+ "about": "Hot Seat Vocab words per level. One student per team faces away; teammates describe the word without saying it. M.1 = A2 everyday words, M.2 = B1 holidays, places and feelings, M.3 = Person / Place / Thing / Idea (B1+). Written for Kru. At least 50 per level, shuffled every game.",
  "M.1": {
   "words": [
    {
@@ -556,6 +556,146 @@
     "word": "imagination",
     "cat": "Idea"
    }
+  ],
+  "intro": [
+   {
+    "title": "Hot Seat Vocab",
+    "text": [
+     "One player sits in the hot seat, back to the board.",
+     "The team can see the word. The player can't!"
+    ],
+    "example": {
+     "label": "The team sees",
+     "tag": "PERSON",
+     "big": "firefighter"
+    }
+   },
+   {
+    "title": "Four kinds of words",
+    "text": [
+     "Every word is a Person, a Place, a Thing or an Idea.",
+     "Start with the kind: \"It's a person who…\""
+    ],
+    "example": {
+     "rows": [
+      [
+       "Person",
+       "firefighter"
+      ],
+      [
+       "Place",
+       "museum"
+      ],
+      [
+       "Thing",
+       "compass"
+      ],
+      [
+       "Idea",
+       "freedom"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Describe it!",
+    "text": [
+     "Explain the word, but don't say it.",
+     "No Thai, no spelling, no pointing."
+    ],
+    "example": {
+     "label": "Word: elephant",
+     "rows": [
+      [
+       "✓",
+       "It's a big grey animal with a long nose."
+      ],
+      [
+       "✗",
+       "It's an ele…"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Win points",
+    "text": [
+     "Guess the word: +1 for your team.",
+     "Too hard? Say \"Skip!\" and try the next word."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Got it",
+       "+1"
+      ],
+      [
+       "Skip",
+       "next word"
+      ],
+      [
+       "Time",
+       "60 seconds"
+      ]
+     ]
+    }
+   }
   ]
- }
+ },
+ "intro": [
+  {
+   "title": "Hot Seat Vocab",
+   "text": [
+    "One player sits in the hot seat, back to the board.",
+    "The team can see the word. The player can't!"
+   ],
+   "example": {
+    "label": "The team sees",
+    "big": "elephant"
+   }
+  },
+  {
+   "title": "Describe it!",
+   "text": [
+    "Explain the word, but don't say it.",
+    "No Thai, no spelling, no pointing."
+   ],
+   "example": {
+    "label": "Word: elephant",
+    "rows": [
+     [
+      "✓",
+      "It's a big grey animal with a long nose."
+     ],
+     [
+      "✗",
+      "It's an ele…"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "Guess the word: +1 for your team.",
+    "Too hard? Say \"Skip!\" and try the next word."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Got it",
+      "+1"
+     ],
+     [
+      "Skip",
+      "next word"
+     ],
+     [
+      "Time",
+      "60 seconds"
+     ]
+    ]
+   }
+  }
+ ]
 }

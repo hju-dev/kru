@@ -58,7 +58,7 @@ describe('Board Race tasks', () => {
   >
   for (const level of ['M.1', 'M.2', 'M.3']) {
     it(`${level}: every forms task has one answer per item; every list task has examples`, () => {
-      expect(c[level].tasks.length).toBeGreaterThanOrEqual(10)
+      expect(c[level].tasks.length).toBeGreaterThanOrEqual(50)
       for (const t of c[level].tasks) {
         expect(t.title && t.prompt).toBeTruthy()
         if (t.kind === 'forms') expect(t.answers?.length, t.title).toBe(t.items?.length)
@@ -77,9 +77,9 @@ describe('Hot Seat Vocab words', () => {
     { words: { word: string; cat?: string }[]; categories?: string[] }
   >
   for (const level of ['M.1', 'M.2', 'M.3']) {
-    it(`${level}: at least 40 words, no repeats`, () => {
+    it(`${level}: at least 50 words, no repeats`, () => {
       const words = c[level].words.map((w) => w.word.toLowerCase())
-      expect(words.length).toBeGreaterThanOrEqual(40)
+      expect(words.length).toBeGreaterThanOrEqual(50)
       expect(new Set(words).size).toBe(words.length)
     })
   }

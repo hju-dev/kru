@@ -227,6 +227,11 @@
     Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
   });
 
+  // How to play slides: before the game starts, and from the ⋯ menu
+  var INTRO = [];
+  function showIntro() { return KruIntro.show(INTRO, { title: 'Board Race' }); }
+  $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
@@ -244,6 +249,8 @@
       else S = { v: 1, level: level, order: shuffled(TASKS.length), pos: 0, revealed: {}, secs: 60, pts: {}, log: [] };
       total = left = S.secs;
       renderTask();
+      INTRO = KruIntro.forLevel(content, level);
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
     }).catch(function () {
       $('q').textContent = 'Could not load the tasks. Close the game and open it again.';
     });

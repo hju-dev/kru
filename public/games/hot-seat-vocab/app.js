@@ -243,6 +243,11 @@
     Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
   });
 
+  // How to play slides: before the game starts, and from the ⋯ menu
+  var INTRO = [];
+  function showIntro() { return KruIntro.show(INTRO, { title: 'Hot Seat Vocab' }); }
+  $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
@@ -255,6 +260,8 @@
       if (!team(S.seat)) S.seat = teams[0].id;
       total = left = S.secs;
       render();
+      INTRO = KruIntro.forLevel(content, level);
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
     }).catch(function () {
       $('word').textContent = 'Could not load the words. Close the game and open it again.';
     });
