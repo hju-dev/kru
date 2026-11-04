@@ -324,3 +324,26 @@ input {
 .ph-remove {
   color: var(--coral);
 }
+
+/* Rules button next to the timer name, and the rules box in the editor */
+.pick.rules-btn {
+  max-width: none;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+.rules-field {
+  align-items: flex-start;
+  margin-top: 8px;
+}
+textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 72px;
+  border-radius: 10px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  color: var(--fg);
+  font: 600 16px/1.35 var(--body);
+  padding: 8px 10px;
+  resize: vertical;
+}

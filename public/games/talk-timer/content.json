@@ -1,17 +1,578 @@
 {
-  "about": "Starting presets for Talk Timer. Henry can edit, add and delete them in the app; his changes are saved on the phone. 'Restore starting timers' brings these back.",
-  "start": "speaking-test",
-  "presets": [
-    { "id": "speaking-test", "name": "Speaking test", "phases": [{ "label": "Speaking test: talk!", "secs": 60 }, { "label": "Change: next speaker", "secs": 10 }] },
-    { "id": "teacher-model", "name": "Teacher model", "phases": [{ "label": "Teacher model", "secs": 60 }] },
-    { "id": "20-questions", "name": "20 Questions", "phases": [{ "label": "Play 20 Questions!", "secs": 900 }] },
-    { "id": "one-word-story", "name": "One-word story round", "phases": [{ "label": "One-Word Story: one word each", "secs": 240 }] },
-    { "id": "story-fix-it", "name": "Story: fix it (R&W)", "phases": [{ "label": "Fix it: check the list", "secs": 240 }] },
-    { "id": "one-word-duel", "name": "One-Word Duel", "phases": [{ "label": "One-Word Duel", "secs": 960 }] },
-    { "id": "duel-clue", "name": "Duel clue (10 s)", "phases": [{ "label": "One clue: 10 seconds!", "secs": 10 }] },
-    { "id": "think-tank", "name": "Think Tank Showdown", "phases": [{ "label": "Think Tank Showdown", "secs": 960 }] },
-    { "id": "final-rehearsal", "name": "Final rehearsal", "phases": [{ "label": "Final rehearsal", "secs": 720 }] },
-    { "id": "pitch-qa", "name": "Pitch + Q&A", "phases": [{ "label": "Pitch", "secs": 180 }, { "label": "Investor questions", "secs": 120 }] },
-    { "id": "invest-credits", "name": "Invest credits", "phases": [{ "label": "Invest your credits", "secs": 300 }] }
-  ]
+ "about": "Starting presets for Talk Timer. Henry can edit, add and delete them in the app; his changes are saved on the phone. 'Restore starting timers' brings these back. Each starting preset has \"rules\": slides shown by the Rules button (from Henry's lesson slides; the Fix It! Pitch ones are a draft). A preset Henry edits can have its own rules (one per line), which replace these.",
+ "start": "speaking-test",
+ "presets": [
+  {
+   "id": "speaking-test",
+   "name": "Speaking test",
+   "phases": [
+    {
+     "label": "Speaking test: talk!",
+     "secs": 60
+    },
+    {
+     "label": "Change: next speaker",
+     "secs": 10
+    }
+   ],
+   "rules": [
+    {
+     "title": "Speaking test",
+     "text": [
+      "We go down the class list.",
+      "Next student: draw a topic card and sit in the \"on deck\" chair."
+     ],
+     "example": {
+      "note": "Prepare in your head while the speaker talks."
+     }
+    },
+    {
+     "title": "Your 1-minute talk",
+     "text": [
+      "Say your name and card number, then talk until the chime.",
+      "Finish early? Add another example."
+     ],
+     "example": {
+      "rows": [
+       [
+        "Answer",
+        "I think…"
+       ],
+       [
+        "Reason",
+        "because…"
+       ],
+       [
+        "Example",
+        "for example…"
+       ],
+       [
+        "Finish",
+        "so…"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "Rules",
+     "text": [
+      "No redrawing cards. You can hold the card, but no notes.",
+      "Audience: silent, phones away."
+     ],
+     "example": {
+      "note": "The 10-second change gives the next student time to walk up."
+     }
+    },
+    {
+     "title": "Grade /10",
+     "text": [
+      "Not reached today? You go first next lesson."
+     ],
+     "example": {
+      "rows": [
+       [
+        "Fluency",
+        "3"
+       ],
+       [
+        "Accuracy",
+        "3"
+       ],
+       [
+        "Range",
+        "2"
+       ],
+       [
+        "Organisation",
+        "2"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "teacher-model",
+   "name": "Teacher model",
+   "phases": [
+    {
+     "label": "Teacher model",
+     "secs": 60
+    }
+   ],
+   "rules": [
+    {
+     "title": "Teacher model",
+     "text": [
+      "Listen: your teacher talks about a topic card for one minute.",
+      "Can you hear the four parts?"
+     ],
+     "example": {
+      "rows": [
+       [
+        "Answer",
+        "I think…"
+       ],
+       [
+        "Reason",
+        "because…"
+       ],
+       [
+        "Example",
+        "for example…"
+       ],
+       [
+        "Finish",
+        "so…"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "Your turn next",
+     "text": [
+      "In the speaking test, you do the same: one minute, four parts."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "20-questions",
+   "name": "20 Questions",
+   "phases": [
+    {
+     "label": "Play 20 Questions!",
+     "secs": 900
+    }
+   ],
+   "rules": [
+    {
+     "title": "20 Questions",
+     "text": [
+      "Your teacher is thinking of something.",
+      "Ask yes / no questions to find out what it is!"
+     ],
+     "example": {
+      "rows": [
+       [
+        "Is it an animal?",
+        "Yes"
+       ],
+       [
+        "Can it fly?",
+        "No"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "Every question counts",
+     "text": [
+      "20 questions for the whole game. Each question uses one.",
+      "Think you know? Make a guess!"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "one-word-story",
+   "name": "One-word story round",
+   "phases": [
+    {
+     "label": "One-Word Story: one word each",
+     "secs": 240
+    }
+   ],
+   "rules": [
+    {
+     "title": "One-Word Story",
+     "text": [
+      "Two circles of about 15. Each circle chooses a Starter.",
+      "Go clockwise: one word each, building on the opener."
+     ],
+     "example": {
+      "label": "Example",
+      "chips": [
+       "Yesterday",
+       "I",
+       "found",
+       "a",
+       "…"
+      ]
+     }
+    },
+    {
+     "title": "Keep it right",
+     "text": [
+      "The story must be grammatical and make sense.",
+      "A wrong word? The next person can fix it."
+     ],
+     "example": {
+      "rows": [
+       [
+        "\"Full stop!\"",
+        "ends a sentence"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "Time's up!",
+     "text": [
+      "The last person finishes the sentence.",
+      "Then one person retells the whole story in full sentences (30 s)."
+     ]
+    },
+    {
+     "title": "Written version",
+     "text": [
+      "Groups of 5, one story sheet each. Copy the opener, then pass it round.",
+      "Read the story so far, then write ONE word, in silence."
+     ],
+     "example": {
+      "note": "Two rounds, a new half-sheet each time."
+     }
+    }
+   ]
+  },
+  {
+   "id": "story-fix-it",
+   "name": "Story: fix it (R&W)",
+   "phases": [
+    {
+     "label": "Fix it: check the list",
+     "secs": 240
+    }
+   ],
+   "rules": [
+    {
+     "title": "Story: fix it",
+     "text": [
+      "Choose the better of your two stories.",
+      "Correct it with the checklist."
+     ],
+     "example": {
+      "rows": [
+       [
+        "Capitals and full stops",
+        "✓"
+       ],
+       [
+        "Past tense",
+        "✓"
+       ],
+       [
+        "Linking words",
+        "✓"
+       ],
+       [
+        "It makes sense",
+        "✓"
+       ]
+      ],
+      "note": "M.1: past simple · M.2: past simple + past continuous"
+     }
+    },
+    {
+     "title": "Read it out",
+     "text": [
+      "Choose one reader to read your story to the class (about 30 s).",
+      "The class votes for the funniest story and the best English."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "one-word-duel",
+   "name": "One-Word Duel",
+   "phases": [
+    {
+     "label": "One-Word Duel",
+     "secs": 960
+    }
+   ],
+   "rules": [
+    {
+     "title": "One-Word Duel",
+     "text": [
+      "Team A (left half) vs Team B (right half).",
+      "One guesser from each team stands at the front, back to the screen."
+     ]
+    },
+    {
+     "title": "Clues",
+     "text": [
+      "Team A gives ONE word. Team A's guesser has one guess.",
+      "Wrong? Team B gives one word, and Team B's guesser guesses."
+     ],
+     "example": {
+      "note": "Both guessers hear every clue. Take turns down your team to give clues."
+     }
+    },
+    {
+     "title": "Points",
+     "text": [
+      "Guess it with fewer clues for more points.",
+      "No guess after 6 clues: new round, no points."
+     ],
+     "example": {
+      "rows": [
+       [
+        "Clue 1 or 2",
+        "3 points"
+       ],
+       [
+        "Clue 3 or 4",
+        "2 points"
+       ],
+       [
+        "Clue 5 or 6",
+        "1 point"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "Not allowed",
+     "text": [
+      "More than one word · part of the answer · \"sounds like\" or rhymes",
+      "Gestures or acting · Thai or spelling letters · shouting from the audience"
+     ],
+     "example": {
+      "note": "An illegal clue gives the other team a free guess straight away."
+     }
+    },
+    {
+     "title": "Next round",
+     "text": [
+      "The starting team changes every round.",
+      "About 12–15 rounds of a minute each."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "duel-clue",
+   "name": "Duel clue (10 s)",
+   "phases": [
+    {
+     "label": "One clue: 10 seconds!",
+     "secs": 10
+    }
+   ],
+   "rules": [
+    {
+     "title": "Duel clue: 10 seconds",
+     "text": [
+      "Give your ONE-word clue before the chime!",
+      "Think fast, and keep it legal."
+     ]
+    },
+    {
+     "title": "Not allowed",
+     "text": [
+      "More than one word · part of the answer · \"sounds like\" or rhymes",
+      "Gestures or acting · Thai or spelling letters · shouting from the audience"
+     ],
+     "example": {
+      "note": "An illegal clue gives the other team a free guess straight away."
+     }
+    }
+   ]
+  },
+  {
+   "id": "think-tank",
+   "name": "Think Tank Showdown",
+   "phases": [
+    {
+     "label": "Think Tank Showdown",
+     "secs": 960
+    }
+   ],
+   "rules": [
+    {
+     "title": "Think Tank Showdown",
+     "text": [
+      "A game show for thinkers, in teams.",
+      "4 rounds: Riddle Rush, Spot the Problem, What Would Happen If…?, Final Wager."
+     ]
+    },
+    {
+     "title": "Show me!",
+     "text": [
+      "Write one answer as a team and hold it up when your teacher says \"Show me!\"",
+      "In the Final Wager, bet 0–5 points before you see the question."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "final-rehearsal",
+   "name": "Final rehearsal",
+   "phases": [
+    {
+     "label": "Final rehearsal",
+     "secs": 720
+    }
+   ],
+   "rules": [
+    {
+     "title": "Final rehearsal",
+     "text": [
+      "Practise your pitch as a group: 3 minutes, strict.",
+      "Each student presents one part."
+     ],
+     "example": {
+      "rows": [
+       [
+        "1",
+        "Problem"
+       ],
+       [
+        "2",
+        "Product"
+       ],
+       [
+        "3",
+        "How it works"
+       ],
+       [
+        "4",
+        "Why it's better"
+       ],
+       [
+        "5",
+        "Price + plan"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "Get ready for questions",
+     "text": [
+      "Think: what will the investors ask you?",
+      "Every student must ask at least one investor question in the lesson."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "pitch-qa",
+   "name": "Pitch + Q&A",
+   "phases": [
+    {
+     "label": "Pitch",
+     "secs": 180
+    },
+    {
+     "label": "Investor questions",
+     "secs": 120
+    }
+   ],
+   "rules": [
+    {
+     "title": "Fix It! Pitch",
+     "text": [
+      "Groups of 5: a product, app or service that fixes a real problem for teenagers.",
+      "Each student presents one part."
+     ],
+     "example": {
+      "rows": [
+       [
+        "1",
+        "Problem"
+       ],
+       [
+        "2",
+        "Product"
+       ],
+       [
+        "3",
+        "How it works"
+       ],
+       [
+        "4",
+        "Why it's better"
+       ],
+       [
+        "5",
+        "Price + plan"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "3:00 pitch, 2:00 questions",
+     "text": [
+      "The pitch is strict: stop mid-sentence when the time runs out.",
+      "Then 2 minutes of investor questions. Any group member can answer."
+     ]
+    },
+    {
+     "title": "Grade /10",
+     "text": [
+      "Every student asks at least one investor question this lesson."
+     ],
+     "example": {
+      "rows": [
+       [
+        "Fluency",
+        "3"
+       ],
+       [
+        "Accuracy",
+        "3"
+       ],
+       [
+        "Range",
+        "2"
+       ],
+       [
+        "Interaction",
+        "2"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "invest-credits",
+   "name": "Invest credits",
+   "phases": [
+    {
+     "label": "Invest your credits",
+     "secs": 300
+    }
+   ],
+   "rules": [
+    {
+     "title": "Invest your credits",
+     "text": [
+      "You have 3 Fix-It Fund credits.",
+      "Give them to the pitches you believe in, but not your own group!"
+     ],
+     "example": {
+      "rows": [
+       [
+        "All 3",
+        "to one group"
+       ],
+       [
+        "Or split them",
+        "between groups"
+       ]
+      ]
+     }
+    },
+    {
+     "title": "Say why",
+     "text": [
+      "Be ready to say: \"I invested in … because …\"",
+      "The group with the most credits is the Fix-It Champions!"
+     ]
+    }
+   ]
+  }
+ ]
 }
