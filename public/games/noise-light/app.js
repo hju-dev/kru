@@ -1,5 +1,5 @@
 /* Noise Light (a tool). Sign: tap green / yellow / red. Noise meter: the microphone measures how loud the
-   room is and sets the colour (sensitivity 1-10). The sound is never recorded or sent anywhere. */
+   room is and sets the color (sensitivity 1-10). The sound is never recorded or sent anywhere. */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
@@ -38,7 +38,7 @@
     if (!b) return;
     S.color = b.dataset.c; save(); renderSign();
   });
-  // tap the light itself to go to the next colour (sign mode)
+  // tap the light itself to go to the next color (sign mode)
   $('light').addEventListener('click', function () {
     if (S.mode !== 'sign') return;
     S.color = S.color === 'green' ? 'yellow' : S.color === 'yellow' ? 'red' : 'green'; save(); renderSign();

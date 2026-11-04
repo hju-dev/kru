@@ -1,5 +1,5 @@
 {
- "about": "Board Race tasks per level. kind 'forms': items with matching answers (shown on Reveal). kind 'list': write as many as you can; examples shown on Reveal. M.1 verb forms and basic vocabulary, M.2 holiday words and past continuous, M.3 idioms and collocations. Written for Kru. At least 50 per level, shuffled every game.",
+ "about": "Board Race tasks per level. kind 'forms': items with matching answers (shown on Reveal). kind 'list': write as many as you can; examples shown on Reveal. M.1 verb forms and basic vocabulary, M.2 vacation words and past continuous, M.3 idioms and collocations. Written for Kru. At least 50 per level, shuffled every game.",
  "M.1": {
   "tasks": [
    {
@@ -54,7 +54,7 @@
     "kind": "list",
     "title": "Things in a kitchen",
     "prompt": "Write things you find in a kitchen",
-    "examples": "fridge, spoon, fork, knife, plate, bowl, cup, pan, rice cooker, sink, kettle, microwave"
+    "examples": "fridge, spoon, fork, knife, plate, bowl, cup, pan, rice stove, sink, kettle, microwave"
    },
    {
     "kind": "forms",
@@ -154,9 +154,9 @@
    },
    {
     "kind": "list",
-    "title": "Colours",
-    "prompt": "Write as many colours as you can",
-    "examples": "red, blue, green, yellow, black, white, pink, purple, orange, brown, grey, gold"
+    "title": "Colors",
+    "prompt": "Write as many colors as you can",
+    "examples": "red, blue, green, yellow, black, white, pink, purple, orange, brown, gray, gold"
    },
    {
     "kind": "forms",
@@ -573,25 +573,25 @@
     "kind": "list",
     "title": "Drinks",
     "prompt": "Write as many drinks as you can",
-    "examples": "water, milk, juice, tea, coffee, cola, smoothie, hot chocolate, lemonade, soda, coconut water, yoghurt drink"
+    "examples": "water, milk, juice, tea, coffee, cola, smoothie, hot chocolate, lemonade, soda, coconut water, yogurt drink"
    },
    {
     "kind": "list",
     "title": "Sports",
     "prompt": "Write as many sports as you can",
-    "examples": "football, basketball, volleyball, badminton, tennis, swimming, running, boxing, golf, table tennis, cycling, takraw"
+    "examples": "soccer, basketball, volleyball, badminton, tennis, swimming, running, boxing, golf, table tennis, cycling, takraw"
    },
    {
     "kind": "list",
     "title": "School subjects",
     "prompt": "Write school subjects",
-    "examples": "English, maths, science, Thai, history, art, music, PE, geography, computing, social studies, health"
+    "examples": "English, math, science, Thai, history, art, music, PE, geography, computing, social studies, health"
    },
    {
     "kind": "list",
     "title": "Clothes",
     "prompt": "Write as many clothes as you can",
-    "examples": "shirt, T-shirt, skirt, trousers, shorts, dress, jacket, socks, shoes, hat, jeans, sweater"
+    "examples": "shirt, T-shirt, skirt, pants, shorts, dress, jacket, socks, shoes, hat, jeans, sweater"
    },
    {
     "kind": "list",
@@ -621,7 +621,7 @@
     "kind": "list",
     "title": "Places in a town",
     "prompt": "Write places in a town",
-    "examples": "school, hospital, bank, market, park, temple, post office, police station, cinema, shop, restaurant, library"
+    "examples": "school, hospital, bank, market, park, temple, post office, police station, movie theater, store, restaurant, library"
    },
    {
     "kind": "list",
@@ -645,7 +645,7 @@
     "kind": "list",
     "title": "Insects",
     "prompt": "Write insects and small animals",
-    "examples": "ant, bee, fly, mosquito, butterfly, spider, worm, ladybird, cockroach, grasshopper, snail, beetle"
+    "examples": "ant, bee, fly, mosquito, butterfly, spider, worm, ladybug, cockroach, grasshopper, snail, beetle"
    },
    {
     "kind": "list",
@@ -683,8 +683,8 @@
   "tasks": [
    {
     "kind": "list",
-    "title": "Holiday words",
-    "prompt": "Write words about holidays",
+    "title": "Vacation words",
+    "prompt": "Write words about vacations",
     "examples": "beach, hotel, suitcase, passport, ticket, souvenir, sunscreen, map, tour, airport, luggage, sightseeing"
    },
    {
@@ -710,8 +710,8 @@
    },
    {
     "kind": "list",
-    "title": "Beach holiday",
-    "prompt": "Write things to pack for a beach holiday",
+    "title": "Beach vacation",
+    "prompt": "Write things to pack for a beach vacation",
     "examples": "swimsuit, towel, sunscreen, sunglasses, hat, sandals, camera, water bottle, shorts, beach bag"
    },
    {
@@ -764,8 +764,8 @@
    },
    {
     "kind": "list",
-    "title": "Holiday activities",
-    "prompt": "Write things you do on holiday (verbs)",
+    "title": "Vacation activities",
+    "prompt": "Write things you do on vacation (verbs)",
     "examples": "swim, dive, hike, shop, relax, camp, explore, sunbathe, take photos, visit, travel, eat out"
    },
    {
@@ -793,13 +793,13 @@
     "kind": "list",
     "title": "Transport",
     "prompt": "Write kinds of transport",
-    "examples": "plane, train, bus, boat, taxi, motorbike, bicycle, ferry, tuk-tuk, van, car, helicopter"
+    "examples": "plane, train, bus, boat, taxi, motorcycle, bicycle, ferry, tuk-tuk, van, car, helicopter"
    },
    {
     "kind": "list",
     "title": "In a hotel",
     "prompt": "Write things you find in a hotel",
-    "examples": "bed, lift, pool, reception, key card, towel, restaurant, gym, lobby, room service, air conditioner, balcony"
+    "examples": "bed, elevator, pool, reception, key card, towel, restaurant, gym, lobby, room service, air conditioner, balcony"
    },
    {
     "kind": "list",
@@ -1157,7 +1157,7 @@
     "kind": "list",
     "title": "Souvenirs",
     "prompt": "Write souvenirs you can buy",
-    "examples": "T-shirt, postcard, key ring, magnet, bag, hat, elephant statue, bracelet, sweets, scarf, mug, painting"
+    "examples": "T-shirt, postcard, key ring, magnet, bag, hat, elephant statue, bracelet, candy, scarf, mug, painting"
    },
    {
     "kind": "list",
@@ -1169,7 +1169,7 @@
     "kind": "list",
     "title": "Hiking backpack",
     "prompt": "Write things to take on a hike",
-    "examples": "water bottle, map, snacks, hat, jacket, torch, phone, first-aid kit, sunscreen, insect spray, rope, camera"
+    "examples": "water bottle, map, snacks, hat, jacket, flashlight, phone, first-aid kit, sunscreen, insect spray, rope, camera"
    },
    {
     "kind": "list",
@@ -1181,13 +1181,13 @@
     "kind": "list",
     "title": "Rainy day",
     "prompt": "Write things you can do on a rainy day",
-    "examples": "watch a film, read, play games, cook, sleep, draw, listen to music, do homework, bake a cake, play cards, chat online, clean your room"
+    "examples": "watch a movie, read, play games, cook, sleep, draw, listen to music, do homework, bake a cake, play cards, chat online, clean your room"
    },
    {
     "kind": "list",
     "title": "Water sports",
     "prompt": "Write water sports",
-    "examples": "swimming, diving, snorkelling, surfing, sailing, kayaking, water skiing, fishing, rafting, rowing, jet skiing, paddleboarding"
+    "examples": "swimming, diving, snorkeling, surfing, sailing, kayaking, water skiing, fishing, rafting, rowing, jet skiing, paddleboarding"
    },
    {
     "kind": "list",
@@ -1199,7 +1199,7 @@
     "kind": "list",
     "title": "Camping",
     "prompt": "Write camping things",
-    "examples": "tent, sleeping bag, torch, campfire, matches, pillow, cooking pot, map, rope, insect spray, chair, lantern"
+    "examples": "tent, sleeping bag, flashlight, campfire, matches, pillow, cooking pot, map, rope, insect spray, chair, lantern"
    },
    {
     "kind": "list",
@@ -1215,8 +1215,8 @@
    },
    {
     "kind": "list",
-    "title": "Holiday problems",
-    "prompt": "Write things that can go wrong on holiday",
+    "title": "Vacation problems",
+    "prompt": "Write things that can go wrong on vacation",
     "examples": "rain, lost passport, missed flight, sunburn, bad food, stomach ache, lost bag, late bus, mosquitoes, no money, broken phone, traffic jam"
    },
    {
@@ -1234,20 +1234,20 @@
    {
     "kind": "list",
     "title": "Things to rent",
-    "prompt": "Write things you can rent on holiday",
-    "examples": "car, bike, motorbike, boat, kayak, surfboard, room, house, umbrella, beach chair, scooter, camera"
+    "prompt": "Write things you can rent on vacation",
+    "examples": "car, bike, motorcycle, boat, kayak, surfboard, room, house, umbrella, beach chair, scooter, camera"
    },
    {
     "kind": "list",
     "title": "Travel verbs",
-    "prompt": "Write verbs for travelling",
+    "prompt": "Write verbs for traveling",
     "examples": "book, pack, check in, board, fly, land, arrive, leave, visit, explore, stay, unpack"
    },
    {
     "kind": "list",
     "title": "Kinds of trips",
-    "prompt": "Write kinds of holidays or trips",
-    "examples": "beach holiday, camping trip, city break, school trip, road trip, cruise, safari, skiing holiday, day trip, tour, backpacking, staycation"
+    "prompt": "Write kinds of vacations or trips",
+    "examples": "beach vacation, camping trip, city trip, school trip, road trip, cruise, safari, ski trip, day trip, tour, backpacking, staycation"
    },
    {
     "kind": "list",
@@ -1259,7 +1259,7 @@
     "kind": "list",
     "title": "Night market",
     "prompt": "Write things at a night market",
-    "examples": "food stalls, clothes, lights, music, crowds, snacks, toys, jewellery, phone cases, grilled meat, fruit, souvenirs"
+    "examples": "food stalls, clothes, lights, music, crowds, snacks, toys, jewelry, phone cases, grilled meat, fruit, souvenirs"
    }
   ]
  },
@@ -1405,7 +1405,7 @@
     "kind": "list",
     "title": "-ful or -less",
     "prompt": "Write words ending in -ful or -less",
-    "examples": "useful, careless, helpful, homeless, beautiful, hopeless, painful, careful, harmless, wonderful, useless, colourful"
+    "examples": "useful, careless, helpful, homeless, beautiful, hopeless, painful, careful, harmless, wonderful, useless, colorful"
    },
    {
     "kind": "forms",
@@ -1809,7 +1809,7 @@
     "kind": "list",
     "title": "Collocations with DO",
     "prompt": "Write collocations with DO",
-    "examples": "do homework, do the dishes, do exercise, do your best, do the shopping, do business, do a favour, do the laundry, do a test, do research, do yoga, do nothing"
+    "examples": "do homework, do the dishes, do exercise, do your best, do the shopping, do business, do a favor, do the laundry, do a test, do research, do yoga, do nothing"
    },
    {
     "kind": "list",
@@ -1825,8 +1825,8 @@
    },
    {
     "kind": "list",
-    "title": "Colour idioms",
-    "prompt": "Write idioms with colours",
+    "title": "Color idioms",
+    "prompt": "Write idioms with colors",
     "examples": "feel blue, red-handed, green with envy, once in a blue moon, a white lie, black sheep, see red, in the red, golden opportunity, out of the blue, green light, red tape"
    },
    {
@@ -1875,7 +1875,7 @@
     "kind": "list",
     "title": "Environment",
     "prompt": "Write words about the environment",
-    "examples": "pollution, recycling, plastic, climate change, global warming, rubbish, forest, energy, solar power, waste, endangered, carbon"
+    "examples": "pollution, recycling, plastic, climate change, global warming, trash, forest, energy, solar power, waste, endangered, carbon"
    },
    {
     "kind": "list",

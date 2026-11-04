@@ -155,3 +155,25 @@ describe('Talk Timer rules', () => {
     }
   })
 })
+
+describe('American English (Henry)', () => {
+  const british = /\b(colou?rs?\b(?<=colours?)|colourful|favourites?|favours?|flavours?|neighbours?|centres?|theatres?|metres?|litres?|grey|travell(ing|ed|er)|practis(e|ed|es|ing)|\w+is(e|ed|ing|ation)\b(?<=(organis|realis|apologis|recognis|memoris|summaris|criticis)\w+)|aeroplanes?|lorry|maths|mum|pyjamas|jewellery|yoghurt|tyres?|motorbikes?|full stops?|at the weekends?|cinemas?|football(er)?s?|trousers|torch(es)?|rubbish|petrol|car park|trainers|timetables?|canteen|cooker|wardrobe|postman|jumper|ladybirds?)\b/i
+  for (const g of ready) {
+    it(`${g.slug}: content and game text use American spelling and words`, () => {
+      const files = [`public/games/${g.slug}/index.html`, `public/games/${g.slug}/app.js`, `public/games/${g.slug}/content.json`]
+      for (const f of files) {
+        let text: string
+        try {
+          text = read(f)
+        } catch {
+          continue
+        }
+        const lines = text.split('\n').filter((l) => !/^\s*(\/\/|\/?\*)/.test(l)) // code comments don't show on screen
+        for (const l of lines) expect(l.match(british)?.[0], `${f}: ${l.trim().slice(0, 80)}`).toBeUndefined()
+      }
+    })
+  }
+  it('games.json descriptions', () => {
+    for (const g of games) expect(JSON.stringify(g).match(british)?.[0], g.slug).toBeUndefined()
+  })
+})

@@ -28,6 +28,7 @@ The owner (Henry) is an ESL teacher, not a full-time developer. Explain things i
 | Games | Each game is its own page at `public/games/<slug>/index.html`, run in a full-viewport same-origin iframe. They talk to the shell only through the Kru SDK (`public/sdk/kru.js`, `postMessage`, check `event.origin`). Games never store rosters or hardcode classes. Every game runs on its own with `?mock=1`. |
 | Levels | Every game has M.1 / M.2 / M.3. Content lives in `public/games/<slug>/content.json`, keyed by level. Doubtful content gets a `todo` field. |
 | Fonts | Self-hosted only. No Google Fonts requests. |
+| Language | **American English** everywhere in the app (Henry, 2026-11-04): color, favorite, vacation, movie, soccer, store, math, mom, on the weekend, period (not full stop). Tested in `tests/games.test.ts` ("American English"). |
 | Game UI | Main controls ≥ 44 pt tall; student-facing text ≥ 18 px at 812 × 375; answers stay hidden until a deliberate Reveal tap; sound only after a tap. |
 
 ## iOS facts to design around (HANDOFF section 3)

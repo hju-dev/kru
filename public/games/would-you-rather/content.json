@@ -31,12 +31,12 @@
     "b": "have a pet monkey"
    },
    {
-    "a": "play football",
+    "a": "play soccer",
     "b": "play basketball"
    },
    {
     "a": "read a book",
-    "b": "watch a film"
+    "b": "watch a movie"
    },
    {
     "a": "live without TV",
@@ -112,7 +112,7 @@
    },
    {
     "a": "be a famous singer",
-    "b": "be a famous footballer"
+    "b": "be a famous soccer player"
    },
    {
     "a": "have a bike",
@@ -184,7 +184,7 @@
    },
    {
     "a": "have a birthday every month",
-    "b": "have a holiday every month"
+    "b": "have a vacation every month"
    },
    {
     "a": "clean your room",
@@ -233,7 +233,7 @@
    },
    {
     "a": "be the best student in class",
-    "b": "be the best player in the team"
+    "b": "be the best player on the team"
    },
    {
     "a": "have a job you love with little money",
@@ -264,11 +264,11 @@
     "b": "learn to dance"
    },
    {
-    "a": "have a holiday by the sea",
-    "b": "have a holiday in a big city"
+    "a": "have a vacation by the sea",
+    "b": "have a vacation in a big city"
    },
    {
-    "a": "be good at maths",
+    "a": "be good at math",
     "b": "be good at art"
    },
    {
@@ -285,7 +285,7 @@
    },
    {
     "a": "go to a concert",
-    "b": "go to a football match"
+    "b": "go to a soccer match"
    },
    {
     "a": "never eat chocolate again",
@@ -320,7 +320,7 @@
     "b": "work outside"
    },
    {
-    "a": "have a holiday every year",
+    "a": "have a vacation every year",
     "b": "get a new phone every year"
    },
    {
@@ -333,7 +333,7 @@
    },
    {
     "a": "write a book",
-    "b": "make a film"
+    "b": "make a movie"
    },
    {
     "a": "go camping in the forest",
@@ -356,8 +356,8 @@
     "b": "win a big prize in a competition"
    },
    {
-    "a": "meet your favourite singer",
-    "b": "meet your favourite actor"
+    "a": "meet your favorite singer",
+    "b": "meet your favorite actor"
    },
    {
     "a": "have a big birthday party",
@@ -376,7 +376,7 @@
     "b": "be the smartest person in class"
    },
    {
-    "a": "be stuck in a lift",
+    "a": "be stuck in an elevator",
     "b": "be stuck in traffic"
    },
    {
@@ -478,7 +478,7 @@
    },
    {
     "a": "have a teacher who is strict but fair",
-    "b": "have a teacher who is kind but disorganised"
+    "b": "have a teacher who is kind but disorganized"
    },
    {
     "a": "study what you love",
@@ -518,7 +518,7 @@
    },
    {
     "a": "read only books",
-    "b": "watch only films for the rest of your life"
+    "b": "watch only movies for the rest of your life"
    },
    {
     "a": "have unlimited data",

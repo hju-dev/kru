@@ -10,7 +10,7 @@
    {
     "kind": "cat",
     "prompt": "Things in a <em>kitchen</em>",
-    "examples": "fridge, spoon, fork, knife, plate, bowl, cup, pan, rice cooker, sink, oven, kettle"
+    "examples": "fridge, spoon, fork, knife, plate, bowl, cup, pan, rice stove, sink, oven, kettle"
    },
    {
     "kind": "cat",
@@ -20,7 +20,7 @@
    {
     "kind": "cat",
     "prompt": "Food or drinks at <em>7-Eleven</em>",
-    "examples": "milk, water, bread, toast, sandwich, noodles, ice cream, chips, juice, coffee, candy, yoghurt"
+    "examples": "milk, water, bread, toast, sandwich, noodles, ice cream, chips, juice, coffee, candy, yogurt"
    },
    {
     "kind": "cat",
@@ -30,7 +30,7 @@
    {
     "kind": "cat",
     "prompt": "<em>Sports</em>",
-    "examples": "football, basketball, volleyball, badminton, tennis, swimming, running, boxing, golf, table tennis"
+    "examples": "soccer, basketball, volleyball, badminton, tennis, swimming, running, boxing, golf, table tennis"
    },
    {
     "kind": "cat",
@@ -40,7 +40,7 @@
    {
     "kind": "cat",
     "prompt": "<em>Clothes</em>",
-    "examples": "shirt, T-shirt, shoes, socks, hat, cap, skirt, trousers, shorts, jacket, dress, uniform"
+    "examples": "shirt, T-shirt, shoes, socks, hat, cap, skirt, pants, shorts, jacket, dress, uniform"
    },
    {
     "kind": "cat",
@@ -60,7 +60,7 @@
    {
     "kind": "cat",
     "prompt": "Places in a <em>city</em>",
-    "examples": "school, hospital, bank, park, market, mall, cinema, temple, restaurant, station, zoo, hotel"
+    "examples": "school, hospital, bank, park, market, mall, movie theater, temple, restaurant, station, zoo, hotel"
    },
    {
     "kind": "cat",
@@ -70,7 +70,7 @@
    {
     "kind": "cat",
     "prompt": "Things in a <em>bedroom</em>",
-    "examples": "bed, pillow, blanket, lamp, wardrobe, mirror, desk, clock, fan, curtain, poster, phone"
+    "examples": "bed, pillow, blanket, lamp, closet, mirror, desk, clock, fan, curtain, poster, phone"
    },
    {
     "kind": "cat",
@@ -80,7 +80,7 @@
    {
     "kind": "cat",
     "prompt": "Ways to <em>travel</em>",
-    "examples": "car, bus, bike, train, plane, boat, taxi, motorbike, tuk-tuk, walk, ship, van"
+    "examples": "car, bus, bike, train, plane, boat, taxi, motorcycle, tuk-tuk, walk, ship, van"
    },
    {
     "kind": "cat",
@@ -120,7 +120,7 @@
    {
     "kind": "rhyme",
     "prompt": "Words that rhyme with <em>DAY</em>",
-    "examples": "play, say, way, May, stay, pay, grey, today, away, okay, hey"
+    "examples": "play, say, way, May, stay, pay, gray, today, away, okay, hey"
    },
    {
     "kind": "rhyme",
@@ -160,7 +160,7 @@
    {
     "kind": "letter",
     "prompt": "Words that start with <em>M</em>",
-    "examples": "mango, milk, mum, money, monkey, moon, market, music, map, mouse"
+    "examples": "mango, milk, mom, money, monkey, moon, market, music, map, mouse"
    },
    {
     "kind": "letter",
@@ -194,18 +194,18 @@
    },
    {
     "kind": "cat",
-    "prompt": "<em>Colours</em>",
-    "examples": "red, blue, green, yellow, black, white, pink, purple, orange, brown, grey, gold"
+    "prompt": "<em>Colors</em>",
+    "examples": "red, blue, green, yellow, black, white, pink, purple, orange, brown, gray, gold"
    },
    {
     "kind": "cat",
     "prompt": "Things at a <em>birthday party</em>",
-    "examples": "cake, candles, balloons, presents, friends, games, music, ice cream, hats, cards, sweets, songs"
+    "examples": "cake, candles, balloons, presents, friends, games, music, ice cream, hats, cards, candy, songs"
    },
    {
     "kind": "cat",
     "prompt": "Things you can <em>ride</em>",
-    "examples": "bike, horse, bus, motorbike, elephant, train, skateboard, scooter, boat, camel, car, plane"
+    "examples": "bike, horse, bus, motorcycle, elephant, train, skateboard, scooter, boat, camel, car, plane"
    },
    {
     "kind": "cat",
@@ -245,7 +245,7 @@
    {
     "kind": "letter",
     "prompt": "Words that start with <em>F</em>",
-    "examples": "fish, fan, family, father, flower, food, friend, frog, football, fruit, five, fire"
+    "examples": "fish, fan, family, father, flower, food, friend, frog, soccer, fruit, five, fire"
    },
    {
     "kind": "letter",
@@ -258,7 +258,7 @@
   "prompts": [
    {
     "kind": "cat",
-    "prompt": "Things you do on <em>holiday</em> (verbs)",
+    "prompt": "Things you do on <em>vacation</em> (verbs)",
     "examples": "swim, visit, relax, travel, explore, shop, sunbathe, dive, hike, camp, take photos, eat out"
    },
    {
@@ -304,17 +304,17 @@
    {
     "kind": "cat",
     "prompt": "Places in a <em>school</em>",
-    "examples": "library, canteen, gym, office, classroom, toilet, field, hall, car park, science lab, music room, nurse's room"
+    "examples": "library, cafeteria, gym, office, classroom, restroom, field, hall, parking lot, science lab, music room, nurse's room"
    },
    {
     "kind": "cat",
     "prompt": "Things that <em>make a noise</em>",
-    "examples": "dog, baby, alarm clock, car horn, phone, drum, thunder, motorbike, bell, radio, TV, whistle"
+    "examples": "dog, baby, alarm clock, car horn, phone, drum, thunder, motorcycle, bell, radio, TV, whistle"
    },
    {
     "kind": "cat",
     "prompt": "Things in a <em>park</em>",
-    "examples": "tree, bench, grass, swing, slide, flowers, path, lake, bird, bin, fountain, playground"
+    "examples": "tree, bench, grass, swing, slide, flowers, path, lake, bird, trash can, fountain, playground"
    },
    {
     "kind": "cat",
@@ -379,7 +379,7 @@
    {
     "kind": "letter",
     "prompt": "Words that start with <em>TR</em>",
-    "examples": "train, tree, travel, truck, trip, try, true, tropical, trousers, triangle, trumpet, trophy"
+    "examples": "train, tree, travel, truck, trip, try, true, tropical, pants, triangle, trumpet, trophy"
    },
    {
     "kind": "letter",
@@ -409,7 +409,7 @@
    {
     "kind": "cat",
     "prompt": "Things you take on a <em>plane</em>",
-    "examples": "passport, ticket, phone, headphones, book, snacks, pillow, jacket, wallet, charger, water bottle, sweets"
+    "examples": "passport, ticket, phone, headphones, book, snacks, pillow, jacket, wallet, charger, water bottle, candy"
    },
    {
     "kind": "cat",
@@ -419,7 +419,7 @@
    {
     "kind": "cat",
     "prompt": "Things that make you <em>happy</em>",
-    "examples": "friends, music, holidays, ice cream, sunshine, games, pets, family, presents, films, sleep, weekends"
+    "examples": "friends, music, vacations, ice cream, sunshine, games, pets, family, presents, movies, sleep, weekends"
    },
    {
     "kind": "cat",
@@ -454,12 +454,12 @@
    {
     "kind": "cat",
     "prompt": "Sports you play with a <em>ball</em>",
-    "examples": "football, basketball, volleyball, tennis, table tennis, golf, rugby, baseball, cricket, takraw, bowling, handball"
+    "examples": "soccer, basketball, volleyball, tennis, table tennis, golf, rugby, baseball, cricket, takraw, bowling, handball"
    },
    {
     "kind": "cat",
     "prompt": "Things in a <em>hotel room</em>",
-    "examples": "bed, pillow, towel, TV, fridge, key card, lamp, wardrobe, shower, kettle, air conditioner, phone"
+    "examples": "bed, pillow, towel, TV, fridge, key card, lamp, closet, shower, kettle, air conditioner, phone"
    },
    {
     "kind": "cat",
@@ -504,7 +504,7 @@
    {
     "kind": "letter",
     "prompt": "Words that start and end with the <em>same letter</em> (dad)",
-    "examples": "mum, eye, did, pop, kick, noon, level, wow, toast, that, area, gag"
+    "examples": "mom, eye, did, pop, kick, noon, level, wow, toast, that, area, gag"
    }
   ]
  },
@@ -513,7 +513,7 @@
    {
     "kind": "cat",
     "prompt": "Things to take on a <em>camping trip</em>",
-    "examples": "tent, torch, sleeping bag, matches, map, compass, first-aid kit, insect spray, rope, knife, water bottle, pillow"
+    "examples": "tent, flashlight, sleeping bag, matches, map, compass, first-aid kit, insect spray, rope, knife, water bottle, pillow"
    },
    {
     "kind": "cat",
@@ -538,12 +538,12 @@
    {
     "kind": "cat",
     "prompt": "Things that are bad for the <em>environment</em>",
-    "examples": "plastic bags, pollution, smoke, rubbish, cars, factories, burning, oil, straws, deforestation, waste, chemicals"
+    "examples": "plastic bags, pollution, smoke, trash, cars, factories, burning, oil, straws, deforestation, waste, chemicals"
    },
    {
     "kind": "cat",
     "prompt": "Excuses for being <em>late</em> for school",
-    "examples": "traffic, overslept, missed the bus, flat tyre, alarm didn't ring, rain, lost my keys, sick, forgot my bag, dog ate my homework"
+    "examples": "traffic, overslept, missed the bus, flat tire, alarm didn't ring, rain, lost my keys, sick, forgot my bag, dog ate my homework"
    },
    {
     "kind": "cat",
@@ -587,8 +587,8 @@
    },
    {
     "kind": "cat",
-    "prompt": "<em>Compound</em> words (sunflower, football)",
-    "examples": "football, sunflower, toothbrush, bedroom, homework, rainbow, airport, classroom, birthday, notebook, weekend, sunglasses"
+    "prompt": "<em>Compound</em> words (sunflower, soccer)",
+    "examples": "soccer, sunflower, toothbrush, bedroom, homework, rainbow, airport, classroom, birthday, notebook, weekend, sunglasses"
    },
    {
     "kind": "cat",
@@ -628,7 +628,7 @@
    {
     "kind": "letter",
     "prompt": "Words with <em>3 or more syllables</em>",
-    "examples": "banana, computer, elephant, holiday, beautiful, important, hospital, chocolate, dangerous, together, interesting, family"
+    "examples": "banana, computer, elephant, vacation, beautiful, important, hospital, chocolate, dangerous, together, interesting, family"
    },
    {
     "kind": "letter",
@@ -658,7 +658,7 @@
    {
     "kind": "cat",
     "prompt": "Things that are <em>expensive</em>",
-    "examples": "car, house, phone, diamond, watch, laptop, plane ticket, gold, designer bag, wedding, university, jewellery"
+    "examples": "car, house, phone, diamond, watch, laptop, plane ticket, gold, designer bag, wedding, university, jewelry"
    },
    {
     "kind": "cat",
@@ -713,7 +713,7 @@
    {
     "kind": "cat",
     "prompt": "Things you need to start a <em>business</em>",
-    "examples": "money, an idea, a plan, customers, a shop, a website, staff, a product, advertising, a bank account, an office, a partner"
+    "examples": "money, an idea, a plan, customers, a store, a website, staff, a product, advertising, a bank account, an office, a partner"
    },
    {
     "kind": "cat",
@@ -753,7 +753,7 @@
    {
     "kind": "letter",
     "prompt": "Words with <em>7 or more letters</em>",
-    "examples": "beautiful, elephant, computer, birthday, important, holiday, chocolate, football, sandwich, hospital, umbrella, teacher"
+    "examples": "beautiful, elephant, computer, birthday, important, vacation, chocolate, soccer, sandwich, hospital, umbrella, teacher"
    },
    {
     "kind": "letter",
