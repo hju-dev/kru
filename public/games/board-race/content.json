@@ -1,0 +1,51 @@
+{
+  "about": "Board Race tasks per level. kind 'forms': items with matching answers (shown on Reveal). kind 'list': write as many as you can; examples shown on Reveal. M.1 verb forms and basic vocabulary, M.2 holiday words and past continuous, M.3 idioms and collocations. Written for Kru.",
+  "M.1": {
+    "tasks": [
+      { "kind": "forms", "title": "Past simple", "prompt": "Write the past simple", "items": ["go", "eat", "see", "buy", "swim", "write"], "answers": ["went", "ate", "saw", "bought", "swam", "wrote"] },
+      { "kind": "list", "title": "Jobs", "prompt": "Write as many jobs as you can", "examples": "teacher, doctor, nurse, farmer, police officer, chef, driver, pilot, singer, dentist, engineer, vet" },
+      { "kind": "forms", "title": "Past simple", "prompt": "Write the past simple", "items": ["drink", "run", "sleep", "take", "come", "make"], "answers": ["drank", "ran", "slept", "took", "came", "made"] },
+      { "kind": "list", "title": "Things in a kitchen", "prompt": "Write things you find in a kitchen", "examples": "fridge, spoon, fork, knife, plate, bowl, cup, pan, rice cooker, sink, kettle, microwave" },
+      { "kind": "forms", "title": "-ing form", "prompt": "Write the -ing form", "items": ["run", "swim", "write", "sit", "dance", "play"], "answers": ["running", "swimming", "writing", "sitting", "dancing", "playing"] },
+      { "kind": "list", "title": "Animals with four legs", "prompt": "Write animals with four legs", "examples": "dog, cat, cow, horse, elephant, tiger, lion, pig, sheep, goat, rabbit, zebra" },
+      { "kind": "forms", "title": "Past simple", "prompt": "Write the past simple", "items": ["have", "get", "give", "sit", "fly", "read"], "answers": ["had", "got", "gave", "sat", "flew", "read"] },
+      { "kind": "forms", "title": "Plurals", "prompt": "Write the plural", "items": ["child", "box", "baby", "man", "tooth", "bus"], "answers": ["children", "boxes", "babies", "men", "teeth", "buses"] },
+      { "kind": "list", "title": "Every day", "prompt": "Write verbs for things you do every day", "examples": "wake up, eat, brush, wash, walk, study, sleep, watch, play, read, cook, drink" },
+      { "kind": "forms", "title": "Opposites", "prompt": "Write the opposite", "items": ["big", "hot", "happy", "fast", "old", "tall"], "answers": ["small", "cold", "sad", "slow", "young / new", "short"] },
+      { "kind": "list", "title": "Colours", "prompt": "Write as many colours as you can", "examples": "red, blue, green, yellow, black, white, pink, purple, orange, brown, grey, gold" },
+      { "kind": "forms", "title": "Past simple", "prompt": "Write the past simple", "items": ["ride", "wear", "sing", "find", "tell", "know"], "answers": ["rode", "wore", "sang", "found", "told", "knew"] }
+    ]
+  },
+  "M.2": {
+    "tasks": [
+      { "kind": "list", "title": "Holiday words", "prompt": "Write words about holidays", "examples": "beach, hotel, suitcase, passport, ticket, souvenir, sunscreen, map, tour, airport, luggage, sightseeing" },
+      { "kind": "forms", "title": "Past continuous", "prompt": "Write the past continuous", "items": ["I (swim)", "she (read)", "they (play)", "we (eat)", "he (sleep)", "you (dance)"], "answers": ["I was swimming", "she was reading", "they were playing", "we were eating", "he was sleeping", "you were dancing"] },
+      { "kind": "list", "title": "Beach holiday", "prompt": "Write things to pack for a beach holiday", "examples": "swimsuit, towel, sunscreen, sunglasses, hat, sandals, camera, water bottle, shorts, beach bag" },
+      { "kind": "forms", "title": "was or were?", "prompt": "Write was or were", "items": ["I", "you", "she", "we", "they", "my friends"], "answers": ["was", "were", "was", "were", "were", "were"] },
+      { "kind": "list", "title": "Places in Thailand", "prompt": "Write places to visit in Thailand", "examples": "Bangkok, Chiang Mai, Phuket, Krabi, Ayutthaya, Pattaya, Hua Hin, Koh Samui, Sukhothai, Chiang Rai" },
+      { "kind": "forms", "title": "Past simple", "prompt": "Write the past simple", "items": ["leave", "fly", "lose", "spend", "catch", "bring"], "answers": ["left", "flew", "lost", "spent", "caught", "brought"] },
+      { "kind": "list", "title": "Holiday activities", "prompt": "Write things you do on holiday (verbs)", "examples": "swim, dive, hike, shop, relax, camp, explore, sunbathe, take photos, visit, travel, eat out" },
+      { "kind": "forms", "title": "Make it negative", "prompt": "Write the negative", "items": ["I was sleeping.", "They were swimming.", "She was cooking."], "answers": ["I wasn't sleeping.", "They weren't swimming.", "She wasn't cooking."] },
+      { "kind": "list", "title": "Weather", "prompt": "Write weather words", "examples": "sunny, rainy, windy, cloudy, stormy, foggy, hot, cold, humid, snowy, thunder, lightning" },
+      { "kind": "list", "title": "Transport", "prompt": "Write kinds of transport", "examples": "plane, train, bus, boat, taxi, motorbike, bicycle, ferry, tuk-tuk, van, car, helicopter" },
+      { "kind": "list", "title": "In a hotel", "prompt": "Write things you find in a hotel", "examples": "bed, lift, pool, reception, key card, towel, restaurant, gym, lobby, room service, air conditioner, balcony" },
+      { "kind": "list", "title": "Linking words", "prompt": "Write linking words", "examples": "and, but, so, because, when, while, although, then, after, before, also, however" }
+    ]
+  },
+  "M.3": {
+    "tasks": [
+      { "kind": "forms", "title": "Finish the idiom", "prompt": "Write the missing word", "items": ["It's a piece of …", "Break the …", "Under the …", "Once in a blue …", "Spill the …", "Call it a …"], "answers": ["cake", "ice", "weather", "moon", "beans", "day"] },
+      { "kind": "forms", "title": "make or do?", "prompt": "Write make or do", "items": ["… homework", "… a mistake", "… the dishes", "… a decision", "… exercise", "… friends"], "answers": ["do", "make", "do", "make", "do", "make"] },
+      { "kind": "list", "title": "Phrasal verbs with UP", "prompt": "Write phrasal verbs with UP", "examples": "wake up, get up, give up, look up, make up, pick up, set up, turn up, grow up, break up, clean up, hurry up" },
+      { "kind": "forms", "title": "Finish the idiom", "prompt": "Write the missing word", "items": ["Cost an arm and a …", "The ball is in your …", "Let the cat out of the …", "When pigs …", "Bite off more than you can …", "Hit the …"], "answers": ["leg", "court", "bag", "fly", "chew", "books / sack"] },
+      { "kind": "forms", "title": "take or have?", "prompt": "Write take or have", "items": ["… a photo", "… fun", "… a seat", "… a party", "… the bus", "… lunch"], "answers": ["take", "have", "take", "have", "take", "have"] },
+      { "kind": "list", "title": "Adjective + preposition", "prompt": "Write adjectives with their preposition (good at…)", "examples": "good at, afraid of, interested in, bored with, proud of, keen on, famous for, worried about, tired of, responsible for" },
+      { "kind": "forms", "title": "What does it mean?", "prompt": "Write the meaning", "items": ["feel under the weather", "break the ice", "a piece of cake", "hit the books", "once in a blue moon"], "answers": ["feel ill", "start a friendly conversation", "very easy", "study hard", "very rarely"] },
+      { "kind": "forms", "title": "heavy or strong?", "prompt": "Write heavy or strong", "items": ["… rain", "… coffee", "… traffic", "… wind", "… smoker", "… accent"], "answers": ["heavy", "strong", "heavy", "strong", "heavy", "strong"] },
+      { "kind": "list", "title": "-ful or -less", "prompt": "Write words ending in -ful or -less", "examples": "useful, careless, helpful, homeless, beautiful, hopeless, painful, careful, harmless, wonderful, useless, colourful" },
+      { "kind": "forms", "title": "say, tell, speak or talk?", "prompt": "Write the right verb", "items": ["… a lie", "… English", "… hello", "… a story", "… about a problem", "… the truth"], "answers": ["tell", "speak", "say", "tell", "talk", "tell"] },
+      { "kind": "list", "title": "SUN and RAIN words", "prompt": "Write compound words with SUN or RAIN", "examples": "sunshine, sunflower, sunglasses, sunrise, sunset, sunscreen, rainbow, raincoat, raindrop, rainforest, sunburn, rainfall" },
+      { "kind": "forms", "title": "Finish the saying", "prompt": "Write the missing word", "items": ["Every cloud has a silver …", "Actions speak louder than …", "Don't judge a book by its …", "The early bird catches the …", "Practice makes …", "Better late than …"], "answers": ["lining", "words", "cover", "worm", "perfect", "never"] }
+    ]
+  }
+}
