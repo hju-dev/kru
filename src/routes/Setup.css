@@ -355,6 +355,10 @@
   .setup-bar {
     flex-wrap: wrap;
   }
+  /* title gets the rest of the first line (beside the back button); the controls wrap below */
+  .setup-title {
+    flex-basis: calc(100% - var(--tap) - 8px);
+  }
   .setup-body {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: minmax(90px, 0.4fr) minmax(0, 1fr);
