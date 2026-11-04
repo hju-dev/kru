@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { cleanRoster } from '../src/lib/bootstrap'
 import { buildSubmission, rankTeams } from '../src/lib/results'
 import type { Session } from '../src/lib/session'
 import {
@@ -52,9 +53,34 @@ describe('team setup', () => {
   })
 
   it('loads a saved team set, skipping students absent today', () => {
-    const b = binsFromTeamSet([{ name: 'Dragons', members: [{ no: 1 }, { no: 2 }] }], [2, 3])
+    const roster = [1, 2, 3].map((n) => ({ id: n, no: n, nick: 'S' + n }))
+    const b = binsFromTeamSet([{ name: 'Dragons', members: [{ no: 1, nick: 'S1' }, { no: 2, nick: 'S2' }] }], roster, [2, 3])
     expect(b[0].members).toEqual([2])
     expect(b[0].name).toBe('Dragons')
+  })
+
+  it('keeps two students who share a number apart (saved sets match by number + nickname)', () => {
+    const { students, issues } = cleanRoster('M.2', [
+      { no: 5, nick: 'S5' },
+      { no: 5, nick: 'S50' },
+      { no: 6, nick: 'S6' },
+    ])
+    expect(students.map((s) => [s.id, s.no, s.nick])).toEqual([[5, 5, 'S5'], [1000, 5, 'S50'], [6, 6, 'S6']])
+    expect(issues).toEqual([{ class: 'M.2', kind: 'shared-number', no: 5, nicks: ['S5', 'S50'] }])
+    const b = binsFromTeamSet([{ name: 'A', members: [{ no: 5, nick: 'S50' }] }], students, [5, 1000, 6])
+    expect(b[0].members).toEqual([1000])
+    // shuffling ids never places anyone twice
+    const shuffled = shuffleTeams(bins([], []), students.map((s) => s.id))
+    expect(shuffled.flatMap((x) => x.members).sort()).toEqual([1000, 5, 6])
+  })
+
+  it('merges a row typed twice into one student and reports it', () => {
+    const { students, issues } = cleanRoster('1/2', [
+      { no: 3, nick: 'S3', active: false },
+      { no: 3, nick: 's3', active: true },
+    ])
+    expect(students).toEqual([{ id: 3, no: 3, nick: 'S3', active: true }])
+    expect(issues).toEqual([{ class: '1/2', kind: 'duplicate-row', no: 3, nicks: ['s3'] }])
   })
 })
 

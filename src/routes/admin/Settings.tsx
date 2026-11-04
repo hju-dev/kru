@@ -90,6 +90,8 @@ export function Settings() {
 
         <Outbox />
 
+        <RosterCheck />
+
         <section className="card">
           <h2>This device</h2>
           <dl>
@@ -180,6 +182,28 @@ function Outbox() {
           <p className="muted small">Kru retries by itself when the phone is back online and every minute while open.</p>
         </>
       )}
+    </section>
+  )
+}
+
+/** Rows in the Rosters tab that look wrong, so Henry can tidy the Sheet. Kru copes either way. */
+function RosterCheck() {
+  const issues = useApp((s) => s.data?.rosterIssues ?? [])
+  if (issues.length === 0) return null
+  return (
+    <section className="card">
+      <h2>Roster check</h2>
+      <p className="muted small">Kru handles these, but you may want to tidy the Rosters tab in your Sheet:</p>
+      <ul className="issues">
+        {issues.map((i) => (
+          <li key={`${i.class}-${i.kind}-${i.no}`}>
+            <b>{i.class}</b> No. {i.no}:{' '}
+            {i.kind === 'duplicate-row'
+              ? `“${i.nicks[0]}” is typed twice. Kru treats it as one student; you can delete the extra row.`
+              : `${i.nicks.map((n) => `“${n}”`).join(' and ')} share this number. Kru keeps them separate; give one a different number if that's a typo.`}
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

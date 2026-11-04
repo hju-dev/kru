@@ -1,6 +1,11 @@
 export type Level = 'M.1' | 'M.2' | 'M.3'
 
 export interface Student {
+  /**
+   * Kru's own identity for this student within the class. Equals `no` unless two students in
+   * the class share a number (then the later one gets 1000+). Never shown, never sent to the Sheet.
+   */
+  id: number
   no: number
   nick: string
   active: boolean
@@ -33,6 +38,15 @@ export interface Bootstrap {
   rosters: Record<string, Student[]>
   teamSets: TeamSet[]
   sheetUrl: string | null
+  /** Roster rows that look wrong (duplicates, shared numbers), to show Henry in Settings. */
+  rosterIssues: RosterIssue[]
+}
+
+export interface RosterIssue {
+  class: string
+  kind: 'duplicate-row' | 'shared-number'
+  no: number
+  nicks: string[]
 }
 
 /** Where the app's Apps Script lives. Stored on the device only. */

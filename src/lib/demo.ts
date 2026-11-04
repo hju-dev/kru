@@ -4,7 +4,7 @@ import type { Bootstrap, Student } from '../types'
 export const DEMO_URL = 'demo'
 
 const fake = (n: number, inactive: number[] = []): Student[] =>
-  Array.from({ length: n }, (_, i) => ({ no: i + 1, nick: `S${i + 1}`, active: !inactive.includes(i + 1) }))
+  Array.from({ length: n }, (_, i) => ({ id: i + 1, no: i + 1, nick: `S${i + 1}`, active: !inactive.includes(i + 1) }))
 
 export function demoBootstrap(): Bootstrap {
   const names = ['M.1/2', 'M.1/3', 'M.2/1', 'M.2/2', 'M.2/3', 'M.3/1', 'M.3/2', 'M.3/3']
@@ -19,5 +19,6 @@ export function demoBootstrap(): Bootstrap {
     rosters: Object.fromEntries(names.map((n, i) => [n, fake(26 + (i % 5), i === 6 ? [5] : [])])),
     teamSets: [],
     sheetUrl: null,
+    rosterIssues: [],
   }
 }

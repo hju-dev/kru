@@ -1,4 +1,4 @@
-import type { Bootstrap, ClassInfo, Level, Student, TeamSet } from '../types'
+import type { Bootstrap, ClassInfo, Level, RosterIssue, Student, TeamSet } from '../types'
 
 /** "M.3/2", "3/2" or "3/2P" -> "M.3". Returns null if the class name has no M.1–M.3 grade in it. */
 export function levelFromClass(name: string): Level | null {
@@ -29,18 +29,12 @@ export function normalizeBootstrap(raw: unknown): Bootstrap {
   }
 
   const rosters: Record<string, Student[]> = {}
+  const rosterIssues: RosterIssue[] = []
   for (const [cls, list] of Object.entries(r.rosters as Record<string, unknown>)) {
     if (!Array.isArray(list)) continue
-    rosters[str(cls)] = list
-      .map((s): Student | null => {
-        const o = s as Record<string, unknown>
-        const no = num(o.no)
-        const nick = str(o.nick)
-        if (no == null || !nick) return null
-        return { no, nick, active: o.active !== false }
-      })
-      .filter((s): s is Student => s !== null)
-      .sort((a, b) => a.no - b.no)
+    const result = cleanRoster(str(cls), list)
+    rosters[str(cls)] = result.students
+    rosterIssues.push(...result.issues)
   }
 
   const classes: ClassInfo[] = (r.classes as unknown[])
@@ -79,5 +73,61 @@ export function normalizeBootstrap(raw: unknown): Bootstrap {
       })
     : []
 
-  return { classes, rosters, teamSets, sheetUrl: r.sheetUrl ? str(r.sheetUrl) : null }
+  return { classes, rosters, teamSets, sheetUrl: r.sheetUrl ? str(r.sheetUrl) : null, rosterIssues }
+}
+
+/**
+ * Tidies one class's roster:
+ * - the same number + nickname typed twice is one student (a duplicate row)
+ * - two different students sharing a number are both kept, with separate ids
+ */
+export function cleanRoster(cls: string, list: unknown[]): { students: Student[]; issues: RosterIssue[] } {
+  const rows: Omit<Student, 'id'>[] = []
+  const dupes = new Map<number, string>()
+  for (const s of list) {
+    const o = s as Record<string, unknown>
+    const no = num(o.no)
+    const nick = str(o.nick)
+    if (no == null || !nick) continue
+    const first = rows.find((x) => x.no === no && x.nick.toLowerCase() === nick.toLowerCase())
+    if (first) {
+      dupes.set(no, nick)
+      if (o.active !== false) first.active = true // a duplicate row counts as active if either copy is ticked
+      continue
+    }
+    rows.push({ no, nick, active: o.active !== false })
+  }
+  rows.sort((a, b) => a.no - b.no)
+
+  const used = new Set<number>()
+  let extra = 1000
+  const students: Student[] = rows.map((s) => {
+    let id = s.no
+    if (used.has(id)) {
+      while (used.has(extra)) extra++
+      id = extra++
+    }
+    used.add(id)
+    return { id, ...s }
+  })
+
+  const issues: RosterIssue[] = [...dupes].map(([no, nick]) => ({ class: cls, kind: 'duplicate-row' as const, no, nicks: [nick] }))
+  const byNo = new Map<number, string[]>()
+  for (const s of students) byNo.set(s.no, [...(byNo.get(s.no) ?? []), s.nick])
+  for (const [no, nicks] of byNo) if (nicks.length > 1) issues.push({ class: cls, kind: 'shared-number', no, nicks })
+  return { students, issues }
+}
+
+/** Data saved on the phone by an older Kru version (before student ids): bring it up to date. */
+export function upgradeCachedBootstrap(data: Bootstrap): Bootstrap {
+  const needsIds = Object.values(data.rosters).some((list) => list.some((s) => typeof s.id !== 'number'))
+  if (!needsIds && Array.isArray(data.rosterIssues)) return data
+  const rosters: Record<string, Student[]> = {}
+  const rosterIssues: RosterIssue[] = []
+  for (const [cls, list] of Object.entries(data.rosters)) {
+    const result = cleanRoster(cls, list)
+    rosters[cls] = result.students
+    rosterIssues.push(...result.issues)
+  }
+  return { ...data, rosters, rosterIssues }
 }

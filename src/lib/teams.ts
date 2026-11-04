@@ -89,15 +89,34 @@ export function clearBins(bins: Bin[]): Bin[] {
   return bins.map((b) => ({ ...b, members: [] }))
 }
 
+type RosterEntry = { id: number; no: number; nick: string }
+
 /**
  * Apply a saved team set to today's class: keep only students who are present today.
- * Students not in the saved set stay in the pool.
+ * Saved members are matched by number + nickname (or by number alone if only one student has it).
+ * Students not in the saved set stay in the pool. Bins hold student ids.
  */
-export function binsFromTeamSet(teams: { name: string; members: { no: number }[] }[], presentNos: number[]): Bin[] {
-  const present = new Set(presentNos)
-  return teams.map((t) => ({
-    id: newBinId(),
-    name: t.name,
-    members: t.members.map((m) => m.no).filter((no) => present.has(no)),
-  }))
+export function binsFromTeamSet(
+  teams: { name: string; members: { no: number; nick?: string }[] }[],
+  roster: RosterEntry[],
+  presentIds: number[],
+): Bin[] {
+  const present = new Set(presentIds)
+  const placed = new Set<number>()
+  const find = (m: { no: number; nick?: string }) => {
+    const sameNo = roster.filter((s) => s.no === m.no)
+    const exact = sameNo.find((s) => s.nick.toLowerCase() === (m.nick ?? '').toLowerCase())
+    return exact ?? (sameNo.length === 1 ? sameNo[0] : undefined)
+  }
+  return teams.map((t) => {
+    const members: number[] = []
+    for (const m of t.members) {
+      const s = find(m)
+      if (s && present.has(s.id) && !placed.has(s.id)) {
+        placed.add(s.id)
+        members.push(s.id)
+      }
+    }
+    return { id: newBinId(), name: t.name, members }
+  })
 }

@@ -5,7 +5,7 @@
   background: rgb(0 0 0 / 0.55);
   display: grid;
   place-items: center;
-  padding: max(var(--sa-top), 10px) max(var(--sa-right), 12px) max(var(--sa-bottom), 10px) max(var(--sa-left), 12px);
+  padding: calc(var(--sa-top) + 12px) max(var(--sa-right), 12px) max(var(--sa-bottom), 10px) max(var(--sa-left), 12px);
 }
 .sheet {
   width: min(460px, 100%);

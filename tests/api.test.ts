@@ -71,8 +71,8 @@ describe('normalizeBootstrap', () => {
     expect(b.classes.map((c) => c.name)).toEqual(['M.3/2', 'M.1/9', 'M.1/10'])
     expect(b.classes[0].level).toBe('M.3')
     expect(b.rosters['M.3/2']).toEqual([
-      { no: 1, nick: 'S1', active: false },
-      { no: 2, nick: 'S2', active: true },
+      { id: 1, no: 1, nick: 'S1', active: false },
+      { id: 2, no: 2, nick: 'S2', active: true },
     ])
   })
   it('rejects an unexpected shape', () => {
@@ -85,5 +85,15 @@ describe('normalizeBootstrap', () => {
     expect(levelFromClass('1/2')).toBe('M.1')
     expect(levelFromClass('3/2P')).toBe('M.3')
     expect(levelFromClass('4/1')).toBeNull()
+  })
+})
+
+describe('upgradeCachedBootstrap', () => {
+  it('adds ids to rosters saved by an older version', async () => {
+    const { upgradeCachedBootstrap } = await import('../src/lib/bootstrap')
+    const old = { classes: [], teamSets: [], sheetUrl: null, rosters: { A: [{ no: 1, nick: 'S1', active: true }, { no: 1, nick: 'S1', active: true }] } }
+    const up = upgradeCachedBootstrap(old as never)
+    expect(up.rosters.A).toEqual([{ id: 1, no: 1, nick: 'S1', active: true }])
+    expect(up.rosterIssues).toHaveLength(1)
   })
 })

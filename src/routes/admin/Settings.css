@@ -91,3 +91,11 @@
   flex-direction: column;
   min-width: 0;
 }
+.issues {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}

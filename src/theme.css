@@ -59,8 +59,9 @@ body {
 /* Every screen pads itself away from the notch and the home bar */
 .screen {
   min-height: 100%;
-  /* the notch inset already gives room; only add a gutter where there is no inset */
-  padding: max(var(--sa-top), 10px) max(var(--sa-right), var(--gutter)) max(var(--sa-bottom), 10px)
+  /* sides: the notch inset already gives room, so only add a gutter where there is none.
+     top: always add a gap below the status bar, which iOS blurs when the phone is upright */
+  padding: calc(var(--sa-top) + 14px) max(var(--sa-right), var(--gutter)) max(var(--sa-bottom), 10px)
     max(var(--sa-left), var(--gutter));
   display: flex;
   flex-direction: column;

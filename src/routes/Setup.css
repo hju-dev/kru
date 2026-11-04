@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: max(var(--sa-top), 6px) max(var(--sa-right), 10px) max(var(--sa-bottom), 6px) max(var(--sa-left), 10px);
+  padding: calc(var(--sa-top) + 6px) max(var(--sa-right), 10px) max(var(--sa-bottom), 6px) max(var(--sa-left), 10px);
   overflow: hidden;
 }
 

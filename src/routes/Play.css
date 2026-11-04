@@ -16,7 +16,7 @@
 .home-btn {
   position: absolute;
   z-index: 10;
-  top: max(var(--sa-top), 6px);
+  top: calc(var(--sa-top) + 6px);
   right: max(var(--sa-right), 8px);
   width: 44px;
   height: 44px;
@@ -41,7 +41,7 @@
   background: rgb(0 0 0 / 0.55);
   display: grid;
   place-items: center;
-  padding: max(var(--sa-top), 8px) max(var(--sa-right), 12px) max(var(--sa-bottom), 8px) max(var(--sa-left), 12px);
+  padding: calc(var(--sa-top) + 8px) max(var(--sa-right), 12px) max(var(--sa-bottom), 8px) max(var(--sa-left), 12px);
 }
 .play-menu {
   width: min(380px, 100%);

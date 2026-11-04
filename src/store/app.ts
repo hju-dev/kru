@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import * as api from '../lib/api'
 import { ApiError, fetchBootstrap, ping } from '../lib/api'
+import { upgradeCachedBootstrap } from '../lib/bootstrap'
 import { outboxLabel, type OutboxEntry } from '../lib/outbox'
 import type { Submission } from '../lib/results'
 import { storage } from '../lib/storage'
@@ -82,7 +83,7 @@ export const useApp = create<AppState>((setState, getState) => {
       setState({
         status: 'ready',
         conn,
-        data: cached?.data ?? null,
+        data: cached?.data ? upgradeCachedBootstrap(cached.data) : null,
         syncedAt: cached?.syncedAt ?? null,
         lastClass: lastClass ?? null,
       })

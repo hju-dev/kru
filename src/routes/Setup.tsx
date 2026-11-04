@@ -48,7 +48,7 @@ export function Setup() {
     let cancelled = false
     void storage.getAbsent(cls.name, todayKey()).then((absent = []) => {
       if (cancelled) return
-      const present = roster.filter((s) => !absent.includes(s.no)).length
+      const present = roster.filter((s) => !absent.includes(s.id)).length
       const size = cls.defaultTeamSize ?? 4
       const now = Date.now()
       const fresh: Session = {
@@ -113,12 +113,13 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
   const [renaming, setRenaming] = useState<string | null>(null)
   const [sheet, setSheet] = useState<'load' | 'save' | null>(null)
 
-  const byNo = useMemo(() => new Map(roster.map((st) => [st.no, st])), [roster])
-  const presentNos = roster.filter((st) => !s.absent.includes(st.no)).map((st) => st.no)
-  const absentNos = roster.filter((st) => s.absent.includes(st.no)).map((st) => st.no)
+  // Everything on this screen works with student ids (not numbers), so two students who share a number stay separate
+  const byId = useMemo(() => new Map(roster.map((st) => [st.id, st])), [roster])
+  const presentIds = roster.filter((st) => !s.absent.includes(st.id)).map((st) => st.id)
+  const absentIds = roster.filter((st) => s.absent.includes(st.id)).map((st) => st.id)
   // ignore students who left the roster since this setup was saved
-  const bins = s.bins.map((b) => ({ ...b, members: b.members.filter((no) => byNo.has(no) && !s.absent.includes(no)) }))
-  const pool = s.mode === 'group' ? unassigned(presentNos, bins) : presentNos
+  const bins = s.bins.map((b) => ({ ...b, members: b.members.filter((no) => byId.has(no) && !s.absent.includes(no)) }))
+  const pool = s.mode === 'group' ? unassigned(presentIds, bins) : presentIds
   const group = s.mode === 'group'
 
   const update = useCallback((change: Partial<Session>) => patch(s.id, change), [patch, s.id])
@@ -169,7 +170,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
 
   function setSize(size: number) {
     const n = Math.min(6, Math.max(2, size))
-    update({ size: n, bins: resizeBins(s.bins, binCountFor(presentNos.length, n)) })
+    update({ size: n, bins: resizeBins(s.bins, binCountFor(presentIds.length, n)) })
   }
 
   function setMode(mode: Mode) {
@@ -193,10 +194,10 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
   }
 
   function start() {
-    const nick = (no: number) => byNo.get(no)?.nick ?? `No. ${no}`
+    const member = (id: number) => ({ no: byId.get(id)?.no ?? id, nick: byId.get(id)?.nick ?? `No. ${id}` })
     const teams: Team[] = group
-      ? bins.filter((b) => b.members.length > 0).map((b) => ({ id: b.id, name: b.name, members: b.members.map((no) => ({ no, nick: nick(no) })) }))
-      : presentNos.map((no) => ({ id: `s${no}`, name: nick(no), members: [{ no, nick: nick(no) }] }))
+      ? bins.filter((b) => b.members.length > 0).map((b) => ({ id: b.id, name: b.name, members: b.members.map(member) }))
+      : presentIds.map((id) => ({ id: `s${id}`, name: member(id).nick, members: [member(id)] }))
     patch(s.id, {
       status: 'playing',
       teams,
@@ -210,15 +211,15 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
 
   const filledTeams = bins.filter((b) => b.members.length > 0).length
   const emptyBins = bins.length - filledTeams
-  const canStart = group ? filledTeams > 0 && (pool.length === 0 || s.leaveOut) : presentNos.length > 0
+  const canStart = group ? filledTeams > 0 && (pool.length === 0 || s.leaveOut) : presentIds.length > 0
 
   const chip = (no: number, where: 'pool' | 'bin') => {
-    const st = byNo.get(no)
+    const st = byId.get(no)
     if (!st) return null
     const isAbsent = s.absent.includes(no)
     return (
       <button
-        key={no}
+        key={st.id}
         className={`chip${selected.includes(no) ? ' selected' : ''}${isAbsent ? ' absent' : ''}${drag?.no === no ? ' dragging' : ''}${where === 'bin' ? ' small' : ''}`}
         onPointerDown={group && !absentMode && !isAbsent ? (e) => press(no, e) : undefined}
         onClick={(e) => tapChip(no, e)}
@@ -284,10 +285,10 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
           <button className={`tool${absentMode ? ' on' : ''}`} onClick={() => { setAbsentMode((v) => !v); setSelected([]) }} aria-pressed={absentMode}>
             Absent
           </button>
-          <button className="tool" onClick={() => setBins(shuffleTeams(s.bins, presentNos))}>
+          <button className="tool" onClick={() => setBins(shuffleTeams(s.bins, presentIds))}>
             Shuffle
           </button>
-          <button className="tool" onClick={() => setBins(fillEvenly(bins, presentNos))} disabled={pool.length === 0}>
+          <button className="tool" onClick={() => setBins(fillEvenly(bins, presentIds))} disabled={pool.length === 0}>
             Fill evenly
           </button>
           <button className="tool" onClick={() => { setBins(clearBins(s.bins)); setSelected([]) }}>
@@ -321,15 +322,15 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
               </span>
             ) : (
               <span>
-                Playing <b>{presentNos.length}</b>
+                Playing <b>{presentIds.length}</b>
               </span>
             )}
             {absentMode && <span className="mode-hint">Tap names to mark absent</span>}
           </div>
           <div className="chips">
             {pool.map((no) => chip(no, 'pool'))}
-            {absentNos.length > 0 && <div className="absent-label">Absent {absentNos.length}</div>}
-            {absentNos.map((no) => chip(no, 'pool'))}
+            {absentIds.length > 0 && <div className="absent-label">Absent {absentIds.length}</div>}
+            {absentIds.map((no) => chip(no, 'pool'))}
           </div>
         </section>
 
@@ -415,7 +416,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
 
       {drag && (
         <div className="drag-ghost" style={{ left: drag.x, top: drag.y }} aria-hidden>
-          {selected.includes(drag.no) && selected.length > 1 ? `${selected.length} students` : byNo.get(drag.no)?.nick}
+          {selected.includes(drag.no) && selected.length > 1 ? `${selected.length} students` : byId.get(drag.no)?.nick}
         </div>
       )}
 
@@ -424,19 +425,19 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
           sets={teamSets.filter((t) => t.class === s.class)}
           onClose={() => setSheet(null)}
           onPick={(teams) => {
-            const next = binsFromTeamSet(teams, presentNos)
+            const next = binsFromTeamSet(teams, roster, presentIds)
             update({ mode: 'group', bins: next.length ? next : [{ id: newBinId(), name: 'Team 1', members: [] }] })
             setSelected([])
             setSheet(null)
           }}
         />
       )}
-      {sheet === 'save' && <SaveSheet session={s} bins={bins} byNo={byNo} onClose={() => setSheet(null)} />}
+      {sheet === 'save' && <SaveSheet session={s} bins={bins} byId={byId} onClose={() => setSheet(null)} />}
     </main>
   )
 }
 
-function LoadSheet({ sets, onPick, onClose }: { sets: TeamSet[]; onPick: (teams: { name: string; members: { no: number }[] }[]) => void; onClose: () => void }) {
+function LoadSheet({ sets, onPick, onClose }: { sets: TeamSet[]; onPick: (teams: { name: string; members: { no: number; nick?: string }[] }[]) => void; onClose: () => void }) {
   const deleteTeamSet = useApp((st) => st.deleteTeamSet)
   const [armed, setArmed] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -471,7 +472,7 @@ function LoadSheet({ sets, onPick, onClose }: { sets: TeamSet[]; onPick: (teams:
   )
 }
 
-function SaveSheet({ session, bins, byNo, onClose }: { session: Session; bins: Bin[]; byNo: Map<number, Student>; onClose: () => void }) {
+function SaveSheet({ session, bins, byId, onClose }: { session: Session; bins: Bin[]; byId: Map<number, Student>; onClose: () => void }) {
   const { saveTeamSet, data } = useApp()
   const [name, setName] = useState('')
   const [busy, setBusy] = useState(false)
@@ -489,7 +490,7 @@ function SaveSheet({ session, bins, byNo, onClose }: { session: Session; bins: B
         name: name.trim(),
         teams: bins
           .filter((b) => b.members.length > 0)
-          .map((b) => ({ name: b.name, members: b.members.map((no) => ({ no, nick: byNo.get(no)?.nick ?? '' })) })),
+          .map((b) => ({ name: b.name, members: b.members.map((id) => ({ no: byId.get(id)?.no ?? id, nick: byId.get(id)?.nick ?? '' })) })),
       })
       onClose()
     } catch (err) {
