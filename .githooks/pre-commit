@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocks commits that contain student data, keys or private URLs.
+node scripts/check-privacy.mjs --staged || exit 1

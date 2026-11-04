@@ -1,0 +1,52 @@
+.signin {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 20px;
+  align-items: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.signin-intro h1 {
+  font-size: 26px;
+  margin: 6px 0 8px;
+}
+.signin-intro p {
+  margin: 0 0 8px;
+}
+.signin-intro .small {
+  font-size: 13px;
+}
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.signin-form .error {
+  margin: 0;
+}
+.key-row {
+  display: flex;
+  gap: 8px;
+}
+.signin-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .signin {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: start;
+  }
+}
+/* phone sideways: tighter so the form fits above the keyboard */
+@media (orientation: landscape) and (max-height: 500px) {
+  .signin-intro h1 {
+    font-size: 20px;
+  }
+  .signin-form {
+    gap: 8px;
+    padding: 10px 14px;
+  }
+}

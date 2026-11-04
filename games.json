@@ -1,0 +1,156 @@
+[
+  {
+    "slug": "tag-team",
+    "title": "Tag-Team Talk / Debate",
+    "file": "games/tag-team.html",
+    "description": "Relay talk (M.2) and FOR vs AGAINST debate (M.3) with topic spinner, turn timer, speaking-order lane, class rosters (M.3/2, M.3/3) and scoreboard.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "speaking game",
+    "minutes": 40,
+    "storageKeys": [
+      "ttt",
+      "ttt2"
+    ],
+    "phoneLandscape": true,
+    "modes": [
+      "group"
+    ],
+    "status": "migrate"
+  },
+  {
+    "slug": "word-rush",
+    "title": "Word Rush",
+    "file": "games/word-rush.html",
+    "description": "Teams of 3 write as many words as they can for a prompt in 60 seconds. Bonus cards, M.1 and M.3 levels, scoreboard for up to 12 teams.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "vocabulary game",
+    "minutes": 30,
+    "storageKeys": [
+      "wordrush"
+    ],
+    "phoneLandscape": true,
+    "modes": [
+      "group"
+    ],
+    "status": "migrate"
+  },
+  {
+    "slug": "think-tank-showdown",
+    "title": "Think Tank Showdown",
+    "file": "games/think-tank-showdown.html",
+    "description": "Critical-thinking game show: Riddle Rush, Spot the Problem, What Would Happen If…?, Final Wager. Six-team scoreboard.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "team quiz",
+    "minutes": 17,
+    "storageKeys": [
+      "ttshow"
+    ],
+    "phoneLandscape": false,
+    "modes": [
+      "group"
+    ],
+    "status": "migrate"
+  },
+  {
+    "slug": "talk-timer",
+    "title": "Talk Timer",
+    "file": "games/talk-timer.html",
+    "description": "Projector timer with per-lesson presets (20 Questions, story rounds, One-Word Duel, speaking test 1:00 + 0:10 changeover).",
+    "levels": [],
+    "type": "tool",
+    "minutes": null,
+    "storageKeys": [
+      "m3timer"
+    ],
+    "phoneLandscape": false,
+    "modes": [],
+    "status": "migrate"
+  },
+  {
+    "slug": "name-picker",
+    "title": "Name Picker / Hot Seat",
+    "file": "games/name-picker/index.html",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "modes": [
+      "solo"
+    ],
+    "minutes": 5,
+    "status": "new"
+  },
+  {
+    "slug": "sentence-scramble",
+    "title": "Sentence Scramble Race",
+    "file": "games/sentence-scramble/index.html",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "modes": [
+      "group"
+    ],
+    "minutes": 15,
+    "status": "new"
+  },
+  {
+    "slug": "quiz-battle",
+    "title": "Quiz Battle",
+    "file": "games/quiz-battle/index.html",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "modes": [
+      "group"
+    ],
+    "minutes": 20,
+    "status": "new"
+  },
+  {
+    "slug": "board-race",
+    "title": "Board Race",
+    "file": "games/board-race/index.html",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "modes": [
+      "group"
+    ],
+    "minutes": 15,
+    "status": "new"
+  },
+  {
+    "slug": "hot-seat-vocab",
+    "title": "Hot Seat Vocab",
+    "file": "games/hot-seat-vocab/index.html",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "modes": [
+      "group"
+    ],
+    "minutes": 15,
+    "status": "new"
+  }
+]

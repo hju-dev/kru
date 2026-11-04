@@ -1,0 +1,15 @@
+node_modules/
+dist/
+dev-dist/
+*.tsbuildinfo
+.env
+.env.*
+.vercel/
+coverage/
+# handoff bundle (originals now live in legacy/)
+kru_handoff.zip
+# Local-only list of real student nicknames used by check:privacy. NEVER commit.
+.privacy-denylist.txt
+# Any roster/result exports
+*.xlsx
+*.csv

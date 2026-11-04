@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Placeholder Kru logo: gold K on the app's dark background. Swap freely. -->
+  <rect width="512" height="512" rx="112" fill="#17151F"/>
+  <rect x="146" y="116" width="68" height="280" rx="12" fill="#FFB703"/>
+  <polygon points="214,272 332,116 414,116 266,318" fill="#FFB703"/>
+  <polygon points="252,238 414,396 330,396 214,284" fill="#FFB703"/>
+</svg>
