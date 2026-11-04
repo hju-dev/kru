@@ -12,6 +12,7 @@ The owner (Henry) is an ESL teacher, not a full-time developer. Explain things i
 4. **Games are iPhone-landscape only** (iPhone 13 mini, 812 × 375 CSS px, minus safe areas). Don't build laptop layouts for games. **Admin screens (`/admin/*`) must work on the phone (375 portrait, 812 × 375 landscape) and a laptop (1440 × 900)**, with no horizontal page scroll.
 5. **If something in the plan doesn't work on iOS, say so** and suggest an alternative. Don't quietly work around it.
 6. The repo is the master copy of every game. Never overwrite repo files with versions from claude.ai chats; merge changes in by hand.
+7. **Henry pre-approves commits, pushes and merges into `main`** (said 2026-11-04: "I give pre-approval to all merges and commits and pushes that claude code does"). No need to ask first, but only when `npm test`, `npm run lint`, `npm run build` and `npm run check:privacy` all pass. Work on the session's branch, open a PR, then merge it yourself; if GitHub's merge API fails, fast-forward `main` with `git push origin HEAD:main` (branch must be based on the latest `origin/main`). Never force-push `main` or rewrite its history. Pushing `main` deploys live, so after merging, tell Henry what changed, whether **Code.gs needs redeploying** (and do that bump in its own clearly flagged PR), and what to test. This does not change rule 1: still stop at the end of each phase for his iPhone test.
 
 ## Key decisions
 
