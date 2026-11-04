@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { findGame, gameUrl } from '../lib/games'
-import { initMessage, type Session } from '../lib/session'
+import { initMessage, todayKey, type Session } from '../lib/session'
+import { classKeyOf } from '../lib/bootstrap'
+import { storage } from '../lib/storage'
 import { useWakeLock } from '../lib/useWakeLock'
 import { useSessions } from '../store/sessions'
 import './Play.css'
@@ -72,8 +74,20 @@ function PlayFrame({ session }: { session: Session }) {
       const current = useSessions.getState().sessions[session.id]
       if (!current) return
       switch (d?.type) {
-        case 'kru:ready':
-          frame.current?.contentWindow?.postMessage(initMessage(current), location.origin)
+        case 'kru:ready': {
+          // the game's memory for this class today (e.g. who Name Picker has already picked)
+          const target = frame.current?.contentWindow
+          void storage
+            .getDayState(current.game, classKeyOf(current.class), todayKey())
+            .catch(() => undefined)
+            .then((day) => {
+              const msg = initMessage(current)
+              target?.postMessage({ ...msg, session: { ...msg.session, day: day ?? null } }, location.origin)
+            })
+          break
+        }
+        case 'kru:day':
+          void storage.setDayState(current.game, classKeyOf(current.class), todayKey(), (d as { data?: unknown }).data).catch(() => undefined)
           break
         case 'kru:state':
           patch(session.id, { state: d.state })
