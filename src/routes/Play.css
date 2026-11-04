@@ -41,7 +41,7 @@
   background: rgb(0 0 0 / 0.55);
   display: grid;
   place-items: center;
-  padding: calc(var(--sa-top) + 8px) max(var(--sa-right), 12px) max(var(--sa-bottom), 8px) max(var(--sa-left), 12px);
+  padding: calc(var(--sa-top) + 8px + var(--top-extra)) max(var(--sa-right), 12px) max(var(--sa-bottom), 8px) max(var(--sa-left), 12px);
 }
 .play-menu {
   width: min(380px, 100%);

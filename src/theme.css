@@ -22,9 +22,18 @@
   --sa-left: env(safe-area-inset-left, 0px);
   --gutter: 16px;
 
+  /* extra blank space under the status bar when upright (iOS blurs that strip) */
+  --top-extra: 0px;
+
   --tap: 44px; /* Apple's minimum comfortable tap size */
   --radius: 14px;
   color-scheme: dark;
+}
+
+@media (orientation: portrait) {
+  :root {
+    --top-extra: 30px;
+  }
 }
 
 *,
@@ -61,7 +70,7 @@ body {
   min-height: 100%;
   /* sides: the notch inset already gives room, so only add a gutter where there is none.
      top: always add a gap below the status bar, which iOS blurs when the phone is upright */
-  padding: calc(var(--sa-top) + 14px) max(var(--sa-right), var(--gutter)) max(var(--sa-bottom), 10px)
+  padding: calc(var(--sa-top) + 14px + var(--top-extra)) max(var(--sa-right), var(--gutter)) max(var(--sa-bottom), 10px)
     max(var(--sa-left), var(--gutter));
   display: flex;
   flex-direction: column;
