@@ -81,19 +81,15 @@
   },
   {
     "slug": "name-picker",
-    "title": "Name Picker / Hot Seat",
+    "title": "Name Picker",
     "file": "public/games/name-picker/index.html",
-    "levels": [
-      "M.1",
-      "M.2",
-      "M.3"
-    ],
+    "levels": [],
     "modes": [
       "solo"
     ],
     "minutes": 5,
     "status": "ready",
-    "description": "Spins a random present student. Nobody is picked twice until everyone has had a turn (remembered for the day). Optional question card and +1 / +2.",
+    "description": "Spins a random present student. Nobody is picked twice until everyone has had a turn (remembered for the day). Optional +1 / +2.",
     "type": "tool",
     "phoneLandscape": true,
     "results": "scored"

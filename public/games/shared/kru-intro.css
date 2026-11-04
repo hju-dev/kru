@@ -1,0 +1,185 @@
+/* Kru "How to play" slides: full screen over the game, big text for the board. */
+.ki {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--bg, #17151f);
+  display: flex;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}
+.ki-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ki-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding-right: 56px; /* Kru's home button */
+}
+.ki-game {
+  flex: 1;
+  font: 800 18px/1 var(--display, sans-serif);
+  color: var(--muted, #a49fb5);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.ki-skip {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 2px solid var(--line, #3e3950);
+  background: transparent;
+  color: var(--muted, #a49fb5);
+  font-weight: 700;
+  font-size: 16px;
+}
+.ki-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  background: var(--stage, #221f2e);
+  border: 3px solid var(--line, #3e3950);
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+.ki-title {
+  margin: 0;
+  font: 800 2.2em/1.05 var(--display, sans-serif);
+  color: var(--gold, #ffb703);
+  text-wrap: balance;
+}
+.ki-text {
+  margin: 0;
+  font-size: 1.45em; /* ~23 px: easy to read from the back */
+  line-height: 1.25;
+  font-weight: 600;
+  text-wrap: balance;
+  max-width: 34em;
+}
+.ki-ex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 2px dashed var(--line, #3e3950);
+  border-radius: 16px;
+  padding: 8px 18px;
+  max-width: 100%;
+}
+.ki-label {
+  font-size: 0.85em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted, #a49fb5);
+}
+.ki-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.ki-chip {
+  font: 800 1.5em/1.1 var(--display, sans-serif);
+  padding: 0.15em 0.5em;
+  border-radius: 12px;
+  background: var(--panel, #2c2839);
+  border: 2px solid var(--line, #3e3950);
+  border-bottom-width: 5px;
+}
+.ki-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font: 800 2.6em/1 var(--display, sans-serif);
+}
+.ki-tag {
+  font: 800 0.32em/1 var(--body, sans-serif);
+  letter-spacing: 0.12em;
+  color: var(--bg, #17151f);
+  background: var(--sky, #4cc9f0);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+.ki-rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  font-size: 1.35em;
+}
+.ki-row {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+.ki-row b {
+  color: var(--teal, #2ec4b6);
+}
+.ki-result {
+  font: 800 1.5em/1.15 var(--display, sans-serif);
+  color: var(--teal, #2ec4b6);
+}
+.ki-note {
+  font-size: 1em;
+  color: var(--muted, #a49fb5);
+}
+.ki-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.ki-btn {
+  min-height: 50px;
+  min-width: 130px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 2px solid var(--fg, #f6f3ec);
+  background: transparent;
+  font-weight: 700;
+  font-size: 18px;
+}
+.ki-btn:disabled {
+  opacity: 0.3;
+}
+.ki-btn.go,
+.ki-next {
+  margin-left: auto;
+}
+.ki-btn.go {
+  background: var(--gold, #ffb703);
+  border-color: var(--gold, #ffb703);
+  color: var(--bg, #17151f);
+}
+.ki-dots {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.ki-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--line, #3e3950);
+}
+.ki-dots i.on {
+  background: var(--gold, #ffb703);
+}
+.ki button:focus-visible {
+  outline: 3px solid var(--gold, #ffb703);
+  outline-offset: 2px;
+}

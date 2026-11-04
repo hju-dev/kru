@@ -97,6 +97,8 @@ Demo mode: on the Sign-in screen, "Try demo" uses made-up students (S1…S30) wi
 - **Day memory** (Phase 4): `Kru.saveDay(data)` → shell stores IndexedDB `day:<game>:<classKey>:<YYYY-MM-DD>`; it comes back as `session.day` in `kru:init` (Play.tsx). Name Picker uses it for "already picked today".
 - games.json `"results": "scored"` (Name Picker): only teams with non-zero points get Results rows (`buildSubmission(..., { onlyScored: true })`, `submittedTeams` in `src/lib/results.ts`); if nobody scored, the review screen offers "Close (nothing to save)".
 - games.json `"sheetQuestions": true` (Quiz Battle): Play.tsx adds `session.questions` (the Sheet's Questions-tab sets for the session's level, from the last Sync, cleaned by `normalizeQuestions`) and `session.questionProblems` to `kru:init`. Demo mode has one fake "Demo set from the Sheet" per level.
+- **How to play slides** (Henry, after Phase 4): every student game shows short slides before it starts (`public/games/shared/kru-intro.js` + `.css`, `KruIntro.show(slides, {title})`), again from ⋯ → How to play. Slides live in `content.json` `intro` (a level section can override with its own `intro`): 2-6 slides, title ≤ 30 chars, ≤ 2 lines of ≤ 90 chars, plus an `example` (chips / result / big + tag / rows / note). Shown once per game session (`S.introDone`). Teacher tools (Scoreboard, Talk Timer) have none. Tested in `tests/games.test.ts`.
+- Name Picker is a plain name picker (Henry: no hot-seat question cards); no levels.
 - Browser-test gotcha: the shell saves game state with a 300 ms debounce, so a test that reloads within ~0.3 s of a tap loses that tap. Wait ≥ 0.7 s before reloading.
 
 ## graphify

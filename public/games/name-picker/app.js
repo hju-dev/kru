@@ -1,13 +1,13 @@
-/* Name Picker / Hot Seat: spins a random present student. Nobody is picked twice until everyone has
-   had a turn, and "picked" is remembered for this class for the rest of the day (Kru.saveDay).
-   Optional question card per level; optional +1 / +2 for the picked student. */
+/* Name Picker: spins a random present student. Nobody is picked twice until everyone has had a turn,
+   and "picked" is remembered for this class for the rest of the day (Kru.saveDay).
+   Optional +1 / +2 for the picked student. */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
 
-  var QUESTIONS = [];
+  var INTRO = [];
   var students = [];   // solo teams: { id, name, members:[{no, nick}] }
-  var S = null;        // saved: { v, level, current, question, cards, usedQ, pts, log, history }
+  var S = null;        // saved: { v, current, pts, log, history, introDone }
   var day = null;      // { picked: [key] } for this class today
   var spinning = false, audio = null;
 
@@ -49,9 +49,7 @@
     var el = $('name'), box = $('who'), size = 72;
     el.style.fontSize = size + 'px';
     while (size > 30 && (el.scrollWidth > el.clientWidth + 1 || box.scrollWidth > box.clientWidth + 1)) el.style.fontSize = (size -= 4) + 'px';
-    var stage = $('stage'), q = $('q'), qs = 24;
-    q.style.fontSize = qs + 'px';
-    while (qs > 16 && stage.scrollHeight > stage.clientHeight + 1) q.style.fontSize = (qs -= 2) + 'px';
+    var stage = $('stage');
     while (size > 30 && stage.scrollHeight > stage.clientHeight + 1) el.style.fontSize = (size -= 4) + 'px';
   }
   function showName(t) {
@@ -63,9 +61,6 @@
     if (!spinning) showName(t);
     $('pts').textContent = t && pts(t.id) ? '+' + pts(t.id) : '';
     $('stage').classList.toggle('picked', !!t && !spinning);
-    var showCard = S.cards && t && S.question !== null && !spinning;
-    $('card').hidden = !showCard;
-    if (showCard) $('q').textContent = QUESTIONS[S.question] || '';
     $('plus1').disabled = $('plus2').disabled = !t || spinning;
     $('again').disabled = !t || spinning;
     $('spin').disabled = spinning || !students.length;
@@ -76,20 +71,11 @@
       return x ? esc(x.name) + (pts(id) ? ' <b>+' + pts(id) + '</b>' : '') : '';
     }).filter(Boolean);
     $('history').innerHTML = recent.length ? 'Picked: ' + recent.join(' · ') : '';
-    $('toggleCards').textContent = 'Question cards: ' + (S.cards ? 'on' : 'off');
-    $('newQ').disabled = !S.cards || !t;
     $('undo').disabled = !S.log.length;
     fitName();
   }
 
   // ---------- picking ----------
-  function nextQuestion() {
-    if (!QUESTIONS.length) { S.question = null; return; }
-    var options = QUESTIONS.map(function (_, i) { return i; }).filter(function (i) { return S.usedQ.indexOf(i) < 0; });
-    if (!options.length) { S.usedQ = []; options = QUESTIONS.map(function (_, i) { return i; }); }
-    S.question = options[Math.floor(Math.random() * options.length)];
-    S.usedQ.push(S.question);
-  }
   function spin() {
     if (spinning || !students.length) return;
     unlockAudio();
@@ -107,7 +93,6 @@
     S.current = pick.id;
     S.history.push(pick.id);
     if (S.history.length > 200) S.history.shift();
-    nextQuestion();
     save();
 
     if (matchMedia('(prefers-reduced-motion: reduce)').matches || students.length < 2) {
@@ -186,12 +171,7 @@
   $('more').addEventListener('click', function () { disarm(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-  $('toggleCards').addEventListener('click', function () {
-    S.cards = !S.cards;
-    if (S.cards && S.question === null) nextQuestion();
-    save(); render();
-  });
-  $('newQ').addEventListener('click', function () { nextQuestion(); save(); render(); closeMenu(); });
+  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Name Picker' }); });
   $('undo').addEventListener('click', function () { undo(); closeMenu(); });
   $('resetDay').addEventListener('click', function () {
     var btn = this;
@@ -222,16 +202,16 @@
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
-      var level = content[session.level] ? session.level : 'M.2';
-      QUESTIONS = content[level].questions || [];
+      INTRO = content.intro || [];
       // solo: one team per present student (the teacher isn't picked)
       students = session.teams.filter(function (t) { return t.members && t.members.length; });
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === level) S = saved;
-      else S = { v: 1, level: level, current: null, question: null, cards: true, usedQ: [], pts: {}, log: [], history: [] };
+      if (saved && (saved.v === 1 || saved.v === 2) && Array.isArray(saved.history)) S = saved;
+      else S = { v: 2, current: null, pts: {}, log: [], history: [], introDone: false };
       day = session.day && Array.isArray(session.day.picked) ? session.day : { picked: [] };
       if (S.current && !byId(S.current)) S.current = null;
       render();
+      if (!S.introDone) KruIntro.show(INTRO, { title: 'Name Picker' }).then(function () { S.introDone = true; save(); });
     }).catch(function () {
       $('name').textContent = 'Could not load. Close and open again.';
     });
