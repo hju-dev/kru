@@ -107,7 +107,7 @@
     var s = set(), q = question(), shown = !!S.revealed[S.pos];
     if (!s || !q) return;
     bonusRound(S.setKey + '-' + S.pos);
-    $('qnum').textContent = s.name + ' · Question ' + (S.pos + 1) + ' of ' + s.questions.length;
+    KruCorner.set($('stage'), (S.pos + 1) + '/' + s.questions.length);
     $('double').hidden = !q.double;
     $('q').textContent = q.q;
     if (q.choices) {
@@ -280,6 +280,7 @@
       fromSheet = Array.isArray(session.questions) ? session.questions.filter(function (s) { return s && Array.isArray(s.questions) && s.questions.length; }) : [];
       problems = Array.isArray(session.questionProblems) ? session.questionProblems : [];
       teams = Kru.allTeams();
+      KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { S.pts[id] = pts(id) + d; Kru.score(id, d, 'bonus: ' + card.name); save(); renderTeams(); } });
       var saved = session.resume;

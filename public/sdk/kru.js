@@ -113,6 +113,11 @@
       post({ type: 'kru:finish', scores: scores, notes: notes });
     },
 
+    /** The game's own "End game" button: same as Henry tapping Kru's home → Finish. */
+    endGame: function () {
+      finishCallbacks.forEach(function (cb) { cb(); });
+    },
+
     /** cb runs when Henry taps "Finish & review scores". It should call Kru.finish(...). */
     onFinishRequest: function (cb) {
       finishCallbacks.push(cb);

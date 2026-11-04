@@ -91,7 +91,8 @@
   function renderTask() {
     var t = task(), shown = !!S.revealed[S.pos];
     bonusRound('t' + S.order[S.pos] + '-' + S.pos);
-    $('qnum').textContent = 'Task ' + (S.pos + 1) + ' of ' + S.order.length + (shown ? ' · ' + t.title : '');
+    $('qnum').textContent = shown ? t.title : '';
+    KruCorner.set($('stage'), (S.pos + 1) + '/' + S.order.length);
     $('kind').hidden = shown; // the title moves to the bar: room for the answers
     $('kind').textContent = t.title;
     $('kind').className = 'kind ' + t.kind;
@@ -244,6 +245,7 @@
       var level = content[session.level] ? session.level : 'M.2';
       TASKS = content[level].tasks;
       teams = Kru.allTeams();
+      KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d) { addPoints(id, d); } });
       var saved = session.resume;

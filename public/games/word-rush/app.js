@@ -104,8 +104,7 @@
     $('examples').hidden = true;
     $('bonusCard').hidden = false;
     $('showEx').textContent = 'Show examples';
-    $('rnum').textContent = S.round;
-    $('rmax').textContent = S.rounds;
+    KruCorner.set($('promptbox'), S.round + '/' + S.rounds);
     stopTimer();
     total = left = roundSecs();
     $('phase').textContent = 'Ready? Pens up!';
@@ -356,6 +355,7 @@
       var level = content[session.level] ? session.level : 'M.2';
       PROMPTS = content[level].prompts;
       teams = Kru.allTeams();
+      KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: total_(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) {
           // before the round is added: into this round's Bonus; after: straight onto the total

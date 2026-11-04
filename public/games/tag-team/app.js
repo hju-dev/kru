@@ -459,6 +459,7 @@
       var level = content[session.level] ? session.level : 'M.2';
       C = content[level];
       teams = Kru.allTeams();
+      KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { bump(id, d, 'bonus: ' + card.name); } });
       var students = teams.filter(function (t) { return !t.teacher; });
