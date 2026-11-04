@@ -123,7 +123,7 @@
      {
       "q": "\"My cat is black. So all cats are black.\"",
       "a": "One cat can't tell you about all cats.",
-      "why": "Award 2 for: only one cat / you can't say \"all\" / there are white, orange and grey cats."
+      "why": "Award 2 for: only one cat / you can't say \"all\" / there are white, orange and gray cats."
      },
      {
       "q": "\"I ate an ice cream and then it rained. So ice cream makes it rain.\"",
@@ -171,12 +171,12 @@
       "why": "Award 2 for: you were lucky / most people need to study."
      },
      {
-      "q": "\"This shop is near my house, so it is the best shop.\"",
+      "q": "\"This store is near my house, so it is the best store.\"",
       "a": "Near doesn't mean best.",
-      "why": "Award 2 for: other shops can be better or cheaper."
+      "why": "Award 2 for: other stores can be better or cheaper."
      },
      {
-      "q": "\"My friend is good at maths, so she is good at English too.\"",
+      "q": "\"My friend is good at math, so she is good at English too.\"",
       "a": "Good at one thing doesn't mean good at everything.",
       "why": "Award 2 for: they are different subjects."
      },
@@ -204,7 +204,7 @@
      {
       "q": "What would happen if it rained every day for a month?",
       "a": "",
-      "why": "Floods · no outdoor sport · wet clothes · plants grow fast · people stay at home · shops sell lots of umbrellas."
+      "why": "Floods · no outdoor sport · wet clothes · plants grow fast · people stay at home · stores sell lots of umbrellas."
      },
      {
       "q": "What would happen if there were no cars?",
@@ -239,7 +239,7 @@
      {
       "q": "What would happen if there was no ice cream?",
       "a": "",
-      "why": "Sad children · ice cream shops close · people eat other sweets · less sugar · new desserts."
+      "why": "Sad children · ice cream shops close · people eat other candy · less sugar · new desserts."
      }
     ],
     "play": 1,
@@ -425,7 +425,7 @@
       "why": "Award 2 for: only one example / he was lucky / doctors study many people, not one."
      },
      {
-      "q": "\"9 out of 10 film stars use this shampoo. It will make your hair beautiful.\"",
+      "q": "\"9 out of 10 movie stars use this shampoo. It will make your hair beautiful.\"",
       "a": "The stars may be paid, and their hair is beautiful for other reasons.",
       "why": "Award 2 for: it's an advert / who asked the stars? / no proof the shampoo did it."
      },
@@ -440,7 +440,7 @@
       "why": "Award 2 for: popular isn't the same as true / check the facts."
      },
      {
-      "q": "\"You don't play football, so your ideas about the team are wrong.\"",
+      "q": "\"You don't play soccer, so your ideas about the team are wrong.\"",
       "a": "Judge the idea, not the person.",
       "why": "Award 2 for: anyone can have a good idea / look at the reasons."
      },
@@ -508,7 +508,7 @@
      {
       "q": "What would happen if everyone in Thailand could speak only English for one day?",
       "a": "",
-      "why": "Shops and taxis have problems · people use their hands to explain · lots of laughing · English improves fast · the TV news changes."
+      "why": "Stores and taxis have problems · people use their hands to explain · lots of laughing · English improves fast · the TV news changes."
      },
      {
       "q": "What would happen if people could live for 200 years?",
@@ -518,7 +518,7 @@
      {
       "q": "What would happen if there was no electricity for a week?",
       "a": "",
-      "why": "No phones or internet · food goes bad · candles and torches · no air conditioning · people talk more."
+      "why": "No phones or internet · food goes bad · candles and flashlights · no air conditioning · people talk more."
      },
      {
       "q": "What would happen if everyone in the world spoke the same language?",
@@ -718,7 +718,7 @@
     "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1",
     "qs": [
      {
-      "q": "\"I wore my red socks and passed my maths test. So red socks help you pass tests.\"",
+      "q": "\"I wore my red socks and passed my math test. So red socks help you pass tests.\"",
       "a": "Two things happened together, but one didn't cause the other.",
       "why": "Award 2 for: coincidence / no proof the socks did it / she passed because she studied."
      },
@@ -728,8 +728,8 @@
       "why": "Award 2 for: small group / you can't generalise / your friends are similar to you."
      },
      {
-      "q": "\"A famous footballer drinks this energy drink. So it must make you run faster.\"",
-      "a": "The footballer is paid to say it. He was fast before the drink.",
+      "q": "\"A famous soccer player drinks this energy drink. So it must make you run faster.\"",
+      "a": "The soccer player is paid to say it. He was fast before the drink.",
       "why": "Award 2 for: advertising / he's paid / no evidence about the drink itself."
      },
      {
@@ -763,7 +763,7 @@
       "why": "Award 2 for: you can agree with some rules and not others."
      },
      {
-      "q": "\"He's a great footballer, so his advice about medicine must be right.\"",
+      "q": "\"He's a great soccer player, so his advice about medicine must be right.\"",
       "a": "Being an expert in one thing doesn't make you an expert in another.",
       "why": "Award 2 for: ask a doctor / wrong kind of expert."
      },
@@ -773,7 +773,7 @@
       "why": "Award 2 for: slippery slope / that's a big jump."
      },
      {
-      "q": "\"Nobody complained about the new timetable, so everyone loves it.\"",
+      "q": "\"Nobody complained about the new schedule, so everyone loves it.\"",
       "a": "Silence isn't the same as agreement.",
       "why": "Award 2 for: maybe they didn't dare / didn't know how to complain."
      },
@@ -811,7 +811,7 @@
      {
       "q": "What would happen if every phone stopped working for one week?",
       "a": "",
-      "why": "People talk face to face · get lost (no maps) · banks and shops have problems · less screen time · emergencies are harder."
+      "why": "People talk face to face · get lost (no maps) · banks and stores have problems · less screen time · emergencies are harder."
      },
      {
       "q": "What would happen if robots did all the jobs?",
@@ -821,7 +821,7 @@
      {
       "q": "What would happen if the internet disappeared forever?",
       "a": "",
-      "why": "Letters and phone calls · libraries busy again · banks and shops have problems · less fake news · businesses close."
+      "why": "Letters and phone calls · libraries busy again · banks and stores have problems · less fake news · businesses close."
      },
      {
       "q": "What would happen if everyone lived to 150?",
@@ -836,7 +836,7 @@
      {
       "q": "What would happen if Thailand had snow every winter?",
       "a": "",
-      "why": "Ski resorts · warm clothes in shops · tourists come for snow · crops change · snow days off school."
+      "why": "Ski resorts · warm clothes in stores · tourists come for snow · crops change · snow days off school."
      }
     ],
     "play": 1,

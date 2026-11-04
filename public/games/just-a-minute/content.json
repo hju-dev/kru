@@ -19,7 +19,7 @@
     ]
    },
    {
-    "topic": "My favourite food",
+    "topic": "My favorite food",
     "ideas": [
      "What is it?",
      "When do you eat it?",
@@ -30,7 +30,7 @@
     "topic": "My school",
     "ideas": [
      "Where?",
-     "Favourite subject?",
+     "Favorite subject?",
      "Teachers?"
     ]
    },
@@ -38,12 +38,12 @@
     "topic": "My bedroom",
     "ideas": [
      "What is in it?",
-     "Colour?",
+     "Color?",
      "What do you do there?"
     ]
    },
    {
-    "topic": "My favourite animal",
+    "topic": "My favorite animal",
     "ideas": [
      "What does it look like?",
      "Where does it live?",
@@ -59,7 +59,7 @@
     ]
    },
    {
-    "topic": "My favourite sport",
+    "topic": "My favorite sport",
     "ideas": [
      "How do you play it?",
      "Where?",
@@ -91,10 +91,10 @@
     ]
    },
    {
-    "topic": "My favourite colour",
+    "topic": "My favorite color",
     "ideas": [
      "What is it?",
-     "What things are this colour?",
+     "What things are this color?",
      "Why?"
     ]
    },
@@ -115,7 +115,7 @@
     ]
    },
    {
-    "topic": "My favourite day of the week",
+    "topic": "My favorite day of the week",
     "ideas": [
      "Which day?",
      "What do you do?",
@@ -125,7 +125,7 @@
    {
     "topic": "Ice cream",
     "ideas": [
-     "Favourite flavour?",
+     "Favorite flavor?",
      "Where do you buy it?",
      "How often?"
     ]
@@ -143,7 +143,7 @@
     "ideas": [
      "What do you use it for?",
      "How many hours?",
-     "Favourite app?"
+     "Favorite app?"
     ]
    },
    {
@@ -157,13 +157,13 @@
    {
     "topic": "Music",
     "ideas": [
-     "Favourite singer?",
+     "Favorite singer?",
      "When do you listen?",
      "Can you sing?"
     ]
    },
    {
-    "topic": "My favourite film",
+    "topic": "My favorite movie",
     "ideas": [
      "What is it about?",
      "Who is in it?",
@@ -190,14 +190,14 @@
     "topic": "Animals at the zoo",
     "ideas": [
      "Which animals?",
-     "Favourite?",
+     "Favorite?",
      "What do they eat?"
     ]
    },
    {
     "topic": "Games",
     "ideas": [
-     "Favourite game?",
+     "Favorite game?",
      "How do you play?",
      "Who do you play with?"
     ]
@@ -205,13 +205,13 @@
    {
     "topic": "Fruit",
     "ideas": [
-     "Favourite fruit?",
-     "Colour?",
+     "Favorite fruit?",
+     "Color?",
      "When do you eat it?"
     ]
    },
    {
-    "topic": "My favourite teacher",
+    "topic": "My favorite teacher",
     "ideas": [
      "Subject?",
      "What are they like?",
@@ -237,21 +237,21 @@
    {
     "topic": "Clothes",
     "ideas": [
-     "Favourite clothes?",
+     "Favorite clothes?",
      "School uniform?",
-     "What do you wear at the weekend?"
+     "What do you wear on the weekend?"
     ]
    },
    {
     "topic": "Toys",
     "ideas": [
-     "Favourite toy when you were small?",
+     "Favorite toy when you were small?",
      "Do you still have it?",
      "Why?"
     ]
    },
    {
-    "topic": "Holidays",
+    "topic": "Vacations",
     "ideas": [
      "Where do you go?",
      "Who with?",
@@ -261,7 +261,7 @@
    {
     "topic": "Superheroes",
     "ideas": [
-     "Favourite superhero?",
+     "Favorite superhero?",
      "What can they do?",
      "Why?"
     ]
@@ -285,7 +285,7 @@
    {
     "topic": "Drinks",
     "ideas": [
-     "Favourite drink?",
+     "Favorite drink?",
      "Hot or cold?",
      "When?"
     ]
@@ -309,7 +309,7 @@
    {
     "topic": "Thai food",
     "ideas": [
-     "Favourite dish?",
+     "Favorite dish?",
      "Spicy or not?",
      "Where do you eat it?"
     ]
@@ -347,7 +347,7 @@
     ]
    },
    {
-    "topic": "My favourite subject",
+    "topic": "My favorite subject",
     "ideas": [
      "What is it?",
      "Why?",
@@ -358,14 +358,14 @@
     "topic": "Things in my bag",
     "ideas": [
      "What is in it?",
-     "Colour?",
+     "Color?",
      "Is it heavy?"
     ]
    },
    {
     "topic": "Fast food",
     "ideas": [
-     "Favourite?",
+     "Favorite?",
      "How often?",
      "Is it healthy?"
     ]
@@ -375,7 +375,7 @@
     "ideas": [
      "What do you draw?",
      "Are you good at it?",
-     "Colours?"
+     "Colors?"
     ]
    },
    {
@@ -407,7 +407,7 @@
  "M.2": {
   "items": [
    {
-    "topic": "The best holiday I ever had",
+    "topic": "The best vacation I ever had",
     "ideas": [
      "Where?",
      "Who with?",
@@ -503,7 +503,7 @@
     ]
    },
    {
-    "topic": "Travelling by plane",
+    "topic": "Traveling by plane",
     "ideas": [
      "Have you been on a plane?",
      "Good things?",
@@ -531,11 +531,11 @@
     "ideas": [
      "Why?",
      "Easy or difficult?",
-     "How do you practise?"
+     "How do you practice?"
     ]
    },
    {
-    "topic": "My favourite season",
+    "topic": "My favorite season",
     "ideas": [
      "Which one?",
      "Weather?",
@@ -569,7 +569,7 @@
    {
     "topic": "Street food",
     "ideas": [
-     "Favourite?",
+     "Favorite?",
      "Where?",
      "Clean or dirty?"
     ]
@@ -615,7 +615,7 @@
     ]
    },
    {
-    "topic": "My favourite app",
+    "topic": "My favorite app",
     "ideas": [
      "What does it do?",
      "How often?",
@@ -695,7 +695,7 @@
     ]
    },
    {
-    "topic": "A film I watched recently",
+    "topic": "A movie I watched recently",
     "ideas": [
      "What was it about?",
      "Who was in it?",
@@ -761,7 +761,7 @@
    {
     "topic": "Cartoons and anime",
     "ideas": [
-     "Favourite?",
+     "Favorite?",
      "Why?",
      "Are they only for children?"
     ]
@@ -942,7 +942,7 @@
     "topic": "The ideal school",
     "ideas": [
      "Subjects",
-     "Timetable",
+     "Schedule",
      "Teachers"
     ]
    },
@@ -1059,7 +1059,7 @@
     ]
    },
    {
-    "topic": "Online shopping vs real shops",
+    "topic": "Online shopping vs real stores",
     "ideas": [
      "Price",
      "Experience",
@@ -1142,7 +1142,7 @@
     "topic": "Should school be all year?",
     "ideas": [
      "Learning",
-     "Holidays",
+     "Vacations",
      "Family time"
     ]
    },
@@ -1220,7 +1220,7 @@
     "Keep talking until the timer ends!"
    ],
    "example": {
-    "big": "My favourite food",
+    "big": "My favorite food",
     "tag": "Topic"
    }
   },

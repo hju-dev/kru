@@ -3,7 +3,7 @@
  "M.1": {
   "sentences": [
    {
-    "text": "I played football with my friends.",
+    "text": "I played soccer with my friends.",
     "focus": "past simple"
    },
    {
@@ -11,7 +11,7 @@
     "focus": "past simple"
    },
    {
-    "text": "We watched a film last night.",
+    "text": "We watched a movie last night.",
     "focus": "past simple"
    },
    {
@@ -63,7 +63,7 @@
     "focus": "past simple"
    },
    {
-    "text": "They ate noodles at the canteen.",
+    "text": "They ate noodles at the cafeteria.",
     "focus": "past simple"
    },
    {
@@ -132,7 +132,7 @@
     "focus": "past simple"
    },
    {
-    "text": "Where did they go on holiday?",
+    "text": "Where did they go on vacation?",
     "focus": "past simple: question"
    },
    {
@@ -208,7 +208,7 @@
  "M.2": {
   "sentences": [
    {
-    "text": "I was watching TV when my mum came home.",
+    "text": "I was watching TV when my mom came home.",
     "focus": "past continuous + when"
    },
    {
@@ -220,7 +220,7 @@
     "focus": "past continuous + but"
    },
    {
-    "text": "They were playing football when the bell rang.",
+    "text": "They were playing soccer when the bell rang.",
     "focus": "past continuous + when"
    },
    {
@@ -288,7 +288,7 @@
     "focus": "past continuous + while"
    },
    {
-    "text": "They were laughing because the film was very funny.",
+    "text": "They were laughing because the movie was very funny.",
     "focus": "past continuous + because"
    },
    {
@@ -320,7 +320,7 @@
     "focus": "past continuous + while"
    },
    {
-    "text": "My mum was talking on the phone when I arrived.",
+    "text": "My mom was talking on the phone when I arrived.",
     "focus": "past continuous + when"
    },
    {
@@ -400,7 +400,7 @@
     "focus": "past continuous + although"
    },
    {
-    "text": "They were waiting outside when the shop finally opened.",
+    "text": "They were waiting outside when the store finally opened.",
     "focus": "past continuous + when"
    },
    {
@@ -420,7 +420,7 @@
     "focus": "relative clause: who"
    },
    {
-    "text": "If it rains tomorrow, we will watch a film instead of playing football.",
+    "text": "If it rains tomorrow, we will watch a movie instead of playing soccer.",
     "focus": "first conditional"
    },
    {
@@ -448,7 +448,7 @@
     "focus": "third conditional"
    },
    {
-    "text": "The book which you lent me was more interesting than the film.",
+    "text": "The book which you lent me was more interesting than the movie.",
     "focus": "relative clause: which"
    },
    {
@@ -492,7 +492,7 @@
     "focus": "relative clause: who"
    },
    {
-    "text": "If we leave now, we will arrive before the film starts.",
+    "text": "If we leave now, we will arrive before the movie starts.",
     "focus": "first conditional"
    },
    {
@@ -508,7 +508,7 @@
     "focus": "relative clause: who"
    },
    {
-    "text": "If you mix red and blue, you get the colour purple.",
+    "text": "If you mix red and blue, you get the color purple.",
     "focus": "zero conditional"
    },
    {
@@ -528,7 +528,7 @@
     "focus": "first conditional: question"
    },
    {
-    "text": "People who recycle their rubbish help to protect the environment for everyone.",
+    "text": "People who recycle their trash help to protect the environment for everyone.",
     "focus": "relative clause: who"
    },
    {
@@ -560,7 +560,7 @@
     "focus": "third conditional"
    },
    {
-    "text": "The film that we watched last night had a surprising ending.",
+    "text": "The movie that we watched last night had a surprising ending.",
     "focus": "relative clause: that"
    },
    {
@@ -600,7 +600,7 @@
     "focus": "third conditional"
    },
    {
-    "text": "The shop that sells cheap phone cases closes at eight o'clock.",
+    "text": "The store that sells cheap phone cases closes at eight o'clock.",
     "focus": "relative clause: that"
    },
    {
@@ -635,7 +635,7 @@
    "title": "Write it on paper",
    "text": [
     "Work with your team.",
-    "Write the whole sentence: capital letter and full stop."
+    "Write the whole sentence: capital letter and period."
    ],
    "example": {
     "rows": [
@@ -644,7 +644,7 @@
       "I went…"
      ],
      [
-      "Full stop",
+      "Period",
       "…school."
      ]
     ]
@@ -679,7 +679,7 @@
    {
     "id": "punctuation",
     "name": "Perfect punctuation",
-    "text": "Capital letter AND full stop (or ?) correct: +1 extra.",
+    "text": "Capital letter AND period (or ?) correct: +1 extra.",
     "points": 1
    },
    {

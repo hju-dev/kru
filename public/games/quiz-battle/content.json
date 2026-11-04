@@ -50,7 +50,7 @@
       "double": true
      },
      {
-      "q": "___ you see the film last weekend?",
+      "q": "___ you see the movie last weekend?",
       "choices": [
        "Do",
        "Did",
@@ -66,7 +66,7 @@
       "double": false
      },
      {
-      "q": "They ___ football yesterday after school.",
+      "q": "They ___ soccer yesterday after school.",
       "choices": [
        "play",
        "playing",
@@ -77,7 +77,7 @@
       "double": false
      },
      {
-      "q": "My mum ___ happy yesterday.",
+      "q": "My mom ___ happy yesterday.",
       "choices": [
        "is",
        "was",
@@ -158,13 +158,13 @@
        "school",
        "hospital",
        "bank",
-       "shop"
+       "store"
       ],
       "answer": 1,
       "double": false
      },
      {
-      "q": "What colour is the sky on a sunny day?",
+      "q": "What color is the sky on a sunny day?",
       "answer": "blue",
       "double": false
      },
@@ -234,7 +234,7 @@
       "double": false
      },
      {
-      "q": "___ your brother play football?",
+      "q": "___ your brother play soccer?",
       "choices": [
        "Do",
        "Does",
@@ -370,7 +370,7 @@
       "double": false
      },
      {
-      "q": "What animal is very big and grey with a long nose?",
+      "q": "What animal is very big and gray with a long nose?",
       "answer": "an elephant",
       "double": false
      },
@@ -489,7 +489,7 @@
       "double": false
      },
      {
-      "q": "___ is your favourite teacher?",
+      "q": "___ is your favorite teacher?",
       "choices": [
        "Who",
        "Where",
@@ -500,7 +500,7 @@
       "double": true
      },
      {
-      "q": "We play football ___ Saturday.",
+      "q": "We play soccer ___ Saturday.",
       "choices": [
        "in",
        "at",
@@ -569,7 +569,7 @@
       "double": false
      },
      {
-      "q": "We were playing football ___ the teacher arrived.",
+      "q": "We were playing soccer ___ the teacher arrived.",
       "choices": [
        "while",
        "when",
@@ -625,10 +625,10 @@
     ]
    },
    {
-    "name": "Holidays",
+    "name": "Vacations",
     "questions": [
      {
-      "q": "Which one is a document with your photo, for travelling to other countries?",
+      "q": "Which one is a document with your photo, for traveling to other countries?",
       "choices": [
        "a passport",
        "a suitcase",
@@ -688,7 +688,7 @@
       "double": false
      },
      {
-      "q": "A person who visits a place on holiday is a ___.",
+      "q": "A person who visits a place on vacation is a ___.",
       "choices": [
        "tourist",
        "guide",
@@ -764,7 +764,7 @@
       "double": false
      },
      {
-      "q": "English is ___ than maths for me.",
+      "q": "English is ___ than math for me.",
       "choices": [
        "easy",
        "easier",
@@ -775,7 +775,7 @@
       "double": false
      },
      {
-      "q": "That was the ___ film I have ever seen.",
+      "q": "That was the ___ movie I have ever seen.",
       "choices": [
        "bad",
        "worse",
@@ -1002,7 +1002,7 @@
        "bakery",
        "pharmacy",
        "post office",
-       "cinema"
+       "movie theater"
       ],
       "answer": 1,
       "double": true
@@ -1030,8 +1030,8 @@
       "double": false
      },
      {
-      "q": "Name a place where you can watch a film.",
-      "answer": "a cinema",
+      "q": "Name a place where you can watch a movie.",
+      "answer": "a movie theater",
       "double": false
      }
     ]
@@ -1180,7 +1180,7 @@
       "double": false
      },
      {
-      "q": "Can you ___ me a favour?",
+      "q": "Can you ___ me a favor?",
       "choices": [
        "make",
        "do",
@@ -1294,7 +1294,7 @@
       "double": false
      },
      {
-      "q": "The film ___ we watched was boring.",
+      "q": "The movie ___ we watched was boring.",
       "choices": [
        "which",
        "who",

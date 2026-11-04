@@ -1,5 +1,5 @@
 {
- "about": "Hot Seat Vocab words per level. One student per team faces away; teammates describe the word without saying it. M.1 = A2 everyday words, M.2 = B1 holidays, places and feelings, M.3 = Person / Place / Thing / Idea (B1+). Written for Kru. At least 50 per level, shuffled every game.",
+ "about": "Hot Seat Vocab words per level. One student per team faces away; teammates describe the word without saying it. M.1 = A2 everyday words, M.2 = B1 vacations, places and feelings, M.3 = Person / Place / Thing / Idea (B1+). Written for Kru. At least 50 per level, shuffled every game.",
  "M.1": {
   "words": [
    {
@@ -75,7 +75,7 @@
     "word": "water"
    },
    {
-    "word": "football"
+    "word": "soccer"
    },
    {
     "word": "guitar"
@@ -214,7 +214,7 @@
     "word": "train station"
    },
    {
-    "word": "motorbike"
+    "word": "motorcycle"
    },
    {
     "word": "tent"
@@ -283,13 +283,13 @@
     "word": "adventure"
    },
    {
-    "word": "holiday"
+    "word": "vacation"
    },
    {
     "word": "weekend"
    },
    {
-    "word": "neighbour"
+    "word": "neighbor"
    },
    {
     "word": "library"
@@ -417,7 +417,7 @@
     "cat": "Place"
    },
    {
-    "word": "cinema",
+    "word": "movie theater",
     "cat": "Place"
    },
    {
@@ -429,7 +429,7 @@
     "cat": "Place"
    },
    {
-    "word": "petrol station",
+    "word": "gas station",
     "cat": "Place"
    },
    {
@@ -608,7 +608,7 @@
      "rows": [
       [
        "✓",
-       "It's a big grey animal with a long nose."
+       "It's a big gray animal with a long nose."
       ],
       [
        "✗",
@@ -665,7 +665,7 @@
     "rows": [
      [
       "✓",
-      "It's a big grey animal with a long nose."
+      "It's a big gray animal with a long nose."
      ],
      [
       "✗",

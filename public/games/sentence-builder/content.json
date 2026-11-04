@@ -38,9 +38,9 @@
     "words": [
      "friend",
      "play",
-     "football"
+     "soccer"
     ],
-    "example": "I play football with my friend."
+    "example": "I play soccer with my friend."
    },
    {
     "words": [
@@ -108,11 +108,11 @@
    },
    {
     "words": [
-     "shop",
+     "store",
      "buy",
      "milk"
     ],
-    "example": "I go to the shop to buy milk."
+    "example": "I go to the store to buy milk."
    },
    {
     "words": [
@@ -136,7 +136,7 @@
      "ride",
      "weekend"
     ],
-    "example": "I ride my bike at the weekend."
+    "example": "I ride my bike on the weekend."
    },
    {
     "words": [
@@ -244,11 +244,11 @@
    },
    {
     "words": [
-     "football",
+     "soccer",
      "team",
      "win"
     ],
-    "example": "Our football team wins every game."
+    "example": "Our soccer team wins every game."
    },
    {
     "words": [
@@ -390,9 +390,9 @@
     "words": [
      "chicken",
      "rice",
-     "favourite"
+     "favorite"
     ],
-    "example": "Chicken rice is my favourite food."
+    "example": "Chicken rice is my favorite food."
    },
    {
     "words": [
@@ -416,11 +416,11 @@
    },
    {
     "words": [
-     "holiday",
+     "vacation",
      "went",
      "mountains"
     ],
-    "example": "Last holiday we went to the mountains."
+    "example": "Last vacation we went to the mountains."
    },
    {
     "words": [
@@ -530,9 +530,9 @@
     "words": [
      "must",
      "helmet",
-     "motorbike"
+     "motorcycle"
     ],
-    "example": "You must wear a helmet on a motorbike."
+    "example": "You must wear a helmet on a motorcycle."
    },
    {
     "words": [
@@ -572,7 +572,7 @@
      "weekend",
      "grandparents"
     ],
-    "example": "I usually visit my grandparents at the weekend."
+    "example": "I usually visit my grandparents on the weekend."
    },
    {
     "words": [
@@ -632,11 +632,11 @@
    },
    {
     "words": [
-     "favourite",
+     "favorite",
      "because",
      "funny"
     ],
-    "example": "My favourite film is a comedy because it is funny."
+    "example": "My favorite movie is a comedy because it is funny."
    },
    {
     "words": [
@@ -745,10 +745,10 @@
    {
     "words": [
      "noisy",
-     "neighbours",
+     "neighbors",
      "sleep"
     ],
-    "example": "My neighbours are noisy, so I can't sleep."
+    "example": "My neighbors are noisy, so I can't sleep."
    },
    {
     "words": [
@@ -788,7 +788,7 @@
      "market",
      "weekend"
     ],
-    "example": "The market is very crowded at the weekend."
+    "example": "The market is very crowded on the weekend."
    },
    {
     "words": [
@@ -942,9 +942,9 @@
     "words": [
      "in order to",
      "improve",
-     "practise"
+     "practice"
     ],
-    "example": "I practise every day in order to improve my English."
+    "example": "I practice every day in order to improve my English."
    },
    {
     "words": [
@@ -992,7 +992,7 @@
      "go",
      "instead"
     ],
-    "example": "My friend suggested that we go to the cinema instead."
+    "example": "My friend suggested that we go to the movies instead."
    },
    {
     "words": [
@@ -1020,11 +1020,11 @@
    },
    {
     "words": [
-     "apologised",
+     "apologized",
      "late",
      "teacher"
     ],
-    "example": "He apologised to the teacher for being late."
+    "example": "He apologized to the teacher for being late."
    },
    {
     "words": [
@@ -1048,7 +1048,7 @@
      "nor",
      "interested"
     ],
-    "example": "Neither my sister nor I am interested in football."
+    "example": "Neither my sister nor I am interested in soccer."
    },
    {
     "words": [
@@ -1152,7 +1152,7 @@
      "that",
      "laughed"
     ],
-    "example": "It was such a funny film that we laughed all night."
+    "example": "It was such a funny movie that we laughed all night."
    },
    {
     "words": [
@@ -1160,7 +1160,7 @@
      "community",
      "weekends"
     ],
-    "example": "I volunteer in my community at the weekends."
+    "example": "I volunteer in my community on weekends."
    },
    {
     "words": [
@@ -1298,8 +1298,8 @@
    },
    {
     "id": "capital",
-    "name": "Capitals + full stop",
-    "text": "+1 for a capital letter AND a full stop!",
+    "name": "Capitals + period",
+    "text": "+1 for a capital letter AND a period!",
     "points": 1
    },
    {
