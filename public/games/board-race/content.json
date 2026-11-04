@@ -1913,41 +1913,32 @@
   {
    "title": "Board Race",
    "text": [
-    "Each team sends one runner to the whiteboard.",
-    "Read the task, then run and write!"
+    "Each team lines up at the whiteboard.",
+    "Read the task together."
    ],
    "example": {
-    "label": "Example",
-    "rows": [
-     [
-      "Task",
-      "Past simple: go, eat, see"
-     ],
-     [
-      "Write",
-      "went, ate, saw"
-     ]
-    ]
+    "label": "Task",
+    "big": "Past simple: go, eat, see"
    }
   },
   {
-   "title": "Take turns",
+   "title": "One answer each",
    "text": [
-    "Only one runner per team at the board.",
-    "Then pass the pen to the next runner."
+    "The first student writes ONE answer.",
+    "Then pass the pen to the next student in your line."
    ],
    "example": {
     "rows": [
      [
-      "Runner 1",
+      "Student 1",
       "went"
      ],
      [
-      "Runner 2",
+      "Student 2",
       "ate"
      ],
      [
-      "Runner 3",
+      "Student 3",
       "saw"
      ]
     ]
