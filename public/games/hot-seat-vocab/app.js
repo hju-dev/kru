@@ -85,12 +85,14 @@
     phase = 'over';
     S.last = { t: S.seat, got: got, skipped: skipped };
     save();
+    KruBonus.reveal();
     tone([880, 660, 990], 0.2);
     render();
   }
   function nextTeam() {
     var i = teams.findIndex(function (t) { return t.id === S.seat; });
     S.seat = teams[(i + 1) % teams.length].id;
+    S.turn = (S.turn || 0) + 1;
     phase = 'ready';
     total = left = S.secs;
     save();
@@ -105,6 +107,7 @@
     while (size > 30 && (w.scrollWidth > w.clientWidth + 1 || stage.scrollHeight > stage.clientHeight + 1)) w.style.fontSize = (size -= 4) + 'px';
   }
   function render() {
+    if (phase === 'ready') bonusRound('turn' + (S.turn || 0)); // a new team in the hot seat
     var seat = team(S.seat);
     $('seat').innerHTML = seat ? 'Hot seat: <b>' + esc(seat.name) + '</b>' : '';
     var w = $('word'), cat = $('cat'), item = WORDS[word];
@@ -194,6 +197,7 @@
     if (!b) return;
     if (phase === 'live') { toast('Finish this round first (or ⋯ → End this round now)', false); return; }
     S.seat = b.dataset.t;
+    if (phase === 'over') S.turn = (S.turn || 0) + 1;
     phase = 'ready';
     total = left = S.secs;
     save();
@@ -248,12 +252,18 @@
   function showIntro() { return KruIntro.show(INTRO, { title: 'Hot Seat Vocab' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
+  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
+  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
+  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       WORDS = content[level].words;
       teams = Kru.allTeams();
+      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+        award: function (id, d, card) { S.pts[id] = pts(id) + d; Kru.score(id, d, 'bonus: ' + card.name); save(); render(); } });
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === WORDS.length) S = saved;
       else S = { v: 1, level: level, seat: teams[0].id, order: shuffled(WORDS.length), next: 0, secs: 60, pts: {}, log: [], last: null };

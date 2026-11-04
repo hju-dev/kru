@@ -86,6 +86,7 @@
   }
   function renderStage() {
     var s = current(), w = words(s), o = tileOrder();
+    bonusRound('s' + S.order[S.pos] + '-' + S.pos);
     $('count').textContent = 'Sentence ' + (S.pos + 1) + ' of ' + S.order.length;
     $('focus').textContent = s.focus || '';
     $('tiles').innerHTML = o.map(function (i) { return '<span class="tile-w">' + esc(w[i]) + '</span>'; }).join('');
@@ -170,6 +171,7 @@
     save();
     tone([523, 659]);
     renderStage();
+    KruBonus.reveal();
   });
   function goTo(pos) {
     if (pos >= S.order.length) {
@@ -235,12 +237,18 @@
   function showIntro() { return KruIntro.show(INTRO, { title: 'Sentence Scramble' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
+  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
+  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
+  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       SENTENCES = content[level].sentences;
       teams = Kru.allTeams();
+      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+        award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); renderTeams(); } });
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === SENTENCES.length) S = saved;
       else S = { v: 1, level: level, order: shuffled(SENTENCES.length), pos: 0, shuffles: {}, places: {}, revealed: {}, shownAt: {}, revealedAt: {}, pts: {}, log: [] };

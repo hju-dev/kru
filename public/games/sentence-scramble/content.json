@@ -673,5 +673,47 @@
     ]
    }
   }
- ]
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "punctuation",
+    "name": "Perfect punctuation",
+    "text": "Capital letter AND full stop (or ?) correct: +1 extra.",
+    "points": 1
+   },
+   {
+    "id": "aloud",
+    "name": "Read it aloud",
+    "text": "Read your sentence aloud correctly: +1.",
+    "points": 1
+   },
+   {
+    "id": "big-first",
+    "name": "Big first place",
+    "text": "1st place gets 3 extra points!",
+    "points": 3
+   }
+  ],
+  "secret": [
+   {
+    "id": "neat",
+    "name": "Neat handwriting",
+    "text": "+1 for the neatest paper!",
+    "points": 1
+   },
+   {
+    "id": "change",
+    "name": "Change it",
+    "text": "Make it negative or a question, correctly: +2!",
+    "points": 2
+   },
+   {
+    "id": "verb",
+    "name": "Find the verb",
+    "text": "+1 if your team can point to the verb.",
+    "points": 1
+   }
+  ]
+ }
 }

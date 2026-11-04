@@ -91,6 +91,7 @@
   }
 
   function renderRound() {
+    bonusRound('round' + S.round);
     var p = PROMPTS[S.prompt], b = bonus();
     $('kind').textContent = isFinal() ? 'Final round' : KIND[p.kind] || 'Category';
     $('kind').className = 'kind ' + (isFinal() ? 'final' : p.kind === 'cat' ? '' : p.kind);
@@ -282,7 +283,7 @@
     $('showEx').textContent = ex.hidden ? 'Show examples' : 'Hide examples';
     fitPrompt();
   });
-  $('toScores').addEventListener('click', function () { stopTimer(); renderClock(); showView('scores'); });
+  $('toScores').addEventListener('click', function () { stopTimer(); renderClock(); showView('scores'); KruBonus.reveal(); });
   $('toRound').addEventListener('click', function () { showView('round'); });
   $('addRound').addEventListener('click', addRound);
   $('nextRound').addEventListener('click', nextRound);
@@ -345,12 +346,23 @@
   function showIntro() { return KruIntro.show(INTRO, { title: 'Word Rush' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
+  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
+  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
+  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       PROMPTS = content[level].prompts;
       teams = Kru.allTeams();
+      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+        award: function (id, d, card) {
+          // before the round is added: into this round's Bonus; after: straight onto the total
+          if (!S.added) entry(id).b += d;
+          else { S.totals[id] = total_(id) + d; Kru.score(id, d, 'bonus: ' + card.name); }
+          save(); renderTeams();
+        } });
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level && PROMPTS[saved.prompt]) {
         S = saved;

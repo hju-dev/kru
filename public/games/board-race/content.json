@@ -1967,5 +1967,63 @@
     ]
    }
   }
- ]
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "golden-u",
+    "name": "Golden letter U",
+    "text": "Answers with the letter U count double!"
+   },
+   {
+    "id": "double",
+    "name": "Double points",
+    "text": "Every correct answer is worth 2 this round!"
+   },
+   {
+    "id": "neat",
+    "name": "Neat writing",
+    "text": "The neatest board wins +2.",
+    "points": 2
+   },
+   {
+    "id": "silent",
+    "name": "Silent line",
+    "text": "No talking in the line! A silent team gets +2.",
+    "points": 2
+   },
+   {
+    "id": "spelling",
+    "name": "Spelling star",
+    "text": "Every answer spelled correctly? +3!",
+    "points": 3
+   }
+  ],
+  "secret": [
+   {
+    "id": "long",
+    "name": "Long answers",
+    "text": "+1 for every answer with 8 letters or more!",
+    "points": 1
+   },
+   {
+    "id": "capitals",
+    "name": "Capital letters",
+    "text": "+2 if your team used capital letters correctly.",
+    "points": 2
+   },
+   {
+    "id": "first",
+    "name": "Fastest team",
+    "text": "+2 for the team that finished first!",
+    "points": 2
+   },
+   {
+    "id": "unique",
+    "name": "Unique answer",
+    "text": "+1 for every answer no other team wrote!",
+    "points": 1
+   }
+  ]
+ }
 }

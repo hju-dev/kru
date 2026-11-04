@@ -1621,5 +1621,47 @@
     ]
    }
   }
- ]
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "spelling",
+    "name": "Spelling counts",
+    "text": "Short answers spelled perfectly: +1 extra.",
+    "points": 1
+   },
+   {
+    "id": "steal",
+    "name": "Steal",
+    "text": "A wrong team can steal 1 point by explaining the answer.",
+    "points": 1
+   },
+   {
+    "id": "fast",
+    "name": "Fast hands",
+    "text": "First team to show the right answer: +1.",
+    "points": 1
+   }
+  ],
+  "secret": [
+   {
+    "id": "why",
+    "name": "Explain it",
+    "text": "+1 if your team can explain WHY it is right.",
+    "points": 1
+   },
+   {
+    "id": "trying",
+    "name": "Good try",
+    "text": "Every team that was wrong gets +1 for trying!",
+    "points": 1
+   },
+   {
+    "id": "sentence",
+    "name": "Use it",
+    "text": "Use the answer in a correct sentence: +2.",
+    "points": 2
+   }
+  ]
+ }
 }

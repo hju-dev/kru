@@ -98,3 +98,43 @@ describe('library sections', () => {
     }
   })
 })
+
+describe('bonus cards', () => {
+  const withBonus = ['board-race', 'hot-seat-vocab', 'quiz-battle', 'sentence-scramble', 'tag-team', 'think-tank-showdown', 'word-rush']
+  type Card = { id: string; name: string; text: string; points?: number }
+  for (const slug of withBonus) {
+    it(`${slug}: loads the shared bonus cards; cards are short, with unique ids and small points`, () => {
+      const html = read(`public/games/${slug}/index.html`)
+      expect(html).toContain('/games/shared/kru-bonus.js')
+      expect(html).toContain('/games/shared/kru-bonus.css')
+      const b = (JSON.parse(read(`public/games/${slug}/content.json`)) as { bonus?: { before?: Card[]; secret?: Card[] } }).bonus
+      expect(b?.secret?.length, 'secret cards').toBeGreaterThanOrEqual(3)
+      for (const kind of ['before', 'secret'] as const) {
+        const list = b?.[kind] ?? []
+        expect(new Set(list.map((c) => c.id)).size).toBe(list.length)
+        for (const c of list) {
+          expect(c.name.length, c.name).toBeLessThanOrEqual(24)
+          expect(c.text.length, c.text).toBeLessThanOrEqual(70)
+          if (c.points !== undefined) expect([1, 2, 3, 4, 5]).toContain(c.points)
+        }
+      }
+    })
+  }
+  it('draw: about 1 in 3 rounds gets a before card, 1 in 4 a secret one, never the same card twice running', async () => {
+    const { runInNewContext } = await import('node:vm')
+    const win: Record<string, unknown> = {}
+    runInNewContext(read('public/games/shared/kru-bonus.js'), { window: win, document: {}, setTimeout })
+    const draw = (win.KruBonus as { draw: (c: object, p: unknown, k: string, r: () => number) => { before: Card | null; secret: Card | null } }).draw
+    const cards = { before: [{ id: 'a', name: 'A', text: '' }, { id: 'b', name: 'B', text: '' }], secret: [{ id: 's', name: 'S', text: '' }] }
+    expect(draw(cards, null, 'k', () => 0.9)).toMatchObject({ before: null, secret: null })
+    const both = draw(cards, null, 'k', () => 0.1)
+    expect(both.before).not.toBeNull()
+    expect(both.secret?.id).toBe('s')
+    const next = draw(cards, both, 'k2', () => 0.1)
+    expect(next.before?.id).not.toBe(both.before?.id)
+    let n = 0
+    for (let i = 0; i < 3000; i++) if (draw(cards, null, String(i), Math.random).before) n++
+    expect(n / 3000).toBeGreaterThan(0.28)
+    expect(n / 3000).toBeLessThan(0.39)
+  })
+})
