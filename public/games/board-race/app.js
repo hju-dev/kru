@@ -1,4 +1,5 @@
-/* Board Race: a task is shown; one runner per team writes on the whiteboard before the timer ends.
+/* Board Race: a task is shown; each team lines up at the whiteboard and writes one answer per student
+   (pass the pen to the next in line) before the timer ends.
    Henry taps points per team, then Reveal shows the answers or example answers. */
 (function () {
   'use strict';
@@ -238,12 +239,6 @@
       var level = content[session.level] ? session.level : 'M.2';
       TASKS = content[level].tasks;
       teams = Kru.allTeams();
-      var studentTeams = session.teams.length;
-      if (studentTeams > 6) {
-        // HANDOFF: Board Race is for 2-6 teams (whiteboard space); it still works with more
-        $('warnTeams').textContent = studentTeams + ' teams: best with 2–6';
-        $('warnTeams').hidden = false;
-      }
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === TASKS.length) S = saved;
       else S = { v: 1, level: level, order: shuffled(TASKS.length), pos: 0, revealed: {}, secs: 60, pts: {}, log: [] };

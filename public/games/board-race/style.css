@@ -362,12 +362,6 @@ button:focus-visible {
 .examples b {
   color: var(--muted);
 }
-.warn-teams {
-  color: var(--gold);
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
-}
 .panel-btns .btn.minus {
   flex: 0.7;
 }

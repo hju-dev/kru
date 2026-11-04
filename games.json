@@ -154,7 +154,7 @@
     ],
     "minutes": 15,
     "status": "ready",
-    "description": "A task appears (verb forms, a category, idioms). One runner per team writes on the whiteboard before time runs out. You tap points per team.",
+    "description": "A task appears (verb forms, a category, idioms). Teams line up at the whiteboard: one student writes one answer, then passes the pen to the next. You tap points per team.",
     "type": "whiteboard race",
     "phoneLandscape": true,
     "section": "writing"
