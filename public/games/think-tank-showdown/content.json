@@ -984,5 +984,41 @@
     ]
    }
   }
- ]
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "fast",
+    "name": "Show me fast",
+    "text": "First correct team to show: +1 extra.",
+    "points": 1
+   },
+   {
+    "id": "sentence",
+    "name": "Full sentence",
+    "text": "Answer in a full sentence: +1.",
+    "points": 1
+   }
+  ],
+  "secret": [
+   {
+    "id": "funny",
+    "name": "Funniest answer",
+    "text": "+1 for the funniest wrong answer!",
+    "points": 1
+   },
+   {
+    "id": "reason",
+    "name": "Best reason",
+    "text": "+2 for the best explanation.",
+    "points": 2
+   },
+   {
+    "id": "teamwork",
+    "name": "Team spirit",
+    "text": "+1 for the team that worked best together.",
+    "points": 1
+   }
+  ]
+ }
 }

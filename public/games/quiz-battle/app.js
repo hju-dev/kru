@@ -106,6 +106,7 @@
   function render() {
     var s = set(), q = question(), shown = !!S.revealed[S.pos];
     if (!s || !q) return;
+    bonusRound(S.setKey + '-' + S.pos);
     $('qnum').textContent = s.name + ' · Question ' + (S.pos + 1) + ' of ' + s.questions.length;
     $('double').hidden = !q.double;
     $('q').textContent = q.q;
@@ -183,7 +184,7 @@
 
   $('strip').addEventListener('click', function (e) { var b = e.target.closest('[data-t]'); if (b) toggleRight(b.dataset.t); });
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
-  $('reveal').addEventListener('click', function () { unlockAudio(); stopTimer(); S.revealed[S.pos] = true; save(); tone([523, 659]); render(); });
+  $('reveal').addEventListener('click', function () { unlockAudio(); stopTimer(); S.revealed[S.pos] = true; save(); tone([523, 659]); render(); KruBonus.reveal(); });
   $('next').addEventListener('click', function () { goTo(S.pos + 1); });
 
   // ---------- choosing a set ----------
@@ -265,6 +266,10 @@
   function showIntro() { return KruIntro.show(INTRO, { title: 'Quiz Battle' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
+  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
+  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
+  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
@@ -275,6 +280,8 @@
       fromSheet = Array.isArray(session.questions) ? session.questions.filter(function (s) { return s && Array.isArray(s.questions) && s.questions.length; }) : [];
       problems = Array.isArray(session.questionProblems) ? session.questionProblems : [];
       teams = Kru.allTeams();
+      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+        award: function (id, d, card) { S.pts[id] = pts(id) + d; Kru.score(id, d, 'bonus: ' + card.name); save(); renderTeams(); } });
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level) S = saved;
       else S = { v: 1, level: level, setKey: null, pos: 0, revealed: {}, right: {}, secs: 20, pts: {}, log: [] };

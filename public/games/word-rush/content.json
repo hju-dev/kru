@@ -829,5 +829,33 @@
     "big": "× 2"
    }
   }
- ]
+ ],
+ "bonus": {
+  "secret": [
+   {
+    "id": "ten",
+    "name": "Super long words",
+    "text": "+1 for every word with 10 letters or more!",
+    "points": 1
+   },
+   {
+    "id": "unique",
+    "name": "Unique words",
+    "text": "+1 for every word no other team wrote!",
+    "points": 1
+   },
+   {
+    "id": "spelling",
+    "name": "Perfect spelling",
+    "text": "No spelling mistakes at all? +3!",
+    "points": 3
+   },
+   {
+    "id": "zqx",
+    "name": "Z, Q or X",
+    "text": "+2 for every word with Z, Q or X in it!",
+    "points": 2
+   }
+  ]
+ }
 }

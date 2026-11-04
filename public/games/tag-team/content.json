@@ -394,5 +394,47 @@
     }
    }
   ]
+ },
+ "bonus": {
+  "before": [
+   {
+    "id": "linking",
+    "name": "Linking words",
+    "text": "Use 3 linking words (and, but, because…): +2.",
+    "points": 2
+   },
+   {
+    "id": "no-umm",
+    "name": "No umm!",
+    "text": "No \"umm\" and no silence: +2.",
+    "points": 2
+   },
+   {
+    "id": "question",
+    "name": "Ask the audience",
+    "text": "Ask the audience a question in your talk: +1.",
+    "points": 1
+   }
+  ],
+  "secret": [
+   {
+    "id": "new-word",
+    "name": "New word",
+    "text": "+1 for the best new word you used.",
+    "points": 1
+   },
+   {
+    "id": "eyes",
+    "name": "Eye contact",
+    "text": "+1 if you looked at the audience.",
+    "points": 1
+   },
+   {
+    "id": "best",
+    "name": "Best speaker",
+    "text": "+2 for your team's best speaker.",
+    "points": 2
+   }
+  ]
  }
 }

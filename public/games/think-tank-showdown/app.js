@@ -98,6 +98,8 @@
   function load(keepTimer) {
     if (!keepTimer) { stopTimer(); total = left = round().secs; }
     var R = round(), Q = question();
+    // no bonus cards in the Final Wager (the bets are enough)
+    if (R.kind === 'wager') { S.kbonus = null; KruBonus.attach(null); } else bonusRound('r' + S.r + 'q' + S.qi);
     $('round').innerHTML = esc(R.tag) + ': <b>' + esc(R.name) + '</b>';
     $('qnum').innerHTML = Q.spare ? '<span class="spare">Spare question</span>' : 'Question ' + mainIndex() + ' / ' + mainCount();
     $('rule').textContent = R.rule;
@@ -233,6 +235,7 @@
     S.revealed = true;
     save();
     load(true);
+    KruBonus.reveal();
   });
   $('next').addEventListener('click', function () {
     var j = nextMain();
@@ -337,12 +340,18 @@
   function showIntro() { return KruIntro.show(INTRO, { title: 'Think Tank Showdown' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
+  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
+  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
+  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       var pools = content[level].rounds;
       teams = Kru.allTeams();
+      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+        award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); } });
       var saved = session.resume;
       if (saved && saved.v === 2 && saved.level === level && validDraw(pools, saved.draw)) {
         S = saved;

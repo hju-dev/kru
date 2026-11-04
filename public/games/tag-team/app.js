@@ -127,6 +127,7 @@
           tone([880, 1175], 0.12, 0.22); flash('TAG!', 'tag-flash', 700);
         } else {
           left = 0; running = false; clearInterval(timer); phase = 'done';
+          KruBonus.reveal();
           tone([784, 659, 523, 392], 0.2, 0.35);
         }
       }
@@ -142,9 +143,14 @@
       tone([880, 1175], 0.12, 0.22); flash('TAG!', 'tag-flash', 600);
       if (running) endAt = Date.now() + left * 1000;
       render();
-    } else { pause(); phase = 'done'; render(); }
+    } else { pause(); phase = 'done'; render(); KruBonus.reveal(); }
   }
-  function resetAll() { pause(); phase = 'ready'; turn = 0; total = left = C.turn; render(); }
+  function resetAll() {
+    if (phase === 'done') S.turnNo = (S.turnNo || 0) + 1; // the next team's turn
+    pause(); phase = 'ready'; turn = 0; total = left = C.turn;
+    bonusRound('turn' + (S.turnNo || 0));
+    render();
+  }
 
   // ---------- topic ----------
   function fitTopic() {
@@ -443,12 +449,18 @@
   });
 
   // ---------- start ----------
+  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
+  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
+  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       C = content[level];
       teams = Kru.allTeams();
+      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+        award: function (id, d, card) { bump(id, d, 'bonus: ' + card.name); } });
       var students = teams.filter(function (t) { return !t.teacher; });
       var first = (students[0] || teams[0]).id, second = (students[1] || teams.find(function (t) { return t.id !== first; }) || teams[0]).id;
       var saved = session.resume;
@@ -460,6 +472,7 @@
       if (!team(S.againstT)) S.againstT = second;
       S.order = S.order || {}; S.pts = S.pts || {}; S.log = S.log || []; S.used = S.used || [];
       total = left = C.turn;
+      bonusRound('turn' + (S.turnNo || 0));
       renderAll();
       INTRO = KruIntro.forLevel(content, level);
       if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });

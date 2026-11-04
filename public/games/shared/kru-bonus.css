@@ -1,0 +1,119 @@
+/* Kru bonus cards: a ★ chip in the top bar, and a big card over the game. */
+.kb-chip {
+  min-height: 36px;
+  max-width: 230px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 2px solid var(--gold, #ffb703);
+  background: color-mix(in srgb, var(--gold, #ffb703) 18%, transparent);
+  color: var(--gold, #ffb703);
+  font-weight: 800;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  min-width: 0;
+}
+.kb-chip.secret {
+  border-color: var(--violet, #9b7bff);
+  background: color-mix(in srgb, var(--violet, #9b7bff) 22%, transparent);
+  color: var(--fg, #f6f3ec);
+}
+.kb {
+  position: fixed;
+  inset: 0;
+  z-index: 40; /* under How to play slides (50) */
+  background: rgb(0 0 0 / 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}
+.kb-card {
+  width: min(620px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  background: var(--stage, #221f2e);
+  border: 4px dashed var(--gold, #ffb703);
+  border-radius: 22px;
+  padding: 12px 18px;
+}
+.kb-card.secret {
+  border-color: var(--violet, #9b7bff);
+}
+.kb-card.pop {
+  animation: kb-pop 0.35s ease-out;
+}
+@keyframes kb-pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kb-card.pop { animation: none; }
+}
+.kb-label {
+  font: 800 15px/1 var(--display, sans-serif);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bg, #17151f);
+  background: var(--gold, #ffb703);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+.kb-card.secret .kb-label {
+  background: var(--violet, #9b7bff);
+}
+.kb-name {
+  font: 800 34px/1.05 var(--display, sans-serif);
+  color: var(--gold, #ffb703);
+}
+.kb-card.secret .kb-name {
+  color: var(--fg, #f6f3ec);
+}
+.kb-text {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 600;
+  text-wrap: balance;
+}
+.kb-hint {
+  font-size: 14px;
+  color: var(--muted, #a49fb5);
+}
+.kb-teams {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.kb-team {
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 2px solid var(--line, #3e3950);
+  background: var(--panel, #2c2839);
+  font-weight: 700;
+  font-size: 16px;
+}
+.kb-team.on {
+  background: var(--teal, #2ec4b6);
+  border-color: var(--teal, #2ec4b6);
+  color: var(--bg, #17151f);
+}
+.kb-ok {
+  min-height: 48px;
+  min-width: 160px;
+  padding: 0 20px;
+  border-radius: 14px;
+  border: 2px solid var(--gold, #ffb703);
+  background: var(--gold, #ffb703);
+  color: var(--bg, #17151f);
+  font-weight: 800;
+  font-size: 18px;
+}

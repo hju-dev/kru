@@ -90,6 +90,7 @@
   }
   function renderTask() {
     var t = task(), shown = !!S.revealed[S.pos];
+    bonusRound('t' + S.order[S.pos] + '-' + S.pos);
     $('qnum').textContent = 'Task ' + (S.pos + 1) + ' of ' + S.order.length + (shown ? ' · ' + t.title : '');
     $('kind').hidden = shown; // the title moves to the bar: room for the answers
     $('kind').textContent = t.title;
@@ -181,7 +182,7 @@
 
   // ---------- main buttons ----------
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
-  $('reveal').addEventListener('click', function () { stopTimer(); S.revealed[S.pos] = true; save(); renderTask(); });
+  $('reveal').addEventListener('click', function () { stopTimer(); S.revealed[S.pos] = true; save(); renderTask(); KruBonus.reveal(); });
   $('next').addEventListener('click', function () { goTo(S.pos + 1); });
 
   // ---------- ⋯ menu ----------
@@ -233,12 +234,18 @@
   function showIntro() { return KruIntro.show(INTRO, { title: 'Board Race' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
+  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
+  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
+  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       TASKS = content[level].tasks;
       teams = Kru.allTeams();
+      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+        award: function (id, d) { addPoints(id, d); } });
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === TASKS.length) S = saved;
       else S = { v: 1, level: level, order: shuffled(TASKS.length), pos: 0, revealed: {}, secs: 60, pts: {}, log: [] };
