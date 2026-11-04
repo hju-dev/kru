@@ -6,6 +6,7 @@
     <meta name="color-scheme" content="dark" />
     <title>Tag-Team Talk / Debate</title>
     <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -80,21 +81,15 @@
         <button class="btn" id="resetTimer">Reset the timer</button>
         <button class="btn" id="resetOrder">Reset the speaking order</button>
         <button class="btn" id="undo">Undo last points</button>
-        <button class="btn" id="showHelp">How to play</button>
+        <button class="btn" id="howTo">How to play</button>
         <button class="btn ghost danger" id="resetScores">Reset all scores</button>
         <button class="btn ghost" id="menuClose">Close</button>
       </div>
     </div>
 
-    <!-- How to play -->
-    <div class="backdrop" id="helpBack" hidden>
-      <div class="menu help" role="dialog" aria-label="How to play">
-        <div id="helpText"></div>
-        <button class="btn" id="helpClose">Close</button>
-      </div>
-    </div>
 
     <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
