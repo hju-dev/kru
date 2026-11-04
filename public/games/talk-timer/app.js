@@ -236,7 +236,7 @@
     renderPhases();
   });
   $('editCancel').addEventListener('click', closeEditor);
-  $('editSave').addEventListener('click', function () {
+  function saveEdit() {
     draft.name = $('editName').value.trim() || 'My timer';
     draft.rulesText = $('editRules').value.trim();
     draft.phases.forEach(function (ph, k) { ph.label = ph.label.trim() || 'Phase ' + (k + 1); });
@@ -246,7 +246,9 @@
     closeEditor();
     choose(id);
     openList();
-  });
+  }
+  $('editSave').addEventListener('click', saveEdit);
+  $('editSave2').addEventListener('click', saveEdit);
   $('editDelete').addEventListener('click', function () {
     if (!arm(this, 'Tap again to delete')) return;
     var id = draft.id;
