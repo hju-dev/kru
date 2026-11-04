@@ -11,7 +11,8 @@
       "group",
       "solo"
     ],
-    "status": "ready"
+    "status": "ready",
+    "section": "tools"
   },
   {
     "slug": "tag-team",
@@ -29,7 +30,8 @@
     "modes": [
       "group"
     ],
-    "status": "ready"
+    "status": "ready",
+    "section": "speaking"
   },
   {
     "slug": "word-rush",
@@ -47,7 +49,8 @@
     "modes": [
       "group"
     ],
-    "status": "ready"
+    "status": "ready",
+    "section": "writing"
   },
   {
     "slug": "think-tank-showdown",
@@ -65,7 +68,8 @@
     "modes": [
       "group"
     ],
-    "status": "ready"
+    "status": "ready",
+    "section": "quizzes"
   },
   {
     "slug": "talk-timer",
@@ -77,7 +81,8 @@
     "minutes": null,
     "phoneLandscape": true,
     "modes": [],
-    "status": "ready"
+    "status": "ready",
+    "section": "tools"
   },
   {
     "slug": "name-picker",
@@ -92,7 +97,8 @@
     "description": "Spins a random present student. Nobody is picked twice until everyone has had a turn (remembered for the day). Optional +1 / +2.",
     "type": "tool",
     "phoneLandscape": true,
-    "results": "scored"
+    "results": "scored",
+    "section": "tools"
   },
   {
     "slug": "sentence-scramble",
@@ -110,7 +116,8 @@
     "status": "ready",
     "description": "A sentence appears as shuffled word tiles. Teams write it correctly on paper. First three correct teams get 3 / 2 / 1 points, then Reveal.",
     "type": "grammar race",
-    "phoneLandscape": true
+    "phoneLandscape": true,
+    "section": "writing"
   },
   {
     "slug": "quiz-battle",
@@ -129,7 +136,8 @@
     "description": "One question at a time with a timer (multiple choice or short answer). Teams hold up answers; tap the teams that were right. Built-in sets, or your own from the Questions tab of your Sheet.",
     "type": "team quiz",
     "phoneLandscape": true,
-    "sheetQuestions": true
+    "sheetQuestions": true,
+    "section": "quizzes"
   },
   {
     "slug": "board-race",
@@ -147,7 +155,8 @@
     "status": "ready",
     "description": "A task appears (verb forms, a category, idioms). One runner per team writes on the whiteboard before time runs out. You tap points per team.",
     "type": "whiteboard race",
-    "phoneLandscape": true
+    "phoneLandscape": true,
+    "section": "writing"
   },
   {
     "slug": "hot-seat-vocab",
@@ -165,6 +174,7 @@
     "status": "ready",
     "description": "One student per team faces away from the board. Teammates describe the word without saying it. 60-second rounds, Got it (+1) or Skip. M.3 uses Person / Place / Thing / Idea.",
     "type": "vocabulary game",
-    "phoneLandscape": true
+    "phoneLandscape": true,
+    "section": "speaking"
   }
 ]

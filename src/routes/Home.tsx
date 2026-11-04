@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { SyncPill } from '../components/SyncPill'
-import { findGame, GAMES, type GameInfo } from '../lib/games'
+import { SectionIcon } from '../components/SectionIcon'
+import { findGame, librarySections, type GameInfo } from '../lib/games'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import './Home.css'
@@ -97,34 +98,40 @@ export function Home() {
         </section>
       )}
 
-      {classes.length > 0 && (
-        <section aria-label="Games" className="library">
-          {GAMES.map((g) => (
-            <button
-              key={g.slug}
-              className={`game-card${g.status === 'ready' ? '' : ' soon'}`}
-              onClick={() => pickGame(g)}
-              disabled={g.status !== 'ready'}
-            >
-              <span className="game-title">{g.title}</span>
-              <span className="game-meta">
-                {g.modes.includes('group') && <span className="tag">Group</span>}
-                {g.modes.includes('solo') && <span className="tag">Solo</span>}
-                {g.modes.length === 0 && <span className="tag">Tool</span>}
-                {g.minutes ? <span>{g.minutes} min</span> : null}
-                {g.status !== 'ready' && <span className="soon-label">Coming soon</span>}
-                {g.levels.length > 0 && (
-                  <span className="dots" aria-label={`Levels ${g.levels.join(', ')}`}>
-                    {['M.1', 'M.2', 'M.3'].map((l) => (
-                      <i key={l} className={g.levels.includes(l as never) ? 'on' : ''} />
-                    ))}
+      {classes.length > 0 &&
+        librarySections().map((sec) => (
+          <section key={sec.id} aria-label={sec.title} className="library-section" style={{ '--sec': sec.color } as React.CSSProperties}>
+            <h2 className="section-head">
+              <SectionIcon id={sec.id} />
+              {sec.title}
+            </h2>
+            <div className="library">
+              {sec.games.map((g) => (
+                <button
+                  key={g.slug}
+                  className={`game-card${g.status === 'ready' ? '' : ' soon'}`}
+                  onClick={() => pickGame(g)}
+                  disabled={g.status !== 'ready'}
+                >
+                  <span className="game-title">{g.title}</span>
+                  <span className="game-meta">
+                    {g.modes.includes('group') && <span className="tag">Group</span>}
+                    {g.modes.includes('solo') && <span className="tag">Solo</span>}
+                    {g.minutes ? <span>{g.minutes} min</span> : null}
+                    {g.status !== 'ready' && <span className="soon-label">Coming soon</span>}
+                    {g.levels.length > 0 && (
+                      <span className="dots" aria-label={`Levels ${g.levels.join(', ')}`}>
+                        {['M.1', 'M.2', 'M.3'].map((l) => (
+                          <i key={l} className={g.levels.includes(l as never) ? 'on' : ''} />
+                        ))}
+                      </span>
+                    )}
                   </span>
-                )}
-              </span>
-            </button>
-          ))}
-        </section>
-      )}
+                </button>
+              ))}
+            </div>
+          </section>
+        ))}
     </main>
   )
 }
