@@ -54,6 +54,23 @@ In the **Rosters** tab, one row per student:
 
 The **Classes** tab is optional: add a class there if you want to set its **Order** on the home screen, a **DefaultTeamSize**, or tick **Archived** to hide it. Classes that only appear in Rosters still show up.
 
+## 4b. Your own Quiz Battle questions (optional, script version 6 or later)
+
+The **Questions** tab is where you add your own question sets for Quiz Battle. One row per question:
+
+| Level | Set | Question | A | B | C | D | Answer | Double |
+|---|---|---|---|---|---|---|---|---|
+| M.2 | Unit 3 | What is the past of "go"? | goed | went | gone | | B | ☐ |
+| M.2 | Unit 3 | Opposite of "cheap"? | | | | | expensive | ☑ |
+
+- **Level**: `M.1`, `M.2` or `M.3`.
+- **Set**: a name like `Unit 3` or `Food`. Questions with the same Level and Set make one set in the app.
+- **Multiple choice**: fill **A** and **B** (C and D are optional), and put the right letter in **Answer** (`B`).
+- **Short answer**: leave A–D empty and type the answer in **Answer**. It is shown when you tap Reveal.
+- **Double**: tick it for a "double points" question.
+- After adding questions, tap the **Synced…** pill at the top of the Kru home screen (or Dashboard → Settings → **Sync now**).
+- If a row can't be used (for example no Answer), the app skips it and Quiz Battle tells you the row number.
+
 ## 5. Connect the app
 
 1. On your iPhone, open the Kru website in **Safari**, tap **Share → Add to Home Screen**, then open Kru from the new icon.
