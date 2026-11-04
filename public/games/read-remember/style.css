@@ -1,0 +1,5 @@
+.story-title { align-self: flex-start; padding-right: 48px; }
+.muted { color: var(--muted); font-family: var(--body, inherit); font-weight: 600; font-size: 18px; }
+.qs { margin: 0; padding-left: 1.4em; text-align: left; width: 100%; display: flex; flex-direction: column; gap: 6px; line-height: 1.25; }
+.qs li > span { display: block; }
+.qs .a { color: var(--teal); }

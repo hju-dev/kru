@@ -336,3 +336,22 @@ button:focus-visible {
 .big { font: 800 40px/1.12 var(--display); text-wrap: balance; }
 .sub { color: var(--muted); font-size: 18px; line-height: 1.3; }
 .answer { border: 2px dashed var(--line); border-radius: 12px; padding: 4px 12px; font-size: 20px; line-height: 1.3; color: var(--teal); }
+/* compact: timer + buttons share the top bar, so the card gets ~50 px more height */
+.kc.compact .bar { gap: 8px; }
+.kc.compact .bar .logo { font-size: 18px; }
+.kc.compact .bar .progress { display: none; }
+.kc.compact .bar .digits { font-size: 26px; min-width: 3.2ch; }
+.kc.compact .bar .btn { min-height: 44px; padding: 0 14px; font-size: 17px; }
+.kc.compact .bar .grow { flex: 1; }
+/* reading texts */
+.story { text-align: left; width: 100%; font-size: 22px; line-height: 1.3; }
+.story-title { font: 800 20px/1.15 var(--display); color: var(--gold); }
+.lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; width: 100%; text-align: left; }
+.lines li { display: flex; gap: 10px; align-items: baseline; line-height: 1.25; }
+.lines .tag { flex: none; min-width: 30px; height: 30px; border-radius: 8px; display: inline-grid; place-items: center; background: var(--gold); color: #111; font: 800 18px/1 var(--display); }
+.kc.compact .bar .kb-chip { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* compact: shorter team tiles (46 px) */
+.kc.compact .tile { min-height: 46px; padding: 1px 4px; border-top-width: 4px; }
+.kc.compact .tile .tn { font-size: 15px; line-height: 1.1; }
+.kc.compact .tile .tp { font-size: 20px; }
+.kc.compact .stage { padding: 2px 12px; }

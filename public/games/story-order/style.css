@@ -1,0 +1,4 @@
+.lines { gap: 3px; padding-right: 40px; }
+.lines li { line-height: 1.15; }
+.lines .tag { min-width: 28px; height: 28px; }
+.num { color: var(--teal); }

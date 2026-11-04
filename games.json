@@ -313,5 +313,100 @@
     "phoneLandscape": true,
     "status": "ready",
     "section": "writing"
+  },
+  {
+    "slug": "story-order",
+    "title": "Story Order",
+    "file": "public/games/story-order/index.html",
+    "description": "The five sentences of a short story are mixed up (A-E). Teams write the right order. Reveal shows it.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "read-remember",
+    "title": "Read & Remember",
+    "file": "public/games/read-remember/index.html",
+    "description": "Teams read a short story against the timer. Then the story hides and three questions appear. Answers come last.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "true-false-race",
+    "title": "True or False Race",
+    "file": "public/games/true-false-race/index.html",
+    "description": "A short story stays on the board. One sentence at a time: teams race to show True or False. Four sentences per story.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "spot-the-mistakes",
+    "title": "Spot the Mistakes",
+    "file": "public/games/spot-the-mistakes/index.html",
+    "description": "A short story with three mistakes (verb forms, grammar). Teams find and fix them. Reveal shows wrong → right.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "scan-it",
+    "title": "Scan It!",
+    "file": "public/games/scan-it/index.html",
+    "description": "A real-world text (menu, bus or train schedule, poster, weather, opening hours, sale ad, league table, movie times) and three questions. Teams scan fast for the answers; M.3 needs a little math.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
   }
 ]
