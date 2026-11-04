@@ -20,8 +20,8 @@ export interface GameInfo {
   modes: Mode[]
   minutes: number | null
   type?: string
-  /** 'scored' = only students who got points are written to Results (e.g. Name Picker) */
-  results?: 'scored'
+  /** 'scored' = only students who got points are written to Results (Name Picker); 'scored-solo' = the same, but only in Solo mode (20 Questions) */
+  results?: 'scored' | 'scored-solo'
   /** true = a class tool (Name Picker): pick a class, then it opens straight away with no team setup */
   classTool?: boolean
   /** true = the game gets the Sheet's Questions tab sets for its level (Quiz Battle) */
