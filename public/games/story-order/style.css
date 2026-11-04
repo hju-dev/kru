@@ -1,4 +1,5 @@
-.lines { gap: 3px; padding-right: 40px; }
+.lines { gap: 1px; }
 .lines li { line-height: 1.15; }
+.lines li:first-child { padding-right: 44px; } /* room for the 3/50 counter */
 .lines .tag { min-width: 28px; height: 28px; }
-.num { color: var(--teal); }
+.lines li.ok .tag { background: var(--lime); } /* after Reveal: green letters, in the right order */

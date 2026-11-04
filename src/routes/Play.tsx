@@ -174,7 +174,7 @@ function PlayFrame({ session }: { session: Session }) {
             <p className="muted">
               {game?.title} · {session.class}
             </p>
-            <button className="btn primary" onClick={finish}>
+            <button className="btn end" onClick={finish}>
               Finish &amp; review scores
             </button>
             <Link className="btn" to="/">

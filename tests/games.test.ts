@@ -183,3 +183,13 @@ describe('American English (Henry)', () => {
     for (const g of games) expect(JSON.stringify(g).match(british)?.[0], g.slug).toBeUndefined()
   })
 })
+
+describe('buttons that end something are red (Henry)', () => {
+  it('End game, Save scores & finish, the shell Finish button and Hot Seat End this round', () => {
+    const css = read('public/games/shared/kru-end.css')
+    expect(css).toMatch(/#endGame,\s*\.ke-btn\.go,\s*button\.end\s*\{[^}]*--coral/)
+    expect(read('src/routes/Play.tsx')).toContain('className="btn end" onClick={finish}')
+    expect(read('src/theme.css')).toMatch(/\.btn\.end \{[^}]*--coral/)
+    expect(read('public/games/hot-seat-vocab/index.html')).toContain('class="btn end" id="endRound"')
+  })
+})
