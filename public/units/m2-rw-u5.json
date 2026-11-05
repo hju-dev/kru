@@ -1,0 +1,484 @@
+{
+ "id": "m2-rw-u5",
+ "level": "M.2",
+ "course": "M.2 R&W",
+ "title": "R&W Unit 5: Perception",
+ "source": "Henry's Gamma decks \"M.2 R&W Unit 5 Lesson 1 and 4\" (the senses, sight and understanding; linking verbs and descriptive adjectives). American spelling.",
+ "sets": [
+  {
+   "name": "Word meaning",
+   "questions": [
+    {
+     "q": "Which word means \"the way you understand something through your senses\"?",
+     "choices": [
+      "perception",
+      "context",
+      "factor",
+      "vision"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to decide what something means\"?",
+     "choices": [
+      "consider",
+      "affect",
+      "interpret",
+      "joke"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"one of several things that influence a result\"?",
+     "choices": [
+      "joke",
+      "image",
+      "lens",
+      "factor"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"extremely interested in something\"?",
+     "choices": [
+      "surrounding",
+      "fascinated",
+      "confused",
+      "logical"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"background information that helps you understand something\"?",
+     "choices": [
+      "perception",
+      "vision",
+      "context",
+      "explanation"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to have an influence on something; to cause a change\"?",
+     "choices": [
+      "affect",
+      "interpret",
+      "consider",
+      "appear"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to think carefully about something before deciding\"?",
+     "choices": [
+      "affect",
+      "consider",
+      "interpret",
+      "seem"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the ability to see\"?",
+     "choices": [
+      "joke",
+      "context",
+      "factor",
+      "vision"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Spell the plural noun: our five abilities — sight, hearing, smell, taste and touch.",
+     "answer": "senses",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Fill the gap",
+   "questions": [
+    {
+     "q": "The ___ colors can change how we perceive a single color.",
+     "choices": [
+      "clear",
+      "fascinated",
+      "logical",
+      "surrounding"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Scientists looked for an ___ for why people saw the dress differently.",
+     "choices": [
+      "image",
+      "explanation",
+      "vision",
+      "lens"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The ___ of the dress went viral within hours of being posted online.",
+     "choices": [
+      "image",
+      "context",
+      "factor",
+      "vision"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The light in a room can strongly ___ the way we see colors.",
+     "choices": [
+      "interpret",
+      "consider",
+      "affect",
+      "joke"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The ___ inside your eye focus light onto the back of your eye.",
+     "choices": [
+      "senses",
+      "lenses",
+      "factors",
+      "images"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Poor ___ can make it difficult to see clearly at a distance.",
+     "choices": [
+      "joke",
+      "context",
+      "explanation",
+      "vision"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "At first, people thought the photo of the dress was a ___.",
+     "choices": [
+      "factor",
+      "lens",
+      "joke",
+      "sense"
+     ],
+     "answer": 2,
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Linking verbs",
+   "questions": [
+    {
+     "q": "Which is a LINKING verb here? \"The dress ___ blue to me.\"",
+     "choices": [
+      "looks",
+      "runs",
+      "writes",
+      "eats"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The dress looks ___ to different people.",
+     "choices": [
+      "different",
+      "differently",
+      "difference",
+      "differ"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The explanation seemed ___ to most scientists.",
+     "choices": [
+      "logic",
+      "logically",
+      "logical",
+      "logics"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "After reading the text, the idea became more ___.",
+     "choices": [
+      "clears",
+      "clearly",
+      "clearness",
+      "clear"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "She felt ___ by the way the brain processes images.",
+     "choices": [
+      "fascinate",
+      "fascinated",
+      "fascinatingly",
+      "fascination"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which sentence uses \"looked\" as an ACTION verb?",
+     "choices": [
+      "The color looked different.",
+      "The dress looked white.",
+      "He looked at the image carefully.",
+      "The room looked dark."
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "After a linking verb, we use an ___.",
+     "choices": [
+      "adjective",
+      "adverb",
+      "action verb",
+      "article"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Fix the mistake: \"The color appeared differently in the photograph.\" (one word)",
+     "answer": "The color appeared different in the photograph.",
+     "double": true
+    }
+   ]
+  },
+  {
+   "name": "Word types",
+   "questions": [
+    {
+     "q": "\"Perception\" is a(n) ___.",
+     "choices": [
+      "verb",
+      "noun",
+      "adjective",
+      "adverb"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Interpret\" is a(n) ___.",
+     "choices": [
+      "adverb",
+      "noun",
+      "adjective",
+      "verb"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Fascinated\" is a(n) ___.",
+     "choices": [
+      "adverb",
+      "noun",
+      "verb",
+      "adjective"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Surrounding\" (the surrounding colors) is a(n) ___.",
+     "choices": [
+      "verb",
+      "adjective",
+      "noun",
+      "adverb"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Explanation\" comes from the verb ___.",
+     "choices": [
+      "explain",
+      "expand",
+      "explore",
+      "expect"
+     ],
+     "answer": 0,
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "True or false",
+   "questions": [
+    {
+     "q": "Perception is how you understand something through your senses.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Context means the same as a picture or photograph.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "To interpret something means to decide what it means.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A factor is something that has no influence on a result.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Your senses are sight, hearing, smell, taste and touch.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Seem\", \"appear\" and \"feel\" can be linking verbs.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    }
+   ]
+  }
+ ],
+ "words": [
+  {
+   "word": "affect"
+  },
+  {
+   "word": "interpret"
+  },
+  {
+   "word": "consider"
+  },
+  {
+   "word": "joke"
+  },
+  {
+   "word": "context"
+  },
+  {
+   "word": "lenses"
+  },
+  {
+   "word": "explanation"
+  },
+  {
+   "word": "perception"
+  },
+  {
+   "word": "factor"
+  },
+  {
+   "word": "senses"
+  },
+  {
+   "word": "fascinated"
+  },
+  {
+   "word": "surrounding"
+  },
+  {
+   "word": "image"
+  },
+  {
+   "word": "vision"
+  },
+  {
+   "word": "optical illusion"
+  },
+  {
+   "word": "color"
+  },
+  {
+   "word": "light"
+  },
+  {
+   "word": "brain"
+  },
+  {
+   "word": "eye"
+  },
+  {
+   "word": "sight"
+  },
+  {
+   "word": "hearing"
+  },
+  {
+   "word": "smell"
+  },
+  {
+   "word": "taste"
+  },
+  {
+   "word": "touch"
+  },
+  {
+   "word": "photograph"
+  }
+ ],
+ "motions": [
+  "Seeing is believing.",
+  "Our eyes can trust what they see.",
+  "Everyone sees the world in the same way.",
+  "Sight is the most important sense.",
+  "Optical illusions are just tricks, not science.",
+  "Music sounds better live than on a phone.",
+  "First impressions are usually right.",
+  "Color can change how we feel.",
+  "Photos online always show the truth.",
+  "Smell is more powerful than taste."
+ ]
+}

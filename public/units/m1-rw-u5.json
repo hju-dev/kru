@@ -1,0 +1,495 @@
+{
+ "id": "m1-rw-u5",
+ "level": "M.1",
+ "course": "M.1 R&W",
+ "title": "R&W Unit 5: What Are You Afraid Of?",
+ "source": "Henry's Gamma decks \"M.1 R&W Unit 5 Lesson 1 and 4\" (feelings and fears, modal verbs). American spelling.",
+ "sets": [
+  {
+   "name": "Word meaning",
+   "questions": [
+    {
+     "q": "Which word means \"a very strong fear, stronger than normal fear\"?",
+     "choices": [
+      "phobia",
+      "panic",
+      "sweat",
+      "needle"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to stay away from something on purpose\"?",
+     "choices": [
+      "sweat",
+      "panic",
+      "avoid",
+      "relax"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a sudden, strong feeling of fear that is hard to control\"?",
+     "choices": [
+      "normal",
+      "phobia",
+      "fear",
+      "panic"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"usual or expected; not strange\"?",
+     "choices": [
+      "nervous",
+      "normal",
+      "disgusting",
+      "afraid"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"something that makes you feel very unpleasant or sick\"?",
+     "choices": [
+      "normal",
+      "relaxed",
+      "disgusting",
+      "interested"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"feeling calm and not worried\"?",
+     "choices": [
+      "relaxed",
+      "nervous",
+      "scared",
+      "embarrassed"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"feeling uncomfortable or ashamed\"?",
+     "choices": [
+      "relaxed",
+      "embarrassed",
+      "happy",
+      "interested"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Doctors give injections with thin, sharp ___.",
+     "choices": [
+      "fears",
+      "phobias",
+      "spiders",
+      "needles"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Spell the word: \"feeling worried about something that might happen\".",
+     "answer": "nervous",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Prepositions",
+   "questions": [
+    {
+     "q": "She is afraid ___ heights.",
+     "choices": [
+      "at",
+      "about",
+      "in",
+      "of"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "He is nervous ___ going to the dentist.",
+     "choices": [
+      "of",
+      "about",
+      "in",
+      "on"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Are you interested ___ learning about phobias?",
+     "choices": [
+      "in",
+      "of",
+      "about",
+      "at"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "She is embarrassed ___ her fear of clowns.",
+     "choices": [
+      "of",
+      "in",
+      "about",
+      "at"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "He is relaxed ___ flying because he does it every week.",
+     "choices": [
+      "in",
+      "about",
+      "of",
+      "on"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "I am scared ___ needles.",
+     "choices": [
+      "on",
+      "in",
+      "about",
+      "of"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "She is happy ___ her progress.",
+     "choices": [
+      "in",
+      "of",
+      "about",
+      "at"
+     ],
+     "answer": 2,
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Fill the gap",
+   "questions": [
+    {
+     "q": "Her ___ of dogs started when she was five.",
+     "choices": [
+      "fear",
+      "avoid",
+      "sweat",
+      "disgusting"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "He finds spiders ___. He cannot be in the same room as one.",
+     "choices": [
+      "disgusting",
+      "normal",
+      "relaxed",
+      "happy"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "She tries to ___ the park because there are often dogs there.",
+     "choices": [
+      "sweat",
+      "panic",
+      "avoid",
+      "fear"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Arachnophobia is a ___ of spiders.",
+     "choices": [
+      "sweat",
+      "panic",
+      "needle",
+      "phobia"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "His hands ___ when he feels nervous or scared.",
+     "choices": [
+      "avoid",
+      "sweat",
+      "panic",
+      "fear"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "When she saw the snake, she started to ___.",
+     "choices": [
+      "relax",
+      "avoid",
+      "panic",
+      "normal"
+     ],
+     "answer": 2,
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Modal verbs",
+   "questions": [
+    {
+     "q": "Which modal is the MOST certain?",
+     "choices": [
+      "will",
+      "might",
+      "may",
+      "can"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which modal is the LEAST certain?",
+     "choices": [
+      "will",
+      "might",
+      "can",
+      "may"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Relaxation techniques ___ help. (ability / possibility)",
+     "choices": [
+      "must",
+      "will",
+      "might",
+      "can"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "She cans help you.",
+      "She can helps you.",
+      "She can to help you.",
+      "She can help you."
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "He might to feel nervous.",
+      "He might feel nervous.",
+      "He might feels nervous.",
+      "He mights feel nervous."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "With time and practice, you ___ feel much better. (certain)",
+     "choices": [
+      "will",
+      "might",
+      "may",
+      "can't"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The negative of \"will\" is ___.",
+     "choices": [
+      "can't",
+      "willn't",
+      "won't",
+      "mightn't"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Fix the mistake: \"Phobias will gets better with the right treatment.\"",
+     "answer": "Phobias will get better with the right treatment.",
+     "double": true
+    }
+   ]
+  },
+  {
+   "name": "True or false",
+   "questions": [
+    {
+     "q": "A phobia is a very small, mild worry.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "If you avoid something, you stay away from it on purpose.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Feeling nervous before an exam is not normal.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Panic is a strong, sudden feeling of fear.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "If you are relaxed about something, you feel calm about it.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "After a modal verb, we add -s: \"She can swims.\"",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    }
+   ]
+  }
+ ],
+ "words": [
+  {
+   "word": "afraid"
+  },
+  {
+   "word": "scared"
+  },
+  {
+   "word": "nervous"
+  },
+  {
+   "word": "fear"
+  },
+  {
+   "word": "embarrassed"
+  },
+  {
+   "word": "relaxed"
+  },
+  {
+   "word": "happy"
+  },
+  {
+   "word": "interested"
+  },
+  {
+   "word": "phobia"
+  },
+  {
+   "word": "panic"
+  },
+  {
+   "word": "normal"
+  },
+  {
+   "word": "disgusting"
+  },
+  {
+   "word": "avoid"
+  },
+  {
+   "word": "sweat"
+  },
+  {
+   "word": "needles"
+  },
+  {
+   "word": "spider"
+  },
+  {
+   "word": "snake"
+  },
+  {
+   "word": "dark"
+  },
+  {
+   "word": "heights"
+  },
+  {
+   "word": "clown"
+  },
+  {
+   "word": "dentist"
+  },
+  {
+   "word": "doctor"
+  },
+  {
+   "word": "exam"
+  },
+  {
+   "word": "dog"
+  },
+  {
+   "word": "injection"
+  }
+ ],
+ "motions": [
+  "Being afraid is normal.",
+  "Spiders are more scary than snakes.",
+  "Everyone should face their fears.",
+  "It is OK to be afraid of the dark.",
+  "Exams are scarier than going to the dentist.",
+  "Scary movies are good for children.",
+  "You should never laugh at someone's fear.",
+  "Talking about your fear can help you.",
+  "Dogs are more scary than cats.",
+  "Being nervous before a test helps you do better."
+ ]
+}

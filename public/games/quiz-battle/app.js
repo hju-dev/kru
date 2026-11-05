@@ -278,7 +278,7 @@
       var content = both[0];
       UNIT = both[1];
       unitSets = UNIT ? UNIT.sets : [];
-      UNIT_ALL = UNIT ? { name: UNIT.title.replace(/^Unit \d+: /, '') + ': all, shuffled', questions: [].concat.apply([], unitSets.map(function (s) { return s.questions; })) } : null;
+      UNIT_ALL = UNIT ? { name: UNIT.title.replace(/^.*Unit \d+: /, '') + ': all, shuffled', questions: [].concat.apply([], unitSets.map(function (s) { return s.questions; })) } : null;
       var level = content[session.level] ? session.level : 'M.2';
       builtIn = content[level].sets;
       ALL = { name: 'All topics, shuffled', questions: [].concat.apply([], builtIn.map(function (s) { return s.questions; })) };
