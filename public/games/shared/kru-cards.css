@@ -284,6 +284,10 @@ button:focus-visible {
   min-height: 56px;
   font-size: 22px;
 }
+.chal-none {
+  width: 100%;
+  margin-top: 8px;
+}
 .bet {
   display: inline-flex;
   align-items: center;

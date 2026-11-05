@@ -1,6 +1,7 @@
-/* Tag-Team Talk / Debate.
-   Relay (M.1, M.2): one team at the front; its speakers take turns on one topic; at each chime: TAG!
-   Debate (M.3): FOR team vs AGAINST team; speakers alternate, starting with FOR.
+/* Tag-Team Talk and Tag-Team Debate (two games, one app: games/tag-team-debate/index.html loads this file too).
+   The level's content.json section says which: mode "relay" or "debate".
+   Relay (Tag-Team Talk): one team at the front; its speakers take turns on one topic; at each chime: TAG!
+   Debate (Tag-Team Debate): FOR team vs AGAINST team; speakers alternate, starting with FOR.
    Teams and speakers come from the Kru session. Speaking order: tap two names to swap, or hold and drag. */
 (function () {
   'use strict';
@@ -9,7 +10,7 @@
 
   var C = null;       // content for this level
   var teams = [];
-  var S = null;       // saved: { v, level, front, forT, againstT, order, used, topic, pts, log }
+  var S = null;       // saved: { v, level, mode, front, forT, againstT, order, used, topic, pts, log }
   var phase = 'ready', turn = 0, total = 0, left = 0, running = false, endAt = 0, timer = 0, audio = null;
   var picked = null;  // { team, k } waiting for a second tap
 
@@ -465,12 +466,15 @@
       var students = teams.filter(function (t) { return !t.teacher; });
       var first = (students[0] || teams[0]).id, second = (students[1] || teams.find(function (t) { return t.id !== first; }) || teams[0]).id;
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === level) S = saved;
+      // old saves have no mode: back then M.3 was the debate and M.1 / M.2 the relay
+      var savedMode = saved && (saved.mode || (saved.level === 'M.3' ? 'debate' : 'relay'));
+      if (saved && saved.v === 1 && saved.level === level && savedMode === C.mode) S = saved;
       else S = { v: 1, level: level, front: first, forT: first, againstT: second, order: {}, used: [], topic: null, pts: {}, log: [] };
       // teams can't change during a session, but be safe if a saved id is missing
       if (!team(S.front)) S.front = first;
       if (!team(S.forT)) S.forT = first;
       if (!team(S.againstT)) S.againstT = second;
+      S.mode = C.mode;
       S.order = S.order || {}; S.pts = S.pts || {}; S.log = S.log || []; S.used = S.used || [];
       total = left = C.turn;
       bonusRound('turn' + (S.turnNo || 0));

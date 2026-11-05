@@ -18,6 +18,8 @@
  *   reveal: true | function (item) { return bool },    // is there an answer to reveal?
  *   timer: { secs: 60, options: [30, 60, 90] } | null,
  *   points: [{ d: 1, label: '+1 Good reason' }, ...],  // the buttons when you tap a team
+ *   challenge: { penalty: 1 },                         // optional: a Challenge! button that stops the timer and asks
+ *                                                      //   which team loses the points (or no one)
  *   onReveal / onNext: optional hooks
  * })
  */
@@ -51,6 +53,7 @@
       '<section class="stage" id="stage" aria-live="polite"><div class="card" id="card">Loading…</div></section>' +
       '<div class="controls">' +
       (hasTimer ? '<span class="digits" id="digits">0:00</span><div class="progress"><i id="fill"></i></div><button class="btn" id="go">Start timer</button>' : '<span class="grow"></span>') +
+      (cfg.challenge ? '<button class="btn coral" id="challenge">Challenge!</button>' : '') +
       '<button class="btn teal" id="reveal">Reveal</button><button class="btn gold" id="next">Next ▶</button></div>' +
       '<div class="strip" id="strip" role="group" aria-label="Teams: tap one to give points"></div>' +
       '<div class="toast" id="toast" role="status" hidden><span id="toastText"></span><button class="small" id="toastUndo">Undo</button></div>';
@@ -58,6 +61,10 @@
       '<div class="backdrop" id="panelBack" hidden><div class="panel" role="dialog" aria-labelledby="panelName">' +
       '<div class="panel-head"><div><b id="panelName"></b> · <span id="panelPts"></span><div class="panel-members" id="panelMembers"></div></div>' +
       '<button class="small" id="panelClose" aria-label="Close">✕</button></div><div class="panel-btns" id="panelBtns"></div></div></div>' +
+      (cfg.challenge ? '<div class="backdrop" id="chalBack" hidden><div class="panel" role="dialog" aria-labelledby="chalTitle">' +
+        '<div class="panel-head"><div><b id="chalTitle">Challenge!</b><div class="panel-members">Which team made the mistake? They lose ' + cfg.challenge.penalty + '.</div></div>' +
+        '<button class="small" id="chalClose" aria-label="Close">✕</button></div><div class="panel-btns" id="chalBtns"></div>' +
+        '<button class="btn ghost chal-none" id="chalNone">No point: carry on</button></div></div>' : '') +
       '<div class="backdrop" id="menuBack" hidden><div class="menu" role="dialog" aria-label="More options">' +
       (hasTimer ? '<div class="menu-row" id="secsRow"></div>' : '') +
       '<div class="menu-row"><button class="btn" id="prev">◀ Previous card</button><button class="btn" id="undo">Undo last points</button></div>' +
@@ -219,6 +226,29 @@
     $('panelBack').addEventListener('click', function (e) { if (e.target === this) closePanel(); });
     $('toastUndo').addEventListener('click', undo);
 
+    // ---------- challenge: stop the timer, then take points from the team at fault ----------
+    function closeChallenge() { $('chalBack').hidden = true; }
+    if (cfg.challenge) {
+      $('challenge').addEventListener('click', function () {
+        unlockAudio();
+        stopTimer(); renderClock();
+        tone([220, 196], 0.15);
+        $('chalBtns').innerHTML = teams.map(function (t, i) {
+          return '<button class="btn" data-ct="' + esc(t.id) + '" style="border-top:5px solid ' + COLORS[i % COLORS.length] + '">' + esc(t.name) + ' −' + cfg.challenge.penalty + '</button>';
+        }).join('');
+        $('chalBack').hidden = false;
+      });
+      $('chalBtns').addEventListener('click', function (e) {
+        var b = e.target.closest('[data-ct]');
+        if (!b) return;
+        addPoints(b.dataset.ct, -cfg.challenge.penalty, 'challenge');
+        closeChallenge();
+      });
+      $('chalNone').addEventListener('click', closeChallenge);
+      $('chalClose').addEventListener('click', closeChallenge);
+      $('chalBack').addEventListener('click', function (e) { if (e.target === this) closeChallenge(); });
+    }
+
     // ---------- bonus cards ----------
     function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
 
@@ -266,7 +296,7 @@
     });
 
     document.addEventListener('keydown', function (e) {
-      if (!$('menuBack').hidden || !$('panelBack').hidden) return;
+      if (!$('menuBack').hidden || !$('panelBack').hidden || (cfg.challenge && !$('chalBack').hidden)) return;
       if (e.code === 'Space' && hasTimer) { e.preventDefault(); $('go').click(); }
       else if (e.key === 'ArrowRight') $('next').click();
       else if ((e.key === 'a' || e.key === 'A') && !$('reveal').hidden) $('reveal').click();

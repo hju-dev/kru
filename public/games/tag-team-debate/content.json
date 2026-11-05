@@ -1,0 +1,432 @@
+{
+ "about": "Tag-Team Debate motions per level: FOR team vs AGAINST team, speakers alternate, starting with FOR. Times in seconds. M.3 is the original set (plus extras written for Kru); M.1 and M.2 were written for Kru. Spin picks a random motion, no repeats until all are used. Uses the Tag-Team Talk app (games/tag-team/app.js), which switches on mode.",
+ "M.1": {
+  "mode": "debate",
+  "title": "Debate",
+  "label": "Motion",
+  "huddle": 60,
+  "turn": 20,
+  "topics": [
+   "Summer is better than the rainy season.",
+   "Pizza is better than som tam.",
+   "Dogs make the best pets.",
+   "Breakfast is the most important meal.",
+   "The beach is better than the mountains.",
+   "Students should have more P.E. lessons.",
+   "Watching cartoons is good for children.",
+   "It is better to be the oldest child.",
+   "Every school should have a swimming pool.",
+   "Weekends should be three days long.",
+   "Ice cream is the best dessert.",
+   "Having a brother or sister is better than being an only child.",
+   "Students should eat lunch in the classroom.",
+   "Soccer is the best sport.",
+   "Children should go to bed before 9 p.m.",
+   "Mornings are better than evenings.",
+   "Every class should have a class pet.",
+   "Snakes make good pets.",
+   "It is better to walk to school than go by car.",
+   "Students should not wear shoes in the classroom.",
+   "Rain is better than sunshine.",
+   "Fruit is better than candy.",
+   "It is better to live near the sea.",
+   "Teachers should give stickers for good work.",
+   "Board games are better than video games.",
+   "Everyone should learn to ride a bike.",
+   "Birthdays are the best day of the year.",
+   "Students should choose their own seats.",
+   "It is better to play outside than inside.",
+   "Cartoons are better than movies.",
+   "Every student should learn to play music.",
+   "Chocolate is better than strawberry.",
+   "It is better to be tall than short.",
+   "Children should get pocket money.",
+   "Shopping malls are better than markets.",
+   "Students should have homework every day.",
+   "It is better to have one best friend than many friends.",
+   "Every school should have a garden.",
+   "Tigers are better than lions.",
+   "Children should help with housework.",
+   "Drawing is better than writing.",
+   "Everyone should eat vegetables every day.",
+   "School trips are better than sports day.",
+   "It is better to travel by train than by plane.",
+   "Every child should have their own phone.",
+   "The library is the best room in the school.",
+   "Flying is better than being invisible.",
+   "Students should sleep for 20 minutes after lunch.",
+   "Water is the best drink.",
+   "Everyone should have a robot at home."
+  ],
+  "intro": [
+   {
+    "title": "Tag-Team Debate",
+    "text": [
+     "Two teams at the front: FOR vs AGAINST.",
+     "Speakers take turns, starting with FOR."
+    ],
+    "example": {
+     "tag": "MOTION",
+     "big": "Dogs make the best pets."
+    }
+   },
+   {
+    "title": "Huddle first",
+    "text": [
+     "Plan your points for 1 minute.",
+     "Think: what will the other team say?"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Huddle",
+       "1:00"
+      ],
+      [
+       "Each speaker",
+       "0:20"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Answer, then add",
+    "text": [
+     "First answer the last point: \"I disagree because…\"",
+     "Then add a new point."
+    ],
+    "example": {
+     "rows": [
+      [
+       "FOR",
+       "Dogs are friendly."
+      ],
+      [
+       "AGAINST",
+       "I disagree because dogs are noisy."
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Points",
+    "text": [
+     "Challenge for silence, repeating, off topic or Thai.",
+     "The audience votes for the winning side."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Fair challenge",
+       "+1"
+      ],
+      [
+       "Winning side",
+       "+3"
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "M.2": {
+  "mode": "debate",
+  "title": "Debate",
+  "label": "Motion",
+  "huddle": 75,
+  "turn": 25,
+  "topics": [
+   "Students should wear sports clothes to school every day.",
+   "Thai food is the best food in the world.",
+   "Students should learn to drive at school.",
+   "It is better to study in the morning than at night.",
+   "Every school should have a café run by students.",
+   "Children should be paid for doing housework.",
+   "Playing computer games is a real sport.",
+   "Students should be allowed to listen to music while they study.",
+   "It is better to have a few close friends than many friends.",
+   "Teenagers should have a bedtime.",
+   "Shopping online is better than shopping in a store.",
+   "Students should grade their teachers.",
+   "It is better to watch sport than play sport.",
+   "Everyone should learn first aid at school.",
+   "The rainy season is the best time of the year.",
+   "Students should be allowed to bring snacks to class.",
+   "Watching movies at the movie theater is better than at home.",
+   "Every teenager should have a bank account.",
+   "Learning English is more important than learning math.",
+   "Students should have a nap time after lunch.",
+   "It is better to be the youngest in the family.",
+   "Schools should teach students how to fix things.",
+   "Long vacations are better than many short vacations.",
+   "Teenagers should choose their own clothes.",
+   "Every student should play a musical instrument.",
+   "Breakfast should be free for all students.",
+   "Traveling with friends is better than traveling with family.",
+   "Students should be allowed to use calculators in every math test.",
+   "Taking photos is better than writing a diary.",
+   "It is better to live in a house than an apartment.",
+   "Students should learn about a different culture every year.",
+   "Money is the best birthday present.",
+   "Teachers should move between classrooms, not students.",
+   "Everyone should recycle at home.",
+   "Riding a bike is better than taking the bus.",
+   "Spicy food is better than sweet food.",
+   "Night markets are better than shopping malls.",
+   "Every school day should start with exercise.",
+   "It is better to read the news than watch it.",
+   "Teenagers should have one phone-free day every week.",
+   "Superheroes are good role models for children.",
+   "School lunches should be vegetarian once a week.",
+   "It is better to be good at sport than good at art.",
+   "Students should help make the school rules.",
+   "Exams should have no time limit.",
+   "Animals should not be used in shows.",
+   "Everyone should visit another country before they finish school.",
+   "Older students should help teach younger students.",
+   "Robots should do all the housework.",
+   "Students should be able to choose their own teachers."
+  ],
+  "intro": [
+   {
+    "title": "Tag-Team Debate",
+    "text": [
+     "Two teams at the front: FOR vs AGAINST.",
+     "Speakers take turns, starting with FOR."
+    ],
+    "example": {
+     "tag": "MOTION",
+     "big": "Teenagers should have a bedtime."
+    }
+   },
+   {
+    "title": "Huddle first",
+    "text": [
+     "Plan your points for 1 minute 15.",
+     "Think: what will the other team say?"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Huddle",
+       "1:15"
+      ],
+      [
+       "Each speaker",
+       "0:25"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Answer, then add",
+    "text": [
+     "First answer the last point: \"I disagree because…\"",
+     "Then add a new point."
+    ],
+    "example": {
+     "rows": [
+      [
+       "FOR",
+       "Teenagers need lots of sleep."
+      ],
+      [
+       "AGAINST",
+       "I disagree because they can decide."
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Points",
+    "text": [
+     "Challenge for silence, repeating, off topic or Thai.",
+     "The audience votes for the winning side."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Fair challenge",
+       "+1"
+      ],
+      [
+       "Winning side",
+       "+3"
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "M.3": {
+  "mode": "debate",
+  "title": "Debate",
+  "label": "Motion",
+  "huddle": 90,
+  "turn": 30,
+  "topics": [
+   "Homework should be banned.",
+   "Students should be allowed to use phones in class.",
+   "School uniforms should be optional.",
+   "It's better to live in the city than the countryside.",
+   "Video games are good for teenagers.",
+   "Every student should learn to cook at school.",
+   "School should start at 10 a.m.",
+   "Social media does more harm than good.",
+   "Money can buy happiness.",
+   "Cats are better than dogs.",
+   "Robots will make the world a better place.",
+   "Exams are the best way to test students.",
+   "Everyone should play a sport at school.",
+   "Fast food should not be sold near schools.",
+   "It's better to be famous than rich.",
+   "Students should choose what they study.",
+   "Cell phones should be banned for children under 12.",
+   "Zoos should be closed.",
+   "It is better to work in a team than alone.",
+   "Everyone should learn a second language.",
+   "Online learning is better than school.",
+   "Tourism is good for Thailand.",
+   "Plastic bags should be banned everywhere.",
+   "Teenagers should have a part-time job.",
+   "It's better to be a child than an adult.",
+   "Celebrities are good role models.",
+   "Space travel is a waste of money.",
+   "Cities need more parks, not more shopping malls.",
+   "Boys and girls should play sports together.",
+   "School vacations should be shorter.",
+   "Reading books is better than watching movies.",
+   "Students should be allowed to dye their hair.",
+   "Artificial intelligence will help students learn.",
+   "Everyone should do volunteer work.",
+   "Sugary drinks should cost more.",
+   "It is better to grow up in a big family.",
+   "Video calls are as good as meeting in person.",
+   "People should eat less meat.",
+   "Exams should be open-book.",
+   "Weekends should be homework-free.",
+   "It's better to save money than spend it.",
+   "Every teenager should know how to swim.",
+   "Cars should be banned from city centers.",
+   "Social media apps should have a minimum age of 16.",
+   "Students should help clean their school.",
+   "Being kind is more important than being clever.",
+   "Everyone should have a pet.",
+   "It's better to travel in your own country than abroad.",
+   "Famous people deserve privacy.",
+   "Schools should teach students how to manage money."
+  ],
+  "intro": [
+   {
+    "title": "Tag-Team Debate",
+    "text": [
+     "Two teams at the front: FOR vs AGAINST.",
+     "Speakers take turns, starting with FOR."
+    ],
+    "example": {
+     "tag": "MOTION",
+     "big": "Homework should be banned."
+    }
+   },
+   {
+    "title": "Huddle first",
+    "text": [
+     "Plan your points for 1 minute 30.",
+     "Think: what will the other team say?"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Huddle",
+       "1:30"
+      ],
+      [
+       "Each speaker",
+       "0:30"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Answer, then add",
+    "text": [
+     "First answer the last point: \"I disagree because…\"",
+     "Then add a new point."
+    ],
+    "example": {
+     "rows": [
+      [
+       "FOR",
+       "Homework makes us tired."
+      ],
+      [
+       "AGAINST",
+       "I disagree because it helps us practice."
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Points",
+    "text": [
+     "Challenge for silence, repeating, off topic or Thai.",
+     "The audience votes for the winning side."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Fair challenge",
+       "+1"
+      ],
+      [
+       "Winning side",
+       "+3"
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "bonus": {
+  "before": [
+   {
+    "id": "answer",
+    "name": "Answer first",
+    "text": "Start every turn with \"I agree / I disagree because…\": +2.",
+    "points": 2
+   },
+   {
+    "id": "linking",
+    "name": "Linking words",
+    "text": "Use 3 linking words (and, but, because…): +2.",
+    "points": 2
+   },
+   {
+    "id": "example",
+    "name": "For example",
+    "text": "Give a real example in your turn: +1.",
+    "points": 1
+   }
+  ],
+  "secret": [
+   {
+    "id": "new-word",
+    "name": "New word",
+    "text": "+1 for the best new word you used.",
+    "points": 1
+   },
+   {
+    "id": "eyes",
+    "name": "Eye contact",
+    "text": "+1 if you looked at the audience.",
+    "points": 1
+   },
+   {
+    "id": "best",
+    "name": "Best speaker",
+    "text": "+2 for your team's best speaker.",
+    "points": 2
+   }
+  ]
+ }
+}

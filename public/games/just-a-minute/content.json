@@ -1251,21 +1251,21 @@
    "title": "Challenge!",
    "text": [
     "Hear a long stop or a repeat? Put up your hand!",
-    "A good challenge wins a point for your team."
+    "The teacher stops the timer. The team at fault loses 1 point."
    ],
    "example": {
     "rows": [
      [
       "Talk to the end",
-      "+3"
+      "+5"
      ],
      [
       "Half the time",
-      "+1"
+      "+2"
      ],
      [
-      "Good challenge",
-      "+1"
+      "Fault after a challenge",
+      "−1"
      ]
     ]
    }

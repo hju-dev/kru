@@ -175,14 +175,53 @@ describe('Word Rush prompts', () => {
 })
 
 describe('Tag-Team topics', () => {
-  const c = JSON.parse(readFileSync(new URL('../public/games/tag-team/content.json', import.meta.url), 'utf8')) as Record<string, { topics: string[] }>
-  for (const level of ['M.1', 'M.2', 'M.3']) {
-    it(`${level}: 50+ topics, no repeats`, () => {
-      const t = c[level].topics
-      expect(t.length).toBeGreaterThanOrEqual(50)
-      expect(new Set(t.map((x) => x.toLowerCase())).size).toBe(t.length)
-    })
+  type Level = { mode: string; huddle: number; turn: number; topics: string[]; intro?: unknown[] }
+  const load = (slug: string) => JSON.parse(readFileSync(new URL(`../public/games/${slug}/content.json`, import.meta.url), 'utf8')) as Record<string, Level>
+  // two games, one app (games/tag-team/app.js): Talk is relay at every level, Debate is FOR vs AGAINST at every level
+  const games = { 'tag-team': 'relay', 'tag-team-debate': 'debate' }
+  for (const [slug, mode] of Object.entries(games)) {
+    const c = load(slug)
+    for (const level of ['M.1', 'M.2', 'M.3']) {
+      it(`${slug} ${level}: ${mode}, 50+ topics, no repeats, own slides`, () => {
+        expect(c[level].mode).toBe(mode)
+        expect(c[level].huddle).toBeGreaterThan(0)
+        expect(c[level].turn).toBeGreaterThan(0)
+        const t = c[level].topics
+        expect(t.length).toBeGreaterThanOrEqual(50)
+        expect(new Set(t.map((x) => x.toLowerCase())).size).toBe(t.length)
+        expect(c[level].intro?.length).toBeGreaterThanOrEqual(2)
+      })
+    }
   }
+  it('debate times grow with the level: M.1 60/20, M.2 75/25, M.3 90/30', () => {
+    const c = load('tag-team-debate')
+    expect(['M.1', 'M.2', 'M.3'].map((l) => [c[l].huddle, c[l].turn])).toEqual([[60, 20], [75, 25], [90, 30]])
+  })
+  it('motions are not shared between debate levels', () => {
+    const c = load('tag-team-debate')
+    const all = ['M.1', 'M.2', 'M.3'].flatMap((l) => c[l].topics.map((x) => x.toLowerCase()))
+    expect(new Set(all).size).toBe(all.length)
+  })
+  it('Tag-Team Debate reuses the Tag-Team app and styles', () => {
+    const html = readFileSync(new URL('../public/games/tag-team-debate/index.html', import.meta.url), 'utf8')
+    expect(html).toContain('<script src="/games/tag-team/app.js"></script>')
+    expect(html).toContain('href="/games/tag-team/style.css"')
+  })
+  it('an old save (no mode) is only restored when its mode matches: old M.3 saves were debates', () => {
+    const js = readFileSync(new URL('../public/games/tag-team/app.js', import.meta.url), 'utf8')
+    expect(js).toContain("saved.mode || (saved.level === 'M.3' ? 'debate' : 'relay')")
+    expect(js).toContain('savedMode === C.mode')
+  })
+})
+
+describe('Just a Minute scoring', () => {
+  const js = readFileSync(new URL('../public/games/just-a-minute/app.js', import.meta.url), 'utf8')
+  it('+5 To the end, +2 Half the time, no Good challenge award, Challenge takes 1 point', () => {
+    expect(js).toContain("{ d: 5, label: '+5 To the end'")
+    expect(js).toContain("{ d: 2, label: '+2 Half the time'")
+    expect(js).not.toMatch(/Good challenge/)
+    expect(js).toContain('challenge: { penalty: 1 }')
+  })
 })
 
 describe('class tools (Name Picker) skip team setup', () => {

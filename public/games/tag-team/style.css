@@ -1,4 +1,4 @@
-/* Tag-Team Talk / Debate, phone landscape (812 x 375): bar with teams, topic, timer + main buttons, speaking lane, team strip. */
+/* Tag-Team Talk and Tag-Team Debate (games/tag-team-debate uses this file too), phone landscape (812 x 375): bar with teams, topic, timer + main buttons, speaking lane, team strip. */
 :root {
   --for: #2ec4b6;
   --against: #ff6b6b;

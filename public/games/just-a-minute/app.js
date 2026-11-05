@@ -1,4 +1,5 @@
-/* Just a Minute: one student talks on a topic until the timer ends. Reveal shows three ideas to help. */
+/* Just a Minute: one student talks on a topic until the timer ends. Reveal shows three ideas to help.
+   Challenge! stops the timer; the teacher takes 1 point from the team at fault (or no one). */
 (function () {
   'use strict';
   KruCards.start({
@@ -8,7 +9,8 @@
     reveal: true,
     timer: { secs: 60, options: [30, 45, 60, 90] },
     timeUpReveals: true,
-    points: [{ d: -1, label: '−1' }, { d: 1, label: '+1 Good challenge' }, { d: 1, label: '+1 Half the time', why: 'half the time' }, { d: 3, label: '+3 To the end' }],
+    challenge: { penalty: 1 },
+    points: [{ d: -1, label: '−1' }, { d: 2, label: '+2 Half the time', why: 'half the time' }, { d: 5, label: '+5 To the end', why: 'to the end' }],
     card: function (it, o) {
       return '<div class="sub">Talk about…</div><div class="big" data-fit="46,24">' + o.esc(it.topic) + '</div>' +
         (o.revealed ? '<div class="ideas">' + it.ideas.map(function (i) { return '<span>' + o.esc(i) + '</span>'; }).join('') + '</div>'
