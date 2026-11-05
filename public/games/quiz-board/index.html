@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Quiz Board</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="/games/shared/kru-cards.css" />
+    <link rel="stylesheet" href="/games/shared/kru-quiz.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game kc qb">
+      <header class="bar">
+        <span class="logo">Quiz <b>Board</b></span>
+        <span class="turn" id="turn"></span>
+        <span class="grow"></span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <!-- The board: 5 topics x 5 squares, scores beside it -->
+      <div class="qb-main" id="boardView">
+        <div class="board" id="board" role="grid" aria-label="Quiz board: tap a square"></div>
+        <ol class="scores" id="scores" aria-label="Scores"></ol>
+      </div>
+
+      <!-- One question -->
+      <div class="qb-q" id="qView" hidden>
+        <section class="stage" id="stage" aria-live="polite">
+          <div class="qhead"><span id="qTopic"></span> · <b id="qValue"></b> <span class="double" id="qDouble" hidden>DOUBLE!</span></div>
+          <div id="qBody"></div>
+        </section>
+        <div class="controls">
+          <span class="digits" id="digits">0:20</span>
+          <div class="progress"><i id="fill"></i></div>
+          <button class="btn" id="go">Start timer</button>
+          <button class="btn teal" id="reveal">Reveal</button>
+          <button class="btn gold" id="back">Back to board ▶</button>
+        </div>
+        <div class="strip" id="strip" role="group" aria-label="Teams: tap the teams that were right"></div>
+      </div>
+      <div class="toast" id="toast" role="status" hidden><span id="toastText"></span><button class="small" id="toastUndo" hidden>Undo</button></div>
+    </main>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="menu-row" id="secsRow"></div>
+        <div class="menu-row">
+          <button class="btn" id="newBoard">New board</button>
+          <button class="btn" id="howTo">How to play</button>
+        </div>
+        <button class="btn ghost danger" id="resetScores">Reset all scores</button>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-end.js"></script>
+    <script src="/games/shared/kru-quiz.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

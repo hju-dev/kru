@@ -1,0 +1,225 @@
+{
+ "about": "One-Word Story openers per level: the class goes round in a circle, one word each, to the beat. M.1 simple, M.2 past-tense stories, M.3 longer, more open openers. Written for Kru (the old Talk Timer preset turned into a game). Whole class, no points. At least 50 per level, shuffled every game.",
+ "M.1": {
+  "openers": [
+   "Yesterday, I found a",
+   "Once upon a time, there was a big",
+   "My cat likes to",
+   "Every morning, my teacher",
+   "At the zoo, a monkey",
+   "On Saturday, my family",
+   "I opened the door and saw a",
+   "The little robot wanted to",
+   "In my bag, there is a",
+   "The dog ran to the",
+   "My best friend has a",
+   "After school, we",
+   "A small fish lived in a",
+   "The rain started, so",
+   "My grandma always",
+   "At the market, I bought",
+   "The elephant was very",
+   "Last night, I dreamed about",
+   "There was a strange box in",
+   "The bus stopped and",
+   "My brother cannot",
+   "In the forest, a little bear",
+   "I was hungry, so I",
+   "Our school has a secret",
+   "The pizza was too",
+   "On my birthday, I got",
+   "A tiny dragon lived",
+   "When I woke up, my hair was",
+   "The teacher said, \"Please",
+   "The banana fell on",
+   "My dad cooked a",
+   "Under my bed, there is",
+   "The chicken crossed the road because",
+   "At the beach, we found",
+   "The baby elephant wanted",
+   "Every Sunday, I",
+   "The magic pencil could",
+   "My friend and I saw a",
+   "The cat jumped on the",
+   "It was a very hot day, and",
+   "A big storm came to",
+   "My room is always",
+   "The ice cream truck stopped and",
+   "At night, the moon",
+   "The frog said hello to",
+   "I lost my shoe in",
+   "The happy duck",
+   "On the way to school, I",
+   "Mom gave me a",
+   "The old man had a"
+  ]
+ },
+ "M.2": {
+  "openers": [
+   "When I was walking home, I suddenly heard",
+   "The strangest thing happened on the bus today:",
+   "If I could fly for one day, I would",
+   "Last summer, my family went to",
+   "The new student in our class was",
+   "My phone started talking and said",
+   "I had never seen a",
+   "Nobody believed me when I said",
+   "The day the internet stopped,",
+   "In 100 years, schools will",
+   "The robot teacher walked into our classroom and",
+   "I opened my lunch box and found",
+   "We were lost in the jungle when",
+   "The famous singer came to our school and",
+   "At midnight, the toys in my room",
+   "My best day ever started when",
+   "The worst vacation ever began when",
+   "I found a map behind",
+   "Everyone was asleep except",
+   "The cat stole my homework and",
+   "On the way to the night market,",
+   "A dinosaur appeared in the middle of",
+   "My grandpa told me a secret about",
+   "The lights went out during",
+   "I won a ticket to",
+   "The alien landed in my backyard and asked",
+   "The school bell rang, but",
+   "I tried to cook dinner, but",
+   "When the rain stopped, we saw",
+   "My shadow decided to",
+   "The elevator stopped between floors, and",
+   "Our class pet escaped and",
+   "A strange letter arrived saying",
+   "The soccer game was almost over when",
+   "I woke up and I was a",
+   "The mirror in my room showed",
+   "We built a time machine and",
+   "My little sister drew a picture that",
+   "In the haunted house, we heard",
+   "The talking parrot said",
+   "I forgot my homework, so I",
+   "The festival was amazing until",
+   "My dream job would be",
+   "A giant wave hit the beach and",
+   "The teacher gave us a surprise:",
+   "When I opened the window, a bird",
+   "The last cookie in the jar",
+   "We found a door in the school that",
+   "The phone rang at three in the morning, and",
+   "My best friend and I decided to"
+  ]
+ },
+ "M.3": {
+  "openers": [
+   "Nobody in the town knew that the old library",
+   "If I had one wish, I would use it to",
+   "The scientist made a mistake, and suddenly",
+   "It was the year 2080, and humans",
+   "The message in the bottle said",
+   "Although it was raining heavily, we",
+   "The day social media disappeared,",
+   "I had always wanted to travel, so when",
+   "The mayor announced that from tomorrow",
+   "Deep under the ocean, the explorers discovered",
+   "The detective looked at the clue and realized",
+   "My future self appeared and warned me that",
+   "The city had no electricity for a week, so",
+   "When the AI became our principal,",
+   "On the first day on Mars, the astronauts",
+   "The moment I stepped onto the stage,",
+   "Our team was losing, until",
+   "The old photograph showed something strange:",
+   "If animals could talk, the first thing they would say is",
+   "The village had a strange rule:",
+   "Everyone thought the house was empty, but",
+   "The new app promised to make us happy, but",
+   "I was about to give up when",
+   "The museum statue blinked, and",
+   "Halfway up the mountain, we realized",
+   "The robot refused to work because",
+   "The last tree in the city",
+   "My grandmother's diary began with the words",
+   "The train was going to Chiang Mai when",
+   "After the exam, the teacher told us",
+   "In a world without money, people",
+   "The festival lanterns rose into the sky and",
+   "The plan was perfect, except for one thing:",
+   "When the earthquake stopped, we",
+   "The invention changed everything because",
+   "I found my name in a book written in 1900",
+   "No one expected the quiet student to",
+   "The storm was getting closer, and the captain",
+   "Instead of going home, we decided to",
+   "The doctor opened the door and said",
+   "Every night at 9 p.m., the street",
+   "The game was over, but the players",
+   "The smartphone had a hidden button that",
+   "At the end of the tunnel, there was",
+   "My opinion changed completely when",
+   "The spaceship's computer said",
+   "On the island, there was only one rule:",
+   "The letter was not for me, but",
+   "For the first time in history,",
+   "The scientists couldn't explain why"
+  ]
+ },
+ "intro": [
+  {
+   "title": "One-Word Story",
+   "text": [
+    "Make a circle. Read the opener together.",
+    "Go round: one word each, building the story."
+   ],
+   "example": {
+    "label": "Example",
+    "chips": [
+     "Yesterday",
+     "I",
+     "found",
+     "a",
+     "…"
+    ]
+   }
+  },
+  {
+   "title": "Follow the beat",
+   "text": [
+    "Every beep, the next person says ONE word.",
+    "Too slow? The circle helps you."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Each word",
+      "5 seconds"
+     ],
+     [
+      "Story",
+      "4 minutes"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Keep it right",
+   "text": [
+    "The story must make sense and be correct.",
+    "End a sentence? Say \"Period!\""
+   ],
+   "example": {
+    "rows": [
+     [
+      "\"Period!\"",
+      "ends a sentence"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Time's up!",
+   "text": [
+    "The last person finishes the sentence.",
+    "Then one person retells the whole story (30 s)."
+   ]
+  }
+ ]
+}

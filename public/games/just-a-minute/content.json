@@ -1,5 +1,5 @@
 {
- "about": "Just a Minute topics: talk without stopping. Reveal shows three ideas to help. M.1 everyday life, M.2 experiences and the future, M.3 opinions (for / against). Written for Kru. At least 50 per level, shuffled every game.",
+ "about": "Just a Second topics (the game was called Just a Minute): each student talks without stopping until their timer ends, then TAG: the next student continues. Reveal shows three ideas to help. M.1 everyday life, M.2 experiences and the future, M.3 opinions (for / against). Written for Kru. At least 50 per level, shuffled every game.",
  "M.1": {
   "items": [
    {
@@ -1214,14 +1214,37 @@
  },
  "intro": [
   {
-   "title": "Just a Minute",
+   "title": "Just a Second",
    "text": [
-    "One student talks about the topic.",
-    "Keep talking until the timer ends!"
+    "Each student talks about the topic.",
+    "Time's up? TAG! The next student keeps going."
    ],
    "example": {
     "big": "My favorite food",
     "tag": "Topic"
+   }
+  },
+  {
+   "title": "Your turn",
+   "text": [
+    "The teacher picks a team. One student starts.",
+    "Every student gets the same time."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Speaker 1",
+      "0:30"
+     ],
+     [
+      "TAG!",
+      "Speaker 2"
+     ],
+     [
+      "TAG!",
+      "Speaker 3"
+     ]
+    ]
    }
   },
   {

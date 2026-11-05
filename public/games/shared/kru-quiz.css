@@ -1,0 +1,52 @@
+/* Shared quiz question (games/shared/kru-quiz.js): question text, A-D choices or a short answer. */
+.kq-q {
+  font: 800 32px/1.15 var(--display);
+  text-wrap: balance;
+}
+.kq-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  --ch: 24px;
+}
+.kq-choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font: 700 var(--ch) / 1.15 var(--display);
+  text-align: left;
+}
+.kq-letter {
+  flex: none;
+  width: 1.5em;
+  height: 1.5em;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--line);
+  font-size: 0.85em;
+}
+.kq-choice.right {
+  border-color: var(--teal);
+  background: color-mix(in srgb, var(--teal) 25%, var(--panel));
+}
+.kq-choice.right .kq-letter {
+  background: var(--teal);
+  color: var(--bg);
+}
+.kq-choice.wrong {
+  opacity: 0.45;
+}
+.kq-short {
+  color: var(--muted);
+  font-size: 18px;
+}
+.kq-ans {
+  font: 800 30px/1.15 var(--display);
+  color: var(--teal);
+}

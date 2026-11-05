@@ -20,6 +20,10 @@
  *   points: [{ d: 1, label: '+1 Good reason' }, ...],  // the buttons when you tap a team
  *   challenge: { penalty: 1 },                         // optional: a Challenge! button that stops the timer and asks
  *                                                      //   which team loses the points (or no one)
+ *   timer: { secs: 30, adjust: 10, min: 10, max: 300 }, // adjust: −10 / +10 buttons beside the clock
+ *   tag: true,                                         // optional: "Tag ▶" restarts the clock for the next speaker
+ *   picker: true,                                      // optional: "Pick a team" spinner in the top bar
+ *   noScores: true,                                    // optional: no team strip, points or final scores (warm-ups)
  *   onReveal / onNext: optional hooks
  * })
  */
@@ -42,17 +46,24 @@
     var ITEMS = [], teams = [], S = null, INTRO = [], content = null;
     var left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null, panelTeam = null;
     var hasTimer = !!cfg.timer;
+    var adjust = hasTimer && cfg.timer.adjust ? cfg.timer.adjust : 0;
+    var MIN = hasTimer && cfg.timer.min || 10, MAX = hasTimer && cfg.timer.max || 600;
 
     // ---------- the screen ----------
     var main = document.querySelector('main.game');
     main.classList.add('kc');
+    if (cfg.noScores) main.classList.add('no-scores');
     if (cfg.compact) main.classList.add('compact');
     main.innerHTML =
       '<header class="bar"><span class="logo">' + (cfg.logo || esc(cfg.title)) + '</span><span class="grow"></span>' +
       '<button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button></header>' +
       '<section class="stage" id="stage" aria-live="polite"><div class="card" id="card">Loading…</div></section>' +
-      '<div class="controls">' +
-      (hasTimer ? '<span class="digits" id="digits">0:00</span><div class="progress"><i id="fill"></i></div><button class="btn" id="go">Start timer</button>' : '<span class="grow"></span>') +
+      '<div class="controls' + (adjust || cfg.tag ? ' tight' : '') + '">' +
+      (hasTimer ? (adjust ? '<button class="btn adj" id="minus" aria-label="10 seconds less">−10</button>' : '') +
+        '<span class="digits" id="digits">0:00</span>' +
+        (adjust ? '<button class="btn adj" id="plus" aria-label="10 seconds more">+10</button>' : '') +
+        '<div class="progress"><i id="fill"></i></div><button class="btn" id="go">Start timer</button>' +
+        (cfg.tag ? '<button class="btn teal" id="tag">Tag ▶</button>' : '') : '<span class="grow"></span>') +
       (cfg.challenge ? '<button class="btn coral" id="challenge">Challenge!</button>' : '') +
       '<button class="btn teal" id="reveal">Reveal</button><button class="btn gold" id="next">Next ▶</button></div>' +
       '<div class="strip" id="strip" role="group" aria-label="Teams: tap one to give points"></div>' +
@@ -108,7 +119,8 @@
       $('digits').textContent = fmt(left);
       $('fill').style.transform = 'scaleX(' + (total ? Math.max(0, left) / total : 0) + ')';
       $('digits').className = 'digits' + (left <= 0 ? ' done' : left <= 10 && running ? ' warn' : '');
-      $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : cfg.compact ? 'Start' : 'Start timer';
+      $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : cfg.compact || adjust ? 'Start' : 'Start timer';
+      if (adjust) { $('minus').disabled = S.secs <= MIN; $('plus').disabled = S.secs >= MAX; }
     }
     function tick() {
       if (!running) return;
@@ -163,12 +175,14 @@
         S.order = newOrder(); S.pos = 0; S.revealed = {};
         toast('That was the last card. Starting again with a new order.', false);
       } else S.pos = Math.max(0, pos);
+      S.speaker = 1;
       save(); resetTimer(); render();
       if (cfg.onNext) cfg.onNext(item());
     }
 
     // ---------- teams + points ----------
     function renderTeams() {
+      if (cfg.noScores) { $('strip').hidden = true; return; }
       var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
       $('strip').innerHTML = teams.map(function (t, i) {
         return '<button class="tile' + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points. Tap to give points">' +
@@ -254,6 +268,26 @@
 
     // ---------- main buttons ----------
     if (hasTimer) $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
+    function adjustBy(d) {
+      var secs = Math.max(MIN, Math.min(MAX, S.secs + d)), real = secs - S.secs;
+      if (!real) return;
+      S.secs = secs; save();
+      if (running) { left = Math.max(1, left + real); endAt = Date.now() + left * 1000; } else left = left >= total || left <= 0 ? secs : Math.max(1, left + real);
+      total = secs;
+      renderClock();
+    }
+    if (adjust) {
+      $('minus').addEventListener('click', function () { adjustBy(-adjust); });
+      $('plus').addEventListener('click', function () { adjustBy(adjust); });
+    }
+    // Tag: the next speaker gets a fresh clock straight away
+    if (cfg.tag) $('tag').addEventListener('click', function () {
+      unlockAudio();
+      S.speaker = (S.speaker || 1) + 1; save();
+      tone([880, 1175], 0.1);
+      stopTimer(); left = total = S.secs; startTimer();
+      toast('TAG! Speaker ' + S.speaker + ': go!', false);
+    });
     $('reveal').addEventListener('click', function () {
       unlockAudio();
       var step = stepOf(S.pos) + 1;
@@ -319,10 +353,13 @@
         teams = Kru.allTeams();
         KruBonus.setup({ cards: c.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
           award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); } });
-        KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
+        if (!cfg.noScores) KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
+        if (cfg.picker) KruPicker.setup({ bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; },
+          get: function () { return S.picked || []; }, set: function (ids) { S.picked = ids; save(); } });
         var saved = session.resume;
         if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === ITEMS.length) S = saved;
         else S = { v: 1, level: level, order: newOrder(), pos: 0, revealed: {}, secs: hasTimer ? cfg.timer.secs : 0, pts: {}, log: [], introDone: false };
+        if (adjust) S.secs = Math.max(MIN, Math.min(MAX, S.secs || cfg.timer.secs));
         total = left = S.secs;
         render();
         INTRO = KruIntro.forLevel(c, level);

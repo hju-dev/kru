@@ -1,0 +1,66 @@
+{
+ "about": "Race Board: a 30-square race. Questions come from Quiz Battle (games/quiz-battle/content.json) for the level, plus Henry's own from the Questions tab. Only the How to play slides live here.",
+ "intro": [
+  {
+   "title": "Race Board",
+   "text": [
+    "Every team has a piece on START.",
+    "First team to FINISH wins!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "START",
+      "1 2 3 …"
+     ],
+     [
+      "FINISH",
+      "29"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Your turn",
+   "text": [
+    "Your team answers one question.",
+    "Right? Roll the dice and move!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Right",
+      "Roll and move"
+     ],
+     [
+      "Wrong",
+      "Stay"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Special squares",
+   "text": [
+    "★ go forward · ⚠ go back · 🎲 roll again.",
+    "Keep racing for 2nd and 3rd place!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "★ +2",
+      "Forward 2"
+     ],
+     [
+      "⚠ −2",
+      "Back 2"
+     ],
+     [
+      "🎲 again",
+      "Roll again"
+     ]
+    ]
+   }
+  }
+ ]
+}
