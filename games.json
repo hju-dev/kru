@@ -50,7 +50,8 @@
       "group"
     ],
     "status": "ready",
-    "section": "speaking"
+    "section": "speaking",
+    "units": true
   },
   {
     "slug": "word-rush",
@@ -157,7 +158,8 @@
     "type": "team quiz",
     "phoneLandscape": true,
     "sheetQuestions": true,
-    "section": "quizzes"
+    "section": "quizzes",
+    "units": true
   },
   {
     "slug": "quiz-board",
@@ -176,7 +178,8 @@
       "group"
     ],
     "status": "ready",
-    "section": "quizzes"
+    "section": "quizzes",
+    "units": true
   },
   {
     "slug": "race-board",
@@ -196,7 +199,8 @@
     ],
     "status": "ready",
     "section": "quizzes",
-    "sheetQuestions": true
+    "sheetQuestions": true,
+    "units": true
   },
   {
     "slug": "board-race",
@@ -234,7 +238,8 @@
     "description": "One student per team faces away from the board. Teammates describe the word without saying it. 60-second rounds, Got it (+1) or Skip. M.3 uses Person / Place / Thing / Idea.",
     "type": "vocabulary game",
     "phoneLandscape": true,
-    "section": "speaking"
+    "section": "speaking",
+    "units": true
   },
   {
     "slug": "twenty-questions",

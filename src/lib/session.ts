@@ -25,6 +25,8 @@ export interface Session {
   game: string // slug
   level: Level
   mode: Mode
+  /** a unit made from Henry's Gamma lessons (public/units/<id>.json), picked on the setup screen; none = built-in content */
+  unit?: string
 
   // team setup (status "setup")
   size: number
@@ -91,6 +93,7 @@ export function initMessage(s: Session) {
       id: s.id,
       class: s.class,
       level: s.level,
+      unit: s.unit ?? null,
       mode: s.mode,
       teams: s.teams,
       teacherTeam: s.teacherTeam,

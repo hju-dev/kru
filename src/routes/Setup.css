@@ -51,6 +51,20 @@
   background: var(--fg);
   color: var(--bg);
 }
+/* Content: built-in or a unit from Henry's Gamma lessons */
+.unit-pick {
+  min-height: 36px;
+  max-width: 170px;
+  flex-shrink: 1;
+  min-width: 0;
+  padding: 0 8px;
+  border: 2px solid var(--teal);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--fg);
+  font: 700 14px var(--body);
+  text-overflow: ellipsis;
+}
 
 .stepper {
   display: inline-flex;

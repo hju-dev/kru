@@ -456,9 +456,12 @@
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
-    contentReady.then(function (content) {
+    Promise.all([contentReady, window.KruQuiz ? KruQuiz.unit(session) : null]).then(function (both) {
+      var content = both[0], unit = both[1];
       var level = content[session.level] ? session.level : 'M.2';
       C = content[level];
+      // Tag-Team Debate with a unit from Henry's lessons: that unit's motions
+      if (unit && C.mode === 'debate' && unit.motions && unit.motions.length) C = Object.assign({}, C, { topics: unit.motions });
       teams = Kru.allTeams();
       KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
