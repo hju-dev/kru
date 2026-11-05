@@ -70,10 +70,19 @@
 }
 .ke-name {
   flex: 1;
+  min-width: 0;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.ke-mem {
+  display: block;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  color: var(--muted, #a49fb5);
+  white-space: normal;
 }
 .ke-row b {
   font-family: var(--mono, monospace);
@@ -188,6 +197,17 @@ button.end {
   font: 800 26px/1.08 var(--display, sans-serif);
   overflow-wrap: anywhere;
   text-wrap: balance;
+}
+.kp-mem {
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--fg, #f6f3ec);
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+.p1 .kp-mem {
+  font-size: 17px;
+  font-weight: 700;
 }
 .kp-pts {
   font-family: var(--mono, monospace);

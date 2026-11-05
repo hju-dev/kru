@@ -12,6 +12,17 @@
     return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
   }
 
+  /** The students on a team, e.g. "S1, S9, S17": from the standings if a game sends them, else from the Kru session. */
+  function membersOf(t) {
+    var list = t.members;
+    if (!list && window.Kru && Kru.allTeams) {
+      var found = Kru.allTeams().filter(function (x) { return x.name === t.name; })[0];
+      list = found && found.members;
+    }
+    return (list || []).map(function (m) { return m.nick; }).filter(Boolean).join(', ');
+  }
+  window.KruMembers = membersOf;
+
   window.KruCorner = {
     set: function (stage, text) {
       if (!stage) return;
@@ -36,7 +47,9 @@
     var rank = 0, prev = null;
     var rows = students.map(function (t, i) {
       if (t.points !== prev) { rank = i + 1; prev = t.points; }
-      return '<li class="ke-row' + (rank === 1 ? ' first' : '') + '"><span class="ke-rank">' + rank + '</span><span class="ke-name">' + esc(t.name) + '</span><b>' + t.points + '</b></li>';
+      var who = membersOf(t);
+      return '<li class="ke-row' + (rank === 1 ? ' first' : '') + '"><span class="ke-rank">' + rank + '</span><span class="ke-name">' + esc(t.name) +
+        (who ? '<small class="ke-mem">' + esc(who) + '</small>' : '') + '</span><b>' + t.points + '</b></li>';
     }).join('');
     var teacher = list.filter(function (t) { return t.teacher; }).map(function (t) {
       return '<li class="ke-row teacher"><span class="ke-rank">T</span><span class="ke-name">' + esc(t.name) + '</span><b>' + t.points + '</b></li>';
@@ -170,8 +183,13 @@
       '<div class="kp-title" aria-live="polite">And the winners are…</div>' +
       '<div class="kp-stage">' + order.map(function (i) {
         var names = P[i].teams.map(function (t) { return esc(t.name); }).join(' & ');
+        var who = P[i].teams.map(function (t) {
+          var m = window.KruMembers ? window.KruMembers(t) : '';
+          return m ? (P[i].teams.length > 1 ? esc(t.name) + ': ' : '') + esc(m) : '';
+        }).filter(Boolean).join(' · ');
         return '<div class="kp-col p' + (i + 1) + '" data-p="' + (i + 1) + '">' +
-          '<div class="kp-who"><span class="kp-name">' + names + '</span><span class="kp-pts">' + P[i].points + ' points</span></div>' +
+          '<div class="kp-who"><span class="kp-name">' + names + '</span>' + (who ? '<span class="kp-mem">' + who + '</span>' : '') +
+          '<span class="kp-pts">' + P[i].points + (P[i].points === 1 ? ' point' : ' points') + '</span></div>' +
           '<div class="kp-step"><span>' + LABEL[i] + '</span></div></div>';
       }).join('') + '</div>' +
       '<div class="kp-btns"><button class="ke-btn ghost" data-k="skip">Skip ▶</button></div>';

@@ -114,6 +114,15 @@ When the tabs appear:
 - Renaming a class in the app renames its tab too.
 - Archiving a class keeps its tab. Delete it by hand if you don't want it (right-click the tab → **Delete**). Your scores stay safe in **Results**.
 
+## Order: your own order for each class
+
+Mixed classes (like **M.2** and **M.3**) have students from different homerooms, so numbers repeat. The **Order** column puts the students in *your* order:
+- **Rosters → Order:** each student's place in the class (1, 2, 3 …). **Kru → Set up tabs** fills any empty Order cells in the order the students are listed in the tab. To change the order, type the numbers yourself; Kru keeps them.
+- **Results → Order:** every result row gets the student's Order when the scores arrive. Set up tabs also fills it in for older results. Sort by **Class**, then **Order** (Data → Sort range), and the grades line up with your list for copying.
+- The class tabs and **Summary** already list students by Order.
+
+Editing a roster in the app keeps everyone's Order. A student whose nickname you change keeps their place unless another student in the class has the same number; new students go to the end.
+
 ## Troubleshooting
 
 | The app says… | What to check |
