@@ -25,6 +25,7 @@
   var session = null;
   var readyCallbacks = [];
   var finishCallbacks = [];
+  var beforeFinish = null; // e.g. the podium: shown first when Henry taps Kru's home → Finish
 
   function post(msg) {
     if (!mock) window.parent.postMessage(msg, location.origin);
@@ -73,7 +74,8 @@
     var d = e.data || {};
     if (d.type === 'kru:init') start(d.session);
     else if (d.type === 'kru:finish-request') {
-      finishCallbacks.forEach(function (cb) { cb(); });
+      if (beforeFinish) { post({ type: 'kru:finish-wait' }); beforeFinish(); }
+      else finishCallbacks.forEach(function (cb) { cb(); });
     }
   });
 
@@ -128,6 +130,11 @@
     /** The game's own "End game" button: same as Henry tapping Kru's home → Finish. */
     endGame: function () {
       finishCallbacks.forEach(function (cb) { cb(); });
+    },
+
+    /** fn runs first when Henry taps Kru's home → Finish (the podium). Kru waits; Kru.endGame() then sends the scores. */
+    beforeFinish: function (fn) {
+      beforeFinish = fn;
     },
 
     /** cb runs when Henry taps "Finish & review scores". It should call Kru.finish(...). */

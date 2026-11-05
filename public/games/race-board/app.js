@@ -111,8 +111,11 @@
     if (p === FINISH) {
       var place = S.finished.indexOf(id);
       tone([523, 659, 784, 1047], 0.12, 0.4);
-      toast(t.name + ' finished ' + ['1st', '2nd', '3rd'][place] + (place < 3 ? '! +' + BONUS[place] + ' bonus' : '!'), false);
-      busy = false; nextTurn(); return;
+      toast(t.name + ' finished ' + (['1st', '2nd', '3rd'][place] || '') + (place < 3 ? '! +' + BONUS[place] + ' bonus' : '!'), false);
+      busy = false; nextTurn();
+      // 1st, 2nd and 3rd are decided (or everyone is home): the podium. Keep playing to race on.
+      if (S.finished.length === Math.min(3, racers.length)) setTimeout(function () { KruEnd.show(); }, 1600);
+      return;
     }
     if (sp && sp.t === 'go') { toast('★ ' + t.name + ': forward ' + sp.n + '!', false); tone([784, 988], 0.1); setTimeout(function () { move(id, sp.n, function () { landed(id); }); }, 500); return; }
     if (sp && sp.t === 'back') { toast('⚠ ' + t.name + ': back ' + sp.n + '!', false); tone([330, 262], 0.15); setTimeout(function () { move(id, -sp.n, function () { busy = false; nextTurn(); }); }, 500); return; }

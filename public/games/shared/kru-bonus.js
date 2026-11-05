@@ -5,6 +5,8 @@
  * Cards live in the game's content.json:
  *   "bonus": { "before": [ { "id", "name", "text", "points"? } ], "secret": [ ... ] }
  * points = a "+N" Henry can give to teams that earned it (tap the ★ chip → tap teams). No points = a rule only.
+ * only = ["short"]: the card only comes up when the game says the round is that kind (KruBonus.next(prev, key, ["short"])).
+ *   Quiz Battle: "short" (short answer) or "choice" (A-D). Spelling counts makes no sense before A-D.
  *
  * Use (in the game):
  *   KruBonus.setup({ cards, bar, beforeEl, teams: () => [...], award: (teamId, delta, card) => {}, save })
@@ -26,11 +28,19 @@
     return options[Math.floor(Math.random() * options.length)];
   }
 
+  /** Cards allowed this round: no "only", or an "only" that matches one of the round's tags. */
+  function allowed(list, tags) {
+    if (!list) return null;
+    return list.filter(function (c) {
+      return !c.only || c.only.some(function (t) { return (tags || []).indexOf(t) >= 0; });
+    });
+  }
   /** Pure: decide the cards for a new round. rnd() is Math.random (replaceable in tests). */
-  function draw(cards, prev, key, rnd) {
+  function draw(cards, prev, key, rnd, tags) {
     rnd = rnd || Math.random;
-    var before = cards && cards.before && rnd() < P_BEFORE ? pick(cards.before, prev && prev.before && prev.before.id) : null;
-    var secret = cards && cards.secret && rnd() < P_SECRET ? pick(cards.secret, prev && prev.secret && prev.secret.id) : null;
+    var b = cards && allowed(cards.before, tags), s = cards && allowed(cards.secret, tags);
+    var before = b && b.length && rnd() < P_BEFORE ? pick(b, prev && prev.before && prev.before.id) : null;
+    var secret = s && s.length && rnd() < P_SECRET ? pick(s, prev && prev.secret && prev.secret.id) : null;
     return { key: key, before: before, secret: secret, shown: false, awarded: { before: [], secret: [] } };
   }
 
@@ -107,9 +117,9 @@
       }
     },
     /** A new round: returns the new bonus state (keep it in the game's saved state). Same key = no change. */
-    next: function (prev, key) {
+    next: function (prev, key, tags) {
       if (prev && prev.key === key) { state = prev; renderChip(); return prev; }
-      state = draw(cfg && cfg.cards, prev, key);
+      state = draw(cfg && cfg.cards, prev, key, null, tags);
       renderChip();
       if (state.before) setTimeout(function () { open('before', true); }, 0);
       return state;

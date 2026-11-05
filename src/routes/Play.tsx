@@ -113,6 +113,10 @@ function PlayFrame({ session }: { session: Session }) {
             patch(session.id, (s) => ({ log: [...s.log, { teamId: d.teamId!, delta: d.delta!, reason: d.reason, at: Date.now() }] }))
           }
           break
+        case 'kru:finish-wait':
+          // the game is showing its podium first; it sends kru:finish when Henry taps "Save scores & finish"
+          clearTimeout(finishTimer.current)
+          break
         case 'kru:finish': {
           const scores = totalsFromLog(current)
           for (const sc of d.scores ?? []) if (typeof sc.points === 'number') scores[sc.teamId] = sc.points

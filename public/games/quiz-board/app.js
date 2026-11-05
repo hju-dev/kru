@@ -146,7 +146,10 @@
     save();
     show();
     var left = ROWS * S.cols.length - Object.keys(S.used).length;
-    if (!left) { tone([784, 988, 1175], 0.15); toast('Board finished! ⋯ → New board, or End game for the winners.', false); }
+    if (!left) {
+      tone([784, 988, 1175], 0.15);
+      KruEnd.show({ keepPlaying: function () { toast('Another round? ⋯ → New board.', false); } });
+    }
   }
   function toggleRight(id) {
     var k = S.open, list = S.used[k], i = list.indexOf(id), c = +k.split('-')[0], r = +k.split('-')[1], d = value(c, r);

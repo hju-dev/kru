@@ -118,7 +118,7 @@
     "tag": "Round 2",
     "secs": 60,
     "kind": "answer",
-    "rule": "60 s to talk in your team. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1",
+    "rule": "60 s to talk in your team. Hands up to answer. A NEW speaker each time · Right = 2",
     "qs": [
      {
       "q": "\"My cat is black. So all cats are black.\"",
@@ -417,7 +417,7 @@
     "tag": "Round 2",
     "secs": 45,
     "kind": "answer",
-    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1",
+    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2",
     "qs": [
      {
       "q": "\"My grandfather smoked all his life and lived to 95. So smoking isn't bad for you.\"",
@@ -715,7 +715,7 @@
     "tag": "Round 2",
     "secs": 45,
     "kind": "answer",
-    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1",
+    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2",
     "qs": [
      {
       "q": "\"I wore my red socks and passed my math test. So red socks help you pass tests.\"",
@@ -938,7 +938,7 @@
    "title": "Spot the Problem",
    "text": [
     "Find what is wrong with the idea.",
-    "Right = 2 points. Steal = 1 point."
+    "Right = 2 points."
    ],
    "example": {
     "big": "\"My cat is black, so all cats are black.\"",

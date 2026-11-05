@@ -1,10 +1,12 @@
 /**
  * Shared bits for team games:
  *  - KruCorner.set(stageEl, '6/50')  the question counter in the top-right corner of the question area
- *  - KruEnd.setup({ standings })     adds "End game & final scores" to the ⋯ menu: the podium (3rd, 2nd,
- *                                    then 1st, with a drumroll and confetti), then a ranked final scoreboard
- *                                    and "Save scores & finish" (same as Kru's home → Finish)
+ *  - KruEnd.setup({ standings })     the end of every scored game is the same, wherever Henry starts it:
+ *        🏆 in the top bar, "End game & final scores" in the ⋯ menu, Kru's home → Finish, or the game
+ *        itself at its natural end (KruEnd.show()). First the podium (3rd, 2nd, then 1st, with a drumroll
+ *        and confetti), then "Save scores & finish" (sends the scores) or the full list.
  *    standings() returns [{ name, points, teacher? }]
+ *  - KruEnd.show({ keepPlaying })      keepPlaying(): optional, runs when Henry chooses "Keep playing"
  */
 (function () {
   'use strict';
@@ -38,7 +40,9 @@
     },
   };
 
-  var cfg = null, box = null;
+  var cfg = null, box = null, opts = {};
+  function keepPlaying() { var k = opts.keepPlaying; opts = {}; if (k) k(); }
+  function save() { opts = {}; Kru.endGame(); }
   /** The ranked final scoreboard (also the last step of the podium). */
   function showList() {
     if (box) box.remove();
@@ -68,8 +72,8 @@
     box.addEventListener('click', function (e) {
       var b = e.target.closest('[data-k]');
       if (!b) return;
-      if (b.dataset.k === 'save') { box.remove(); box = null; Kru.endGame(); }
-      else { box.remove(); box = null; }
+      if (b.dataset.k === 'save') { box.remove(); box = null; save(); }
+      else { box.remove(); box = null; keepPlaying(); }
     });
   }
 
@@ -88,8 +92,25 @@
         if (back) back.hidden = true;
         window.KruEnd.show();
       });
+      // 🏆 in the top bar, next to ⋯: always one tap from the winners
+      var more = document.getElementById('more');
+      if (more && !document.getElementById('keTrophy')) {
+        var t = document.createElement('button');
+        t.id = 'keTrophy';
+        t.type = 'button';
+        t.className = (more.className || 'small') + ' ke-trophy';
+        t.setAttribute('aria-label', 'Winners and final scores');
+        t.textContent = '🏆';
+        more.parentNode.insertBefore(t, more);
+        t.addEventListener('click', function () { window.KruEnd.show(); });
+      }
+      // Kru's home → Finish: the podium first, then the scores are sent
+      if (window.Kru && Kru.beforeFinish) Kru.beforeFinish(function () { window.KruEnd.show(); });
     },
-    show: function () { KruPodium.show(cfg && cfg.standings ? cfg.standings() : [], showList); },
+    show: function (o) {
+      opts = o || {};
+      KruPodium.show(cfg && cfg.standings ? cfg.standings() : [], showList, { save: save, keepPlaying: function () { if (box) { box.remove(); box = null; } keepPlaying(); } });
+    },
     list: showList,
   };
 })();
@@ -99,7 +120,8 @@
  * drumroll) 1st place rise up, with a fanfare and confetti for the winner. Tap to skip ahead.
  * Ties share a step. The teacher's team is never on the podium. With no points yet it goes
  * straight to the score list.
- *   KruPodium.show(standings, then)   standings: [{ name, points, teacher? }]   then(): the score list
+ *   KruPodium.show(standings, then, actions)   standings: [{ name, points, teacher? }]   then(): the score list
+ *     actions: { save(), keepPlaying() }: buttons on the podium once 1st place is revealed
  *   KruPodium.places(standings)       -> [[1st names...], [2nd...], [3rd...]] (pure, for tests)
  */
 (function () {
@@ -165,7 +187,8 @@
   function clear() { timers.forEach(clearTimeout); timers = []; }
   function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
 
-  function show(standings, then) {
+  function show(standings, then, actions) {
+    actions = actions || {};
     var P = places(standings);
     if (!P.length) { if (then) then(); return; } // no points yet: straight to the list
     if (box) box.remove();
@@ -205,11 +228,15 @@
       box.classList.add('done');
       var top = P[0].teams.map(function (t) { return t.name; }).join(' & ');
       box.querySelector('.kp-title').textContent = (P[0].teams.length > 1 ? 'Winners: ' : 'Winner: ') + top + '!';
-      box.querySelector('.kp-btns').innerHTML = '<button class="ke-btn ghost" data-k="list">All scores</button>';
+      box.querySelector('.kp-btns').innerHTML = (actions.keepPlaying ? '<button class="ke-btn ghost" data-k="keep">Keep playing</button>' : '') +
+        '<button class="ke-btn ghost" data-k="list">All scores</button>' +
+        (actions.save ? '<button class="ke-btn go" data-k="save">Save scores &amp; finish ✓</button>' : '');
     }
     box.addEventListener('click', function (e) {
       var b = e.target.closest('[data-k]');
       if (b && b.dataset.k === 'list') { clear(); box.remove(); box = null; if (then) then(); return; }
+      if (b && b.dataset.k === 'save') { clear(); box.remove(); box = null; actions.save(); return; }
+      if (b && b.dataset.k === 'keep') { clear(); box.remove(); box = null; actions.keepPlaying(); return; }
       if (!box.classList.contains('done')) done(); // a tap anywhere skips to the end
     });
 

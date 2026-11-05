@@ -111,6 +111,12 @@
   color: var(--bg, #17151f);
 }
 
+.ke-trophy {
+  flex-shrink: 0;
+  font-size: 20px;
+  padding: 0 8px;
+}
+
 /* Buttons that end something are red, so they're easy to spot in a menu (Henry). */
 #endGame,
 .ke-btn.go,
