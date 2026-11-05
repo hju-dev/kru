@@ -62,12 +62,12 @@ describe('picking a unit', () => {
     }
   })
   it('the chosen unit goes to the game with the session', () => {
-    const s = { id: 'x', class: 'M.3/1', level: 'M.3', mode: 'group', teams: [], teacherTeam: null, unit: 'm3-english-u7' } as unknown as Session
-    expect(initMessage(s).session).toMatchObject({ level: 'M.3', unit: 'm3-english-u7' })
+    const s = { id: 'x', class: 'M.3/1', level: 'M.3', mode: 'group', teams: [], teacherTeam: null, unit: 'm3-rw-u7' } as unknown as Session
+    expect(initMessage(s).session).toMatchObject({ level: 'M.3', unit: 'm3-rw-u7' })
     expect(initMessage({ ...s, unit: undefined }).session).toMatchObject({ unit: null })
   })
   it('the setup screen offers units for the class level only', () => {
-    expect(unitsFor('M.3').map((u) => u.title)).toContain('Unit 7: Capital Punishment')
-    expect(unitsFor('M.1').some((u) => u.id === 'm3-english-u7')).toBe(false)
+    expect(unitsFor('M.3').map((u) => u.title)).toContain('Unit 7: Technology & Digital Life')
+    expect(unitsFor('M.1').some((u) => u.id === 'm3-rw-u7')).toBe(false)
   })
 })

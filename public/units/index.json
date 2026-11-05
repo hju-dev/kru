@@ -1,11 +1,11 @@
 {
- "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it.",
+ "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it. Kru's M.1 / M.2 / M.3 are Henry's R&W courses.",
  "units": [
   {
-   "id": "m3-english-u7",
+   "id": "m3-rw-u7",
    "level": "M.3",
-   "course": "M.3 English",
-   "title": "Unit 7: Capital Punishment"
+   "course": "M.3 R&W",
+   "title": "Unit 7: Technology & Digital Life"
   }
  ]
 }
