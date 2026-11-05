@@ -62,12 +62,20 @@ describe('picking a unit', () => {
     }
   })
   it('the chosen unit goes to the game with the session', () => {
-    const s = { id: 'x', class: 'M.3/1', level: 'M.3', mode: 'group', teams: [], teacherTeam: null, unit: 'm3-rw-u7' } as unknown as Session
-    expect(initMessage(s).session).toMatchObject({ level: 'M.3', unit: 'm3-rw-u7' })
+    const s = { id: 'x', class: 'M.3/1', level: 'M.3', mode: 'group', teams: [], teacherTeam: null, unit: 'm3-rw-u5' } as unknown as Session
+    expect(initMessage(s).session).toMatchObject({ level: 'M.3', unit: 'm3-rw-u5' })
     expect(initMessage({ ...s, unit: undefined }).session).toMatchObject({ unit: null })
   })
   it('the setup screen offers units for the class level only', () => {
-    expect(unitsFor('M.3').map((u) => u.title)).toContain('Unit 7: Technology & Digital Life')
-    expect(unitsFor('M.1').some((u) => u.id === 'm3-rw-u7')).toBe(false)
+    expect(unitsFor('M.3').map((u) => u.title)).toContain('R&W Unit 5: Careers of the Future')
+    expect(unitsFor('M.1').some((u) => u.id === 'm3-rw-u5')).toBe(false)
+  })
+  it('Henry\'s current units: R&W Unit 5 for every level, and English Unit 7 for M.3', () => {
+    expect(UNITS.map((u) => u.id).sort()).toEqual(['m1-rw-u5', 'm2-rw-u5', 'm3-english-u7', 'm3-rw-u5'])
+    expect(unitsFor('M.1').map((u) => u.title)).toEqual(['R&W Unit 5: What Are You Afraid Of?'])
+    expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception'])
+    expect(unitsFor('M.3').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future'])
+    // every title says which course it is from
+    for (const u of UNITS) expect(u.title).toMatch(/^(R&W|English) Unit \d+: /)
   })
 })

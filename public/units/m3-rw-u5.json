@@ -1,0 +1,495 @@
+{
+ "id": "m3-rw-u5",
+ "level": "M.3",
+ "course": "M.3 R&W",
+ "title": "R&W Unit 5: Careers of the Future",
+ "source": "Henry's Gamma decks \"M.3 R&W Unit 5 Lesson 1 and 4\" (careers and work; future time clauses). American spelling.",
+ "sets": [
+  {
+   "name": "Word meaning",
+   "questions": [
+    {
+     "q": "Which word means \"a person or company that gives jobs to other people\"?",
+     "choices": [
+      "employer",
+      "employee",
+      "freelance",
+      "contract"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who works for a company\"?",
+     "choices": [
+      "career",
+      "employer",
+      "employee",
+      "salary"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"working independently, not for one company\"?",
+     "choices": [
+      "employee",
+      "flexible",
+      "reliable",
+      "freelance"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the fixed money you earn from your job, usually monthly\"?",
+     "choices": [
+      "contract",
+      "salary",
+      "career",
+      "opportunity"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a written agreement between a worker and a company\"?",
+     "choices": [
+      "qualification",
+      "salary",
+      "contract",
+      "workplace"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"education, training or skills needed for a job\"?",
+     "choices": [
+      "qualification",
+      "responsibility",
+      "opportunity",
+      "contract"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"trustworthy; does their job well\"?",
+     "choices": [
+      "flexible",
+      "reliable",
+      "freelance",
+      "employed"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a chance to do something good or improve your situation\"?",
+     "choices": [
+      "contract",
+      "responsibility",
+      "salary",
+      "opportunity"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Spell the word: \"a long-term job or profession you develop over many years\".",
+     "answer": "career",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Fill the gap",
+   "questions": [
+    {
+     "q": "A teacher's ___ include patience and good communication skills.",
+     "choices": [
+      "employers",
+      "contracts",
+      "salaries",
+      "qualifications"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Freelancers often work on short-term ___.",
+     "choices": [
+      "careers",
+      "contracts",
+      "salaries",
+      "workplaces"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She has built a long and successful ___ in engineering.",
+     "choices": [
+      "career",
+      "contract",
+      "employer",
+      "salary"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "My ___ gave me extra training when I started the job.",
+     "choices": [
+      "career",
+      "employee",
+      "employer",
+      "salary"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Working from home gives employees a more ___ schedule.",
+     "choices": [
+      "reliable",
+      "flexible",
+      "freelance",
+      "responsible"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The ___ for this position increases after one year.",
+     "choices": [
+      "qualification",
+      "career",
+      "employer",
+      "salary"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "One ___ of a nurse is caring for patients.",
+     "choices": [
+      "contract",
+      "opportunity",
+      "responsibility",
+      "salary"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "A positive ___ helps people do their best work.",
+     "choices": [
+      "workplace",
+      "salary",
+      "contract",
+      "qualification"
+     ],
+     "answer": 0,
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Future time clauses",
+   "questions": [
+    {
+     "q": "When I ___ school, I will travel.",
+     "choices": [
+      "finish",
+      "will finish",
+      "finished",
+      "am finish"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "I will call you as soon as I ___ home.",
+     "choices": [
+      "got",
+      "will get",
+      "get",
+      "getting"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Before I ___ to university, I will take a gap year.",
+     "choices": [
+      "going",
+      "will go",
+      "went",
+      "go"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "I will study hard ___ I pass my exams.",
+     "choices": [
+      "before",
+      "until",
+      "as soon as",
+      "after"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "In a future time clause, we use the ___ tense.",
+     "choices": [
+      "past",
+      "future",
+      "present",
+      "continuous"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I will apply for jobs after I graduate.",
+      "I will apply for jobs after I will graduate.",
+      "I apply for jobs after I will graduate.",
+      "I will applied for jobs after I graduate."
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"When I finish school, I will travel.\" The comma comes after the ___.",
+     "choices": [
+      "main clause",
+      "time clause",
+      "subject",
+      "verb"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Fix the mistake: \"When I will finish school, I will look for a job.\"",
+     "answer": "When I finish school, I will look for a job.",
+     "double": true
+    }
+   ]
+  },
+  {
+   "name": "People at work",
+   "questions": [
+    {
+     "q": "A ___ is what you do each day. A career is the bigger picture.",
+     "choices": [
+      "workplace",
+      "salary",
+      "contract",
+      "job"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Employer or employee? \"She works for a bank.\"",
+     "choices": [
+      "contract",
+      "employer",
+      "freelance",
+      "employee"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Employer or employee? \"The company hired ten new people.\"",
+     "choices": [
+      "employee",
+      "employer",
+      "salary",
+      "contract"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Some designers ___ online from home.",
+     "choices": [
+      "freelance",
+      "employer",
+      "salary",
+      "qualify"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which is a qualification?",
+     "choices": [
+      "a big office",
+      "a monthly salary",
+      "a university degree in design",
+      "a short contract"
+     ],
+     "answer": 2,
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "True or false",
+   "questions": [
+    {
+     "q": "An employer is a person who works for a company.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A salary is usually paid every month.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Freelance workers often have flexible schedules.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A reliable employee is never on time.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"When I will graduate\" is correct English.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"As soon as\" is a time word.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    }
+   ]
+  }
+ ],
+ "words": [
+  {
+   "word": "career"
+  },
+  {
+   "word": "freelance"
+  },
+  {
+   "word": "employer"
+  },
+  {
+   "word": "employee"
+  },
+  {
+   "word": "salary"
+  },
+  {
+   "word": "flexible"
+  },
+  {
+   "word": "contract"
+  },
+  {
+   "word": "qualification"
+  },
+  {
+   "word": "reliable"
+  },
+  {
+   "word": "responsibility"
+  },
+  {
+   "word": "workplace"
+  },
+  {
+   "word": "opportunity"
+  },
+  {
+   "word": "job interview"
+  },
+  {
+   "word": "resume"
+  },
+  {
+   "word": "office"
+  },
+  {
+   "word": "nurse"
+  },
+  {
+   "word": "engineer"
+  },
+  {
+   "word": "graphic designer"
+  },
+  {
+   "word": "doctor"
+  },
+  {
+   "word": "teacher"
+  },
+  {
+   "word": "university"
+  },
+  {
+   "word": "graduate"
+  },
+  {
+   "word": "promotion"
+  },
+  {
+   "word": "boss"
+  },
+  {
+   "word": "gap year"
+  }
+ ],
+ "motions": [
+  "Freelance work is better than working for one company.",
+  "A high salary is more important than a job you love.",
+  "Everyone should take a gap year before university.",
+  "Working from home is better than working in an office.",
+  "Robots will take most jobs in the future.",
+  "University is the best way to start a career.",
+  "Students should get work experience before they finish school.",
+  "It is better to have one career for life than many jobs.",
+  "Being reliable is more important than being clever at work.",
+  "Teenagers should have a part-time job."
+ ]
+}

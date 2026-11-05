@@ -1,11 +1,29 @@
 {
- "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it. Kru's M.1 / M.2 / M.3 are Henry's R&W courses.",
+ "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it. Kru's M.1 / M.2 / M.3 are Henry's R&W courses; titles start with the course (R&W or English).",
  "units": [
   {
-   "id": "m3-rw-u7",
+   "id": "m1-rw-u5",
+   "level": "M.1",
+   "course": "M.1 R&W",
+   "title": "R&W Unit 5: What Are You Afraid Of?"
+  },
+  {
+   "id": "m2-rw-u5",
+   "level": "M.2",
+   "course": "M.2 R&W",
+   "title": "R&W Unit 5: Perception"
+  },
+  {
+   "id": "m3-english-u7",
+   "level": "M.3",
+   "course": "M.3 English",
+   "title": "English Unit 7: Capital Punishment"
+  },
+  {
+   "id": "m3-rw-u5",
    "level": "M.3",
    "course": "M.3 R&W",
-   "title": "Unit 7: Technology & Digital Life"
+   "title": "R&W Unit 5: Careers of the Future"
   }
  ]
 }
