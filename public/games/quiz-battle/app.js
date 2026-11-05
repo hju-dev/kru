@@ -106,7 +106,7 @@
   function render() {
     var s = set(), q = question(), shown = !!S.revealed[S.pos];
     if (!s || !q) return;
-    bonusRound(S.setKey + '-' + S.pos);
+    bonusRound(S.setKey + '-' + S.pos, q.choices ? ['choice'] : ['short']); // e.g. Spelling counts: short answers only
     KruCorner.set($('stage'), (S.pos + 1) + '/' + s.questions.length);
     $('double').hidden = !q.double;
     $('q').textContent = q.q;
@@ -135,8 +135,8 @@
     var s = set();
     if (!s) return;
     if (pos >= s.questions.length) {
-      toast('Set finished! Choose another set, or tap the home button → Finish.', false);
-      openSets();
+      stopTimer(); renderClock();
+      KruEnd.show({ keepPlaying: openSets }); // the winners first; Keep playing = another set
       return;
     }
     S.pos = Math.max(0, pos);
@@ -268,7 +268,7 @@
 
   // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
   // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
-  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+  function bonusRound(key, tags) { var b = KruBonus.next(S.kbonus, key, tags); if (b !== S.kbonus) { S.kbonus = b; save(); } }
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
@@ -285,7 +285,7 @@
         award: function (id, d, card) { S.pts[id] = pts(id) + d; Kru.score(id, d, 'bonus: ' + card.name); save(); renderTeams(); } });
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level) S = saved;
-      else S = { v: 1, level: level, setKey: null, pos: 0, revealed: {}, right: {}, secs: 20, pts: {}, log: [] };
+      else S = { v: 1, level: level, setKey: null, pos: 0, revealed: {}, right: {}, secs: 10, pts: {}, log: [] };
       total = left = S.secs;
       if (set() && question() && set().name === S.setName) render();
       else {

@@ -115,8 +115,8 @@
     $('ans').hidden = !S.revealed;
     $('reveal').disabled = S.revealed;
     var more = nextMain() >= 0;
-    $('next').textContent = more ? 'Next ▶' : S.r + 1 < ROUNDS.length ? 'Next round ▶' : 'Last question';
-    $('next').disabled = !more && S.r + 1 >= ROUNDS.length;
+    $('next').textContent = more ? 'Next ▶' : S.r + 1 < ROUNDS.length ? 'Next round ▶' : '🏆 See the winners';
+    $('next').disabled = false;
     $('spare').disabled = !R.qs.some(function (q) { return q.spare; });
     $('prev').disabled = S.r === 0 && S.qi === 0;
     renderTeams();
@@ -242,6 +242,7 @@
     var j = nextMain();
     if (j >= 0) goTo(S.r, j);
     else if (S.r + 1 < ROUNDS.length) goTo(S.r + 1, 0);
+    else KruEnd.show(); // the last question: the podium, then Save scores & finish
   });
   $('toastUndo').addEventListener('click', undo);
 

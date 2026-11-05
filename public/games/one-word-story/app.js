@@ -1,5 +1,5 @@
 /* One-Word Story: the whole class in a circle, one word each, building a story from an opener.
-   A beat tells the next person when to say their word (no tapping for each word). "Period!" ends a
+   A beat tells the next person when to say their word (no tapping for each word). "Full stop!" ends a
    sentence. When the story time is up, the last person finishes the sentence, then one student
    retells the whole story in 30 seconds. No points: a speaking warm-up. */
 (function () {
@@ -142,7 +142,7 @@
     unlockAudio();
     S.sentences++; save();
     tone([392, 523], 0.1, 0.3, 0.35);
-    flash('PERIOD!', 700);
+    flash('FULL STOP!', 700);
     render();
   });
   $('retell').addEventListener('click', function () { if (phase !== 'retell') { pause(); startRetell(); } });
@@ -191,9 +191,9 @@
       OPENERS = c[level].openers;
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === OPENERS.length) S = saved;
-      else S = { v: 1, level: level, order: shuffled(OPENERS.length), pos: 0, round: 240, beat: 5, words: 0, sentences: 0, introDone: false };
+      else S = { v: 1, level: level, order: shuffled(OPENERS.length), pos: 0, round: 240, beat: 3, words: 0, sentences: 0, introDone: false };
       if (ROUNDS.indexOf(S.round) < 0) S.round = 240;
-      if (BEATS.indexOf(S.beat) < 0) S.beat = 5;
+      if (BEATS.indexOf(S.beat) < 0) S.beat = 3;
       total = left = S.round; beatLeft = S.beat;
       render();
       INTRO = KruIntro.forLevel(c, level);

@@ -248,6 +248,7 @@
     showView('round');
   }
   function showWinner() {
+    if (window.KruEnd) { KruEnd.show(); return; } // the podium, then Save scores & finish
     var sorted = teams.slice().sort(function (a, b) { return total_(b.id) - total_(a.id); });
     var max = total_(sorted[0].id);
     var winners = sorted.filter(function (t) { return total_(t.id) === max; }).map(function (t) { return t.name; });

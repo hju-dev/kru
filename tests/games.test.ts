@@ -172,7 +172,12 @@ describe('American English (Henry)', () => {
           continue
         }
         const lines = text.split('\n').filter((l) => !/^\s*(\/\/|\/?\*)/.test(l)) // code comments don't show on screen
-        for (const l of lines) expect(l.match(british)?.[0], `${f}: ${l.trim().slice(0, 80)}`).toBeUndefined()
+        // Henry's own choice (Nov 2026): One-Word Story's button says "Full stop!", as he says it in class
+        const allowed = g.slug === 'one-word-story' ? (w: string) => /^full stop$/i.test(w) : () => false
+        for (const l of lines) {
+          const w = l.match(british)?.[0]
+          expect(w && !allowed(w) ? w : undefined, `${f}: ${l.trim().slice(0, 80)}`).toBeUndefined()
+        }
       }
     })
   }

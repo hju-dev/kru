@@ -195,7 +195,8 @@
       "group"
     ],
     "status": "ready",
-    "section": "quizzes"
+    "section": "quizzes",
+    "sheetQuestions": true
   },
   {
     "slug": "board-race",
@@ -338,7 +339,7 @@
     "slug": "one-word-story",
     "title": "One-Word Story",
     "file": "public/games/one-word-story/index.html",
-    "description": "The whole class in a circle builds a story one word each, to a beat (no tapping per word). Story openers for M.1, M.2 and M.3, a Period! button, then a 30-second retell. A warm-up with no points.",
+    "description": "The whole class in a circle builds a story one word each, to a beat (no tapping per word). Story openers for M.1, M.2 and M.3, a button to end each sentence, then a 30-second retell. A warm-up with no points.",
     "levels": [
       "M.1",
       "M.2",

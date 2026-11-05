@@ -8,12 +8,12 @@
      {
       "q": "Yesterday I ___ to the park.",
       "choices": [
-       "go",
        "went",
+       "go",
        "gone",
        "going"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -31,33 +31,33 @@
       "q": "What is the past of \"buy\"?",
       "choices": [
        "buyed",
-       "bought",
+       "buys",
        "brought",
-       "buys"
+       "bought"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
       "q": "We didn't ___ TV last night.",
       "choices": [
-       "watch",
        "watched",
+       "watch",
        "watching",
        "watches"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": true
      },
      {
       "q": "___ you see the movie last weekend?",
       "choices": [
        "Do",
-       "Did",
        "Does",
+       "Did",
        "Was"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
@@ -68,12 +68,12 @@
      {
       "q": "They ___ soccer yesterday after school.",
       "choices": [
-       "play",
-       "playing",
        "played",
+       "playing",
+       "play",
        "plays"
       ],
-      "answer": 2,
+      "answer": 0,
       "double": false
      },
      {
@@ -92,10 +92,10 @@
       "choices": [
        "was",
        "is",
-       "were",
-       "am"
+       "am",
+       "were"
       ],
-      "answer": 2,
+      "answer": 3,
       "double": false
      },
      {
@@ -112,44 +112,44 @@
       "q": "Which one is a fruit?",
       "choices": [
        "carrot",
-       "mango",
+       "bread",
        "rice",
-       "bread"
+       "mango"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
       "q": "Where do you sleep?",
       "choices": [
        "kitchen",
-       "bathroom",
        "bedroom",
+       "bathroom",
        "garage"
       ],
-      "answer": 2,
+      "answer": 1,
       "double": false
      },
      {
       "q": "What do you wear on your feet?",
       "choices": [
-       "gloves",
-       "a hat",
        "shoes",
+       "a hat",
+       "gloves",
        "a scarf"
       ],
-      "answer": 2,
+      "answer": 0,
       "double": false
      },
      {
       "q": "Which animal says \"moo\"?",
       "choices": [
-       "a cow",
-       "a dog",
        "a duck",
+       "a dog",
+       "a cow",
        "a cat"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
@@ -172,11 +172,11 @@
       "q": "Which is the opposite of \"big\"?",
       "choices": [
        "tall",
-       "small",
+       "heavy",
        "long",
-       "heavy"
+       "small"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -193,12 +193,12 @@
      {
       "q": "Which word is a verb?",
       "choices": [
-       "happy",
        "run",
+       "happy",
        "table",
        "blue"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": true
      },
      {
@@ -214,34 +214,34 @@
      {
       "q": "She ___ to school every day.",
       "choices": [
-       "walk",
        "walks",
+       "walk",
        "walking",
        "walked"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
       "q": "I ___ like spicy food.",
       "choices": [
-       "don't",
-       "doesn't",
        "isn't",
+       "doesn't",
+       "don't",
        "aren't"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
       "q": "___ your brother play soccer?",
       "choices": [
        "Do",
-       "Does",
+       "Are",
        "Is",
-       "Are"
+       "Does"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -258,12 +258,12 @@
      {
       "q": "We ___ English on Monday.",
       "choices": [
-       "study",
-       "studies",
        "studying",
+       "studies",
+       "study",
        "is study"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
@@ -274,12 +274,12 @@
      {
       "q": "He ___ a bike.",
       "choices": [
-       "have",
        "has",
+       "have",
        "haves",
        "having"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -297,11 +297,11 @@
       "q": "They ___ in Bangkok.",
       "choices": [
        "lives",
-       "live",
+       "is live",
        "living",
-       "is live"
+       "live"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -318,22 +318,22 @@
       "q": "Which one is a vegetable?",
       "choices": [
        "apple",
-       "carrot",
+       "mango",
        "banana",
-       "mango"
+       "carrot"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
       "q": "Which animal can fly?",
       "choices": [
        "a fish",
-       "a cow",
        "a bird",
+       "a cow",
        "a snake"
       ],
-      "answer": 2,
+      "answer": 1,
       "double": false
      },
      {
@@ -351,22 +351,22 @@
       "q": "We get milk from a ___.",
       "choices": [
        "dog",
-       "cow",
        "bird",
+       "cow",
        "frog"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
       "q": "Which one is a drink?",
       "choices": [
        "bread",
-       "rice",
        "juice",
+       "rice",
        "egg"
       ],
-      "answer": 2,
+      "answer": 1,
       "double": false
      },
      {
@@ -377,23 +377,23 @@
      {
       "q": "Which food is sweet?",
       "choices": [
-       "chocolate",
+       "chilli",
        "salt",
        "lemon",
-       "chilli"
+       "chocolate"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": false
      },
      {
       "q": "A baby dog is a ___.",
       "choices": [
        "kitten",
-       "puppy",
        "calf",
+       "puppy",
        "chick"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": true
      },
      {
@@ -432,11 +432,11 @@
       "q": "My birthday is ___ May.",
       "choices": [
        "on",
-       "in",
        "at",
+       "in",
        "to"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
@@ -444,10 +444,10 @@
       "choices": [
        "in",
        "on",
-       "at",
-       "to"
+       "to",
+       "at"
       ],
-      "answer": 2,
+      "answer": 3,
       "double": false
      },
      {
@@ -464,12 +464,12 @@
      {
       "q": "___ do you live?",
       "choices": [
-       "Where",
-       "What",
        "Why",
+       "What",
+       "Where",
        "How"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
@@ -480,23 +480,23 @@
      {
       "q": "The book is ___ the table. (on top)",
       "choices": [
-       "in",
        "on",
+       "in",
        "at",
        "from"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
       "q": "___ is your favorite teacher?",
       "choices": [
-       "Who",
        "Where",
+       "Who",
        "When",
        "How"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": true
      },
      {
@@ -504,10 +504,10 @@
       "choices": [
        "in",
        "at",
-       "on",
-       "to"
+       "to",
+       "on"
       ],
-      "answer": 2,
+      "answer": 3,
       "double": false
      },
      {
@@ -527,34 +527,34 @@
      {
       "q": "At 8 p.m. last night I ___ TV.",
       "choices": [
-       "watch",
        "was watching",
+       "watch",
        "were watching",
        "watching"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
       "q": "They ___ when the phone rang.",
       "choices": [
-       "were sleeping",
-       "was sleeping",
        "sleep",
+       "was sleeping",
+       "were sleeping",
        "are sleeping"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
       "q": "While she ___ home, it started to rain.",
       "choices": [
        "walks",
-       "was walking",
+       "walk",
        "were walking",
-       "walk"
+       "was walking"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -572,11 +572,11 @@
       "q": "We were playing soccer ___ the teacher arrived.",
       "choices": [
        "while",
-       "when",
        "so",
+       "when",
        "but"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
@@ -587,34 +587,34 @@
      {
       "q": "Choose the correct sentence.",
       "choices": [
-       "I was eat dinner.",
        "I was eating dinner.",
+       "I was eat dinner.",
        "I were eating dinner.",
        "I eating dinner."
       ],
-      "answer": 1,
+      "answer": 0,
       "double": true
      },
      {
       "q": "___ I was cooking, my brother was cleaning.",
       "choices": [
-       "While",
        "So",
+       "While",
        "But",
        "Or"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": false
      },
      {
       "q": "It was raining, ___ we stayed at home.",
       "choices": [
        "because",
-       "so",
+       "while",
        "but",
-       "while"
+       "so"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -630,23 +630,23 @@
      {
       "q": "Which one is a document with your photo, for traveling to other countries?",
       "choices": [
-       "a passport",
+       "sunscreen",
        "a suitcase",
        "a souvenir",
-       "sunscreen"
+       "a passport"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": false
      },
      {
       "q": "You put your clothes in a ___ for a trip.",
       "choices": [
-       "suitcase",
        "passport",
+       "suitcase",
        "ticket",
        "tent"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": false
      },
      {
@@ -690,34 +690,34 @@
      {
       "q": "A person who visits a place on vacation is a ___.",
       "choices": [
-       "tourist",
+       "pilot",
        "guide",
        "waiter",
-       "pilot"
+       "tourist"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": false
      },
      {
       "q": "Which sentence is correct?",
       "choices": [
        "I goed to Krabi last year.",
-       "I went to Krabi last year.",
        "I go to Krabi last year.",
+       "I went to Krabi last year.",
        "I going to Krabi last year."
       ],
-      "answer": 1,
+      "answer": 2,
       "double": true
      },
      {
       "q": "You sleep in a ___ when you go camping.",
       "choices": [
-       "hotel",
        "tent",
+       "hotel",
        "cave",
        "car"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -733,12 +733,12 @@
      {
       "q": "An elephant is ___ than a dog.",
       "choices": [
-       "big",
        "bigger",
+       "big",
        "biggest",
        "more big"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -756,11 +756,11 @@
       "q": "Bangkok is ___ than my village.",
       "choices": [
        "busy",
-       "busier",
+       "more busy",
        "busiest",
-       "more busy"
+       "busier"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -793,12 +793,12 @@
      {
       "q": "Which sentence is correct?",
       "choices": [
-       "She is more tall than me.",
        "She is taller than me.",
+       "She is more tall than me.",
        "She is tallest than me.",
        "She is tall than me."
       ],
-      "answer": 1,
+      "answer": 0,
       "double": true
      },
      {
@@ -816,11 +816,11 @@
       "q": "This hotel is the ___ in town.",
       "choices": [
        "more expensive",
-       "most expensive",
+       "expensive",
        "expensiver",
-       "expensive"
+       "most expensive"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -836,12 +836,12 @@
      {
       "q": "I was tired, ___ I went to bed early.",
       "choices": [
-       "so",
+       "although",
        "but",
        "because",
-       "although"
+       "so"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": false
      },
      {
@@ -858,34 +858,34 @@
      {
       "q": "___ it was cold, we went swimming.",
       "choices": [
-       "Because",
-       "So",
        "Although",
+       "So",
+       "Because",
        "And"
       ],
-      "answer": 2,
+      "answer": 0,
       "double": false
      },
      {
       "q": "I like tea, ___ I don't like coffee.",
       "choices": [
        "and",
-       "but",
        "so",
+       "but",
        "because"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
       "q": "First we had lunch, ___ we went to the beach.",
       "choices": [
-       "then",
        "but",
+       "then",
        "because",
        "although"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": false
      },
      {
@@ -897,33 +897,33 @@
       "q": "Do you want tea ___ coffee?",
       "choices": [
        "but",
-       "or",
+       "because",
        "so",
-       "because"
+       "or"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": true
      },
      {
       "q": "___ I was sleeping, someone knocked on the door.",
       "choices": [
-       "While",
-       "So",
        "But",
+       "So",
+       "While",
        "Or"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
       "q": "She studied hard, ___ she passed the exam.",
       "choices": [
-       "but",
        "so",
+       "but",
        "although",
        "or"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -951,44 +951,44 @@
       "q": "You borrow books from a ___.",
       "choices": [
        "bank",
-       "library",
        "market",
+       "library",
        "temple"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
       "q": "Which one goes on water?",
       "choices": [
        "a bus",
-       "a boat",
+       "a taxi",
        "a plane",
-       "a taxi"
+       "a boat"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
       "q": "You can see old things from history in a ___.",
       "choices": [
-       "museum",
        "pharmacy",
+       "museum",
        "garage",
        "hotel"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": false
      },
      {
       "q": "We went to Chiang Mai ___ train.",
       "choices": [
-       "by",
-       "on",
        "in",
+       "on",
+       "by",
        "at"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
@@ -999,12 +999,12 @@
      {
       "q": "You buy medicine at a ___.",
       "choices": [
-       "bakery",
        "pharmacy",
+       "bakery",
        "post office",
        "movie theater"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": true
      },
      {
@@ -1021,12 +1021,12 @@
      {
       "q": "You change money at a ___.",
       "choices": [
-       "bank",
+       "zoo",
        "park",
        "school",
-       "zoo"
+       "bank"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": false
      },
      {
@@ -1046,12 +1046,12 @@
      {
       "q": "If it rains tomorrow, we ___ at home.",
       "choices": [
-       "stay",
        "will stay",
+       "stay",
        "would stay",
        "stayed"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -1068,34 +1068,34 @@
      {
       "q": "If you heat water to 100°C, it ___.",
       "choices": [
-       "boils",
+       "boiling",
        "will boiled",
        "boiled",
-       "boiling"
+       "boils"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": false
      },
      {
       "q": "If she had studied, she ___ the exam.",
       "choices": [
        "will pass",
-       "would pass",
        "would have passed",
+       "would pass",
        "passed"
       ],
-      "answer": 2,
+      "answer": 1,
       "double": false
      },
      {
       "q": "What would you do if you ___ a million baht?",
       "choices": [
        "win",
-       "won",
        "will win",
+       "won",
        "winning"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
@@ -1106,12 +1106,12 @@
      {
       "q": "Which sentence is correct?",
       "choices": [
-       "If I will see him, I tell him.",
        "If I see him, I will tell him.",
+       "If I will see him, I tell him.",
        "If I saw him, I will tell him.",
        "If I see him, I would told him."
       ],
-      "answer": 1,
+      "answer": 0,
       "double": true
      },
      {
@@ -1129,11 +1129,11 @@
       "q": "I wouldn't do that if I ___ you.",
       "choices": [
        "am",
-       "were",
+       "is",
        "will be",
-       "is"
+       "were"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -1150,11 +1150,11 @@
       "q": "\"It's a piece of cake\" means it is ___.",
       "choices": [
        "delicious",
-       "very easy",
+       "sweet",
        "expensive",
-       "sweet"
+       "very easy"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -1171,23 +1171,23 @@
      {
       "q": "We ___ a mistake.",
       "choices": [
-       "did",
        "made",
+       "did",
        "took",
        "had"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
       "q": "Can you ___ me a favor?",
       "choices": [
        "make",
-       "do",
        "give",
+       "do",
        "take"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
@@ -1210,33 +1210,33 @@
       "q": "Which is correct?",
       "choices": [
        "strong rain",
-       "heavy rain",
+       "tall rain",
        "big rain",
-       "tall rain"
+       "heavy rain"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": true
      },
      {
       "q": "\"Hit the books\" means ___.",
       "choices": [
-       "study hard",
-       "fight",
        "read slowly",
+       "fight",
+       "study hard",
        "buy books"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
       "q": "I need to ___ a decision.",
       "choices": [
-       "do",
        "make",
+       "do",
        "have",
        "give"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -1252,12 +1252,12 @@
      {
       "q": "The man ___ lives next door is a doctor.",
       "choices": [
-       "which",
        "who",
+       "which",
        "where",
        "whose"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -1275,33 +1275,33 @@
       "q": "The phone ___ I bought is broken.",
       "choices": [
        "who",
-       "that",
+       "whose",
        "where",
-       "whose"
+       "that"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
       "q": "She's the girl ___ brother is famous.",
       "choices": [
        "who",
-       "which",
        "whose",
+       "which",
        "where"
       ],
-      "answer": 2,
+      "answer": 1,
       "double": false
      },
      {
       "q": "The movie ___ we watched was boring.",
       "choices": [
-       "which",
-       "who",
        "where",
+       "who",
+       "which",
        "whose"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
@@ -1312,12 +1312,12 @@
      {
       "q": "Which sentence is correct?",
       "choices": [
-       "The book who I read was great.",
        "The book which I read was great.",
+       "The book who I read was great.",
        "The book where I read was great.",
        "The book whose I read was great."
       ],
-      "answer": 1,
+      "answer": 0,
       "double": true
      },
      {
@@ -1334,12 +1334,12 @@
      {
       "q": "Do you know anyone ___ can fix computers?",
       "choices": [
-       "who",
+       "whose",
        "which",
        "where",
-       "whose"
+       "who"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": false
      },
      {
@@ -1356,11 +1356,11 @@
       "q": "\"Give up\" means ___.",
       "choices": [
        "start",
-       "stop trying",
+       "give a present",
        "go up",
-       "give a present"
+       "stop trying"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -1377,34 +1377,34 @@
      {
       "q": "Can you ___ my cat while I'm away?",
       "choices": [
-       "look for",
        "look after",
+       "look for",
        "look up",
        "look at"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
       "q": "I need to ___ this word in the dictionary.",
       "choices": [
-       "look up",
-       "look after",
        "look out",
+       "look after",
+       "look up",
        "look back"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
       "q": "We've ___ milk. Can you buy some?",
       "choices": [
-       "run out of",
        "run into",
+       "run out of",
        "run away",
        "run up"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": false
      },
      {
@@ -1415,34 +1415,34 @@
      {
       "q": "The plane ___ at 6 a.m.",
       "choices": [
-       "took off",
+       "took on",
        "took up",
        "took after",
-       "took on"
+       "took off"
       ],
-      "answer": 0,
+      "answer": 3,
       "double": true
      },
      {
       "q": "She ___ her mother: they look the same.",
       "choices": [
-       "takes after",
-       "takes off",
        "takes up",
+       "takes off",
+       "takes after",
        "takes in"
       ],
-      "answer": 0,
+      "answer": 2,
       "double": false
      },
      {
       "q": "Our car ___ on the way to Hua Hin.",
       "choices": [
-       "broke up",
        "broke down",
+       "broke up",
        "broke in",
        "broke out"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
@@ -1458,56 +1458,56 @@
      {
       "q": "The noun from \"happy\" is ___.",
       "choices": [
-       "happily",
        "happiness",
+       "happily",
        "happyness",
        "unhappy"
       ],
-      "answer": 1,
+      "answer": 0,
       "double": false
      },
      {
       "q": "The adjective from \"danger\" is ___.",
       "choices": [
        "dangerful",
-       "dangerous",
        "dangery",
+       "dangerous",
        "endanger"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
       "q": "The opposite of \"possible\" is ___.",
       "choices": [
        "unpossible",
-       "impossible",
+       "inpossible",
        "dispossible",
-       "inpossible"
+       "impossible"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
       "q": "The noun from \"decide\" is ___.",
       "choices": [
-       "decision",
        "decidement",
+       "decision",
        "deciding",
        "decisive"
       ],
-      "answer": 0,
+      "answer": 1,
       "double": false
      },
      {
       "q": "The opposite of \"honest\" is ___.",
       "choices": [
        "unhonest",
-       "dishonest",
        "inhonest",
+       "dishonest",
        "imhonest"
       ],
-      "answer": 1,
+      "answer": 2,
       "double": false
      },
      {
@@ -1541,11 +1541,11 @@
       "q": "The noun from \"free\" is ___.",
       "choices": [
        "freeness",
-       "freedom",
+       "freement",
        "freely",
-       "freement"
+       "freedom"
       ],
-      "answer": 1,
+      "answer": 3,
       "double": false
      },
      {
@@ -1628,13 +1628,10 @@
     "id": "spelling",
     "name": "Spelling counts",
     "text": "Short answers spelled perfectly: +1 extra.",
-    "points": 1
-   },
-   {
-    "id": "steal",
-    "name": "Steal",
-    "text": "A wrong team can steal 1 point by explaining the answer.",
-    "points": 1
+    "points": 1,
+    "only": [
+     "short"
+    ]
    },
    {
     "id": "fast",

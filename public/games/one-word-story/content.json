@@ -190,7 +190,7 @@
     "rows": [
      [
       "Each word",
-      "5 seconds"
+      "3 seconds"
      ],
      [
       "Story",
@@ -203,12 +203,12 @@
    "title": "Keep it right",
    "text": [
     "The story must make sense and be correct.",
-    "End a sentence? Say \"Period!\""
+    "End a sentence? Say \"Full stop!\""
    ],
    "example": {
     "rows": [
      [
-      "\"Period!\"",
+      "\"Full stop!\"",
       "ends a sentence"
      ]
     ]
