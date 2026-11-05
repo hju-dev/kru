@@ -1,0 +1,602 @@
+{
+ "id": "m3-english-u7",
+ "level": "M.3",
+ "course": "M.3 English",
+ "title": "Unit 7: Capital Punishment",
+ "source": "Henry's Gamma decks \"M.3 Unit 7 Lesson 1, 2 and 4\" (vocabulary, editorials, concession clauses). American spelling.",
+ "sets": [
+  {
+   "name": "Word meaning",
+   "questions": [
+    {
+     "q": "Which word means \"to officially end a law or system\"?",
+     "choices": [
+      "abolish",
+      "oppose",
+      "support",
+      "respect"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"not guilty of a crime\"?",
+     "choices": [
+      "cruel",
+      "violent",
+      "innocent",
+      "guilty"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"hurting someone because they hurt you\"?",
+     "choices": [
+      "respect",
+      "forgiveness",
+      "justice",
+      "revenge"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"fair treatment under the law\"?",
+     "choices": [
+      "revenge",
+      "justice",
+      "murder",
+      "society"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"causing serious pain or suffering on purpose\"?",
+     "choices": [
+      "guilty",
+      "innocent",
+      "cruel",
+      "fair"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the illegal and deliberate killing of a person\"?",
+     "choices": [
+      "murder",
+      "justice",
+      "revenge",
+      "right"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"deciding not to feel anger toward someone who hurt you\"?",
+     "choices": [
+      "revenge",
+      "forgiveness",
+      "violence",
+      "support"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a community of people who share laws and culture\"?",
+     "choices": [
+      "respect",
+      "justice",
+      "right",
+      "society"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Spell the word that means \"using physical force that causes injury or death\".",
+     "answer": "violent",
+     "double": false
+    },
+    {
+     "q": "Spell the noun: \"something a person is entitled to have or do\". (Every person has a ___ to life.)",
+     "answer": "right",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Fill the gap",
+   "questions": [
+    {
+     "q": "Many countries have decided to ___ capital punishment.",
+     "choices": [
+      "murder",
+      "support",
+      "respect",
+      "abolish"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The jury found the defendant ___ and sentenced him to death.",
+     "choices": [
+      "innocent",
+      "guilty",
+      "cruel",
+      "violent"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Many human rights organizations ___ capital punishment.",
+     "choices": [
+      "oppose",
+      "support",
+      "abolish",
+      "respect"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Polls show that many Americans still ___ capital punishment.",
+     "choices": [
+      "abolish",
+      "oppose",
+      "support",
+      "forgive"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Some victims' families believe in ___, even after a violent crime.",
+     "choices": [
+      "revenge",
+      "forgiveness",
+      "murder",
+      "society"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Opponents argue that every human life deserves basic ___.",
+     "choices": [
+      "cruelty",
+      "revenge",
+      "murder",
+      "respect"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Some people believe capital punishment is simply ___ dressed up as justice.",
+     "choices": [
+      "respect",
+      "forgiveness",
+      "revenge",
+      "society"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Capital punishment is usually kept for the most ___ crimes.",
+     "choices": [
+      "violent",
+      "innocent",
+      "fair",
+      "peaceful"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Since 1973, more than 190 people on death row in the U.S. have been found ___ and released.",
+     "answer": "innocent",
+     "double": true
+    }
+   ]
+  },
+  {
+   "name": "Opposites",
+   "questions": [
+    {
+     "q": "What is the opposite of guilty?",
+     "choices": [
+      "innocent",
+      "violent",
+      "cruel",
+      "unfair"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of support?",
+     "choices": [
+      "abolish",
+      "respect",
+      "oppose",
+      "agree"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of forgiveness?",
+     "choices": [
+      "society",
+      "justice",
+      "respect",
+      "revenge"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Justice is fair. Revenge is ___.",
+     "choices": [
+      "legal",
+      "personal",
+      "peaceful",
+      "innocent"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Cruel\" focuses on intent. \"Violent\" focuses on ___.",
+     "choices": [
+      "the law",
+      "feelings",
+      "force",
+      "forgiveness"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which pair are antonyms (opposites)?",
+     "choices": [
+      "support / oppose",
+      "cruel / violent",
+      "justice / society",
+      "right / respect"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Write the opposite of \"innocent\".",
+     "answer": "guilty",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Concession clauses",
+   "questions": [
+    {
+     "q": "___ capital punishment may deter crime, the evidence is far from clear.",
+     "choices": [
+      "Because",
+      "Although",
+      "So",
+      "Unless"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Despite the fact ___ innocent people have been executed, some say the system can be fixed.",
+     "choices": [
+      "so",
+      "of",
+      "which",
+      "that"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Granted ___ some crimes are horrific, this does not mean execution is the only answer.",
+     "choices": [
+      "by",
+      "of",
+      "if",
+      "that"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "When the concession clause comes FIRST, put a ___ after it.",
+     "choices": [
+      "period",
+      "comma",
+      "dash",
+      "question mark"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A concession clause ___ that the other side has a point.",
+     "choices": [
+      "admits",
+      "denies",
+      "proves",
+      "forgets"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which connector, in this unit, goes only at the BEGINNING of the sentence?",
+     "choices": [
+      "Although",
+      "Even though",
+      "While",
+      "Despite the fact that"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Capital punishment should be abolished, ___ it may satisfy the desire for justice.",
+     "choices": [
+      "because",
+      "even though",
+      "so that",
+      "unless"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Combine with \"although\": Capital punishment may reduce crime. / There is little reliable evidence that it does.",
+     "answer": "Although capital punishment may reduce crime, there is little reliable evidence that it does.",
+     "double": true
+    }
+   ]
+  },
+  {
+   "name": "True or false",
+   "questions": [
+    {
+     "q": "To abolish something means to introduce a new law.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "An innocent person has been found guilty of a crime.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Revenge means punishing someone because they harmed you.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "To oppose something means to strongly disagree with it.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A violent crime is peaceful and causes no harm.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "An editorial is a neutral news report.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A fact can be proved. An opinion cannot.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Studies show…\" is a signal word for an opinion.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Sentence variety",
+   "questions": [
+    {
+     "q": "\"If even one innocent person has been executed, can we truly say the system is just?\" This is a ___.",
+     "choices": [
+      "thesis",
+      "concession clause",
+      "fact",
+      "rhetorical question"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"…may satisfy the desire for revenge — but revenge is not justice.\" The — adds ___.",
+     "choices": [
+      "a list",
+      "a question",
+      "emphasis",
+      "a date"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Mixing short and long sentences = varying sentence ___.",
+     "choices": [
+      "length",
+      "openings",
+      "spelling",
+      "topics"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Supported by millions and condemned by millions more, …\" This sentence varies its ___.",
+     "choices": [
+      "opening",
+      "ending",
+      "spelling",
+      "tense"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Writing with only simple sentences sounds ___.",
+     "choices": [
+      "balanced",
+      "sophisticated",
+      "repetitive",
+      "persuasive"
+     ],
+     "answer": 2,
+     "double": false
+    }
+   ]
+  }
+ ],
+ "words": [
+  {
+   "word": "abolish"
+  },
+  {
+   "word": "cruel"
+  },
+  {
+   "word": "forgiveness"
+  },
+  {
+   "word": "guilty"
+  },
+  {
+   "word": "innocent"
+  },
+  {
+   "word": "justice"
+  },
+  {
+   "word": "murder"
+  },
+  {
+   "word": "oppose"
+  },
+  {
+   "word": "respect"
+  },
+  {
+   "word": "revenge"
+  },
+  {
+   "word": "society"
+  },
+  {
+   "word": "support"
+  },
+  {
+   "word": "violent"
+  },
+  {
+   "word": "jury"
+  },
+  {
+   "word": "judge"
+  },
+  {
+   "word": "prison"
+  },
+  {
+   "word": "crime"
+  },
+  {
+   "word": "evidence"
+  },
+  {
+   "word": "editorial"
+  },
+  {
+   "word": "opinion"
+  },
+  {
+   "word": "fact"
+  },
+  {
+   "word": "law"
+  },
+  {
+   "word": "punishment"
+  },
+  {
+   "word": "victim"
+  },
+  {
+   "word": "court"
+  },
+  {
+   "word": "human rights"
+  }
+ ],
+ "motions": [
+  "Capital punishment should be abolished everywhere.",
+  "Some crimes are so violent that the criminal deserves to die.",
+  "Even a guilty person has the right to live.",
+  "The purpose of punishment is to protect society, not to get revenge.",
+  "A government should never have the right to take a life.",
+  "The risk of executing an innocent person is too high.",
+  "Forgiveness is more powerful than revenge.",
+  "Life in prison is a worse punishment than execution.",
+  "Victims' families should help decide the punishment.",
+  "Capital punishment stops people from committing crimes."
+ ]
+}

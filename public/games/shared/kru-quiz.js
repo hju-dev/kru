@@ -4,7 +4,9 @@
  * plus Henry's own sets from the Questions tab of his Sheet (session.questions) when a game wants them.
  * A question: { q, choices?: [A, B, C, D], answer: index (multiple choice) or text (short answer), double }.
  *
- *   KruQuiz.load(level, session) -> Promise<{ level, builtIn: [{ name, questions }], fromSheet: [...] }>
+ *   KruQuiz.load(level, session) -> Promise<{ level, builtIn: [{ name, questions }], fromSheet: [...], unit }>
+ *   KruQuiz.unit(session)        -> Promise<unit | null>: the unit Henry picked on the setup screen
+ *                                   (public/units/<id>.json: { title, level, sets, words, motions }), if it fits the level
  *   KruQuiz.html(q, shown)       -> the question, A-D choices (right one green once shown) or the short answer
  *   KruQuiz.fit(stageEl)         -> shrinks the question, then the choices, until the stage fits
  */
@@ -15,7 +17,20 @@
   }
   function valid(q) { return q && q.q && (Array.isArray(q.choices) ? q.choices.length >= 2 && q.choices[q.answer] != null : q.answer != null && q.answer !== ''); }
 
+  /** The unit picked on the setup screen (made from Henry's Gamma lessons), or null. Never fails: no unit = built-in. */
+  function unit(session) {
+    var id = session && session.unit;
+    if (!id || !/^[a-z0-9-]+$/.test(id)) return Promise.resolve(null);
+    return fetch('/units/' + id + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (u) {
+      if (!u || (u.level && session.level && u.level !== session.level)) return null;
+      u.sets = (u.sets || []).map(function (s) { return { name: String(s.name), questions: (s.questions || []).filter(valid) }; })
+        .filter(function (s) { return s.questions.length; });
+      return u;
+    }).catch(function () { return null; });
+  }
+
   function load(level, session) {
+    var unitReady = unit(session);
     return fetch('/games/quiz-battle/content.json').then(function (r) {
       if (!r.ok) throw new Error('questions ' + r.status);
       return r.json();
@@ -26,7 +41,7 @@
           .filter(function (s) { return s.questions.length; });
       };
       var mine = session && Array.isArray(session.questions) ? session.questions : [];
-      return { level: lv, builtIn: clean(c[lv].sets), fromSheet: clean(mine) };
+      return unitReady.then(function (u) { return { level: lv, builtIn: clean(c[lv].sets), fromSheet: clean(mine), unit: u }; });
     });
   }
 
@@ -55,5 +70,5 @@
     while (qs > 18 && over()) q.style.fontSize = (qs -= 2) + 'px';
   }
 
-  window.KruQuiz = { load: load, html: html, fit: fit, valid: valid, esc: esc };
+  window.KruQuiz = { load: load, unit: unit, html: html, fit: fit, valid: valid, esc: esc };
 })();

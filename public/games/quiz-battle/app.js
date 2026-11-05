@@ -7,7 +7,7 @@
   var TIMES = [10, 20, 30, 45, 60];
   var $ = function (id) { return document.getElementById(id); };
 
-  var builtIn = [], fromSheet = [], problems = [];
+  var builtIn = [], fromSheet = [], problems = [], unitSets = [], UNIT = null, UNIT_ALL = null;
   var teams = [];
   var S = null; // saved: { v, level, setKey, pos, revealed, right, secs, pts, log }
   var left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
@@ -23,8 +23,9 @@
   function setByKey(key) {
     if (!key) return null;
     if (key === 'all') return ALL;
+    if (key === 'uall') return UNIT_ALL;
     var i = Number(key.slice(2));
-    return key.charAt(0) === 'b' ? builtIn[i] || null : fromSheet[i] || null;
+    return key.charAt(0) === 'b' ? builtIn[i] || null : key.charAt(0) === 'u' ? unitSets[i] || null : fromSheet[i] || null;
   }
   function set() { return setByKey(S.setKey); }
   function shuffled(n) {
@@ -193,7 +194,8 @@
       var doubles = s.questions.filter(function (q) { return q.double; }).length;
       return '<button class="btn" data-set="' + key + '"><b>' + esc(s.name) + '</b><br /><small>' + s.questions.length + ' questions' + (doubles ? ' · ' + doubles + ' double' : '') + '</small></button>';
     }
-    var html = '<h3>Built in</h3>' + btn(ALL, 'all') + builtIn.map(function (s, i) { return btn(s, 'b:' + i); }).join('');
+    var html = UNIT ? '<h3>' + esc(UNIT.title) + '</h3>' + btn(UNIT_ALL, 'uall') + unitSets.map(function (s, i) { return btn(s, 'u:' + i); }).join('') : '';
+    html += '<h3>Built in</h3>' + btn(ALL, 'all') + builtIn.map(function (s, i) { return btn(s, 'b:' + i); }).join('');
     html += '<h3>From your Sheet</h3>' + (fromSheet.length
       ? fromSheet.map(function (s, i) { return btn(s, 's:' + i); }).join('')
       : '<p class="muted">None yet for this level. Add questions in the Questions tab of your Sheet, then Sync.</p>');
@@ -272,7 +274,11 @@
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
-    contentReady.then(function (content) {
+    Promise.all([contentReady, KruQuiz.unit(session)]).then(function (both) {
+      var content = both[0];
+      UNIT = both[1];
+      unitSets = UNIT ? UNIT.sets : [];
+      UNIT_ALL = UNIT ? { name: UNIT.title.replace(/^Unit \d+: /, '') + ': all, shuffled', questions: [].concat.apply([], unitSets.map(function (s) { return s.questions; })) } : null;
       var level = content[session.level] ? session.level : 'M.2';
       builtIn = content[level].sets;
       ALL = { name: 'All topics, shuffled', questions: [].concat.apply([], builtIn.map(function (s) { return s.questions; })) };

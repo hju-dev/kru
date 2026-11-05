@@ -26,6 +26,8 @@ export interface GameInfo {
   classTool?: boolean
   /** true = the game gets the Sheet's Questions tab sets for its level (Quiz Battle) */
   sheetQuestions?: boolean
+  /** true = the setup screen offers a unit (content from Henry's Gamma lessons) for the level */
+  units?: boolean
   /** ready = playable; migrate / new = coming in a later phase */
   status: 'ready' | 'migrate' | 'new'
   section: SectionId

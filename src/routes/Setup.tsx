@@ -24,6 +24,7 @@ import { useChipDrag } from '../lib/useChipDrag'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import type { Level, Student, TeamSet } from '../types'
+import { unitsFor } from '../lib/units'
 import './Setup.css'
 
 const LEVELS: Level[] = ['M.1', 'M.2', 'M.3']
@@ -83,7 +84,7 @@ export function Setup() {
   if (!cls) return <Problem text="Choose a class on the home screen first." />
   if (roster.length === 0) return <Problem text={`${cls.name} has no active students yet. Add them in Dashboard → Rosters (or in the Rosters tab of your Sheet), then tap the sync button.`} />
   if (!session) return <main className="screen" />
-  return <SetupBoard key={session.id} session={session} roster={roster} gameTitle={game.title} modes={game.modes} hasLevels={game.levels.length > 0} patch={patch} onStart={(id) => navigate(`/play/${id}`, { replace: true })} />
+  return <SetupBoard key={session.id} session={session} roster={roster} gameTitle={game.title} modes={game.modes} hasLevels={game.levels.length > 0} hasUnits={!!game.units} patch={patch} onStart={(id) => navigate(`/play/${id}`, { replace: true })} />
 }
 
 function Problem({ text }: { text: string }) {
@@ -103,11 +104,12 @@ interface BoardProps {
   gameTitle: string
   modes: Mode[]
   hasLevels: boolean
+  hasUnits: boolean
   patch: (id: string, change: Partial<Session> | ((s: Session) => Partial<Session>)) => void
   onStart: (id: string) => void
 }
 
-function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, onStart }: BoardProps) {
+function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits, patch, onStart }: BoardProps) {
   const allSets = useApp((st) => st.data?.teamSets)
   const teamSets = allSets ?? []
   const [selected, setSelected] = useState<number[]>([])
@@ -246,11 +248,26 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, patch, on
         {hasLevels && (
           <div className="seg" role="group" aria-label="Level">
             {LEVELS.map((l) => (
-              <button key={l} aria-pressed={s.level === l} onClick={() => update({ level: l })}>
+              <button key={l} aria-pressed={s.level === l} onClick={() => update({ level: l, unit: undefined })}>
                 {l}
               </button>
             ))}
           </div>
+        )}
+        {hasUnits && unitsFor(s.level).length > 0 && (
+          <select
+            className="unit-pick"
+            aria-label="Content: built-in or a unit from your lessons"
+            value={s.unit ?? ''}
+            onChange={(e) => update({ unit: e.target.value || undefined })}
+          >
+            <option value="">Built-in content</option>
+            {unitsFor(s.level).map((u) => (
+              <option key={u.id} value={u.id}>
+                {u.title}
+              </option>
+            ))}
+          </select>
         )}
         {modes.length > 1 && (
           <div className="seg" role="group" aria-label="Mode">

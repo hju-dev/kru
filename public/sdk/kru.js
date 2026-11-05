@@ -11,7 +11,7 @@
  *   Kru.onFinishRequest(function () { Kru.finish([{ teamId, points }], notes) })
  *
  * Opened on its own (not inside Kru) or with ?mock=1, the game gets a fake class of 30
- * placeholder students. Extra mock options: &mode=solo  &level=M.1  &teams=6  &teacher=0
+ * placeholder students. Extra mock options: &mode=solo  &level=M.1  &teams=6  &teacher=0  &unit=m3-english-u7
  */
 (function () {
   'use strict';
@@ -60,6 +60,7 @@
       id: 'mock',
       class: 'M.' + level.slice(2) + '/1',
       level: level,
+      unit: /^[a-z0-9-]+$/.test(params.get('unit') || '') ? params.get('unit') : null,
       mode: mode,
       teams: teams,
       teacherTeam: params.get('teacher') === '0' ? null : { id: 't0', name: 'T. Henry' },

@@ -265,7 +265,7 @@
     Promise.all([contentReady, KruQuiz.load(session.level, session)]).then(function (both) {
       var c = both[0], Q = both[1];
       POOL = [];
-      Q.builtIn.concat(Q.fromSheet).forEach(function (s) { s.questions.forEach(function (q) { POOL.push(Object.assign({ set: s.name }, q)); }); });
+      (Q.unit ? Q.unit.sets : Q.builtIn.concat(Q.fromSheet)).forEach(function (s) { s.questions.forEach(function (q) { POOL.push(Object.assign({ set: s.name }, q)); }); });
       teams = Kru.allTeams();
       racers = teams.filter(function (t) { return !t.teacher; });
       KruEnd.setup({ standings: function () { return racers.map(function (t) { return { name: t.name, points: points(t.id) }; }); } });

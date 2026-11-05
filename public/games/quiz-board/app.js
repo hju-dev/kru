@@ -216,15 +216,18 @@
   Kru.ready(function (session) {
     Promise.all([contentReady, KruQuiz.load(session.level, session)]).then(function (both) {
       var c = both[0], Q = both[1];
-      SETS = Q.builtIn;
+      // a unit from Henry's lessons, if it has enough for a board (5 topics of 5); otherwise the built-in topics
+      var unitOk = Q.unit && Q.unit.sets.filter(function (s) { return s.questions.length >= ROWS; }).length >= COLS;
+      SETS = unitOk ? Q.unit.sets.filter(function (s) { return s.questions.length >= ROWS; }) : Q.builtIn;
+      if (unitOk) $('turn').title = Q.unit.title;
       teams = Kru.allTeams();
       KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       var saved = session.resume;
-      var ok = saved && saved.v === 1 && saved.level === Q.level && Array.isArray(saved.cols) &&
+      var ok = saved && saved.v === 1 && saved.level === Q.level && (saved.unit || null) === (unitOk ? Q.unit.id : null) && Array.isArray(saved.cols) &&
         saved.cols.every(function (si, c) { return SETS[si] && saved.board[c].every(function (qi) { return SETS[si].questions[qi]; }); });
       if (ok) S = saved;
       else {
-        S = { v: 1, level: Q.level, turn: 0, secs: 20, pts: {}, log: [], introDone: false };
+        S = { v: 1, level: Q.level, unit: unitOk ? Q.unit.id : null, turn: 0, secs: 20, pts: {}, log: [], introDone: false };
         var b = newBoard();
         Object.keys(b).forEach(function (k) { S[k] = b[k]; });
       }

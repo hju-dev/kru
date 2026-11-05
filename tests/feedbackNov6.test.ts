@@ -39,7 +39,7 @@ describe('Quiz Battle', () => {
 describe('no "Steal" bonus or rule in any game', () => {
   for (const g of games.filter((x) => x.status === 'ready')) {
     it(g.slug, () => {
-      let text = ''
+      let text: string
       try { text = read(`public/games/${g.slug}/content.json`) } catch { return }
       const c = JSON.parse(text)
       const cards = [...(c.bonus?.before ?? []), ...(c.bonus?.secret ?? [])]
