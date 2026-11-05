@@ -60,6 +60,7 @@
     teams = Kru.allTeams();
     if (session.resume && session.resume.points) state = session.resume;
     $('teams').classList.toggle('solo', session.mode === 'solo');
+    $('teams').classList.toggle('many', session.mode !== 'solo' && teams.length >= 9); // compact cards: 3 rows fit the phone
     $('meta').textContent = session.class + (session.mode === 'solo' ? ' · solo' : ' · ' + session.teams.length + ' teams');
     $('hint').textContent = Kru.mock
       ? 'Mock mode: placeholder students. Inside Kru, use the home button → Finish to review scores.'

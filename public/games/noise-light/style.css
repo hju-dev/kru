@@ -3,7 +3,7 @@
 .bar { display: flex; align-items: center; gap: 10px; min-height: var(--tap); padding-right: 56px; }
 .grow { flex: 1; }
 .seg { display: inline-flex; border: 2px solid var(--line); border-radius: 999px; overflow: hidden; }
-.seg button { min-height: 40px; padding: 0 18px; border: 0; background: transparent; color: var(--muted); font-weight: 800; font-size: 17px; }
+.seg button { min-height: 44px; padding: 0 18px; border: 0; background: transparent; color: var(--muted); font-weight: 800; font-size: 17px; }
 .seg button[aria-pressed='true'] { background: var(--fg); color: var(--bg); }
 .light { flex: 1; min-height: 0; border-radius: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
   text-align: center; color: #17151f; transition: background 0.4s; padding: 8px 16px; }

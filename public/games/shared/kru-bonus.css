@@ -1,6 +1,6 @@
 /* Kru bonus cards: a ★ chip in the top bar, and a big card over the game. */
 .kb-chip {
-  min-height: 36px;
+  min-height: 44px; /* a tap target */
   max-width: 230px;
   padding: 0 12px;
   border-radius: 999px;
