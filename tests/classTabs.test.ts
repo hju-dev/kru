@@ -81,6 +81,11 @@ describe('Code.gs v8 class tab formulas', () => {
     expect(f).toContain('UPPER(Results!E2:E)') // Class moved from D to E
     expect(f).toContain('select Col10, Col1, sum(Col11)') // No moved to 10, Nickname is now 1
   })
+  it("v9: with an Order column, students are listed in Henry's order (mixed classes)", () => {
+    const f = formulas([...RESULTS, 'Order'], 'M.2')!
+    expect(f.students).toContain("select Col17, Col9, Col10, sum(Col11), count(Col11) group by Col17, Col9, Col10 order by Col17, Col9 label Col17 'Order'")
+    expect(f.games).toContain("Col17 'Order', Col9 'No'")
+  })
   it('no formulas when a needed column is missing', () => {
     expect(formulas(RESULTS.filter((h) => h !== 'Points'), '1/2')).toBeNull()
   })
@@ -88,8 +93,8 @@ describe('Code.gs v8 class tab formulas', () => {
     expect(['1/2', '3/2P', ' M.3 '].map(tabName)).toEqual(['1/2', '3/2P', 'M.3'])
     expect(['Results', 'summary', 'Rosters', '', 'x'.repeat(101)].map(tabName)).toEqual([null, null, null, null, null])
   })
-  it('the script version is 8 (Henry must redeploy)', () => {
-    expect(sandbox.KRU_SCRIPT_VERSION).toBe(8)
+  it('the script version is 9 (Henry must redeploy)', () => {
+    expect(sandbox.KRU_SCRIPT_VERSION).toBe(9)
   })
 })
 

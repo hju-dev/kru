@@ -11,15 +11,16 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 8;
+var KRU_SCRIPT_VERSION = 9;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
   Classes: ['Class', 'Archived', 'DefaultTeamSize', 'Order'],
-  Rosters: ['Class', 'No', 'Nickname', 'Active'],
+  // Order (v9): where the student is in Henry's own list for the class (mixed classes repeat numbers).
+  Rosters: ['Class', 'No', 'Nickname', 'Active', 'Order'],
   TeamSets: ['SetID', 'Class', 'Name', 'Team', 'No', 'Nickname', 'SavedAt'],
   Results: ['SessionID', 'Date', 'Time', 'Class', 'Game', 'Level', 'Mode', 'Team', 'No', 'Nickname',
-    'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt'],
+    'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt', 'Order'],
   Sessions: ['SessionID', 'Date', 'Class', 'Game', 'Level', 'Mode', 'TeamCount', 'TeacherTeamPoints',
     'SubmittedAt', 'Deleted', 'EditedAt'],
   // Quiz Battle question sets Henry types in (v6). A-D filled = multiple choice; A-D empty = short answer.
@@ -151,9 +152,11 @@ function actionSubmitResults_(req) {
     var plan = planSubmission_(columnValues_(results, 'SessionID'), columnValues_(sessions, 'SessionID'), String(s.id));
     if (plan.duplicate) return { ok: true, duplicate: true, sessionId: s.id, rowsWritten: 0 };
     if (plan.writeResults && rows.length) {
+      var orders = rosterOrders_(readTable_(ss, 'Rosters')).orders;
       appendObjects_(results, rows.map(function (r) {
         var o = { SessionID: s.id };
         Object.keys(r).forEach(function (k) { o[k] = r[k]; });
+        o.Order = orderOf_(orders, r.Class, r.No, r.Nickname);
         return o;
       }));
     }
@@ -325,12 +328,16 @@ function actionSaveRoster_(req) {
   var cls = text_(req.class);
   if (!cls || !Array.isArray(req.students)) throw new Error('saveRoster needs class and students');
   return withLock_(function () {
-    var sh = tab_(sheet_(), 'Rosters');
+    var ss = sheet_();
+    var sh = tab_(ss, 'Rosters');
     var key = classKey_(cls);
+    var before = rosterOrders_(readTable_(ss, 'Rosters')).orders[key] || {};
     deleteRowsMatching_(sh, function (r) { return classKey_(r.Class) === key; });
-    var rows = req.students
-      .filter(function (s) { return text_(s.nick) && int_(s.no) != null; })
-      .map(function (s) { return { Class: cls, No: int_(s.no), Nickname: text_(s.nick), Active: s.active !== false }; });
+    var students = req.students.filter(function (s) { return text_(s.nick) && int_(s.no) != null; });
+    var order = keepOrders_(before, students);
+    var rows = students.map(function (s, i) {
+      return { Class: cls, No: int_(s.no), Nickname: text_(s.nick), Active: s.active !== false, Order: order[i] };
+    });
     if (rows.length) appendObjects_(sh, rows);
     return { ok: true, saved: rows.length };
   });
@@ -482,6 +489,8 @@ function setup() {
     var sh = ensureTab_(ss, name, TABS[name]);
     protectClassColumn_(ss, sh);
   });
+  fillRosterOrder_(ss);
+  fillResultsOrder_(ss);
   ensureSummaryTab_(ss);
   ensureClassTabs_(ss);
   formatRosters_(ss.getSheetByName('Rosters'));
@@ -756,14 +765,15 @@ function colLetter_(n) {
 function summaryFormulas_(resultsHeaders) {
   var h = resultsHeaders.map(function (x) { return String(x).trim(); });
   var col = function (name) { var i = h.indexOf(name); return i < 0 ? null : colLetter_(i + 1); };
-  var C = col('Class'), N = col('No'), K = col('Nickname'), P = col('Points'), D = col('Deleted');
+  var C = col('Class'), N = col('No'), K = col('Nickname'), P = col('Points'), D = col('Deleted'), O = col('Order');
   if (!C || !N || !K || !P || !D) return null;
   var range = 'Results!A1:' + colLetter_(h.length);
+  var who = [C].concat(O ? [O] : []).concat([N, K]).join(', ');
   var kept = P + ' is not null and (' + D + ' is null or ' + D + ' = false)';
   return {
-    students: '=IFERROR(QUERY(' + range + ', "select ' + C + ', ' + N + ', ' + K + ', sum(' + P + '), count(' + P + ') where ' + kept +
-      ' group by ' + C + ', ' + N + ', ' + K + ' order by ' + C + ', ' + N +
-      ' label ' + C + ' \'Class\', ' + N + ' \'No\', ' + K + ' \'Nickname\', sum(' + P + ') \'Total points\', count(' + P + ') \'Games\'", 1), "No results yet")',
+    students: '=IFERROR(QUERY(' + range + ', "select ' + who + ', sum(' + P + '), count(' + P + ') where ' + kept +
+      ' group by ' + who + ' order by ' + C + ', ' + (O ? O + ', ' : '') + N +
+      ' label ' + C + ' \'Class\', ' + (O ? O + ' \'Order\', ' : '') + N + ' \'No\', ' + K + ' \'Nickname\', sum(' + P + ') \'Total points\', count(' + P + ') \'Games\'", 1), "No results yet")',
     classes: '=IFERROR(QUERY(' + range + ', "select ' + C + ', sum(' + P + ') where ' + kept + ' group by ' + C + ' order by ' + C +
       ' label ' + C + ' \'Class\', sum(' + P + ') \'Total points\'", 1), "")',
   };
@@ -791,6 +801,92 @@ function ensureSummaryTab_(ss) {
   sh.setFrozenRows(3);
 }
 
+// ───────────────────────────── Roster order (v9) ─────────────────────────────
+// Mixed classes (M.2, M.3) repeat student numbers, so Henry's own order for a class lives in the
+// Rosters tab's Order column, and every Results row gets a copy he can sort by.
+
+/** A student within a class: number + nickname (spaces and capitals ignored). */
+function studentKey_(no, nick) {
+  return String(int_(no)) + '|' + text_(nick).replace(/\s+/g, '').toUpperCase();
+}
+
+/**
+ * Pure: each class's order. A row's Order cell wins. A row without one comes next after the highest
+ * number so far in its class, so with no Order column at all, the order is simply the order the
+ * students appear in the Rosters tab.
+ * Returns { orders: { classKey: { studentKey: order } }, missing: how many rows had no Order }.
+ */
+function rosterOrders_(rows) {
+  var orders = {}, max = {}, missing = 0;
+  var valid = function (r) { return classKey_(r.Class) && int_(r.No) != null && text_(r.Nickname); };
+  rows.forEach(function (r) {
+    var o = int_(r.Order), k = classKey_(r.Class);
+    if (valid(r) && o != null && o > 0) max[k] = Math.max(max[k] || 0, o);
+  });
+  rows.forEach(function (r) {
+    if (!valid(r)) return;
+    var k = classKey_(r.Class), o = int_(r.Order);
+    if (o == null || o <= 0) { o = (max[k] || 0) + 1; max[k] = o; missing++; }
+    (orders[k] = orders[k] || {})[studentKey_(r.No, r.Nickname)] = o;
+  });
+  return { orders: orders, missing: missing };
+}
+
+/** A student's Order, or '' if they aren't on the roster (anymore). */
+function orderOf_(orders, cls, no, nick) {
+  var m = orders[classKey_(cls)];
+  var o = m && m[studentKey_(no, nick)];
+  return o || '';
+}
+
+/**
+ * Pure: Orders for a roster saved from the app, keeping everyone's place. Matched by number +
+ * nickname; a renamed student keeps their place when only one student had that number; anyone new
+ * goes to the end. before: { studentKey: order } for the class. Returns one order per student.
+ */
+function keepOrders_(before, students) {
+  var max = 0, used = {}, byNo = {};
+  Object.keys(before).forEach(function (k) {
+    max = Math.max(max, before[k]);
+    var no = k.split('|')[0];
+    (byNo[no] = byNo[no] || []).push(before[k]);
+  });
+  var out = students.map(function (s) {
+    var o = before[studentKey_(s.no, s.nick)];
+    if (o && !used[o]) { used[o] = true; return o; }
+    return null;
+  });
+  return out.map(function (o, i) {
+    if (o) return o;
+    var same = byNo[String(int_(students[i].no))] || [];
+    if (same.length === 1 && !used[same[0]]) { used[same[0]] = true; return same[0]; }
+    return ++max;
+  });
+}
+
+/** Set up tabs: fill blank Order cells in Rosters (the order the students are listed in). */
+function fillRosterOrder_(ss) {
+  var sh = ss.getSheetByName('Rosters');
+  if (!sh || headers_(sh).indexOf('Order') < 0) return;
+  var r = rosterOrders_(readTable_(ss, 'Rosters'));
+  if (!r.missing) return;
+  updateRows_(sh, function (row) { var o = int_(row.Order); return o == null || o <= 0; }, function (row) {
+    var o = orderOf_(r.orders, row.Class, row.No, row.Nickname);
+    return o ? { Order: o } : null;
+  });
+}
+
+/** Set up tabs: give results sent before v9 their students' Order. */
+function fillResultsOrder_(ss) {
+  var sh = ss.getSheetByName('Results');
+  if (!sh || headers_(sh).indexOf('Order') < 0) return;
+  var orders = rosterOrders_(readTable_(ss, 'Rosters')).orders;
+  updateRows_(sh, function (row) { return int_(row.Order) == null; }, function (row) {
+    var o = orderOf_(orders, row.Class, row.No, row.Nickname);
+    return o ? { Order: o } : null;
+  });
+}
+
 // ───────────────────────────── Class tabs (v8) ─────────────────────────────
 // One tab per class ("1/2", "M.3", …) with that class's student totals and games, as live formulas
 // over Results. Results stays the one master copy: the app edits, deletes and renames there.
@@ -808,8 +904,8 @@ function classTabName_(cls) {
 /**
  * A class tab's two formulas, built from where the columns really are in Results.
  * Rows match the class the way the app does (spaces and capitals ignored); deleted games are left out.
- *   students: No · Nickname · Total points · Games
- *   games:    Date · Game · Level · Team · No · Nickname · Points · Rank, newest first
+ *   students: Order · No · Nickname · Total points · Games, in Henry's order (Order, v9)
+ *   games:    Date · Game · Level · Team · Order · No · Nickname · Points · Rank, newest first
  * Returns null if Results is missing a column the formulas need.
  */
 function classTabFormulas_(resultsHeaders, cls) {
@@ -822,12 +918,14 @@ function classTabFormulas_(resultsHeaders, cls) {
   var data = 'FILTER(Results!A2:' + colLetter_(h.length) + ', SUBSTITUTE(UPPER(' + whole(C) + '), " ", "") = "' + key + '", ' +
     whole(P) + ' <> "", ' + whole(D) + ' <> TRUE)';
   var c = function (i) { return 'Col' + i; };
-  var shown = ['Date', 'Game', 'Level', 'Team', 'No', 'Nickname', 'Points', 'Rank'].filter(function (x) { return idx(x); });
+  var shown = ['Date', 'Game', 'Level', 'Team', 'Order', 'No', 'Nickname', 'Points', 'Rank'].filter(function (x) { return idx(x); });
+  var O = idx('Order'); // v9: Henry's order for the class (sort by it to copy grades)
+  var who = (O ? [O] : []).concat([N, K]).map(c).join(', ');
   var order = ['Date', 'Time'].filter(function (x) { return idx(x); }).map(function (x) { return c(idx(x)) + ' desc'; });
   return {
-    students: '=IFERROR(QUERY(' + data + ', "select ' + c(N) + ', ' + c(K) + ', sum(' + c(P) + '), count(' + c(P) + ')' +
-      ' group by ' + c(N) + ', ' + c(K) + ' order by ' + c(N) +
-      " label " + c(N) + " 'No', " + c(K) + " 'Nickname', sum(" + c(P) + ") 'Total points', count(" + c(P) + ") 'Games'\", 0), \"No results yet\")",
+    students: '=IFERROR(QUERY(' + data + ', "select ' + who + ', sum(' + c(P) + '), count(' + c(P) + ')' +
+      ' group by ' + who + ' order by ' + (O ? c(O) + ', ' : '') + c(N) +
+      ' label ' + (O ? c(O) + " 'Order', " : '') + c(N) + " 'No', " + c(K) + " 'Nickname', sum(" + c(P) + ") 'Total points', count(" + c(P) + ") 'Games'\", 0), \"No results yet\")",
     games: '=IFERROR(QUERY(' + data + ', "select ' + shown.map(function (x) { return c(idx(x)); }).join(', ') +
       (order.length ? ' order by ' + order.join(', ') : '') +
       ' label ' + shown.map(function (x) { return c(idx(x)) + " '" + x + "'"; }).join(', ') + '", 0), "")',

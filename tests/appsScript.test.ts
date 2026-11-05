@@ -201,8 +201,8 @@ describe('Code.gs v7 Summary tab formulas', () => {
   it('no formulas when a needed column is missing', () => {
     expect(formulas(RESULTS.filter((h) => h !== 'Deleted'))).toBeNull()
   })
-  it('the script version is 8 (Henry must redeploy)', () => {
-    expect(sandbox.KRU_SCRIPT_VERSION).toBe(8)
+  it('the script version is 9 (Henry must redeploy)', () => {
+    expect(sandbox.KRU_SCRIPT_VERSION).toBe(9)
   })
 })
 
