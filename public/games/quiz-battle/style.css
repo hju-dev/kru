@@ -182,7 +182,7 @@ button:focus-visible {
   display: none;
 }
 .tile {
-  flex: 1 1 0;
+  flex: 1 1 auto; /* wider names get more room, so 8 teams + teacher fit without "Team…" */
   min-width: 66px; /* 8 teams + T. Henry fit in 712 px */
   min-height: 54px;
   display: flex;
@@ -190,7 +190,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 0;
-  padding: 2px 4px;
+  padding: 2px;
   border-radius: 12px;
   border: 2px solid var(--line);
   border-top: 5px solid var(--c, var(--gold));
@@ -307,6 +307,9 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+.menu > * {
+  flex-shrink: 0; /* a long list scrolls; the title must not be squashed to nothing */
 }
 .menu-rounds {
   display: grid;

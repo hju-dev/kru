@@ -310,7 +310,7 @@ button:focus-visible {
 }
 .step {
   min-width: 44px;
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 6px;
   border-radius: 10px;
   border: 2px solid var(--line);

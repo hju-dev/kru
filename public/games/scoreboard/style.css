@@ -16,7 +16,7 @@
   flex: 1;
 }
 button.small {
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 14px;
   border-radius: 12px;
   border: 2px solid var(--line);
@@ -100,6 +100,26 @@ button:disabled {
   font-size: 28px;
 }
 .teams.solo .members {
+  display: none;
+}
+/* 9 or more teams (e.g. 8 + teacher): compact cards, so three rows fit the phone without scrolling.
+   Member names are hidden and the points sit next to the team name. */
+.teams.many {
+  gap: 6px;
+  margin-top: 4px;
+}
+.teams.many .team {
+  padding: 4px 8px 6px;
+  border-top-width: 5px;
+}
+.teams.many .members {
+  display: none;
+}
+.teams.many .pts {
+  grid-row: auto;
+  font-size: 30px;
+}
+.teams.many + .hint {
   display: none;
 }
 .hint {
