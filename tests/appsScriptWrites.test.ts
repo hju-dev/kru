@@ -149,7 +149,7 @@ describe('Code.gs v6 Questions tab', () => {
   it('bootstrap still works on a Sheet with no Questions tab (before Set up tabs)', () => {
     const boot = post({ action: 'bootstrap' }) as { ok: boolean; version: number; questions: unknown[]; questionProblems: unknown[] }
     expect(boot.ok).toBe(true)
-    expect(boot.version).toBe(7)
+    expect(boot.version).toBe(8)
     expect(boot.questions).toEqual([])
     expect(boot.questionProblems).toEqual([])
   })

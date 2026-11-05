@@ -22,7 +22,7 @@ Nothing here puts student names in the code. They only ever live in your Sheet.
    - Click **Allow**.
 4. Click **Kru → Set up tabs** again if nothing happened. A box shows **your secret key** (like `k7m2p-xq9rt-b4hwz-3nfd8`). Copy it somewhere safe, such as your phone's Notes, but **not** into the code or a shared document.
 
-You now have these tabs: **Classes, Rosters, TeamSets, Results, Sessions, Summary**.
+You now have these tabs: **Classes, Rosters, TeamSets, Results, Sessions, Summary**, plus one tab per class (see [Class tabs](#class-tabs)).
 
 > Lost the key? **Kru → Show my key**. Think it leaked? **Kru → Make a new key**, then sign in again on each device.
 
@@ -99,6 +99,20 @@ If the update added new tabs or columns, run **Kru → Set up tabs** once more. 
 - **Column H onward:** each class's total points.
 
 It updates by itself when new results arrive. Kru writes this tab, so don't type in it. If you want your own notes, make a new tab. (If **Summary** holds something you typed yourself, Kru leaves it alone.)
+
+## Class tabs
+
+Each class gets its own tab, named after the class (**1/2**, **1/3**, … **M.3**). They are in the same order as in the app. Each tab shows live numbers from **Results**, with deleted games left out:
+- **Column A onward:** each student's total points and number of games (No · Nickname · Total points · Games).
+- **Column G onward:** every game the class played, newest first (Date · Game · Level · Team · No · Nickname · Points · Rank).
+
+**Results** is still the master copy. The class tabs only *show* it, so editing or deleting a game in the app updates them by itself. Don't type in a class tab: Kru writes it, and **Kru → Set up tabs** replaces it. If a tab with a class's name holds something you typed yourself, Kru leaves it alone.
+
+When the tabs appear:
+- **Kru → Set up tabs** makes a tab for every class that isn't archived (and refreshes Kru's own ones).
+- A new class gets its tab the first time you add it in the app or send it results.
+- Renaming a class in the app renames its tab too.
+- Archiving a class keeps its tab. Delete it by hand if you don't want it (right-click the tab → **Delete**). Your scores stay safe in **Results**.
 
 ## Troubleshooting
 
