@@ -1,0 +1,742 @@
+{
+ "about": "Hot Seat Vocab words per level. One student per team faces away; teammates describe the word without saying it. M.1 = A2 everyday words, M.2 = B1 vacations, places and feelings, M.3 = Person / Place / Thing / Idea (B1+). Written for Kru. At least 50 per level, shuffled every game.",
+ "M.1": {
+  "words": [
+   {
+    "word": "apple"
+   },
+   {
+    "word": "banana"
+   },
+   {
+    "word": "cat"
+   },
+   {
+    "word": "dog"
+   },
+   {
+    "word": "elephant"
+   },
+   {
+    "word": "bicycle"
+   },
+   {
+    "word": "bus"
+   },
+   {
+    "word": "teacher"
+   },
+   {
+    "word": "doctor"
+   },
+   {
+    "word": "school"
+   },
+   {
+    "word": "hospital"
+   },
+   {
+    "word": "beach"
+   },
+   {
+    "word": "phone"
+   },
+   {
+    "word": "computer"
+   },
+   {
+    "word": "chair"
+   },
+   {
+    "word": "table"
+   },
+   {
+    "word": "bed"
+   },
+   {
+    "word": "rain"
+   },
+   {
+    "word": "sun"
+   },
+   {
+    "word": "moon"
+   },
+   {
+    "word": "ice cream"
+   },
+   {
+    "word": "pizza"
+   },
+   {
+    "word": "rice"
+   },
+   {
+    "word": "water"
+   },
+   {
+    "word": "soccer"
+   },
+   {
+    "word": "guitar"
+   },
+   {
+    "word": "book"
+   },
+   {
+    "word": "pencil"
+   },
+   {
+    "word": "bag"
+   },
+   {
+    "word": "shoes"
+   },
+   {
+    "word": "hat"
+   },
+   {
+    "word": "kitchen"
+   },
+   {
+    "word": "bathroom"
+   },
+   {
+    "word": "park"
+   },
+   {
+    "word": "zoo"
+   },
+   {
+    "word": "monkey"
+   },
+   {
+    "word": "fish"
+   },
+   {
+    "word": "bird"
+   },
+   {
+    "word": "chicken"
+   },
+   {
+    "word": "egg"
+   },
+   {
+    "word": "milk"
+   },
+   {
+    "word": "birthday"
+   },
+   {
+    "word": "family"
+   },
+   {
+    "word": "friend"
+   },
+   {
+    "word": "run"
+   },
+   {
+    "word": "swim"
+   },
+   {
+    "word": "sleep"
+   },
+   {
+    "word": "cook"
+   },
+   {
+    "word": "sing"
+   },
+   {
+    "word": "dance"
+   }
+  ]
+ },
+ "M.2": {
+  "words": [
+   {
+    "word": "passport"
+   },
+   {
+    "word": "suitcase"
+   },
+   {
+    "word": "airport"
+   },
+   {
+    "word": "hotel"
+   },
+   {
+    "word": "souvenir"
+   },
+   {
+    "word": "sunscreen"
+   },
+   {
+    "word": "camera"
+   },
+   {
+    "word": "tourist"
+   },
+   {
+    "word": "mountain"
+   },
+   {
+    "word": "island"
+   },
+   {
+    "word": "waterfall"
+   },
+   {
+    "word": "temple"
+   },
+   {
+    "word": "market"
+   },
+   {
+    "word": "festival"
+   },
+   {
+    "word": "fireworks"
+   },
+   {
+    "word": "lantern"
+   },
+   {
+    "word": "map"
+   },
+   {
+    "word": "ticket"
+   },
+   {
+    "word": "train station"
+   },
+   {
+    "word": "motorcycle"
+   },
+   {
+    "word": "tent"
+   },
+   {
+    "word": "campfire"
+   },
+   {
+    "word": "sunglasses"
+   },
+   {
+    "word": "swimming pool"
+   },
+   {
+    "word": "restaurant"
+   },
+   {
+    "word": "waiter"
+   },
+   {
+    "word": "menu"
+   },
+   {
+    "word": "receipt"
+   },
+   {
+    "word": "nervous"
+   },
+   {
+    "word": "excited"
+   },
+   {
+    "word": "bored"
+   },
+   {
+    "word": "tired"
+   },
+   {
+    "word": "homesick"
+   },
+   {
+    "word": "delicious"
+   },
+   {
+    "word": "crowded"
+   },
+   {
+    "word": "expensive"
+   },
+   {
+    "word": "thunderstorm"
+   },
+   {
+    "word": "rainbow"
+   },
+   {
+    "word": "jellyfish"
+   },
+   {
+    "word": "sandcastle"
+   },
+   {
+    "word": "backpack"
+   },
+   {
+    "word": "adventure"
+   },
+   {
+    "word": "vacation"
+   },
+   {
+    "word": "weekend"
+   },
+   {
+    "word": "neighbor"
+   },
+   {
+    "word": "library"
+   },
+   {
+    "word": "scientist"
+   },
+   {
+    "word": "police officer"
+   },
+   {
+    "word": "umbrella"
+   },
+   {
+    "word": "toothbrush"
+   }
+  ]
+ },
+ "M.3": {
+  "categories": [
+   "Person",
+   "Place",
+   "Thing",
+   "Idea"
+  ],
+  "words": [
+   {
+    "word": "astronaut",
+    "cat": "Person"
+   },
+   {
+    "word": "firefighter",
+    "cat": "Person"
+   },
+   {
+    "word": "lawyer",
+    "cat": "Person"
+   },
+   {
+    "word": "journalist",
+    "cat": "Person"
+   },
+   {
+    "word": "tour guide",
+    "cat": "Person"
+   },
+   {
+    "word": "detective",
+    "cat": "Person"
+   },
+   {
+    "word": "celebrity",
+    "cat": "Person"
+   },
+   {
+    "word": "grandparent",
+    "cat": "Person"
+   },
+   {
+    "word": "referee",
+    "cat": "Person"
+   },
+   {
+    "word": "architect",
+    "cat": "Person"
+   },
+   {
+    "word": "influencer",
+    "cat": "Person"
+   },
+   {
+    "word": "pharmacist",
+    "cat": "Person"
+   },
+   {
+    "word": "volunteer",
+    "cat": "Person"
+   },
+   {
+    "word": "inventor",
+    "cat": "Person"
+   },
+   {
+    "word": "dentist",
+    "cat": "Person"
+   },
+   {
+    "word": "museum",
+    "cat": "Place"
+   },
+   {
+    "word": "prison",
+    "cat": "Place"
+   },
+   {
+    "word": "stadium",
+    "cat": "Place"
+   },
+   {
+    "word": "desert",
+    "cat": "Place"
+   },
+   {
+    "word": "rainforest",
+    "cat": "Place"
+   },
+   {
+    "word": "volcano",
+    "cat": "Place"
+   },
+   {
+    "word": "embassy",
+    "cat": "Place"
+   },
+   {
+    "word": "university",
+    "cat": "Place"
+   },
+   {
+    "word": "factory",
+    "cat": "Place"
+   },
+   {
+    "word": "space station",
+    "cat": "Place"
+   },
+   {
+    "word": "movie theater",
+    "cat": "Place"
+   },
+   {
+    "word": "airport",
+    "cat": "Place"
+   },
+   {
+    "word": "village",
+    "cat": "Place"
+   },
+   {
+    "word": "gas station",
+    "cat": "Place"
+   },
+   {
+    "word": "aquarium",
+    "cat": "Place"
+   },
+   {
+    "word": "microwave",
+    "cat": "Thing"
+   },
+   {
+    "word": "telescope",
+    "cat": "Thing"
+   },
+   {
+    "word": "battery",
+    "cat": "Thing"
+   },
+   {
+    "word": "headphones",
+    "cat": "Thing"
+   },
+   {
+    "word": "fire extinguisher",
+    "cat": "Thing"
+   },
+   {
+    "word": "compass",
+    "cat": "Thing"
+   },
+   {
+    "word": "trophy",
+    "cat": "Thing"
+   },
+   {
+    "word": "password",
+    "cat": "Thing"
+   },
+   {
+    "word": "robot",
+    "cat": "Thing"
+   },
+   {
+    "word": "vaccine",
+    "cat": "Thing"
+   },
+   {
+    "word": "satellite",
+    "cat": "Thing"
+   },
+   {
+    "word": "parachute",
+    "cat": "Thing"
+   },
+   {
+    "word": "smartphone",
+    "cat": "Thing"
+   },
+   {
+    "word": "calendar",
+    "cat": "Thing"
+   },
+   {
+    "word": "wheelchair",
+    "cat": "Thing"
+   },
+   {
+    "word": "freedom",
+    "cat": "Idea"
+   },
+   {
+    "word": "friendship",
+    "cat": "Idea"
+   },
+   {
+    "word": "honesty",
+    "cat": "Idea"
+   },
+   {
+    "word": "success",
+    "cat": "Idea"
+   },
+   {
+    "word": "jealousy",
+    "cat": "Idea"
+   },
+   {
+    "word": "pollution",
+    "cat": "Idea"
+   },
+   {
+    "word": "happiness",
+    "cat": "Idea"
+   },
+   {
+    "word": "kindness",
+    "cat": "Idea"
+   },
+   {
+    "word": "democracy",
+    "cat": "Idea"
+   },
+   {
+    "word": "luck",
+    "cat": "Idea"
+   },
+   {
+    "word": "fear",
+    "cat": "Idea"
+   },
+   {
+    "word": "education",
+    "cat": "Idea"
+   },
+   {
+    "word": "climate change",
+    "cat": "Idea"
+   },
+   {
+    "word": "respect",
+    "cat": "Idea"
+   },
+   {
+    "word": "imagination",
+    "cat": "Idea"
+   }
+  ],
+  "intro": [
+   {
+    "title": "Hot Seat Vocab",
+    "text": [
+     "One player sits in the hot seat, back to the board.",
+     "The team can see the word. The player can't!"
+    ],
+    "example": {
+     "label": "The team sees",
+     "tag": "PERSON",
+     "big": "firefighter"
+    }
+   },
+   {
+    "title": "Four kinds of words",
+    "text": [
+     "Every word is a Person, a Place, a Thing or an Idea.",
+     "Start with the kind: \"It's a person who…\""
+    ],
+    "example": {
+     "rows": [
+      [
+       "Person",
+       "firefighter"
+      ],
+      [
+       "Place",
+       "museum"
+      ],
+      [
+       "Thing",
+       "compass"
+      ],
+      [
+       "Idea",
+       "freedom"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Describe it!",
+    "text": [
+     "Explain the word, but don't say it.",
+     "No Thai, no spelling, no pointing."
+    ],
+    "example": {
+     "label": "Word: elephant",
+     "rows": [
+      [
+       "✓",
+       "It's a big gray animal with a long nose."
+      ],
+      [
+       "✗",
+       "It's an ele…"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Win points",
+    "text": [
+     "Guess the word: +1 for your team.",
+     "Too hard? Say \"Skip!\" and try the next word."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Got it",
+       "+1"
+      ],
+      [
+       "Skip",
+       "next word"
+      ],
+      [
+       "Time",
+       "60 seconds"
+      ]
+     ]
+    }
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Hot Seat Vocab",
+   "text": [
+    "One player sits in the hot seat, back to the board.",
+    "The team can see the word. The player can't!"
+   ],
+   "example": {
+    "label": "The team sees",
+    "big": "elephant"
+   }
+  },
+  {
+   "title": "Describe it!",
+   "text": [
+    "Explain the word, but don't say it.",
+    "No Thai, no spelling, no pointing."
+   ],
+   "example": {
+    "label": "Word: elephant",
+    "rows": [
+     [
+      "✓",
+      "It's a big gray animal with a long nose."
+     ],
+     [
+      "✗",
+      "It's an ele…"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "Guess the word: +1 for your team.",
+    "Too hard? Say \"Skip!\" and try the next word."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Got it",
+      "+1"
+     ],
+     [
+      "Skip",
+      "next word"
+     ],
+     [
+      "Time",
+      "60 seconds"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "golden",
+    "name": "Golden word",
+    "text": "Guess the FIRST word this round: +3!",
+    "points": 3
+   },
+   {
+    "id": "no-hands",
+    "name": "No hands",
+    "text": "Describe with no hands at all: +2 at the end.",
+    "points": 2
+   },
+   {
+    "id": "double",
+    "name": "Double round",
+    "text": "Every word this round is worth 2!"
+   }
+  ],
+  "secret": [
+   {
+    "id": "describer",
+    "name": "Best describer",
+    "text": "+2 for the team with the best describing.",
+    "points": 2
+   },
+   {
+    "id": "no-skips",
+    "name": "No skips",
+    "text": "+2 if your team didn't skip any words!",
+    "points": 2
+   },
+   {
+    "id": "sentences",
+    "name": "Full sentences",
+    "text": "+1 if your team described in full sentences.",
+    "points": 1
+   }
+  ]
+ }
+}

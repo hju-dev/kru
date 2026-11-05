@@ -1,0 +1,2 @@
+.words { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.word { background: var(--c); color: #111; border-radius: 14px; padding: 8px 18px; font: 800 40px/1.1 var(--display); }

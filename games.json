@@ -11,13 +11,14 @@
       "group",
       "solo"
     ],
-    "status": "ready"
+    "status": "ready",
+    "section": "tools"
   },
   {
     "slug": "tag-team",
-    "title": "Tag-Team Talk / Debate",
-    "file": "legacy/games/tag-team.html",
-    "description": "Relay talk (M.2) and FOR vs AGAINST debate (M.3) with topic spinner, turn timer, speaking-order lane, class rosters (M.3/2, M.3/3) and scoreboard.",
+    "title": "Tag-Team Talk",
+    "file": "public/games/tag-team/index.html",
+    "description": "Relay talk at M.1, M.2 and M.3: one team at the front takes turns on a topic, TAG! at each chime. Topic spinner, huddle and turn timer, speaking-order lane with your teams, +3 Win / +1 Challenge scoring.",
     "levels": [
       "M.1",
       "M.2",
@@ -25,21 +26,37 @@
     ],
     "type": "speaking game",
     "minutes": 40,
-    "storageKeys": [
-      "ttt",
-      "ttt2"
-    ],
     "phoneLandscape": true,
     "modes": [
       "group"
     ],
-    "status": "migrate"
+    "status": "ready",
+    "section": "speaking"
+  },
+  {
+    "slug": "tag-team-debate",
+    "title": "Tag-Team Debate",
+    "file": "public/games/tag-team-debate/index.html",
+    "description": "FOR vs AGAINST team debate at M.1, M.2 and M.3: speakers take turns, answer the last point, then add a new one. Motion spinner, huddle and turn timer, speaking-order lane, +3 Win / +1 Challenge scoring.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "speaking game",
+    "minutes": 40,
+    "phoneLandscape": true,
+    "modes": [
+      "group"
+    ],
+    "status": "ready",
+    "section": "speaking"
   },
   {
     "slug": "word-rush",
     "title": "Word Rush",
-    "file": "legacy/games/word-rush.html",
-    "description": "Teams of 3 write as many words as they can for a prompt in 60 seconds. Bonus cards, M.1 and M.3 levels, scoreboard for up to 12 teams.",
+    "file": "public/games/word-rush/index.html",
+    "description": "Teams write as many words as they can for a prompt before the timer ends. Bonus cards change the scoring each round. Prompts for M.1, M.2 and M.3.",
     "levels": [
       "M.1",
       "M.2",
@@ -47,20 +64,18 @@
     ],
     "type": "vocabulary game",
     "minutes": 30,
-    "storageKeys": [
-      "wordrush"
-    ],
     "phoneLandscape": true,
     "modes": [
       "group"
     ],
-    "status": "migrate"
+    "status": "ready",
+    "section": "writing"
   },
   {
     "slug": "think-tank-showdown",
     "title": "Think Tank Showdown",
-    "file": "legacy/games/think-tank-showdown.html",
-    "description": "Critical-thinking game show: Riddle Rush, Spot the Problem, What Would Happen If…?, Final Wager. Six-team scoreboard.",
+    "file": "public/games/think-tank-showdown/index.html",
+    "description": "Critical-thinking game show: Riddle Rush, Spot the Problem, What Would Happen If…?, Final Wager. Questions for M.1, M.2 and M.3.",
     "levels": [
       "M.1",
       "M.2",
@@ -68,44 +83,42 @@
     ],
     "type": "team quiz",
     "minutes": 17,
-    "storageKeys": [
-      "ttshow"
-    ],
-    "phoneLandscape": false,
+    "phoneLandscape": true,
     "modes": [
       "group"
     ],
-    "status": "migrate"
+    "status": "ready",
+    "section": "quizzes"
   },
   {
     "slug": "talk-timer",
     "title": "Talk Timer",
-    "file": "legacy/games/talk-timer.html",
-    "description": "Projector timer with per-lesson presets (20 Questions, story rounds, One-Word Duel, speaking test 1:00 + 0:10 changeover).",
+    "file": "public/games/talk-timer/index.html",
+    "description": "Big classroom timer. Presets with one or more phases (for example 1:00 talk + 0:10 change over), a chime at zero. Edit your own presets.",
     "levels": [],
     "type": "tool",
     "minutes": null,
-    "storageKeys": [
-      "m3timer"
-    ],
-    "phoneLandscape": false,
+    "phoneLandscape": true,
     "modes": [],
-    "status": "migrate"
+    "status": "ready",
+    "section": "tools"
   },
   {
     "slug": "name-picker",
-    "title": "Name Picker / Hot Seat",
+    "title": "Name Picker",
     "file": "public/games/name-picker/index.html",
-    "levels": [
-      "M.1",
-      "M.2",
-      "M.3"
-    ],
+    "levels": [],
     "modes": [
       "solo"
     ],
-    "minutes": 5,
-    "status": "new"
+    "minutes": null,
+    "status": "ready",
+    "description": "A tool: picks a random present student. Nobody is picked twice until everyone has had a turn (remembered for the day). Points only if you turn them on.",
+    "type": "tool",
+    "phoneLandscape": true,
+    "results": "scored",
+    "section": "tools",
+    "classTool": true
   },
   {
     "slug": "sentence-scramble",
@@ -120,7 +133,11 @@
       "group"
     ],
     "minutes": 15,
-    "status": "new"
+    "status": "ready",
+    "description": "A sentence appears as shuffled word tiles. Teams write it correctly on paper. First three correct teams get 3 / 2 / 1 points, then Reveal.",
+    "type": "grammar race",
+    "phoneLandscape": true,
+    "section": "writing"
   },
   {
     "slug": "quiz-battle",
@@ -135,7 +152,12 @@
       "group"
     ],
     "minutes": 20,
-    "status": "new"
+    "status": "ready",
+    "description": "One question at a time with a timer (multiple choice or short answer). Teams hold up answers; tap the teams that were right. Built-in sets, or your own from the Questions tab of your Sheet.",
+    "type": "team quiz",
+    "phoneLandscape": true,
+    "sheetQuestions": true,
+    "section": "quizzes"
   },
   {
     "slug": "board-race",
@@ -150,7 +172,11 @@
       "group"
     ],
     "minutes": 15,
-    "status": "new"
+    "status": "ready",
+    "description": "A task appears (verb forms, a category, idioms). Teams line up at the whiteboard: one student writes one answer, then passes the pen to the next. You tap points per team.",
+    "type": "whiteboard race",
+    "phoneLandscape": true,
+    "section": "writing"
   },
   {
     "slug": "hot-seat-vocab",
@@ -165,6 +191,241 @@
       "group"
     ],
     "minutes": 15,
-    "status": "new"
+    "status": "ready",
+    "description": "One student per team faces away from the board. Teammates describe the word without saying it. 60-second rounds, Got it (+1) or Skip. M.3 uses Person / Place / Thing / Idea.",
+    "type": "vocabulary game",
+    "phoneLandscape": true,
+    "section": "speaking"
+  },
+  {
+    "slug": "twenty-questions",
+    "title": "20 Questions",
+    "file": "public/games/twenty-questions/index.html",
+    "description": "You think of a person, place, thing or idea; the class shows only the category. Teams (or the whole class) ask yes/no questions, with a countdown of questions left. The winner gets a point for each question left.",
+    "levels": [],
+    "type": "speaking game",
+    "minutes": 15,
+    "modes": [
+      "group",
+      "solo"
+    ],
+    "phoneLandscape": true,
+    "results": "scored-solo",
+    "status": "ready",
+    "section": "speaking"
+  },
+  {
+    "slug": "class-order",
+    "title": "Class Order",
+    "file": "public/games/class-order/index.html",
+    "description": "A tool: go down the class list (by number or in a random order). Shows who is now and who is on deck; absent students keep their place. Remembers where you stopped for next lesson.",
+    "levels": [],
+    "type": "tool",
+    "minutes": null,
+    "modes": [
+      "solo"
+    ],
+    "classTool": true,
+    "results": "scored",
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "tools"
+  },
+  {
+    "slug": "dice-spinner",
+    "title": "Dice & Spinner",
+    "file": "public/games/dice-spinner/index.html",
+    "description": "Roll 1-3 dice, or spin a wheel with your own options (numbers, teams, topics, rewards). Don't-repeat option.",
+    "levels": [],
+    "type": "tool",
+    "minutes": null,
+    "modes": [],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "tools"
+  },
+  {
+    "slug": "noise-light",
+    "title": "Noise Light",
+    "file": "public/games/noise-light/index.html",
+    "description": "A full-screen traffic light for noise: tap green / yellow / red, or let the microphone measure how loud the class is.",
+    "levels": [],
+    "type": "tool",
+    "minutes": null,
+    "modes": [],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "tools"
+  },
+  {
+    "slug": "would-you-rather",
+    "title": "Would You Rather?",
+    "file": "public/games/would-you-rather/index.html",
+    "description": "Two choices on the board. Each team picks one and gives a reason (\"I'd rather ... because ...\"). Points for good reasons and linking words.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "speaking game",
+    "minutes": 10,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "speaking"
+  },
+  {
+    "slug": "just-a-minute",
+    "title": "Just a Minute",
+    "file": "public/games/just-a-minute/index.html",
+    "description": "One student talks on a topic until the timer ends: no long stops, no repeats. The other teams listen and challenge. Reveal shows three ideas to help.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "speaking game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "speaking"
+  },
+  {
+    "slug": "sentence-builder",
+    "title": "Sentence Builder",
+    "file": "public/games/sentence-builder/index.html",
+    "description": "Three word cards. Teams write one correct sentence that uses all three words. Reveal shows an example sentence.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "writing game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "writing"
+  },
+  {
+    "slug": "category-grid",
+    "title": "Category Grid",
+    "file": "public/games/category-grid/index.html",
+    "description": "A letter and five categories (Animals, Food, Jobs...). Teams write a word for each before the timer ends. Words no other team has score extra.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "writing game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "writing"
+  },
+  {
+    "slug": "story-order",
+    "title": "Story Order",
+    "file": "public/games/story-order/index.html",
+    "description": "The five sentences of a short story are mixed up (A-E). Teams write the right order. Reveal shows it.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "read-remember",
+    "title": "Read & Remember",
+    "file": "public/games/read-remember/index.html",
+    "description": "Teams read a short story against the timer. Then the story hides and three questions appear. Answers come last.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "true-false-race",
+    "title": "True or False Race",
+    "file": "public/games/true-false-race/index.html",
+    "description": "A short story stays on the board. One sentence at a time: teams race to show True or False. Four sentences per story.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "spot-the-mistakes",
+    "title": "Spot the Mistakes",
+    "file": "public/games/spot-the-mistakes/index.html",
+    "description": "A short story with three mistakes (verb forms, grammar). Teams find and fix them. Reveal shows wrong → right.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "scan-it",
+    "title": "Scan It!",
+    "file": "public/games/scan-it/index.html",
+    "description": "A real-world text (menu, bus or train schedule, poster, weather, opening hours, sale ad, league table, movie times) and three questions. Teams scan fast for the answers; M.3 needs a little math.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "reading game",
+    "minutes": 15,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "reading"
   }
 ]

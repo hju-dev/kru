@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Dice &amp; Spinner</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game ds">
+      <header class="bar">
+        <div class="seg" role="group" aria-label="Choose">
+          <button id="tabDice" aria-pressed="true">Dice</button>
+          <button id="tabSpin" aria-pressed="false">Spinner</button>
+        </div>
+        <span class="grow"></span>
+        <button class="small" id="edit" hidden>Edit options</button>
+      </header>
+
+      <!-- Dice -->
+      <section class="view" id="diceView">
+        <div class="stage">
+          <div class="dice" id="dice"></div>
+          <div class="total" id="total"></div>
+        </div>
+        <div class="controls">
+          <span class="lab">Dice</span>
+          <button class="btn step" id="fewer" aria-label="Fewer dice">−</button>
+          <output id="count">1</output>
+          <button class="btn step" id="moreDice" aria-label="More dice">+</button>
+          <span class="grow"></span>
+          <button class="btn gold" id="roll">Roll!</button>
+        </div>
+      </section>
+
+      <!-- Spinner -->
+      <section class="view" id="spinView" hidden>
+        <div class="stage spin-stage">
+          <div class="wheel-wrap">
+            <canvas id="wheel" width="600" height="600" aria-hidden="true"></canvas>
+            <span class="pointer" aria-hidden="true">▼</span>
+          </div>
+          <div class="side">
+            <div class="result" id="result">Tap Spin!</div>
+            <div class="note" id="note"></div>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="btn ghost" id="norepeat" aria-pressed="false">Don't repeat: off</button>
+          <button class="btn ghost" id="refill" hidden>Put them all back</button>
+          <span class="grow"></span>
+          <button class="btn gold" id="spin">Spin!</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Options editor -->
+    <div class="backdrop" id="editBack" hidden>
+      <div class="menu" role="dialog" aria-label="Spinner options">
+        <div class="menu-head">
+          <b>Spinner options</b>
+          <span class="grow"></span>
+          <button class="btn small-btn gold" id="editSave">Save</button>
+        </div>
+        <div class="presets" id="presets"></div>
+        <textarea id="options" rows="6" placeholder="One option per line (2 to 24)"></textarea>
+        <p class="muted">One option per line, 2 to 24 options.</p>
+        <button class="btn gold" id="editSave2">Save options</button>
+        <button class="btn ghost" id="editCancel">Cancel</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -101,6 +101,22 @@
   75% { transform: translateX(6px); }
 }
 
+.library-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--sec);
+  letter-spacing: 0.02em;
+}
 .library {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
@@ -113,6 +129,7 @@
   padding: 10px 12px;
   border-radius: 16px;
   border: 2px solid var(--line);
+  border-left: 5px solid var(--sec, var(--line));
   background: var(--panel);
   color: var(--fg);
   display: flex;
@@ -122,7 +139,7 @@
   cursor: pointer;
 }
 .game-card:not(.soon):active {
-  border-color: var(--gold);
+  border-color: var(--sec, var(--gold));
 }
 .game-card.soon {
   opacity: 0.5;
@@ -163,4 +180,33 @@
 .soon-label {
   font-size: 11px;
   color: var(--muted);
+}
+
+/* Favorites: a star in the corner of every game card (its own 44 px button, separate from the card tap). */
+.game-card-wrap {
+  position: relative;
+  display: grid;
+}
+.game-card-wrap .game-card {
+  padding-right: 40px;
+}
+.fav-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.fav-btn.on {
+  color: var(--gold);
+}
+.sec-recent .section-head,
+.sec-favorites .section-head {
+  color: var(--sec);
 }

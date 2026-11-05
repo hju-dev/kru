@@ -1,0 +1,9 @@
+.story.small { margin: 0; padding-right: 48px; color: var(--fg); opacity: 0.92; }
+.story.small .story-title { font-size: inherit; }
+.tf { display: flex; align-items: center; gap: 12px; width: 100%; border: 2px solid var(--line); border-radius: 14px; padding: 6px 12px; text-align: left; }
+.stmt { flex: 1; font: 800 30px/1.15 var(--display); }
+.verdict { flex: none; font: 800 24px/1 var(--display); padding: 8px 12px; border-radius: 10px; }
+.verdict.wait { color: var(--muted); font-size: 18px; }
+.verdict.yes { background: var(--teal); color: #111; }
+.verdict.no { background: var(--coral); color: #111; }
+.fix { color: var(--teal); align-self: flex-start; }

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Name Picker</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game np">
+      <header class="bar">
+        <span class="logo">Name <b>Picker</b></span>
+        <span class="left" id="left"></span>
+        <span class="grow"></span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="who" id="who">
+          <span class="no" id="no"></span>
+          <span class="name" id="name">Tap Spin!</span>
+          <span class="pts" id="pts"></span>
+        </div>
+      </section>
+
+      <div class="controls">
+        <button class="btn gold" id="spin">Spin</button>
+        <button class="btn" id="plus1" disabled>+1</button>
+        <button class="btn" id="plus2" disabled>+2</button>
+        <button class="btn ghost" id="again" disabled>Absent: pick again</button>
+      </div>
+      <p class="history" id="history"></p>
+      <div class="toast" id="toast" role="status" hidden>
+        <span id="toastText"></span>
+        <button class="small" id="toastUndo">Undo</button>
+      </div>
+    </main>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <button class="btn" id="togglePoints">Show points: off</button>
+        <button class="btn" id="backAbsent">Bring back absent students</button>
+        <button class="btn" id="undo">Undo last points</button>
+        <button class="btn ghost danger" id="resetDay">Everyone can be picked again</button>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

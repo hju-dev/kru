@@ -1,40 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { findGame, gameUrl } from '../lib/games'
-import { loadPrefs } from '../lib/prefs'
-import { initMessage, type Session } from '../lib/session'
+import { initMessage, todayKey, type Session } from '../lib/session'
+import { classKeyOf } from '../lib/bootstrap'
+import { storage } from '../lib/storage'
+import { useWakeLock } from '../lib/useWakeLock'
+import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
+import { FrameStuck } from '../components/FrameStuck'
+import { useFrameReady } from '../lib/useFrameReady'
 import './Play.css'
 
 const FADE_MS = 3000
 const FINISH_WAIT_MS = 2000
-
-/** Keeps the screen on while a game is open (fails silently where not supported). */
-function useWakeLock() {
-  useEffect(() => {
-    let lock: { release: () => Promise<void> } | null = null
-    const request = async () => {
-      try {
-        const wl = (navigator as Navigator & { wakeLock?: { request: (t: 'screen') => Promise<{ release: () => Promise<void> }> } }).wakeLock
-        if (wl && document.visibilityState === 'visible') lock = await wl.request('screen')
-      } catch {
-        /* not supported or not allowed: Auto-Lock → Never is the backup */
-      }
-    }
-    let enabled = false
-    const onVisible = () => enabled && document.visibilityState === 'visible' && void request()
-    // respects Settings → Options → Keep the screen awake
-    void loadPrefs().then((p) => {
-      enabled = p.keepAwake
-      if (enabled) void request()
-    })
-    document.addEventListener('visibilitychange', onVisible)
-    return () => {
-      document.removeEventListener('visibilitychange', onVisible)
-      void lock?.release().catch(() => undefined)
-    }
-  }, [])
-}
 
 /** Totals from the live score log: used if a game doesn't answer "finish". */
 function totalsFromLog(s: Session): Record<string, number> {
@@ -69,6 +47,7 @@ function PlayFrame({ session }: { session: Session }) {
   const finishTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const fadeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const game = findGame(session.game)
+  const { stuck, markReady } = useFrameReady(reloadKey)
   useWakeLock()
 
   const wake = useCallback(() => {
@@ -99,8 +78,32 @@ function PlayFrame({ session }: { session: Session }) {
       const current = useSessions.getState().sessions[session.id]
       if (!current) return
       switch (d?.type) {
-        case 'kru:ready':
-          frame.current?.contentWindow?.postMessage(initMessage(current), location.origin)
+        case 'kru:ready': {
+          markReady()
+          // the game's memory for this class today (e.g. who Name Picker has already picked)
+          const target = frame.current?.contentWindow
+          const ck = classKeyOf(current.class)
+          void Promise.all([
+            storage.getDayState(current.game, ck, todayKey()).catch(() => undefined),
+            storage.getKeepState(current.game, ck).catch(() => undefined),
+          ]).then(([day, keep]) => {
+              const msg = initMessage(current)
+              const extra: Record<string, unknown> = { day: day ?? null, keep: keep ?? null }
+              if (findGame(current.game)?.sheetQuestions) {
+                // Quiz Battle: the Questions tab sets for this level (from the last Sync)
+                const data = useApp.getState().data
+                extra.questions = (data?.questions ?? []).filter((q) => q.level === current.level)
+                extra.questionProblems = data?.questionProblems ?? []
+              }
+              target?.postMessage({ ...msg, session: { ...msg.session, ...extra } }, location.origin)
+            })
+          break
+        }
+        case 'kru:keep':
+          void storage.setKeepState(current.game, classKeyOf(current.class), (d as { data?: unknown }).data).catch(() => undefined)
+          break
+        case 'kru:day':
+          void storage.setDayState(current.game, classKeyOf(current.class), todayKey(), (d as { data?: unknown }).data).catch(() => undefined)
           break
         case 'kru:state':
           patch(session.id, { state: d.state })
@@ -120,7 +123,7 @@ function PlayFrame({ session }: { session: Session }) {
     }
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
-  }, [goToResults, patch, session.id])
+  }, [goToResults, patch, session.id, markReady])
 
   // Taps inside the game bring the home button back
   function onFrameLoad() {
@@ -157,6 +160,7 @@ function PlayFrame({ session }: { session: Session }) {
         onLoad={onFrameLoad}
         allow="screen-wake-lock"
       />
+      {stuck && <FrameStuck title={game?.title ?? 'The game'} onRetry={() => setReloadKey((k) => k + 1)} />}
       <button
         className={`home-btn${showHome ? '' : ' faded'}`}
         onClick={() => {
@@ -175,7 +179,7 @@ function PlayFrame({ session }: { session: Session }) {
             <p className="muted">
               {game?.title} · {session.class}
             </p>
-            <button className="btn primary" onClick={finish}>
+            <button className="btn end" onClick={finish}>
               Finish &amp; review scores
             </button>
             <Link className="btn" to="/">

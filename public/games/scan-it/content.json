@@ -1,0 +1,8739 @@
+{
+ "about": "Scan It! texts: menus, schedules, posters, weather, opening hours, sale ads, league tables and movie times, with three questions each. Generated from data so every answer is calculated (M.1 find a fact, M.2 compare, M.3 calculate). Times in AM/PM, prices in baht. 50+ per level, shuffled every game.",
+ "M.1": {
+  "items": [
+   {
+    "kind": "Menu",
+    "head": "Green Leaf Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ],
+     [
+      "Lemon soda",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the chicken noodles?",
+      "a": "45 baht"
+     },
+     {
+      "q": "How much is the lemon soda?",
+      "a": "35 baht"
+     },
+     {
+      "q": "What is the name of the café?",
+      "a": "Green Leaf Café"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Rayong",
+      "6:25 AM",
+      "11:55 AM",
+      "2"
+     ],
+     [
+      "Udon Thani",
+      "7:15 AM",
+      "8:15 AM",
+      "8"
+     ],
+     [
+      "Hua Hin",
+      "7:45 AM",
+      "12:00 PM",
+      "7"
+     ],
+     [
+      "Chiang Mai",
+      "8:25 AM",
+      "2:55 PM",
+      "6"
+     ],
+     [
+      "Ayutthaya",
+      "9:45 AM",
+      "11:45 AM",
+      "6"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does the train to Rayong leave?",
+      "a": "6:25 AM"
+     },
+     {
+      "q": "Which platform is the train to Hua Hin?",
+      "a": "Platform 7"
+     },
+     {
+      "q": "What time does the train to Hua Hin arrive?",
+      "a": "12:00 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Fun Run",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Sunday, March 22"
+     ],
+     [
+      "Time",
+      "1:30 PM – 3:30 PM"
+     ],
+     [
+      "Where",
+      "Lumpini Park"
+     ],
+     [
+      "Tickets",
+      "Adults 100 baht · Children 50 baht"
+     ],
+     [
+      "Bring",
+      "your student card"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Where is the event?",
+      "a": "Lumpini Park"
+     },
+     {
+      "q": "What day is it?",
+      "a": "Sunday, March 22"
+     },
+     {
+      "q": "What should you bring?",
+      "a": "Your student card"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Stormy",
+      "28°C",
+      "18°C"
+     ],
+     [
+      "Tuesday",
+      "Stormy",
+      "35°C",
+      "29°C"
+     ],
+     [
+      "Wednesday",
+      "Windy",
+      "33°C",
+      "23°C"
+     ],
+     [
+      "Thursday",
+      "Stormy",
+      "34°C",
+      "24°C"
+     ],
+     [
+      "Friday",
+      "Stormy",
+      "31°C",
+      "21°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the weather on Thursday?",
+      "a": "Stormy"
+     },
+     {
+      "q": "What is the high on Monday?",
+      "a": "28°C"
+     },
+     {
+      "q": "What is the low on Thursday?",
+      "a": "24°C"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Book Store",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:00 AM – 3:00 PM"
+     ],
+     [
+      "Tue",
+      "10:30 AM – 8:30 PM"
+     ],
+     [
+      "Wed",
+      "8:30 AM – 4:30 PM"
+     ],
+     [
+      "Thu",
+      "8:30 AM – 6:30 PM"
+     ],
+     [
+      "Fri",
+      "10:30 AM – 8:30 PM"
+     ],
+     [
+      "Sat",
+      "11:30 AM – 8:30 PM"
+     ],
+     [
+      "Sun",
+      "Closed"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is it closed?",
+      "a": "Sunday"
+     },
+     {
+      "q": "What time does it open on Thursday?",
+      "a": "8:30 AM"
+     },
+     {
+      "q": "What time does it close on Saturday?",
+      "a": "8:30 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Weekend Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Jeans",
+      "900 baht",
+      "50% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "50% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "25% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "20% off"
+     ],
+     [
+      "Sneakers",
+      "1,200 baht",
+      "25% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the jacket before the sale?",
+      "a": "1,000 baht"
+     },
+     {
+      "q": "How much off is the sneakers?",
+      "a": "25%"
+     },
+     {
+      "q": "What is the name of the sale?",
+      "a": "Weekend Sale"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Sharks",
+      "7",
+      "2",
+      "1",
+      "23"
+     ],
+     [
+      "Bears",
+      "5",
+      "1",
+      "4",
+      "16"
+     ],
+     [
+      "Dragons",
+      "4",
+      "0",
+      "6",
+      "12"
+     ],
+     [
+      "Lions",
+      "1",
+      "3",
+      "6",
+      "6"
+     ],
+     [
+      "Rockets",
+      "1",
+      "2",
+      "7",
+      "5"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is first?",
+      "a": "Sharks"
+     },
+     {
+      "q": "How many points do the Bears have?",
+      "a": "16"
+     },
+     {
+      "q": "How many games did the Lions win?",
+      "a": "1"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Robot Hero",
+      "10:00 AM",
+      "11:45 AM"
+     ],
+     [
+      "Ghost School",
+      "5:00 PM",
+      "6:30 PM"
+     ],
+     [
+      "Space Cats",
+      "6:30 PM",
+      "8:05 PM"
+     ],
+     [
+      "Ocean Friends",
+      "7:00 PM",
+      "8:25 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does Robot Hero start?",
+      "a": "10:00 AM"
+     },
+     {
+      "q": "What time does Space Cats end?",
+      "a": "8:05 PM"
+     },
+     {
+      "q": "Which movie starts at 6:30 PM?",
+      "a": "Space Cats"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "The Corner Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Green curry",
+      "60 baht"
+     ],
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Salad",
+      "59 baht"
+     ],
+     [
+      "Fried rice",
+      "50 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ],
+     [
+      "Lemon soda",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the salad?",
+      "a": "59 baht"
+     },
+     {
+      "q": "How much is the mango smoothie?",
+      "a": "50 baht"
+     },
+     {
+      "q": "What is the name of the café?",
+      "a": "The Corner Café"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Rayong",
+      "8:30 AM",
+      "2:00 PM",
+      "2"
+     ],
+     [
+      "Udon Thani",
+      "9:20 AM",
+      "12:50 PM",
+      "3"
+     ],
+     [
+      "Pattaya",
+      "9:50 AM",
+      "5:20 PM",
+      "7"
+     ],
+     [
+      "Ayutthaya",
+      "10:15 AM",
+      "2:15 PM",
+      "7"
+     ],
+     [
+      "Phuket",
+      "10:10 AM",
+      "12:40 PM",
+      "7"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does the train to Rayong leave?",
+      "a": "8:30 AM"
+     },
+     {
+      "q": "Which platform is the train to Phuket?",
+      "a": "Platform 7"
+     },
+     {
+      "q": "What time does the train to Phuket arrive?",
+      "a": "12:40 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Art Show",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Friday, June 26"
+     ],
+     [
+      "Time",
+      "9:00 AM – 11:00 AM"
+     ],
+     [
+      "Where",
+      "Town Museum"
+     ],
+     [
+      "Tickets",
+      "Adults 150 baht · Children 75 baht"
+     ],
+     [
+      "Bring",
+      "a blanket"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Where is the event?",
+      "a": "Town Museum"
+     },
+     {
+      "q": "What day is it?",
+      "a": "Friday, June 26"
+     },
+     {
+      "q": "What should you bring?",
+      "a": "A blanket"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Stormy",
+      "31°C",
+      "23°C"
+     ],
+     [
+      "Tuesday",
+      "Stormy",
+      "28°C",
+      "19°C"
+     ],
+     [
+      "Wednesday",
+      "Windy",
+      "36°C",
+      "29°C"
+     ],
+     [
+      "Thursday",
+      "Windy",
+      "29°C",
+      "19°C"
+     ],
+     [
+      "Friday",
+      "Stormy",
+      "30°C",
+      "20°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the weather on Wednesday?",
+      "a": "Windy"
+     },
+     {
+      "q": "What is the high on Thursday?",
+      "a": "29°C"
+     },
+     {
+      "q": "What is the low on Wednesday?",
+      "a": "29°C"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Book Store",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "10:00 AM – 8:00 PM"
+     ],
+     [
+      "Tue",
+      "8:00 AM – 4:00 PM"
+     ],
+     [
+      "Wed",
+      "8:00 AM – 6:00 PM"
+     ],
+     [
+      "Thu",
+      "10:00 AM – 8:00 PM"
+     ],
+     [
+      "Fri",
+      "10:00 AM – 6:00 PM"
+     ],
+     [
+      "Sat",
+      "Closed"
+     ],
+     [
+      "Sun",
+      "11:00 AM – 6:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is it closed?",
+      "a": "Saturday"
+     },
+     {
+      "q": "What time does it open on Tuesday?",
+      "a": "8:00 AM"
+     },
+     {
+      "q": "What time does it close on Sunday?",
+      "a": "6:00 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Summer Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Jeans",
+      "900 baht",
+      "50% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "25% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "20% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "25% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "20% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the watch before the sale?",
+      "a": "2,000 baht"
+     },
+     {
+      "q": "How much off is the jacket?",
+      "a": "25%"
+     },
+     {
+      "q": "What is the name of the sale?",
+      "a": "Summer Sale"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Dragons",
+      "8",
+      "3",
+      "0",
+      "27"
+     ],
+     [
+      "Eagles",
+      "8",
+      "2",
+      "0",
+      "26"
+     ],
+     [
+      "Sharks",
+      "7",
+      "0",
+      "3",
+      "21"
+     ],
+     [
+      "Rockets",
+      "2",
+      "2",
+      "6",
+      "8"
+     ],
+     [
+      "Wolves",
+      "1",
+      "1",
+      "8",
+      "4"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is first?",
+      "a": "Dragons"
+     },
+     {
+      "q": "How many points do the Eagles have?",
+      "a": "26"
+     },
+     {
+      "q": "How many games did the Dragons win?",
+      "a": "8"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "The Lost Island",
+      "12:30 PM",
+      "2:30 PM"
+     ],
+     [
+      "Ghost School",
+      "4:30 PM",
+      "6:00 PM"
+     ],
+     [
+      "Ocean Friends",
+      "6:30 PM",
+      "7:55 PM"
+     ],
+     [
+      "Robot Hero",
+      "8:30 PM",
+      "10:15 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does The Lost Island start?",
+      "a": "12:30 PM"
+     },
+     {
+      "q": "What time does Ghost School end?",
+      "a": "6:00 PM"
+     },
+     {
+      "q": "Which movie starts at 4:30 PM?",
+      "a": "Ghost School"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Moon Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Salad",
+      "59 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the salad?",
+      "a": "59 baht"
+     },
+     {
+      "q": "How much is the mango smoothie?",
+      "a": "50 baht"
+     },
+     {
+      "q": "What is the name of the café?",
+      "a": "Moon Café"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Rayong",
+      "6:40 AM",
+      "11:40 AM",
+      "2"
+     ],
+     [
+      "Ayutthaya",
+      "7:30 AM",
+      "11:00 AM",
+      "2"
+     ],
+     [
+      "Krabi",
+      "7:30 AM",
+      "2:00 PM",
+      "3"
+     ],
+     [
+      "Khon Kaen",
+      "7:55 AM",
+      "1:55 PM",
+      "5"
+     ],
+     [
+      "Udon Thani",
+      "8:20 AM",
+      "1:50 PM",
+      "6"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does the bus to Ayutthaya leave?",
+      "a": "7:30 AM"
+     },
+     {
+      "q": "Which gate is the bus to Krabi?",
+      "a": "Gate 3"
+     },
+     {
+      "q": "What time does the bus to Krabi arrive?",
+      "a": "2:00 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Fun Run",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Saturday, January 15"
+     ],
+     [
+      "Time",
+      "1:00 PM – 4:00 PM"
+     ],
+     [
+      "Where",
+      "Lumpini Park"
+     ],
+     [
+      "Tickets",
+      "Adults 50 baht · Children 25 baht"
+     ],
+     [
+      "Bring",
+      "a water bottle"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Where is the event?",
+      "a": "Lumpini Park"
+     },
+     {
+      "q": "What day is it?",
+      "a": "Saturday, January 15"
+     },
+     {
+      "q": "What should you bring?",
+      "a": "A water bottle"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Rainy",
+      "28°C",
+      "21°C"
+     ],
+     [
+      "Tuesday",
+      "Partly cloudy",
+      "31°C",
+      "18°C"
+     ],
+     [
+      "Wednesday",
+      "Rainy",
+      "33°C",
+      "28°C"
+     ],
+     [
+      "Thursday",
+      "Windy",
+      "32°C",
+      "24°C"
+     ],
+     [
+      "Friday",
+      "Stormy",
+      "36°C",
+      "19°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the weather on Monday?",
+      "a": "Rainy"
+     },
+     {
+      "q": "What is the high on Wednesday?",
+      "a": "33°C"
+     },
+     {
+      "q": "What is the low on Monday?",
+      "a": "21°C"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Book Store",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:00 AM – 4:00 PM"
+     ],
+     [
+      "Tue",
+      "10:00 AM – 5:00 PM"
+     ],
+     [
+      "Wed",
+      "8:00 AM – 5:00 PM"
+     ],
+     [
+      "Thu",
+      "10:30 AM – 5:30 PM"
+     ],
+     [
+      "Fri",
+      "Closed"
+     ],
+     [
+      "Sat",
+      "10:00 AM – 6:00 PM"
+     ],
+     [
+      "Sun",
+      "10:30 AM – 7:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is it closed?",
+      "a": "Friday"
+     },
+     {
+      "q": "What time does it open on Tuesday?",
+      "a": "10:00 AM"
+     },
+     {
+      "q": "What time does it close on Thursday?",
+      "a": "5:30 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Weekend Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Backpack",
+      "800 baht",
+      "50% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "25% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "20% off"
+     ],
+     [
+      "Cap",
+      "200 baht",
+      "20% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "10% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the backpack before the sale?",
+      "a": "800 baht"
+     },
+     {
+      "q": "How much off is the T-shirt?",
+      "a": "20%"
+     },
+     {
+      "q": "What is the name of the sale?",
+      "a": "Weekend Sale"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Eagles",
+      "8",
+      "2",
+      "0",
+      "26"
+     ],
+     [
+      "Sharks",
+      "8",
+      "0",
+      "2",
+      "24"
+     ],
+     [
+      "Wolves",
+      "5",
+      "2",
+      "3",
+      "17"
+     ],
+     [
+      "Rockets",
+      "1",
+      "1",
+      "8",
+      "4"
+     ],
+     [
+      "Tigers",
+      "0",
+      "0",
+      "10",
+      "0"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is first?",
+      "a": "Eagles"
+     },
+     {
+      "q": "How many points do the Sharks have?",
+      "a": "24"
+     },
+     {
+      "q": "How many games did the Rockets win?",
+      "a": "1"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Space Cats",
+      "12:00 PM",
+      "1:35 PM"
+     ],
+     [
+      "The Lost Island",
+      "1:30 PM",
+      "3:30 PM"
+     ],
+     [
+      "Ocean Friends",
+      "3:30 PM",
+      "4:55 PM"
+     ],
+     [
+      "Dragon Rider",
+      "4:00 PM",
+      "6:10 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does Ocean Friends start?",
+      "a": "3:30 PM"
+     },
+     {
+      "q": "What time does The Lost Island end?",
+      "a": "3:30 PM"
+     },
+     {
+      "q": "Which movie starts at 1:30 PM?",
+      "a": "The Lost Island"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "The Corner Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Hot dog",
+      "49 baht"
+     ],
+     [
+      "Tom yum soup",
+      "70 baht"
+     ],
+     [
+      "Salad",
+      "59 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ],
+     [
+      "Lemon soda",
+      "35 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the tom yum soup?",
+      "a": "70 baht"
+     },
+     {
+      "q": "How much is the hot chocolate?",
+      "a": "45 baht"
+     },
+     {
+      "q": "What is the name of the café?",
+      "a": "The Corner Café"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Pattaya",
+      "8:10 AM",
+      "11:55 AM",
+      "2"
+     ],
+     [
+      "Udon Thani",
+      "8:50 AM",
+      "3:35 PM",
+      "9"
+     ],
+     [
+      "Chiang Mai",
+      "9:30 AM",
+      "12:30 PM",
+      "2"
+     ],
+     [
+      "Rayong",
+      "9:25 AM",
+      "1:40 PM",
+      "5"
+     ],
+     [
+      "Ayutthaya",
+      "9:50 AM",
+      "5:05 PM",
+      "7"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does the train to Ayutthaya leave?",
+      "a": "9:50 AM"
+     },
+     {
+      "q": "Which platform is the train to Udon Thani?",
+      "a": "Platform 9"
+     },
+     {
+      "q": "What time does the train to Udon Thani arrive?",
+      "a": "3:35 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Pet Show",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Saturday, February 6"
+     ],
+     [
+      "Time",
+      "3:00 PM – 6:00 PM"
+     ],
+     [
+      "Where",
+      "Green Garden"
+     ],
+     [
+      "Tickets",
+      "Adults 150 baht · Children 75 baht"
+     ],
+     [
+      "Bring",
+      "your student card"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Where is the event?",
+      "a": "Green Garden"
+     },
+     {
+      "q": "What day is it?",
+      "a": "Saturday, February 6"
+     },
+     {
+      "q": "What should you bring?",
+      "a": "Your student card"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Windy",
+      "36°C",
+      "31°C"
+     ],
+     [
+      "Tuesday",
+      "Rainy",
+      "37°C",
+      "21°C"
+     ],
+     [
+      "Wednesday",
+      "Rainy",
+      "34°C",
+      "27°C"
+     ],
+     [
+      "Thursday",
+      "Stormy",
+      "33°C",
+      "22°C"
+     ],
+     [
+      "Friday",
+      "Partly cloudy",
+      "32°C",
+      "27°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the weather on Friday?",
+      "a": "Partly cloudy"
+     },
+     {
+      "q": "What is the high on Tuesday?",
+      "a": "37°C"
+     },
+     {
+      "q": "What is the low on Friday?",
+      "a": "27°C"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "City Library",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "9:00 AM – 5:00 PM"
+     ],
+     [
+      "Tue",
+      "Closed"
+     ],
+     [
+      "Wed",
+      "8:00 AM – 3:00 PM"
+     ],
+     [
+      "Thu",
+      "9:00 AM – 6:00 PM"
+     ],
+     [
+      "Fri",
+      "9:00 AM – 5:00 PM"
+     ],
+     [
+      "Sat",
+      "11:00 AM – 6:00 PM"
+     ],
+     [
+      "Sun",
+      "9:30 AM – 6:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is it closed?",
+      "a": "Tuesday"
+     },
+     {
+      "q": "What time does it open on Monday?",
+      "a": "9:00 AM"
+     },
+     {
+      "q": "What time does it close on Sunday?",
+      "a": "6:30 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Summer Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Jeans",
+      "900 baht",
+      "50% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "10% off"
+     ],
+     [
+      "Sneakers",
+      "1,200 baht",
+      "20% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "25% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "50% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the headphones before the sale?",
+      "a": "1,500 baht"
+     },
+     {
+      "q": "How much off is the sneakers?",
+      "a": "20%"
+     },
+     {
+      "q": "What is the name of the sale?",
+      "a": "Summer Sale"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Dragons",
+      "7",
+      "2",
+      "1",
+      "23"
+     ],
+     [
+      "Eagles",
+      "5",
+      "2",
+      "3",
+      "17"
+     ],
+     [
+      "Sharks",
+      "3",
+      "3",
+      "4",
+      "12"
+     ],
+     [
+      "Lions",
+      "3",
+      "2",
+      "5",
+      "11"
+     ],
+     [
+      "Tigers",
+      "2",
+      "1",
+      "7",
+      "7"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is first?",
+      "a": "Dragons"
+     },
+     {
+      "q": "How many points do the Sharks have?",
+      "a": "12"
+     },
+     {
+      "q": "How many games did the Lions win?",
+      "a": "3"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Super Chef",
+      "12:00 PM",
+      "1:40 PM"
+     ],
+     [
+      "The Lost Island",
+      "4:30 PM",
+      "6:30 PM"
+     ],
+     [
+      "The Last Race",
+      "7:00 PM",
+      "8:55 PM"
+     ],
+     [
+      "Ghost School",
+      "8:30 PM",
+      "10:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does The Last Race start?",
+      "a": "7:00 PM"
+     },
+     {
+      "q": "What time does The Lost Island end?",
+      "a": "6:30 PM"
+     },
+     {
+      "q": "Which movie starts at 4:30 PM?",
+      "a": "The Lost Island"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Green Leaf Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Cheeseburger",
+      "89 baht"
+     ],
+     [
+      "Tom yum soup",
+      "70 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Milk tea",
+      "40 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the tom yum soup?",
+      "a": "70 baht"
+     },
+     {
+      "q": "How much is the mango smoothie?",
+      "a": "50 baht"
+     },
+     {
+      "q": "What is the name of the café?",
+      "a": "Green Leaf Café"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Krabi",
+      "8:25 AM",
+      "3:40 PM",
+      "1"
+     ],
+     [
+      "Phuket",
+      "9:05 AM",
+      "4:35 PM",
+      "6"
+     ],
+     [
+      "Ayutthaya",
+      "9:15 AM",
+      "6:00 PM",
+      "9"
+     ],
+     [
+      "Pattaya",
+      "10:10 AM",
+      "5:55 PM",
+      "6"
+     ],
+     [
+      "Udon Thani",
+      "11:05 AM",
+      "12:50 PM",
+      "7"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does the bus to Phuket leave?",
+      "a": "9:05 AM"
+     },
+     {
+      "q": "Which gate is the bus to Krabi?",
+      "a": "Gate 1"
+     },
+     {
+      "q": "What time does the bus to Krabi arrive?",
+      "a": "3:40 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Fun Run",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Friday, December 10"
+     ],
+     [
+      "Time",
+      "11:00 AM – 2:00 PM"
+     ],
+     [
+      "Where",
+      "Lumpini Park"
+     ],
+     [
+      "Tickets",
+      "Adults 150 baht · Children 75 baht"
+     ],
+     [
+      "Bring",
+      "a camera"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Where is the event?",
+      "a": "Lumpini Park"
+     },
+     {
+      "q": "What day is it?",
+      "a": "Friday, December 10"
+     },
+     {
+      "q": "What should you bring?",
+      "a": "A camera"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Stormy",
+      "36°C",
+      "26°C"
+     ],
+     [
+      "Thursday",
+      "Sunny",
+      "37°C",
+      "20°C"
+     ],
+     [
+      "Friday",
+      "Sunny",
+      "32°C",
+      "27°C"
+     ],
+     [
+      "Saturday",
+      "Sunny",
+      "28°C",
+      "23°C"
+     ],
+     [
+      "Sunday",
+      "Windy",
+      "35°C",
+      "26°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the weather on Thursday?",
+      "a": "Sunny"
+     },
+     {
+      "q": "What is the high on Wednesday?",
+      "a": "36°C"
+     },
+     {
+      "q": "What is the low on Thursday?",
+      "a": "20°C"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Swimming Pool",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "9:00 AM – 7:00 PM"
+     ],
+     [
+      "Tue",
+      "Closed"
+     ],
+     [
+      "Wed",
+      "8:00 AM – 5:00 PM"
+     ],
+     [
+      "Thu",
+      "8:30 AM – 4:30 PM"
+     ],
+     [
+      "Fri",
+      "8:00 AM – 5:00 PM"
+     ],
+     [
+      "Sat",
+      "10:00 AM – 5:00 PM"
+     ],
+     [
+      "Sun",
+      "11:00 AM – 8:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is it closed?",
+      "a": "Tuesday"
+     },
+     {
+      "q": "What time does it open on Sunday?",
+      "a": "11:00 AM"
+     },
+     {
+      "q": "What time does it close on Thursday?",
+      "a": "4:30 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Back to School Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Cap",
+      "200 baht",
+      "25% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "25% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "10% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "50% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "20% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the cap before the sale?",
+      "a": "200 baht"
+     },
+     {
+      "q": "How much off is the backpack?",
+      "a": "50%"
+     },
+     {
+      "q": "What is the name of the sale?",
+      "a": "Back to School Sale"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Dragons",
+      "7",
+      "0",
+      "3",
+      "21"
+     ],
+     [
+      "Wolves",
+      "4",
+      "3",
+      "3",
+      "15"
+     ],
+     [
+      "Eagles",
+      "4",
+      "1",
+      "5",
+      "13"
+     ],
+     [
+      "Tigers",
+      "1",
+      "2",
+      "7",
+      "5"
+     ],
+     [
+      "Sharks",
+      "0",
+      "3",
+      "7",
+      "3"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is first?",
+      "a": "Dragons"
+     },
+     {
+      "q": "How many points do the Sharks have?",
+      "a": "3"
+     },
+     {
+      "q": "How many games did the Eagles win?",
+      "a": "4"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "The Last Race",
+      "11:00 AM",
+      "12:55 PM"
+     ],
+     [
+      "Robot Hero",
+      "12:30 PM",
+      "2:15 PM"
+     ],
+     [
+      "Ocean Friends",
+      "3:30 PM",
+      "4:55 PM"
+     ],
+     [
+      "Super Chef",
+      "6:30 PM",
+      "8:10 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does Robot Hero start?",
+      "a": "12:30 PM"
+     },
+     {
+      "q": "What time does Super Chef end?",
+      "a": "8:10 PM"
+     },
+     {
+      "q": "Which movie starts at 6:30 PM?",
+      "a": "Super Chef"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Blue Door Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Salad",
+      "59 baht"
+     ],
+     [
+      "Green curry",
+      "60 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ],
+     [
+      "Iced tea",
+      "30 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the chicken noodles?",
+      "a": "45 baht"
+     },
+     {
+      "q": "How much is the iced tea?",
+      "a": "30 baht"
+     },
+     {
+      "q": "What is the name of the café?",
+      "a": "Blue Door Café"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Krabi",
+      "8:35 AM",
+      "2:35 PM",
+      "6"
+     ],
+     [
+      "Hua Hin",
+      "9:25 AM",
+      "1:25 PM",
+      "3"
+     ],
+     [
+      "Ayutthaya",
+      "9:45 AM",
+      "1:00 PM",
+      "3"
+     ],
+     [
+      "Korat",
+      "9:50 AM",
+      "11:20 AM",
+      "5"
+     ],
+     [
+      "Khon Kaen",
+      "11:15 AM",
+      "3:00 PM",
+      "3"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does the bus to Ayutthaya leave?",
+      "a": "9:45 AM"
+     },
+     {
+      "q": "Which gate is the bus to Khon Kaen?",
+      "a": "Gate 3"
+     },
+     {
+      "q": "What time does the bus to Khon Kaen arrive?",
+      "a": "3:00 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Food Market",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Sunday, March 7"
+     ],
+     [
+      "Time",
+      "9:30 AM – 11:30 AM"
+     ],
+     [
+      "Where",
+      "Riverside Square"
+     ],
+     [
+      "Tickets",
+      "Adults 80 baht · Children 40 baht"
+     ],
+     [
+      "Bring",
+      "a blanket"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Where is the event?",
+      "a": "Riverside Square"
+     },
+     {
+      "q": "What day is it?",
+      "a": "Sunday, March 7"
+     },
+     {
+      "q": "What should you bring?",
+      "a": "A blanket"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Windy",
+      "27°C",
+      "22°C"
+     ],
+     [
+      "Thursday",
+      "Cloudy",
+      "28°C",
+      "21°C"
+     ],
+     [
+      "Friday",
+      "Windy",
+      "32°C",
+      "26°C"
+     ],
+     [
+      "Saturday",
+      "Partly cloudy",
+      "36°C",
+      "25°C"
+     ],
+     [
+      "Sunday",
+      "Rainy",
+      "38°C",
+      "22°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the weather on Friday?",
+      "a": "Windy"
+     },
+     {
+      "q": "What is the high on Sunday?",
+      "a": "38°C"
+     },
+     {
+      "q": "What is the low on Friday?",
+      "a": "26°C"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "City Library",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "10:00 AM – 5:00 PM"
+     ],
+     [
+      "Tue",
+      "Closed"
+     ],
+     [
+      "Wed",
+      "9:30 AM – 5:30 PM"
+     ],
+     [
+      "Thu",
+      "8:00 AM – 4:00 PM"
+     ],
+     [
+      "Fri",
+      "10:30 AM – 6:30 PM"
+     ],
+     [
+      "Sat",
+      "10:00 AM – 7:00 PM"
+     ],
+     [
+      "Sun",
+      "11:30 AM – 8:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is it closed?",
+      "a": "Tuesday"
+     },
+     {
+      "q": "What time does it open on Thursday?",
+      "a": "8:00 AM"
+     },
+     {
+      "q": "What time does it close on Wednesday?",
+      "a": "5:30 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Back to School Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Jacket",
+      "1,000 baht",
+      "20% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "10% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "10% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "25% off"
+     ],
+     [
+      "Sneakers",
+      "1,200 baht",
+      "20% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the jacket before the sale?",
+      "a": "1,000 baht"
+     },
+     {
+      "q": "How much off is the watch?",
+      "a": "10%"
+     },
+     {
+      "q": "What is the name of the sale?",
+      "a": "Back to School Sale"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Dragons",
+      "8",
+      "3",
+      "0",
+      "27"
+     ],
+     [
+      "Rockets",
+      "5",
+      "3",
+      "2",
+      "18"
+     ],
+     [
+      "Wolves",
+      "4",
+      "2",
+      "4",
+      "14"
+     ],
+     [
+      "Tigers",
+      "0",
+      "3",
+      "7",
+      "3"
+     ],
+     [
+      "Sharks",
+      "0",
+      "1",
+      "9",
+      "1"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is first?",
+      "a": "Dragons"
+     },
+     {
+      "q": "How many points do the Wolves have?",
+      "a": "14"
+     },
+     {
+      "q": "How many games did the Sharks win?",
+      "a": "0"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "The Last Race",
+      "1:30 PM",
+      "3:25 PM"
+     ],
+     [
+      "The Lost Island",
+      "3:30 PM",
+      "5:30 PM"
+     ],
+     [
+      "Space Cats",
+      "5:00 PM",
+      "6:35 PM"
+     ],
+     [
+      "Super Chef",
+      "6:30 PM",
+      "8:10 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does Super Chef start?",
+      "a": "6:30 PM"
+     },
+     {
+      "q": "What time does Space Cats end?",
+      "a": "6:35 PM"
+     },
+     {
+      "q": "Which movie starts at 5:00 PM?",
+      "a": "Space Cats"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Sunny Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Hot dog",
+      "49 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the pizza slice?",
+      "a": "65 baht"
+     },
+     {
+      "q": "How much is the water?",
+      "a": "15 baht"
+     },
+     {
+      "q": "What is the name of the café?",
+      "a": "Sunny Café"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Ayutthaya",
+      "6:10 AM",
+      "2:10 PM",
+      "2"
+     ],
+     [
+      "Rayong",
+      "7:00 AM",
+      "3:15 PM",
+      "8"
+     ],
+     [
+      "Chiang Mai",
+      "7:00 AM",
+      "10:15 AM",
+      "6"
+     ],
+     [
+      "Udon Thani",
+      "7:55 AM",
+      "9:10 AM",
+      "2"
+     ],
+     [
+      "Krabi",
+      "9:30 AM",
+      "11:45 AM",
+      "3"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does the bus to Krabi leave?",
+      "a": "9:30 AM"
+     },
+     {
+      "q": "Which gate is the bus to Chiang Mai?",
+      "a": "Gate 6"
+     },
+     {
+      "q": "What time does the bus to Chiang Mai arrive?",
+      "a": "10:15 AM"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Summer Music Festival",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Saturday, December 4"
+     ],
+     [
+      "Time",
+      "5:00 PM – 7:00 PM"
+     ],
+     [
+      "Where",
+      "City Park"
+     ],
+     [
+      "Tickets",
+      "Adults 100 baht · Children 50 baht"
+     ],
+     [
+      "Bring",
+      "a camera"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Where is the event?",
+      "a": "City Park"
+     },
+     {
+      "q": "What day is it?",
+      "a": "Saturday, December 4"
+     },
+     {
+      "q": "What should you bring?",
+      "a": "A camera"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Cloudy",
+      "29°C",
+      "24°C"
+     ],
+     [
+      "Tuesday",
+      "Stormy",
+      "34°C",
+      "29°C"
+     ],
+     [
+      "Wednesday",
+      "Cloudy",
+      "30°C",
+      "23°C"
+     ],
+     [
+      "Thursday",
+      "Stormy",
+      "28°C",
+      "23°C"
+     ],
+     [
+      "Friday",
+      "Cloudy",
+      "36°C",
+      "24°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the weather on Thursday?",
+      "a": "Stormy"
+     },
+     {
+      "q": "What is the high on Friday?",
+      "a": "36°C"
+     },
+     {
+      "q": "What is the low on Thursday?",
+      "a": "23°C"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Post Office",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:30 AM – 4:30 PM"
+     ],
+     [
+      "Tue",
+      "9:00 AM – 7:00 PM"
+     ],
+     [
+      "Wed",
+      "8:30 AM – 4:30 PM"
+     ],
+     [
+      "Thu",
+      "10:30 AM – 7:30 PM"
+     ],
+     [
+      "Fri",
+      "Closed"
+     ],
+     [
+      "Sat",
+      "10:00 AM – 6:00 PM"
+     ],
+     [
+      "Sun",
+      "11:00 AM – 5:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is it closed?",
+      "a": "Friday"
+     },
+     {
+      "q": "What time does it open on Saturday?",
+      "a": "10:00 AM"
+     },
+     {
+      "q": "What time does it close on Wednesday?",
+      "a": "4:30 PM"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Weekend Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Notebook set",
+      "120 baht",
+      "10% off"
+     ],
+     [
+      "Sneakers",
+      "1,200 baht",
+      "10% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "50% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "50% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "10% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much is the sneakers before the sale?",
+      "a": "1,200 baht"
+     },
+     {
+      "q": "How much off is the water bottle?",
+      "a": "10%"
+     },
+     {
+      "q": "What is the name of the sale?",
+      "a": "Weekend Sale"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Bears",
+      "8",
+      "0",
+      "2",
+      "24"
+     ],
+     [
+      "Dragons",
+      "7",
+      "0",
+      "3",
+      "21"
+     ],
+     [
+      "Lions",
+      "5",
+      "0",
+      "5",
+      "15"
+     ],
+     [
+      "Eagles",
+      "4",
+      "1",
+      "5",
+      "13"
+     ],
+     [
+      "Tigers",
+      "0",
+      "1",
+      "9",
+      "1"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is first?",
+      "a": "Bears"
+     },
+     {
+      "q": "How many points do the Lions have?",
+      "a": "15"
+     },
+     {
+      "q": "How many games did the Eagles win?",
+      "a": "4"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Space Cats",
+      "10:30 AM",
+      "12:05 PM"
+     ],
+     [
+      "Super Chef",
+      "11:00 AM",
+      "12:40 PM"
+     ],
+     [
+      "The Lost Island",
+      "12:30 PM",
+      "2:30 PM"
+     ],
+     [
+      "Ghost School",
+      "2:30 PM",
+      "4:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does Space Cats start?",
+      "a": "10:30 AM"
+     },
+     {
+      "q": "What time does Super Chef end?",
+      "a": "12:40 PM"
+     },
+     {
+      "q": "Which movie starts at 11:00 AM?",
+      "a": "Super Chef"
+     }
+    ]
+   }
+  ]
+ },
+ "M.2": {
+  "items": [
+   {
+    "kind": "Menu",
+    "head": "The Corner Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Fried rice",
+      "50 baht"
+     ],
+     [
+      "Cheeseburger",
+      "89 baht"
+     ],
+     [
+      "Salad",
+      "59 baht"
+     ],
+     [
+      "Hot dog",
+      "49 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ],
+     [
+      "Milk tea",
+      "40 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the cheapest drink?",
+      "a": "Orange juice"
+     },
+     {
+      "q": "What is the most expensive food?",
+      "a": "Cheeseburger"
+     },
+     {
+      "q": "How much is the salad?",
+      "a": "59 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Udon Thani",
+      "8:05 AM",
+      "10:20 AM",
+      "4"
+     ],
+     [
+      "Chiang Mai",
+      "8:30 AM",
+      "9:30 AM",
+      "7"
+     ],
+     [
+      "Khon Kaen",
+      "9:45 AM",
+      "12:00 PM",
+      "8"
+     ],
+     [
+      "Phuket",
+      "9:50 AM",
+      "1:20 PM",
+      "4"
+     ],
+     [
+      "Ayutthaya",
+      "10:25 AM",
+      "2:25 PM",
+      "9"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which bus leaves first?",
+      "a": "The bus to Udon Thani"
+     },
+     {
+      "q": "Which bus arrives last?",
+      "a": "The bus to Ayutthaya"
+     },
+     {
+      "q": "Which gate is the bus to Khon Kaen?",
+      "a": "Gate 8"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Fun Run",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Friday, November 7"
+     ],
+     [
+      "Time",
+      "4:00 PM – 6:00 PM"
+     ],
+     [
+      "Where",
+      "Lumpini Park"
+     ],
+     [
+      "Tickets",
+      "Adults 50 baht · Children 25 baht"
+     ],
+     [
+      "Bring",
+      "your student card"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does it start?",
+      "a": "4:00 PM"
+     },
+     {
+      "q": "What time does it finish?",
+      "a": "6:00 PM"
+     },
+     {
+      "q": "How much is a child's ticket?",
+      "a": "25 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Windy",
+      "28°C",
+      "19°C"
+     ],
+     [
+      "Tuesday",
+      "Stormy",
+      "38°C",
+      "23°C"
+     ],
+     [
+      "Wednesday",
+      "Rainy",
+      "34°C",
+      "29°C"
+     ],
+     [
+      "Thursday",
+      "Windy",
+      "37°C",
+      "28°C"
+     ],
+     [
+      "Friday",
+      "Sunny",
+      "33°C",
+      "20°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is the hottest?",
+      "a": "Tuesday"
+     },
+     {
+      "q": "Which day is the coolest?",
+      "a": "Monday"
+     },
+     {
+      "q": "What is the weather on Wednesday?",
+      "a": "Rainy"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Night Market",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "Closed"
+     ],
+     [
+      "Tue",
+      "10:00 AM – 7:00 PM"
+     ],
+     [
+      "Wed",
+      "8:00 AM – 6:00 PM"
+     ],
+     [
+      "Thu",
+      "8:30 AM – 4:30 PM"
+     ],
+     [
+      "Fri",
+      "9:00 AM – 4:00 PM"
+     ],
+     [
+      "Sat",
+      "10:00 AM – 7:00 PM"
+     ],
+     [
+      "Sun",
+      "11:00 AM – 6:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day does it close latest?",
+      "a": "Tuesday / Saturday"
+     },
+     {
+      "q": "Which day does it open earliest?",
+      "a": "Wednesday"
+     },
+     {
+      "q": "Which day is it closed?",
+      "a": "Monday"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Weekend Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Notebook set",
+      "120 baht",
+      "20% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "10% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "25% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "20% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "50% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which item has the biggest discount?",
+      "a": "Water bottle"
+     },
+     {
+      "q": "Which item is the cheapest before the sale?",
+      "a": "Notebook set"
+     },
+     {
+      "q": "How much off is the jacket?",
+      "a": "25%"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Rockets",
+      "7",
+      "3",
+      "0",
+      "24"
+     ],
+     [
+      "Sharks",
+      "7",
+      "2",
+      "1",
+      "23"
+     ],
+     [
+      "Bears",
+      "7",
+      "0",
+      "3",
+      "21"
+     ],
+     [
+      "Eagles",
+      "4",
+      "2",
+      "4",
+      "14"
+     ],
+     [
+      "Tigers",
+      "4",
+      "0",
+      "6",
+      "12"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is last?",
+      "a": "Tigers"
+     },
+     {
+      "q": "Which team lost the most games?",
+      "a": "Tigers"
+     },
+     {
+      "q": "How many games did the Tigers draw?",
+      "a": "0"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "The Last Race",
+      "10:00 AM",
+      "11:55 AM"
+     ],
+     [
+      "Robot Hero",
+      "11:30 AM",
+      "1:15 PM"
+     ],
+     [
+      "Super Chef",
+      "6:30 PM",
+      "8:10 PM"
+     ],
+     [
+      "The Lost Island",
+      "7:30 PM",
+      "9:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which movie starts first?",
+      "a": "The Last Race"
+     },
+     {
+      "q": "Which movie ends last?",
+      "a": "The Lost Island"
+     },
+     {
+      "q": "Which movie starts after Robot Hero?",
+      "a": "Super Chef"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Happy Bowl",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Hot dog",
+      "49 baht"
+     ],
+     [
+      "Club sandwich",
+      "75 baht"
+     ],
+     [
+      "Green curry",
+      "60 baht"
+     ],
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Milk tea",
+      "40 baht"
+     ],
+     [
+      "Lemon soda",
+      "35 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the cheapest drink?",
+      "a": "Lemon soda"
+     },
+     {
+      "q": "What is the most expensive food?",
+      "a": "Club sandwich"
+     },
+     {
+      "q": "How much is the pizza slice?",
+      "a": "65 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Krabi",
+      "7:35 AM",
+      "12:35 PM",
+      "6"
+     ],
+     [
+      "Korat",
+      "8:25 AM",
+      "1:10 PM",
+      "3"
+     ],
+     [
+      "Hua Hin",
+      "8:55 AM",
+      "10:25 AM",
+      "4"
+     ],
+     [
+      "Ayutthaya",
+      "9:35 AM",
+      "1:05 PM",
+      "7"
+     ],
+     [
+      "Rayong",
+      "9:55 AM",
+      "5:55 PM",
+      "7"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which train leaves first?",
+      "a": "The train to Krabi"
+     },
+     {
+      "q": "Which train arrives last?",
+      "a": "The train to Rayong"
+     },
+     {
+      "q": "Which platform is the train to Ayutthaya?",
+      "a": "Platform 7"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Robot Fair",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Sunday, December 3"
+     ],
+     [
+      "Time",
+      "5:00 PM – 8:00 PM"
+     ],
+     [
+      "Where",
+      "Tech Mall"
+     ],
+     [
+      "Tickets",
+      "Adults 150 baht · Children 75 baht"
+     ],
+     [
+      "Bring",
+      "your student card"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does it start?",
+      "a": "5:00 PM"
+     },
+     {
+      "q": "What time does it finish?",
+      "a": "8:00 PM"
+     },
+     {
+      "q": "How much is a child's ticket?",
+      "a": "75 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Partly cloudy",
+      "35°C",
+      "20°C"
+     ],
+     [
+      "Thursday",
+      "Rainy",
+      "36°C",
+      "25°C"
+     ],
+     [
+      "Friday",
+      "Rainy",
+      "33°C",
+      "27°C"
+     ],
+     [
+      "Saturday",
+      "Windy",
+      "32°C",
+      "26°C"
+     ],
+     [
+      "Sunday",
+      "Stormy",
+      "38°C",
+      "17°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is the hottest?",
+      "a": "Sunday"
+     },
+     {
+      "q": "Which day is the coolest?",
+      "a": "Saturday"
+     },
+     {
+      "q": "What is the weather on Sunday?",
+      "a": "Stormy"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Book Store",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:30 AM – 6:30 PM"
+     ],
+     [
+      "Tue",
+      "Closed"
+     ],
+     [
+      "Wed",
+      "9:00 AM – 7:00 PM"
+     ],
+     [
+      "Thu",
+      "10:00 AM – 7:00 PM"
+     ],
+     [
+      "Fri",
+      "8:00 AM – 3:00 PM"
+     ],
+     [
+      "Sat",
+      "9:00 AM – 6:00 PM"
+     ],
+     [
+      "Sun",
+      "9:30 AM – 5:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day does it close latest?",
+      "a": "Wednesday / Thursday"
+     },
+     {
+      "q": "Which day does it open earliest?",
+      "a": "Friday"
+     },
+     {
+      "q": "Which day is it closed?",
+      "a": "Tuesday"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Big Sale!",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Water bottle",
+      "250 baht",
+      "10% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "10% off"
+     ],
+     [
+      "Cap",
+      "200 baht",
+      "25% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "20% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "50% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which item has the biggest discount?",
+      "a": "T-shirt"
+     },
+     {
+      "q": "Which item is the cheapest before the sale?",
+      "a": "Cap"
+     },
+     {
+      "q": "How much off is the backpack?",
+      "a": "20%"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Tigers",
+      "8",
+      "1",
+      "1",
+      "25"
+     ],
+     [
+      "Dragons",
+      "6",
+      "0",
+      "4",
+      "18"
+     ],
+     [
+      "Rockets",
+      "2",
+      "1",
+      "7",
+      "7"
+     ],
+     [
+      "Bears",
+      "1",
+      "3",
+      "6",
+      "6"
+     ],
+     [
+      "Sharks",
+      "0",
+      "0",
+      "10",
+      "0"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is last?",
+      "a": "Sharks"
+     },
+     {
+      "q": "Which team lost the most games?",
+      "a": "Sharks"
+     },
+     {
+      "q": "How many games did the Bears draw?",
+      "a": "3"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "The Lost Island",
+      "11:30 AM",
+      "1:30 PM"
+     ],
+     [
+      "Ghost School",
+      "3:30 PM",
+      "5:00 PM"
+     ],
+     [
+      "Super Chef",
+      "5:00 PM",
+      "6:40 PM"
+     ],
+     [
+      "Space Cats",
+      "5:30 PM",
+      "7:05 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which movie starts first?",
+      "a": "The Lost Island"
+     },
+     {
+      "q": "Which movie ends last?",
+      "a": "Space Cats"
+     },
+     {
+      "q": "Which movie starts after The Lost Island?",
+      "a": "Ghost School"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Moon Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Club sandwich",
+      "75 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Cheeseburger",
+      "89 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the cheapest drink?",
+      "a": "Orange juice"
+     },
+     {
+      "q": "What is the most expensive food?",
+      "a": "Cheeseburger"
+     },
+     {
+      "q": "How much is the club sandwich?",
+      "a": "75 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Rayong",
+      "6:30 AM",
+      "1:15 PM",
+      "2"
+     ],
+     [
+      "Ayutthaya",
+      "7:20 AM",
+      "9:35 AM",
+      "5"
+     ],
+     [
+      "Krabi",
+      "7:50 AM",
+      "3:35 PM",
+      "5"
+     ],
+     [
+      "Korat",
+      "8:15 AM",
+      "12:00 PM",
+      "9"
+     ],
+     [
+      "Hua Hin",
+      "9:50 AM",
+      "2:50 PM",
+      "1"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which bus leaves first?",
+      "a": "The bus to Rayong"
+     },
+     {
+      "q": "Which bus arrives last?",
+      "a": "The bus to Krabi"
+     },
+     {
+      "q": "Which gate is the bus to Hua Hin?",
+      "a": "Gate 1"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Pet Show",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Sunday, May 15"
+     ],
+     [
+      "Time",
+      "1:00 PM – 3:00 PM"
+     ],
+     [
+      "Where",
+      "Green Garden"
+     ],
+     [
+      "Tickets",
+      "Adults 150 baht · Children 75 baht"
+     ],
+     [
+      "Bring",
+      "a blanket"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does it start?",
+      "a": "1:00 PM"
+     },
+     {
+      "q": "What time does it finish?",
+      "a": "3:00 PM"
+     },
+     {
+      "q": "How much is a child's ticket?",
+      "a": "75 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Rainy",
+      "35°C",
+      "27°C"
+     ],
+     [
+      "Tuesday",
+      "Sunny",
+      "31°C",
+      "21°C"
+     ],
+     [
+      "Wednesday",
+      "Sunny",
+      "30°C",
+      "23°C"
+     ],
+     [
+      "Thursday",
+      "Windy",
+      "36°C",
+      "28°C"
+     ],
+     [
+      "Friday",
+      "Rainy",
+      "38°C",
+      "32°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is the hottest?",
+      "a": "Friday"
+     },
+     {
+      "q": "Which day is the coolest?",
+      "a": "Wednesday"
+     },
+     {
+      "q": "What is the weather on Thursday?",
+      "a": "Windy"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Art Gallery",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "9:30 AM – 4:30 PM"
+     ],
+     [
+      "Tue",
+      "9:30 AM – 7:30 PM"
+     ],
+     [
+      "Wed",
+      "10:30 AM – 8:30 PM"
+     ],
+     [
+      "Thu",
+      "9:00 AM – 6:00 PM"
+     ],
+     [
+      "Fri",
+      "Closed"
+     ],
+     [
+      "Sat",
+      "10:30 AM – 6:30 PM"
+     ],
+     [
+      "Sun",
+      "10:00 AM – 6:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day does it close latest?",
+      "a": "Wednesday"
+     },
+     {
+      "q": "Which day does it open earliest?",
+      "a": "Thursday"
+     },
+     {
+      "q": "Which day is it closed?",
+      "a": "Friday"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Big Sale!",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Notebook set",
+      "120 baht",
+      "10% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "10% off"
+     ],
+     [
+      "Jeans",
+      "900 baht",
+      "25% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "50% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "25% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which item has the biggest discount?",
+      "a": "Jacket"
+     },
+     {
+      "q": "Which item is the cheapest before the sale?",
+      "a": "Notebook set"
+     },
+     {
+      "q": "How much off is the jacket?",
+      "a": "50%"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Tigers",
+      "5",
+      "3",
+      "2",
+      "18"
+     ],
+     [
+      "Dragons",
+      "4",
+      "1",
+      "5",
+      "13"
+     ],
+     [
+      "Lions",
+      "2",
+      "0",
+      "8",
+      "6"
+     ],
+     [
+      "Bears",
+      "1",
+      "1",
+      "8",
+      "4"
+     ],
+     [
+      "Wolves",
+      "1",
+      "0",
+      "9",
+      "3"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is last?",
+      "a": "Wolves"
+     },
+     {
+      "q": "Which team lost the most games?",
+      "a": "Wolves"
+     },
+     {
+      "q": "How many games did the Tigers draw?",
+      "a": "3"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Ghost School",
+      "11:00 AM",
+      "12:30 PM"
+     ],
+     [
+      "Space Cats",
+      "11:30 AM",
+      "1:05 PM"
+     ],
+     [
+      "Ocean Friends",
+      "4:00 PM",
+      "5:25 PM"
+     ],
+     [
+      "Super Chef",
+      "7:00 PM",
+      "8:40 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which movie starts first?",
+      "a": "Ghost School"
+     },
+     {
+      "q": "Which movie ends last?",
+      "a": "Super Chef"
+     },
+     {
+      "q": "Which movie starts after Ghost School?",
+      "a": "Space Cats"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Little Kitchen",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Fried rice",
+      "50 baht"
+     ],
+     [
+      "Cheeseburger",
+      "89 baht"
+     ],
+     [
+      "Club sandwich",
+      "75 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the cheapest drink?",
+      "a": "Water"
+     },
+     {
+      "q": "What is the most expensive food?",
+      "a": "Cheeseburger"
+     },
+     {
+      "q": "How much is the spaghetti?",
+      "a": "85 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Ayutthaya",
+      "6:50 AM",
+      "8:35 AM",
+      "2"
+     ],
+     [
+      "Pattaya",
+      "7:40 AM",
+      "3:10 PM",
+      "8"
+     ],
+     [
+      "Rayong",
+      "8:30 AM",
+      "11:45 AM",
+      "1"
+     ],
+     [
+      "Khon Kaen",
+      "8:50 AM",
+      "11:20 AM",
+      "3"
+     ],
+     [
+      "Udon Thani",
+      "10:10 AM",
+      "2:10 PM",
+      "5"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which train leaves first?",
+      "a": "The train to Ayutthaya"
+     },
+     {
+      "q": "Which train arrives last?",
+      "a": "The train to Pattaya"
+     },
+     {
+      "q": "Which platform is the train to Khon Kaen?",
+      "a": "Platform 3"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Book Fair",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Sunday, March 26"
+     ],
+     [
+      "Time",
+      "1:30 PM – 3:30 PM"
+     ],
+     [
+      "Where",
+      "Central Library"
+     ],
+     [
+      "Tickets",
+      "Adults 50 baht · Children 25 baht"
+     ],
+     [
+      "Bring",
+      "a hat"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does it start?",
+      "a": "1:30 PM"
+     },
+     {
+      "q": "What time does it finish?",
+      "a": "3:30 PM"
+     },
+     {
+      "q": "How much is a child's ticket?",
+      "a": "25 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Rainy",
+      "35°C",
+      "19°C"
+     ],
+     [
+      "Tuesday",
+      "Sunny",
+      "28°C",
+      "20°C"
+     ],
+     [
+      "Wednesday",
+      "Partly cloudy",
+      "38°C",
+      "30°C"
+     ],
+     [
+      "Thursday",
+      "Windy",
+      "30°C",
+      "24°C"
+     ],
+     [
+      "Friday",
+      "Rainy",
+      "34°C",
+      "22°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is the hottest?",
+      "a": "Wednesday"
+     },
+     {
+      "q": "Which day is the coolest?",
+      "a": "Tuesday"
+     },
+     {
+      "q": "What is the weather on Wednesday?",
+      "a": "Partly cloudy"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Science Museum",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:00 AM – 5:00 PM"
+     ],
+     [
+      "Tue",
+      "Closed"
+     ],
+     [
+      "Wed",
+      "10:00 AM – 8:00 PM"
+     ],
+     [
+      "Thu",
+      "9:30 AM – 6:30 PM"
+     ],
+     [
+      "Fri",
+      "8:00 AM – 4:00 PM"
+     ],
+     [
+      "Sat",
+      "10:30 AM – 4:30 PM"
+     ],
+     [
+      "Sun",
+      "11:00 AM – 7:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day does it close latest?",
+      "a": "Wednesday"
+     },
+     {
+      "q": "Which day does it open earliest?",
+      "a": "Monday / Friday"
+     },
+     {
+      "q": "Which day is it closed?",
+      "a": "Tuesday"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Mega Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Cap",
+      "200 baht",
+      "10% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "25% off"
+     ],
+     [
+      "Jeans",
+      "900 baht",
+      "20% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "25% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "50% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which item has the biggest discount?",
+      "a": "Notebook set"
+     },
+     {
+      "q": "Which item is the cheapest before the sale?",
+      "a": "Notebook set"
+     },
+     {
+      "q": "How much off is the watch?",
+      "a": "25%"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Eagles",
+      "5",
+      "2",
+      "3",
+      "17"
+     ],
+     [
+      "Rockets",
+      "4",
+      "3",
+      "3",
+      "15"
+     ],
+     [
+      "Lions",
+      "4",
+      "1",
+      "5",
+      "13"
+     ],
+     [
+      "Sharks",
+      "1",
+      "3",
+      "6",
+      "6"
+     ],
+     [
+      "Dragons",
+      "0",
+      "0",
+      "10",
+      "0"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is last?",
+      "a": "Dragons"
+     },
+     {
+      "q": "Which team lost the most games?",
+      "a": "Dragons"
+     },
+     {
+      "q": "How many games did the Eagles draw?",
+      "a": "2"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Ghost School",
+      "10:00 AM",
+      "11:30 AM"
+     ],
+     [
+      "Dragon Rider",
+      "1:00 PM",
+      "3:10 PM"
+     ],
+     [
+      "Space Cats",
+      "3:00 PM",
+      "4:35 PM"
+     ],
+     [
+      "Ocean Friends",
+      "8:00 PM",
+      "9:25 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which movie starts first?",
+      "a": "Ghost School"
+     },
+     {
+      "q": "Which movie ends last?",
+      "a": "Ocean Friends"
+     },
+     {
+      "q": "Which movie starts after Space Cats?",
+      "a": "Ocean Friends"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Happy Bowl",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Tom yum soup",
+      "70 baht"
+     ],
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Club sandwich",
+      "75 baht"
+     ],
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Milk tea",
+      "40 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the cheapest drink?",
+      "a": "Orange juice"
+     },
+     {
+      "q": "What is the most expensive food?",
+      "a": "Spaghetti"
+     },
+     {
+      "q": "How much is the club sandwich?",
+      "a": "75 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Chiang Mai",
+      "7:20 AM",
+      "2:35 PM",
+      "9"
+     ],
+     [
+      "Khon Kaen",
+      "7:45 AM",
+      "9:00 AM",
+      "7"
+     ],
+     [
+      "Krabi",
+      "9:00 AM",
+      "10:45 AM",
+      "1"
+     ],
+     [
+      "Phuket",
+      "9:50 AM",
+      "1:05 PM",
+      "8"
+     ],
+     [
+      "Ayutthaya",
+      "10:40 AM",
+      "1:25 PM",
+      "6"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which train leaves first?",
+      "a": "The train to Chiang Mai"
+     },
+     {
+      "q": "Which train arrives last?",
+      "a": "The train to Chiang Mai"
+     },
+     {
+      "q": "Which platform is the train to Chiang Mai?",
+      "a": "Platform 9"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Science Fair",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Saturday, July 9"
+     ],
+     [
+      "Time",
+      "12:00 PM – 3:00 PM"
+     ],
+     [
+      "Where",
+      "School Hall"
+     ],
+     [
+      "Tickets",
+      "Adults 80 baht · Children 40 baht"
+     ],
+     [
+      "Bring",
+      "a blanket"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does it start?",
+      "a": "12:00 PM"
+     },
+     {
+      "q": "What time does it finish?",
+      "a": "3:00 PM"
+     },
+     {
+      "q": "How much is a child's ticket?",
+      "a": "40 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Sunny",
+      "34°C",
+      "21°C"
+     ],
+     [
+      "Thursday",
+      "Windy",
+      "31°C",
+      "26°C"
+     ],
+     [
+      "Friday",
+      "Cloudy",
+      "32°C",
+      "23°C"
+     ],
+     [
+      "Saturday",
+      "Cloudy",
+      "38°C",
+      "30°C"
+     ],
+     [
+      "Sunday",
+      "Windy",
+      "30°C",
+      "25°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is the hottest?",
+      "a": "Saturday"
+     },
+     {
+      "q": "Which day is the coolest?",
+      "a": "Sunday"
+     },
+     {
+      "q": "What is the weather on Wednesday?",
+      "a": "Sunny"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Book Store",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "9:00 AM – 4:00 PM"
+     ],
+     [
+      "Tue",
+      "9:00 AM – 5:00 PM"
+     ],
+     [
+      "Wed",
+      "10:00 AM – 7:00 PM"
+     ],
+     [
+      "Thu",
+      "10:30 AM – 8:30 PM"
+     ],
+     [
+      "Fri",
+      "9:00 AM – 6:00 PM"
+     ],
+     [
+      "Sat",
+      "Closed"
+     ],
+     [
+      "Sun",
+      "11:30 AM – 5:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day does it close latest?",
+      "a": "Thursday"
+     },
+     {
+      "q": "Which day does it open earliest?",
+      "a": "Monday / Tuesday / Friday"
+     },
+     {
+      "q": "Which day is it closed?",
+      "a": "Saturday"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Back to School Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Jacket",
+      "1,000 baht",
+      "50% off"
+     ],
+     [
+      "Cap",
+      "200 baht",
+      "25% off"
+     ],
+     [
+      "Sneakers",
+      "1,200 baht",
+      "50% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "10% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "10% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which item has the biggest discount?",
+      "a": "Jacket / Sneakers"
+     },
+     {
+      "q": "Which item is the cheapest before the sale?",
+      "a": "Cap"
+     },
+     {
+      "q": "How much off is the sneakers?",
+      "a": "50%"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Eagles",
+      "7",
+      "2",
+      "1",
+      "23"
+     ],
+     [
+      "Lions",
+      "5",
+      "1",
+      "4",
+      "16"
+     ],
+     [
+      "Bears",
+      "4",
+      "2",
+      "4",
+      "14"
+     ],
+     [
+      "Wolves",
+      "2",
+      "2",
+      "6",
+      "8"
+     ],
+     [
+      "Tigers",
+      "0",
+      "2",
+      "8",
+      "2"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is last?",
+      "a": "Tigers"
+     },
+     {
+      "q": "Which team lost the most games?",
+      "a": "Tigers"
+     },
+     {
+      "q": "How many games did the Wolves draw?",
+      "a": "2"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Robot Hero",
+      "10:00 AM",
+      "11:45 AM"
+     ],
+     [
+      "The Last Race",
+      "11:00 AM",
+      "12:55 PM"
+     ],
+     [
+      "Super Chef",
+      "12:30 PM",
+      "2:10 PM"
+     ],
+     [
+      "Ghost School",
+      "4:00 PM",
+      "5:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which movie starts first?",
+      "a": "Robot Hero"
+     },
+     {
+      "q": "Which movie ends last?",
+      "a": "Ghost School"
+     },
+     {
+      "q": "Which movie starts after Super Chef?",
+      "a": "Ghost School"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Sunny Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Hot dog",
+      "49 baht"
+     ],
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Fried rice",
+      "50 baht"
+     ],
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the cheapest drink?",
+      "a": "Water"
+     },
+     {
+      "q": "What is the most expensive food?",
+      "a": "Spaghetti"
+     },
+     {
+      "q": "How much is the fried rice?",
+      "a": "50 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Chiang Mai",
+      "6:30 AM",
+      "8:15 AM",
+      "4"
+     ],
+     [
+      "Rayong",
+      "7:05 AM",
+      "3:50 PM",
+      "4"
+     ],
+     [
+      "Udon Thani",
+      "7:40 AM",
+      "9:10 AM",
+      "6"
+     ],
+     [
+      "Krabi",
+      "9:00 AM",
+      "10:30 AM",
+      "4"
+     ],
+     [
+      "Korat",
+      "8:10 AM",
+      "1:55 PM",
+      "9"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which bus leaves first?",
+      "a": "The bus to Chiang Mai"
+     },
+     {
+      "q": "Which bus arrives last?",
+      "a": "The bus to Rayong"
+     },
+     {
+      "q": "Which gate is the bus to Korat?",
+      "a": "Gate 9"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Dance Contest",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Friday, September 24"
+     ],
+     [
+      "Time",
+      "10:30 AM – 1:30 PM"
+     ],
+     [
+      "Where",
+      "Sports Center"
+     ],
+     [
+      "Tickets",
+      "Adults 120 baht · Children 60 baht"
+     ],
+     [
+      "Bring",
+      "some money for snacks"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does it start?",
+      "a": "10:30 AM"
+     },
+     {
+      "q": "What time does it finish?",
+      "a": "1:30 PM"
+     },
+     {
+      "q": "How much is a child's ticket?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Rainy",
+      "27°C",
+      "19°C"
+     ],
+     [
+      "Tuesday",
+      "Rainy",
+      "31°C",
+      "24°C"
+     ],
+     [
+      "Wednesday",
+      "Sunny",
+      "29°C",
+      "21°C"
+     ],
+     [
+      "Thursday",
+      "Cloudy",
+      "33°C",
+      "17°C"
+     ],
+     [
+      "Friday",
+      "Sunny",
+      "30°C",
+      "24°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is the hottest?",
+      "a": "Thursday"
+     },
+     {
+      "q": "Which day is the coolest?",
+      "a": "Monday"
+     },
+     {
+      "q": "What is the weather on Monday?",
+      "a": "Rainy"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Art Gallery",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:30 AM – 5:30 PM"
+     ],
+     [
+      "Tue",
+      "8:00 AM – 3:00 PM"
+     ],
+     [
+      "Wed",
+      "8:00 AM – 6:00 PM"
+     ],
+     [
+      "Thu",
+      "Closed"
+     ],
+     [
+      "Fri",
+      "9:00 AM – 4:00 PM"
+     ],
+     [
+      "Sat",
+      "9:30 AM – 6:30 PM"
+     ],
+     [
+      "Sun",
+      "9:30 AM – 6:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day does it close latest?",
+      "a": "Saturday / Sunday"
+     },
+     {
+      "q": "Which day does it open earliest?",
+      "a": "Tuesday / Wednesday"
+     },
+     {
+      "q": "Which day is it closed?",
+      "a": "Thursday"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Mega Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Notebook set",
+      "120 baht",
+      "10% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "20% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "20% off"
+     ],
+     [
+      "Jeans",
+      "900 baht",
+      "50% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "10% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which item has the biggest discount?",
+      "a": "Jeans"
+     },
+     {
+      "q": "Which item is the cheapest before the sale?",
+      "a": "Notebook set"
+     },
+     {
+      "q": "How much off is the backpack?",
+      "a": "20%"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Tigers",
+      "8",
+      "0",
+      "2",
+      "24"
+     ],
+     [
+      "Eagles",
+      "7",
+      "2",
+      "1",
+      "23"
+     ],
+     [
+      "Sharks",
+      "4",
+      "3",
+      "3",
+      "15"
+     ],
+     [
+      "Bears",
+      "2",
+      "0",
+      "8",
+      "6"
+     ],
+     [
+      "Lions",
+      "0",
+      "3",
+      "7",
+      "3"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is last?",
+      "a": "Lions"
+     },
+     {
+      "q": "Which team lost the most games?",
+      "a": "Bears"
+     },
+     {
+      "q": "How many games did the Sharks draw?",
+      "a": "3"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Ocean Friends",
+      "11:30 AM",
+      "12:55 PM"
+     ],
+     [
+      "Space Cats",
+      "1:30 PM",
+      "3:05 PM"
+     ],
+     [
+      "Ghost School",
+      "3:00 PM",
+      "4:30 PM"
+     ],
+     [
+      "The Last Race",
+      "4:00 PM",
+      "5:55 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which movie starts first?",
+      "a": "Ocean Friends"
+     },
+     {
+      "q": "Which movie ends last?",
+      "a": "The Last Race"
+     },
+     {
+      "q": "Which movie starts after The Last Race?",
+      "a": "None (it is the last one)"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Moon Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Salad",
+      "59 baht"
+     ],
+     [
+      "Tom yum soup",
+      "70 baht"
+     ],
+     [
+      "Green curry",
+      "60 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the cheapest drink?",
+      "a": "Water"
+     },
+     {
+      "q": "What is the most expensive food?",
+      "a": "Tom yum soup"
+     },
+     {
+      "q": "How much is the green curry?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Udon Thani",
+      "8:10 AM",
+      "11:25 AM",
+      "9"
+     ],
+     [
+      "Pattaya",
+      "8:45 AM",
+      "10:00 AM",
+      "3"
+     ],
+     [
+      "Korat",
+      "9:00 AM",
+      "12:00 PM",
+      "5"
+     ],
+     [
+      "Krabi",
+      "9:55 AM",
+      "1:10 PM",
+      "1"
+     ],
+     [
+      "Phuket",
+      "10:50 AM",
+      "1:50 PM",
+      "7"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which bus leaves first?",
+      "a": "The bus to Udon Thani"
+     },
+     {
+      "q": "Which bus arrives last?",
+      "a": "The bus to Phuket"
+     },
+     {
+      "q": "Which gate is the bus to Pattaya?",
+      "a": "Gate 3"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Dance Contest",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Friday, January 27"
+     ],
+     [
+      "Time",
+      "2:30 PM – 4:30 PM"
+     ],
+     [
+      "Where",
+      "Sports Center"
+     ],
+     [
+      "Tickets",
+      "Adults 120 baht · Children 60 baht"
+     ],
+     [
+      "Bring",
+      "a water bottle"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What time does it start?",
+      "a": "2:30 PM"
+     },
+     {
+      "q": "What time does it finish?",
+      "a": "4:30 PM"
+     },
+     {
+      "q": "How much is a child's ticket?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Sunny",
+      "33°C",
+      "27°C"
+     ],
+     [
+      "Thursday",
+      "Windy",
+      "38°C",
+      "25°C"
+     ],
+     [
+      "Friday",
+      "Sunny",
+      "27°C",
+      "22°C"
+     ],
+     [
+      "Saturday",
+      "Rainy",
+      "37°C",
+      "22°C"
+     ],
+     [
+      "Sunday",
+      "Windy",
+      "35°C",
+      "28°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day is the hottest?",
+      "a": "Thursday"
+     },
+     {
+      "q": "Which day is the coolest?",
+      "a": "Friday"
+     },
+     {
+      "q": "What is the weather on Wednesday?",
+      "a": "Sunny"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Art Gallery",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:00 AM – 3:00 PM"
+     ],
+     [
+      "Tue",
+      "8:30 AM – 6:30 PM"
+     ],
+     [
+      "Wed",
+      "8:30 AM – 3:30 PM"
+     ],
+     [
+      "Thu",
+      "8:00 AM – 4:00 PM"
+     ],
+     [
+      "Fri",
+      "8:30 AM – 6:30 PM"
+     ],
+     [
+      "Sat",
+      "Closed"
+     ],
+     [
+      "Sun",
+      "11:30 AM – 6:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which day does it close latest?",
+      "a": "Tuesday / Friday / Sunday"
+     },
+     {
+      "q": "Which day does it open earliest?",
+      "a": "Monday / Thursday"
+     },
+     {
+      "q": "Which day is it closed?",
+      "a": "Saturday"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Weekend Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Jacket",
+      "1,000 baht",
+      "25% off"
+     ],
+     [
+      "Jeans",
+      "900 baht",
+      "10% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "10% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "20% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "25% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which item has the biggest discount?",
+      "a": "Jacket / Backpack"
+     },
+     {
+      "q": "Which item is the cheapest before the sale?",
+      "a": "Notebook set"
+     },
+     {
+      "q": "How much off is the jacket?",
+      "a": "25%"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Lions",
+      "7",
+      "0",
+      "3",
+      "21"
+     ],
+     [
+      "Tigers",
+      "4",
+      "1",
+      "5",
+      "13"
+     ],
+     [
+      "Dragons",
+      "3",
+      "2",
+      "5",
+      "11"
+     ],
+     [
+      "Rockets",
+      "1",
+      "3",
+      "6",
+      "6"
+     ],
+     [
+      "Sharks",
+      "1",
+      "1",
+      "8",
+      "4"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which team is last?",
+      "a": "Sharks"
+     },
+     {
+      "q": "Which team lost the most games?",
+      "a": "Sharks"
+     },
+     {
+      "q": "How many games did the Dragons draw?",
+      "a": "2"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Space Cats",
+      "10:00 AM",
+      "11:35 AM"
+     ],
+     [
+      "Dragon Rider",
+      "11:30 AM",
+      "1:40 PM"
+     ],
+     [
+      "Super Chef",
+      "3:00 PM",
+      "4:40 PM"
+     ],
+     [
+      "Ghost School",
+      "6:30 PM",
+      "8:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "Which movie starts first?",
+      "a": "Space Cats"
+     },
+     {
+      "q": "Which movie ends last?",
+      "a": "Ghost School"
+     },
+     {
+      "q": "Which movie starts after Super Chef?",
+      "a": "Ghost School"
+     }
+    ]
+   }
+  ]
+ },
+ "M.3": {
+  "items": [
+   {
+    "kind": "Menu",
+    "head": "Green Leaf Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Club sandwich",
+      "75 baht"
+     ],
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Fried rice",
+      "50 baht"
+     ],
+     [
+      "Green curry",
+      "60 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Iced tea",
+      "30 baht"
+     ],
+     [
+      "Lemon soda",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much do 2 fried rice plates cost?",
+      "a": "100 baht"
+     },
+     {
+      "q": "You buy a club sandwich and a orange juice. How much is it?",
+      "a": "110 baht"
+     },
+     {
+      "q": "You have 100 baht. You buy a fried rice. How much is left?",
+      "a": "50 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Pattaya",
+      "6:25 AM",
+      "9:25 AM",
+      "5"
+     ],
+     [
+      "Chiang Mai",
+      "6:50 AM",
+      "11:05 AM",
+      "5"
+     ],
+     [
+      "Khon Kaen",
+      "7:15 AM",
+      "8:30 AM",
+      "9"
+     ],
+     [
+      "Udon Thani",
+      "8:10 AM",
+      "12:25 PM",
+      "9"
+     ],
+     [
+      "Krabi",
+      "9:45 AM",
+      "11:45 AM",
+      "4"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the trip to Khon Kaen?",
+      "a": "1 hour 15 minutes"
+     },
+     {
+      "q": "How long is the trip to Chiang Mai?",
+      "a": "4 hours 15 minutes"
+     },
+     {
+      "q": "You arrive at the station at 6:55 AM. How long do you wait for the train to Khon Kaen?",
+      "a": "20 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Science Fair",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Friday, March 7"
+     ],
+     [
+      "Time",
+      "11:30 AM – 1:30 PM"
+     ],
+     [
+      "Where",
+      "School Hall"
+     ],
+     [
+      "Tickets",
+      "Adults 150 baht · Children 75 baht"
+     ],
+     [
+      "Bring",
+      "a camera"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the event?",
+      "a": "2 hours"
+     },
+     {
+      "q": "How much for two adults and one child?",
+      "a": "375 baht"
+     },
+     {
+      "q": "How much more is an adult ticket than a child ticket?",
+      "a": "75 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Stormy",
+      "30°C",
+      "20°C"
+     ],
+     [
+      "Thursday",
+      "Stormy",
+      "34°C",
+      "25°C"
+     ],
+     [
+      "Friday",
+      "Rainy",
+      "27°C",
+      "21°C"
+     ],
+     [
+      "Saturday",
+      "Rainy",
+      "32°C",
+      "25°C"
+     ],
+     [
+      "Sunday",
+      "Stormy",
+      "31°C",
+      "21°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much hotter is Thursday than Friday?",
+      "a": "7°C"
+     },
+     {
+      "q": "What is the difference between the high and the low on Friday?",
+      "a": "6°C"
+     },
+     {
+      "q": "How many days have a high of 35°C or more?",
+      "a": "0"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Science Museum",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:30 AM – 6:30 PM"
+     ],
+     [
+      "Tue",
+      "9:00 AM – 5:00 PM"
+     ],
+     [
+      "Wed",
+      "Closed"
+     ],
+     [
+      "Thu",
+      "10:30 AM – 7:30 PM"
+     ],
+     [
+      "Fri",
+      "9:30 AM – 7:30 PM"
+     ],
+     [
+      "Sat",
+      "10:00 AM – 6:00 PM"
+     ],
+     [
+      "Sun",
+      "11:30 AM – 5:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many hours is it open on Tuesday?",
+      "a": "8 hours"
+     },
+     {
+      "q": "How many hours is it open on Saturday?",
+      "a": "8 hours"
+     },
+     {
+      "q": "You arrive on Tuesday at 4:15 PM. How long until closing?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Weekend Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Water bottle",
+      "250 baht",
+      "25% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "50% off"
+     ],
+     [
+      "Cap",
+      "200 baht",
+      "25% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "50% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "10% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the sale price of the watch?",
+      "a": "1,800 baht"
+     },
+     {
+      "q": "What is the sale price of the backpack?",
+      "a": "400 baht"
+     },
+     {
+      "q": "How much do you save on the watch?",
+      "a": "200 baht"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Tigers",
+      "7",
+      "0",
+      "3",
+      "21"
+     ],
+     [
+      "Lions",
+      "6",
+      "1",
+      "3",
+      "19"
+     ],
+     [
+      "Eagles",
+      "4",
+      "3",
+      "3",
+      "15"
+     ],
+     [
+      "Dragons",
+      "3",
+      "3",
+      "4",
+      "12"
+     ],
+     [
+      "Sharks",
+      "0",
+      "3",
+      "7",
+      "3"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many more points do the Tigers have than the Sharks?",
+      "a": "18"
+     },
+     {
+      "q": "How many games have the Lions played?",
+      "a": "10"
+     },
+     {
+      "q": "A win = 3 points. How many points did the first team get from wins?",
+      "a": "21"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Ocean Friends",
+      "12:00 PM",
+      "1:25 PM"
+     ],
+     [
+      "Ghost School",
+      "4:00 PM",
+      "5:30 PM"
+     ],
+     [
+      "Dragon Rider",
+      "4:30 PM",
+      "6:40 PM"
+     ],
+     [
+      "The Lost Island",
+      "8:30 PM",
+      "10:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is Ocean Friends?",
+      "a": "1 hour 25 minutes"
+     },
+     {
+      "q": "You arrive at 3:35 PM. How long until Ghost School starts?",
+      "a": "25 minutes"
+     },
+     {
+      "q": "How much longer is Dragon Rider than Ocean Friends?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "River Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Club sandwich",
+      "75 baht"
+     ],
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Salad",
+      "59 baht"
+     ],
+     [
+      "Hot dog",
+      "49 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much do 3 salad plates cost?",
+      "a": "177 baht"
+     },
+     {
+      "q": "You buy a hot dog and a water. How much is it?",
+      "a": "64 baht"
+     },
+     {
+      "q": "You have 100 baht. You buy a salad. How much is left?",
+      "a": "41 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Chiang Mai",
+      "6:10 AM",
+      "1:40 PM",
+      "6"
+     ],
+     [
+      "Hua Hin",
+      "6:45 AM",
+      "3:30 PM",
+      "2"
+     ],
+     [
+      "Korat",
+      "7:00 AM",
+      "8:00 AM",
+      "1"
+     ],
+     [
+      "Phuket",
+      "8:40 AM",
+      "4:10 PM",
+      "1"
+     ],
+     [
+      "Udon Thani",
+      "7:50 AM",
+      "11:35 AM",
+      "9"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the trip to Hua Hin?",
+      "a": "8 hours 45 minutes"
+     },
+     {
+      "q": "How long is the trip to Udon Thani?",
+      "a": "3 hours 45 minutes"
+     },
+     {
+      "q": "You arrive at the station at 6:25 AM. How long do you wait for the bus to Hua Hin?",
+      "a": "20 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Summer Music Festival",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Sunday, January 4"
+     ],
+     [
+      "Time",
+      "3:30 PM – 7:30 PM"
+     ],
+     [
+      "Where",
+      "City Park"
+     ],
+     [
+      "Tickets",
+      "Adults 80 baht · Children 40 baht"
+     ],
+     [
+      "Bring",
+      "sunscreen"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the event?",
+      "a": "4 hours"
+     },
+     {
+      "q": "How much for two adults and one child?",
+      "a": "200 baht"
+     },
+     {
+      "q": "How much more is an adult ticket than a child ticket?",
+      "a": "40 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Cloudy",
+      "29°C",
+      "22°C"
+     ],
+     [
+      "Thursday",
+      "Cloudy",
+      "37°C",
+      "29°C"
+     ],
+     [
+      "Friday",
+      "Stormy",
+      "30°C",
+      "25°C"
+     ],
+     [
+      "Saturday",
+      "Rainy",
+      "28°C",
+      "23°C"
+     ],
+     [
+      "Sunday",
+      "Stormy",
+      "33°C",
+      "19°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much hotter is Thursday than Saturday?",
+      "a": "9°C"
+     },
+     {
+      "q": "What is the difference between the high and the low on Saturday?",
+      "a": "5°C"
+     },
+     {
+      "q": "How many days have a high of 35°C or more?",
+      "a": "1"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Post Office",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:00 AM – 5:00 PM"
+     ],
+     [
+      "Tue",
+      "8:30 AM – 4:30 PM"
+     ],
+     [
+      "Wed",
+      "9:30 AM – 7:30 PM"
+     ],
+     [
+      "Thu",
+      "10:30 AM – 8:30 PM"
+     ],
+     [
+      "Fri",
+      "Closed"
+     ],
+     [
+      "Sat",
+      "9:30 AM – 4:30 PM"
+     ],
+     [
+      "Sun",
+      "9:00 AM – 4:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many hours is it open on Tuesday?",
+      "a": "8 hours"
+     },
+     {
+      "q": "How many hours is it open on Sunday?",
+      "a": "7 hours"
+     },
+     {
+      "q": "You arrive on Tuesday at 3:45 PM. How long until closing?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Big Sale!",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Backpack",
+      "800 baht",
+      "20% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "20% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "50% off"
+     ],
+     [
+      "Jeans",
+      "900 baht",
+      "10% off"
+     ],
+     [
+      "Headphones",
+      "1,500 baht",
+      "20% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the sale price of the headphones?",
+      "a": "1,200 baht"
+     },
+     {
+      "q": "What is the sale price of the water bottle?",
+      "a": "200 baht"
+     },
+     {
+      "q": "How much do you save on the headphones?",
+      "a": "300 baht"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Sharks",
+      "7",
+      "2",
+      "1",
+      "23"
+     ],
+     [
+      "Bears",
+      "5",
+      "1",
+      "4",
+      "16"
+     ],
+     [
+      "Eagles",
+      "2",
+      "0",
+      "8",
+      "6"
+     ],
+     [
+      "Tigers",
+      "1",
+      "2",
+      "7",
+      "5"
+     ],
+     [
+      "Rockets",
+      "0",
+      "1",
+      "9",
+      "1"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many more points do the Sharks have than the Rockets?",
+      "a": "22"
+     },
+     {
+      "q": "How many games have the Bears played?",
+      "a": "10"
+     },
+     {
+      "q": "A win = 3 points. How many points did the first team get from wins?",
+      "a": "21"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Super Chef",
+      "11:30 AM",
+      "1:10 PM"
+     ],
+     [
+      "Robot Hero",
+      "1:00 PM",
+      "2:45 PM"
+     ],
+     [
+      "Ghost School",
+      "5:30 PM",
+      "7:00 PM"
+     ],
+     [
+      "Dragon Rider",
+      "6:00 PM",
+      "8:10 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is Dragon Rider?",
+      "a": "2 hours 10 minutes"
+     },
+     {
+      "q": "You arrive at 5:05 PM. How long until Ghost School starts?",
+      "a": "25 minutes"
+     },
+     {
+      "q": "How much longer is Dragon Rider than Ghost School?",
+      "a": "40 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Blue Door Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Green curry",
+      "60 baht"
+     ],
+     [
+      "Cheeseburger",
+      "89 baht"
+     ],
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Pad thai",
+      "55 baht"
+     ],
+     [
+      "Lemon soda",
+      "35 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much do 3 pad thai plates cost?",
+      "a": "165 baht"
+     },
+     {
+      "q": "You buy a pizza slice and a hot chocolate. How much is it?",
+      "a": "110 baht"
+     },
+     {
+      "q": "You have 100 baht. You buy a pad thai. How much is left?",
+      "a": "45 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Phuket",
+      "7:30 AM",
+      "9:00 AM",
+      "7"
+     ],
+     [
+      "Rayong",
+      "8:10 AM",
+      "1:40 PM",
+      "6"
+     ],
+     [
+      "Ayutthaya",
+      "8:20 AM",
+      "9:35 AM",
+      "8"
+     ],
+     [
+      "Pattaya",
+      "9:30 AM",
+      "3:30 PM",
+      "2"
+     ],
+     [
+      "Udon Thani",
+      "10:10 AM",
+      "12:55 PM",
+      "1"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the trip to Phuket?",
+      "a": "1 hour 30 minutes"
+     },
+     {
+      "q": "How long is the trip to Rayong?",
+      "a": "5 hours 30 minutes"
+     },
+     {
+      "q": "You arrive at the station at 7:10 AM. How long do you wait for the bus to Phuket?",
+      "a": "20 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Book Fair",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Saturday, June 15"
+     ],
+     [
+      "Time",
+      "9:30 AM – 12:30 PM"
+     ],
+     [
+      "Where",
+      "Central Library"
+     ],
+     [
+      "Tickets",
+      "Adults 50 baht · Children 25 baht"
+     ],
+     [
+      "Bring",
+      "sunscreen"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the event?",
+      "a": "3 hours"
+     },
+     {
+      "q": "How much for two adults and one child?",
+      "a": "125 baht"
+     },
+     {
+      "q": "How much more is an adult ticket than a child ticket?",
+      "a": "25 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Stormy",
+      "30°C",
+      "20°C"
+     ],
+     [
+      "Thursday",
+      "Sunny",
+      "38°C",
+      "28°C"
+     ],
+     [
+      "Friday",
+      "Partly cloudy",
+      "32°C",
+      "22°C"
+     ],
+     [
+      "Saturday",
+      "Sunny",
+      "33°C",
+      "27°C"
+     ],
+     [
+      "Sunday",
+      "Sunny",
+      "28°C",
+      "22°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much hotter is Thursday than Sunday?",
+      "a": "10°C"
+     },
+     {
+      "q": "What is the difference between the high and the low on Sunday?",
+      "a": "6°C"
+     },
+     {
+      "q": "How many days have a high of 35°C or more?",
+      "a": "1"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Sports Center",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "9:30 AM – 4:30 PM"
+     ],
+     [
+      "Tue",
+      "9:00 AM – 6:00 PM"
+     ],
+     [
+      "Wed",
+      "Closed"
+     ],
+     [
+      "Thu",
+      "9:30 AM – 5:30 PM"
+     ],
+     [
+      "Fri",
+      "10:00 AM – 5:00 PM"
+     ],
+     [
+      "Sat",
+      "9:00 AM – 5:00 PM"
+     ],
+     [
+      "Sun",
+      "10:00 AM – 5:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many hours is it open on Sunday?",
+      "a": "7 hours"
+     },
+     {
+      "q": "How many hours is it open on Monday?",
+      "a": "7 hours"
+     },
+     {
+      "q": "You arrive on Sunday at 4:15 PM. How long until closing?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Mega Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Watch",
+      "2,000 baht",
+      "25% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "20% off"
+     ],
+     [
+      "Jeans",
+      "900 baht",
+      "10% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "25% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "20% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the sale price of the T-shirt?",
+      "a": "240 baht"
+     },
+     {
+      "q": "What is the sale price of the jacket?",
+      "a": "750 baht"
+     },
+     {
+      "q": "How much do you save on the T-shirt?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Bears",
+      "8",
+      "2",
+      "0",
+      "26"
+     ],
+     [
+      "Sharks",
+      "8",
+      "0",
+      "2",
+      "24"
+     ],
+     [
+      "Wolves",
+      "5",
+      "1",
+      "4",
+      "16"
+     ],
+     [
+      "Rockets",
+      "4",
+      "3",
+      "3",
+      "15"
+     ],
+     [
+      "Tigers",
+      "0",
+      "2",
+      "8",
+      "2"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many more points do the Bears have than the Tigers?",
+      "a": "24"
+     },
+     {
+      "q": "How many games have the Bears played?",
+      "a": "10"
+     },
+     {
+      "q": "A win = 3 points. How many points did the first team get from wins?",
+      "a": "24"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Ocean Friends",
+      "12:00 PM",
+      "1:25 PM"
+     ],
+     [
+      "Robot Hero",
+      "12:30 PM",
+      "2:15 PM"
+     ],
+     [
+      "Dragon Rider",
+      "3:00 PM",
+      "5:10 PM"
+     ],
+     [
+      "Super Chef",
+      "4:30 PM",
+      "6:10 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is Dragon Rider?",
+      "a": "2 hours 10 minutes"
+     },
+     {
+      "q": "You arrive at 12:05 PM. How long until Robot Hero starts?",
+      "a": "25 minutes"
+     },
+     {
+      "q": "How much longer is Dragon Rider than Ocean Friends?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Blue Door Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Spaghetti",
+      "85 baht"
+     ],
+     [
+      "Club sandwich",
+      "75 baht"
+     ],
+     [
+      "Green curry",
+      "60 baht"
+     ],
+     [
+      "Mango smoothie",
+      "50 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much do 2 club sandwich plates cost?",
+      "a": "150 baht"
+     },
+     {
+      "q": "You buy a spaghetti and a mango smoothie. How much is it?",
+      "a": "135 baht"
+     },
+     {
+      "q": "You have 100 baht. You buy a club sandwich. How much is left?",
+      "a": "25 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Udon Thani",
+      "7:30 AM",
+      "3:00 PM",
+      "7"
+     ],
+     [
+      "Khon Kaen",
+      "7:55 AM",
+      "1:40 PM",
+      "4"
+     ],
+     [
+      "Chiang Mai",
+      "8:40 AM",
+      "10:40 AM",
+      "8"
+     ],
+     [
+      "Hua Hin",
+      "8:45 AM",
+      "2:00 PM",
+      "4"
+     ],
+     [
+      "Ayutthaya",
+      "9:10 AM",
+      "5:55 PM",
+      "5"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the trip to Hua Hin?",
+      "a": "5 hours 15 minutes"
+     },
+     {
+      "q": "How long is the trip to Ayutthaya?",
+      "a": "8 hours 45 minutes"
+     },
+     {
+      "q": "You arrive at the station at 8:25 AM. How long do you wait for the train to Hua Hin?",
+      "a": "20 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Dance Contest",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Sunday, April 23"
+     ],
+     [
+      "Time",
+      "5:30 PM – 9:30 PM"
+     ],
+     [
+      "Where",
+      "Sports Center"
+     ],
+     [
+      "Tickets",
+      "Adults 120 baht · Children 60 baht"
+     ],
+     [
+      "Bring",
+      "a camera"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the event?",
+      "a": "4 hours"
+     },
+     {
+      "q": "How much for two adults and one child?",
+      "a": "300 baht"
+     },
+     {
+      "q": "How much more is an adult ticket than a child ticket?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Sunny",
+      "37°C",
+      "27°C"
+     ],
+     [
+      "Thursday",
+      "Partly cloudy",
+      "32°C",
+      "27°C"
+     ],
+     [
+      "Friday",
+      "Windy",
+      "33°C",
+      "19°C"
+     ],
+     [
+      "Saturday",
+      "Cloudy",
+      "30°C",
+      "20°C"
+     ],
+     [
+      "Sunday",
+      "Stormy",
+      "28°C",
+      "17°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much hotter is Wednesday than Sunday?",
+      "a": "9°C"
+     },
+     {
+      "q": "What is the difference between the high and the low on Friday?",
+      "a": "14°C"
+     },
+     {
+      "q": "How many days have a high of 35°C or more?",
+      "a": "1"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Night Market",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "10:30 AM – 5:30 PM"
+     ],
+     [
+      "Tue",
+      "10:00 AM – 8:00 PM"
+     ],
+     [
+      "Wed",
+      "Closed"
+     ],
+     [
+      "Thu",
+      "9:30 AM – 7:30 PM"
+     ],
+     [
+      "Fri",
+      "10:00 AM – 8:00 PM"
+     ],
+     [
+      "Sat",
+      "9:30 AM – 6:30 PM"
+     ],
+     [
+      "Sun",
+      "10:30 AM – 4:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many hours is it open on Tuesday?",
+      "a": "10 hours"
+     },
+     {
+      "q": "How many hours is it open on Sunday?",
+      "a": "6 hours"
+     },
+     {
+      "q": "You arrive on Tuesday at 7:15 PM. How long until closing?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Big Sale!",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Backpack",
+      "800 baht",
+      "20% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "25% off"
+     ],
+     [
+      "Jeans",
+      "900 baht",
+      "10% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "20% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "25% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the sale price of the jacket?",
+      "a": "800 baht"
+     },
+     {
+      "q": "What is the sale price of the notebook set?",
+      "a": "90 baht"
+     },
+     {
+      "q": "How much do you save on the jacket?",
+      "a": "200 baht"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Sharks",
+      "8",
+      "3",
+      "0",
+      "27"
+     ],
+     [
+      "Bears",
+      "6",
+      "3",
+      "1",
+      "21"
+     ],
+     [
+      "Tigers",
+      "5",
+      "2",
+      "3",
+      "17"
+     ],
+     [
+      "Dragons",
+      "4",
+      "0",
+      "6",
+      "12"
+     ],
+     [
+      "Wolves",
+      "3",
+      "2",
+      "5",
+      "11"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many more points do the Sharks have than the Wolves?",
+      "a": "16"
+     },
+     {
+      "q": "How many games have the Dragons played?",
+      "a": "10"
+     },
+     {
+      "q": "A win = 3 points. How many points did the first team get from wins?",
+      "a": "24"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "The Last Race",
+      "11:00 AM",
+      "12:55 PM"
+     ],
+     [
+      "Dragon Rider",
+      "12:30 PM",
+      "2:40 PM"
+     ],
+     [
+      "Robot Hero",
+      "2:00 PM",
+      "3:45 PM"
+     ],
+     [
+      "The Lost Island",
+      "4:00 PM",
+      "6:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is Robot Hero?",
+      "a": "1 hour 45 minutes"
+     },
+     {
+      "q": "You arrive at 3:35 PM. How long until The Lost Island starts?",
+      "a": "25 minutes"
+     },
+     {
+      "q": "How much longer is Dragon Rider than Robot Hero?",
+      "a": "25 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Little Kitchen",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Tom yum soup",
+      "70 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Cheeseburger",
+      "89 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ],
+     [
+      "Hot chocolate",
+      "45 baht"
+     ],
+     [
+      "Water",
+      "15 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much do 2 omelet with rice plates cost?",
+      "a": "80 baht"
+     },
+     {
+      "q": "You buy a chicken noodles and a coffee. How much is it?",
+      "a": "90 baht"
+     },
+     {
+      "q": "You have 100 baht. You buy a omelet with rice. How much is left?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Phuket",
+      "6:15 AM",
+      "12:15 PM",
+      "8"
+     ],
+     [
+      "Rayong",
+      "6:55 AM",
+      "8:25 AM",
+      "6"
+     ],
+     [
+      "Udon Thani",
+      "7:05 AM",
+      "3:35 PM",
+      "8"
+     ],
+     [
+      "Krabi",
+      "8:45 AM",
+      "3:00 PM",
+      "5"
+     ],
+     [
+      "Korat",
+      "8:55 AM",
+      "5:25 PM",
+      "2"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the trip to Phuket?",
+      "a": "6 hours"
+     },
+     {
+      "q": "How long is the trip to Korat?",
+      "a": "8 hours 30 minutes"
+     },
+     {
+      "q": "You arrive at the station at 5:55 AM. How long do you wait for the bus to Phuket?",
+      "a": "20 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Movie Night",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Friday, October 7"
+     ],
+     [
+      "Time",
+      "12:00 PM – 4:00 PM"
+     ],
+     [
+      "Where",
+      "School Field"
+     ],
+     [
+      "Tickets",
+      "Adults 150 baht · Children 75 baht"
+     ],
+     [
+      "Bring",
+      "a hat"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the event?",
+      "a": "4 hours"
+     },
+     {
+      "q": "How much for two adults and one child?",
+      "a": "375 baht"
+     },
+     {
+      "q": "How much more is an adult ticket than a child ticket?",
+      "a": "75 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Stormy",
+      "31°C",
+      "20°C"
+     ],
+     [
+      "Tuesday",
+      "Sunny",
+      "30°C",
+      "24°C"
+     ],
+     [
+      "Wednesday",
+      "Rainy",
+      "27°C",
+      "22°C"
+     ],
+     [
+      "Thursday",
+      "Rainy",
+      "36°C",
+      "18°C"
+     ],
+     [
+      "Friday",
+      "Stormy",
+      "33°C",
+      "20°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much hotter is Thursday than Wednesday?",
+      "a": "9°C"
+     },
+     {
+      "q": "What is the difference between the high and the low on Wednesday?",
+      "a": "5°C"
+     },
+     {
+      "q": "How many days have a high of 35°C or more?",
+      "a": "1"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Science Museum",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:00 AM – 5:00 PM"
+     ],
+     [
+      "Tue",
+      "8:00 AM – 5:00 PM"
+     ],
+     [
+      "Wed",
+      "Closed"
+     ],
+     [
+      "Thu",
+      "10:00 AM – 6:00 PM"
+     ],
+     [
+      "Fri",
+      "10:00 AM – 7:00 PM"
+     ],
+     [
+      "Sat",
+      "11:30 AM – 8:30 PM"
+     ],
+     [
+      "Sun",
+      "10:30 AM – 4:30 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many hours is it open on Thursday?",
+      "a": "8 hours"
+     },
+     {
+      "q": "How many hours is it open on Saturday?",
+      "a": "9 hours"
+     },
+     {
+      "q": "You arrive on Thursday at 5:15 PM. How long until closing?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Summer Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Water bottle",
+      "250 baht",
+      "25% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "20% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "10% off"
+     ],
+     [
+      "T-shirt",
+      "300 baht",
+      "25% off"
+     ],
+     [
+      "Sneakers",
+      "1,200 baht",
+      "20% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the sale price of the T-shirt?",
+      "a": "225 baht"
+     },
+     {
+      "q": "What is the sale price of the jacket?",
+      "a": "900 baht"
+     },
+     {
+      "q": "How much do you save on the T-shirt?",
+      "a": "75 baht"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Lions",
+      "8",
+      "1",
+      "1",
+      "25"
+     ],
+     [
+      "Tigers",
+      "6",
+      "2",
+      "2",
+      "20"
+     ],
+     [
+      "Wolves",
+      "5",
+      "0",
+      "5",
+      "15"
+     ],
+     [
+      "Sharks",
+      "2",
+      "3",
+      "5",
+      "9"
+     ],
+     [
+      "Rockets",
+      "1",
+      "0",
+      "9",
+      "3"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many more points do the Lions have than the Rockets?",
+      "a": "22"
+     },
+     {
+      "q": "How many games have the Wolves played?",
+      "a": "10"
+     },
+     {
+      "q": "A win = 3 points. How many points did the first team get from wins?",
+      "a": "24"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Super Chef",
+      "10:00 AM",
+      "11:40 AM"
+     ],
+     [
+      "Robot Hero",
+      "2:30 PM",
+      "4:15 PM"
+     ],
+     [
+      "Ocean Friends",
+      "3:00 PM",
+      "4:25 PM"
+     ],
+     [
+      "Dragon Rider",
+      "4:30 PM",
+      "6:40 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is Ocean Friends?",
+      "a": "1 hour 25 minutes"
+     },
+     {
+      "q": "You arrive at 9:35 AM. How long until Super Chef starts?",
+      "a": "25 minutes"
+     },
+     {
+      "q": "How much longer is Dragon Rider than Ocean Friends?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "The Corner Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Fried rice",
+      "50 baht"
+     ],
+     [
+      "Hot dog",
+      "49 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Tom yum soup",
+      "70 baht"
+     ],
+     [
+      "Iced tea",
+      "30 baht"
+     ],
+     [
+      "Milk tea",
+      "40 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much do 3 omelet with rice plates cost?",
+      "a": "120 baht"
+     },
+     {
+      "q": "You buy a hot dog and a milk tea. How much is it?",
+      "a": "89 baht"
+     },
+     {
+      "q": "You have 100 baht. You buy a omelet with rice. How much is left?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Bus Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Gate"
+    ],
+    "rows": [
+     [
+      "Pattaya",
+      "8:45 AM",
+      "10:30 AM",
+      "3"
+     ],
+     [
+      "Hua Hin",
+      "9:20 AM",
+      "4:35 PM",
+      "6"
+     ],
+     [
+      "Ayutthaya",
+      "10:05 AM",
+      "11:35 AM",
+      "9"
+     ],
+     [
+      "Udon Thani",
+      "10:30 AM",
+      "3:00 PM",
+      "4"
+     ],
+     [
+      "Korat",
+      "11:25 AM",
+      "3:40 PM",
+      "1"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the trip to Ayutthaya?",
+      "a": "1 hour 30 minutes"
+     },
+     {
+      "q": "How long is the trip to Pattaya?",
+      "a": "1 hour 45 minutes"
+     },
+     {
+      "q": "You arrive at the station at 9:45 AM. How long do you wait for the bus to Ayutthaya?",
+      "a": "20 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Movie Night",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Saturday, October 6"
+     ],
+     [
+      "Time",
+      "11:00 AM – 2:00 PM"
+     ],
+     [
+      "Where",
+      "School Field"
+     ],
+     [
+      "Tickets",
+      "Adults 100 baht · Children 50 baht"
+     ],
+     [
+      "Bring",
+      "your student card"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the event?",
+      "a": "3 hours"
+     },
+     {
+      "q": "How much for two adults and one child?",
+      "a": "250 baht"
+     },
+     {
+      "q": "How much more is an adult ticket than a child ticket?",
+      "a": "50 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Monday",
+      "Rainy",
+      "32°C",
+      "22°C"
+     ],
+     [
+      "Tuesday",
+      "Rainy",
+      "30°C",
+      "22°C"
+     ],
+     [
+      "Wednesday",
+      "Rainy",
+      "34°C",
+      "26°C"
+     ],
+     [
+      "Thursday",
+      "Rainy",
+      "37°C",
+      "31°C"
+     ],
+     [
+      "Friday",
+      "Windy",
+      "36°C",
+      "28°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much hotter is Thursday than Tuesday?",
+      "a": "7°C"
+     },
+     {
+      "q": "What is the difference between the high and the low on Wednesday?",
+      "a": "8°C"
+     },
+     {
+      "q": "How many days have a high of 35°C or more?",
+      "a": "2"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Science Museum",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "10:00 AM – 8:00 PM"
+     ],
+     [
+      "Tue",
+      "8:00 AM – 6:00 PM"
+     ],
+     [
+      "Wed",
+      "8:00 AM – 6:00 PM"
+     ],
+     [
+      "Thu",
+      "8:00 AM – 4:00 PM"
+     ],
+     [
+      "Fri",
+      "Closed"
+     ],
+     [
+      "Sat",
+      "10:30 AM – 5:30 PM"
+     ],
+     [
+      "Sun",
+      "10:00 AM – 6:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many hours is it open on Thursday?",
+      "a": "8 hours"
+     },
+     {
+      "q": "How many hours is it open on Saturday?",
+      "a": "7 hours"
+     },
+     {
+      "q": "You arrive on Thursday at 3:15 PM. How long until closing?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Summer Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "T-shirt",
+      "300 baht",
+      "20% off"
+     ],
+     [
+      "Cap",
+      "200 baht",
+      "50% off"
+     ],
+     [
+      "Sneakers",
+      "1,200 baht",
+      "50% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "10% off"
+     ],
+     [
+      "Water bottle",
+      "250 baht",
+      "20% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the sale price of the sneakers?",
+      "a": "600 baht"
+     },
+     {
+      "q": "What is the sale price of the cap?",
+      "a": "100 baht"
+     },
+     {
+      "q": "How much do you save on the sneakers?",
+      "a": "600 baht"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Wolves",
+      "8",
+      "3",
+      "0",
+      "27"
+     ],
+     [
+      "Eagles",
+      "7",
+      "3",
+      "0",
+      "24"
+     ],
+     [
+      "Sharks",
+      "6",
+      "0",
+      "4",
+      "18"
+     ],
+     [
+      "Dragons",
+      "4",
+      "3",
+      "3",
+      "15"
+     ],
+     [
+      "Rockets",
+      "3",
+      "0",
+      "7",
+      "9"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many more points do the Wolves have than the Rockets?",
+      "a": "18"
+     },
+     {
+      "q": "How many games have the Wolves played?",
+      "a": "11"
+     },
+     {
+      "q": "A win = 3 points. How many points did the first team get from wins?",
+      "a": "24"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Ghost School",
+      "11:30 AM",
+      "1:00 PM"
+     ],
+     [
+      "Space Cats",
+      "12:30 PM",
+      "2:05 PM"
+     ],
+     [
+      "Super Chef",
+      "4:00 PM",
+      "5:40 PM"
+     ],
+     [
+      "Robot Hero",
+      "5:30 PM",
+      "7:15 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is Ghost School?",
+      "a": "1 hour 30 minutes"
+     },
+     {
+      "q": "You arrive at 12:05 PM. How long until Space Cats starts?",
+      "a": "25 minutes"
+     },
+     {
+      "q": "How much longer is Robot Hero than Ghost School?",
+      "a": "15 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Menu",
+    "head": "Moon Café",
+    "cols": [
+     "Item",
+     "Price"
+    ],
+    "rows": [
+     [
+      "Pad thai",
+      "55 baht"
+     ],
+     [
+      "Pizza slice",
+      "65 baht"
+     ],
+     [
+      "Chicken noodles",
+      "45 baht"
+     ],
+     [
+      "Omelet with rice",
+      "40 baht"
+     ],
+     [
+      "Milk tea",
+      "40 baht"
+     ],
+     [
+      "Orange juice",
+      "35 baht"
+     ],
+     [
+      "Coffee",
+      "45 baht"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much do 3 chicken noodles plates cost?",
+      "a": "135 baht"
+     },
+     {
+      "q": "You buy a pizza slice and a orange juice. How much is it?",
+      "a": "100 baht"
+     },
+     {
+      "q": "You have 100 baht. You buy a chicken noodles. How much is left?",
+      "a": "55 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Schedule",
+    "head": "Train Times",
+    "cols": [
+     "To",
+     "Leaves",
+     "Arrives",
+     "Platform"
+    ],
+    "rows": [
+     [
+      "Pattaya",
+      "6:25 AM",
+      "10:25 AM",
+      "9"
+     ],
+     [
+      "Korat",
+      "7:00 AM",
+      "10:30 AM",
+      "1"
+     ],
+     [
+      "Chiang Mai",
+      "8:05 AM",
+      "4:35 PM",
+      "1"
+     ],
+     [
+      "Rayong",
+      "7:40 AM",
+      "12:10 PM",
+      "2"
+     ],
+     [
+      "Ayutthaya",
+      "9:45 AM",
+      "4:00 PM",
+      "8"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the trip to Pattaya?",
+      "a": "4 hours"
+     },
+     {
+      "q": "How long is the trip to Rayong?",
+      "a": "4 hours 30 minutes"
+     },
+     {
+      "q": "You arrive at the station at 6:05 AM. How long do you wait for the train to Pattaya?",
+      "a": "20 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Poster",
+    "head": "Summer Music Festival",
+    "cols": [],
+    "rows": [
+     [
+      "When",
+      "Saturday, July 21"
+     ],
+     [
+      "Time",
+      "3:00 PM – 6:00 PM"
+     ],
+     [
+      "Where",
+      "City Park"
+     ],
+     [
+      "Tickets",
+      "Adults 120 baht · Children 60 baht"
+     ],
+     [
+      "Bring",
+      "your student card"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is the event?",
+      "a": "3 hours"
+     },
+     {
+      "q": "How much for two adults and one child?",
+      "a": "300 baht"
+     },
+     {
+      "q": "How much more is an adult ticket than a child ticket?",
+      "a": "60 baht"
+     }
+    ]
+   },
+   {
+    "kind": "Weather",
+    "head": "5-Day Weather Forecast",
+    "cols": [
+     "Day",
+     "Weather",
+     "High",
+     "Low"
+    ],
+    "rows": [
+     [
+      "Wednesday",
+      "Windy",
+      "34°C",
+      "25°C"
+     ],
+     [
+      "Thursday",
+      "Cloudy",
+      "35°C",
+      "26°C"
+     ],
+     [
+      "Friday",
+      "Windy",
+      "33°C",
+      "23°C"
+     ],
+     [
+      "Saturday",
+      "Sunny",
+      "37°C",
+      "28°C"
+     ],
+     [
+      "Sunday",
+      "Stormy",
+      "38°C",
+      "29°C"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How much hotter is Sunday than Friday?",
+      "a": "5°C"
+     },
+     {
+      "q": "What is the difference between the high and the low on Wednesday?",
+      "a": "9°C"
+     },
+     {
+      "q": "How many days have a high of 35°C or more?",
+      "a": "3"
+     }
+    ]
+   },
+   {
+    "kind": "Opening hours",
+    "head": "Sports Center",
+    "cols": [],
+    "rows": [
+     [
+      "Mon",
+      "8:30 AM – 5:30 PM"
+     ],
+     [
+      "Tue",
+      "Closed"
+     ],
+     [
+      "Wed",
+      "10:30 AM – 8:30 PM"
+     ],
+     [
+      "Thu",
+      "8:00 AM – 6:00 PM"
+     ],
+     [
+      "Fri",
+      "10:00 AM – 8:00 PM"
+     ],
+     [
+      "Sat",
+      "10:30 AM – 7:30 PM"
+     ],
+     [
+      "Sun",
+      "10:00 AM – 6:00 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many hours is it open on Thursday?",
+      "a": "10 hours"
+     },
+     {
+      "q": "How many hours is it open on Friday?",
+      "a": "10 hours"
+     },
+     {
+      "q": "You arrive on Thursday at 5:15 PM. How long until closing?",
+      "a": "45 minutes"
+     }
+    ]
+   },
+   {
+    "kind": "Sale ad",
+    "head": "Summer Sale",
+    "cols": [
+     "Item",
+     "Price",
+     "Sale"
+    ],
+    "rows": [
+     [
+      "Headphones",
+      "1,500 baht",
+      "20% off"
+     ],
+     [
+      "Notebook set",
+      "120 baht",
+      "50% off"
+     ],
+     [
+      "Watch",
+      "2,000 baht",
+      "50% off"
+     ],
+     [
+      "Jacket",
+      "1,000 baht",
+      "20% off"
+     ],
+     [
+      "Backpack",
+      "800 baht",
+      "10% off"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "What is the sale price of the watch?",
+      "a": "1,000 baht"
+     },
+     {
+      "q": "What is the sale price of the backpack?",
+      "a": "720 baht"
+     },
+     {
+      "q": "How much do you save on the watch?",
+      "a": "1,000 baht"
+     }
+    ]
+   },
+   {
+    "kind": "League table",
+    "head": "School Soccer League",
+    "cols": [
+     "Team",
+     "Won",
+     "Drew",
+     "Lost",
+     "Points"
+    ],
+    "rows": [
+     [
+      "Dragons",
+      "8",
+      "1",
+      "1",
+      "25"
+     ],
+     [
+      "Bears",
+      "7",
+      "1",
+      "2",
+      "22"
+     ],
+     [
+      "Wolves",
+      "4",
+      "0",
+      "6",
+      "12"
+     ],
+     [
+      "Lions",
+      "3",
+      "0",
+      "7",
+      "9"
+     ],
+     [
+      "Rockets",
+      "0",
+      "2",
+      "8",
+      "2"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How many more points do the Dragons have than the Rockets?",
+      "a": "23"
+     },
+     {
+      "q": "How many games have the Wolves played?",
+      "a": "10"
+     },
+     {
+      "q": "A win = 3 points. How many points did the first team get from wins?",
+      "a": "24"
+     }
+    ]
+   },
+   {
+    "kind": "Movie times",
+    "head": "Star Movie Theater",
+    "cols": [
+     "Movie",
+     "Starts",
+     "Ends"
+    ],
+    "rows": [
+     [
+      "Ocean Friends",
+      "4:30 PM",
+      "5:55 PM"
+     ],
+     [
+      "The Lost Island",
+      "5:30 PM",
+      "7:30 PM"
+     ],
+     [
+      "Super Chef",
+      "6:00 PM",
+      "7:40 PM"
+     ],
+     [
+      "Space Cats",
+      "8:30 PM",
+      "10:05 PM"
+     ]
+    ],
+    "qs": [
+     {
+      "q": "How long is Ocean Friends?",
+      "a": "1 hour 25 minutes"
+     },
+     {
+      "q": "You arrive at 5:05 PM. How long until The Lost Island starts?",
+      "a": "25 minutes"
+     },
+     {
+      "q": "How much longer is The Lost Island than Ocean Friends?",
+      "a": "35 minutes"
+     }
+    ]
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Scan It!",
+   "text": [
+    "You see a real text: a menu, a schedule, a poster...",
+    "Don't read every word. Scan for the answer!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Fried rice",
+      "50 baht"
+     ],
+     [
+      "Iced tea",
+      "30 baht"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Three questions",
+   "text": [
+    "Find the answers as fast as you can.",
+    "Write them on your board."
+   ],
+   "example": {
+    "big": "How much is the iced tea?",
+    "tag": "Question"
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "Each correct answer wins a point.",
+    "Some questions need a little math!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Each correct answer",
+      "+1"
+     ],
+     [
+      "All three",
+      "+3"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "one-pen",
+    "name": "One pen",
+    "text": "Only one student may write this round: +1",
+    "points": 1
+   },
+   {
+    "id": "full",
+    "name": "Full sentences",
+    "text": "Answer in full sentences: +2",
+    "points": 2
+   },
+   {
+    "id": "own-q",
+    "name": "Ask a question",
+    "text": "Write your own question about the text: +2",
+    "points": 2
+   }
+  ],
+  "secret": [
+   {
+    "id": "first",
+    "name": "Speed scanner",
+    "text": "+2 for the first team with all three right!",
+    "points": 2
+   },
+   {
+    "id": "units",
+    "name": "Units!",
+    "text": "+1 if your answers have baht, AM/PM or °C!",
+    "points": 1
+   },
+   {
+    "id": "neat",
+    "name": "Neat board",
+    "text": "+1 for the neatest board!",
+    "points": 1
+   }
+  ]
+ }
+}

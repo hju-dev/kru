@@ -6,6 +6,8 @@
  *   Kru.ready(function (session) { ...build the game from session.teams, session.level... })
  *   Kru.saveState(state)                  // the shell keeps it; comes back as session.resume
  *   Kru.score(teamId, delta, reason)      // optional live log
+ *   Kru.saveDay(data)                     // memory for this class today; comes back as session.day
+ *   Kru.saveKeep(data)                    // memory for this class across lessons; comes back as session.keep
  *   Kru.onFinishRequest(function () { Kru.finish([{ teamId, points }], notes) })
  *
  * Opened on its own (not inside Kru) or with ?mock=1, the game gets a fake class of 30
@@ -17,6 +19,8 @@
   var inFrame = window.parent !== window;
   var mock = params.get('mock') === '1' || !inFrame;
   var mockKey = 'kru-mock-state:' + location.pathname;
+  var mockDayKey = 'kru-mock-day:' + location.pathname;
+  var mockKeepKey = 'kru-mock-keep:' + location.pathname;
 
   var session = null;
   var readyCallbacks = [];
@@ -46,8 +50,11 @@
       for (var t = 0; t < n; t++) teams.push({ id: 't' + (t + 1), name: 'Team ' + (t + 1), members: [] });
       students.forEach(function (s, k) { teams[k % n].members.push(s); });
     }
-    var resume;
+    var resume, day = null;
     try { resume = JSON.parse(sessionStorage.getItem(mockKey) || 'null') || undefined; } catch (e) {}
+    try { day = JSON.parse(sessionStorage.getItem(mockDayKey) || 'null'); } catch (e) {}
+    var keep = null;
+    try { keep = JSON.parse(sessionStorage.getItem(mockKeepKey) || 'null'); } catch (e) {}
     return {
       id: 'mock',
       class: 'M.' + level.slice(2) + '/1',
@@ -56,6 +63,8 @@
       teams: teams,
       teacherTeam: params.get('teacher') === '0' ? null : { id: 't0', name: 'T. Henry' },
       resume: resume,
+      day: day,
+      keep: keep,
     };
   }
 
@@ -93,6 +102,20 @@
       } else post({ type: 'kru:state', state: state });
     },
 
+    /** Remember something for this class for the rest of today (across games). */
+    saveDay: function (data) {
+      if (mock) {
+        try { sessionStorage.setItem(mockDayKey, JSON.stringify(data)); } catch (e) {}
+      } else post({ type: 'kru:day', data: data });
+    },
+
+    /** Remember something for this class across lessons (until the game resets it). */
+    saveKeep: function (data) {
+      if (mock) {
+        try { sessionStorage.setItem(mockKeepKey, JSON.stringify(data)); } catch (e) {}
+      } else post({ type: 'kru:keep', data: data });
+    },
+
     score: function (teamId, delta, reason) {
       post({ type: 'kru:score', teamId: teamId, delta: delta, reason: reason });
     },
@@ -100,6 +123,11 @@
     finish: function (scores, notes) {
       if (mock) console.log('[Kru mock] finish', scores, notes || '');
       post({ type: 'kru:finish', scores: scores, notes: notes });
+    },
+
+    /** The game's own "End game" button: same as Henry tapping Kru's home → Finish. */
+    endGame: function () {
+      finishCallbacks.forEach(function (cb) { cb(); });
     },
 
     /** cb runs when Henry taps "Finish & review scores". It should call Kru.finish(...). */

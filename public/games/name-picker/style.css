@@ -1,0 +1,188 @@
+/* Name Picker, phone landscape: one big name and big buttons. */
+.np {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--tap);
+  padding-right: 56px; /* Kru's home button */
+}
+.logo {
+  font: 800 22px/1 var(--display);
+  white-space: nowrap;
+}
+.logo b {
+  color: var(--gold);
+}
+.left {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.grow {
+  flex: 1;
+}
+button.small {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--stage);
+  border: 3px solid var(--line);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+.stage.picked {
+  border-color: var(--gold);
+}
+.who {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 14px;
+  max-width: 100%;
+}
+.who .no {
+  font-family: var(--mono);
+  color: var(--gold);
+  font-size: 40px;
+}
+.who .name {
+  font: 800 72px/1 var(--display); /* shrunk by app.js until it fits */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.who .pts {
+  font-family: var(--mono);
+  color: var(--teal);
+  font-size: 30px;
+}
+.who.spinning .name {
+  color: var(--muted);
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.btn {
+  min-height: 50px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 2px solid var(--fg);
+  background: transparent;
+  font-weight: 700;
+  font-size: 18px;
+  white-space: nowrap;
+}
+.btn.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+  min-width: 170px;
+}
+.btn.ghost {
+  border-color: var(--line);
+}
+.btn.danger {
+  color: var(--coral);
+}
+.btn.danger.armed {
+  background: var(--coral);
+  color: var(--bg);
+}
+.btn:disabled {
+  opacity: 0.35;
+}
+#plus1,
+#plus2 {
+  min-width: 76px;
+}
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+.history {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  min-height: 1.3em;
+}
+.history b {
+  color: var(--teal);
+}
+
+.toast {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 4px 14px;
+  border-radius: 14px;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 3;
+}
+.toast button.small {
+  background: var(--bg);
+  color: var(--fg);
+  border-color: var(--bg);
+  font-size: 15px;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background: rgb(0 0 0 / 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}
+.menu {
+  width: min(460px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--stage);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

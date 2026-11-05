@@ -1,0 +1,719 @@
+{
+ "about": "Sentence Scramble sentences per level. The game shows the words as shuffled tiles (commas and the end mark hidden; the first word in lower case unless keepCap is true). M.1: 5-7 words, past simple. M.2: 8-10 words, past continuous and linking words. M.3: 11-14 words, relative clauses and conditionals. Written for Kru. At least 50 per level, shuffled every game.",
+ "M.1": {
+  "sentences": [
+   {
+    "text": "I played soccer with my friends.",
+    "focus": "past simple"
+   },
+   {
+    "text": "She went to the market yesterday.",
+    "focus": "past simple"
+   },
+   {
+    "text": "We watched a movie last night.",
+    "focus": "past simple"
+   },
+   {
+    "text": "My dad cooked rice for dinner.",
+    "focus": "past simple"
+   },
+   {
+    "text": "They visited their grandmother on Sunday.",
+    "focus": "past simple"
+   },
+   {
+    "text": "He didn't finish his homework.",
+    "focus": "past simple: negative"
+   },
+   {
+    "text": "Did you see the elephant?",
+    "focus": "past simple: question"
+   },
+   {
+    "text": "The cat slept on my bed.",
+    "focus": "past simple"
+   },
+   {
+    "text": "I bought a new bag yesterday.",
+    "focus": "past simple"
+   },
+   {
+    "text": "We swam in the sea last summer.",
+    "focus": "past simple"
+   },
+   {
+    "text": "She drank a glass of milk.",
+    "focus": "past simple"
+   },
+   {
+    "text": "My brother broke the window.",
+    "focus": "past simple"
+   },
+   {
+    "text": "Where did you go last weekend?",
+    "focus": "past simple: question"
+   },
+   {
+    "text": "The teacher gave us a test.",
+    "focus": "past simple"
+   },
+   {
+    "text": "I woke up at six o'clock.",
+    "focus": "past simple"
+   },
+   {
+    "text": "They ate noodles at the cafeteria.",
+    "focus": "past simple"
+   },
+   {
+    "text": "It rained all day on Monday.",
+    "focus": "past simple"
+   },
+   {
+    "text": "We didn't go to school yesterday.",
+    "focus": "past simple: negative"
+   },
+   {
+    "text": "Tom rode his bike to school.",
+    "focus": "past simple",
+    "keepCap": true
+   },
+   {
+    "text": "What did you have for breakfast?",
+    "focus": "past simple: question"
+   },
+   {
+    "text": "We played games at the party.",
+    "focus": "past simple"
+   },
+   {
+    "text": "My sister cleaned her room yesterday.",
+    "focus": "past simple"
+   },
+   {
+    "text": "I met my friend at the mall.",
+    "focus": "past simple"
+   },
+   {
+    "text": "The bus arrived late this morning.",
+    "focus": "past simple"
+   },
+   {
+    "text": "She wrote a letter to her grandma.",
+    "focus": "past simple"
+   },
+   {
+    "text": "They didn't like the spicy soup.",
+    "focus": "past simple: negative"
+   },
+   {
+    "text": "Did he call you last night?",
+    "focus": "past simple: question"
+   },
+   {
+    "text": "We ate mango sticky rice yesterday.",
+    "focus": "past simple"
+   },
+   {
+    "text": "My dad washed the car on Saturday.",
+    "focus": "past simple"
+   },
+   {
+    "text": "The dog ran after the ball.",
+    "focus": "past simple"
+   },
+   {
+    "text": "I lost my pencil at school.",
+    "focus": "past simple"
+   },
+   {
+    "text": "She sang a song in class.",
+    "focus": "past simple"
+   },
+   {
+    "text": "Where did they go on vacation?",
+    "focus": "past simple: question"
+   },
+   {
+    "text": "We walked to the temple together.",
+    "focus": "past simple"
+   },
+   {
+    "text": "He opened the door for me.",
+    "focus": "past simple"
+   },
+   {
+    "text": "The baby cried all night long.",
+    "focus": "past simple"
+   },
+   {
+    "text": "I forgot my homework at home.",
+    "focus": "past simple"
+   },
+   {
+    "text": "They bought tickets for the concert.",
+    "focus": "past simple"
+   },
+   {
+    "text": "My friends came to my house.",
+    "focus": "past simple"
+   },
+   {
+    "text": "What did you buy at the market?",
+    "focus": "past simple: question"
+   },
+   {
+    "text": "It was very hot yesterday.",
+    "focus": "past simple: was"
+   },
+   {
+    "text": "We visited the zoo last month.",
+    "focus": "past simple"
+   },
+   {
+    "text": "She took a photo of the sunset.",
+    "focus": "past simple"
+   },
+   {
+    "text": "The teacher told us a story.",
+    "focus": "past simple"
+   },
+   {
+    "text": "I drank orange juice for breakfast.",
+    "focus": "past simple"
+   },
+   {
+    "text": "They found a cat in the garden.",
+    "focus": "past simple"
+   },
+   {
+    "text": "He didn't come to school today.",
+    "focus": "past simple: negative"
+   },
+   {
+    "text": "My brother read a comic book.",
+    "focus": "past simple"
+   },
+   {
+    "text": "We finished our project on time.",
+    "focus": "past simple"
+   },
+   {
+    "text": "Did you enjoy the movie?",
+    "focus": "past simple: question"
+   }
+  ]
+ },
+ "M.2": {
+  "sentences": [
+   {
+    "text": "I was watching TV when my mom came home.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "While we were swimming, it started to rain.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "She was reading a book, but her brother was sleeping.",
+    "focus": "past continuous + but"
+   },
+   {
+    "text": "They were playing soccer when the bell rang.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "It was raining, so we stayed in the hotel.",
+    "focus": "past continuous + so"
+   },
+   {
+    "text": "What were you doing at eight o'clock last night?",
+    "focus": "past continuous: question"
+   },
+   {
+    "text": "We were walking on the beach when we saw dolphins.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "Although it was hot, we were climbing the mountain.",
+    "focus": "past continuous + although"
+   },
+   {
+    "text": "My dad was driving while my sister was singing loudly.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "I was sleeping when my phone suddenly rang.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "Because the bus was late, we waited for an hour.",
+    "focus": "because"
+   },
+   {
+    "text": "They were eating dinner when the lights went out.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "She was taking photos while we were buying souvenirs.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "Were you sleeping when I called you last night?",
+    "focus": "past continuous: question"
+   },
+   {
+    "text": "We were going to Phuket when the car broke down.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "I wasn't listening, so I didn't hear the question.",
+    "focus": "past continuous + so"
+   },
+   {
+    "text": "The children were laughing because the clown fell over.",
+    "focus": "past continuous + because"
+   },
+   {
+    "text": "While I was cooking, my brother was cleaning the kitchen.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "I was doing my homework when the lights went out.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "While Dad was cooking, we were setting the table.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "They were laughing because the movie was very funny.",
+    "focus": "past continuous + because"
+   },
+   {
+    "text": "She was waiting for the bus when it started raining.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "We were shopping when we met our English teacher.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "Although it was raining, the children were playing outside.",
+    "focus": "past continuous + although"
+   },
+   {
+    "text": "What were they doing when the earthquake happened?",
+    "focus": "past continuous: question"
+   },
+   {
+    "text": "He was riding his bike when he fell off.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "I wasn't watching TV, so I missed the news.",
+    "focus": "past continuous + so"
+   },
+   {
+    "text": "While we were sleeping, someone was knocking on the door.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "My mom was talking on the phone when I arrived.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "It was windy, so we were flying kites outside.",
+    "focus": "past continuous + so"
+   },
+   {
+    "text": "Were you listening when the teacher explained the homework?",
+    "focus": "past continuous: question"
+   },
+   {
+    "text": "The students were talking when the principal walked in.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "I was reading in bed because I couldn't sleep.",
+    "focus": "past continuous + because"
+   },
+   {
+    "text": "While she was swimming, her brother was building a sandcastle.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "We were having dinner when my uncle called.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "They weren't studying, so they didn't pass the test.",
+    "focus": "past continuous + so"
+   },
+   {
+    "text": "He was singing loudly while he was taking a shower.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "When I woke up, the sun was shining.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "She was crying because she lost her phone.",
+    "focus": "past continuous + because"
+   },
+   {
+    "text": "Was it raining when you left the house?",
+    "focus": "past continuous: question"
+   },
+   {
+    "text": "We were walking home when we saw a shooting star.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "My friends were playing games while I was cooking.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "Because it was hot, we were drinking lots of water.",
+    "focus": "past continuous + because"
+   },
+   {
+    "text": "The baby was sleeping, so we were talking quietly.",
+    "focus": "past continuous + so"
+   },
+   {
+    "text": "I was taking photos when the parade started.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "What was your sister doing at ten o'clock?",
+    "focus": "past continuous: question"
+   },
+   {
+    "text": "The dog was barking while the cat was sleeping.",
+    "focus": "past continuous + while"
+   },
+   {
+    "text": "Although we were tired, we were still dancing at midnight.",
+    "focus": "past continuous + although"
+   },
+   {
+    "text": "They were waiting outside when the store finally opened.",
+    "focus": "past continuous + when"
+   },
+   {
+    "text": "I was running for the bus when I fell.",
+    "focus": "past continuous + when"
+   }
+  ]
+ },
+ "M.3": {
+  "sentences": [
+   {
+    "text": "If I had more free time, I would learn to play the guitar.",
+    "focus": "second conditional"
+   },
+   {
+    "text": "The girl who sits next to me is the best singer in our class.",
+    "focus": "relative clause: who"
+   },
+   {
+    "text": "If it rains tomorrow, we will watch a movie instead of playing soccer.",
+    "focus": "first conditional"
+   },
+   {
+    "text": "This is the restaurant where my family celebrated my grandmother's birthday last year.",
+    "focus": "relative clause: where"
+   },
+   {
+    "text": "I would travel around the world if I won the lottery.",
+    "focus": "second conditional"
+   },
+   {
+    "text": "The phone that I bought last month has already stopped working.",
+    "focus": "relative clause: that"
+   },
+   {
+    "text": "If you heat ice, it melts and turns into water very quickly.",
+    "focus": "zero conditional"
+   },
+   {
+    "text": "My uncle, who lives in Bangkok, works as a doctor at a hospital.",
+    "focus": "relative clause: who (extra information)"
+   },
+   {
+    "text": "If she had studied harder, she would have passed the exam.",
+    "focus": "third conditional"
+   },
+   {
+    "text": "The book which you lent me was more interesting than the movie.",
+    "focus": "relative clause: which"
+   },
+   {
+    "text": "What would you do if you saw a ghost in your bedroom?",
+    "focus": "second conditional: question"
+   },
+   {
+    "text": "Students who use their phones in class will have to stay after school.",
+    "focus": "relative clause: who"
+   },
+   {
+    "text": "If we don't protect the forests, many animals will lose their homes.",
+    "focus": "first conditional"
+   },
+   {
+    "text": "The town where I grew up has changed a lot since then.",
+    "focus": "relative clause: where"
+   },
+   {
+    "text": "I wouldn't eat that fish if I were you, because it smells strange.",
+    "focus": "second conditional: advice"
+   },
+   {
+    "text": "The man whose car was stolen yesterday called the police immediately.",
+    "focus": "relative clause: whose"
+   },
+   {
+    "text": "Unless you hurry, you will miss the last bus home tonight.",
+    "focus": "first conditional: unless"
+   },
+   {
+    "text": "The festival that we went to was crowded but really fun.",
+    "focus": "relative clause: that"
+   },
+   {
+    "text": "If I had known about the party, I would have come.",
+    "focus": "third conditional"
+   },
+   {
+    "text": "The woman who lives next door to us is a famous chef.",
+    "focus": "relative clause: who"
+   },
+   {
+    "text": "If we leave now, we will arrive before the movie starts.",
+    "focus": "first conditional"
+   },
+   {
+    "text": "The museum that we visited last week was full of dinosaur bones.",
+    "focus": "relative clause: that"
+   },
+   {
+    "text": "I would buy a new laptop if I had enough money.",
+    "focus": "second conditional"
+   },
+   {
+    "text": "Students who study every day usually do better in their exams.",
+    "focus": "relative clause: who"
+   },
+   {
+    "text": "If you mix red and blue, you get the color purple.",
+    "focus": "zero conditional"
+   },
+   {
+    "text": "The city where my cousin lives is famous for its night markets.",
+    "focus": "relative clause: where"
+   },
+   {
+    "text": "If it hadn't rained, we would have gone to the beach.",
+    "focus": "third conditional"
+   },
+   {
+    "text": "The song which won the competition was written by a teenager.",
+    "focus": "relative clause: which"
+   },
+   {
+    "text": "What will you do if your phone suddenly stops working tomorrow morning?",
+    "focus": "first conditional: question"
+   },
+   {
+    "text": "People who recycle their trash help to protect the environment for everyone.",
+    "focus": "relative clause: who"
+   },
+   {
+    "text": "If I were the head teacher, I would make lunch breaks longer.",
+    "focus": "second conditional"
+   },
+   {
+    "text": "The boy whose bike was stolen reported it to the police.",
+    "focus": "relative clause: whose"
+   },
+   {
+    "text": "Unless we save water now, there won't be enough for everyone later.",
+    "focus": "first conditional: unless"
+   },
+   {
+    "text": "The restaurant where we had dinner serves the best som tam in town.",
+    "focus": "relative clause: where"
+   },
+   {
+    "text": "If you don't eat breakfast, you will feel hungry before lunch.",
+    "focus": "first conditional"
+   },
+   {
+    "text": "My grandmother, who is eighty years old, still goes jogging every morning.",
+    "focus": "relative clause: who (extra information)"
+   },
+   {
+    "text": "If he had set an alarm, he wouldn't have missed the bus.",
+    "focus": "third conditional"
+   },
+   {
+    "text": "The movie that we watched last night had a surprising ending.",
+    "focus": "relative clause: that"
+   },
+   {
+    "text": "I wouldn't go swimming if there were sharks in the water.",
+    "focus": "second conditional"
+   },
+   {
+    "text": "This is the teacher who helped me with my English speaking test.",
+    "focus": "relative clause: who"
+   },
+   {
+    "text": "If plants don't get enough sunlight, they slowly turn yellow and die.",
+    "focus": "zero conditional"
+   },
+   {
+    "text": "The phone which I dropped in the pool yesterday still works perfectly.",
+    "focus": "relative clause: which"
+   },
+   {
+    "text": "If they win the next match, they will play in the final.",
+    "focus": "first conditional"
+   },
+   {
+    "text": "The island where we stayed had beautiful beaches and friendly people.",
+    "focus": "relative clause: where"
+   },
+   {
+    "text": "Would you travel to space if someone gave you a free ticket?",
+    "focus": "second conditional: question"
+   },
+   {
+    "text": "The girl who won the singing contest is in my class.",
+    "focus": "relative clause: who"
+   },
+   {
+    "text": "If I had saved my money, I could have bought that jacket.",
+    "focus": "third conditional"
+   },
+   {
+    "text": "The store that sells cheap phone cases closes at eight o'clock.",
+    "focus": "relative clause: that"
+   },
+   {
+    "text": "If you see my brother, please tell him to call me.",
+    "focus": "first conditional"
+   },
+   {
+    "text": "Teenagers who get enough sleep can usually concentrate better in class.",
+    "focus": "relative clause: who"
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Sentence Scramble",
+   "text": [
+    "The words of a sentence are mixed up.",
+    "Put them in the right order!"
+   ],
+   "example": {
+    "label": "Example",
+    "chips": [
+     "school",
+     "I",
+     "to",
+     "went"
+    ],
+    "result": "I went to school."
+   }
+  },
+  {
+   "title": "Write it on paper",
+   "text": [
+    "Work with your team.",
+    "Write the whole sentence: capital letter and period."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Capital letter",
+      "I went…"
+     ],
+     [
+      "Period",
+      "…school."
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Be fast!",
+   "text": [
+    "Hold up your paper when you finish.",
+    "The first three correct teams win points."
+   ],
+   "example": {
+    "rows": [
+     [
+      "1st",
+      "+3"
+     ],
+     [
+      "2nd",
+      "+2"
+     ],
+     [
+      "3rd",
+      "+1"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "punctuation",
+    "name": "Perfect punctuation",
+    "text": "Capital letter AND period (or ?) correct: +1 extra.",
+    "points": 1
+   },
+   {
+    "id": "aloud",
+    "name": "Read it aloud",
+    "text": "Read your sentence aloud correctly: +1.",
+    "points": 1
+   },
+   {
+    "id": "big-first",
+    "name": "Big first place",
+    "text": "1st place gets 3 extra points!",
+    "points": 3
+   }
+  ],
+  "secret": [
+   {
+    "id": "neat",
+    "name": "Neat handwriting",
+    "text": "+1 for the neatest paper!",
+    "points": 1
+   },
+   {
+    "id": "change",
+    "name": "Change it",
+    "text": "Make it negative or a question, correctly: +2!",
+    "points": 2
+   },
+   {
+    "id": "verb",
+    "name": "Find the verb",
+    "text": "+1 if your team can point to the verb.",
+    "points": 1
+   }
+  ]
+ }
+}

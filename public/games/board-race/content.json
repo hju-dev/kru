@@ -1,0 +1,2029 @@
+{
+ "about": "Board Race tasks per level. kind 'forms': items with matching answers (shown on Reveal). kind 'list': write as many as you can; examples shown on Reveal. M.1 verb forms and basic vocabulary, M.2 vacation words and past continuous, M.3 idioms and collocations. Written for Kru. At least 50 per level, shuffled every game.",
+ "M.1": {
+  "tasks": [
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "go",
+     "eat",
+     "see",
+     "buy",
+     "swim",
+     "write"
+    ],
+    "answers": [
+     "went",
+     "ate",
+     "saw",
+     "bought",
+     "swam",
+     "wrote"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Jobs",
+    "prompt": "Write as many jobs as you can",
+    "examples": "teacher, doctor, nurse, farmer, police officer, chef, driver, pilot, singer, dentist, engineer, vet"
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "drink",
+     "run",
+     "sleep",
+     "take",
+     "come",
+     "make"
+    ],
+    "answers": [
+     "drank",
+     "ran",
+     "slept",
+     "took",
+     "came",
+     "made"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Things in a kitchen",
+    "prompt": "Write things you find in a kitchen",
+    "examples": "fridge, spoon, fork, knife, plate, bowl, cup, pan, rice stove, sink, kettle, microwave"
+   },
+   {
+    "kind": "forms",
+    "title": "-ing form",
+    "prompt": "Write the -ing form",
+    "items": [
+     "run",
+     "swim",
+     "write",
+     "sit",
+     "dance",
+     "play"
+    ],
+    "answers": [
+     "running",
+     "swimming",
+     "writing",
+     "sitting",
+     "dancing",
+     "playing"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Animals with four legs",
+    "prompt": "Write animals with four legs",
+    "examples": "dog, cat, cow, horse, elephant, tiger, lion, pig, sheep, goat, rabbit, zebra"
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "have",
+     "get",
+     "give",
+     "sit",
+     "fly",
+     "read"
+    ],
+    "answers": [
+     "had",
+     "got",
+     "gave",
+     "sat",
+     "flew",
+     "read"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Plurals",
+    "prompt": "Write the plural",
+    "items": [
+     "child",
+     "box",
+     "baby",
+     "man",
+     "tooth",
+     "bus"
+    ],
+    "answers": [
+     "children",
+     "boxes",
+     "babies",
+     "men",
+     "teeth",
+     "buses"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Every day",
+    "prompt": "Write verbs for things you do every day",
+    "examples": "wake up, eat, brush, wash, walk, study, sleep, watch, play, read, cook, drink"
+   },
+   {
+    "kind": "forms",
+    "title": "Opposites",
+    "prompt": "Write the opposite",
+    "items": [
+     "big",
+     "hot",
+     "happy",
+     "fast",
+     "old",
+     "tall"
+    ],
+    "answers": [
+     "small",
+     "cold",
+     "sad",
+     "slow",
+     "young / new",
+     "short"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Colors",
+    "prompt": "Write as many colors as you can",
+    "examples": "red, blue, green, yellow, black, white, pink, purple, orange, brown, gray, gold"
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "ride",
+     "wear",
+     "sing",
+     "find",
+     "tell",
+     "know"
+    ],
+    "answers": [
+     "rode",
+     "wore",
+     "sang",
+     "found",
+     "told",
+     "knew"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "think",
+     "catch",
+     "teach",
+     "sell",
+     "leave",
+     "feel"
+    ],
+    "answers": [
+     "thought",
+     "caught",
+     "taught",
+     "sold",
+     "left",
+     "felt"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "begin",
+     "break",
+     "choose",
+     "forget",
+     "lose",
+     "win"
+    ],
+    "answers": [
+     "began",
+     "broke",
+     "chose",
+     "forgot",
+     "lost",
+     "won"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "send",
+     "spend",
+     "build",
+     "hear",
+     "meet",
+     "pay"
+    ],
+    "answers": [
+     "sent",
+     "spent",
+     "built",
+     "heard",
+     "met",
+     "paid"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple: no change!",
+    "prompt": "Write the past simple (careful!)",
+    "items": [
+     "cut",
+     "put",
+     "hit",
+     "let",
+     "shut",
+     "cost"
+    ],
+    "answers": [
+     "cut",
+     "put",
+     "hit",
+     "let",
+     "shut",
+     "cost"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple: -y verbs",
+    "prompt": "Write the past simple",
+    "items": [
+     "study",
+     "cry",
+     "try",
+     "carry",
+     "play",
+     "enjoy"
+    ],
+    "answers": [
+     "studied",
+     "cried",
+     "tried",
+     "carried",
+     "played",
+     "enjoyed"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple: double letters",
+    "prompt": "Write the past simple",
+    "items": [
+     "stop",
+     "plan",
+     "drop",
+     "shop",
+     "hug",
+     "clap"
+    ],
+    "answers": [
+     "stopped",
+     "planned",
+     "dropped",
+     "shopped",
+     "hugged",
+     "clapped"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Plurals",
+    "prompt": "Write the plural",
+    "items": [
+     "woman",
+     "foot",
+     "mouse",
+     "city",
+     "knife",
+     "potato"
+    ],
+    "answers": [
+     "women",
+     "feet",
+     "mice",
+     "cities",
+     "knives",
+     "potatoes"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Plurals",
+    "prompt": "Write the plural",
+    "items": [
+     "fox",
+     "glass",
+     "toy",
+     "family",
+     "leaf",
+     "sheep"
+    ],
+    "answers": [
+     "foxes",
+     "glasses",
+     "toys",
+     "families",
+     "leaves",
+     "sheep"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Opposites",
+    "prompt": "Write the opposite",
+    "items": [
+     "open",
+     "early",
+     "cheap",
+     "full",
+     "easy",
+     "light"
+    ],
+    "answers": [
+     "closed",
+     "late",
+     "expensive",
+     "empty",
+     "difficult / hard",
+     "dark / heavy"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Opposites",
+    "prompt": "Write the opposite",
+    "items": [
+     "up",
+     "inside",
+     "start",
+     "buy",
+     "remember",
+     "win"
+    ],
+    "answers": [
+     "down",
+     "outside",
+     "finish / end",
+     "sell",
+     "forget",
+     "lose"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "-ing form",
+    "prompt": "Write the -ing form",
+    "items": [
+     "make",
+     "stop",
+     "lie",
+     "smile",
+     "shop",
+     "cut"
+    ],
+    "answers": [
+     "making",
+     "stopping",
+     "lying",
+     "smiling",
+     "shopping",
+     "cutting"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Comparatives",
+    "prompt": "Write the comparative",
+    "items": [
+     "big",
+     "happy",
+     "good",
+     "bad",
+     "tall",
+     "nice"
+    ],
+    "answers": [
+     "bigger",
+     "happier",
+     "better",
+     "worse",
+     "taller",
+     "nicer"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Superlatives",
+    "prompt": "Write the superlative",
+    "items": [
+     "fast",
+     "funny",
+     "good",
+     "bad",
+     "hot",
+     "big"
+    ],
+    "answers": [
+     "fastest",
+     "funniest",
+     "best",
+     "worst",
+     "hottest",
+     "biggest"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Numbers",
+    "prompt": "Write the number in words",
+    "items": [
+     "13",
+     "20",
+     "45",
+     "99",
+     "100",
+     "1000"
+    ],
+    "answers": [
+     "thirteen",
+     "twenty",
+     "forty-five",
+     "ninety-nine",
+     "one hundred",
+     "one thousand"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "What comes next?",
+    "prompt": "Write the next day or month",
+    "items": [
+     "Monday",
+     "Friday",
+     "Sunday",
+     "January",
+     "June",
+     "December"
+    ],
+    "answers": [
+     "Tuesday",
+     "Saturday",
+     "Monday",
+     "February",
+     "July",
+     "January"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "he / she / it",
+    "prompt": "Write it for he or she",
+    "items": [
+     "go",
+     "watch",
+     "have",
+     "study",
+     "fly",
+     "do"
+    ],
+    "answers": [
+     "goes",
+     "watches",
+     "has",
+     "studies",
+     "flies",
+     "does"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Question words",
+    "prompt": "Write the question word",
+    "items": [
+     "… is your name?",
+     "… do you live?",
+     "… old are you?",
+     "… is your birthday?",
+     "… is your teacher?",
+     "… are you sad?"
+    ],
+    "answers": [
+     "What",
+     "Where",
+     "How",
+     "When",
+     "Who",
+     "Why"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "a or an?",
+    "prompt": "Write a or an",
+    "items": [
+     "… apple",
+     "… banana",
+     "… egg",
+     "… umbrella",
+     "… dog",
+     "… hour"
+    ],
+    "answers": [
+     "an",
+     "a",
+     "an",
+     "an",
+     "a",
+     "an"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Fruits",
+    "prompt": "Write as many fruits as you can",
+    "examples": "apple, banana, mango, orange, grape, pineapple, watermelon, papaya, coconut, durian, strawberry, lemon"
+   },
+   {
+    "kind": "list",
+    "title": "Vegetables",
+    "prompt": "Write as many vegetables as you can",
+    "examples": "carrot, potato, onion, tomato, cabbage, corn, cucumber, garlic, broccoli, pumpkin, bean, lettuce"
+   },
+   {
+    "kind": "list",
+    "title": "Drinks",
+    "prompt": "Write as many drinks as you can",
+    "examples": "water, milk, juice, tea, coffee, cola, smoothie, hot chocolate, lemonade, soda, coconut water, yogurt drink"
+   },
+   {
+    "kind": "list",
+    "title": "Sports",
+    "prompt": "Write as many sports as you can",
+    "examples": "soccer, basketball, volleyball, badminton, tennis, swimming, running, boxing, golf, table tennis, cycling, takraw"
+   },
+   {
+    "kind": "list",
+    "title": "School subjects",
+    "prompt": "Write school subjects",
+    "examples": "English, math, science, Thai, history, art, music, PE, geography, computing, social studies, health"
+   },
+   {
+    "kind": "list",
+    "title": "Clothes",
+    "prompt": "Write as many clothes as you can",
+    "examples": "shirt, T-shirt, skirt, pants, shorts, dress, jacket, socks, shoes, hat, jeans, sweater"
+   },
+   {
+    "kind": "list",
+    "title": "Body parts",
+    "prompt": "Write parts of the body",
+    "examples": "head, hand, arm, leg, foot, eye, ear, nose, mouth, finger, knee, shoulder"
+   },
+   {
+    "kind": "list",
+    "title": "Family",
+    "prompt": "Write family words",
+    "examples": "mother, father, sister, brother, grandmother, grandfather, aunt, uncle, cousin, son, daughter, baby"
+   },
+   {
+    "kind": "list",
+    "title": "Rooms in a house",
+    "prompt": "Write rooms in a house",
+    "examples": "bedroom, bathroom, kitchen, living room, dining room, garage, garden, balcony, office, laundry room"
+   },
+   {
+    "kind": "list",
+    "title": "Classroom things",
+    "prompt": "Write things in a classroom",
+    "examples": "desk, chair, board, pen, pencil, book, ruler, eraser, clock, fan, bag, computer"
+   },
+   {
+    "kind": "list",
+    "title": "Places in a town",
+    "prompt": "Write places in a town",
+    "examples": "school, hospital, bank, market, park, temple, post office, police station, movie theater, store, restaurant, library"
+   },
+   {
+    "kind": "list",
+    "title": "In the sky",
+    "prompt": "Write things you can see in the sky",
+    "examples": "sun, moon, star, cloud, bird, plane, rainbow, kite, helicopter, lightning, balloon, drone"
+   },
+   {
+    "kind": "list",
+    "title": "Sea animals",
+    "prompt": "Write animals that live in the sea",
+    "examples": "fish, shark, whale, dolphin, octopus, crab, turtle, jellyfish, starfish, squid, shrimp, seahorse"
+   },
+   {
+    "kind": "list",
+    "title": "Farm animals",
+    "prompt": "Write farm animals",
+    "examples": "cow, pig, chicken, duck, goat, sheep, horse, buffalo, rabbit, goose, dog, cat"
+   },
+   {
+    "kind": "list",
+    "title": "Insects",
+    "prompt": "Write insects and small animals",
+    "examples": "ant, bee, fly, mosquito, butterfly, spider, worm, ladybug, cockroach, grasshopper, snail, beetle"
+   },
+   {
+    "kind": "list",
+    "title": "Feelings",
+    "prompt": "Write feelings",
+    "examples": "happy, sad, angry, tired, hungry, scared, excited, bored, worried, surprised, sleepy, nervous"
+   },
+   {
+    "kind": "list",
+    "title": "Cold things",
+    "prompt": "Write things that are cold",
+    "examples": "ice, ice cream, snow, fridge, freezer, cold water, winter, ice cube, frozen food, iced tea, air conditioner, snowman"
+   },
+   {
+    "kind": "list",
+    "title": "Toys and games",
+    "prompt": "Write toys and games",
+    "examples": "ball, doll, kite, puzzle, robot, video game, cards, teddy bear, yo-yo, board game, toy car, blocks"
+   },
+   {
+    "kind": "list",
+    "title": "Shapes",
+    "prompt": "Write shapes",
+    "examples": "circle, square, triangle, rectangle, star, heart, oval, diamond, cube, cone, cylinder, pentagon"
+   },
+   {
+    "kind": "list",
+    "title": "Breakfast",
+    "prompt": "Write breakfast foods",
+    "examples": "egg, toast, rice soup, cereal, milk, bread, jam, banana, pancake, sausage, porridge, juice"
+   }
+  ]
+ },
+ "M.2": {
+  "tasks": [
+   {
+    "kind": "list",
+    "title": "Vacation words",
+    "prompt": "Write words about vacations",
+    "examples": "beach, hotel, suitcase, passport, ticket, souvenir, sunscreen, map, tour, airport, luggage, sightseeing"
+   },
+   {
+    "kind": "forms",
+    "title": "Past continuous",
+    "prompt": "Write the past continuous",
+    "items": [
+     "I (swim)",
+     "she (read)",
+     "they (play)",
+     "we (eat)",
+     "he (sleep)",
+     "you (dance)"
+    ],
+    "answers": [
+     "I was swimming",
+     "she was reading",
+     "they were playing",
+     "we were eating",
+     "he was sleeping",
+     "you were dancing"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Beach vacation",
+    "prompt": "Write things to pack for a beach vacation",
+    "examples": "swimsuit, towel, sunscreen, sunglasses, hat, sandals, camera, water bottle, shorts, beach bag"
+   },
+   {
+    "kind": "forms",
+    "title": "was or were?",
+    "prompt": "Write was or were",
+    "items": [
+     "I",
+     "you",
+     "she",
+     "we",
+     "they",
+     "my friends"
+    ],
+    "answers": [
+     "was",
+     "were",
+     "was",
+     "were",
+     "were",
+     "were"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Places in Thailand",
+    "prompt": "Write places to visit in Thailand",
+    "examples": "Bangkok, Chiang Mai, Phuket, Krabi, Ayutthaya, Pattaya, Hua Hin, Koh Samui, Sukhothai, Chiang Rai"
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "leave",
+     "fly",
+     "lose",
+     "spend",
+     "catch",
+     "bring"
+    ],
+    "answers": [
+     "left",
+     "flew",
+     "lost",
+     "spent",
+     "caught",
+     "brought"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Vacation activities",
+    "prompt": "Write things you do on vacation (verbs)",
+    "examples": "swim, dive, hike, shop, relax, camp, explore, sunbathe, take photos, visit, travel, eat out"
+   },
+   {
+    "kind": "forms",
+    "title": "Make it negative",
+    "prompt": "Write the negative",
+    "items": [
+     "I was sleeping.",
+     "They were swimming.",
+     "She was cooking."
+    ],
+    "answers": [
+     "I wasn't sleeping.",
+     "They weren't swimming.",
+     "She wasn't cooking."
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Weather",
+    "prompt": "Write weather words",
+    "examples": "sunny, rainy, windy, cloudy, stormy, foggy, hot, cold, humid, snowy, thunder, lightning"
+   },
+   {
+    "kind": "list",
+    "title": "Transport",
+    "prompt": "Write kinds of transport",
+    "examples": "plane, train, bus, boat, taxi, motorcycle, bicycle, ferry, tuk-tuk, van, car, helicopter"
+   },
+   {
+    "kind": "list",
+    "title": "In a hotel",
+    "prompt": "Write things you find in a hotel",
+    "examples": "bed, elevator, pool, reception, key card, towel, restaurant, gym, lobby, room service, air conditioner, balcony"
+   },
+   {
+    "kind": "list",
+    "title": "Linking words",
+    "prompt": "Write linking words",
+    "examples": "and, but, so, because, when, while, although, then, after, before, also, however"
+   },
+   {
+    "kind": "forms",
+    "title": "Past continuous",
+    "prompt": "Write the past continuous",
+    "items": [
+     "she (cook)",
+     "we (walk)",
+     "they (shop)",
+     "it (rain)",
+     "you (run)",
+     "he (write)"
+    ],
+    "answers": [
+     "she was cooking",
+     "we were walking",
+     "they were shopping",
+     "it was raining",
+     "you were running",
+     "he was writing"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past continuous questions",
+    "prompt": "Write the question",
+    "items": [
+     "you / sleep?",
+     "she / study?",
+     "they / swim?",
+     "he / work?",
+     "it / rain?"
+    ],
+    "answers": [
+     "Were you sleeping?",
+     "Was she studying?",
+     "Were they swimming?",
+     "Was he working?",
+     "Was it raining?"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "when or while?",
+    "prompt": "Write when or while",
+    "items": [
+     "I was cooking … the phone rang.",
+     "… I was walking it started to rain.",
+     "She fell … she was running.",
+     "They were eating … the lights went out.",
+     "… we were swimming Dad was reading."
+    ],
+    "answers": [
+     "when",
+     "While",
+     "while",
+     "when",
+     "While"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "wake",
+     "drive",
+     "ride",
+     "swim",
+     "take",
+     "eat"
+    ],
+    "answers": [
+     "woke",
+     "drove",
+     "rode",
+     "swam",
+     "took",
+     "ate"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "stand",
+     "understand",
+     "wear",
+     "throw",
+     "draw",
+     "grow"
+    ],
+    "answers": [
+     "stood",
+     "understood",
+     "wore",
+     "threw",
+     "drew",
+     "grew"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Past simple",
+    "prompt": "Write the past simple",
+    "items": [
+     "keep",
+     "sleep",
+     "feel",
+     "mean",
+     "hold",
+     "shake"
+    ],
+    "answers": [
+     "kept",
+     "slept",
+     "felt",
+     "meant",
+     "held",
+     "shook"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Opposites",
+    "prompt": "Write the opposite",
+    "items": [
+     "arrive",
+     "pack",
+     "cheap",
+     "crowded",
+     "early",
+     "noisy"
+    ],
+    "answers": [
+     "leave / depart",
+     "unpack",
+     "expensive",
+     "empty / quiet",
+     "late",
+     "quiet"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Make a question",
+    "prompt": "Write the past simple question",
+    "items": [
+     "You went to Phuket.",
+     "She bought a hat.",
+     "They swam in the sea.",
+     "He took photos."
+    ],
+    "answers": [
+     "Did you go to Phuket?",
+     "Did she buy a hat?",
+     "Did they swim in the sea?",
+     "Did he take photos?"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Comparatives",
+    "prompt": "Write the comparative",
+    "items": [
+     "cheap",
+     "expensive",
+     "beautiful",
+     "good",
+     "far",
+     "hot"
+    ],
+    "answers": [
+     "cheaper",
+     "more expensive",
+     "more beautiful",
+     "better",
+     "farther / further",
+     "hotter"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Superlatives",
+    "prompt": "Write the superlative",
+    "items": [
+     "big",
+     "crowded",
+     "interesting",
+     "good",
+     "bad",
+     "delicious"
+    ],
+    "answers": [
+     "biggest",
+     "most crowded",
+     "most interesting",
+     "best",
+     "worst",
+     "most delicious"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "by, on or in?",
+    "prompt": "Write by, on or in",
+    "items": [
+     "… plane",
+     "… foot",
+     "… the bus",
+     "… a taxi",
+     "… train",
+     "… the car"
+    ],
+    "answers": [
+     "by",
+     "on",
+     "on",
+     "in",
+     "by",
+     "in"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Adverbs",
+    "prompt": "Write the adverb",
+    "items": [
+     "quick",
+     "careful",
+     "happy",
+     "good",
+     "loud",
+     "easy"
+    ],
+    "answers": [
+     "quickly",
+     "carefully",
+     "happily",
+     "well",
+     "loudly",
+     "easily"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Make it negative",
+    "prompt": "Write the negative",
+    "items": [
+     "I went to the beach.",
+     "She ate the cake.",
+     "We saw a dolphin."
+    ],
+    "answers": [
+     "I didn't go to the beach.",
+     "She didn't eat the cake.",
+     "We didn't see a dolphin."
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Nationalities",
+    "prompt": "Write the nationality",
+    "items": [
+     "Thailand",
+     "Japan",
+     "China",
+     "France",
+     "England",
+     "Korea"
+    ],
+    "answers": [
+     "Thai",
+     "Japanese",
+     "Chinese",
+     "French",
+     "English",
+     "Korean"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "a or some?",
+    "prompt": "Write a or some",
+    "items": [
+     "… water",
+     "… ticket",
+     "… luggage",
+     "… suitcase",
+     "… information",
+     "… map"
+    ],
+    "answers": [
+     "some",
+     "a",
+     "some",
+     "a",
+     "some",
+     "a"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "ago, last or yesterday?",
+    "prompt": "Write ago, last or yesterday",
+    "items": [
+     "two days …",
+     "… week",
+     "… morning",
+     "… summer",
+     "an hour …",
+     "… night"
+    ],
+    "answers": [
+     "ago",
+     "last",
+     "yesterday",
+     "last",
+     "ago",
+     "last"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "At the airport",
+    "prompt": "Write things at the airport",
+    "examples": "plane, passport, ticket, gate, pilot, check-in, suitcase, security, boarding pass, departure board, trolley, duty free"
+   },
+   {
+    "kind": "list",
+    "title": "At the beach",
+    "prompt": "Write things at the beach",
+    "examples": "sand, sea, waves, shells, sandcastle, umbrella, towel, sunscreen, boat, palm tree, lifeguard, beach ball"
+   },
+   {
+    "kind": "list",
+    "title": "In the countryside",
+    "prompt": "Write things you see in the countryside",
+    "examples": "field, farm, river, hill, tree, cow, rice field, forest, village, bridge, mountain, buffalo"
+   },
+   {
+    "kind": "list",
+    "title": "Jobs in tourism",
+    "prompt": "Write jobs in tourism",
+    "examples": "tour guide, pilot, flight attendant, hotel receptionist, waiter, chef, taxi driver, lifeguard, travel agent, cleaner, diving instructor, photographer"
+   },
+   {
+    "kind": "list",
+    "title": "Souvenirs",
+    "prompt": "Write souvenirs you can buy",
+    "examples": "T-shirt, postcard, key ring, magnet, bag, hat, elephant statue, bracelet, candy, scarf, mug, painting"
+   },
+   {
+    "kind": "list",
+    "title": "Thai food",
+    "prompt": "Write Thai foods",
+    "examples": "som tam, pad thai, tom yum, green curry, fried rice, mango sticky rice, khao man gai, pad kra pao, satay, spring rolls, massaman curry, noodle soup"
+   },
+   {
+    "kind": "list",
+    "title": "Hiking backpack",
+    "prompt": "Write things to take on a hike",
+    "examples": "water bottle, map, snacks, hat, jacket, flashlight, phone, first-aid kit, sunscreen, insect spray, rope, camera"
+   },
+   {
+    "kind": "list",
+    "title": "Tourist places",
+    "prompt": "Write places tourists visit in a city",
+    "examples": "museum, temple, palace, market, shopping mall, park, zoo, aquarium, river, tower, night market, old town"
+   },
+   {
+    "kind": "list",
+    "title": "Rainy day",
+    "prompt": "Write things you can do on a rainy day",
+    "examples": "watch a movie, read, play games, cook, sleep, draw, listen to music, do homework, bake a cake, play cards, chat online, clean your room"
+   },
+   {
+    "kind": "list",
+    "title": "Water sports",
+    "prompt": "Write water sports",
+    "examples": "swimming, diving, snorkeling, surfing, sailing, kayaking, water skiing, fishing, rafting, rowing, jet skiing, paddleboarding"
+   },
+   {
+    "kind": "list",
+    "title": "On an island",
+    "prompt": "Write things you find on an island",
+    "examples": "beach, palm tree, coconut, boat, pier, hotel, cave, lighthouse, coral, fish, hill, waterfall"
+   },
+   {
+    "kind": "list",
+    "title": "Camping",
+    "prompt": "Write camping things",
+    "examples": "tent, sleeping bag, flashlight, campfire, matches, pillow, cooking pot, map, rope, insect spray, chair, lantern"
+   },
+   {
+    "kind": "list",
+    "title": "Thai festivals",
+    "prompt": "Write festivals and celebrations",
+    "examples": "Songkran, Loy Krathong, New Year, Chinese New Year, Christmas, birthday, wedding, Children's Day, Teachers' Day, Mother's Day, Father's Day, Valentine's Day"
+   },
+   {
+    "kind": "list",
+    "title": "Feelings on a trip",
+    "prompt": "Write how you feel on a trip",
+    "examples": "excited, happy, tired, relaxed, bored, nervous, homesick, hungry, surprised, scared, sleepy, amazed"
+   },
+   {
+    "kind": "list",
+    "title": "Vacation problems",
+    "prompt": "Write things that can go wrong on vacation",
+    "examples": "rain, lost passport, missed flight, sunburn, bad food, stomach ache, lost bag, late bus, mosquitoes, no money, broken phone, traffic jam"
+   },
+   {
+    "kind": "list",
+    "title": "Nature",
+    "prompt": "Write nature words",
+    "examples": "mountain, river, lake, sea, forest, waterfall, beach, island, hill, cave, valley, desert"
+   },
+   {
+    "kind": "list",
+    "title": "In a restaurant",
+    "prompt": "Write things in a restaurant",
+    "examples": "menu, waiter, table, chair, plate, bill, chef, glass, spoon, fork, chopsticks, napkin"
+   },
+   {
+    "kind": "list",
+    "title": "Things to rent",
+    "prompt": "Write things you can rent on vacation",
+    "examples": "car, bike, motorcycle, boat, kayak, surfboard, room, house, umbrella, beach chair, scooter, camera"
+   },
+   {
+    "kind": "list",
+    "title": "Travel verbs",
+    "prompt": "Write verbs for traveling",
+    "examples": "book, pack, check in, board, fly, land, arrive, leave, visit, explore, stay, unpack"
+   },
+   {
+    "kind": "list",
+    "title": "Kinds of trips",
+    "prompt": "Write kinds of vacations or trips",
+    "examples": "beach vacation, camping trip, city trip, school trip, road trip, cruise, safari, ski trip, day trip, tour, backpacking, staycation"
+   },
+   {
+    "kind": "list",
+    "title": "Food adjectives",
+    "prompt": "Write adjectives to describe food",
+    "examples": "delicious, spicy, sweet, sour, salty, hot, cold, fresh, crispy, bitter, yummy, disgusting"
+   },
+   {
+    "kind": "list",
+    "title": "Night market",
+    "prompt": "Write things at a night market",
+    "examples": "food stalls, clothes, lights, music, crowds, snacks, toys, jewelry, phone cases, grilled meat, fruit, souvenirs"
+   }
+  ]
+ },
+ "M.3": {
+  "tasks": [
+   {
+    "kind": "forms",
+    "title": "Finish the idiom",
+    "prompt": "Write the missing word",
+    "items": [
+     "It's a piece of …",
+     "Break the …",
+     "Under the …",
+     "Once in a blue …",
+     "Spill the …",
+     "Call it a …"
+    ],
+    "answers": [
+     "cake",
+     "ice",
+     "weather",
+     "moon",
+     "beans",
+     "day"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "make or do?",
+    "prompt": "Write make or do",
+    "items": [
+     "… homework",
+     "… a mistake",
+     "… the dishes",
+     "… a decision",
+     "… exercise",
+     "… friends"
+    ],
+    "answers": [
+     "do",
+     "make",
+     "do",
+     "make",
+     "do",
+     "make"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Phrasal verbs with UP",
+    "prompt": "Write phrasal verbs with UP",
+    "examples": "wake up, get up, give up, look up, make up, pick up, set up, turn up, grow up, break up, clean up, hurry up"
+   },
+   {
+    "kind": "forms",
+    "title": "Finish the idiom",
+    "prompt": "Write the missing word",
+    "items": [
+     "Cost an arm and a …",
+     "The ball is in your …",
+     "Let the cat out of the …",
+     "When pigs …",
+     "Bite off more than you can …",
+     "Hit the …"
+    ],
+    "answers": [
+     "leg",
+     "court",
+     "bag",
+     "fly",
+     "chew",
+     "books / sack"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "take or have?",
+    "prompt": "Write take or have",
+    "items": [
+     "… a photo",
+     "… fun",
+     "… a seat",
+     "… a party",
+     "… the bus",
+     "… lunch"
+    ],
+    "answers": [
+     "take",
+     "have",
+     "take",
+     "have",
+     "take",
+     "have"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Adjective + preposition",
+    "prompt": "Write adjectives with their preposition (good at…)",
+    "examples": "good at, afraid of, interested in, bored with, proud of, keen on, famous for, worried about, tired of, responsible for"
+   },
+   {
+    "kind": "forms",
+    "title": "What does it mean?",
+    "prompt": "Write the meaning",
+    "items": [
+     "feel under the weather",
+     "break the ice",
+     "a piece of cake",
+     "hit the books",
+     "once in a blue moon"
+    ],
+    "answers": [
+     "feel ill",
+     "start a friendly conversation",
+     "very easy",
+     "study hard",
+     "very rarely"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "heavy or strong?",
+    "prompt": "Write heavy or strong",
+    "items": [
+     "… rain",
+     "… coffee",
+     "… traffic",
+     "… wind",
+     "… smoker",
+     "… accent"
+    ],
+    "answers": [
+     "heavy",
+     "strong",
+     "heavy",
+     "strong",
+     "heavy",
+     "strong"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "-ful or -less",
+    "prompt": "Write words ending in -ful or -less",
+    "examples": "useful, careless, helpful, homeless, beautiful, hopeless, painful, careful, harmless, wonderful, useless, colorful"
+   },
+   {
+    "kind": "forms",
+    "title": "say, tell, speak or talk?",
+    "prompt": "Write the right verb",
+    "items": [
+     "… a lie",
+     "… English",
+     "… hello",
+     "… a story",
+     "… about a problem",
+     "… the truth"
+    ],
+    "answers": [
+     "tell",
+     "speak",
+     "say",
+     "tell",
+     "talk",
+     "tell"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "SUN and RAIN words",
+    "prompt": "Write compound words with SUN or RAIN",
+    "examples": "sunshine, sunflower, sunglasses, sunrise, sunset, sunscreen, rainbow, raincoat, raindrop, rainforest, sunburn, rainfall"
+   },
+   {
+    "kind": "forms",
+    "title": "Finish the saying",
+    "prompt": "Write the missing word",
+    "items": [
+     "Every cloud has a silver …",
+     "Actions speak louder than …",
+     "Don't judge a book by its …",
+     "The early bird catches the …",
+     "Practice makes …",
+     "Better late than …"
+    ],
+    "answers": [
+     "lining",
+     "words",
+     "cover",
+     "worm",
+     "perfect",
+     "never"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Finish the idiom",
+    "prompt": "Write the missing word",
+    "items": [
+     "In hot … (in trouble)",
+     "Under … (stressed)",
+     "Kill two birds with one …",
+     "Over the … (very happy)",
+     "A blessing in …",
+     "Get cold … (become nervous)"
+    ],
+    "answers": [
+     "water",
+     "pressure",
+     "stone",
+     "moon",
+     "disguise",
+     "feet"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Finish the idiom",
+    "prompt": "Write the missing word",
+    "items": [
+     "Easier said than …",
+     "Back to the drawing …",
+     "Keep an … on (watch)",
+     "Pull someone's … (joke)",
+     "The last … (the final problem)",
+     "Sit on the … (not decide)"
+    ],
+    "answers": [
+     "done",
+     "board",
+     "eye",
+     "leg",
+     "straw",
+     "fence"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "What does it mean?",
+    "prompt": "Write the meaning",
+    "items": [
+     "be all ears",
+     "cost an arm and a leg",
+     "let the cat out of the bag",
+     "on cloud nine",
+     "see eye to eye"
+    ],
+    "answers": [
+     "listen carefully",
+     "be very expensive",
+     "tell a secret",
+     "very happy",
+     "agree"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "What does it mean?",
+    "prompt": "Write the meaning",
+    "items": [
+     "get cold feet",
+     "a blessing in disguise",
+     "call it a day",
+     "the ball is in your court",
+     "sit on the fence"
+    ],
+    "answers": [
+     "become too nervous to do something",
+     "something bad that turns out good",
+     "stop working for now",
+     "it is your decision",
+     "not choose a side"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "make or do?",
+    "prompt": "Write make or do",
+    "items": [
+     "… a noise",
+     "… your best",
+     "… the bed",
+     "… the shopping",
+     "… a phone call",
+     "… business"
+    ],
+    "answers": [
+     "make",
+     "do",
+     "make",
+     "do",
+     "make",
+     "do"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "lose or miss?",
+    "prompt": "Write lose or miss",
+    "items": [
+     "… the bus",
+     "… your keys",
+     "… weight",
+     "… a lesson",
+     "… a game",
+     "… your family"
+    ],
+    "answers": [
+     "miss",
+     "lose",
+     "lose",
+     "miss",
+     "lose",
+     "miss"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "borrow or lend?",
+    "prompt": "Write the right verb",
+    "items": [
+     "Can I … your pen?",
+     "Can you … me your pen?",
+     "She … me 100 baht yesterday.",
+     "I … a book from the library last week."
+    ],
+    "answers": [
+     "borrow",
+     "lend",
+     "lent",
+     "borrowed"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Phrasal verbs",
+    "prompt": "Write the meaning",
+    "items": [
+     "give up",
+     "look after",
+     "find out",
+     "turn down",
+     "run out of",
+     "put off"
+    ],
+    "answers": [
+     "stop trying",
+     "take care of",
+     "discover",
+     "refuse / make quieter",
+     "have none left",
+     "delay"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Phrasal verbs",
+    "prompt": "Write the missing word",
+    "items": [
+     "Turn … the light (switch off)",
+     "Look … a word in a dictionary",
+     "Get … well with someone",
+     "Carry … (continue)",
+     "Take … your shoes",
+     "Break … (stop working)"
+    ],
+    "answers": [
+     "off",
+     "up",
+     "on",
+     "on",
+     "off",
+     "down"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Adjective + preposition",
+    "prompt": "Write the preposition",
+    "items": [
+     "interested …",
+     "good …",
+     "afraid …",
+     "married …",
+     "different …",
+     "similar …"
+    ],
+    "answers": [
+     "in",
+     "at",
+     "of",
+     "to",
+     "from",
+     "to"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Make a noun",
+    "prompt": "Write the noun",
+    "items": [
+     "happy",
+     "kind",
+     "decide",
+     "explain",
+     "free",
+     "sad"
+    ],
+    "answers": [
+     "happiness",
+     "kindness",
+     "decision",
+     "explanation",
+     "freedom",
+     "sadness"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Make an adjective",
+    "prompt": "Write the adjective",
+    "items": [
+     "danger",
+     "beauty",
+     "success",
+     "comfort",
+     "fame",
+     "health"
+    ],
+    "answers": [
+     "dangerous",
+     "beautiful",
+     "successful",
+     "comfortable",
+     "famous",
+     "healthy"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Opposite prefixes",
+    "prompt": "Write the opposite",
+    "items": [
+     "possible",
+     "happy",
+     "honest",
+     "legal",
+     "polite",
+     "responsible"
+    ],
+    "answers": [
+     "impossible",
+     "unhappy",
+     "dishonest",
+     "illegal",
+     "impolite",
+     "irresponsible"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "will or would?",
+    "prompt": "Write will or would",
+    "items": [
+     "If it rains, we … stay home.",
+     "If I were rich, I … travel.",
+     "If you study, you … pass.",
+     "If I had wings, I … fly."
+    ],
+    "answers": [
+     "will",
+     "would",
+     "will",
+     "would"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "strong, heavy or high?",
+    "prompt": "Write strong, heavy or high",
+    "items": [
+     "… temperature",
+     "… traffic",
+     "… coffee",
+     "… price",
+     "… rain",
+     "… wind"
+    ],
+    "answers": [
+     "high",
+     "heavy",
+     "strong",
+     "high",
+     "heavy",
+     "strong"
+    ]
+   },
+   {
+    "kind": "forms",
+    "title": "Compound adjectives",
+    "prompt": "Write it a shorter way",
+    "items": [
+     "a girl who is 12 years old",
+     "a trip of three days",
+     "a man with blue eyes",
+     "a book that is well written"
+    ],
+    "answers": [
+     "a 12-year-old girl",
+     "a three-day trip",
+     "a blue-eyed man",
+     "a well-written book"
+    ]
+   },
+   {
+    "kind": "list",
+    "title": "Phrasal verbs with GET",
+    "prompt": "Write phrasal verbs with GET",
+    "examples": "get up, get on, get off, get in, get out, get back, get over, get along, get away, get through, get by, get together"
+   },
+   {
+    "kind": "list",
+    "title": "Phrasal verbs with LOOK",
+    "prompt": "Write phrasal verbs with LOOK",
+    "examples": "look up, look after, look for, look at, look forward to, look out, look around, look into, look back, look down on, look up to, look over"
+   },
+   {
+    "kind": "list",
+    "title": "Phrasal verbs with TAKE",
+    "prompt": "Write phrasal verbs with TAKE",
+    "examples": "take off, take up, take on, take after, take out, take over, take back, take away, take apart, take in, take down, take part in"
+   },
+   {
+    "kind": "list",
+    "title": "Phrasal verbs with OUT",
+    "prompt": "Write phrasal verbs with OUT",
+    "examples": "find out, go out, run out, work out, eat out, check out, sort out, hang out, chill out, give out, look out, stand out"
+   },
+   {
+    "kind": "list",
+    "title": "Collocations with MAKE",
+    "prompt": "Write collocations with MAKE",
+    "examples": "make a mistake, make a decision, make friends, make money, make a noise, make a plan, make a cake, make a promise, make an effort, make progress, make a choice, make a phone call"
+   },
+   {
+    "kind": "list",
+    "title": "Collocations with DO",
+    "prompt": "Write collocations with DO",
+    "examples": "do homework, do the dishes, do exercise, do your best, do the shopping, do business, do a favor, do the laundry, do a test, do research, do yoga, do nothing"
+   },
+   {
+    "kind": "list",
+    "title": "Collocations with TAKE",
+    "prompt": "Write collocations with TAKE",
+    "examples": "take a photo, take a break, take a seat, take a bus, take a shower, take a test, take notes, take care, take time, take a risk, take medicine, take part"
+   },
+   {
+    "kind": "list",
+    "title": "Collocations with HAVE",
+    "prompt": "Write collocations with HAVE",
+    "examples": "have fun, have lunch, have a party, have a shower, have a rest, have a problem, have a good time, have an idea, have a look, have a chat, have a cold, have a baby"
+   },
+   {
+    "kind": "list",
+    "title": "Color idioms",
+    "prompt": "Write idioms with colors",
+    "examples": "feel blue, red-handed, green with envy, once in a blue moon, a white lie, black sheep, see red, in the red, golden opportunity, out of the blue, green light, red tape"
+   },
+   {
+    "kind": "list",
+    "title": "Animal idioms",
+    "prompt": "Write idioms with animals",
+    "examples": "let the cat out of the bag, when pigs fly, a little bird told me, kill two birds with one stone, hold your horses, like a fish out of water, the elephant in the room, butterflies in my stomach, as busy as a bee, a dark horse, cat got your tongue, fat cat"
+   },
+   {
+    "kind": "list",
+    "title": "Body idioms",
+    "prompt": "Write idioms with body parts",
+    "examples": "break a leg, cost an arm and a leg, pull someone's leg, keep an eye on, see eye to eye, all ears, cold feet, give someone a hand, by heart, on the tip of my tongue, head over heels, face the music"
+   },
+   {
+    "kind": "list",
+    "title": "Words with UN-",
+    "prompt": "Write words that start with UN-",
+    "examples": "unhappy, unkind, unfair, unlucky, unusual, unable, unfriendly, untidy, unsafe, unknown, undo, unlock"
+   },
+   {
+    "kind": "list",
+    "title": "Words ending in -tion",
+    "prompt": "Write words ending in -tion",
+    "examples": "education, information, station, question, nation, pollution, competition, addition, invention, celebration, explanation, solution"
+   },
+   {
+    "kind": "list",
+    "title": "Words ending in -ment",
+    "prompt": "Write words ending in -ment",
+    "examples": "government, environment, movement, payment, equipment, entertainment, development, agreement, argument, treatment, management, excitement"
+   },
+   {
+    "kind": "list",
+    "title": "Words ending in -ness",
+    "prompt": "Write words ending in -ness",
+    "examples": "happiness, kindness, sadness, darkness, illness, fitness, weakness, business, loneliness, laziness, friendliness, awareness"
+   },
+   {
+    "kind": "list",
+    "title": "Personality",
+    "prompt": "Write personality adjectives",
+    "examples": "kind, honest, friendly, lazy, shy, confident, generous, selfish, patient, polite, rude, hard-working"
+   },
+   {
+    "kind": "list",
+    "title": "Environment",
+    "prompt": "Write words about the environment",
+    "examples": "pollution, recycling, plastic, climate change, global warming, trash, forest, energy, solar power, waste, endangered, carbon"
+   },
+   {
+    "kind": "list",
+    "title": "Technology",
+    "prompt": "Write words about technology",
+    "examples": "computer, smartphone, app, internet, password, website, robot, battery, download, software, Wi-Fi, artificial intelligence"
+   },
+   {
+    "kind": "list",
+    "title": "Health",
+    "prompt": "Write words about health",
+    "examples": "exercise, diet, sleep, vitamins, doctor, medicine, fitness, stress, healthy, illness, vegetables, water"
+   },
+   {
+    "kind": "list",
+    "title": "Money",
+    "prompt": "Write words about money",
+    "examples": "cash, coin, bank, save, spend, price, salary, budget, discount, receipt, credit card, loan"
+   },
+   {
+    "kind": "list",
+    "title": "Contrast and result",
+    "prompt": "Write linking words for contrast or result",
+    "examples": "however, although, but, even though, despite, whereas, so, therefore, as a result, because of this, that's why, on the other hand"
+   },
+   {
+    "kind": "list",
+    "title": "Giving opinions",
+    "prompt": "Write phrases to give your opinion",
+    "examples": "I think, I believe, In my opinion, I feel that, I agree, I disagree, Personally, It seems to me, From my point of view, As far as I know, I'm sure that, I don't think"
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Board Race",
+   "text": [
+    "Each team lines up at the whiteboard.",
+    "Read the task together."
+   ],
+   "example": {
+    "label": "Task",
+    "big": "Past simple: go, eat, see"
+   }
+  },
+  {
+   "title": "One answer each",
+   "text": [
+    "The first student writes ONE answer.",
+    "Then pass the pen to the next student in your line."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Student 1",
+      "went"
+     ],
+     [
+      "Student 2",
+      "ate"
+     ],
+     [
+      "Student 3",
+      "saw"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "Correct answers win points for your team.",
+    "Watch the timer!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Correct",
+      "+1"
+     ],
+     [
+      "Wrong spelling",
+      "0"
+     ],
+     [
+      "Time",
+      "60 seconds"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "golden-u",
+    "name": "Golden letter U",
+    "text": "Answers with the letter U count double!"
+   },
+   {
+    "id": "double",
+    "name": "Double points",
+    "text": "Every correct answer is worth 2 this round!"
+   },
+   {
+    "id": "neat",
+    "name": "Neat writing",
+    "text": "The neatest board wins +2.",
+    "points": 2
+   },
+   {
+    "id": "silent",
+    "name": "Silent line",
+    "text": "No talking in the line! A silent team gets +2.",
+    "points": 2
+   },
+   {
+    "id": "spelling",
+    "name": "Spelling star",
+    "text": "Every answer spelled correctly? +3!",
+    "points": 3
+   }
+  ],
+  "secret": [
+   {
+    "id": "long",
+    "name": "Long answers",
+    "text": "+1 for every answer with 8 letters or more!",
+    "points": 1
+   },
+   {
+    "id": "capitals",
+    "name": "Capital letters",
+    "text": "+2 if your team used capital letters correctly.",
+    "points": 2
+   },
+   {
+    "id": "first",
+    "name": "Fastest team",
+    "text": "+2 for the team that finished first!",
+    "points": 2
+   },
+   {
+    "id": "unique",
+    "name": "Unique answer",
+    "text": "+1 for every answer no other team wrote!",
+    "points": 1
+   }
+  ]
+ }
+}

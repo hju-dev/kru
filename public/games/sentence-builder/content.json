@@ -1,0 +1,1319 @@
+{
+ "about": "Sentence Builder: three word cards; teams write one correct sentence that uses all three. Reveal shows an example sentence. M.1 present simple / everyday words, M.2 past, future, comparatives and linking words, M.3 conditionals, passives, relative clauses and linkers. Written for Kru. At least 50 per level, shuffled every game. A word may change form (cook → cooks).",
+ "M.1": {
+  "items": [
+   {
+    "words": [
+     "dog",
+     "park",
+     "run"
+    ],
+    "example": "My dog likes to run in the park."
+   },
+   {
+    "words": [
+     "mother",
+     "cook",
+     "rice"
+    ],
+    "example": "My mother cooks rice every day."
+   },
+   {
+    "words": [
+     "school",
+     "bus",
+     "morning"
+    ],
+    "example": "I go to school by bus in the morning."
+   },
+   {
+    "words": [
+     "cat",
+     "sleep",
+     "bed"
+    ],
+    "example": "The cat is sleeping on my bed."
+   },
+   {
+    "words": [
+     "friend",
+     "play",
+     "soccer"
+    ],
+    "example": "I play soccer with my friend."
+   },
+   {
+    "words": [
+     "eat",
+     "breakfast",
+     "seven"
+    ],
+    "example": "I eat breakfast at seven o'clock."
+   },
+   {
+    "words": [
+     "book",
+     "read",
+     "night"
+    ],
+    "example": "I read a book every night."
+   },
+   {
+    "words": [
+     "brother",
+     "tall",
+     "father"
+    ],
+    "example": "My brother is tall like my father."
+   },
+   {
+    "words": [
+     "rain",
+     "umbrella",
+     "today"
+    ],
+    "example": "It is raining, so I have an umbrella today."
+   },
+   {
+    "words": [
+     "beach",
+     "swim",
+     "summer"
+    ],
+    "example": "We swim at the beach in summer."
+   },
+   {
+    "words": [
+     "teacher",
+     "happy",
+     "class"
+    ],
+    "example": "Our teacher is happy with the class."
+   },
+   {
+    "words": [
+     "apple",
+     "red",
+     "big"
+    ],
+    "example": "This big apple is red."
+   },
+   {
+    "words": [
+     "watch",
+     "TV",
+     "evening"
+    ],
+    "example": "I watch TV in the evening."
+   },
+   {
+    "words": [
+     "store",
+     "buy",
+     "milk"
+    ],
+    "example": "I go to the store to buy milk."
+   },
+   {
+    "words": [
+     "hot",
+     "water",
+     "drink"
+    ],
+    "example": "I drink hot water in the morning."
+   },
+   {
+    "words": [
+     "birthday",
+     "cake",
+     "party"
+    ],
+    "example": "We had a cake at my birthday party."
+   },
+   {
+    "words": [
+     "bike",
+     "ride",
+     "weekend"
+    ],
+    "example": "I ride my bike on the weekend."
+   },
+   {
+    "words": [
+     "sister",
+     "sing",
+     "song"
+    ],
+    "example": "My sister sings a song."
+   },
+   {
+    "words": [
+     "bird",
+     "tree",
+     "fly"
+    ],
+    "example": "The bird flies to the tree."
+   },
+   {
+    "words": [
+     "homework",
+     "finish",
+     "dinner"
+    ],
+    "example": "I finish my homework before dinner."
+   },
+   {
+    "words": [
+     "cold",
+     "jacket",
+     "wear"
+    ],
+    "example": "I wear a jacket when it is cold."
+   },
+   {
+    "words": [
+     "fish",
+     "river",
+     "catch"
+    ],
+    "example": "My uncle catches fish in the river."
+   },
+   {
+    "words": [
+     "music",
+     "listen",
+     "bus"
+    ],
+    "example": "I listen to music on the bus."
+   },
+   {
+    "words": [
+     "grandmother",
+     "garden",
+     "flowers"
+    ],
+    "example": "My grandmother has flowers in her garden."
+   },
+   {
+    "words": [
+     "phone",
+     "new",
+     "father"
+    ],
+    "example": "My father has a new phone."
+   },
+   {
+    "words": [
+     "lunch",
+     "noodles",
+     "eat"
+    ],
+    "example": "I eat noodles for lunch."
+   },
+   {
+    "words": [
+     "English",
+     "speak",
+     "teacher"
+    ],
+    "example": "Our teacher speaks English."
+   },
+   {
+    "words": [
+     "draw",
+     "picture",
+     "cat"
+    ],
+    "example": "I draw a picture of a cat."
+   },
+   {
+    "words": [
+     "market",
+     "fruit",
+     "Saturday"
+    ],
+    "example": "We buy fruit at the market on Saturday."
+   },
+   {
+    "words": [
+     "tired",
+     "sleep",
+     "early"
+    ],
+    "example": "I am tired, so I sleep early."
+   },
+   {
+    "words": [
+     "soccer",
+     "team",
+     "win"
+    ],
+    "example": "Our soccer team wins every game."
+   },
+   {
+    "words": [
+     "sun",
+     "hot",
+     "sky"
+    ],
+    "example": "The sun is very hot in the sky."
+   },
+   {
+    "words": [
+     "city",
+     "live",
+     "family"
+    ],
+    "example": "My family lives in a big city."
+   },
+   {
+    "words": [
+     "monkey",
+     "banana",
+     "eat"
+    ],
+    "example": "The monkey eats a banana."
+   },
+   {
+    "words": [
+     "clean",
+     "room",
+     "Sunday"
+    ],
+    "example": "I clean my room on Sunday."
+   },
+   {
+    "words": [
+     "car",
+     "red",
+     "uncle"
+    ],
+    "example": "My uncle has a red car."
+   },
+   {
+    "words": [
+     "milk",
+     "cold",
+     "glass"
+    ],
+    "example": "I want a glass of cold milk."
+   },
+   {
+    "words": [
+     "friend",
+     "birthday",
+     "present"
+    ],
+    "example": "I give my friend a birthday present."
+   },
+   {
+    "words": [
+     "walk",
+     "school",
+     "every day"
+    ],
+    "example": "I walk to school every day."
+   },
+   {
+    "words": [
+     "game",
+     "play",
+     "computer"
+    ],
+    "example": "I play a game on the computer."
+   },
+   {
+    "words": [
+     "mango",
+     "sweet",
+     "love"
+    ],
+    "example": "I love sweet mangoes."
+   },
+   {
+    "words": [
+     "dance",
+     "music",
+     "party"
+    ],
+    "example": "We dance to music at the party."
+   },
+   {
+    "words": [
+     "shoes",
+     "black",
+     "new"
+    ],
+    "example": "My new shoes are black."
+   },
+   {
+    "words": [
+     "zoo",
+     "elephant",
+     "see"
+    ],
+    "example": "We see an elephant at the zoo."
+   },
+   {
+    "words": [
+     "hungry",
+     "lunch",
+     "want"
+    ],
+    "example": "I am hungry and I want lunch."
+   },
+   {
+    "words": [
+     "morning",
+     "get up",
+     "six"
+    ],
+    "example": "I get up at six in the morning."
+   },
+   {
+    "words": [
+     "baby",
+     "cry",
+     "night"
+    ],
+    "example": "The baby cries at night."
+   },
+   {
+    "words": [
+     "window",
+     "open",
+     "hot"
+    ],
+    "example": "Please open the window, it is hot."
+   },
+   {
+    "words": [
+     "chicken",
+     "rice",
+     "favorite"
+    ],
+    "example": "Chicken rice is my favorite food."
+   },
+   {
+    "words": [
+     "library",
+     "quiet",
+     "book"
+    ],
+    "example": "The library is quiet, so I read a book."
+   }
+  ]
+ },
+ "M.2": {
+  "items": [
+   {
+    "words": [
+     "yesterday",
+     "lost",
+     "phone"
+    ],
+    "example": "Yesterday I lost my phone at the market."
+   },
+   {
+    "words": [
+     "vacation",
+     "went",
+     "mountains"
+    ],
+    "example": "Last vacation we went to the mountains."
+   },
+   {
+    "words": [
+     "because",
+     "late",
+     "traffic"
+    ],
+    "example": "I was late because there was a lot of traffic."
+   },
+   {
+    "words": [
+     "was",
+     "when",
+     "rain"
+    ],
+    "example": "I was walking home when it started to rain."
+   },
+   {
+    "words": [
+     "will",
+     "tomorrow",
+     "beach"
+    ],
+    "example": "We will go to the beach tomorrow if it is sunny."
+   },
+   {
+    "words": [
+     "never",
+     "tried",
+     "durian"
+    ],
+    "example": "I have never tried durian."
+   },
+   {
+    "words": [
+     "better",
+     "than",
+     "bus"
+    ],
+    "example": "The train is better than the bus."
+   },
+   {
+    "words": [
+     "should",
+     "doctor",
+     "headache"
+    ],
+    "example": "You should see a doctor if you have a headache."
+   },
+   {
+    "words": [
+     "but",
+     "tired",
+     "finish"
+    ],
+    "example": "I was tired, but I finished my homework."
+   },
+   {
+    "words": [
+     "going to",
+     "learn",
+     "guitar"
+    ],
+    "example": "I am going to learn the guitar next year."
+   },
+   {
+    "words": [
+     "interesting",
+     "museum",
+     "visited"
+    ],
+    "example": "We visited an interesting museum in Bangkok."
+   },
+   {
+    "words": [
+     "always",
+     "forget",
+     "keys"
+    ],
+    "example": "My father always forgets his keys."
+   },
+   {
+    "words": [
+     "while",
+     "cooking",
+     "phone"
+    ],
+    "example": "While my mother was cooking, the phone rang."
+   },
+   {
+    "words": [
+     "first",
+     "then",
+     "bed"
+    ],
+    "example": "First I brush my teeth, then I go to bed."
+   },
+   {
+    "words": [
+     "expensive",
+     "bought",
+     "shoes"
+    ],
+    "example": "I bought some expensive shoes last week."
+   },
+   {
+    "words": [
+     "must",
+     "helmet",
+     "motorcycle"
+    ],
+    "example": "You must wear a helmet on a motorcycle."
+   },
+   {
+    "words": [
+     "the most",
+     "beautiful",
+     "Thailand"
+    ],
+    "example": "Chiang Mai is the most beautiful city in Thailand."
+   },
+   {
+    "words": [
+     "so",
+     "hungry",
+     "cooked"
+    ],
+    "example": "I was so hungry that I cooked two packets of noodles."
+   },
+   {
+    "words": [
+     "can't",
+     "swim",
+     "river"
+    ],
+    "example": "I can't swim in the river because it is dangerous."
+   },
+   {
+    "words": [
+     "already",
+     "eaten",
+     "lunch"
+    ],
+    "example": "I have already eaten lunch."
+   },
+   {
+    "words": [
+     "usually",
+     "weekend",
+     "grandparents"
+    ],
+    "example": "I usually visit my grandparents on the weekend."
+   },
+   {
+    "words": [
+     "if",
+     "rains",
+     "stay"
+    ],
+    "example": "If it rains, we will stay at home."
+   },
+   {
+    "words": [
+     "was",
+     "surprised",
+     "present"
+    ],
+    "example": "I was surprised when I opened the present."
+   },
+   {
+    "words": [
+     "saw",
+     "accident",
+     "street"
+    ],
+    "example": "I saw an accident on the street this morning."
+   },
+   {
+    "words": [
+     "want",
+     "travel",
+     "Japan"
+    ],
+    "example": "I want to travel to Japan one day."
+   },
+   {
+    "words": [
+     "too",
+     "hot",
+     "outside"
+    ],
+    "example": "It is too hot to play outside."
+   },
+   {
+    "words": [
+     "enough",
+     "money",
+     "buy"
+    ],
+    "example": "I don't have enough money to buy a new phone."
+   },
+   {
+    "words": [
+     "before",
+     "exam",
+     "studied"
+    ],
+    "example": "I studied hard before the exam."
+   },
+   {
+    "words": [
+     "favorite",
+     "because",
+     "funny"
+    ],
+    "example": "My favorite movie is a comedy because it is funny."
+   },
+   {
+    "words": [
+     "dropped",
+     "glass",
+     "broke"
+    ],
+    "example": "I dropped a glass and it broke."
+   },
+   {
+    "words": [
+     "might",
+     "late",
+     "tonight"
+    ],
+    "example": "I might be late tonight."
+   },
+   {
+    "words": [
+     "taught",
+     "cook",
+     "grandmother"
+    ],
+    "example": "My grandmother taught me how to cook."
+   },
+   {
+    "words": [
+     "during",
+     "lesson",
+     "fell asleep"
+    ],
+    "example": "My friend fell asleep during the lesson."
+   },
+   {
+    "words": [
+     "had to",
+     "wait",
+     "hour"
+    ],
+    "example": "We had to wait for an hour."
+   },
+   {
+    "words": [
+     "excited",
+     "concert",
+     "next week"
+    ],
+    "example": "I am excited about the concert next week."
+   },
+   {
+    "words": [
+     "across",
+     "road",
+     "ran"
+    ],
+    "example": "The dog ran across the road."
+   },
+   {
+    "words": [
+     "since",
+     "lived",
+     "2020"
+    ],
+    "example": "We have lived here since 2020."
+   },
+   {
+    "words": [
+     "won",
+     "competition",
+     "proud"
+    ],
+    "example": "Our team won the competition and we were proud."
+   },
+   {
+    "words": [
+     "afraid",
+     "dark",
+     "little"
+    ],
+    "example": "When I was little, I was afraid of the dark."
+   },
+   {
+    "words": [
+     "however",
+     "cheap",
+     "slow"
+    ],
+    "example": "This phone is cheap. However, it is very slow."
+   },
+   {
+    "words": [
+     "remember",
+     "first",
+     "school"
+    ],
+    "example": "I remember my first day at school."
+   },
+   {
+    "words": [
+     "borrowed",
+     "book",
+     "friend"
+    ],
+    "example": "I borrowed a book from my friend."
+   },
+   {
+    "words": [
+     "noisy",
+     "neighbors",
+     "sleep"
+    ],
+    "example": "My neighbors are noisy, so I can't sleep."
+   },
+   {
+    "words": [
+     "than",
+     "older",
+     "sister"
+    ],
+    "example": "My sister is two years older than me."
+   },
+   {
+    "words": [
+     "used to",
+     "play",
+     "child"
+    ],
+    "example": "I used to play outside a lot when I was a child."
+   },
+   {
+    "words": [
+     "quickly",
+     "finished",
+     "homework"
+    ],
+    "example": "I finished my homework quickly."
+   },
+   {
+    "words": [
+     "invite",
+     "party",
+     "Saturday"
+    ],
+    "example": "I will invite all my friends to my party on Saturday."
+   },
+   {
+    "words": [
+     "crowded",
+     "market",
+     "weekend"
+    ],
+    "example": "The market is very crowded on the weekend."
+   },
+   {
+    "words": [
+     "fixed",
+     "bike",
+     "brother"
+    ],
+    "example": "My brother fixed my bike yesterday."
+   },
+   {
+    "words": [
+     "healthy",
+     "vegetables",
+     "every day"
+    ],
+    "example": "I eat vegetables every day to stay healthy."
+   }
+  ]
+ },
+ "M.3": {
+  "items": [
+   {
+    "words": [
+     "although",
+     "tired",
+     "continued"
+    ],
+    "example": "Although she was tired, she continued working on the project."
+   },
+   {
+    "words": [
+     "if I were",
+     "would",
+     "travel"
+    ],
+    "example": "If I were rich, I would travel around the world."
+   },
+   {
+    "words": [
+     "has been",
+     "since",
+     "morning"
+    ],
+    "example": "It has been raining since this morning."
+   },
+   {
+    "words": [
+     "was built",
+     "century",
+     "temple"
+    ],
+    "example": "This temple was built in the fourteenth century."
+   },
+   {
+    "words": [
+     "unless",
+     "hurry",
+     "miss"
+    ],
+    "example": "Unless we hurry, we will miss the bus."
+   },
+   {
+    "words": [
+     "should have",
+     "studied",
+     "exam"
+    ],
+    "example": "I should have studied more for the exam."
+   },
+   {
+    "words": [
+     "which",
+     "bought",
+     "broken"
+    ],
+    "example": "The phone which I bought last week is already broken."
+   },
+   {
+    "words": [
+     "despite",
+     "rain",
+     "match"
+    ],
+    "example": "Despite the rain, the match continued."
+   },
+   {
+    "words": [
+     "by the time",
+     "arrived",
+     "left"
+    ],
+    "example": "By the time we arrived, the train had already left."
+   },
+   {
+    "words": [
+     "environment",
+     "protect",
+     "plastic"
+    ],
+    "example": "We can protect the environment by using less plastic."
+   },
+   {
+    "words": [
+     "not only",
+     "but also",
+     "talented"
+    ],
+    "example": "She is not only clever but also talented at music."
+   },
+   {
+    "words": [
+     "had never",
+     "before",
+     "abroad"
+    ],
+    "example": "I had never been abroad before last summer."
+   },
+   {
+    "words": [
+     "is said",
+     "oldest",
+     "city"
+    ],
+    "example": "It is said that this is the oldest city in the region."
+   },
+   {
+    "words": [
+     "wish",
+     "could",
+     "fly"
+    ],
+    "example": "I wish I could fly like a bird."
+   },
+   {
+    "words": [
+     "responsible",
+     "decision",
+     "future"
+    ],
+    "example": "You should make a responsible decision about your future."
+   },
+   {
+    "words": [
+     "whose",
+     "father",
+     "pilot"
+    ],
+    "example": "The boy whose father is a pilot travels a lot."
+   },
+   {
+    "words": [
+     "in order to",
+     "improve",
+     "practice"
+    ],
+    "example": "I practice every day in order to improve my English."
+   },
+   {
+    "words": [
+     "whereas",
+     "prefer",
+     "quiet"
+    ],
+    "example": "My brother loves loud music, whereas I prefer quiet songs."
+   },
+   {
+    "words": [
+     "technology",
+     "changed",
+     "communicate"
+    ],
+    "example": "Technology has changed the way we communicate."
+   },
+   {
+    "words": [
+     "must have",
+     "forgotten",
+     "meeting"
+    ],
+    "example": "He must have forgotten about the meeting."
+   },
+   {
+    "words": [
+     "as soon as",
+     "finish",
+     "call"
+    ],
+    "example": "I will call you as soon as I finish my homework."
+   },
+   {
+    "words": [
+     "were",
+     "discovered",
+     "scientists"
+    ],
+    "example": "The fossils were discovered by scientists last year."
+   },
+   {
+    "words": [
+     "suggested",
+     "go",
+     "instead"
+    ],
+    "example": "My friend suggested that we go to the movies instead."
+   },
+   {
+    "words": [
+     "challenge",
+     "overcome",
+     "confidence"
+    ],
+    "example": "Overcoming a challenge can give you confidence."
+   },
+   {
+    "words": [
+     "used to",
+     "now",
+     "rarely"
+    ],
+    "example": "I used to play games every day, but now I rarely do."
+   },
+   {
+    "words": [
+     "even though",
+     "expensive",
+     "worth"
+    ],
+    "example": "Even though the trip was expensive, it was worth it."
+   },
+   {
+    "words": [
+     "apologized",
+     "late",
+     "teacher"
+    ],
+    "example": "He apologized to the teacher for being late."
+   },
+   {
+    "words": [
+     "will have",
+     "graduated",
+     "by"
+    ],
+    "example": "By 2030, I will have graduated from university."
+   },
+   {
+    "words": [
+     "reduce",
+     "traffic",
+     "public transport"
+    ],
+    "example": "Using public transport can reduce traffic in the city."
+   },
+   {
+    "words": [
+     "neither",
+     "nor",
+     "interested"
+    ],
+    "example": "Neither my sister nor I am interested in soccer."
+   },
+   {
+    "words": [
+     "promised",
+     "would",
+     "help"
+    ],
+    "example": "She promised that she would help me."
+   },
+   {
+    "words": [
+     "while",
+     "others",
+     "relaxing"
+    ],
+    "example": "While some people were working, others were relaxing."
+   },
+   {
+    "words": [
+     "advice",
+     "gave",
+     "important"
+    ],
+    "example": "My grandfather gave me some important advice."
+   },
+   {
+    "words": [
+     "on the other hand",
+     "convenient",
+     "unhealthy"
+    ],
+    "example": "Fast food is convenient. On the other hand, it is unhealthy."
+   },
+   {
+    "words": [
+     "so that",
+     "could",
+     "hear"
+    ],
+    "example": "She spoke loudly so that everyone could hear her."
+   },
+   {
+    "words": [
+     "been waiting",
+     "for",
+     "hour"
+    ],
+    "example": "I have been waiting here for an hour."
+   },
+   {
+    "words": [
+     "not allowed",
+     "phones",
+     "class"
+    ],
+    "example": "We were not allowed to use phones in class."
+   },
+   {
+    "words": [
+     "would rather",
+     "stay",
+     "home"
+    ],
+    "example": "I would rather stay at home tonight."
+   },
+   {
+    "words": [
+     "pollution",
+     "cause",
+     "health"
+    ],
+    "example": "Air pollution can cause serious health problems."
+   },
+   {
+    "words": [
+     "had better",
+     "leave",
+     "dark"
+    ],
+    "example": "We had better leave before it gets dark."
+   },
+   {
+    "words": [
+     "admitted",
+     "broken",
+     "window"
+    ],
+    "example": "He admitted that he had broken the window."
+   },
+   {
+    "words": [
+     "who",
+     "invented",
+     "telephone"
+    ],
+    "example": "Alexander Graham Bell is the man who invented the telephone."
+   },
+   {
+    "words": [
+     "such",
+     "that",
+     "laughed"
+    ],
+    "example": "It was such a funny movie that we laughed all night."
+   },
+   {
+    "words": [
+     "volunteer",
+     "community",
+     "weekends"
+    ],
+    "example": "I volunteer in my community on weekends."
+   },
+   {
+    "words": [
+     "might have",
+     "lost",
+     "bag"
+    ],
+    "example": "I might have lost my bag on the bus."
+   },
+   {
+    "words": [
+     "compared",
+     "cheaper",
+     "last year"
+    ],
+    "example": "Compared to last year, food is cheaper now."
+   },
+   {
+    "words": [
+     "managed",
+     "finish",
+     "deadline"
+    ],
+    "example": "We managed to finish the project before the deadline."
+   },
+   {
+    "words": [
+     "it is important",
+     "sleep",
+     "teenagers"
+    ],
+    "example": "It is important for teenagers to get enough sleep."
+   },
+   {
+    "words": [
+     "regret",
+     "not",
+     "learning"
+    ],
+    "example": "I regret not learning to swim when I was younger."
+   },
+   {
+    "words": [
+     "in spite of",
+     "injury",
+     "won"
+    ],
+    "example": "In spite of her injury, she won the race."
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Sentence Builder",
+   "text": [
+    "You get three word cards.",
+    "Write ONE sentence that uses all three words."
+   ],
+   "example": {
+    "chips": [
+     "dog",
+     "park",
+     "run"
+    ]
+   }
+  },
+  {
+   "title": "Example",
+   "text": [
+    "You can change the word a little: run → runs.",
+    "Add any other words you need."
+   ],
+   "example": {
+    "big": "My dog runs in the park every day.",
+    "tag": "Sentence"
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "Write it on your board before the timer ends.",
+    "Correct sentences win points."
+   ],
+   "example": {
+    "rows": [
+     [
+      "All 3 words, correct",
+      "+2"
+     ],
+     [
+      "Small mistake",
+      "+1"
+     ],
+     [
+      "Best sentence",
+      "+1"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "long",
+    "name": "Long sentence",
+    "text": "10 words or more and correct: +2",
+    "points": 2
+   },
+   {
+    "id": "question",
+    "name": "Question time",
+    "text": "Write it as a question for +2!",
+    "points": 2
+   },
+   {
+    "id": "adjective",
+    "name": "Add an adjective",
+    "text": "Add a describing word (big, happy...): +1",
+    "points": 1
+   },
+   {
+    "id": "two",
+    "name": "Two sentences",
+    "text": "Write a second sentence with the same words: +2",
+    "points": 2
+   }
+  ],
+  "secret": [
+   {
+    "id": "neat",
+    "name": "Neat board",
+    "text": "+1 for the neatest board!",
+    "points": 1
+   },
+   {
+    "id": "capital",
+    "name": "Capitals + period",
+    "text": "+1 for a capital letter AND a period!",
+    "points": 1
+   },
+   {
+    "id": "funny",
+    "name": "Funniest sentence",
+    "text": "+2 for the funniest correct sentence!",
+    "points": 2
+   },
+   {
+    "id": "first",
+    "name": "First correct",
+    "text": "+2 for the first team with a correct sentence!",
+    "points": 2
+   }
+  ]
+ }
+}

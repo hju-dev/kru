@@ -1,0 +1,726 @@
+{
+ "about": "Would You Rather? cards: two choices; teams pick one and give a reason. M.1 simple choices, M.2 everyday life and the future, M.3 values and opinions. Written for Kru. At least 50 per level, shuffled every game.",
+ "M.1": {
+  "items": [
+   {
+    "a": "be a cat",
+    "b": "be a dog"
+   },
+   {
+    "a": "live in the city",
+    "b": "live in the country"
+   },
+   {
+    "a": "eat pizza every day",
+    "b": "eat rice every day"
+   },
+   {
+    "a": "have a big family",
+    "b": "have a small family"
+   },
+   {
+    "a": "go to the beach",
+    "b": "go to the mountains"
+   },
+   {
+    "a": "be very tall",
+    "b": "be very short"
+   },
+   {
+    "a": "have a pet elephant",
+    "b": "have a pet monkey"
+   },
+   {
+    "a": "play soccer",
+    "b": "play basketball"
+   },
+   {
+    "a": "read a book",
+    "b": "watch a movie"
+   },
+   {
+    "a": "live without TV",
+    "b": "live without music"
+   },
+   {
+    "a": "be a teacher",
+    "b": "be a doctor"
+   },
+   {
+    "a": "eat only sweet food",
+    "b": "eat only spicy food"
+   },
+   {
+    "a": "have a dragon",
+    "b": "be a dragon"
+   },
+   {
+    "a": "swim with sharks",
+    "b": "fly with birds"
+   },
+   {
+    "a": "be always hot",
+    "b": "be always cold"
+   },
+   {
+    "a": "have long hair",
+    "b": "have no hair"
+   },
+   {
+    "a": "get up at 5 a.m.",
+    "b": "go to bed at 8 p.m."
+   },
+   {
+    "a": "live in a tree house",
+    "b": "live in a boat"
+   },
+   {
+    "a": "talk to animals",
+    "b": "speak ten languages"
+   },
+   {
+    "a": "go to school on Saturday",
+    "b": "go to school on Sunday"
+   },
+   {
+    "a": "have a robot",
+    "b": "have a magic pen"
+   },
+   {
+    "a": "drink only milk",
+    "b": "drink only water"
+   },
+   {
+    "a": "be the oldest child",
+    "b": "be the youngest child"
+   },
+   {
+    "a": "play games all day",
+    "b": "sleep all day"
+   },
+   {
+    "a": "eat ice cream",
+    "b": "eat cake"
+   },
+   {
+    "a": "visit Japan",
+    "b": "visit England"
+   },
+   {
+    "a": "ride a horse",
+    "b": "ride an elephant"
+   },
+   {
+    "a": "be a famous singer",
+    "b": "be a famous soccer player"
+   },
+   {
+    "a": "have a bike",
+    "b": "have a skateboard"
+   },
+   {
+    "a": "live on the moon",
+    "b": "live under the sea"
+   },
+   {
+    "a": "have three eyes",
+    "b": "have three arms"
+   },
+   {
+    "a": "be invisible",
+    "b": "be able to fly"
+   },
+   {
+    "a": "cook dinner",
+    "b": "wash the dishes"
+   },
+   {
+    "a": "wear a hat every day",
+    "b": "wear sunglasses every day"
+   },
+   {
+    "a": "have a party at home",
+    "b": "have a party at the park"
+   },
+   {
+    "a": "eat with chopsticks",
+    "b": "eat with your hands"
+   },
+   {
+    "a": "be a superhero",
+    "b": "be a wizard"
+   },
+   {
+    "a": "draw pictures",
+    "b": "sing songs"
+   },
+   {
+    "a": "have no homework",
+    "b": "have no tests"
+   },
+   {
+    "a": "see a ghost",
+    "b": "see an alien"
+   },
+   {
+    "a": "live in a castle",
+    "b": "live in a small house"
+   },
+   {
+    "a": "be a fish",
+    "b": "be a bird"
+   },
+   {
+    "a": "only eat vegetables",
+    "b": "only eat fruit"
+   },
+   {
+    "a": "have a very fast car",
+    "b": "have a very big house"
+   },
+   {
+    "a": "go shopping",
+    "b": "go swimming"
+   },
+   {
+    "a": "have a birthday every month",
+    "b": "have a vacation every month"
+   },
+   {
+    "a": "clean your room",
+    "b": "do your homework"
+   },
+   {
+    "a": "be a lion",
+    "b": "be a tiger"
+   },
+   {
+    "a": "play in the rain",
+    "b": "play in the snow"
+   },
+   {
+    "a": "have a phone",
+    "b": "have a computer"
+   },
+   {
+    "a": "travel by train",
+    "b": "travel by plane"
+   }
+  ],
+  "frame": "I'd rather ... because ..."
+ },
+ "M.2": {
+  "items": [
+   {
+    "a": "be famous",
+    "b": "be rich"
+   },
+   {
+    "a": "live 100 years ago",
+    "b": "live 100 years in the future"
+   },
+   {
+    "a": "lose your phone",
+    "b": "lose your bag"
+   },
+   {
+    "a": "never use the internet again",
+    "b": "never watch TV again"
+   },
+   {
+    "a": "travel around the world alone",
+    "b": "stay in Thailand with your friends"
+   },
+   {
+    "a": "be the best student in class",
+    "b": "be the best player on the team"
+   },
+   {
+    "a": "have a job you love with little money",
+    "b": "have a boring job with lots of money"
+   },
+   {
+    "a": "know everything about the past",
+    "b": "know everything about the future"
+   },
+   {
+    "a": "live in a hot country",
+    "b": "live in a cold country"
+   },
+   {
+    "a": "have a lot of friends",
+    "b": "have one best friend"
+   },
+   {
+    "a": "be a YouTuber",
+    "b": "be a doctor"
+   },
+   {
+    "a": "spend a day with a famous person",
+    "b": "spend a day in a famous place"
+   },
+   {
+    "a": "learn to play the piano",
+    "b": "learn to dance"
+   },
+   {
+    "a": "have a vacation by the sea",
+    "b": "have a vacation in a big city"
+   },
+   {
+    "a": "be good at math",
+    "b": "be good at art"
+   },
+   {
+    "a": "cook every meal for your family",
+    "b": "clean the whole house"
+   },
+   {
+    "a": "read people's minds",
+    "b": "see through walls"
+   },
+   {
+    "a": "eat street food",
+    "b": "eat at an expensive restaurant"
+   },
+   {
+    "a": "go to a concert",
+    "b": "go to a soccer match"
+   },
+   {
+    "a": "never eat chocolate again",
+    "b": "never eat noodles again"
+   },
+   {
+    "a": "study in another country",
+    "b": "study in Thailand"
+   },
+   {
+    "a": "be the leader",
+    "b": "be part of the team"
+   },
+   {
+    "a": "have a small garden",
+    "b": "have a swimming pool"
+   },
+   {
+    "a": "wake up early and finish early",
+    "b": "wake up late and finish late"
+   },
+   {
+    "a": "be a professional gamer",
+    "b": "be a professional athlete"
+   },
+   {
+    "a": "always be five minutes late",
+    "b": "always be twenty minutes early"
+   },
+   {
+    "a": "work in an office",
+    "b": "work outside"
+   },
+   {
+    "a": "have a vacation every year",
+    "b": "get a new phone every year"
+   },
+   {
+    "a": "live without air conditioning",
+    "b": "live without hot water"
+   },
+   {
+    "a": "be able to change the weather",
+    "b": "be able to stop time"
+   },
+   {
+    "a": "write a book",
+    "b": "make a movie"
+   },
+   {
+    "a": "go camping in the forest",
+    "b": "stay in a five-star hotel"
+   },
+   {
+    "a": "lose your sense of taste",
+    "b": "lose your sense of smell"
+   },
+   {
+    "a": "have a cat that talks",
+    "b": "have a dog that sings"
+   },
+   {
+    "a": "eat the same food every day",
+    "b": "never eat the same food twice"
+   },
+   {
+    "a": "win a gold medal",
+    "b": "win a big prize in a competition"
+   },
+   {
+    "a": "meet your favorite singer",
+    "b": "meet your favorite actor"
+   },
+   {
+    "a": "have a big birthday party",
+    "b": "get an expensive present"
+   },
+   {
+    "a": "take the bus",
+    "b": "ride a bicycle"
+   },
+   {
+    "a": "be a tourist guide",
+    "b": "be a pilot"
+   },
+   {
+    "a": "be the funniest person in class",
+    "b": "be the smartest person in class"
+   },
+   {
+    "a": "be stuck in an elevator",
+    "b": "be stuck in traffic"
+   },
+   {
+    "a": "explore space",
+    "b": "explore the ocean"
+   },
+   {
+    "a": "only text",
+    "b": "only call"
+   },
+   {
+    "a": "live next to a market",
+    "b": "live next to a park"
+   },
+   {
+    "a": "have a famous parent",
+    "b": "be famous yourself"
+   },
+   {
+    "a": "learn something new every day",
+    "b": "teach something every day"
+   },
+   {
+    "a": "be a police officer",
+    "b": "be a firefighter"
+   },
+   {
+    "a": "always tell the truth",
+    "b": "always keep secrets"
+   },
+   {
+    "a": "have a robot that cleans",
+    "b": "have a robot that cooks"
+   }
+  ],
+  "frame": "I'd rather ... because ... Also, ..."
+ },
+ "M.3": {
+  "items": [
+   {
+    "a": "have more free time",
+    "b": "have more money"
+   },
+   {
+    "a": "live without your phone for a month",
+    "b": "live without your friends for a month"
+   },
+   {
+    "a": "be able to speak every language",
+    "b": "be able to play every instrument"
+   },
+   {
+    "a": "know when you will die",
+    "b": "know how you will die"
+   },
+   {
+    "a": "be a big fish in a small pond",
+    "b": "be a small fish in a big pond"
+   },
+   {
+    "a": "give up social media",
+    "b": "give up eating out"
+   },
+   {
+    "a": "be respected",
+    "b": "be liked"
+   },
+   {
+    "a": "have a perfect memory",
+    "b": "be able to forget anything you want"
+   },
+   {
+    "a": "work from home",
+    "b": "work in an office with friends"
+   },
+   {
+    "a": "get the perfect job",
+    "b": "find the perfect partner"
+   },
+   {
+    "a": "live in a world without cars",
+    "b": "live in a world without computers"
+   },
+   {
+    "a": "be an only child",
+    "b": "have five brothers and sisters"
+   },
+   {
+    "a": "fail with a great idea",
+    "b": "succeed with a boring idea"
+   },
+   {
+    "a": "change the past",
+    "b": "see the future"
+   },
+   {
+    "a": "be famous for something bad",
+    "b": "not be famous at all"
+   },
+   {
+    "a": "have a teacher who is strict but fair",
+    "b": "have a teacher who is kind but disorganized"
+   },
+   {
+    "a": "study what you love",
+    "b": "study what pays well"
+   },
+   {
+    "a": "always say what you think",
+    "b": "never speak again"
+   },
+   {
+    "a": "live in a big modern city",
+    "b": "live in a quiet traditional village"
+   },
+   {
+    "a": "save the environment",
+    "b": "end poverty"
+   },
+   {
+    "a": "travel with friends",
+    "b": "travel with family"
+   },
+   {
+    "a": "be the first person on Mars",
+    "b": "be the first person to cure a disease"
+   },
+   {
+    "a": "have a well-paid job you hate",
+    "b": "have a low-paid job you love"
+   },
+   {
+    "a": "lose all your photos",
+    "b": "lose all your messages"
+   },
+   {
+    "a": "be an expert in one thing",
+    "b": "be good at many things"
+   },
+   {
+    "a": "read only books",
+    "b": "watch only movies for the rest of your life"
+   },
+   {
+    "a": "have unlimited data",
+    "b": "have unlimited food"
+   },
+   {
+    "a": "be a brilliant inventor",
+    "b": "be a famous artist"
+   },
+   {
+    "a": "have school all year with short days",
+    "b": "have school half the year with long days"
+   },
+   {
+    "a": "never feel tired",
+    "b": "never feel hungry"
+   },
+   {
+    "a": "make a difference in your town",
+    "b": "become famous around the world"
+   },
+   {
+    "a": "eat healthy food you don't like",
+    "b": "eat unhealthy food you love"
+   },
+   {
+    "a": "work alone",
+    "b": "work in a big team"
+   },
+   {
+    "a": "have a time machine",
+    "b": "have a teleporter"
+   },
+   {
+    "a": "start your own business",
+    "b": "work for a big company"
+   },
+   {
+    "a": "live without electricity",
+    "b": "live without running water"
+   },
+   {
+    "a": "be good at sport",
+    "b": "be good at music"
+   },
+   {
+    "a": "win an argument",
+    "b": "stay friends"
+   },
+   {
+    "a": "lead a country",
+    "b": "lead a big company"
+   },
+   {
+    "a": "be online all the time",
+    "b": "be offline all the time"
+   },
+   {
+    "a": "live in a smart house",
+    "b": "live in a cabin in the woods"
+   },
+   {
+    "a": "let a robot choose your clothes",
+    "b": "let your parents choose your clothes"
+   },
+   {
+    "a": "be the best at your job",
+    "b": "be the happiest person at work"
+   },
+   {
+    "a": "know the answer to every exam",
+    "b": "never need to take an exam"
+   },
+   {
+    "a": "have a famous friend",
+    "b": "be famous yourself"
+   },
+   {
+    "a": "learn from your mistakes",
+    "b": "never make mistakes"
+   },
+   {
+    "a": "live in a country with four seasons",
+    "b": "live in a country that is always summer"
+   },
+   {
+    "a": "be the youngest in a group",
+    "b": "be the oldest in a group"
+   },
+   {
+    "a": "plan every detail of a trip",
+    "b": "travel with no plan at all"
+   },
+   {
+    "a": "have an amazing voice",
+    "b": "have amazing dance moves"
+   }
+  ],
+  "frame": "I'd rather ... because ... On the other hand, ..."
+ },
+ "intro": [
+  {
+   "title": "Would You Rather?",
+   "text": [
+    "Read the two choices.",
+    "Your team picks ONE."
+   ],
+   "example": {
+    "chips": [
+     "be a cat",
+     "or",
+     "be a dog"
+    ]
+   }
+  },
+  {
+   "title": "Give a reason",
+   "text": [
+    "Say: I'd rather ... because ...",
+    "Talk with your team before the timer ends."
+   ],
+   "example": {
+    "big": "I'd rather be a cat because cats sleep a lot.",
+    "tag": "Example"
+   }
+  },
+  {
+   "title": "Win points",
+   "text": [
+    "A good reason wins points.",
+    "Use and, but, also, so for more points!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "A good reason",
+      "+1"
+     ],
+     [
+      "Reason + linking word",
+      "+2"
+     ],
+     [
+      "No reason",
+      "0"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "two-reasons",
+    "name": "Two reasons",
+    "text": "Give TWO reasons for +2!",
+    "points": 2
+   },
+   {
+    "id": "other-side",
+    "name": "Other side",
+    "text": "Say one good thing about the OTHER choice: +2",
+    "points": 2
+   },
+   {
+    "id": "everyone",
+    "name": "Everyone speaks",
+    "text": "Every team member says one word or more: +2",
+    "points": 2
+   },
+   {
+    "id": "because",
+    "name": "Because!",
+    "text": "Use 'because' AND 'so' in one answer: +2",
+    "points": 2
+   }
+  ],
+  "secret": [
+   {
+    "id": "minority",
+    "name": "Brave choice",
+    "text": "+2 for teams who picked the less popular choice!",
+    "points": 2
+   },
+   {
+    "id": "funny",
+    "name": "Funniest reason",
+    "text": "+2 for the funniest reason!",
+    "points": 2
+   },
+   {
+    "id": "longest",
+    "name": "Longest sentence",
+    "text": "+2 for the longest correct sentence!",
+    "points": 2
+   },
+   {
+    "id": "new-word",
+    "name": "New word",
+    "text": "+1 for a word nobody else used!",
+    "points": 1
+   }
+  ]
+ }
+}

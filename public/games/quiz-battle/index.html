@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Quiz Battle</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="/games/shared/kru-bonus.css" />
+    <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game qb">
+      <header class="bar">
+        <span class="round" id="round">Quiz <b>Battle</b></span>
+        <span class="qnum" id="qnum"></span>
+        <span class="double" id="double" hidden>DOUBLE ×2</span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="q" id="q">Loading…</div>
+        <div class="choices" id="choices"></div>
+        <div class="short" id="short" hidden>Short answer: write it on your board.</div>
+        <div class="short-ans" id="shortAns" hidden></div>
+      </section>
+
+      <div class="controls">
+        <span class="digits" id="digits">0:20</span>
+        <div class="progress"><i id="fill"></i></div>
+        <button class="btn" id="go">Start timer</button>
+        <button class="btn teal" id="reveal">Reveal</button>
+        <button class="btn gold" id="next">Next ▶</button>
+      </div>
+
+      <div class="strip" id="strip" role="group" aria-label="Teams: tap the teams that were right"></div>
+      <div class="toast" id="toast" role="status" hidden>
+        <span id="toastText"></span>
+        <button class="small" id="toastUndo" hidden>Undo</button>
+      </div>
+    </main>
+
+    <!-- Choose a question set -->
+    <div class="backdrop" id="setsBack" hidden>
+      <div class="menu" role="dialog" aria-labelledby="setsTitle">
+        <h2 class="round" id="setsTitle">Choose a question set</h2>
+        <div class="sets" id="sets"></div>
+        <p class="problems" id="problems" hidden></p>
+        <button class="btn ghost" id="setsClose" hidden>Cancel</button>
+      </div>
+    </div>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="menu-rounds" id="secsRow"></div>
+        <button class="btn" id="changeSet">Choose another set</button>
+        <button class="btn" id="prev">◀ Previous question</button>
+        <button class="btn ghost danger" id="resetScores">Reset all scores</button>
+        <button class="btn" id="howTo">How to play</button>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-bonus.js"></script>
+    <script src="/games/shared/kru-end.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

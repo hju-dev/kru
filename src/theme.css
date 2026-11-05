@@ -142,6 +142,12 @@ textarea {
 .btn.ghost {
   background: transparent;
 }
+/* Buttons that end something (Finish, End game) are red, so they're easy to spot in a menu. */
+.btn.end {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--bg);
+}
 .btn.small {
   min-height: 36px;
   padding: 0 12px;
@@ -232,4 +238,20 @@ textarea {
     transition: none !important;
     animation: none !important;
   }
+}
+
+/* Something went wrong (route error screen) */
+.error-screen {
+  max-width: 560px;
+  margin: 0 auto;
+  gap: 12px;
+}
+.error-screen .row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.error-screen .small {
+  font-size: 13px;
+  word-break: break-word;
 }

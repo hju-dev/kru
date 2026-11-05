@@ -28,6 +28,15 @@ export const storage = {
   /** Students marked absent today in a class, so the next game that day remembers them. */
   getAbsent: (cls: string, day: string) => get<number[]>(`absent:${cls}:${day}`, store),
   setAbsent: (cls: string, day: string, nos: number[]) => set(`absent:${cls}:${day}`, nos, store),
+  /** A game's memory for one class for today (e.g. Name Picker: who has been picked). */
+  getDayState: (game: string, cls: string, day: string) => get<unknown>(`day:${game}:${cls}:${day}`, store),
+  setDayState: (game: string, cls: string, day: string, data: unknown) => set(`day:${game}:${cls}:${day}`, data, store),
+  /** A game's long-term memory for one class (e.g. Class Order: who has had a turn), kept across lessons. */
+  getKeepState: (game: string, cls: string) => get<unknown>(`keep:${game}:${cls}`, store),
+  setKeepState: (game: string, cls: string, data: unknown) => set(`keep:${game}:${cls}`, data, store),
+  /** A tool's own saved settings (for example Talk Timer presets), kept on this phone. */
+  getToolState: (slug: string) => get<unknown>(`tool:${slug}`, store),
+  setToolState: (slug: string, state: unknown) => set(`tool:${slug}`, state, store),
   /**
    * Sign out: forget the connection and the cached Sheet data.
    * Unsent results (outbox) and games in progress are kept, so nothing is lost.

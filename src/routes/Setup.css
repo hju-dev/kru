@@ -78,21 +78,18 @@
   opacity: 0.35;
 }
 
-/* tool row scrolls sideways inside itself if it doesn't fit */
+/* tool row: sized to fit one line on the phone held sideways (notch margins included);
+   wraps to a second line rather than hiding buttons off the edge */
 .setup-tools {
   display: flex;
   align-items: center;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
+  flex-wrap: wrap;
+  gap: 4px;
   flex-shrink: 0;
-}
-.setup-tools::-webkit-scrollbar {
-  display: none;
 }
 .tool {
   min-height: 36px;
-  padding: 0 12px;
+  padding: 0 9px;
   border-radius: 10px;
   border: 1.5px solid var(--line);
   background: transparent;
@@ -357,6 +354,10 @@
 @media (orientation: portrait) {
   .setup-bar {
     flex-wrap: wrap;
+  }
+  /* title gets the rest of the first line (beside the back button); the controls wrap below */
+  .setup-title {
+    flex-basis: calc(100% - var(--tap) - 8px);
   }
   .setup-body {
     grid-template-columns: minmax(0, 1fr);

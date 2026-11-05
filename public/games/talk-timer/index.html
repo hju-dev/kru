@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Talk Timer</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game tt">
+      <header class="bar">
+        <button class="pick" id="pick" aria-haspopup="dialog">
+          <span class="pick-name" id="pickName">Loading…</span>
+          <span class="pick-arrow" aria-hidden="true">▾</span>
+        </button>
+        <button class="pick rules-btn" id="rules" hidden>Rules</button>
+        <span class="steps" id="steps"></span>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="phase" id="phase"></div>
+        <div class="digits" id="digits">0:00</div>
+        <div class="progress"><i id="fill"></i></div>
+        <div class="next" id="next"></div>
+      </section>
+
+      <div class="controls">
+        <button class="ctl primary" id="go">Start</button>
+        <button class="ctl" id="reset">Reset</button>
+        <button class="ctl" id="skip">Next phase</button>
+      </div>
+    </main>
+
+    <!-- Timer list -->
+    <div class="sheet" id="list" role="dialog" aria-label="Choose a timer" hidden>
+      <header class="sheet-head">
+        <h2>Timers</h2>
+        <button class="ctl small" id="listDone">Done</button>
+      </header>
+      <div class="cards" id="cards"></div>
+      <div class="sheet-foot">
+        <button class="ctl small" id="add">+ New timer</button>
+        <button class="ctl small ghost" id="restore">Restore starting timers</button>
+      </div>
+    </div>
+
+    <!-- Timer editor -->
+    <div class="sheet" id="editor" role="dialog" aria-label="Edit timer" hidden>
+      <header class="sheet-head">
+        <h2 id="editTitle">Edit timer</h2>
+        <button class="ctl small" id="editCancel">Cancel</button>
+        <button class="ctl small primary" id="editSave">Save</button>
+      </header>
+      <label class="field">
+        <span>Name</span>
+        <input id="editName" maxlength="40" autocomplete="off" />
+      </label>
+      <div class="phases" id="editPhases"></div>
+      <label class="field rules-field">
+        <span>Rules</span>
+        <textarea id="editRules" rows="3" placeholder="One rule per line. Leave empty to keep the built-in rules (if any)."></textarea>
+      </label>
+      <div class="sheet-foot">
+        <button class="ctl small" id="addPhase">+ Add phase</button>
+        <button class="ctl small ghost danger" id="editDelete">Delete timer</button>
+        <button class="ctl small primary save-bottom" id="editSave2">Save timer</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

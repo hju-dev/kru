@@ -11,7 +11,7 @@
  * No student data lives in this file. It only reads and writes the Sheet.
  */
 
-var KRU_SCRIPT_VERSION = 5;
+var KRU_SCRIPT_VERSION = 8;
 
 /** Tabs and their header rows. The script finds columns by header name, so you can reorder columns. */
 var TABS = {
@@ -22,6 +22,8 @@ var TABS = {
     'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt'],
   Sessions: ['SessionID', 'Date', 'Class', 'Game', 'Level', 'Mode', 'TeamCount', 'TeacherTeamPoints',
     'SubmittedAt', 'Deleted', 'EditedAt'],
+  // Quiz Battle question sets Henry types in (v6). A-D filled = multiple choice; A-D empty = short answer.
+  Questions: ['Level', 'Set', 'Question', 'A', 'B', 'C', 'D', 'Answer', 'Double'],
 };
 
 /** Actions the app can call. Admin actions are added in Phase 2b. */
@@ -81,10 +83,57 @@ function actionBootstrap_() {
     readTable_(ss, 'Rosters'),
     readTable_(ss, 'TeamSets')
   );
+  var quiz = buildQuestions_(readTable_(ss, 'Questions'));
+  result.questions = quiz.sets;
+  result.questionProblems = quiz.problems;
   result.ok = true;
   result.version = KRU_SCRIPT_VERSION;
   result.sheetUrl = ss.getUrl();
   return result;
+}
+
+/**
+ * Pure: Questions tab rows -> question sets per level, plus the rows that couldn't be used (and why).
+ * Level accepts "M.1", "m1", "1"... Answer is a letter (A-D) or the text of a choice; for a
+ * short-answer question (A-D empty) it is the answer to show. Double = tick box or "yes".
+ */
+function buildQuestions_(rows) {
+  var sets = [];
+  var byKey = {};
+  var problems = [];
+  rows.forEach(function (row, i) {
+    var line = i + 2; // Sheet row number (row 1 is the header)
+    var q = text_(row.Question);
+    if (!q) return; // a row with no question is just skipped
+    var m = text_(row.Level).match(/([123])/);
+    if (!m) { problems.push({ row: line, problem: 'Level must be M.1, M.2 or M.3' }); return; }
+    var level = 'M.' + m[1];
+    var setName = text_(row.Set) || 'My questions';
+    var choices = ['A', 'B', 'C', 'D'].map(function (k) { return text_(row[k]); });
+    while (choices.length && choices[choices.length - 1] === '') choices.pop();
+    if (choices.indexOf('') !== -1) { problems.push({ row: line, problem: 'Fill the choices in order (A, B, C, D) with no gaps' }); return; }
+    var answer = text_(row.Answer);
+    if (!answer) { problems.push({ row: line, problem: 'Answer is empty' }); return; }
+    var item = { q: q, double: bool_(row.Double, false) };
+    if (choices.length) {
+      if (choices.length < 2) { problems.push({ row: line, problem: 'Multiple choice needs at least A and B' }); return; }
+      var idx = /^[A-Da-d]$/.test(answer) ? 'ABCD'.indexOf(answer.toUpperCase()) : -1;
+      if (idx === -1) {
+        var lower = answer.toLowerCase();
+        idx = choices.map(function (c) { return c.toLowerCase(); }).indexOf(lower);
+      }
+      if (idx < 0 || idx >= choices.length) { problems.push({ row: line, problem: 'Answer must be a letter that has a choice (A-' + 'ABCD'.charAt(choices.length - 1) + ')' }); return; }
+      item.choices = choices;
+      item.answer = idx;
+    } else {
+      item.answer = answer;
+    }
+    var key = level + '|' + setName.toLowerCase();
+    var set = byKey[key];
+    if (!set) { set = byKey[key] = { level: level, name: setName, questions: [] }; sets.push(set); }
+    set.questions.push(item);
+  });
+  return { sets: sets, problems: problems };
 }
 
 /**
@@ -119,6 +168,7 @@ function actionSubmitResults_(req) {
       TeacherTeamPoints: s.TeacherTeamPoints,
       SubmittedAt: new Date(),
     }]);
+    tryClassTab_(ss, s.Class); // first results for a class: make its tab (never stops the submission)
     return { ok: true, duplicate: false, sessionId: s.id, rowsWritten: plan.writeResults ? rows.length : 0 };
   });
 }
@@ -305,6 +355,7 @@ function actionSaveClass_(req) {
       var row = update();
       row.Class = cls;
       appendObjects_(sh, [row]);
+      tryClassTab_(sheet_(), cls);
     }
     return { ok: true, created: !found };
   });
@@ -328,6 +379,7 @@ function actionRenameClass_(req) {
       if (!sh) return;
       total += updateRows_(sh, function (r) { return classKey_(r.Class) === fromKey; }, function () { return { Class: to }; });
     });
+    try { renameClassTab_(ss, from, to); } catch (err) { log_('Class tab not renamed: ' + err); }
     return { ok: true, rowsUpdated: total };
   });
 }
@@ -431,7 +483,9 @@ function setup() {
     protectClassColumn_(ss, sh);
   });
   ensureSummaryTab_(ss);
+  ensureClassTabs_(ss);
   formatRosters_(ss.getSheetByName('Rosters'));
+  formatQuestions_(ss.getSheetByName('Questions'));
   removeEmptyDefaultSheet_(ss);
 
   var key = props.getProperty('KRU_KEY');
@@ -684,10 +738,161 @@ function classText_(v, dates) {
   return dates && dates.monthFirst ? month + '/' + day : day + '/' + month;
 }
 
+var SUMMARY_NOTE_ = 'Kru Summary: totals from the Results tab (deleted games are left out). It updates by itself. ' +
+  'Kru writes this tab, so changes here are replaced when you run Kru → Set up tabs.';
+
+/** Column letter for a 1-based column number (1 → A, 27 → AA). */
+function colLetter_(n) {
+  var s = '';
+  for (; n > 0; n = Math.floor((n - 1) / 26)) s = String.fromCharCode(65 + ((n - 1) % 26)) + s;
+  return s;
+}
+
+/**
+ * The Summary tab's formulas, built from where the columns really are in Results (Henry may have
+ * moved them). Two tables: points per student (with number of games), and points per class.
+ * Returns null if Results is missing a column the formulas need.
+ */
+function summaryFormulas_(resultsHeaders) {
+  var h = resultsHeaders.map(function (x) { return String(x).trim(); });
+  var col = function (name) { var i = h.indexOf(name); return i < 0 ? null : colLetter_(i + 1); };
+  var C = col('Class'), N = col('No'), K = col('Nickname'), P = col('Points'), D = col('Deleted');
+  if (!C || !N || !K || !P || !D) return null;
+  var range = 'Results!A1:' + colLetter_(h.length);
+  var kept = P + ' is not null and (' + D + ' is null or ' + D + ' = false)';
+  return {
+    students: '=IFERROR(QUERY(' + range + ', "select ' + C + ', ' + N + ', ' + K + ', sum(' + P + '), count(' + P + ') where ' + kept +
+      ' group by ' + C + ', ' + N + ', ' + K + ' order by ' + C + ', ' + N +
+      ' label ' + C + ' \'Class\', ' + N + ' \'No\', ' + K + ' \'Nickname\', sum(' + P + ') \'Total points\', count(' + P + ') \'Games\'", 1), "No results yet")',
+    classes: '=IFERROR(QUERY(' + range + ', "select ' + C + ', sum(' + P + ') where ' + kept + ' group by ' + C + ' order by ' + C +
+      ' label ' + C + ' \'Class\', sum(' + P + ') \'Total points\'", 1), "")',
+  };
+}
+
+/**
+ * Summary tab: student totals and class totals, as live formulas over Results.
+ * Only writes the tab if it's new, empty, or still Kru's own (A1 starts with "Kru Summary" or the
+ * old "Student totals" placeholder), so a tab Henry made himself is never overwritten.
+ */
 function ensureSummaryTab_(ss) {
-  if (ss.getSheetByName('Summary')) return;
-  var sh = ss.insertSheet('Summary');
-  sh.getRange('A1').setValue('Student totals will appear here (added in a later Kru update).');
+  var sh = ss.getSheetByName('Summary') || ss.insertSheet('Summary');
+  var a1 = String(sh.getRange('A1').getValue());
+  var ours = a1 === '' || a1.indexOf('Kru Summary') === 0 || a1.indexOf('Student totals') === 0;
+  if (!ours) return;
+  var results = ss.getSheetByName('Results');
+  if (!results) return;
+  var f = summaryFormulas_(results.getRange(1, 1, 1, results.getLastColumn()).getValues()[0]);
+  sh.clear();
+  sh.getRange('A1').setValue(f ? SUMMARY_NOTE_ : 'Kru Summary: the Results tab is missing a column (Class, No, Nickname, Points or Deleted). Run Kru → Set up tabs.');
+  if (!f) return;
+  sh.getRange('A3').setFormula(f.students);
+  sh.getRange('H3').setFormula(f.classes);
+  sh.getRange('3:3').setFontWeight('bold');
+  sh.setFrozenRows(3);
+}
+
+// ───────────────────────────── Class tabs (v8) ─────────────────────────────
+// One tab per class ("1/2", "M.3", …) with that class's student totals and games, as live formulas
+// over Results. Results stays the one master copy: the app edits, deletes and renames there.
+
+var CLASS_TAB_NOTE_ = 'Kru class tab: ';
+
+/** The tab name for a class, or null if it can't have one (empty, too long, or a Kru tab's name). */
+function classTabName_(cls) {
+  var name = text_(cls);
+  if (!name || name.length > 100) return null; // 100: Google Sheets' limit for a tab name
+  var reserved = Object.keys(TABS).concat(['Summary']).some(function (t) { return t.toUpperCase() === name.toUpperCase(); });
+  return reserved ? null : name;
+}
+
+/**
+ * A class tab's two formulas, built from where the columns really are in Results.
+ * Rows match the class the way the app does (spaces and capitals ignored); deleted games are left out.
+ *   students: No · Nickname · Total points · Games
+ *   games:    Date · Game · Level · Team · No · Nickname · Points · Rank, newest first
+ * Returns null if Results is missing a column the formulas need.
+ */
+function classTabFormulas_(resultsHeaders, cls) {
+  var h = resultsHeaders.map(function (x) { return String(x).trim(); });
+  var idx = function (name) { var i = h.indexOf(name); return i < 0 ? null : i + 1; };
+  var C = idx('Class'), N = idx('No'), K = idx('Nickname'), P = idx('Points'), D = idx('Deleted');
+  if (!C || !N || !K || !P || !D) return null;
+  var whole = function (i) { return 'Results!' + colLetter_(i) + '2:' + colLetter_(i); };
+  var key = classKey_(cls).replace(/"/g, '');
+  var data = 'FILTER(Results!A2:' + colLetter_(h.length) + ', SUBSTITUTE(UPPER(' + whole(C) + '), " ", "") = "' + key + '", ' +
+    whole(P) + ' <> "", ' + whole(D) + ' <> TRUE)';
+  var c = function (i) { return 'Col' + i; };
+  var shown = ['Date', 'Game', 'Level', 'Team', 'No', 'Nickname', 'Points', 'Rank'].filter(function (x) { return idx(x); });
+  var order = ['Date', 'Time'].filter(function (x) { return idx(x); }).map(function (x) { return c(idx(x)) + ' desc'; });
+  return {
+    students: '=IFERROR(QUERY(' + data + ', "select ' + c(N) + ', ' + c(K) + ', sum(' + c(P) + '), count(' + c(P) + ')' +
+      ' group by ' + c(N) + ', ' + c(K) + ' order by ' + c(N) +
+      " label " + c(N) + " 'No', " + c(K) + " 'Nickname', sum(" + c(P) + ") 'Total points', count(" + c(P) + ") 'Games'\", 0), \"No results yet\")",
+    games: '=IFERROR(QUERY(' + data + ', "select ' + shown.map(function (x) { return c(idx(x)); }).join(', ') +
+      (order.length ? ' order by ' + order.join(', ') : '') +
+      ' label ' + shown.map(function (x) { return c(idx(x)) + " '" + x + "'"; }).join(', ') + '", 0), "")',
+  };
+}
+
+/** Is this tab one Kru wrote (or an empty one Kru may fill)? */
+function isOwnClassTab_(sh) {
+  var a1 = String(sh.getRange('A1').getValue());
+  return a1 === '' || a1.indexOf(CLASS_TAB_NOTE_) === 0;
+}
+
+/**
+ * Makes (or refreshes) one class's tab. A new tab goes at the end. A tab with the class's name that
+ * Henry made himself is never touched. onlyIfMissing: leave an existing tab as it is.
+ */
+function ensureClassTab_(ss, cls, onlyIfMissing) {
+  var name = classTabName_(cls);
+  if (!name) return false;
+  var sh = ss.getSheetByName(name);
+  if (sh && (onlyIfMissing || !isOwnClassTab_(sh))) return false;
+  var results = ss.getSheetByName('Results');
+  if (!results) return false;
+  var f = classTabFormulas_(results.getRange(1, 1, 1, results.getLastColumn()).getValues()[0], name);
+  if (!sh) sh = ss.insertSheet(name, ss.getNumSheets());
+  sh.clear();
+  sh.getRange('A1').setValue(f
+    ? CLASS_TAB_NOTE_ + name + '. Student totals (left) and games, newest first (right), from the Results tab. Deleted games are left out. ' +
+      'It updates by itself. Kru writes this tab, so changes here are replaced when you run Kru → Set up tabs.'
+    : CLASS_TAB_NOTE_ + name + '. The Results tab is missing a column (Class, No, Nickname, Points or Deleted). Run Kru → Set up tabs.');
+  if (!f) return true;
+  sh.getRange('A3').setFormula(f.students);
+  sh.getRange('G3').setFormula(f.games);
+  sh.getRange('3:3').setFontWeight('bold');
+  sh.setFrozenRows(3);
+  return true;
+}
+
+/** Set up tabs: a tab for every class that isn't archived, in the app's class order. */
+function ensureClassTabs_(ss) {
+  buildBootstrap_(readTable_(ss, 'Classes'), readTable_(ss, 'Rosters'), []).classes
+    .filter(function (c) { return !c.archived; })
+    .sort(function (a, b) { return a.order - b.order; })
+    .forEach(function (c) { ensureClassTab_(ss, c.name, false); });
+}
+
+/** Never lets a class-tab problem stop a submission or a new class. */
+function tryClassTab_(ss, cls) {
+  try { ensureClassTab_(ss, cls, true); } catch (err) { log_('Class tab not made for ' + cls + ': ' + err); }
+}
+
+/** Rename class: rename its tab too (only Kru's own), and point the formulas at the new name. */
+function renameClassTab_(ss, from, to) {
+  var fromKey = classKey_(from);
+  var name = classTabName_(to);
+  var old = ss.getSheets().filter(function (sh) { return classKey_(sh.getName()) === fromKey && isOwnClassTab_(sh); })[0];
+  if (!old || !name) return;
+  var clash = ss.getSheetByName(name);
+  if (clash && clash !== old) return; // a tab with the new name already exists: leave both alone
+  old.setName(name);
+  ensureClassTab_(ss, name, false);
+}
+
+function log_(msg) {
+  try { Logger.log(msg); } catch (e) { /* no Logger (tests) */ }
 }
 
 /** Active column = tick boxes; No column = whole numbers. */
@@ -698,6 +903,17 @@ function formatRosters_(sh) {
   if (activeCol > 0) {
     sh.getRange(2, activeCol, 999, 1).setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
   }
+}
+
+/** Questions tab: plain text everywhere (so "1/2" stays "1/2"), tick boxes in Double. */
+function formatQuestions_(sh) {
+  if (!sh) return;
+  var headers = sh.getRange(1, 1, 1, sh.getLastColumn()).getValues()[0];
+  headers.forEach(function (h, i) {
+    var range = sh.getRange(2, i + 1, 999, 1);
+    if (String(h).trim() === 'Double') range.setDataValidation(SpreadsheetApp.newDataValidation().requireCheckbox().build());
+    else range.setNumberFormat('@');
+  });
 }
 
 function removeEmptyDefaultSheet_(ss) {

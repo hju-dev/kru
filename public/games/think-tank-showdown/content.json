@@ -1,0 +1,1024 @@
+{
+ "about": "Think Tank Showdown question pools per level. Each round has a pool (qs); every new game draws \"play\" main questions and \"spares\" spare questions at random from it. kind: answer / ideas / wager. todo = something for Henry to check. The first questions of each M.3 round are the original set; the rest were written for Kru.",
+ "M.1": {
+  "rounds": [
+   {
+    "name": "Riddle Rush",
+    "tag": "Round 1",
+    "secs": 45,
+    "kind": "answer",
+    "rule": "45 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point",
+    "qs": [
+     {
+      "q": "What has a face and two hands, but no arms or legs?",
+      "a": "A clock",
+      "why": "A clock has a face and two hands: the hour hand and the minute hand."
+     },
+     {
+      "q": "What has to be broken before you can use it?",
+      "a": "An egg",
+      "why": "You break an egg before you cook it."
+     },
+     {
+      "q": "What goes up but never comes down?",
+      "a": "Your age",
+      "why": "Every birthday your age goes up. It never goes down!"
+     },
+     {
+      "q": "I have lots of teeth, but I can't bite. What am I?",
+      "a": "A comb",
+      "why": "Also accept: a zip / a saw."
+     },
+     {
+      "q": "What has legs but can't walk?",
+      "a": "A table",
+      "why": "Also accept: a chair / a bed."
+     },
+     {
+      "q": "What is full of holes but can still hold water?",
+      "a": "A sponge",
+      "why": ""
+     },
+     {
+      "q": "What can you hear but not see or touch? You use it when you speak.",
+      "a": "Your voice",
+      "why": "Also accept: a sound."
+     },
+     {
+      "q": "What gets bigger the more you take away from it?",
+      "a": "A hole",
+      "why": "Dig more and the hole gets bigger!"
+     },
+     {
+      "q": "What goes up when the rain comes down?",
+      "a": "An umbrella",
+      "why": "You open it when it rains."
+     },
+     {
+      "q": "What has one head, one foot and four legs?",
+      "a": "A bed",
+      "why": "The head and foot of the bed, and four legs."
+     },
+     {
+      "q": "I am yellow and I shine in the day. What am I?",
+      "a": "The sun",
+      "why": ""
+     },
+     {
+      "q": "What has a mouth but never eats, and a bed but never sleeps?",
+      "a": "A river",
+      "why": "The mouth and bed of a river."
+     },
+     {
+      "q": "What can you break without touching it?",
+      "a": "A promise",
+      "why": ""
+     },
+     {
+      "q": "What has lots of words but never speaks?",
+      "a": "A book",
+      "why": "Also accept: a dictionary / a newspaper."
+     },
+     {
+      "q": "What has a ring but no finger?",
+      "a": "A phone",
+      "why": "The phone rings!"
+     },
+     {
+      "q": "I have cities but no houses, and rivers but no water. What am I?",
+      "a": "A map",
+      "why": ""
+     },
+     {
+      "q": "What has a head and a tail but no body?",
+      "a": "A coin",
+      "why": "Heads or tails?"
+     },
+     {
+      "q": "What is white when it is dirty and black when it is clean?",
+      "a": "A blackboard",
+      "why": "Chalk makes it white."
+     },
+     {
+      "q": "What can fill a room but takes up no space?",
+      "a": "Light",
+      "why": "Also accept: air / sound."
+     },
+     {
+      "q": "What starts with T, ends with T, and has T in it?",
+      "a": "A teapot",
+      "why": "Tea in a T-pot!"
+     }
+    ],
+    "play": 4,
+    "spares": 2
+   },
+   {
+    "name": "Spot the Problem",
+    "tag": "Round 2",
+    "secs": 60,
+    "kind": "answer",
+    "rule": "60 s to talk in your team. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1",
+    "qs": [
+     {
+      "q": "\"My cat is black. So all cats are black.\"",
+      "a": "One cat can't tell you about all cats.",
+      "why": "Award 2 for: only one cat / you can't say \"all\" / there are white, orange and gray cats."
+     },
+     {
+      "q": "\"I ate an ice cream and then it rained. So ice cream makes it rain.\"",
+      "a": "The two things happened together, but one didn't cause the other.",
+      "why": "Award 2 for: it was just at the same time / ice cream can't change the weather."
+     },
+     {
+      "q": "\"This phone is the best because it is the most expensive.\"",
+      "a": "Expensive doesn't always mean the best.",
+      "why": "Award 2 for: price isn't quality / you need to check what the phone can do."
+     },
+     {
+      "q": "\"Everyone in my class has a phone. So every child in the world has a phone.\"",
+      "a": "One class is too small to say something about the whole world.",
+      "why": "Award 2 for: small group / some children are poor / you can't say \"every\"."
+     },
+     {
+      "q": "\"My brother is tall, so he must be good at basketball.\"",
+      "a": "Being tall doesn't make you good at a sport.",
+      "why": "Award 2 for: you need practice / skill, not just height."
+     },
+     {
+      "q": "\"I saw one rude tourist. So all tourists are rude.\"",
+      "a": "One person can't tell you about everyone.",
+      "why": "Award 2 for: only one person / you can't say \"all\"."
+     },
+     {
+      "q": "\"My team lost today. So my team is the worst team in the world.\"",
+      "a": "One game doesn't show that.",
+      "why": "Award 2 for: only one game / they can win next time."
+     },
+     {
+      "q": "\"Everybody has a new phone, so you need one too.\"",
+      "a": "Doing what everyone does isn't a good reason.",
+      "why": "Award 2 for: do you really need it? / you can decide for yourself."
+     },
+     {
+      "q": "\"If you don't like dogs, you must love cats.\"",
+      "a": "There are more than two choices.",
+      "why": "Award 2 for: you can like neither / you can like both."
+     },
+     {
+      "q": "\"I didn't study and I passed. So studying is not important.\"",
+      "a": "One lucky time doesn't prove it.",
+      "why": "Award 2 for: you were lucky / most people need to study."
+     },
+     {
+      "q": "\"This store is near my house, so it is the best store.\"",
+      "a": "Near doesn't mean best.",
+      "why": "Award 2 for: other stores can be better or cheaper."
+     },
+     {
+      "q": "\"My friend is good at math, so she is good at English too.\"",
+      "a": "Good at one thing doesn't mean good at everything.",
+      "why": "Award 2 for: they are different subjects."
+     },
+     {
+      "q": "\"It's on the internet, so it must be true.\"",
+      "a": "Not everything online is true.",
+      "why": "Award 2 for: anyone can write online / check other places."
+     },
+     {
+      "q": "\"The new student is quiet, so she must be unfriendly.\"",
+      "a": "Quiet doesn't mean unfriendly.",
+      "why": "Award 2 for: she may be shy / she is new."
+     }
+    ],
+    "play": 3,
+    "spares": 2
+   },
+   {
+    "name": "What Would Happen If…?",
+    "tag": "Round 3",
+    "secs": 90,
+    "kind": "ideas",
+    "rule": "90 s: write as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round",
+    "qs": [
+     {
+      "q": "What would happen if it rained every day for a month?",
+      "a": "",
+      "why": "Floods · no outdoor sport · wet clothes · plants grow fast · people stay at home · stores sell lots of umbrellas."
+     },
+     {
+      "q": "What would happen if there were no cars?",
+      "a": "",
+      "why": "People walk or ride bikes · cleaner air · trips take longer · quieter streets · more buses and trains."
+     },
+     {
+      "q": "What would happen if animals could talk?",
+      "a": "",
+      "why": "Pets tell us what they want · zoos change · farmers talk to their animals · new job: animal translator."
+     },
+     {
+      "q": "What would happen if there was no school for a year?",
+      "a": "",
+      "why": "More free time · students forget what they learned · parents need childcare · more online lessons · friends miss each other."
+     },
+     {
+      "q": "What would happen if everyone had a pet dinosaur?",
+      "a": "",
+      "why": "Big houses and gardens · lots of food needed · dinosaur parks · traffic problems · dinosaur doctors."
+     },
+     {
+      "q": "What would happen if it was always night?",
+      "a": "",
+      "why": "No sun for plants · cold weather · lights on all day · people sleep more · stars all the time."
+     },
+     {
+      "q": "What would happen if people could fly?",
+      "a": "",
+      "why": "No need for cars · fewer traffic jams · new sky rules · more accidents? · birds are surprised!"
+     },
+     {
+      "q": "What would happen if there was no ice cream?",
+      "a": "",
+      "why": "Sad children · ice cream shops close · people eat other candy · less sugar · new desserts."
+     }
+    ],
+    "play": 1,
+    "spares": 2
+   },
+   {
+    "name": "Final Wager",
+    "tag": "Round 4",
+    "secs": 60,
+    "kind": "wager",
+    "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it",
+    "qs": [
+     {
+      "q": "A farmer has 5 cows. All but 2 run away. How many cows are left?",
+      "a": "2",
+      "why": "\"All but 2\" means \"all of them except 2\". So 2 cows stay.",
+      "todo": "\"All but 2\" may be new English for M.1: explain it after the answer."
+     },
+     {
+      "q": "Which month has 28 days?",
+      "a": "All of them",
+      "why": "Every month has at least 28 days!"
+     },
+     {
+      "q": "How many legs do 3 chickens have?",
+      "a": "6",
+      "why": "A chicken has 2 legs: 3 × 2 = 6."
+     },
+     {
+      "q": "Take half of 10, then add 2. What is the answer?",
+      "a": "7",
+      "why": "Half of 10 is 5. 5 + 2 = 7."
+     },
+     {
+      "q": "Today is Monday. What day will it be in 3 days?",
+      "a": "Thursday",
+      "why": "Tuesday, Wednesday, Thursday."
+     },
+     {
+      "q": "A dog is bigger than a cat. A cat is bigger than a mouse. Which is the smallest?",
+      "a": "The mouse",
+      "why": ""
+     },
+     {
+      "q": "How many months have 31 days?",
+      "a": "7",
+      "why": "January, March, May, July, August, October and December."
+     },
+     {
+      "q": "I have 2 coins. Together they make 15 baht. One of them is not a 5-baht coin. What are they?",
+      "a": "A 10-baht coin and a 5-baht coin",
+      "why": "One is not a 5-baht coin (it is the 10). The other one is!"
+     }
+    ],
+    "play": 1,
+    "spares": 1
+   }
+  ]
+ },
+ "M.2": {
+  "rounds": [
+   {
+    "name": "Riddle Rush",
+    "tag": "Round 1",
+    "secs": 40,
+    "kind": "answer",
+    "rule": "40 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point",
+    "qs": [
+     {
+      "q": "What can travel around the world while staying in a corner?",
+      "a": "A stamp",
+      "why": "A stamp stays in the corner of an envelope while the letter travels."
+     },
+     {
+      "q": "What has a neck but no head?",
+      "a": "A bottle",
+      "why": "Also accept: a shirt / a guitar."
+     },
+     {
+      "q": "What belongs to you, but other people use it more than you do?",
+      "a": "Your name",
+      "why": "Other people say your name much more often than you do."
+     },
+     {
+      "q": "I'm tall when I'm young and short when I'm old. What am I?",
+      "a": "A candle",
+      "why": "A candle gets shorter as it burns."
+     },
+     {
+      "q": "What has one eye but can't see?",
+      "a": "A needle",
+      "why": "The thread goes through the needle's eye."
+     },
+     {
+      "q": "What can you hold in your right hand but never in your left hand?",
+      "a": "Your left hand",
+      "why": "Also accept: your left elbow."
+     },
+     {
+      "q": "What comes down but never goes up?",
+      "a": "Rain",
+      "why": "Also accept: snow."
+     },
+     {
+      "q": "I have keys but no locks, and space but no room. What am I?",
+      "a": "A keyboard",
+      "why": "The space bar!"
+     },
+     {
+      "q": "What has a thumb and four fingers but is not alive?",
+      "a": "A glove",
+      "why": ""
+     },
+     {
+      "q": "What goes through cities and fields but never moves?",
+      "a": "A road",
+      "why": "Also accept: a railway / a path."
+     },
+     {
+      "q": "What can't talk but answers when you speak to it?",
+      "a": "An echo",
+      "why": ""
+     },
+     {
+      "q": "What has a bottom at the top?",
+      "a": "Your legs",
+      "why": "Your bottom is at the top of your legs!"
+     },
+     {
+      "q": "What invention lets you look right through a wall?",
+      "a": "A window",
+      "why": ""
+     },
+     {
+      "q": "If you drop me, I crack. If you smile at me, I smile back. What am I?",
+      "a": "A mirror",
+      "why": ""
+     },
+     {
+      "q": "What kind of room has no doors or windows?",
+      "a": "A mushroom",
+      "why": "Mush-ROOM."
+     },
+     {
+      "q": "What is so fragile that saying its name breaks it?",
+      "a": "Silence",
+      "why": ""
+     },
+     {
+      "q": "What has 13 hearts but no other body parts?",
+      "a": "A pack of cards",
+      "why": "13 cards are hearts."
+     },
+     {
+      "q": "Which word is spelled wrong in every dictionary?",
+      "a": "\"Wrong\"",
+      "why": "W-R-O-N-G!"
+     },
+     {
+      "q": "What goes up and down but doesn't move?",
+      "a": "Stairs",
+      "why": "Also accept: a staircase."
+     },
+     {
+      "q": "I am an odd number. Take away one letter and I become even. What number am I?",
+      "a": "Seven",
+      "why": "S-even."
+     }
+    ],
+    "play": 4,
+    "spares": 2
+   },
+   {
+    "name": "Spot the Problem",
+    "tag": "Round 2",
+    "secs": 45,
+    "kind": "answer",
+    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1",
+    "qs": [
+     {
+      "q": "\"My grandfather smoked all his life and lived to 95. So smoking isn't bad for you.\"",
+      "a": "One person's story doesn't prove something for everyone.",
+      "why": "Award 2 for: only one example / he was lucky / doctors study many people, not one."
+     },
+     {
+      "q": "\"9 out of 10 movie stars use this shampoo. It will make your hair beautiful.\"",
+      "a": "The stars may be paid, and their hair is beautiful for other reasons.",
+      "why": "Award 2 for: it's an advert / who asked the stars? / no proof the shampoo did it."
+     },
+     {
+      "q": "\"If we let students use phones at break, soon they will use them in every lesson, and then nobody will learn anything.\"",
+      "a": "One small change doesn't have to lead to the worst result.",
+      "why": "Award 2 for: that's a big jump / rules can stop it / it might not happen."
+     },
+     {
+      "q": "\"Lots of people believe it, so it must be true.\"",
+      "a": "Many people can still be wrong.",
+      "why": "Award 2 for: popular isn't the same as true / check the facts."
+     },
+     {
+      "q": "\"You don't play soccer, so your ideas about the team are wrong.\"",
+      "a": "Judge the idea, not the person.",
+      "why": "Award 2 for: anyone can have a good idea / look at the reasons."
+     },
+     {
+      "q": "\"Ten people liked this restaurant online, so it must be the best in Thailand.\"",
+      "a": "Ten reviews are too few to say \"the best in Thailand\".",
+      "why": "Award 2 for: small number / maybe they are friends / other restaurants."
+     },
+     {
+      "q": "\"Don't listen to her advice about food. She's only 14.\"",
+      "a": "Age doesn't make an idea right or wrong.",
+      "why": "Award 2 for: listen to the idea, not the age."
+     },
+     {
+      "q": "\"If you eat one sweet, you'll eat the whole bag, and then all your teeth will fall out!\"",
+      "a": "One small thing won't always lead to the worst result.",
+      "why": "Award 2 for: that's a big jump / you can stop at one."
+     },
+     {
+      "q": "\"Either you come to my party or you're not my friend.\"",
+      "a": "There are more than two choices.",
+      "why": "Award 2 for: you can be a friend and still miss a party."
+     },
+     {
+      "q": "\"Most of my class says the test was easy, so it was easy for everyone.\"",
+      "a": "Your class isn't everyone.",
+      "why": "Award 2 for: other people may find it hard."
+     },
+     {
+      "q": "\"This medicine is natural, so it can't be bad for you.\"",
+      "a": "Natural doesn't always mean safe.",
+      "why": "Award 2 for: some plants are poisonous / ask a doctor."
+     },
+     {
+      "q": "\"I've never seen a crocodile in this river, so there are no crocodiles here.\"",
+      "a": "Not seeing something doesn't prove it isn't there.",
+      "why": "Award 2 for: they can hide / you need more proof."
+     },
+     {
+      "q": "\"The price went up, so the quality must be better.\"",
+      "a": "A higher price doesn't prove better quality.",
+      "why": "Award 2 for: maybe they just want more money."
+     },
+     {
+      "q": "\"Our team always wins on Fridays, so we will win this Friday.\"",
+      "a": "The past doesn't guarantee the future.",
+      "why": "Award 2 for: the other team may be better / it was luck."
+     }
+    ],
+    "play": 3,
+    "spares": 2
+   },
+   {
+    "name": "What Would Happen If…?",
+    "tag": "Round 3",
+    "secs": 90,
+    "kind": "ideas",
+    "rule": "90 s: list as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round",
+    "qs": [
+     {
+      "q": "What would happen if homework was banned in every school?",
+      "a": "",
+      "why": "More free time · more sleep · some students forget lessons · more time for family, sport or part-time jobs · teachers change how they teach."
+     },
+     {
+      "q": "What would happen if everyone in Thailand could speak only English for one day?",
+      "a": "",
+      "why": "Stores and taxis have problems · people use their hands to explain · lots of laughing · English improves fast · the TV news changes."
+     },
+     {
+      "q": "What would happen if people could live for 200 years?",
+      "a": "",
+      "why": "More people on Earth · people work for longer · families with six generations · we need more food and houses."
+     },
+     {
+      "q": "What would happen if there was no electricity for a week?",
+      "a": "",
+      "why": "No phones or internet · food goes bad · candles and flashlights · no air conditioning · people talk more."
+     },
+     {
+      "q": "What would happen if everyone in the world spoke the same language?",
+      "a": "",
+      "why": "Easy travel · no English lessons! · more friends abroad · some cultures change · no translators needed."
+     },
+     {
+      "q": "What would happen if tourists stopped coming to Thailand?",
+      "a": "",
+      "why": "Hotels close · people lose jobs · quieter beaches · less money · new kinds of business."
+     },
+     {
+      "q": "What would happen if you could be invisible for one day?",
+      "a": "",
+      "why": "Play tricks · hear secrets · go anywhere free · nobody sees you in photos · people get scared."
+     },
+     {
+      "q": "What would happen if school was only online?",
+      "a": "",
+      "why": "No travel to school · more screen time · less sport · miss friends · learn at home."
+     }
+    ],
+    "play": 1,
+    "spares": 2
+   },
+   {
+    "name": "Final Wager",
+    "tag": "Round 4",
+    "secs": 60,
+    "kind": "wager",
+    "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it",
+    "qs": [
+     {
+      "q": "You are running a race and you pass the person in second place. What place are you in now?",
+      "a": "Second place",
+      "why": "You took their place. The person you passed is now third."
+     },
+     {
+      "q": "A bat and a ball cost 110 baht together. The bat costs 100 baht more than the ball. How much is the ball?",
+      "a": "5 baht",
+      "why": "Ball 5 + bat 105 = 110. (Not 10 baht: then the bat is 110 and the total is 120.)"
+     },
+     {
+      "q": "There are 3 apples. You take away 2. How many apples do YOU have?",
+      "a": "2",
+      "why": "You took 2, so you have 2!"
+     },
+     {
+      "q": "Which is heavier: a kilo of feathers or a kilo of stones?",
+      "a": "Neither: they both weigh a kilo.",
+      "why": ""
+     },
+     {
+      "q": "A doctor gives you 3 pills. Take one every 30 minutes. How many minutes until they are all gone?",
+      "a": "60 minutes",
+      "why": "One now, one at 30 minutes, one at 60 minutes."
+     },
+     {
+      "q": "How many times do you write the number 1 when you count from 1 to 20?",
+      "a": "12",
+      "why": "1, 10, 11 (twice), 12, 13, 14, 15, 16, 17, 18, 19."
+     },
+     {
+      "q": "What is the next number? 2, 4, 8, 16, …",
+      "a": "32",
+      "why": "Each number doubles."
+     },
+     {
+      "q": "Which is correct: \"The yolk of the egg is white\" or \"The yolk of the egg are white\"?",
+      "a": "Neither: the yolk is yellow!",
+      "why": ""
+     }
+    ],
+    "play": 1,
+    "spares": 1
+   }
+  ]
+ },
+ "M.3": {
+  "rounds": [
+   {
+    "name": "Riddle Rush",
+    "tag": "Round 1",
+    "secs": 40,
+    "kind": "answer",
+    "rule": "40 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point",
+    "qs": [
+     {
+      "q": "What has keys but can't open locks?",
+      "a": "A piano",
+      "why": "Also accept: a keyboard / a computer keyboard."
+     },
+     {
+      "q": "The more you take, the more you leave behind. What are they?",
+      "a": "Footsteps",
+      "why": "Every step you take leaves a footprint behind you."
+     },
+     {
+      "q": "What comes once in a minute, twice in a moment, but never in a thousand years?",
+      "a": "The letter M",
+      "why": "Look at the spelling: minute, moMent, thousand years."
+     },
+     {
+      "q": "Before Mount Everest was discovered, what was the highest mountain in the world?",
+      "a": "Mount Everest",
+      "why": "It was still the highest. People just didn't know yet!"
+     },
+     {
+      "q": "What can you catch but not throw?",
+      "a": "A cold",
+      "why": "Also accept: a cough / the flu."
+     },
+     {
+      "q": "What gets wetter the more it dries?",
+      "a": "A towel",
+      "why": ""
+     },
+     {
+      "q": "What is always coming but never arrives?",
+      "a": "Tomorrow",
+      "why": "When it arrives, it is today."
+     },
+     {
+      "q": "What can be cracked, made, told and played?",
+      "a": "A joke",
+      "why": ""
+     },
+     {
+      "q": "What begins with E, ends with E, but usually has only one letter in it?",
+      "a": "An envelope",
+      "why": "One letter inside it!"
+     },
+     {
+      "q": "What word becomes shorter when you add two letters to it?",
+      "a": "\"Short\"",
+      "why": "Short + er = shorter."
+     },
+     {
+      "q": "Forwards I am heavy, but backwards I am not. What am I?",
+      "a": "\"Ton\"",
+      "why": "Ton backwards is \"not\"."
+     },
+     {
+      "q": "What can you hold without touching it?",
+      "a": "Your breath",
+      "why": "Also accept: a conversation."
+     },
+     {
+      "q": "If you have me, you want to share me. If you share me, you haven't got me. What am I?",
+      "a": "A secret",
+      "why": ""
+     },
+     {
+      "q": "A man walked in the rain with no umbrella or hat, but not one hair on his head got wet. Why?",
+      "a": "He was bald.",
+      "why": ""
+     },
+     {
+      "q": "What can you see once in a year, twice in a week, but never in a day?",
+      "a": "The letter E",
+      "why": "Look at the spelling: yEar, wEEk, day."
+     },
+     {
+      "q": "What has to be answered but never asks a question?",
+      "a": "A phone",
+      "why": "Also accept: a doorbell."
+     },
+     {
+      "q": "I have branches but no fruit, trunk or leaves. What am I?",
+      "a": "A bank",
+      "why": "Banks have branches in many towns."
+     },
+     {
+      "q": "Which room do ghosts never go into?",
+      "a": "The living room",
+      "why": "Ghosts aren't living!"
+     },
+     {
+      "q": "Two fathers and two sons go fishing. They catch three fish and each gets one. How?",
+      "a": "There are only 3 people: a grandfather, a father and a son.",
+      "why": ""
+     },
+     {
+      "q": "What four-letter word reads the same forwards, backwards and upside down?",
+      "a": "NOON",
+      "why": ""
+     }
+    ],
+    "play": 4,
+    "spares": 2
+   },
+   {
+    "name": "Spot the Problem",
+    "tag": "Round 2",
+    "secs": 45,
+    "kind": "answer",
+    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2 · Steal = 1",
+    "qs": [
+     {
+      "q": "\"I wore my red socks and passed my math test. So red socks help you pass tests.\"",
+      "a": "Two things happened together, but one didn't cause the other.",
+      "why": "Award 2 for: coincidence / no proof the socks did it / she passed because she studied."
+     },
+     {
+      "q": "\"All five of my friends love K-pop. So every teenager in Thailand loves K-pop.\"",
+      "a": "Five people are too few to say something about everyone.",
+      "why": "Award 2 for: small group / you can't generalise / your friends are similar to you."
+     },
+     {
+      "q": "\"A famous soccer player drinks this energy drink. So it must make you run faster.\"",
+      "a": "The soccer player is paid to say it. He was fast before the drink.",
+      "why": "Award 2 for: advertising / he's paid / no evidence about the drink itself."
+     },
+     {
+      "q": "\"Nobody has proved that ghosts are NOT real. So ghosts must be real.\"",
+      "a": "No proof against something isn't proof for it.",
+      "why": "Award 2 for: the person saying 'ghosts are real' needs the evidence."
+     },
+     {
+      "q": "\"You either love this school or you hate it.\"",
+      "a": "There are more than two choices.",
+      "why": "Award 2 for: you can like some parts and not others / it's in the middle."
+     },
+     {
+      "q": "\"Crime went up after the new mall opened. So the mall caused the crime.\"",
+      "a": "Two things happening together doesn't prove one caused the other.",
+      "why": "Award 2 for: other reasons / more people in the area / need evidence."
+     },
+     {
+      "q": "\"Everyone is buying this new coin, so it's a smart investment.\"",
+      "a": "Popularity isn't evidence of value.",
+      "why": "Award 2 for: following the crowd / prices can fall."
+     },
+     {
+      "q": "\"We've always done it this way, so it's the right way.\"",
+      "a": "Tradition alone isn't a good reason.",
+      "why": "Award 2 for: there may be a better way now."
+     },
+     {
+      "q": "\"You either support every new school rule or you don't care about safety.\"",
+      "a": "There are more than two positions.",
+      "why": "Award 2 for: you can agree with some rules and not others."
+     },
+     {
+      "q": "\"He's a great soccer player, so his advice about medicine must be right.\"",
+      "a": "Being an expert in one thing doesn't make you an expert in another.",
+      "why": "Award 2 for: ask a doctor / wrong kind of expert."
+     },
+     {
+      "q": "\"If we ban junk food at school, next they'll ban all the food we like.\"",
+      "a": "One rule doesn't have to lead to an extreme result.",
+      "why": "Award 2 for: slippery slope / that's a big jump."
+     },
+     {
+      "q": "\"Nobody complained about the new schedule, so everyone loves it.\"",
+      "a": "Silence isn't the same as agreement.",
+      "why": "Award 2 for: maybe they didn't dare / didn't know how to complain."
+     },
+     {
+      "q": "\"That scientist was wrong once, so all her research is wrong.\"",
+      "a": "One mistake doesn't make everything wrong.",
+      "why": "Award 2 for: judge each piece of research on its evidence."
+     },
+     {
+      "q": "\"This app has a million downloads, so it must be safe.\"",
+      "a": "Popular isn't the same as safe.",
+      "why": "Award 2 for: check privacy / reviews / who made it."
+     }
+    ],
+    "play": 3,
+    "spares": 2
+   },
+   {
+    "name": "What Would Happen If…?",
+    "tag": "Round 3",
+    "secs": 90,
+    "kind": "ideas",
+    "rule": "90 s: list as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round",
+    "qs": [
+     {
+      "q": "What would happen if school started at 11 a.m.?",
+      "a": "",
+      "why": "Students sleep more · school finishes later · more traffic in the evening · parents need childcare in the morning · less time for homework or sport."
+     },
+     {
+      "q": "What would happen if nobody could tell a lie for one whole day?",
+      "a": "",
+      "why": "Friendships break · honest reviews · surprise parties fail · politicians in trouble · fewer arguments later?"
+     },
+     {
+      "q": "What would happen if every phone stopped working for one week?",
+      "a": "",
+      "why": "People talk face to face · get lost (no maps) · banks and stores have problems · less screen time · emergencies are harder."
+     },
+     {
+      "q": "What would happen if robots did all the jobs?",
+      "a": "",
+      "why": "People lose jobs · more free time · need new skills · cheaper products · who earns money?"
+     },
+     {
+      "q": "What would happen if the internet disappeared forever?",
+      "a": "",
+      "why": "Letters and phone calls · libraries busy again · banks and stores have problems · less fake news · businesses close."
+     },
+     {
+      "q": "What would happen if everyone lived to 150?",
+      "a": "",
+      "why": "More people on Earth · work for longer · huge families · need more food and homes · new hobbies."
+     },
+     {
+      "q": "What would happen if money didn't exist?",
+      "a": "",
+      "why": "Swap things (barter) · harder to save · no banks · people share more? · prices disappear."
+     },
+     {
+      "q": "What would happen if Thailand had snow every winter?",
+      "a": "",
+      "why": "Ski resorts · warm clothes in stores · tourists come for snow · crops change · snow days off school."
+     }
+    ],
+    "play": 1,
+    "spares": 2
+   },
+   {
+    "name": "Final Wager",
+    "tag": "Round 4",
+    "secs": 60,
+    "kind": "wager",
+    "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it",
+    "qs": [
+     {
+      "q": "A girl has as many brothers as sisters. Each brother has only half as many brothers as sisters. How many brothers and sisters are in the family?",
+      "a": "4 sisters and 3 brothers",
+      "why": "The girl sees 3 other sisters and 3 brothers. A brother sees 2 brothers and 4 sisters (2 is half of 4)."
+     },
+     {
+      "q": "How many times can you take 10 away from 100?",
+      "a": "Once",
+      "why": "After that, you are taking 10 away from 90!"
+     },
+     {
+      "q": "5 machines make 5 phones in 5 minutes. How long do 100 machines take to make 100 phones?",
+      "a": "5 minutes",
+      "why": "Each machine makes one phone in 5 minutes."
+     },
+     {
+      "q": "A water plant doubles in size every day. It covers a lake in 30 days. On which day did it cover half the lake?",
+      "a": "Day 29",
+      "why": "It doubles from half to full on the last day."
+     },
+     {
+      "q": "What is the next number? 1, 1, 2, 3, 5, 8, …",
+      "a": "13",
+      "why": "Add the two numbers before: 5 + 8 = 13."
+     },
+     {
+      "q": "You are in a race and you pass the person in LAST place. What place are you in now?",
+      "a": "It's impossible: nobody is behind the last person.",
+      "why": ""
+     },
+     {
+      "q": "A father has five daughters. Each daughter has one brother. How many children are there?",
+      "a": "6",
+      "why": "Five daughters and ONE brother (they share him)."
+     },
+     {
+      "q": "You write all the numbers from 1 to 100. How many times do you write the number 9?",
+      "a": "20",
+      "why": "9, 19 … 89, 99 (10 times) and 90 … 99 (10 more)."
+     }
+    ],
+    "play": 1,
+    "spares": 1
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Think Tank Showdown",
+   "text": [
+    "A game show for thinkers!",
+    "4 rounds. Work with your team."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Round 1",
+      "Riddle Rush"
+     ],
+     [
+      "Round 2",
+      "Spot the Problem"
+     ],
+     [
+      "Round 3",
+      "What Would Happen If…?"
+     ],
+     [
+      "Round 4",
+      "Final Wager"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Riddle Rush",
+   "text": [
+    "Solve the riddle. Write ONE answer.",
+    "Hold it up when your teacher says \"Show me!\""
+   ],
+   "example": {
+    "big": "What has to be broken before you can use it?",
+    "result": "An egg"
+   }
+  },
+  {
+   "title": "Spot the Problem",
+   "text": [
+    "Find what is wrong with the idea.",
+    "Right = 2 points. Steal = 1 point."
+   ],
+   "example": {
+    "big": "\"My cat is black, so all cats are black.\"",
+    "result": "One cat can't tell us about all cats."
+   }
+  },
+  {
+   "title": "What Would Happen If…?",
+   "text": [
+    "List as many results as you can.",
+    "Each NEW idea wins a point."
+   ],
+   "example": {
+    "label": "…school started at 11 a.m.?",
+    "rows": [
+     [
+      "Idea",
+      "We sleep more"
+     ],
+     [
+      "Idea",
+      "More traffic later"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Final Wager",
+   "text": [
+    "Bet 0 to 5 points BEFORE you see the question.",
+    "Right: win your bet. Wrong: lose it!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Bet 3 and right",
+      "+3"
+     ],
+     [
+      "Bet 3 and wrong",
+      "−3"
+     ]
+    ]
+   }
+  }
+ ],
+ "bonus": {
+  "before": [
+   {
+    "id": "fast",
+    "name": "Show me fast",
+    "text": "First correct team to show: +1 extra.",
+    "points": 1
+   },
+   {
+    "id": "sentence",
+    "name": "Full sentence",
+    "text": "Answer in a full sentence: +1.",
+    "points": 1
+   }
+  ],
+  "secret": [
+   {
+    "id": "funny",
+    "name": "Funniest answer",
+    "text": "+1 for the funniest wrong answer!",
+    "points": 1
+   },
+   {
+    "id": "reason",
+    "name": "Best reason",
+    "text": "+2 for the best explanation.",
+    "points": 2
+   },
+   {
+    "id": "teamwork",
+    "name": "Team spirit",
+    "text": "+1 for the team that worked best together.",
+    "points": 1
+   }
+  ]
+ }
+}

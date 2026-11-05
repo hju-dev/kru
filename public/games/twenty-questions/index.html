@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>20 Questions</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game tq">
+      <header class="bar">
+        <span class="logo"><b>20</b> Questions</span>
+        <span class="info" id="info"></span>
+        <span class="grow"></span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="cat-line" id="catLine">
+          <span class="its" id="its">It's a…</span>
+          <span class="cat" id="cat">?</span>
+        </div>
+        <div class="cats" id="cats" role="group" aria-label="Choose the category"></div>
+        <div class="solo-count" id="soloCount" hidden>
+          <span class="big" id="soloLeft">20</span>
+          <span class="lab">questions left</span>
+        </div>
+        <div class="result" id="result" hidden></div>
+      </section>
+
+      <div class="controls">
+        <span class="hint" id="hint"></span>
+        <span class="grow"></span>
+        <button class="btn" id="minusClass" hidden>Question asked −1</button>
+        <button class="btn gold" id="gotIt">Got it!</button>
+        <button class="btn" id="newRound" hidden>New round ▶</button>
+      </div>
+
+      <div class="strip" id="strip" role="group" aria-label="Teams: tap a team when it asks a question"></div>
+      <div class="toast" id="toast" role="status" hidden>
+        <span id="toastText"></span>
+        <button class="small" id="toastUndo">Undo</button>
+      </div>
+    </main>
+
+    <!-- Who got it? -->
+    <div class="backdrop" id="winBack" hidden>
+      <div class="menu" role="dialog" aria-labelledby="winTitle">
+        <h2 id="winTitle">Who got it?</h2>
+        <div class="choose" id="winList"></div>
+        <button class="btn ghost" id="nobody">Nobody got it</button>
+        <button class="btn ghost" id="winClose">Cancel</button>
+      </div>
+    </div>
+
+    <!-- ⋯ menu -->
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="menu-row">
+          <span class="lab">Questions</span>
+          <button class="btn step" data-q="-10">−10</button>
+          <button class="btn step" data-q="-1">−1</button>
+          <output id="totalOut">20</output>
+          <button class="btn step" data-q="1">+1</button>
+          <button class="btn step" data-q="10">+10</button>
+        </div>
+        <p class="muted small" id="totalNote">Used from the next round (or now, if nobody has asked yet).</p>
+        <button class="btn" id="undo">Undo last</button>
+        <button class="btn" id="howTo">How to play</button>
+        <button class="btn ghost danger" id="resetScores">Reset all scores</button>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-end.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

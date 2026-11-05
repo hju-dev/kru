@@ -1,4 +1,4 @@
-import type { Bootstrap, ClassInfo, Level, RosterIssue, Student, TeamSet } from '../types'
+import type { Bootstrap, ClassInfo, Level, QuizQuestion, QuizSet, RosterIssue, Student, TeamSet } from '../types'
 
 /** "M.3/2", "3/2" or "3/2P" -> "M.3". Returns null if the class name has no M.1–M.3 grade in it. */
 export function levelFromClass(name: string): Level | null {
@@ -73,7 +73,40 @@ export function normalizeBootstrap(raw: unknown): Bootstrap {
       })
     : []
 
-  return { classes, rosters, teamSets, sheetUrl: r.sheetUrl ? str(r.sheetUrl) : null, rosterIssues }
+  return {
+    classes,
+    rosters,
+    teamSets,
+    sheetUrl: r.sheetUrl ? str(r.sheetUrl) : null,
+    rosterIssues,
+    questions: normalizeQuestions(r.questions),
+    questionProblems: Array.isArray(r.questionProblems)
+      ? (r.questionProblems as Record<string, unknown>[]).map((p) => ({ row: num(p.row) ?? 0, problem: str(p.problem) }))
+      : [],
+  }
+}
+
+/** Quiz Battle sets from the Sheet: keep only well-formed questions. */
+export function normalizeQuestions(raw: unknown): QuizSet[] {
+  if (!Array.isArray(raw)) return []
+  const sets: QuizSet[] = []
+  for (const s of raw as Record<string, unknown>[]) {
+    const level = str(s?.level)
+    if (level !== 'M.1' && level !== 'M.2' && level !== 'M.3') continue
+    const questions: QuizQuestion[] = []
+    for (const q of Array.isArray(s.questions) ? (s.questions as Record<string, unknown>[]) : []) {
+      const text = str(q?.q)
+      if (!text) continue
+      const double = q.double === true
+      if (Array.isArray(q.choices)) {
+        const choices = (q.choices as unknown[]).map(str).filter(Boolean)
+        const answer = num(q.answer)
+        if (choices.length >= 2 && answer != null && answer >= 0 && answer < choices.length) questions.push({ q: text, choices, answer, double })
+      } else if (str(q.answer)) questions.push({ q: text, answer: str(q.answer), double })
+    }
+    if (questions.length) sets.push({ level, name: str(s.name) || 'My questions', questions })
+  }
+  return sets
 }
 
 /**
@@ -135,4 +168,10 @@ export function upgradeCachedBootstrap(data: Bootstrap): Bootstrap {
 /** Class names match ignoring spaces and capitals (same rule as the Sheet script). */
 export function classKeyOf(name: string): string {
   return name.replace(/\s+/g, '').toUpperCase()
+}
+
+/** The saved team sets for one class (class names match ignoring spaces and capitals). */
+export function teamSetsForClass(sets: TeamSet[] | undefined, cls: string): TeamSet[] {
+  const key = classKeyOf(cls)
+  return (sets ?? []).filter((t) => classKeyOf(t.class) === key)
 }

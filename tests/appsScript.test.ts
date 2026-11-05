@@ -133,3 +133,116 @@ describe('Code.gs submitResults helpers', () => {
     expect(toValues(['SessionID', '', 'Points', 'Deleted'], [{ Points: 0, SessionID: 'x', Extra: 1 }])).toEqual([['x', '', 0, '']])
   })
 })
+
+describe('Code.gs buildQuestions_ (Quiz Battle, Questions tab, v6)', () => {
+  type Built = { sets: { level: string; name: string; questions: { q: string; choices?: string[]; answer: number | string; double: boolean }[] }[]; problems: { row: number; problem: string }[] }
+  const build = sandbox.buildQuestions_ as (rows: object[]) => Built
+  const row = (o: object) => ({ Level: 'M.2', Set: 'Unit 3', Question: '', A: '', B: '', C: '', D: '', Answer: '', Double: '', ...o })
+  // results come from the vm sandbox, so compare as plain JSON
+  const plain = (x: unknown) => JSON.parse(JSON.stringify(x))
+
+  it('multiple choice by letter or by text; short answer when A-D are empty', () => {
+    const out = plain(build([
+      row({ Question: 'Past of go?', A: 'goed', B: 'went', C: 'gone', Answer: 'b' }),
+      row({ Question: 'Opposite of hot?', A: 'warm', B: 'cold', Answer: 'Cold', Double: true }),
+      row({ Question: 'Past of eat?', Answer: 'ate' }),
+    ]))
+    expect(out.problems).toEqual([])
+    expect(out.sets).toEqual([{ level: 'M.2', name: 'Unit 3', questions: [
+      { q: 'Past of go?', double: false, choices: ['goed', 'went', 'gone'], answer: 1 },
+      { q: 'Opposite of hot?', double: true, choices: ['warm', 'cold'], answer: 1 },
+      { q: 'Past of eat?', double: false, answer: 'ate' },
+    ] }])
+  })
+  it('groups by level and set name (ignoring capitals); level can be typed loosely', () => {
+    const out = plain(build([
+      row({ Level: 'm1', Set: 'Food', Question: 'Q1', Answer: 'x' }),
+      row({ Level: '1', Set: 'food', Question: 'Q2', Answer: 'y' }),
+      row({ Level: 'M.3', Set: '', Question: 'Q3', Answer: 'z' }),
+    ]))
+    expect(out.sets.map((s: { level: string; name: string; questions: unknown[] }) => [s.level, s.name, s.questions.length])).toEqual([
+      ['M.1', 'Food', 2],
+      ['M.3', 'My questions', 1],
+    ])
+  })
+  it('skips rows it cannot use and says which Sheet row and why', () => {
+    const out = plain(build([
+      row({ Question: 'ok', Answer: 'fine' }),
+      row({ Level: 'Grade 7', Question: 'bad level', Answer: 'x' }),
+      row({ Question: 'no answer' }),
+      row({ Question: 'gap', A: 'one', C: 'three', Answer: 'A' }),
+      row({ Question: 'letter without choice', A: 'one', B: 'two', Answer: 'D' }),
+      row({ Question: 'only A', A: 'one', Answer: 'A' }),
+      row({ Question: '' }), // blank question: just skipped, not a problem
+    ]))
+    expect(out.sets[0].questions).toHaveLength(1)
+    expect(out.problems.map((p: { row: number }) => p.row)).toEqual([3, 4, 5, 6, 7])
+  })
+})
+
+describe('Code.gs v7 Summary tab formulas', () => {
+  const formulas = sandbox.summaryFormulas_ as (h: string[]) => { students: string; classes: string } | null
+  const colLetter = sandbox.colLetter_ as (n: number) => string
+  const RESULTS = ['SessionID', 'Date', 'Time', 'Class', 'Game', 'Level', 'Mode', 'Team', 'No', 'Nickname', 'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt']
+  it('column letters', () => {
+    expect([1, 2, 26, 27, 52].map(colLetter)).toEqual(['A', 'B', 'Z', 'AA', 'AZ'])
+  })
+  it('student totals: class, no, nickname, total points, games; deleted rows left out', () => {
+    const f = formulas(RESULTS)!
+    expect(f.students).toBe(
+      `=IFERROR(QUERY(Results!A1:P, "select D, I, J, sum(K), count(K) where K is not null and (O is null or O = false) group by D, I, J order by D, I label D 'Class', I 'No', J 'Nickname', sum(K) 'Total points', count(K) 'Games'", 1), "No results yet")`,
+    )
+    expect(f.classes).toContain('select D, sum(K) where K is not null and (O is null or O = false) group by D')
+  })
+  it('follows the columns if Henry moved them', () => {
+    const moved = ['Nickname', ...RESULTS.filter((h) => h !== 'Nickname')]
+    expect(formulas(moved)!.students).toContain('select E, J, A, sum(K)')
+  })
+  it('no formulas when a needed column is missing', () => {
+    expect(formulas(RESULTS.filter((h) => h !== 'Deleted'))).toBeNull()
+  })
+  it('the script version is 8 (Henry must redeploy)', () => {
+    expect(sandbox.KRU_SCRIPT_VERSION).toBe(8)
+  })
+})
+
+describe('Code.gs v7 ensureSummaryTab_', () => {
+  const ensure = sandbox.ensureSummaryTab_ as (ss: unknown) => void
+  const RESULTS = ['SessionID', 'Date', 'Time', 'Class', 'Game', 'Level', 'Mode', 'Team', 'No', 'Nickname', 'Points', 'Rank', 'Teammates', 'Notes', 'Deleted', 'EditedAt']
+  function fakeSs(summaryA1: string | null) {
+    const cells: Record<string, string> = {}
+    if (summaryA1 !== null) cells.A1 = summaryA1
+    const summary = {
+      cells,
+      getRange: (a: string) => ({
+        getValue: () => cells[a] ?? '',
+        setValue: (v: string) => void (cells[a] = v),
+        setFormula: (v: string) => void (cells[a] = v),
+        setFontWeight: () => undefined,
+      }),
+      clear: () => Object.keys(cells).forEach((k) => delete cells[k]),
+      setFrozenRows: () => undefined,
+    }
+    const results = { getLastColumn: () => RESULTS.length, getRange: () => ({ getValues: () => [RESULTS] }) }
+    const tabs: Record<string, unknown> = { Results: results }
+    if (summaryA1 !== null) tabs.Summary = summary
+    return { summary, getSheetByName: (n: string) => tabs[n] ?? null, insertSheet: (n: string) => ((tabs[n] = summary), summary) }
+  }
+  it('fills a new Summary tab with live formulas', () => {
+    const ss = fakeSs(null)
+    ensure(ss)
+    expect(ss.summary.cells.A1).toMatch(/^Kru Summary/)
+    expect(ss.summary.cells.A3).toMatch(/^=IFERROR\(QUERY\(Results!A1:P/)
+    expect(ss.summary.cells.H3).toMatch(/^=IFERROR\(QUERY/)
+  })
+  it('replaces the old placeholder from earlier versions', () => {
+    const ss = fakeSs('Student totals will appear here (added in a later Kru update).')
+    ensure(ss)
+    expect(ss.summary.cells.A3).toMatch(/^=IFERROR/)
+  })
+  it("never overwrites a Summary tab Henry made himself", () => {
+    const ss = fakeSs('My own notes')
+    ensure(ss)
+    expect(ss.summary.cells).toEqual({ A1: 'My own notes' })
+  })
+})

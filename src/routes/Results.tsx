@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { DEMO_URL } from '../lib/demo'
 import { findGame } from '../lib/games'
-import { buildSubmission, rankTeams } from '../lib/results'
+import { buildSubmission, rankTeams, submittedTeams } from '../lib/results'
 import type { Session } from '../lib/session'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
@@ -29,7 +29,14 @@ function ResultsView({ session: s }: { session: Session }) {
   const game = findGame(s.game)
   const scores = s.scores ?? {}
   const pts = (teamId: string) => scores[teamId] ?? 0
-  const ranks = rankTeams(s.teams.map((t) => ({ teamId: t.id, points: pts(t.id) })))
+  const onlyScored = game?.results === 'scored' || (game?.results === 'scored-solo' && s.mode === 'solo')
+  // "scored" games (Name Picker): only students who got points are listed and saved
+  const saved = submittedTeams(s, scores, onlyScored)
+  // keep anyone given points in the game on the list, even if edited back to 0 here
+  const scoredInGame = new Set(s.log.map((e) => e.teamId))
+  const shown = onlyScored ? s.teams.filter((t) => pts(t.id) !== 0 || scoredInGame.has(t.id)) : s.teams
+  const hiddenCount = s.teams.length - saved.length
+  const ranks = rankTeams(shown.map((t) => ({ teamId: t.id, points: pts(t.id) })))
   const submitted = s.status === 'submitted'
   const waiting = outbox.some((e) => e.id === s.id)
 
@@ -40,7 +47,7 @@ function ResultsView({ session: s }: { session: Session }) {
 
   async function submit() {
     setBusy(true)
-    const payload = buildSubmission(s, scores, s.notes.trim(), game?.title ?? s.game)
+    const payload = buildSubmission(s, scores, s.notes.trim(), game?.title ?? s.game, new Date(), { onlyScored })
     patch(s.id, { status: 'submitted', submittedAt: Date.now() })
     await queueResults(payload)
     setBusy(false)
@@ -61,8 +68,14 @@ function ResultsView({ session: s }: { session: Session }) {
     navigate(`/play/${s.id}`, { replace: true })
   }
 
-  const rowsCount = s.teams.reduce((n, t) => n + t.members.length, 0)
-  const order = s.teams.slice().sort((a, b) => ranks[a.id] - ranks[b.id])
+  const rowsCount = saved.reduce((n, t) => n + t.members.length, 0)
+  const order = shown.slice().sort((a, b) => ranks[a.id] - ranks[b.id])
+  const nothingToSave = onlyScored && rowsCount === 0
+
+  function close() {
+    patch(s.id, { status: 'discarded' })
+    navigate('/', { replace: true })
+  }
 
   return (
     <main className="screen results">
@@ -80,9 +93,15 @@ function ResultsView({ session: s }: { session: Session }) {
             <button className={`btn small ${armedDiscard ? 'danger' : 'ghost'}`} onClick={discard}>
               {armedDiscard ? 'Tap again to discard' : 'Discard'}
             </button>
-            <button className="btn primary" onClick={() => void submit()} disabled={busy}>
-              {busy ? 'Saving…' : 'Submit scores'}
-            </button>
+            {nothingToSave ? (
+              <button className="btn primary" onClick={close}>
+                Close (nothing to save)
+              </button>
+            ) : (
+              <button className="btn primary" onClick={() => void submit()} disabled={busy}>
+                {busy ? 'Saving…' : 'Submit scores'}
+              </button>
+            )}
           </>
         )}
       </header>
@@ -91,7 +110,7 @@ function ResultsView({ session: s }: { session: Session }) {
         <div className={`card done ${waiting ? 'waiting' : ''}`} role="status">
           {conn?.url === DEMO_URL ? (
             <p>
-              <b>Demo mode:</b> nothing was sent. In your real Sheet this would add {rowsCount} rows to Results.
+              <b>Demo mode:</b> nothing was sent. In your real Sheet this would add {rowsCount} {rowsCount === 1 ? 'row' : 'rows'} to Results.
             </p>
           ) : waiting ? (
             <p>
@@ -100,13 +119,21 @@ function ResultsView({ session: s }: { session: Session }) {
             </p>
           ) : (
             <p>
-              <b>Sent to your Sheet ✓</b> {rowsCount} student rows added to Results.
+              <b>Sent to your Sheet ✓</b> {rowsCount} student {rowsCount === 1 ? 'row' : 'rows'} added to Results.
             </p>
           )}
           <Link className="btn primary" to="/">
             Back to library
           </Link>
         </div>
+      )}
+
+      {onlyScored && !submitted && (
+        <p className="muted small">
+          {nothingToSave
+            ? 'Nobody was given points, so there is nothing to save. Tap ← Game to go back and give points.'
+            : `Only students who got points are saved.${hiddenCount ? ` ${hiddenCount} others with 0 points are left out.` : ''}`}
+        </p>
       )}
 
       <section className="result-list" aria-label="Team scores">

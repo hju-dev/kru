@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Board Race</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="/games/shared/kru-bonus.css" />
+    <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game br">
+      <header class="bar">
+        <span class="round">Board <b>Race</b></span>
+        <span class="qnum" id="qnum"></span>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite">
+        <span class="kind" id="kind"></span>
+        <div class="q" id="q">Loading…</div>
+        <div class="items" id="items"></div>
+        <div class="examples" id="examples" hidden></div>
+      </section>
+
+      <div class="controls">
+        <span class="digits" id="digits">0:00</span>
+        <div class="progress"><i id="fill"></i></div>
+        <button class="btn gold" id="go">Start</button>
+        <button class="btn teal" id="reveal">Reveal</button>
+        <button class="btn" id="next">Next ▶</button>
+      </div>
+
+      <div class="strip" id="strip" role="group" aria-label="Teams: tap one to give points"></div>
+      <div class="toast" id="toast" role="status" hidden>
+        <span id="toastText"></span>
+        <button class="small" id="toastUndo">Undo</button>
+      </div>
+    </main>
+
+    <div class="backdrop" id="panelBack" hidden>
+      <div class="panel" role="dialog" aria-labelledby="panelName">
+        <div class="panel-head">
+          <div>
+            <b id="panelName"></b> · <span id="panelPts"></span>
+            <div class="panel-members" id="panelMembers"></div>
+          </div>
+          <button class="small" id="panelClose" aria-label="Close">✕</button>
+        </div>
+        <div class="panel-btns" id="panelBtns">
+          <button class="btn minus" data-d="-1">−1</button>
+          <button class="btn gold" data-d="1">+1</button>
+          <button class="btn gold" data-d="2">+2</button>
+          <button class="btn gold" data-d="5">+5</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="menu-rounds" id="secsRow"></div>
+        <button class="btn" id="prev">◀ Previous task</button>
+        <button class="btn" id="resetTimer">Reset the timer</button>
+        <button class="btn" id="undo">Undo last points</button>
+        <button class="btn ghost danger" id="resetScores">Reset all scores</button>
+        <button class="btn" id="howTo">How to play</button>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-bonus.js"></script>
+    <script src="/games/shared/kru-end.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -22,7 +22,7 @@ Nothing here puts student names in the code. They only ever live in your Sheet.
    - Click **Allow**.
 4. Click **Kru → Set up tabs** again if nothing happened. A box shows **your secret key** (like `k7m2p-xq9rt-b4hwz-3nfd8`). Copy it somewhere safe, such as your phone's Notes, but **not** into the code or a shared document.
 
-You now have these tabs: **Classes, Rosters, TeamSets, Results, Sessions, Summary**.
+You now have these tabs: **Classes, Rosters, TeamSets, Results, Sessions, Summary**, plus one tab per class (see [Class tabs](#class-tabs)).
 
 > Lost the key? **Kru → Show my key**. Think it leaked? **Kru → Make a new key**, then sign in again on each device.
 
@@ -54,6 +54,23 @@ In the **Rosters** tab, one row per student:
 
 The **Classes** tab is optional: add a class there if you want to set its **Order** on the home screen, a **DefaultTeamSize**, or tick **Archived** to hide it. Classes that only appear in Rosters still show up.
 
+## 4b. Your own Quiz Battle questions (optional, script version 6 or later)
+
+The **Questions** tab is where you add your own question sets for Quiz Battle. One row per question:
+
+| Level | Set | Question | A | B | C | D | Answer | Double |
+|---|---|---|---|---|---|---|---|---|
+| M.2 | Unit 3 | What is the past of "go"? | goed | went | gone | | B | ☐ |
+| M.2 | Unit 3 | Opposite of "cheap"? | | | | | expensive | ☑ |
+
+- **Level**: `M.1`, `M.2` or `M.3`.
+- **Set**: a name like `Unit 3` or `Food`. Questions with the same Level and Set make one set in the app.
+- **Multiple choice**: fill **A** and **B** (C and D are optional), and put the right letter in **Answer** (`B`).
+- **Short answer**: leave A–D empty and type the answer in **Answer**. It is shown when you tap Reveal.
+- **Double**: tick it for a "double points" question.
+- After adding questions, tap the **Synced…** pill at the top of the Kru home screen (or Dashboard → Settings → **Sync now**).
+- If a row can't be used (for example no Answer), the app skips it and Quiz Battle tells you the row number.
+
 ## 5. Connect the app
 
 1. On your iPhone, open the Kru website in **Safari**, tap **Share → Add to Home Screen**, then open Kru from the new icon.
@@ -74,6 +91,28 @@ When a Kru update gives you a new `Code.gs`:
 This keeps the **same URL**, so the app keeps working. Don't use "New deployment" for updates: that makes a **new** URL and the app would stop connecting until you sign in again with it.
 
 If the update added new tabs or columns, run **Kru → Set up tabs** once more. It only adds what's missing and never deletes data.
+
+## The Summary tab
+
+**Summary** shows live totals from **Results**, with deleted games left out:
+- **Column A onward:** each student's total points and number of games (Class · No · Nickname · Total points · Games).
+- **Column H onward:** each class's total points.
+
+It updates by itself when new results arrive. Kru writes this tab, so don't type in it. If you want your own notes, make a new tab. (If **Summary** holds something you typed yourself, Kru leaves it alone.)
+
+## Class tabs
+
+Each class gets its own tab, named after the class (**1/2**, **1/3**, … **M.3**). They are in the same order as in the app. Each tab shows live numbers from **Results**, with deleted games left out:
+- **Column A onward:** each student's total points and number of games (No · Nickname · Total points · Games).
+- **Column G onward:** every game the class played, newest first (Date · Game · Level · Team · No · Nickname · Points · Rank).
+
+**Results** is still the master copy. The class tabs only *show* it, so editing or deleting a game in the app updates them by itself. Don't type in a class tab: Kru writes it, and **Kru → Set up tabs** replaces it. If a tab with a class's name holds something you typed yourself, Kru leaves it alone.
+
+When the tabs appear:
+- **Kru → Set up tabs** makes a tab for every class that isn't archived (and refreshes Kru's own ones).
+- A new class gets its tab the first time you add it in the app or send it results.
+- Renaming a class in the app renames its tab too.
+- Archiving a class keeps its tab. Delete it by hand if you don't want it (right-click the tab → **Delete**). Your scores stay safe in **Results**.
 
 ## Troubleshooting
 

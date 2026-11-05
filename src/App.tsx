@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
+import { ErrorScreen } from './components/ErrorScreen'
 import { UpdateToast } from './components/UpdateToast'
 import { Home } from './routes/Home'
 import { Play } from './routes/Play'
 import { Results } from './routes/Results'
 import { Setup } from './routes/Setup'
 import { SignIn } from './routes/SignIn'
+import { Tool } from './routes/Tool'
 import { AdminLayout } from './routes/admin/AdminLayout'
 import { Content } from './routes/admin/Content'
 import { Overview } from './routes/admin/Overview'
@@ -53,10 +55,12 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorScreen />,
     children: [
       { index: true, element: <Home /> },
       { path: 'setup/:game', element: <Setup /> },
       { path: 'play/:id', element: <Play /> },
+      { path: 'tool/:game', element: <Tool /> },
       { path: 'results/:id', element: <Results /> },
       {
         path: 'admin',

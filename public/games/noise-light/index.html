@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Noise Light</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game nl">
+      <header class="bar">
+        <div class="seg" role="group" aria-label="Mode">
+          <button id="modeSign" aria-pressed="true">Sign</button>
+          <button id="modeMeter" aria-pressed="false">Noise meter</button>
+        </div>
+        <span class="grow"></span>
+      </header>
+
+      <section class="light" id="light" aria-live="polite">
+        <div class="word" id="word">Talk</div>
+        <div class="sub" id="sub">Normal voices</div>
+        <div class="meter" id="meter" hidden><i id="level"></i><b class="mark" id="markY"></b><b class="mark" id="markR"></b></div>
+      </section>
+
+      <div class="controls" id="signBtns">
+        <button class="btn green" data-c="green">Talk</button>
+        <button class="btn yellow" data-c="yellow">Quiet voices</button>
+        <button class="btn red" data-c="red">Silence</button>
+      </div>
+      <div class="controls" id="meterBtns" hidden>
+        <span class="lab">Sensitivity</span>
+        <button class="btn step" id="sensDown" aria-label="Less sensitive">−</button>
+        <output id="sens">5</output>
+        <button class="btn step" id="sensUp" aria-label="More sensitive">+</button>
+        <span class="grow"></span>
+        <span class="msg" id="msg"></span>
+        <button class="btn gold" id="listen">Start listening</button>
+      </div>
+    </main>
+    <script src="/sdk/kru.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
