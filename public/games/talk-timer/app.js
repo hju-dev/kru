@@ -4,6 +4,7 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var MAX_SECS = 99 * 60 + 59;
+  var RETIRED = ['one-word-story']; // now the One-Word Story game
 
   var starting = null;            // content.json
   var data = { v: 1, presets: [], current: null };
@@ -289,7 +290,9 @@
       starting = content;
       var saved = session.resume;
       if (saved && Array.isArray(saved.presets) && saved.presets.filter(valid).length) {
-        data = { v: 1, presets: saved.presets.filter(valid), current: saved.current };
+        // presets that became their own game (One-Word Story) leave the saved list too
+        data = { v: 1, presets: saved.presets.filter(valid).filter(function (p) { return RETIRED.indexOf(p.id) < 0; }), current: saved.current };
+        if (!data.presets.length) data.presets = clone(content.presets);
       } else {
         data = { v: 1, presets: clone(content.presets), current: content.start };
       }

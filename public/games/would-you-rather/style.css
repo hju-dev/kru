@@ -1,5 +1,6 @@
-.wyr { display: flex; align-items: stretch; gap: 10px; width: 100%; }
-.opt { flex: 1; display: flex; align-items: center; justify-content: center; padding: 10px 12px; border-radius: 16px; font: 800 34px/1.12 var(--display); text-wrap: balance; color: #111; }
+/* Would You Rather? The two choices fill the card: no team strip in this game, so there's room. */
+.wyr { flex: 1; min-height: 0; display: flex; align-items: stretch; gap: 10px; width: 100%; }
+.opt { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: center; padding: 10px 14px; border-radius: 18px; font: 800 40px/1.1 var(--display); text-wrap: balance; overflow-wrap: anywhere; color: #111; }
 .opt.a { background: var(--gold); }
 .opt.b { background: var(--teal); }
 .or { align-self: center; font: 800 22px/1 var(--display); color: var(--muted); }

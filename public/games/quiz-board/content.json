@@ -1,0 +1,50 @@
+{
+ "about": "Quiz Board: 5 topics x 5 squares (1 to 5 points), one secret DOUBLE square. Questions come from Quiz Battle (games/quiz-battle/content.json) for the level, so there is nothing to write here except the How to play slides.",
+ "intro": [
+  {
+   "title": "Quiz Board",
+   "text": [
+    "Teams take turns choosing a square.",
+    "Bigger numbers = harder questions, more points."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Easy",
+      "1"
+     ],
+     [
+      "Hard",
+      "5"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Answer it",
+   "text": [
+    "Every team writes or holds up an answer.",
+    "Right answers win the points."
+   ],
+   "example": {
+    "chips": [
+     "A",
+     "B",
+     "C",
+     "D"
+    ]
+   }
+  },
+  {
+   "title": "DOUBLE!",
+   "text": [
+    "One square is a secret DOUBLE.",
+    "It is worth twice the points!"
+   ],
+   "example": {
+    "big": "DOUBLE!",
+    "tag": "Surprise"
+   }
+  }
+ ]
+}

@@ -111,6 +111,37 @@ button.small {
 .digits.done {
   color: var(--coral);
 }
+.btn.adj {
+  min-width: 52px;
+  padding: 0 8px;
+  font-family: var(--mono);
+  font-size: 16px;
+}
+/* −10 / +10 and Tag (Just a Second): more buttons, so the row packs tighter and the clock tells the time */
+.controls.tight {
+  gap: 6px;
+}
+.controls.tight .btn {
+  flex-shrink: 0;
+  padding: 0 11px;
+}
+.controls.tight .btn.adj {
+  padding: 0 6px;
+  min-width: 48px;
+}
+.controls.tight .digits {
+  flex-shrink: 0;
+  font-size: 32px;
+}
+.controls.tight .progress {
+  display: none;
+}
+.controls.tight .btn#next {
+  margin-left: auto;
+}
+.kc.no-scores .strip {
+  display: none;
+}
 .progress {
   flex: 1;
   min-width: 40px;

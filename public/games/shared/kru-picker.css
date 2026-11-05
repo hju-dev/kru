@@ -1,0 +1,86 @@
+/* Kru team picker (games/shared/kru-picker.js): a big name that spins and lands on one team. */
+.kpk-open {
+  white-space: nowrap;
+}
+.kpk {
+  position: fixed;
+  inset: 0;
+  z-index: 42;
+  background: rgb(0 0 0 / 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}
+.kpk[hidden] {
+  display: none;
+}
+.kpk-card {
+  width: min(600px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  background: var(--stage, #221f2e);
+  border: 3px solid var(--line, #3e3950);
+  border-radius: 22px;
+  padding: 12px 18px;
+}
+.kpk-card.landed {
+  border-color: var(--gold, #ffb703);
+  box-shadow: 0 0 40px rgb(255 183 3 / 0.35);
+}
+.kpk-label {
+  font: 800 15px/1 var(--display, sans-serif);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted, #a49fb5);
+}
+.kpk-name {
+  font: 800 64px/1.05 var(--display, sans-serif);
+  min-height: 1.1em;
+  overflow-wrap: anywhere;
+}
+.kpk-card.landed .kpk-name {
+  animation: kpk-pop 0.45s ease-out;
+}
+@keyframes kpk-pop {
+  0% { transform: scale(0.7); }
+  70% { transform: scale(1.12); }
+  100% { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kpk-card.landed .kpk-name { animation: none; }
+}
+.kpk-members {
+  font-size: 20px;
+  color: var(--fg, #f6f3ec);
+  min-height: 1.2em;
+}
+.kpk-left {
+  font-size: 15px;
+  color: var(--muted, #a49fb5);
+  min-height: 1.2em;
+}
+.kpk-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+.kpk-btn {
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 14px;
+  border: 2px solid var(--line, #3e3950);
+  background: transparent;
+  font-weight: 700;
+  font-size: 18px;
+}
+.kpk-btn.go {
+  background: var(--gold, #ffb703);
+  border-color: var(--gold, #ffb703);
+  color: var(--bg, #17151f);
+}

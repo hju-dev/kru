@@ -1,210 +1,210 @@
 {
- "about": "Would You Rather? cards: two choices; teams pick one and give a reason. M.1 simple choices, M.2 everyday life and the future, M.3 values and opinions. Written for Kru. At least 50 per level, shuffled every game.",
+ "about": "Would You Rather? silly choices: a warm-up, no points. The teacher spins to pick a team; the team says its choice and why. M.1 simple words, M.2 a little longer, M.3 imaginative. Each choice is short so it fits the phone. Written for Kru. At least 50 per level, shuffled every game.",
  "M.1": {
   "items": [
    {
-    "a": "be a cat",
-    "b": "be a dog"
+    "a": "have a nose like an elephant",
+    "b": "have ears like a rabbit"
    },
    {
-    "a": "live in the city",
-    "b": "live in the country"
+    "a": "be as small as a mouse",
+    "b": "be as big as a house"
    },
    {
-    "a": "eat pizza every day",
-    "b": "eat rice every day"
+    "a": "have a pet dinosaur",
+    "b": "have a pet dragon"
    },
    {
-    "a": "have a big family",
-    "b": "have a small family"
+    "a": "eat ice cream for every meal",
+    "b": "never eat ice cream again"
    },
    {
-    "a": "go to the beach",
-    "b": "go to the mountains"
+    "a": "bark like a dog all day",
+    "b": "meow like a cat all day"
    },
    {
-    "a": "be very tall",
-    "b": "be very short"
+    "a": "have hair made of spaghetti",
+    "b": "have fingers made of carrots"
    },
    {
-    "a": "have a pet elephant",
-    "b": "have a pet monkey"
+    "a": "live in a giant shoe",
+    "b": "live in a giant cake"
    },
    {
-    "a": "play soccer",
-    "b": "play basketball"
+    "a": "ride a giant chicken to school",
+    "b": "ride a tiny horse to school"
    },
    {
-    "a": "read a book",
-    "b": "watch a movie"
+    "a": "have three arms",
+    "b": "have three legs"
    },
    {
-    "a": "live without TV",
-    "b": "live without music"
+    "a": "be a fish for a day",
+    "b": "be a bird for a day"
    },
    {
-    "a": "be a teacher",
-    "b": "be a doctor"
+    "a": "sleep in a tree",
+    "b": "sleep under the sea"
    },
    {
-    "a": "eat only sweet food",
-    "b": "eat only spicy food"
+    "a": "have a talking cat",
+    "b": "have a dancing dog"
    },
    {
-    "a": "have a dragon",
-    "b": "be a dragon"
+    "a": "wear pajamas to school every day",
+    "b": "wear a superhero costume every day"
    },
    {
-    "a": "swim with sharks",
-    "b": "fly with birds"
+    "a": "eat pizza with jelly",
+    "b": "eat rice with chocolate"
    },
    {
-    "a": "be always hot",
-    "b": "be always cold"
+    "a": "have purple skin",
+    "b": "have green hair"
    },
    {
-    "a": "have long hair",
-    "b": "have no hair"
+    "a": "sneeze glitter",
+    "b": "cry orange juice"
    },
    {
-    "a": "get up at 5 a.m.",
-    "b": "go to bed at 8 p.m."
+    "a": "walk backward forever",
+    "b": "hop on one leg forever"
    },
    {
-    "a": "live in a tree house",
-    "b": "live in a boat"
-   },
-   {
-    "a": "talk to animals",
-    "b": "speak ten languages"
-   },
-   {
-    "a": "go to school on Saturday",
-    "b": "go to school on Sunday"
-   },
-   {
-    "a": "have a robot",
-    "b": "have a magic pen"
-   },
-   {
-    "a": "drink only milk",
-    "b": "drink only water"
-   },
-   {
-    "a": "be the oldest child",
-    "b": "be the youngest child"
-   },
-   {
-    "a": "play games all day",
-    "b": "sleep all day"
-   },
-   {
-    "a": "eat ice cream",
-    "b": "eat cake"
-   },
-   {
-    "a": "visit Japan",
-    "b": "visit England"
-   },
-   {
-    "a": "ride a horse",
-    "b": "ride an elephant"
-   },
-   {
-    "a": "be a famous singer",
-    "b": "be a famous soccer player"
-   },
-   {
-    "a": "have a bike",
-    "b": "have a skateboard"
+    "a": "have a dragon as a teacher",
+    "b": "have a robot as a teacher"
    },
    {
     "a": "live on the moon",
-    "b": "live under the sea"
+    "b": "live at the bottom of the sea"
    },
    {
-    "a": "have three eyes",
-    "b": "have three arms"
+    "a": "have a tail",
+    "b": "have wings that don't work"
    },
    {
-    "a": "be invisible",
-    "b": "be able to fly"
+    "a": "be a banana",
+    "b": "be a potato"
    },
    {
-    "a": "cook dinner",
-    "b": "wash the dishes"
+    "a": "sing every word you say",
+    "b": "dance every time you walk"
    },
    {
-    "a": "wear a hat every day",
-    "b": "wear sunglasses every day"
+    "a": "have a giant pet ant",
+    "b": "have a tiny pet elephant"
    },
    {
-    "a": "have a party at home",
-    "b": "have a party at the park"
+    "a": "eat a chocolate spider",
+    "b": "eat a candy worm"
    },
    {
-    "a": "eat with chopsticks",
-    "b": "eat with your hands"
+    "a": "have eyes on your hands",
+    "b": "have a mouth on your knee"
    },
    {
-    "a": "be a superhero",
-    "b": "be a wizard"
+    "a": "be stuck in a room of balloons",
+    "b": "be stuck in a room of puppies"
    },
    {
-    "a": "draw pictures",
-    "b": "sing songs"
+    "a": "skateboard to school",
+    "b": "fly a broom to school"
    },
    {
-    "a": "have no homework",
-    "b": "have no tests"
+    "a": "have a cat that barks",
+    "b": "have a dog that meows"
    },
    {
-    "a": "see a ghost",
-    "b": "see an alien"
+    "a": "turn into a frog at night",
+    "b": "turn into a carrot on Sundays"
    },
    {
-    "a": "live in a castle",
-    "b": "live in a small house"
+    "a": "talk like a robot",
+    "b": "walk like a penguin"
    },
    {
-    "a": "be a fish",
-    "b": "be a bird"
+    "a": "have a house made of candy",
+    "b": "have a house made of toys"
    },
    {
-    "a": "only eat vegetables",
-    "b": "only eat fruit"
+    "a": "wear shoes on your hands",
+    "b": "wear gloves on your feet"
    },
    {
-    "a": "have a very fast car",
-    "b": "have a very big house"
+    "a": "have a giant head",
+    "b": "have tiny feet"
    },
    {
-    "a": "go shopping",
-    "b": "go swimming"
+    "a": "eat only green food",
+    "b": "eat only red food"
    },
    {
-    "a": "have a birthday every month",
-    "b": "have a vacation every month"
+    "a": "fly, but only 1 meter high",
+    "b": "be invisible, but only on Mondays"
    },
    {
-    "a": "clean your room",
-    "b": "do your homework"
+    "a": "have a monkey that steals food",
+    "b": "have a parrot that tells secrets"
    },
    {
-    "a": "be a lion",
-    "b": "be a tiger"
+    "a": "take a bath in milk",
+    "b": "take a bath in juice"
    },
    {
-    "a": "play in the rain",
-    "b": "play in the snow"
+    "a": "share your bed with a frog",
+    "b": "share your bed with a goat"
    },
    {
-    "a": "have a phone",
-    "b": "have a computer"
+    "a": "have a rainbow mustache",
+    "b": "have blue teeth"
    },
    {
-    "a": "travel by train",
-    "b": "travel by plane"
+    "a": "be a giant in a tiny town",
+    "b": "be tiny in a giant town"
+   },
+   {
+    "a": "eat soup with a fork",
+    "b": "eat spaghetti with your hands"
+   },
+   {
+    "a": "have a nose that honks",
+    "b": "have ears that whistle"
+   },
+   {
+    "a": "ride a dolphin",
+    "b": "ride a zebra"
+   },
+   {
+    "a": "live in a castle with ghosts",
+    "b": "live in a cave with bats"
+   },
+   {
+    "a": "be a cartoon",
+    "b": "be a toy"
+   },
+   {
+    "a": "have a cloud as a pet",
+    "b": "have a rock as a pet"
+   },
+   {
+    "a": "go to school on an elephant",
+    "b": "go to school in a bubble"
+   },
+   {
+    "a": "laugh like a donkey",
+    "b": "snore like a pig"
+   },
+   {
+    "a": "have feet like a duck",
+    "b": "have hands like a crab"
+   },
+   {
+    "a": "eat a whole lemon",
+    "b": "eat a whole onion"
+   },
+   {
+    "a": "have a pet T-rex",
+    "b": "have 100 pet hamsters"
    }
   ],
   "frame": "I'd rather ... because ..."
@@ -212,204 +212,208 @@
  "M.2": {
   "items": [
    {
-    "a": "be famous",
-    "b": "be rich"
+    "a": "have a rewind button for your life",
+    "b": "have a pause button for your life"
    },
    {
-    "a": "live 100 years ago",
-    "b": "live 100 years in the future"
+    "a": "talk to animals",
+    "b": "talk to plants"
    },
    {
-    "a": "lose your phone",
-    "b": "lose your bag"
+    "a": "only be able to whisper",
+    "b": "only be able to shout"
    },
    {
-    "a": "never use the internet again",
-    "b": "never watch TV again"
+    "a": "have a nose that glows in the dark",
+    "b": "have ears that play music"
    },
    {
-    "a": "travel around the world alone",
-    "b": "stay in Thailand with your friends"
+    "a": "live in a world without music",
+    "b": "live in a world without color"
    },
    {
-    "a": "be the best student in class",
-    "b": "be the best player on the team"
+    "a": "sweat maple syrup",
+    "b": "sneeze popcorn"
    },
    {
-    "a": "have a job you love with little money",
-    "b": "have a boring job with lots of money"
+    "a": "always have a duck following you",
+    "b": "always have music when you walk"
    },
    {
-    "a": "know everything about the past",
-    "b": "know everything about the future"
+    "a": "have a cat as your teacher",
+    "b": "have a gorilla as your classmate"
    },
    {
-    "a": "live in a hot country",
-    "b": "live in a cold country"
+    "a": "wear the same socks for a year",
+    "b": "wear a clown nose for a year"
    },
    {
-    "a": "have a lot of friends",
-    "b": "have one best friend"
+    "a": "be famous for bad dancing",
+    "b": "be famous for bad singing"
    },
    {
-    "a": "be a YouTuber",
-    "b": "be a doctor"
+    "a": "have a phone that only calls Grandma",
+    "b": "have a phone that plays one song"
    },
    {
-    "a": "spend a day with a famous person",
-    "b": "spend a day in a famous place"
+    "a": "eat fish-flavored ice cream",
+    "b": "drink chocolate-flavored soup"
    },
    {
-    "a": "learn to play the piano",
-    "b": "learn to dance"
+    "a": "fly, but only backward",
+    "b": "swim, but only in juice"
    },
    {
-    "a": "have a vacation by the sea",
-    "b": "have a vacation in a big city"
+    "a": "have a robot that does homework wrong",
+    "b": "have a dog that eats your homework"
    },
    {
-    "a": "be good at math",
-    "b": "be good at art"
+    "a": "be stuck in an elevator with a lion",
+    "b": "be stuck in an elevator with 50 chickens"
    },
    {
-    "a": "cook every meal for your family",
-    "b": "clean the whole house"
+    "a": "hiccup every time you laugh",
+    "b": "sneeze every time you smile"
    },
    {
-    "a": "read people's minds",
-    "b": "see through walls"
+    "a": "have a giant pet snail",
+    "b": "have a tiny pet whale"
    },
    {
-    "a": "eat street food",
-    "b": "eat at an expensive restaurant"
+    "a": "live in a house that moves every night",
+    "b": "live in a house that is upside down"
    },
    {
-    "a": "go to a concert",
-    "b": "go to a soccer match"
+    "a": "have your thoughts on your forehead",
+    "b": "have your dreams shown on TV"
    },
    {
-    "a": "never eat chocolate again",
-    "b": "never eat noodles again"
+    "a": "turn into a penguin when nervous",
+    "b": "turn into a balloon when angry"
    },
    {
-    "a": "study in another country",
-    "b": "study in Thailand"
+    "a": "go to a party dressed as a banana",
+    "b": "go to school dressed as a chicken"
    },
    {
-    "a": "be the leader",
-    "b": "be part of the team"
+    "a": "sing in a band of cats",
+    "b": "dance in a band of robots"
    },
    {
-    "a": "have a small garden",
-    "b": "have a swimming pool"
+    "a": "speak only in questions",
+    "b": "speak only in rhymes"
    },
    {
-    "a": "wake up early and finish early",
-    "b": "wake up late and finish late"
+    "a": "travel in a giant hamster ball",
+    "b": "travel by trampoline"
    },
    {
-    "a": "be a professional gamer",
-    "b": "be a professional athlete"
+    "a": "have a slow magic carpet",
+    "b": "have a horse that never stops talking"
    },
    {
-    "a": "always be five minutes late",
-    "b": "always be twenty minutes early"
+    "a": "be a ghost who is scared of people",
+    "b": "be a monster who is scared of the dark"
    },
    {
-    "a": "work in an office",
-    "b": "work outside"
+    "a": "find a dinosaur egg",
+    "b": "find a pirate map"
    },
    {
-    "a": "have a vacation every year",
-    "b": "get a new phone every year"
+    "a": "live in a zoo for a week",
+    "b": "live in a museum for a week"
    },
    {
-    "a": "live without air conditioning",
-    "b": "live without hot water"
+    "a": "have a pet that grows every day",
+    "b": "have a pet that gets louder every day"
    },
    {
-    "a": "be able to change the weather",
-    "b": "be able to stop time"
+    "a": "eat a cake as big as a car",
+    "b": "eat 100 tiny cakes"
    },
    {
-    "a": "write a book",
-    "b": "make a movie"
+    "a": "have a tiger as a bodyguard",
+    "b": "have a penguin as a bodyguard"
    },
    {
-    "a": "go camping in the forest",
-    "b": "stay in a five-star hotel"
+    "a": "read your cat's mind",
+    "b": "see 5 seconds into the future"
    },
    {
-    "a": "lose your sense of taste",
-    "b": "lose your sense of smell"
+    "a": "always have wet socks",
+    "b": "always have one sticky hand"
    },
    {
-    "a": "have a cat that talks",
-    "b": "have a dog that sings"
+    "a": "live on a pirate ship",
+    "b": "live in a jungle treehouse"
    },
    {
-    "a": "eat the same food every day",
-    "b": "never eat the same food twice"
+    "a": "ride a roller coaster for 10 hours",
+    "b": "sit in traffic for 10 hours"
    },
    {
-    "a": "win a gold medal",
-    "b": "win a big prize in a competition"
+    "a": "switch bodies with your teacher",
+    "b": "switch bodies with your pet"
    },
    {
-    "a": "meet your favorite singer",
-    "b": "meet your favorite actor"
+    "a": "be a chef who burns everything",
+    "b": "be a singer who forgets the words"
    },
    {
-    "a": "have a big birthday party",
-    "b": "get an expensive present"
+    "a": "laugh like a goat",
+    "b": "talk like a cartoon mouse"
    },
    {
-    "a": "take the bus",
-    "b": "ride a bicycle"
+    "a": "say everything you think out loud",
+    "b": "only talk by singing"
    },
    {
-    "a": "be a tourist guide",
-    "b": "be a pilot"
+    "a": "have your own little rain cloud",
+    "b": "have your own little sun"
    },
    {
-    "a": "be the funniest person in class",
-    "b": "be the smartest person in class"
+    "a": "win a lifetime of free socks",
+    "b": "win a lifetime of free bananas"
    },
    {
-    "a": "be stuck in an elevator",
-    "b": "be stuck in traffic"
+    "a": "turn invisible when you sneeze",
+    "b": "fly when you laugh"
    },
    {
-    "a": "explore space",
-    "b": "explore the ocean"
+    "a": "go back in time 10 minutes",
+    "b": "teleport, but only to the bathroom"
    },
    {
-    "a": "only text",
-    "b": "only call"
+    "a": "live in a giant fridge",
+    "b": "live in a giant oven"
    },
    {
-    "a": "live next to a market",
-    "b": "live next to a park"
+    "a": "go on vacation with your teacher",
+    "b": "go on vacation with a bear"
    },
    {
-    "a": "have a famous parent",
-    "b": "be famous yourself"
+    "a": "have a dragon that's afraid of fire",
+    "b": "have a shark that's afraid of water"
    },
    {
-    "a": "learn something new every day",
-    "b": "teach something every day"
+    "a": "eat breakfast with a gorilla",
+    "b": "eat dinner with a ghost"
    },
    {
-    "a": "be a police officer",
-    "b": "be a firefighter"
+    "a": "be a famous cat on YouTube",
+    "b": "be the king of the penguins"
    },
    {
-    "a": "always tell the truth",
-    "b": "always keep secrets"
+    "a": "always walk like you're on the moon",
+    "b": "always talk like you're underwater"
    },
    {
-    "a": "have a robot that cleans",
-    "b": "have a robot that cooks"
+    "a": "have a nose that grows when you lie",
+    "b": "have ears that grow when you're bored"
+   },
+   {
+    "a": "take a selfie with a T-rex",
+    "b": "take a selfie with an alien"
    }
   ],
   "frame": "I'd rather ... because ... Also, ..."
@@ -417,204 +421,208 @@
  "M.3": {
   "items": [
    {
-    "a": "have more free time",
-    "b": "have more money"
+    "a": "speak every language in a whisper",
+    "b": "speak one language very loudly"
    },
    {
-    "a": "live without your phone for a month",
-    "b": "live without your friends for a month"
+    "a": "have a theme song when you enter a room",
+    "b": "have a narrator describing your life"
    },
    {
-    "a": "be able to speak every language",
-    "b": "be able to play every instrument"
+    "a": "pause time for everyone but you",
+    "b": "rewind any conversation once a day"
    },
    {
-    "a": "know when you will die",
-    "b": "know how you will die"
+    "a": "live inside a video game",
+    "b": "live inside a cartoon"
    },
    {
-    "a": "be a big fish in a small pond",
-    "b": "be a small fish in a big pond"
+    "a": "have a helpful robot that is very rude",
+    "b": "have a polite cat that is very lazy"
    },
    {
-    "a": "give up social media",
-    "b": "give up eating out"
+    "a": "always tell the truth, loudly",
+    "b": "only say the opposite of what you mean"
    },
    {
-    "a": "be respected",
-    "b": "be liked"
+    "a": "be famous, but only among pigeons",
+    "b": "be a secret superhero nobody believes"
    },
    {
-    "a": "have a perfect memory",
-    "b": "be able to forget anything you want"
+    "a": "have your search history on a billboard",
+    "b": "have your dreams streamed live online"
    },
    {
-    "a": "work from home",
-    "b": "work in an office with friends"
+    "a": "swap lives with a zookeeper",
+    "b": "swap lives with your teacher for a week"
    },
    {
-    "a": "get the perfect job",
-    "b": "find the perfect partner"
+    "a": "wake up as a cat in Bangkok",
+    "b": "wake up as a pigeon at school"
    },
    {
-    "a": "live in a world without cars",
-    "b": "live in a world without computers"
+    "a": "be able to taste colors",
+    "b": "be able to hear smells"
    },
    {
-    "a": "be an only child",
-    "b": "have five brothers and sisters"
+    "a": "only eat food that starts with B",
+    "b": "only eat food that is blue"
    },
    {
-    "a": "fail with a great idea",
-    "b": "succeed with a boring idea"
+    "a": "have a clone who is lazier than you",
+    "b": "have a clone who is better than you"
    },
    {
-    "a": "change the past",
-    "b": "see the future"
+    "a": "go to space with your grandma",
+    "b": "explore the ocean with an octopus"
    },
    {
-    "a": "be famous for something bad",
-    "b": "not be famous at all"
+    "a": "communicate only through dance",
+    "b": "communicate only through drawings"
    },
    {
-    "a": "have a teacher who is strict but fair",
-    "b": "have a teacher who is kind but disorganized"
+    "a": "test beds for a living",
+    "b": "taste ice cream for a living"
    },
    {
-    "a": "study what you love",
-    "b": "study what pays well"
+    "a": "live where it rains soup",
+    "b": "live where it snows sugar"
    },
    {
-    "a": "always say what you think",
-    "b": "never speak again"
+    "a": "have a pet that only complains",
+    "b": "have a pet that sings opera at 3 a.m."
    },
    {
-    "a": "live in a big modern city",
-    "b": "live in a quiet traditional village"
+    "a": "know when anyone is lying",
+    "b": "know what everyone had for breakfast"
    },
    {
-    "a": "save the environment",
-    "b": "end poverty"
+    "a": "live inside a horror movie",
+    "b": "live inside a musical"
    },
    {
-    "a": "travel with friends",
-    "b": "travel with family"
+    "a": "control the weather in your bedroom",
+    "b": "control every traffic light in town"
    },
    {
-    "a": "be the first person on Mars",
-    "b": "be the first person to cure a disease"
+    "a": "have a 25-hour day",
+    "b": "have an 8-day week"
    },
    {
-    "a": "have a well-paid job you hate",
-    "b": "have a low-paid job you love"
+    "a": "paint only on grains of rice",
+    "b": "sing only to your plants"
    },
    {
-    "a": "lose all your photos",
-    "b": "lose all your messages"
+    "a": "invent a new color",
+    "b": "invent a new animal"
    },
    {
-    "a": "be an expert in one thing",
-    "b": "be good at many things"
+    "a": "remember everything you ever saw",
+    "b": "forget everything every Monday"
    },
    {
-    "a": "read only books",
-    "b": "watch only movies for the rest of your life"
+    "a": "have a GPS that speaks in riddles",
+    "b": "have a phone that only uses emojis"
    },
    {
-    "a": "have unlimited data",
-    "b": "have unlimited food"
+    "a": "be a detective who is scared of the dark",
+    "b": "be a firefighter who is scared of water"
    },
    {
-    "a": "be a brilliant inventor",
-    "b": "be a famous artist"
+    "a": "live 1,000 years as a tree",
+    "b": "live 10 years as a dragon"
    },
    {
-    "a": "have school all year with short days",
-    "b": "have school half the year with long days"
+    "a": "go to school by zipline",
+    "b": "go to school by submarine"
    },
    {
-    "a": "never feel tired",
-    "b": "never feel hungry"
+    "a": "have a robot best friend",
+    "b": "have a ghost best friend"
    },
    {
-    "a": "make a difference in your town",
-    "b": "become famous around the world"
+    "a": "talk like a movie trailer",
+    "b": "laugh like a horror movie villain"
    },
    {
-    "a": "eat healthy food you don't like",
-    "b": "eat unhealthy food you love"
+    "a": "eat dinner in zero gravity",
+    "b": "eat dinner on a roller coaster"
    },
    {
-    "a": "work alone",
-    "b": "work in a big team"
+    "a": "cook for aliens on live TV",
+    "b": "be a tour guide for dinosaurs"
    },
    {
-    "a": "have a time machine",
-    "b": "have a teleporter"
+    "a": "write every message in rhyme",
+    "b": "say every sentence backward"
    },
    {
-    "a": "start your own business",
-    "b": "work for a big company"
+    "a": "be the best at a sport nobody plays",
+    "b": "be the worst on a famous team"
    },
    {
-    "a": "live without electricity",
-    "b": "live without running water"
+    "a": "spend a year in Antarctica with penguins",
+    "b": "spend a year in a desert with camels"
    },
    {
-    "a": "be good at sport",
-    "b": "be good at music"
+    "a": "have cameras filming you all day",
+    "b": "have a drummer following you all day"
    },
    {
-    "a": "win an argument",
-    "b": "stay friends"
+    "a": "have superpowers only when hungry",
+    "b": "have superpowers only when bored"
    },
    {
-    "a": "lead a country",
-    "b": "lead a big company"
+    "a": "live where animals can vote",
+    "b": "live where kids make the laws"
    },
    {
-    "a": "be online all the time",
-    "b": "be offline all the time"
+    "a": "own a hotel for cats",
+    "b": "own a restaurant for ghosts"
    },
    {
-    "a": "live in a smart house",
-    "b": "live in a cabin in the woods"
+    "a": "sneeze when someone says your name",
+    "b": "dance whenever a phone rings"
    },
    {
-    "a": "let a robot choose your clothes",
-    "b": "let your parents choose your clothes"
+    "a": "have every book stored in your head",
+    "b": "have a fridge inside your backpack"
    },
    {
-    "a": "be the best at your job",
-    "b": "be the happiest person at work"
+    "a": "be stuck on an island with a parrot",
+    "b": "be stuck on an island with a mime"
    },
    {
-    "a": "know the answer to every exam",
-    "b": "never need to take an exam"
+    "a": "have a mute button for other people",
+    "b": "fast-forward through boring days"
    },
    {
-    "a": "have a famous friend",
-    "b": "be famous yourself"
+    "a": "become a famous meme",
+    "b": "become a famous statue"
    },
    {
-    "a": "learn from your mistakes",
-    "b": "never make mistakes"
+    "a": "design a theme park",
+    "b": "design a new planet"
    },
    {
-    "a": "live in a country with four seasons",
-    "b": "live in a country that is always summer"
+    "a": "get one call from your future self",
+    "b": "send one text to your past self"
    },
    {
-    "a": "be the youngest in a group",
-    "b": "be the oldest in a group"
+    "a": "win a talent show by accident",
+    "b": "lose a talent show to a dog"
    },
    {
-    "a": "plan every detail of a trip",
-    "b": "travel with no plan at all"
+    "a": "star in a soap opera",
+    "b": "star in a nature documentary"
    },
    {
-    "a": "have an amazing voice",
-    "b": "have amazing dance moves"
+    "a": "blink in every photo forever",
+    "b": "sneeze in every video forever"
+   },
+   {
+    "a": "run a school for superheroes",
+    "b": "run a hospital for robots"
    }
   ],
   "frame": "I'd rather ... because ... On the other hand, ..."
@@ -623,104 +631,38 @@
   {
    "title": "Would You Rather?",
    "text": [
-    "Read the two choices.",
+    "Read the two silly choices.",
     "Your team picks ONE."
    ],
    "example": {
     "chips": [
-     "be a cat",
+     "have a pet dragon",
      "or",
-     "be a dog"
+     "have a pet dinosaur"
     ]
+   }
+  },
+  {
+   "title": "Who answers?",
+   "text": [
+    "The teacher spins to pick a team.",
+    "That team says its choice and why."
+   ],
+   "example": {
+    "big": "Team 3!",
+    "tag": "Picked"
    }
   },
   {
    "title": "Give a reason",
    "text": [
     "Say: I'd rather ... because ...",
-    "Talk with your team before the timer ends."
+    "The funnier the reason, the better!"
    ],
    "example": {
-    "big": "I'd rather be a cat because cats sleep a lot.",
+    "big": "I'd rather have ears like a rabbit because I could hear everything.",
     "tag": "Example"
    }
-  },
-  {
-   "title": "Win points",
-   "text": [
-    "A good reason wins points.",
-    "Use and, but, also, so for more points!"
-   ],
-   "example": {
-    "rows": [
-     [
-      "A good reason",
-      "+1"
-     ],
-     [
-      "Reason + linking word",
-      "+2"
-     ],
-     [
-      "No reason",
-      "0"
-     ]
-    ]
-   }
   }
- ],
- "bonus": {
-  "before": [
-   {
-    "id": "two-reasons",
-    "name": "Two reasons",
-    "text": "Give TWO reasons for +2!",
-    "points": 2
-   },
-   {
-    "id": "other-side",
-    "name": "Other side",
-    "text": "Say one good thing about the OTHER choice: +2",
-    "points": 2
-   },
-   {
-    "id": "everyone",
-    "name": "Everyone speaks",
-    "text": "Every team member says one word or more: +2",
-    "points": 2
-   },
-   {
-    "id": "because",
-    "name": "Because!",
-    "text": "Use 'because' AND 'so' in one answer: +2",
-    "points": 2
-   }
-  ],
-  "secret": [
-   {
-    "id": "minority",
-    "name": "Brave choice",
-    "text": "+2 for teams who picked the less popular choice!",
-    "points": 2
-   },
-   {
-    "id": "funny",
-    "name": "Funniest reason",
-    "text": "+2 for the funniest reason!",
-    "points": 2
-   },
-   {
-    "id": "longest",
-    "name": "Longest sentence",
-    "text": "+2 for the longest correct sentence!",
-    "points": 2
-   },
-   {
-    "id": "new-word",
-    "name": "New word",
-    "text": "+1 for a word nobody else used!",
-    "points": 1
-   }
-  ]
- }
+ ]
 }

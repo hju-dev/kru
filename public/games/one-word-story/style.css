@@ -1,0 +1,83 @@
+/* One-Word Story: opener card, a beat that pulses for each word, the story clock. Phone landscape. */
+.ows .stage {
+  position: relative;
+}
+.ows .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.ows .sub {
+  color: var(--muted);
+  font-size: 18px;
+}
+.opener {
+  font: 800 46px/1.1 var(--display);
+  text-wrap: balance;
+}
+.counts {
+  font-family: var(--mono);
+  font-size: 18px;
+}
+.flash {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 800 64px/1 var(--display);
+  color: var(--bg);
+  background: color-mix(in srgb, var(--coral) 90%, transparent);
+  border-radius: 16px;
+}
+.flash[hidden] {
+  display: none;
+}
+.beat {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--line);
+  font: 800 28px/1 var(--mono);
+  color: var(--muted);
+}
+.beat.on {
+  border-color: var(--teal);
+  color: var(--fg);
+}
+.beat.pulse {
+  animation: ows-pulse 0.4s ease-out;
+}
+@keyframes ows-pulse {
+  0% { background: var(--teal); color: var(--bg); transform: scale(1.18); }
+  100% { background: transparent; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .beat.pulse { animation: none; }
+}
+.clock {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.phase {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--muted);
+}
+.menu-label {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+.menu-row .btn[aria-pressed='true'] {
+  border-color: var(--teal);
+  color: var(--teal);
+}

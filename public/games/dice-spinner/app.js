@@ -1,4 +1,5 @@
-/* Dice & Spinner (a tool): 1-3 dice, or a wheel with your own options (saved on the phone). */
+/* Dice & Spinner (a tool): 1-3 dice with 2-20 sides, a wheel with your own options, or a coin to flip.
+   Choices are saved on the phone. */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
@@ -13,8 +14,9 @@
     { name: 'Rewards', options: ['+1 point', '+2 points', 'Free choice', 'Pick a song', 'Double points', 'Try again'] },
   ];
 
-  var S = { v: 1, tab: 'dice', dice: 1, options: PRESETS[0].options.slice(), noRepeat: false, out: [] };
-  var rolling = false, spinning = false, angle = 0, audio = null;
+  var MIN_SIDES = 2, MAX_SIDES = 20;
+  var S = { v: 1, tab: 'dice', dice: 1, sides: 6, options: PRESETS[0].options.slice(), noRepeat: false, out: [], coin: { heads: 0, tails: 0 } };
+  var rolling = false, spinning = false, flipping = false, angle = 0, coinTurns = 0, audio = null;
 
   function save() { Kru.saveState(S); }
   function unlockAudio() {
@@ -36,17 +38,21 @@
     S.tab = t; save();
     $('tabDice').setAttribute('aria-pressed', String(t === 'dice'));
     $('tabSpin').setAttribute('aria-pressed', String(t === 'spin'));
+    $('tabCoin').setAttribute('aria-pressed', String(t === 'coin'));
     $('diceView').hidden = t !== 'dice';
     $('spinView').hidden = t !== 'spin';
+    $('coinView').hidden = t !== 'coin';
     $('edit').hidden = t !== 'spin';
-    if (t === 'spin') drawWheel(); else renderDice();
+    if (t === 'spin') drawWheel(); else if (t === 'coin') renderCoin(); else renderDice();
   }
   $('tabDice').addEventListener('click', function () { showTab('dice'); });
   $('tabSpin').addEventListener('click', function () { showTab('spin'); });
+  $('tabCoin').addEventListener('click', function () { showTab('coin'); });
 
   // ---------- dice ----------
   var faces = [1];
   function dieHtml(n) {
+    if (S.sides !== 6) return '<div class="die num' + (rolling ? ' rolling' : '') + '" aria-label="' + n + '"><span>' + n + '</span></div>';
     var on = FACES[n];
     var pips = '';
     for (var i = 0; i < 9; i++) pips += '<span class="pip' + (on.indexOf(i) >= 0 ? ' on' : '') + '"></span>';
@@ -59,6 +65,9 @@
     $('count').textContent = S.dice;
     $('fewer').disabled = S.dice <= 1 || rolling;
     $('moreDice').disabled = S.dice >= 3 || rolling;
+    $('sides').textContent = S.sides;
+    $('fewerSides').disabled = S.sides <= MIN_SIDES || rolling;
+    $('moreSides').disabled = S.sides >= MAX_SIDES || rolling;
     $('total').textContent = rolling || S.dice === 1 ? '' : 'Total: ' + faces.reduce(function (a, b) { return a + b; }, 0);
     // smaller dice when there are 3
     var size = S.dice === 3 ? 120 : 150;
@@ -70,7 +79,7 @@
     rolling = true;
     var k = 0;
     (function step() {
-      faces = faces.map(function () { return 1 + Math.floor(Math.random() * 6); });
+      faces = faces.map(function () { return 1 + Math.floor(Math.random() * S.sides); });
       renderDice();
       tone(300 + k * 40);
       if (++k < 10) setTimeout(step, 50 + k * 12);
@@ -80,6 +89,44 @@
   $('roll').addEventListener('click', roll);
   $('fewer').addEventListener('click', function () { S.dice = Math.max(1, S.dice - 1); save(); renderDice(); });
   $('moreDice').addEventListener('click', function () { S.dice = Math.min(3, S.dice + 1); save(); renderDice(); });
+  function setSides(n) {
+    S.sides = Math.max(MIN_SIDES, Math.min(MAX_SIDES, n));
+    faces = faces.map(function (f) { return Math.min(f, S.sides); });
+    save(); renderDice();
+  }
+  $('fewerSides').addEventListener('click', function () { setSides(S.sides - 1); });
+  $('moreSides').addEventListener('click', function () { setSides(S.sides + 1); });
+
+  // ---------- coin ----------
+  function renderCoin() {
+    var c = S.coin, n = c.heads + c.tails;
+    $('tally').textContent = n ? 'Heads ' + c.heads + ' · Tails ' + c.tails : '';
+  }
+  function flip() {
+    if (flipping) return;
+    unlockAudio();
+    flipping = true;
+    $('flip').disabled = true;
+    var heads = Math.random() < 0.5;
+    // whole turns so it lands the right way up: even half-turns = heads
+    coinTurns += 10 + (heads === (coinTurns % 2 === 0) ? 0 : 1);
+    var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    $('coin').style.transform = 'rotateY(' + coinTurns * 180 + 'deg)';
+    $('coinResult').className = 'coin-result waiting';
+    $('coinResult').textContent = 'Flipping…';
+    var k = 0, ticks = setInterval(function () { tone(700 + (k++ % 2) * 200, 0.03); }, 110);
+    setTimeout(function () {
+      clearInterval(ticks);
+      flipping = false;
+      $('flip').disabled = false;
+      S.coin[heads ? 'heads' : 'tails']++; save();
+      $('coinResult').className = 'coin-result';
+      $('coinResult').textContent = heads ? 'Heads!' : 'Tails!';
+      tone(988, 0.25);
+      renderCoin();
+    }, calm ? 50 : 1600);
+  }
+  $('flip').addEventListener('click', flip);
 
   // ---------- spinner ----------
   function live() { return S.options.filter(function (o, i) { return S.out.indexOf(i) < 0; }).length ? S.options.map(function (o, i) { return i; }).filter(function (i) { return S.out.indexOf(i) < 0; }) : []; }
@@ -168,15 +215,17 @@
 
   document.addEventListener('keydown', function (e) {
     if (!$('editBack').hidden) return;
-    if (e.code === 'Space') { e.preventDefault(); S.tab === 'dice' ? roll() : spin(); }
+    if (e.code === 'Space') { e.preventDefault(); S.tab === 'dice' ? roll() : S.tab === 'coin' ? flip() : spin(); }
   });
 
   Kru.ready(function (session) {
     var r = session.resume;
     if (r && r.v === 1 && Array.isArray(r.options) && r.options.length >= 2) S = r;
     S.out = S.out || [];
+    S.sides = S.sides >= MIN_SIDES && S.sides <= MAX_SIDES ? S.sides : 6; // older saves: 6-sided
+    S.coin = S.coin || { heads: 0, tails: 0 };
     renderDice();
     $('result').className = 'result waiting';
-    showTab(S.tab === 'spin' ? 'spin' : 'dice');
+    showTab(S.tab === 'spin' || S.tab === 'coin' ? S.tab : 'dice');
   });
 })();

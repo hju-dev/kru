@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Race Board</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="/games/shared/kru-cards.css" />
+    <link rel="stylesheet" href="/games/shared/kru-quiz.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game kc rb">
+      <header class="bar">
+        <span class="logo">Race <b>Board</b></span>
+        <span class="turn" id="turn" aria-live="polite"></span>
+        <span class="grow"></span>
+        <button class="btn gold" id="ask">Question ▶</button>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+      <div class="track" id="track" aria-label="The race track"></div>
+      <div class="legend" id="legend"></div>
+      <div class="toast" id="toast" role="status" hidden><span id="toastText"></span><button class="small" id="toastUndo" hidden>Undo</button></div>
+    </main>
+
+    <!-- The question -->
+    <div class="backdrop rb-q" id="qBack" hidden>
+      <div class="panel qpanel" role="dialog" aria-labelledby="qWho">
+        <section class="stage" id="stage" aria-live="polite">
+          <div class="qhead"><b id="qWho"></b> · <span id="qTopic"></span></div>
+          <div id="qBody"></div>
+        </section>
+        <div class="controls">
+          <span class="digits" id="digits">0:20</span>
+          <button class="btn" id="go">Start timer</button>
+          <button class="btn teal" id="reveal">Reveal</button>
+          <span class="grow"></span>
+          <button class="btn ghost" id="wrong">✗ Wrong</button>
+          <button class="btn gold" id="right">✓ Right: roll!</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The dice -->
+    <div class="backdrop rb-dice" id="diceBack" hidden>
+      <div class="dice-box">
+        <div class="die" id="die"></div>
+        <div class="dice-text" id="diceText"></div>
+      </div>
+    </div>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="menu-row" id="secsRow"></div>
+        <div class="menu-row">
+          <button class="btn" id="skip">Skip this team's turn</button>
+          <button class="btn" id="undoMove">Undo last move</button>
+        </div>
+        <div class="menu-row">
+          <button class="btn" id="howTo">How to play</button>
+          <button class="btn ghost danger" id="restart">Start the race again</button>
+        </div>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-end.js"></script>
+    <script src="/games/shared/kru-quiz.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

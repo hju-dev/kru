@@ -15,7 +15,6 @@
     { id: 'spell', name: 'Spelling police', text: 'Every wrong spelling = minus 1 point. Write carefully!', weight: 1 },
     { id: 'unique', name: 'Unique word', text: 'After counting, each team says its best word. Nobody else has it? +3 bonus!', weight: 1 },
     { id: 'sentence', name: 'Sentence challenge', text: 'Say ONE correct sentence with 3 of your words: +3 bonus!', text3: 'Say ONE correct sentence with 4 of your words AND a linking word (because, although, so): +3 bonus!', weight: 1 },
-    { id: 'explain', name: 'Explain it', text: 'Choose your hardest word. Explain what it means in English without saying the word: +3 bonus!', levels: ['M.2', 'M.3'], weight: 1 },
     { id: 'double', name: 'Double points', text: 'Every word is worth 2 points!', mult: 2, weight: 1 },
   ];
   var FINAL = { id: 'final', name: 'FINAL ROUND: Double points', text: 'Every word is worth 2 points. Give it everything!', mult: 2 };

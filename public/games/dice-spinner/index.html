@@ -14,6 +14,7 @@
         <div class="seg" role="group" aria-label="Choose">
           <button id="tabDice" aria-pressed="true">Dice</button>
           <button id="tabSpin" aria-pressed="false">Spinner</button>
+          <button id="tabCoin" aria-pressed="false">Coin</button>
         </div>
         <span class="grow"></span>
         <button class="small" id="edit" hidden>Edit options</button>
@@ -30,6 +31,10 @@
           <button class="btn step" id="fewer" aria-label="Fewer dice">−</button>
           <output id="count">1</output>
           <button class="btn step" id="moreDice" aria-label="More dice">+</button>
+          <span class="lab sides-lab">Sides</span>
+          <button class="btn step" id="fewerSides" aria-label="Fewer sides">−</button>
+          <output id="sides">6</output>
+          <button class="btn step" id="moreSides" aria-label="More sides">+</button>
           <span class="grow"></span>
           <button class="btn gold" id="roll">Roll!</button>
         </div>
@@ -52,6 +57,24 @@
           <button class="btn ghost" id="refill" hidden>Put them all back</button>
           <span class="grow"></span>
           <button class="btn gold" id="spin">Spin!</button>
+        </div>
+      </section>
+
+      <!-- Coin -->
+      <section class="view" id="coinView" hidden>
+        <div class="stage">
+          <div class="coin-wrap">
+            <div class="coin" id="coin">
+              <div class="face heads">HEADS</div>
+              <div class="face tails">TAILS</div>
+            </div>
+          </div>
+          <div class="coin-result" id="coinResult" aria-live="polite">Tap Flip!</div>
+        </div>
+        <div class="controls">
+          <span class="note" id="tally"></span>
+          <span class="grow"></span>
+          <button class="btn gold" id="flip">Flip!</button>
         </div>
       </section>
     </main>

@@ -175,67 +175,6 @@
    ]
   },
   {
-   "id": "one-word-story",
-   "name": "One-word story round",
-   "phases": [
-    {
-     "label": "One-Word Story: one word each",
-     "secs": 240
-    }
-   ],
-   "rules": [
-    {
-     "title": "One-Word Story",
-     "text": [
-      "Two circles of about 15. Each circle chooses a Starter.",
-      "Go clockwise: one word each, building on the opener."
-     ],
-     "example": {
-      "label": "Example",
-      "chips": [
-       "Yesterday",
-       "I",
-       "found",
-       "a",
-       "…"
-      ]
-     }
-    },
-    {
-     "title": "Keep it right",
-     "text": [
-      "The story must be grammatical and make sense.",
-      "A wrong word? The next person can fix it."
-     ],
-     "example": {
-      "rows": [
-       [
-        "\"Period!\"",
-        "ends a sentence"
-       ]
-      ]
-     }
-    },
-    {
-     "title": "Time's up!",
-     "text": [
-      "The last person finishes the sentence.",
-      "Then one person retells the whole story in full sentences (30 s)."
-     ]
-    },
-    {
-     "title": "Written version",
-     "text": [
-      "Groups of 5, one story sheet each. Copy the opener, then pass it round.",
-      "Read the story so far, then write ONE word, in silence."
-     ],
-     "example": {
-      "note": "Two rounds, a new half-sheet each time."
-     }
-    }
-   ]
-  },
-  {
    "id": "story-fix-it",
    "name": "Story: fix it (R&W)",
    "phases": [
