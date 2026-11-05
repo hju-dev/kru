@@ -1,5 +1,5 @@
 {
- "about": "Tag-Team topics per level. mode relay = one team at the front, speakers take turns on one topic; mode debate = FOR team vs AGAINST team, speakers alternate. Times in seconds. M.2 and M.3 are the original sets; M.1 and the extra topics (to 50 per level) were written for Kru. Spin picks a random topic, no repeats until all are used.",
+ "about": "Tag-Team Talk topics per level: one team at the front, speakers take turns on one topic (relay). Times in seconds. M.2 is the original set; M.1, M.3 and the extra M.2 topics (to 50) were written for Kru. Spin picks a random topic, no repeats until all are used. The FOR vs AGAINST version is its own game: tag-team-debate.",
  "M.1": {
   "mode": "relay",
   "title": "Talk",
@@ -267,86 +267,86 @@
   ]
  },
  "M.3": {
-  "mode": "debate",
-  "title": "Debate",
-  "label": "Motion",
-  "huddle": 90,
+  "mode": "relay",
+  "title": "Talk",
+  "label": "Topic",
+  "huddle": 45,
   "turn": 30,
   "topics": [
-   "Homework should be banned.",
-   "Students should be allowed to use phones in class.",
-   "School uniforms should be optional.",
-   "It's better to live in the city than the countryside.",
-   "Video games are good for teenagers.",
-   "Every student should learn to cook at school.",
-   "School should start at 10 a.m.",
-   "Social media does more harm than good.",
-   "Money can buy happiness.",
-   "Cats are better than dogs.",
-   "Robots will make the world a better place.",
-   "Exams are the best way to test students.",
-   "Everyone should play a sport at school.",
-   "Fast food should not be sold near schools.",
-   "It's better to be famous than rich.",
-   "Students should choose what they study.",
-   "Cell phones should be banned for children under 12.",
-   "Zoos should be closed.",
-   "It is better to work in a team than alone.",
-   "Everyone should learn a second language.",
-   "Online learning is better than school.",
-   "Tourism is good for Thailand.",
-   "Plastic bags should be banned everywhere.",
-   "Teenagers should have a part-time job.",
-   "It's better to be a child than an adult.",
-   "Celebrities are good role models.",
-   "Space travel is a waste of money.",
-   "Cities need more parks, not more shopping malls.",
-   "Boys and girls should play sports together.",
-   "School vacations should be shorter.",
-   "Reading books is better than watching movies.",
-   "Students should be allowed to dye their hair.",
-   "Artificial intelligence will help students learn.",
-   "Everyone should do volunteer work.",
-   "Sugary drinks should cost more.",
-   "It is better to grow up in a big family.",
-   "Video calls are as good as meeting in person.",
-   "People should eat less meat.",
-   "Exams should be open-book.",
-   "Weekends should be homework-free.",
-   "It's better to save money than spend it.",
-   "Every teenager should know how to swim.",
-   "Cars should be banned from city centers.",
-   "Social media apps should have a minimum age of 16.",
-   "Students should help clean their school.",
-   "Being kind is more important than being clever.",
-   "Everyone should have a pet.",
-   "It's better to travel in your own country than abroad.",
-   "Famous people deserve privacy.",
-   "Schools should teach students how to manage money."
+   "The biggest problem for teenagers today",
+   "How technology has changed my life",
+   "What makes a good leader",
+   "The best way to learn English",
+   "How to be happy",
+   "My plan for the next ten years",
+   "How to deal with stress",
+   "Why friendship is important",
+   "The perfect city of the future",
+   "How social media changes the way we talk",
+   "What I would do with one million baht",
+   "The most important invention of the last 100 years",
+   "How to protect the environment at home",
+   "A person who changed the world",
+   "What makes Thailand special for tourists",
+   "How to make a good first impression",
+   "Life without electricity",
+   "What school will be like in 2050",
+   "The good and bad sides of living alone",
+   "How to become a good public speaker",
+   "Why we should learn about history",
+   "The best advice I ever got",
+   "If I could solve one world problem",
+   "How to plan a perfect trip with friends",
+   "What makes a movie great",
+   "How to be a good citizen",
+   "The life of a famous athlete",
+   "How to choose a good career",
+   "If I could live in any time in history",
+   "Why music is important to teenagers",
+   "How to start a small business",
+   "The good and bad sides of online shopping",
+   "What I learned from a mistake",
+   "How to make our school greener",
+   "Rules everyone should follow",
+   "How to spot fake news",
+   "Life as a teenager 50 years ago",
+   "Why some people are afraid of AI",
+   "How to welcome a new foreign student",
+   "The hardest thing about growing up",
+   "What makes a good team",
+   "How to stay safe online",
+   "My dream company",
+   "How climate change affects Thailand",
+   "The best way to spend a long vacation",
+   "How to say sorry and mean it",
+   "Why sport is good for your mind",
+   "A world without money",
+   "How to manage your time",
+   "The future of transport"
   ],
   "intro": [
    {
-    "title": "Tag-Team Debate",
+    "title": "Tag-Team Talk",
     "text": [
-     "Two teams at the front: FOR vs AGAINST.",
-     "Speakers take turns, starting with FOR."
+     "One team comes to the front.",
+     "Speakers take turns talking about one topic."
     ],
     "example": {
-     "tag": "MOTION",
-     "big": "Homework should be banned."
+     "label": "Topic",
+     "big": "The best way to learn English"
     }
    },
    {
     "title": "Huddle first",
     "text": [
-     "Plan your points for 1 minute 30.",
-     "Think: what will the other team say?"
+     "Plan with your team for 45 seconds.",
+     "Who says what? Who starts? Who finishes?"
     ],
     "example": {
      "rows": [
       [
        "Huddle",
-       "1:30"
+       "0:45"
       ],
       [
        "Each speaker",
@@ -356,29 +356,33 @@
     }
    },
    {
-    "title": "Answer, then add",
+    "title": "TAG!",
     "text": [
-     "First answer the last point: \"I disagree because…\"",
-     "Then add a new point."
+     "At the chime, the next speaker continues.",
+     "Keep the same topic going!"
     ],
     "example": {
      "rows": [
       [
-       "FOR",
-       "Homework makes us tired."
+       "Speaker 1",
+       "starts"
       ],
       [
-       "AGAINST",
-       "I disagree because it helps us practice."
+       "Middle speakers",
+       "continue"
+      ],
+      [
+       "Last speaker",
+       "finishes"
       ]
      ]
     }
    },
    {
-    "title": "Points",
+    "title": "Challenge!",
     "text": [
-     "Challenge for silence, repeating, off topic or Thai.",
-     "The audience votes for the winning side."
+     "The audience can challenge for:",
+     "a 3-second silence, repeating an idea, off topic or Thai."
     ],
     "example": {
      "rows": [
@@ -387,7 +391,7 @@
        "+1"
       ],
       [
-       "Winning side",
+       "Great talk",
        "+3"
       ]
      ]
