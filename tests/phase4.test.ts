@@ -245,8 +245,11 @@ describe('Tag-Team Talk: hints, team spinner (Just a Second merged in)', () => {
     expect(js).toContain("C.mode !== 'debate' && window.KruPicker")
     expect(js).toContain('onPick: function (t) { S.front = t.id;')
   })
-  it('no Linking words bonus card', () => {
+  it('no Linking words bonus card (Talk or Debate)', () => {
     expect(JSON.stringify(c.bonus)).not.toMatch(/linking/i)
+    const debate = JSON.parse(readFileSync(new URL('../public/games/tag-team-debate/content.json', import.meta.url), 'utf8'))
+    expect(JSON.stringify(debate.bonus)).not.toMatch(/linking/i)
+    expect(debate.bonus.before.length).toBeGreaterThanOrEqual(2)
   })
 })
 
