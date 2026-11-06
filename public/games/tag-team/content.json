@@ -1,5 +1,5 @@
 {
- "about": "Tag-Team Talk topics per level: one team at the front, speakers take turns on one topic (relay). Times in seconds. M.2 is the original set; M.1, M.3 and the extra M.2 topics (to 50) were written for Kru. Spin picks a random topic, no repeats until all are used. The FOR vs AGAINST version is its own game: tag-team-debate.",
+ "about": "Tag-Team Talk topics per level: one team at the front, speakers take turns on one topic (relay). Times in seconds. Every topic has 3 hints (ideas), shown when the teacher taps Hints. M.2 is the original set; the Just a Second topics moved here when that game was removed; the rest were written for Kru. Spin picks a random topic, no repeats until all are used. The FOR vs AGAINST version is its own game: tag-team-debate.",
  "M.1": {
   "mode": "relay",
   "title": "Talk",
@@ -7,56 +7,806 @@
   "huddle": 30,
   "turn": 20,
   "topics": [
-   "My favorite food",
-   "My best friend",
-   "A perfect day at the beach",
-   "My dream house",
-   "My family",
-   "The best animal in the world",
-   "What I do on the weekend",
-   "If I had a pet dragon",
-   "My favorite season",
-   "A day at my school",
-   "My favorite sport",
-   "Things in my bedroom",
-   "My favorite movie or cartoon",
-   "What I want to be in the future",
-   "My perfect birthday party",
-   "The best snack at 7-Eleven",
-   "A trip to the zoo",
-   "If I could fly",
-   "My favorite game",
-   "Things I love about my town",
-   "My favorite toy",
-   "A rainy day",
-   "My morning routine",
-   "My favorite subject",
-   "A day at the market",
-   "My favorite vacation",
-   "If I had a robot",
-   "A day at the swimming pool",
-   "My favorite color and why",
-   "A day at the park",
-   "My favorite fruit",
-   "What I did last weekend",
-   "A funny animal",
-   "My dream vacation",
-   "If I was a teacher",
-   "My favorite place at school",
-   "Things I can do well",
-   "My favorite song",
-   "A day on a farm",
-   "If I was a superhero",
-   "The best ice cream flavor",
-   "My favorite clothes",
-   "A visit to my grandparents",
-   "The best day ever",
-   "If I lived in the sea",
-   "My favorite cartoon character",
-   "Things that make me happy",
-   "My best birthday present",
-   "A day without phones",
-   "My favorite breakfast"
+   {
+    "topic": "My favorite food",
+    "ideas": [
+     "What is it?",
+     "When do you eat it?",
+     "Why do you like it?"
+    ]
+   },
+   {
+    "topic": "My best friend",
+    "ideas": [
+     "Name?",
+     "What do you do together?",
+     "Why do you like them?"
+    ]
+   },
+   {
+    "topic": "A perfect day at the beach",
+    "ideas": [
+     "Which beach?",
+     "What do you do?",
+     "What do you eat?"
+    ]
+   },
+   {
+    "topic": "My dream house",
+    "ideas": [
+     "Where is it?",
+     "How many rooms?",
+     "What is special?"
+    ]
+   },
+   {
+    "topic": "My family",
+    "ideas": [
+     "Who?",
+     "How old?",
+     "What do they like?"
+    ]
+   },
+   {
+    "topic": "The best animal in the world",
+    "ideas": [
+     "Which animal?",
+     "What can it do?",
+     "Why is it the best?"
+    ]
+   },
+   {
+    "topic": "What I do on the weekend",
+    "ideas": [
+     "When do you get up?",
+     "What do you do?",
+     "Who with?"
+    ]
+   },
+   {
+    "topic": "If I had a pet dragon",
+    "ideas": [
+     "Its name?",
+     "What does it eat?",
+     "Where would you fly?"
+    ]
+   },
+   {
+    "topic": "My favorite season",
+    "ideas": [
+     "Which one?",
+     "Weather?",
+     "What do you do?"
+    ]
+   },
+   {
+    "topic": "A day at my school",
+    "ideas": [
+     "What time does it start?",
+     "Classes?",
+     "Lunch?"
+    ]
+   },
+   {
+    "topic": "My favorite sport",
+    "ideas": [
+     "How do you play it?",
+     "Where?",
+     "Who is good at it?"
+    ]
+   },
+   {
+    "topic": "Things in my bedroom",
+    "ideas": [
+     "What is in it?",
+     "Color?",
+     "What do you do there?"
+    ]
+   },
+   {
+    "topic": "My favorite movie or cartoon",
+    "ideas": [
+     "What is it about?",
+     "Who is in it?",
+     "Why do you like it?"
+    ]
+   },
+   {
+    "topic": "What I want to be in the future",
+    "ideas": [
+     "What job?",
+     "Why?",
+     "What do you need to learn?"
+    ]
+   },
+   {
+    "topic": "My perfect birthday party",
+    "ideas": [
+     "Where?",
+     "Who comes?",
+     "Food and games?"
+    ]
+   },
+   {
+    "topic": "The best snack at 7-Eleven",
+    "ideas": [
+     "What is it?",
+     "How much?",
+     "Sweet or salty?"
+    ]
+   },
+   {
+    "topic": "A trip to the zoo",
+    "ideas": [
+     "Which animals?",
+     "Favorite?",
+     "What do they eat?"
+    ]
+   },
+   {
+    "topic": "If I could fly",
+    "ideas": [
+     "Where would you go?",
+     "Who would you take?",
+     "What would you see?"
+    ]
+   },
+   {
+    "topic": "My favorite game",
+    "ideas": [
+     "What is it?",
+     "How do you play?",
+     "Who do you play with?"
+    ]
+   },
+   {
+    "topic": "Things I love about my town",
+    "ideas": [
+     "Places?",
+     "Food?",
+     "People?"
+    ]
+   },
+   {
+    "topic": "My favorite toy",
+    "ideas": [
+     "What is it?",
+     "Do you still have it?",
+     "Why do you like it?"
+    ]
+   },
+   {
+    "topic": "A rainy day",
+    "ideas": [
+     "What do you wear?",
+     "What do you do?",
+     "Do you like rain?"
+    ]
+   },
+   {
+    "topic": "My morning routine",
+    "ideas": [
+     "What time do you get up?",
+     "What do you do first?",
+     "How do you go to school?"
+    ]
+   },
+   {
+    "topic": "My favorite subject",
+    "ideas": [
+     "What is it?",
+     "Why?",
+     "Who teaches it?"
+    ]
+   },
+   {
+    "topic": "A day at the market",
+    "ideas": [
+     "What can you buy?",
+     "Which market?",
+     "Who goes with you?"
+    ]
+   },
+   {
+    "topic": "My favorite vacation",
+    "ideas": [
+     "Where did you go?",
+     "Who with?",
+     "What did you do?"
+    ]
+   },
+   {
+    "topic": "If I had a robot",
+    "ideas": [
+     "What does it look like?",
+     "What can it do?",
+     "Its name?"
+    ]
+   },
+   {
+    "topic": "A day at the swimming pool",
+    "ideas": [
+     "Can you swim?",
+     "Who with?",
+     "What do you do?"
+    ]
+   },
+   {
+    "topic": "My favorite color and why",
+    "ideas": [
+     "What is it?",
+     "What things are this color?",
+     "Why?"
+    ]
+   },
+   {
+    "topic": "A day at the park",
+    "ideas": [
+     "What do people do there?",
+     "Which park?",
+     "Do you like it?"
+    ]
+   },
+   {
+    "topic": "My favorite fruit",
+    "ideas": [
+     "What is it?",
+     "Color?",
+     "When do you eat it?"
+    ]
+   },
+   {
+    "topic": "What I did last weekend",
+    "ideas": [
+     "Saturday?",
+     "Sunday?",
+     "Who with?"
+    ]
+   },
+   {
+    "topic": "A funny animal",
+    "ideas": [
+     "Which animal?",
+     "What does it do?",
+     "Why is it funny?"
+    ]
+   },
+   {
+    "topic": "My dream vacation",
+    "ideas": [
+     "Where?",
+     "Who with?",
+     "What would you do?"
+    ]
+   },
+   {
+    "topic": "If I was a teacher",
+    "ideas": [
+     "Which subject?",
+     "Your rules?",
+     "Fun lessons?"
+    ]
+   },
+   {
+    "topic": "My favorite place at school",
+    "ideas": [
+     "Where is it?",
+     "What do you do there?",
+     "Who with?"
+    ]
+   },
+   {
+    "topic": "Things I can do well",
+    "ideas": [
+     "What?",
+     "Who taught you?",
+     "How often?"
+    ]
+   },
+   {
+    "topic": "My favorite song",
+    "ideas": [
+     "Who sings it?",
+     "What is it about?",
+     "When do you listen?"
+    ]
+   },
+   {
+    "topic": "A day on a farm",
+    "ideas": [
+     "Which animals?",
+     "What work?",
+     "Food?"
+    ]
+   },
+   {
+    "topic": "If I was a superhero",
+    "ideas": [
+     "Your name?",
+     "Your power?",
+     "Who would you help?"
+    ]
+   },
+   {
+    "topic": "The best ice cream flavor",
+    "ideas": [
+     "Which flavor?",
+     "Where do you buy it?",
+     "How often?"
+    ]
+   },
+   {
+    "topic": "My favorite clothes",
+    "ideas": [
+     "What are they?",
+     "Color?",
+     "When do you wear them?"
+    ]
+   },
+   {
+    "topic": "A visit to my grandparents",
+    "ideas": [
+     "Where do they live?",
+     "What do you do?",
+     "Food?"
+    ]
+   },
+   {
+    "topic": "The best day ever",
+    "ideas": [
+     "When?",
+     "What happened?",
+     "Who was there?"
+    ]
+   },
+   {
+    "topic": "If I lived in the sea",
+    "ideas": [
+     "Animal friends?",
+     "Your house?",
+     "What do you eat?"
+    ]
+   },
+   {
+    "topic": "My favorite cartoon character",
+    "ideas": [
+     "Who?",
+     "What do they look like?",
+     "Why do you like them?"
+    ]
+   },
+   {
+    "topic": "Things that make me happy",
+    "ideas": [
+     "People?",
+     "Things?",
+     "Places?"
+    ]
+   },
+   {
+    "topic": "My best birthday present",
+    "ideas": [
+     "What was it?",
+     "Who gave it?",
+     "Do you still have it?"
+    ]
+   },
+   {
+    "topic": "A day without phones",
+    "ideas": [
+     "What would you do?",
+     "Easy or hard?",
+     "Who would you talk to?"
+    ]
+   },
+   {
+    "topic": "My favorite breakfast",
+    "ideas": [
+     "What do you eat?",
+     "What do you drink?",
+     "When?"
+    ]
+   },
+   {
+    "topic": "Pets",
+    "ideas": [
+     "Do you have one?",
+     "What do they eat?",
+     "Best pet?"
+    ]
+   },
+   {
+    "topic": "My favorite day of the week",
+    "ideas": [
+     "Which day?",
+     "What do you do?",
+     "Why?"
+    ]
+   },
+   {
+    "topic": "My phone",
+    "ideas": [
+     "What do you use it for?",
+     "How many hours?",
+     "Favorite app?"
+    ]
+   },
+   {
+    "topic": "Cooking",
+    "ideas": [
+     "What can you cook?",
+     "Who cooks at home?",
+     "Easy food?"
+    ]
+   },
+   {
+    "topic": "Music",
+    "ideas": [
+     "Favorite singer?",
+     "When do you listen?",
+     "Can you sing?"
+    ]
+   },
+   {
+    "topic": "Shopping",
+    "ideas": [
+     "Where do you go?",
+     "What do you buy?",
+     "Who with?"
+    ]
+   },
+   {
+    "topic": "My favorite teacher",
+    "ideas": [
+     "Subject?",
+     "What are they like?",
+     "Why?"
+    ]
+   },
+   {
+    "topic": "Summer",
+    "ideas": [
+     "Weather?",
+     "What do you do?",
+     "Where do you go?"
+    ]
+   },
+   {
+    "topic": "My street",
+    "ideas": [
+     "What is there?",
+     "Is it quiet or busy?",
+     "Who lives there?"
+    ]
+   },
+   {
+    "topic": "Superheroes",
+    "ideas": [
+     "Favorite superhero?",
+     "What can they do?",
+     "Why?"
+    ]
+   },
+   {
+    "topic": "Transport",
+    "ideas": [
+     "How do you travel?",
+     "Car, bus or bike?",
+     "Which is best?"
+    ]
+   },
+   {
+    "topic": "The weather today",
+    "ideas": [
+     "Hot or cold?",
+     "Sunny or rainy?",
+     "What do you wear?"
+    ]
+   },
+   {
+    "topic": "Drinks",
+    "ideas": [
+     "Favorite drink?",
+     "Hot or cold?",
+     "When?"
+    ]
+   },
+   {
+    "topic": "A famous person",
+    "ideas": [
+     "Who?",
+     "What do they do?",
+     "Why do you like them?"
+    ]
+   },
+   {
+    "topic": "My hobbies",
+    "ideas": [
+     "What do you do?",
+     "When?",
+     "Why do you like it?"
+    ]
+   },
+   {
+    "topic": "Thai food",
+    "ideas": [
+     "Favorite dish?",
+     "Spicy or not?",
+     "Where do you eat it?"
+    ]
+   },
+   {
+    "topic": "Sleeping",
+    "ideas": [
+     "What time do you go to bed?",
+     "How many hours?",
+     "Dreams?"
+    ]
+   },
+   {
+    "topic": "Dogs",
+    "ideas": [
+     "Big or small?",
+     "What do they do?",
+     "Do you like dogs?"
+    ]
+   },
+   {
+    "topic": "Cats",
+    "ideas": [
+     "What are they like?",
+     "What do they eat?",
+     "Cats or dogs?"
+    ]
+   },
+   {
+    "topic": "Things in my bag",
+    "ideas": [
+     "What is in it?",
+     "Color?",
+     "Is it heavy?"
+    ]
+   },
+   {
+    "topic": "Fast food",
+    "ideas": [
+     "Favorite?",
+     "How often?",
+     "Is it healthy?"
+    ]
+   },
+   {
+    "topic": "Drawing",
+    "ideas": [
+     "What do you draw?",
+     "Are you good at it?",
+     "Colors?"
+    ]
+   },
+   {
+    "topic": "Sunday",
+    "ideas": [
+     "What do you do?",
+     "Who with?",
+     "Do you like Sundays?"
+    ]
+   },
+   {
+    "topic": "My bike",
+    "ideas": [
+     "Color?",
+     "Where do you ride it?",
+     "Who with?"
+    ]
+   },
+   {
+    "topic": "Rice",
+    "ideas": [
+     "Which rice dishes?",
+     "How often?",
+     "Do you like it?"
+    ]
+   },
+   {
+    "topic": "My classroom",
+    "ideas": [
+     "What is in it?",
+     "Where do you sit?",
+     "Who sits next to you?"
+    ]
+   },
+   {
+    "topic": "Going to the dentist",
+    "ideas": [
+     "How often?",
+     "Scary or OK?",
+     "Tips for clean teeth?"
+    ]
+   },
+   {
+    "topic": "Hot weather",
+    "ideas": [
+     "How hot?",
+     "What do you wear?",
+     "How do you stay cool?"
+    ]
+   },
+   {
+    "topic": "Noodles",
+    "ideas": [
+     "Favorite noodles?",
+     "Hot or cold?",
+     "Where do you eat them?"
+    ]
+   },
+   {
+    "topic": "A party",
+    "ideas": [
+     "Whose party?",
+     "Food?",
+     "Games?"
+    ]
+   },
+   {
+    "topic": "My neighbors",
+    "ideas": [
+     "Who are they?",
+     "Are they nice?",
+     "Pets?"
+    ]
+   },
+   {
+    "topic": "Songkran",
+    "ideas": [
+     "What do you do?",
+     "Who with?",
+     "Water fights?"
+    ]
+   },
+   {
+    "topic": "Loy Krathong",
+    "ideas": [
+     "What is a krathong?",
+     "Where do you go?",
+     "What do you wish for?"
+    ]
+   },
+   {
+    "topic": "My favorite YouTuber",
+    "ideas": [
+     "Who?",
+     "What videos?",
+     "Why do you like them?"
+    ]
+   },
+   {
+    "topic": "Sweets and candy",
+    "ideas": [
+     "Favorite?",
+     "How often?",
+     "Good for your teeth?"
+    ]
+   },
+   {
+    "topic": "Elephants",
+    "ideas": [
+     "Where do they live?",
+     "What do they eat?",
+     "How big?"
+    ]
+   },
+   {
+    "topic": "Ghosts",
+    "ideas": [
+     "Are they real?",
+     "Scary stories?",
+     "Are you afraid?"
+    ]
+   },
+   {
+    "topic": "Monsters",
+    "ideas": [
+     "What do they look like?",
+     "Where do they live?",
+     "Friendly or scary?"
+    ]
+   },
+   {
+    "topic": "A day at home",
+    "ideas": [
+     "What do you do?",
+     "Who with?",
+     "Fun or boring?"
+    ]
+   },
+   {
+    "topic": "Trees and flowers",
+    "ideas": [
+     "Favorite flower?",
+     "Trees near your home?",
+     "Colors?"
+    ]
+   },
+   {
+    "topic": "The moon and stars",
+    "ideas": [
+     "When can you see them?",
+     "What do they look like?",
+     "Would you go to the moon?"
+    ]
+   },
+   {
+    "topic": "Water",
+    "ideas": [
+     "When do you drink it?",
+     "How much?",
+     "Hot or cold?"
+    ]
+   },
+   {
+    "topic": "My shoes",
+    "ideas": [
+     "What color?",
+     "For school or sports?",
+     "New or old?"
+    ]
+   },
+   {
+    "topic": "Cars",
+    "ideas": [
+     "Favorite car?",
+     "Color?",
+     "Fast or slow?"
+    ]
+   },
+   {
+    "topic": "A good day at school",
+    "ideas": [
+     "What happened?",
+     "Who with?",
+     "Why was it good?"
+    ]
+   },
+   {
+    "topic": "Insects",
+    "ideas": [
+     "Which insects?",
+     "Do you like them?",
+     "Big or small?"
+    ]
+   },
+   {
+    "topic": "Fish",
+    "ideas": [
+     "Where do they live?",
+     "Pet fish?",
+     "Do you eat fish?"
+    ]
+   },
+   {
+    "topic": "Chocolate",
+    "ideas": [
+     "Dark or milk?",
+     "How often?",
+     "Favorite chocolate?"
+    ]
+   },
+   {
+    "topic": "Babies",
+    "ideas": [
+     "Who has a baby at home?",
+     "What do babies do?",
+     "Cute or noisy?"
+    ]
+   },
+   {
+    "topic": "Sports day at school",
+    "ideas": [
+     "What events?",
+     "Your team color?",
+     "Did you win?"
+    ]
+   }
   ],
   "intro": [
    {
@@ -68,6 +818,33 @@
     "example": {
      "label": "Topic",
      "big": "My favorite food"
+    }
+   },
+   {
+    "title": "Pick a team, get hints",
+    "text": [
+     "🎯 Pick a team spins to choose the team at the front.",
+     "Stuck? The teacher can show 3 hints for the topic."
+    ],
+    "example": {
+     "rows": [
+      [
+       "My favorite food",
+       "Hints"
+      ],
+      [
+       "",
+       "What is it?"
+      ],
+      [
+       "",
+       "When do you eat it?"
+      ],
+      [
+       "",
+       "Why do you like it?"
+      ]
+     ]
     }
    },
    {
@@ -140,56 +917,806 @@
   "huddle": 30,
   "turn": 25,
   "topics": [
-   "If our school had a robot teacher",
-   "The perfect school day",
-   "A day in the life of a school bag",
-   "How to be a good friend",
-   "The best superpower for students",
-   "Why mornings are so hard",
-   "My dream cafeteria menu",
-   "How to survive exam week",
-   "If animals could talk",
-   "The best place to visit in Thailand",
-   "The most useful invention ever",
-   "Why everyone should learn to cook",
-   "Life on Mars",
-   "The perfect weekend",
-   "What makes a good teacher",
-   "Rainy season: love it or hate it?",
-   "How to become famous on the internet",
-   "A new vacation everyone should have",
-   "The best street food",
-   "If I was invisible for a day",
-   "The best way to spend 1,000 baht",
-   "A day in the life of a street dog",
-   "If I could change one school rule",
-   "The best festival in Thailand",
-   "How to make a new friend",
-   "The worst vacation ever",
-   "If I won a trip anywhere in the world",
-   "A day without the internet",
-   "Why we should protect animals",
-   "The best food in my province",
-   "How to have a perfect birthday",
-   "If I was the head of the school for a day",
-   "My dream job",
-   "A story about a lost phone",
-   "The best and worst things about school",
-   "How to stay healthy",
-   "If I could meet a famous person",
-   "Life in 100 years",
-   "The best gift I ever got",
-   "How to save money",
-   "A trip to the mountains",
-   "Why sleep is important",
-   "A day in the life of my teacher",
-   "A day as a tour guide",
-   "The best thing about Thailand",
-   "How to cook my favorite dish",
-   "If I lived in another country",
-   "A scary story",
-   "The most exciting day of my life",
-   "Should we have school on Saturdays?"
+   {
+    "topic": "If our school had a robot teacher",
+    "ideas": [
+     "What would it teach?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "The perfect school day",
+    "ideas": [
+     "Start time?",
+     "Subjects?",
+     "Lunch?"
+    ]
+   },
+   {
+    "topic": "A day in the life of a school bag",
+    "ideas": [
+     "What is inside?",
+     "Where does it go?",
+     "How does it feel?"
+    ]
+   },
+   {
+    "topic": "How to be a good friend",
+    "ideas": [
+     "What makes a good friend?",
+     "Your good friend?",
+     "A time they helped you?"
+    ]
+   },
+   {
+    "topic": "The best superpower for students",
+    "ideas": [
+     "Which power?",
+     "How would it help?",
+     "Any problems?"
+    ]
+   },
+   {
+    "topic": "Why mornings are so hard",
+    "ideas": [
+     "What time do you get up?",
+     "Why is it hard?",
+     "Tips?"
+    ]
+   },
+   {
+    "topic": "My dream cafeteria menu",
+    "ideas": [
+     "Main dishes?",
+     "Drinks?",
+     "Desserts?"
+    ]
+   },
+   {
+    "topic": "How to survive exam week",
+    "ideas": [
+     "Study plan?",
+     "Food and sleep?",
+     "Relaxing?"
+    ]
+   },
+   {
+    "topic": "If animals could talk",
+    "ideas": [
+     "Which animal first?",
+     "What would they say?",
+     "Would it be good?"
+    ]
+   },
+   {
+    "topic": "The best place to visit in Thailand",
+    "ideas": [
+     "Where?",
+     "What can you see?",
+     "Why visit?"
+    ]
+   },
+   {
+    "topic": "The most useful invention ever",
+    "ideas": [
+     "What is it?",
+     "Who uses it?",
+     "Life without it?"
+    ]
+   },
+   {
+    "topic": "Why everyone should learn to cook",
+    "ideas": [
+     "Money?",
+     "Health?",
+     "Easy dishes?"
+    ]
+   },
+   {
+    "topic": "Life on Mars",
+    "ideas": [
+     "How would you get there?",
+     "Food and water?",
+     "Would you go?"
+    ]
+   },
+   {
+    "topic": "The perfect weekend",
+    "ideas": [
+     "Where?",
+     "Who with?",
+     "What would you do?"
+    ]
+   },
+   {
+    "topic": "What makes a good teacher",
+    "ideas": [
+     "Kind?",
+     "Fun?",
+     "Your favorite teacher?"
+    ]
+   },
+   {
+    "topic": "Rainy season: love it or hate it?",
+    "ideas": [
+     "What happens?",
+     "Problems?",
+     "What do you like?"
+    ]
+   },
+   {
+    "topic": "How to become famous on the internet",
+    "ideas": [
+     "Which app?",
+     "What videos?",
+     "Good or bad idea?"
+    ]
+   },
+   {
+    "topic": "A new vacation everyone should have",
+    "ideas": [
+     "Its name?",
+     "When?",
+     "What do people do?"
+    ]
+   },
+   {
+    "topic": "The best street food",
+    "ideas": [
+     "Favorite?",
+     "Where?",
+     "Clean or dirty?"
+    ]
+   },
+   {
+    "topic": "If I was invisible for a day",
+    "ideas": [
+     "Where would you go?",
+     "What would you do?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "The best way to spend 1,000 baht",
+    "ideas": [
+     "Food?",
+     "Things?",
+     "Save it?"
+    ]
+   },
+   {
+    "topic": "A day in the life of a street dog",
+    "ideas": [
+     "Where does it sleep?",
+     "Food?",
+     "Friends?"
+    ]
+   },
+   {
+    "topic": "If I could change one school rule",
+    "ideas": [
+     "Which rule?",
+     "Why?",
+     "The new rule?"
+    ]
+   },
+   {
+    "topic": "The best festival in Thailand",
+    "ideas": [
+     "Which one?",
+     "What do people do?",
+     "Food?"
+    ]
+   },
+   {
+    "topic": "How to make a new friend",
+    "ideas": [
+     "Say hello?",
+     "Same hobbies?",
+     "Be kind?"
+    ]
+   },
+   {
+    "topic": "The worst vacation ever",
+    "ideas": [
+     "Where?",
+     "What went wrong?",
+     "What did you learn?"
+    ]
+   },
+   {
+    "topic": "If I won a trip anywhere in the world",
+    "ideas": [
+     "Where?",
+     "Who with?",
+     "What would you do?"
+    ]
+   },
+   {
+    "topic": "A day without the internet",
+    "ideas": [
+     "What can't you do?",
+     "What would you do instead?",
+     "Easy or hard?"
+    ]
+   },
+   {
+    "topic": "Why we should protect animals",
+    "ideas": [
+     "Which animals?",
+     "Problems?",
+     "How can we help?"
+    ]
+   },
+   {
+    "topic": "The best food in my province",
+    "ideas": [
+     "What is it?",
+     "Where to eat it?",
+     "What is in it?"
+    ]
+   },
+   {
+    "topic": "How to have a perfect birthday",
+    "ideas": [
+     "Where?",
+     "Who comes?",
+     "Food and presents?"
+    ]
+   },
+   {
+    "topic": "If I was the head of the school for a day",
+    "ideas": [
+     "New rules?",
+     "Changes?",
+     "Fun events?"
+    ]
+   },
+   {
+    "topic": "My dream job",
+    "ideas": [
+     "What is it?",
+     "Why?",
+     "What do you need to learn?"
+    ]
+   },
+   {
+    "topic": "A story about a lost phone",
+    "ideas": [
+     "Where did you lose it?",
+     "What happened?",
+     "Did you find it?"
+    ]
+   },
+   {
+    "topic": "The best and worst things about school",
+    "ideas": [
+     "Best?",
+     "Worst?",
+     "What would you change?"
+    ]
+   },
+   {
+    "topic": "How to stay healthy",
+    "ideas": [
+     "Food?",
+     "Exercise?",
+     "Sleep?"
+    ]
+   },
+   {
+    "topic": "If I could meet a famous person",
+    "ideas": [
+     "Who?",
+     "What would you ask?",
+     "Where would you meet?"
+    ]
+   },
+   {
+    "topic": "Life in 100 years",
+    "ideas": [
+     "Homes?",
+     "Transport?",
+     "Jobs?"
+    ]
+   },
+   {
+    "topic": "The best gift I ever got",
+    "ideas": [
+     "What was it?",
+     "Who gave it?",
+     "Why was it the best?"
+    ]
+   },
+   {
+    "topic": "How to save money",
+    "ideas": [
+     "How?",
+     "What for?",
+     "Is it easy?"
+    ]
+   },
+   {
+    "topic": "A trip to the mountains",
+    "ideas": [
+     "Where?",
+     "Weather?",
+     "What do you do?"
+    ]
+   },
+   {
+    "topic": "Why sleep is important",
+    "ideas": [
+     "How many hours?",
+     "Is it enough?",
+     "Tips for sleeping well?"
+    ]
+   },
+   {
+    "topic": "A day in the life of my teacher",
+    "ideas": [
+     "Morning?",
+     "At school?",
+     "After school?"
+    ]
+   },
+   {
+    "topic": "A day as a tour guide",
+    "ideas": [
+     "Where would you go?",
+     "What would you say?",
+     "Food to try?"
+    ]
+   },
+   {
+    "topic": "The best thing about Thailand",
+    "ideas": [
+     "Food?",
+     "People?",
+     "Places?"
+    ]
+   },
+   {
+    "topic": "How to cook my favorite dish",
+    "ideas": [
+     "What dish?",
+     "What do you need?",
+     "First, then, finally?"
+    ]
+   },
+   {
+    "topic": "If I lived in another country",
+    "ideas": [
+     "Which country?",
+     "Language?",
+     "What would you miss?"
+    ]
+   },
+   {
+    "topic": "A scary story",
+    "ideas": [
+     "Where?",
+     "What happened?",
+     "How did it end?"
+    ]
+   },
+   {
+    "topic": "The most exciting day of my life",
+    "ideas": [
+     "When?",
+     "What happened?",
+     "How did you feel?"
+    ]
+   },
+   {
+    "topic": "Should we have school on Saturdays?",
+    "ideas": [
+     "Good things?",
+     "Bad things?",
+     "Your opinion?"
+    ]
+   },
+   {
+    "topic": "The best vacation I ever had",
+    "ideas": [
+     "Where?",
+     "Who with?",
+     "What happened?"
+    ]
+   },
+   {
+    "topic": "Social media",
+    "ideas": [
+     "Which apps?",
+     "Good things?",
+     "Bad things?"
+    ]
+   },
+   {
+    "topic": "A day without electricity",
+    "ideas": [
+     "What can't you do?",
+     "What would you do instead?",
+     "Would you like it?"
+    ]
+   },
+   {
+    "topic": "Living in Bangkok",
+    "ideas": [
+     "Good things?",
+     "Bad things?",
+     "Traffic?"
+    ]
+   },
+   {
+    "topic": "Online games",
+    "ideas": [
+     "Which game?",
+     "How long do you play?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "My last birthday",
+    "ideas": [
+     "What did you do?",
+     "Presents?",
+     "Who came?"
+    ]
+   },
+   {
+    "topic": "Being a teenager",
+    "ideas": [
+     "Good things?",
+     "Difficult things?",
+     "Free time?"
+    ]
+   },
+   {
+    "topic": "Traveling by plane",
+    "ideas": [
+     "Have you been on a plane?",
+     "Good things?",
+     "Bad things?"
+    ]
+   },
+   {
+    "topic": "Learning English",
+    "ideas": [
+     "Why?",
+     "Easy or difficult?",
+     "How do you practice?"
+    ]
+   },
+   {
+    "topic": "My favorite season",
+    "ideas": [
+     "Which one?",
+     "Weather?",
+     "Activities?"
+    ]
+   },
+   {
+    "topic": "Homework",
+    "ideas": [
+     "How much?",
+     "Easy or hard?",
+     "Should schools give homework?"
+    ]
+   },
+   {
+    "topic": "Plastic",
+    "ideas": [
+     "Where do we use it?",
+     "Problems?",
+     "How can we use less?"
+    ]
+   },
+   {
+    "topic": "An important day in my life",
+    "ideas": [
+     "When?",
+     "What happened?",
+     "Why important?"
+    ]
+   },
+   {
+    "topic": "Robots",
+    "ideas": [
+     "What can robots do?",
+     "Robots at home?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "Sports day",
+    "ideas": [
+     "What happens?",
+     "Your team?",
+     "Best event?"
+    ]
+   },
+   {
+    "topic": "Animals in danger",
+    "ideas": [
+     "Which animals?",
+     "Why?",
+     "How can we help?"
+    ]
+   },
+   {
+    "topic": "Cities of the future",
+    "ideas": [
+     "Transport?",
+     "Buildings?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "My favorite app",
+    "ideas": [
+     "What does it do?",
+     "How often?",
+     "Why do you like it?"
+    ]
+   },
+   {
+    "topic": "Being famous",
+    "ideas": [
+     "Good things?",
+     "Bad things?",
+     "Would you like it?"
+    ]
+   },
+   {
+    "topic": "A trip to the sea",
+    "ideas": [
+     "Where?",
+     "Activities?",
+     "Food?"
+    ]
+   },
+   {
+    "topic": "Exercise",
+    "ideas": [
+     "What do you do?",
+     "How often?",
+     "Why is it important?"
+    ]
+   },
+   {
+    "topic": "Music festivals",
+    "ideas": [
+     "Have you been?",
+     "What happens?",
+     "Who would you see?"
+    ]
+   },
+   {
+    "topic": "Video calls",
+    "ideas": [
+     "Who do you call?",
+     "Good or bad?",
+     "Which app?"
+    ]
+   },
+   {
+    "topic": "Cooking at home",
+    "ideas": [
+     "What do you cook?",
+     "Who taught you?",
+     "Why cook?"
+    ]
+   },
+   {
+    "topic": "Pocket money",
+    "ideas": [
+     "How much?",
+     "What do you buy?",
+     "Should children get it?"
+    ]
+   },
+   {
+    "topic": "A movie I watched recently",
+    "ideas": [
+     "What was it about?",
+     "Who was in it?",
+     "Would you recommend it?"
+    ]
+   },
+   {
+    "topic": "School uniforms",
+    "ideas": [
+     "Good things?",
+     "Bad things?",
+     "What would you change?"
+    ]
+   },
+   {
+    "topic": "Visiting another country",
+    "ideas": [
+     "Which country?",
+     "Why?",
+     "What would you do?"
+    ]
+   },
+   {
+    "topic": "Shopping online",
+    "ideas": [
+     "What do you buy?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "My family's jobs",
+    "ideas": [
+     "Who does what?",
+     "Interesting jobs?",
+     "Hard jobs?"
+    ]
+   },
+   {
+    "topic": "Pets at home",
+    "ideas": [
+     "Which pets are best?",
+     "Looking after them?",
+     "Do pets need space?"
+    ]
+   },
+   {
+    "topic": "The weekend market",
+    "ideas": [
+     "What do people sell?",
+     "What do you buy?",
+     "Best time to go?"
+    ]
+   },
+   {
+    "topic": "Cartoons and anime",
+    "ideas": [
+     "Favorite?",
+     "Why?",
+     "Are they only for children?"
+    ]
+   },
+   {
+    "topic": "Getting up early",
+    "ideas": [
+     "Do you like it?",
+     "Why?",
+     "Tips?"
+    ]
+   },
+   {
+    "topic": "Climate change",
+    "ideas": [
+     "What is it?",
+     "What can we see?",
+     "What can we do?"
+    ]
+   },
+   {
+    "topic": "Living with grandparents",
+    "ideas": [
+     "Good things?",
+     "Difficult things?",
+     "What do you learn?"
+    ]
+   },
+   {
+    "topic": "My town in 20 years",
+    "ideas": [
+     "What will change?",
+     "New buildings?",
+     "Will it be better?"
+    ]
+   },
+   {
+    "topic": "Superstitions in Thailand",
+    "ideas": [
+     "Examples?",
+     "Do you believe them?",
+     "Where do they come from?"
+    ]
+   },
+   {
+    "topic": "The best way to relax",
+    "ideas": [
+     "What do you do?",
+     "Where?",
+     "How long?"
+    ]
+   },
+   {
+    "topic": "Bubble tea",
+    "ideas": [
+     "Favorite flavor?",
+     "How often?",
+     "Healthy or not?"
+    ]
+   },
+   {
+    "topic": "Living near the sea",
+    "ideas": [
+     "Good things?",
+     "Problems?",
+     "Activities?"
+    ]
+   },
+   {
+    "topic": "My favorite TV show",
+    "ideas": [
+     "What is it about?",
+     "Who is in it?",
+     "Why do you like it?"
+    ]
+   },
+   {
+    "topic": "Helping at home",
+    "ideas": [
+     "Which jobs?",
+     "How often?",
+     "Should kids help?"
+    ]
+   },
+   {
+    "topic": "A day at a theme park",
+    "ideas": [
+     "Which rides?",
+     "Scary or fun?",
+     "Who with?"
+    ]
+   },
+   {
+    "topic": "Learning a musical instrument",
+    "ideas": [
+     "Which one?",
+     "Easy or hard?",
+     "How often do you practice?"
+    ]
+   },
+   {
+    "topic": "Phones at school",
+    "ideas": [
+     "When do you use them?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "A good neighbor",
+    "ideas": [
+     "What do they do?",
+     "Your neighbors?",
+     "How can you be one?"
+    ]
+   },
+   {
+    "topic": "Camping",
+    "ideas": [
+     "Where?",
+     "What do you take?",
+     "Food?"
+    ]
+   },
+   {
+    "topic": "Things I collect",
+    "ideas": [
+     "What?",
+     "How many?",
+     "Why?"
+    ]
+   },
+   {
+    "topic": "The best age to be",
+    "ideas": [
+     "Which age?",
+     "Why?",
+     "What can you do?"
+    ]
+   }
   ],
   "intro": [
    {
@@ -201,6 +1728,33 @@
     "example": {
      "label": "Topic",
      "big": "The perfect weekend"
+    }
+   },
+   {
+    "title": "Pick a team, get hints",
+    "text": [
+     "🎯 Pick a team spins to choose the team at the front.",
+     "Stuck? The teacher can show 3 hints for the topic."
+    ],
+    "example": {
+     "rows": [
+      [
+       "If our school had a robot teacher",
+       "Hints"
+      ],
+      [
+       "",
+       "What would it teach?"
+      ],
+      [
+       "",
+       "Good things?"
+      ],
+      [
+       "",
+       "Problems?"
+      ]
+     ]
     }
    },
    {
@@ -273,56 +1827,806 @@
   "huddle": 45,
   "turn": 30,
   "topics": [
-   "The biggest problem for teenagers today",
-   "How technology has changed my life",
-   "What makes a good leader",
-   "The best way to learn English",
-   "How to be happy",
-   "My plan for the next ten years",
-   "How to deal with stress",
-   "Why friendship is important",
-   "The perfect city of the future",
-   "How social media changes the way we talk",
-   "What I would do with one million baht",
-   "The most important invention of the last 100 years",
-   "How to protect the environment at home",
-   "A person who changed the world",
-   "What makes Thailand special for tourists",
-   "How to make a good first impression",
-   "Life without electricity",
-   "What school will be like in 2050",
-   "The good and bad sides of living alone",
-   "How to become a good public speaker",
-   "Why we should learn about history",
-   "The best advice I ever got",
-   "If I could solve one world problem",
-   "How to plan a perfect trip with friends",
-   "What makes a movie great",
-   "How to be a good citizen",
-   "The life of a famous athlete",
-   "How to choose a good career",
-   "If I could live in any time in history",
-   "Why music is important to teenagers",
-   "How to start a small business",
-   "The good and bad sides of online shopping",
-   "What I learned from a mistake",
-   "How to make our school greener",
-   "Rules everyone should follow",
-   "How to spot fake news",
-   "Life as a teenager 50 years ago",
-   "Why some people are afraid of AI",
-   "How to welcome a new foreign student",
-   "The hardest thing about growing up",
-   "What makes a good team",
-   "How to stay safe online",
-   "My dream company",
-   "How climate change affects Thailand",
-   "The best way to spend a long vacation",
-   "How to say sorry and mean it",
-   "Why sport is good for your mind",
-   "A world without money",
-   "How to manage your time",
-   "The future of transport"
+   {
+    "topic": "The biggest problem for teenagers today",
+    "ideas": [
+     "What is it?",
+     "Why?",
+     "Solutions?"
+    ]
+   },
+   {
+    "topic": "How technology has changed my life",
+    "ideas": [
+     "School?",
+     "Friends?",
+     "Free time?"
+    ]
+   },
+   {
+    "topic": "What makes a good leader",
+    "ideas": [
+     "Qualities?",
+     "A good leader you know?",
+     "Mistakes leaders make?"
+    ]
+   },
+   {
+    "topic": "The best way to learn English",
+    "ideas": [
+     "Apps?",
+     "Movies and songs?",
+     "Practice?"
+    ]
+   },
+   {
+    "topic": "How to be happy",
+    "ideas": [
+     "Friends and family?",
+     "Health?",
+     "Hobbies?"
+    ]
+   },
+   {
+    "topic": "My plan for the next ten years",
+    "ideas": [
+     "Study?",
+     "Work?",
+     "Where will you live?"
+    ]
+   },
+   {
+    "topic": "How to deal with stress",
+    "ideas": [
+     "Causes?",
+     "What helps?",
+     "Who can you talk to?"
+    ]
+   },
+   {
+    "topic": "Why friendship is important",
+    "ideas": [
+     "Support?",
+     "Fun?",
+     "A friend who helped you?"
+    ]
+   },
+   {
+    "topic": "The perfect city of the future",
+    "ideas": [
+     "Transport?",
+     "Buildings?",
+     "Nature?"
+    ]
+   },
+   {
+    "topic": "How social media changes the way we talk",
+    "ideas": [
+     "Emojis?",
+     "Short messages?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "What I would do with one million baht",
+    "ideas": [
+     "Spend?",
+     "Save?",
+     "Help others?"
+    ]
+   },
+   {
+    "topic": "The most important invention of the last 100 years",
+    "ideas": [
+     "What is it?",
+     "Why?",
+     "Life without it?"
+    ]
+   },
+   {
+    "topic": "How to protect the environment at home",
+    "ideas": [
+     "Small actions?",
+     "Big changes?",
+     "Who is responsible?"
+    ]
+   },
+   {
+    "topic": "A person who changed the world",
+    "ideas": [
+     "Who?",
+     "What did they do?",
+     "Why does it matter?"
+    ]
+   },
+   {
+    "topic": "What makes Thailand special for tourists",
+    "ideas": [
+     "Food?",
+     "Places?",
+     "People?"
+    ]
+   },
+   {
+    "topic": "How to make a good first impression",
+    "ideas": [
+     "Smile?",
+     "Clothes?",
+     "What to say?"
+    ]
+   },
+   {
+    "topic": "Life without electricity",
+    "ideas": [
+     "What can't you do?",
+     "What would you do instead?",
+     "Could you live like that?"
+    ]
+   },
+   {
+    "topic": "What school will be like in 2050",
+    "ideas": [
+     "Teachers or robots?",
+     "Subjects?",
+     "Online or in class?"
+    ]
+   },
+   {
+    "topic": "The good and bad sides of living alone",
+    "ideas": [
+     "Freedom?",
+     "Problems?",
+     "When?"
+    ]
+   },
+   {
+    "topic": "How to become a good public speaker",
+    "ideas": [
+     "Practice?",
+     "Body language?",
+     "Nerves?"
+    ]
+   },
+   {
+    "topic": "Why we should learn about history",
+    "ideas": [
+     "Mistakes?",
+     "Culture?",
+     "Your favorite period?"
+    ]
+   },
+   {
+    "topic": "The best advice I ever got",
+    "ideas": [
+     "What was it?",
+     "Who gave it?",
+     "Did it help?"
+    ]
+   },
+   {
+    "topic": "If I could solve one world problem",
+    "ideas": [
+     "Which problem?",
+     "How?",
+     "Why this one?"
+    ]
+   },
+   {
+    "topic": "How to plan a perfect trip with friends",
+    "ideas": [
+     "Where?",
+     "Budget?",
+     "Who does what?"
+    ]
+   },
+   {
+    "topic": "What makes a movie great",
+    "ideas": [
+     "Story?",
+     "Actors?",
+     "Music?"
+    ]
+   },
+   {
+    "topic": "How to be a good citizen",
+    "ideas": [
+     "Rules?",
+     "Helping others?",
+     "Voting?"
+    ]
+   },
+   {
+    "topic": "The life of a famous athlete",
+    "ideas": [
+     "Training?",
+     "Pressure?",
+     "Money?"
+    ]
+   },
+   {
+    "topic": "How to choose a good career",
+    "ideas": [
+     "Interest?",
+     "Money?",
+     "Free time?"
+    ]
+   },
+   {
+    "topic": "If I could live in any time in history",
+    "ideas": [
+     "Which time?",
+     "Why?",
+     "What would you miss?"
+    ]
+   },
+   {
+    "topic": "Why music is important to teenagers",
+    "ideas": [
+     "Mood?",
+     "Memories?",
+     "Culture?"
+    ]
+   },
+   {
+    "topic": "How to start a small business",
+    "ideas": [
+     "Idea?",
+     "Money?",
+     "Customers?"
+    ]
+   },
+   {
+    "topic": "The good and bad sides of online shopping",
+    "ideas": [
+     "Price?",
+     "Experience?",
+     "The future?"
+    ]
+   },
+   {
+    "topic": "What I learned from a mistake",
+    "ideas": [
+     "A mistake you made?",
+     "What you learned?",
+     "Advice?"
+    ]
+   },
+   {
+    "topic": "How to make our school greener",
+    "ideas": [
+     "Trees?",
+     "Recycling?",
+     "Less plastic?"
+    ]
+   },
+   {
+    "topic": "Rules everyone should follow",
+    "ideas": [
+     "Which rules?",
+     "Why?",
+     "What if people don't?"
+    ]
+   },
+   {
+    "topic": "How to spot fake news",
+    "ideas": [
+     "What is it?",
+     "How to spot it?",
+     "Why does it spread?"
+    ]
+   },
+   {
+    "topic": "Life as a teenager 50 years ago",
+    "ideas": [
+     "School?",
+     "Free time?",
+     "Better or worse?"
+    ]
+   },
+   {
+    "topic": "Why some people are afraid of AI",
+    "ideas": [
+     "What can it do?",
+     "Jobs?",
+     "Dangerous?"
+    ]
+   },
+   {
+    "topic": "How to welcome a new foreign student",
+    "ideas": [
+     "Show them around?",
+     "Thai food?",
+     "Language?"
+    ]
+   },
+   {
+    "topic": "The hardest thing about growing up",
+    "ideas": [
+     "What is it?",
+     "Why?",
+     "Advice?"
+    ]
+   },
+   {
+    "topic": "What makes a good team",
+    "ideas": [
+     "Communication?",
+     "Roles?",
+     "Trust?"
+    ]
+   },
+   {
+    "topic": "How to stay safe online",
+    "ideas": [
+     "Passwords?",
+     "Strangers?",
+     "Personal information?"
+    ]
+   },
+   {
+    "topic": "My dream company",
+    "ideas": [
+     "What does it do?",
+     "Where?",
+     "Your workers?"
+    ]
+   },
+   {
+    "topic": "How climate change affects Thailand",
+    "ideas": [
+     "Weather?",
+     "Floods?",
+     "What can we do?"
+    ]
+   },
+   {
+    "topic": "The best way to spend a long vacation",
+    "ideas": [
+     "Travel?",
+     "Learn something?",
+     "Rest?"
+    ]
+   },
+   {
+    "topic": "How to say sorry and mean it",
+    "ideas": [
+     "What to say?",
+     "Actions?",
+     "A time you said sorry?"
+    ]
+   },
+   {
+    "topic": "Why sport is good for your mind",
+    "ideas": [
+     "Stress?",
+     "Friends?",
+     "Confidence?"
+    ]
+   },
+   {
+    "topic": "A world without money",
+    "ideas": [
+     "How would we trade?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "How to manage your time",
+    "ideas": [
+     "Plans and lists?",
+     "Phones?",
+     "Sleep?"
+    ]
+   },
+   {
+    "topic": "The future of transport",
+    "ideas": [
+     "Electric cars?",
+     "Flying cars?",
+     "Public transport?"
+    ]
+   },
+   {
+    "topic": "Should phones be allowed in class?",
+    "ideas": [
+     "For",
+     "Against",
+     "Your opinion"
+    ]
+   },
+   {
+    "topic": "Is it better to live in a city or the countryside?",
+    "ideas": [
+     "Jobs",
+     "Nature",
+     "Your choice"
+    ]
+   },
+   {
+    "topic": "Should school start later?",
+    "ideas": [
+     "Sleep",
+     "Learning",
+     "Your opinion"
+    ]
+   },
+   {
+    "topic": "Fast fashion",
+    "ideas": [
+     "What is it?",
+     "Problems",
+     "What can we do?"
+    ]
+   },
+   {
+    "topic": "A person who inspires me",
+    "ideas": [
+     "Who?",
+     "What did they do?",
+     "What did you learn?"
+    ]
+   },
+   {
+    "topic": "Is money the key to happiness?",
+    "ideas": [
+     "Yes",
+     "No",
+     "Your view"
+    ]
+   },
+   {
+    "topic": "Should homework be banned?",
+    "ideas": [
+     "For",
+     "Against",
+     "Your view"
+    ]
+   },
+   {
+    "topic": "Tourism in Thailand",
+    "ideas": [
+     "Good for the economy",
+     "Problems",
+     "The future"
+    ]
+   },
+   {
+    "topic": "Online friends",
+    "ideas": [
+     "Can they be real friends?",
+     "Risks",
+     "Your experience"
+    ]
+   },
+   {
+    "topic": "Exams",
+    "ideas": [
+     "Are they fair?",
+     "Stress",
+     "Better ways to test?"
+    ]
+   },
+   {
+    "topic": "Working abroad",
+    "ideas": [
+     "Reasons",
+     "Difficulties",
+     "Would you do it?"
+    ]
+   },
+   {
+    "topic": "Should zoos exist?",
+    "ideas": [
+     "For",
+     "Against",
+     "Alternatives"
+    ]
+   },
+   {
+    "topic": "Fame and social media",
+    "ideas": [
+     "Influencers",
+     "Pressure",
+     "Is it a real job?"
+    ]
+   },
+   {
+    "topic": "The ideal school",
+    "ideas": [
+     "Subjects",
+     "Schedule",
+     "Teachers"
+    ]
+   },
+   {
+    "topic": "Should children have phones?",
+    "ideas": [
+     "What age?",
+     "Safety",
+     "Rules"
+    ]
+   },
+   {
+    "topic": "Team sports or individual sports?",
+    "ideas": [
+     "Teamwork",
+     "Pressure",
+     "Your preference"
+    ]
+   },
+   {
+    "topic": "The perfect job",
+    "ideas": [
+     "Money",
+     "Interest",
+     "Free time"
+    ]
+   },
+   {
+    "topic": "Gaming as a career",
+    "ideas": [
+     "Esports",
+     "Is it a real job?",
+     "Risks"
+    ]
+   },
+   {
+    "topic": "Should we explore space?",
+    "ideas": [
+     "Benefits",
+     "Cost",
+     "Your view"
+    ]
+   },
+   {
+    "topic": "Traffic in big cities",
+    "ideas": [
+     "Causes",
+     "Effects",
+     "Solutions"
+    ]
+   },
+   {
+    "topic": "Traditional or modern?",
+    "ideas": [
+     "Thai traditions",
+     "Changes",
+     "What to keep"
+    ]
+   },
+   {
+    "topic": "Healthy eating at school",
+    "ideas": [
+     "School lunches",
+     "Junk food",
+     "What should change?"
+    ]
+   },
+   {
+    "topic": "Should everyone go to university?",
+    "ideas": [
+     "Benefits",
+     "Other paths",
+     "Your plan"
+    ]
+   },
+   {
+    "topic": "Should animals be used for testing?",
+    "ideas": [
+     "Medicine",
+     "Animal rights",
+     "Alternatives"
+    ]
+   },
+   {
+    "topic": "Volunteering",
+    "ideas": [
+     "Examples",
+     "Why do it?",
+     "Your experience"
+    ]
+   },
+   {
+    "topic": "Electric cars",
+    "ideas": [
+     "Good points",
+     "Problems",
+     "The future in Thailand"
+    ]
+   },
+   {
+    "topic": "Advertising",
+    "ideas": [
+     "Where we see it",
+     "Does it work on you?",
+     "Children and ads"
+    ]
+   },
+   {
+    "topic": "Is it better to be early or late?",
+    "ideas": [
+     "Habits",
+     "Respect",
+     "Your habit"
+    ]
+   },
+   {
+    "topic": "Robots taking jobs",
+    "ideas": [
+     "Which jobs?",
+     "New jobs?",
+     "How to prepare?"
+    ]
+   },
+   {
+    "topic": "The importance of sleep",
+    "ideas": [
+     "Health",
+     "Teenagers",
+     "Tips"
+    ]
+   },
+   {
+    "topic": "Celebrities as role models",
+    "ideas": [
+     "Good examples",
+     "Bad examples",
+     "Who you look up to"
+    ]
+   },
+   {
+    "topic": "Should school be all year?",
+    "ideas": [
+     "Learning",
+     "Vacations",
+     "Family time"
+    ]
+   },
+   {
+    "topic": "Family dinners",
+    "ideas": [
+     "Why important?",
+     "Phones at the table?",
+     "Your family"
+    ]
+   },
+   {
+    "topic": "Recycling",
+    "ideas": [
+     "What we recycle",
+     "Why people don't",
+     "Ideas"
+    ]
+   },
+   {
+    "topic": "A change I want to see in my town",
+    "ideas": [
+     "What?",
+     "Why?",
+     "How?"
+    ]
+   },
+   {
+    "topic": "Pressure to be perfect",
+    "ideas": [
+     "Social media",
+     "School",
+     "How to cope"
+    ]
+   },
+   {
+    "topic": "Cash or card?",
+    "ideas": [
+     "Convenience",
+     "Safety",
+     "The future of money"
+    ]
+   },
+   {
+    "topic": "Big tech companies",
+    "ideas": [
+     "Power",
+     "Privacy",
+     "Good things"
+    ]
+   },
+   {
+    "topic": "Learning online vs in class",
+    "ideas": [
+     "Freedom",
+     "Focus",
+     "Friends"
+    ]
+   },
+   {
+    "topic": "What makes a happy life?",
+    "ideas": [
+     "Friends and family",
+     "Health",
+     "Purpose"
+    ]
+   },
+   {
+    "topic": "Should students wear uniforms?",
+    "ideas": [
+     "For",
+     "Against",
+     "Your view"
+    ]
+   },
+   {
+    "topic": "Is it OK to do homework with AI?",
+    "ideas": [
+     "Learning",
+     "Fairness",
+     "Your view"
+    ]
+   },
+   {
+    "topic": "Long-distance friendships",
+    "ideas": [
+     "Keeping in touch",
+     "Problems",
+     "Your experience"
+    ]
+   },
+   {
+    "topic": "Street food or restaurants?",
+    "ideas": [
+     "Price",
+     "Health",
+     "Your choice"
+    ]
+   },
+   {
+    "topic": "The perfect weekend job",
+    "ideas": [
+     "What job?",
+     "Money",
+     "Skills you learn"
+    ]
+   },
+   {
+    "topic": "Should the voting age be 16?",
+    "ideas": [
+     "For",
+     "Against",
+     "Your view"
+    ]
+   },
+   {
+    "topic": "What makes a good parent",
+    "ideas": [
+     "Rules",
+     "Love and time",
+     "Mistakes"
+    ]
+   },
+   {
+    "topic": "Moving to another country",
+    "ideas": [
+     "Language",
+     "Culture shock",
+     "Would you do it?"
+    ]
+   },
+   {
+    "topic": "Should tourists learn some Thai?",
+    "ideas": [
+     "Respect",
+     "Hard or easy?",
+     "Useful words"
+    ]
+   },
+   {
+    "topic": "Many friends or a few close ones?",
+    "ideas": [
+     "Many",
+     "A few",
+     "Your choice"
+    ]
+   }
   ],
   "intro": [
    {
@@ -334,6 +2638,33 @@
     "example": {
      "label": "Topic",
      "big": "The best way to learn English"
+    }
+   },
+   {
+    "title": "Pick a team, get hints",
+    "text": [
+     "🎯 Pick a team spins to choose the team at the front.",
+     "Stuck? The teacher can show 3 hints for the topic."
+    ],
+    "example": {
+     "rows": [
+      [
+       "The biggest problem for teenagers today",
+       "Hints"
+      ],
+      [
+       "",
+       "What is it?"
+      ],
+      [
+       "",
+       "Why?"
+      ],
+      [
+       "",
+       "Solutions?"
+      ]
+     ]
     }
    },
    {
@@ -401,12 +2732,6 @@
  },
  "bonus": {
   "before": [
-   {
-    "id": "linking",
-    "name": "Linking words",
-    "text": "Use 3 linking words (and, but, because…): +2.",
-    "points": 2
-   },
    {
     "id": "no-umm",
     "name": "No umm!",

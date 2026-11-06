@@ -3,7 +3,7 @@ import { create } from 'zustand'
 import * as api from '../lib/api'
 import type { ResultsData } from '../lib/api'
 import { DEMO_URL } from '../lib/demo'
-import { findGame } from '../lib/games'
+import { gameTitle } from '../lib/games'
 import { buildSubmission, rankTeams } from '../lib/results'
 import { useApp } from './app'
 import { useSessions } from './sessions'
@@ -35,7 +35,7 @@ function demoResults(): ResultsData {
   const out: ResultsData = { sessions: [], rows: [] }
   for (const s of Object.values(useSessions.getState().sessions)) {
     if (s.status !== 'submitted' || !s.scores) continue
-    const sub = buildSubmission(s, s.scores, s.notes, findGame(s.game)?.title ?? s.game, new Date(s.submittedAt ?? s.updatedAt))
+    const sub = buildSubmission(s, s.scores, s.notes, gameTitle(s.game), new Date(s.submittedAt ?? s.updatedAt))
     out.sessions.push({
       id: s.id,
       date: sub.session.Date,

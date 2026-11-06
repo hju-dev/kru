@@ -73,19 +73,6 @@ describe('Would You Rather: a silly warm-up with no points', () => {
   })
 })
 
-describe('Just a Second (folder just-a-minute)', () => {
-  const js = read('public/games/just-a-minute/app.js')
-  it('is called Just a Second, keeps its slug so favorites and saves still work', () => {
-    expect(games.find((g) => g.slug === 'just-a-minute')!.title).toBe('Just a Second')
-    expect(js).toContain("title: 'Just a Second'")
-  })
-  it('a clock for each student (Tag), adjustable by 10 seconds, and a team picker', () => {
-    expect(js).toMatch(/adjust: 10/)
-    expect(js).toContain('tag: true')
-    expect(js).toContain('picker: true')
-  })
-})
-
 describe('Word Rush', () => {
   it('has no "Explain it" bonus any more', () => {
     expect(read('public/games/word-rush/app.js')).not.toMatch(/Explain it/i)

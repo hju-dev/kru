@@ -161,6 +161,54 @@ button:focus-visible {
 .topic.spinning {
   color: var(--muted);
 }
+/* Talk: Spin + Hints stacked on the right; the 3 hints under the topic */
+.topic-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.topic-btns .btn {
+  min-height: 44px;
+}
+#hints[aria-pressed='true'] {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.ideas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.ideas[hidden] {
+  display: none;
+}
+.ideas span {
+  border: 2px dashed var(--line);
+  border-radius: 10px;
+  padding: 1px 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--teal);
+}
+.bar .kpk-open {
+  min-height: 44px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+/* Talk has one team button: room for its name */
+.pick.front {
+  max-width: 240px;
+}
+/* a ★ bonus card is showing: 🎯 alone, so the team at the front keeps its name */
+.bar:has(.kb-chip:not([hidden])) .kpk-open {
+  font-size: 0;
+  min-width: 44px;
+}
+.bar:has(.kb-chip:not([hidden])) .kpk-open span {
+  font-size: 20px;
+}
 
 .clockrow {
   display: flex;

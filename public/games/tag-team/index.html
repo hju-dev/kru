@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/games/shared/kru-intro.css" />
     <link rel="stylesheet" href="/games/shared/kru-bonus.css" />
     <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="/games/shared/kru-picker.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -24,8 +25,12 @@
         <div class="topic-text">
           <span class="eyebrow" id="topicLabel">Topic</span>
           <div class="topic" id="topic">Loading…</div>
+          <div class="ideas" id="ideas" hidden></div>
         </div>
-        <button class="btn gold" id="spin">Spin</button>
+        <div class="topic-btns">
+          <button class="btn gold" id="spin">Spin</button>
+          <button class="btn" id="hints" aria-pressed="false" hidden>Hints</button>
+        </div>
       </section>
 
       <section class="clockrow" aria-live="polite">
@@ -94,6 +99,7 @@
     <script src="/games/shared/kru-intro.js"></script>
     <script src="/games/shared/kru-bonus.js"></script>
     <script src="/games/shared/kru-end.js"></script>
+    <script src="/games/shared/kru-picker.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

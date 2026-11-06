@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { DEMO_URL } from '../lib/demo'
-import { findGame } from '../lib/games'
+import { findGame, gameTitle } from '../lib/games'
 import { buildSubmission, rankTeams, submittedTeams } from '../lib/results'
 import type { Session } from '../lib/session'
 import { useApp } from '../store/app'
@@ -47,7 +47,7 @@ function ResultsView({ session: s }: { session: Session }) {
 
   async function submit() {
     setBusy(true)
-    const payload = buildSubmission(s, scores, s.notes.trim(), game?.title ?? s.game, new Date(), { onlyScored })
+    const payload = buildSubmission(s, scores, s.notes.trim(), gameTitle(s.game), new Date(), { onlyScored })
     patch(s.id, { status: 'submitted', submittedAt: Date.now() })
     await queueResults(payload)
     setBusy(false)
@@ -86,7 +86,7 @@ function ResultsView({ session: s }: { session: Session }) {
           </button>
         )}
         <h1>
-          {game?.title ?? s.game} <span className="muted">· {s.class} · {s.level}</span>
+          {gameTitle(s.game)} <span className="muted">· {s.class} · {s.level}</span>
         </h1>
         {!submitted && (
           <>
