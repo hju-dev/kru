@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams } from 'react-router'
-import { findGame, gameUrl } from '../lib/games'
+import { findGame, gameUrl, RETIRED_GAMES } from '../lib/games'
 import { initMessage, todayKey, type Session } from '../lib/session'
 import { classKeyOf } from '../lib/bootstrap'
 import { storage } from '../lib/storage'
@@ -33,7 +33,17 @@ export function Play() {
   if (!session) return <Navigate to="/" replace />
   if (session.status === 'review') return <Navigate to={`/results/${id}`} replace />
   if (session.status !== 'playing') return <Navigate to="/" replace />
+  if (RETIRED_GAMES[session.game]) return <RetiredGame session={session} />
   return <PlayFrame session={session} />
+}
+
+/** A game that was taken out of the library: skip straight to the review screen with the points it had. */
+function RetiredGame({ session }: { session: Session }) {
+  const patch = useSessions((st) => st.patch)
+  useEffect(() => {
+    patch(session.id, { status: 'review', scores: totalsFromLog(session) })
+  }, [patch, session])
+  return <main className="play" />
 }
 
 function PlayFrame({ session }: { session: Session }) {

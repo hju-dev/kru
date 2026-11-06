@@ -45,5 +45,13 @@ export function librarySections(games: GameInfo[] = GAMES) {
 
 export const findGame = (slug: string) => GAMES.find((g) => g.slug === slug)
 
+/** Games taken out of the library (Henry). Their old sessions can still be reviewed and saved under this title. */
+export const RETIRED_GAMES: Record<string, string> = {
+  'just-a-minute': 'Just a Second', // merged into Tag-Team Talk (Nov 2026)
+}
+
+/** A game's title for screens and the Sheet, also for retired games. */
+export const gameTitle = (slug: string) => findGame(slug)?.title ?? RETIRED_GAMES[slug] ?? slug
+
 /** Every game is its own page, loaded in a same-origin frame. */
 export const gameUrl = (slug: string) => `/games/${slug}/index.html`

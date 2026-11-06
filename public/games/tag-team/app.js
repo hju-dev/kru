@@ -2,7 +2,8 @@
    The level's content.json section says which: mode "relay" or "debate".
    Relay (Tag-Team Talk): one team at the front; its speakers take turns on one topic; at each chime: TAG!
    Debate (Tag-Team Debate): FOR team vs AGAINST team; speakers alternate, starting with FOR.
-   Teams and speakers come from the Kru session. Speaking order: tap two names to swap, or hold and drag. */
+   Teams and speakers come from the Kru session. Speaking order: tap two names to swap, or hold and drag.
+   Talk only: topics come with 3 hints (Hints button), and 🎯 Pick a team spins for the team at the front. */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
@@ -10,7 +11,7 @@
 
   var C = null;       // content for this level
   var teams = [];
-  var S = null;       // saved: { v, level, mode, front, forT, againstT, order, used, topic, pts, log }
+  var S = null;       // saved: { v, level, mode, front, forT, againstT, order, used, topic, hints, picked, pts, log }
   var phase = 'ready', turn = 0, total = 0, left = 0, running = false, endAt = 0, timer = 0, audio = null;
   var picked = null;  // { team, k } waiting for a second tap
 
@@ -154,20 +155,40 @@
   }
 
   // ---------- topic ----------
+  // a topic is text (debate motions) or { topic, ideas: [3 hints] } (Talk)
+  function topicText(t) { return typeof t === 'string' ? t : t.topic; }
+  function ideasFor(text) {
+    var t = C.topics.find(function (x) { return topicText(x) === text; });
+    return t && t.ideas ? t.ideas : [];
+  }
   function fitTopic() {
     var box = $('topic').parentNode.parentNode, el = $('topic'), sz = 32;
     el.style.fontSize = sz + 'px';
-    while (sz > 16 && box.scrollHeight > box.clientHeight + 1) el.style.fontSize = (sz -= 2) + 'px';
+    while (sz > 18 && box.scrollHeight > box.clientHeight + 1) el.style.fontSize = (sz -= 2) + 'px';
+  }
+  /** The Hints button and the 3 ideas under the topic (hidden until the teacher taps Hints). */
+  function renderHints() {
+    var btn = $('hints'), box = $('ideas');
+    if (!btn || !box) return;
+    var ideas = S.topic ? ideasFor(S.topic) : [];
+    btn.hidden = !ideas.length;
+    btn.textContent = S.hints ? 'Hide hints' : 'Hints';
+    btn.setAttribute('aria-pressed', String(!!S.hints));
+    box.hidden = !(S.hints && ideas.length);
+    box.innerHTML = S.hints ? ideas.map(function (i) { return '<span>' + esc(i) + '</span>'; }).join('') : '';
+    fitTopic();
   }
   function spin() {
     unlockAudio();
-    var list = C.topics, pool = list.filter(function (t) { return S.used.indexOf(t) < 0; });
+    var list = C.topics.map(topicText), pool = list.filter(function (t) { return S.used.indexOf(t) < 0; });
     if (!pool.length) { S.used = []; pool = list.slice(); }
     var pick = pool[Math.floor(Math.random() * pool.length)];
     S.used.push(pick);
     S.topic = pick;
+    S.hints = false;
     save();
     resetAll();
+    renderHints();
     var el = $('topic'), k = 0;
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.textContent = pick; fitTopic(); tone([988], 0, 0.25); return; }
     el.classList.add('spinning');
@@ -242,6 +263,7 @@
     $('logoMode').textContent = C.title;
     $('topicLabel').textContent = C.label;
     $('topic').textContent = S.topic || 'Tap Spin to choose a ' + C.label.toLowerCase();
+    renderHints();
     renderPicks();
     renderLane();
     renderTeams();
@@ -389,6 +411,7 @@
 
   // ---------- main buttons ----------
   $('spin').addEventListener('click', spin);
+  if ($('hints')) $('hints').addEventListener('click', function () { S.hints = !S.hints; save(); renderHints(); });
   $('main').addEventListener('click', function () {
     if (phase === 'ready') startHuddle();
     else if (phase === 'huddle') startTalk();
@@ -441,6 +464,7 @@
     } else if (k === 'n') nextSpeaker();
     else if (k === 'c') $('challenge').click();
     else if (k === 's') spin();
+    else if (k === 'h' && $('hints') && !$('hints').hidden) $('hints').click();
   });
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
   window.addEventListener('resize', fitTopic);
@@ -464,6 +488,12 @@
       if (unit && C.mode === 'debate' && unit.motions && unit.motions.length) C = Object.assign({}, C, { topics: unit.motions });
       teams = Kru.allTeams();
       KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
+      // Talk: 🎯 Pick a team spins for the team that presents next (no repeats until every team has had a turn)
+      if (C.mode !== 'debate' && window.KruPicker) {
+        KruPicker.setup({ bar: $('picks').parentNode, beforeEl: $('picks').nextSibling, teams: function () { return teams; },
+          get: function () { return S.picked || []; }, set: function (ids) { S.picked = ids; save(); },
+          onPick: function (t) { S.front = t.id; picked = null; save(); resetAll(); renderAll(); } });
+      }
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { bump(id, d, 'bonus: ' + card.name); } });
       var students = teams.filter(function (t) { return !t.teacher; });

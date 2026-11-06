@@ -175,7 +175,9 @@ describe('Word Rush prompts', () => {
 })
 
 describe('Tag-Team topics', () => {
-  type Level = { mode: string; huddle: number; turn: number; topics: string[]; intro?: unknown[] }
+  type Topic = string | { topic: string; ideas: string[] }
+  type Level = { mode: string; huddle: number; turn: number; topics: Topic[]; intro?: unknown[] }
+  const text = (x: Topic) => (typeof x === 'string' ? x : x.topic)
   const load = (slug: string) => JSON.parse(readFileSync(new URL(`../public/games/${slug}/content.json`, import.meta.url), 'utf8')) as Record<string, Level>
   // two games, one app (games/tag-team/app.js): Talk is relay at every level, Debate is FOR vs AGAINST at every level
   const games = { 'tag-team': 'relay', 'tag-team-debate': 'debate' }
@@ -186,7 +188,7 @@ describe('Tag-Team topics', () => {
         expect(c[level].mode).toBe(mode)
         expect(c[level].huddle).toBeGreaterThan(0)
         expect(c[level].turn).toBeGreaterThan(0)
-        const t = c[level].topics
+        const t = c[level].topics.map(text)
         expect(t.length).toBeGreaterThanOrEqual(50)
         expect(new Set(t.map((x) => x.toLowerCase())).size).toBe(t.length)
         expect(c[level].intro?.length).toBeGreaterThanOrEqual(2)
@@ -199,7 +201,7 @@ describe('Tag-Team topics', () => {
   })
   it('motions are not shared between debate levels', () => {
     const c = load('tag-team-debate')
-    const all = ['M.1', 'M.2', 'M.3'].flatMap((l) => c[l].topics.map((x) => x.toLowerCase()))
+    const all = ['M.1', 'M.2', 'M.3'].flatMap((l) => c[l].topics.map((x) => text(x).toLowerCase()))
     expect(new Set(all).size).toBe(all.length)
   })
   it('Tag-Team Debate reuses the Tag-Team app and styles', () => {
@@ -214,13 +216,47 @@ describe('Tag-Team topics', () => {
   })
 })
 
-describe('Just a Minute scoring', () => {
-  const js = readFileSync(new URL('../public/games/just-a-minute/app.js', import.meta.url), 'utf8')
-  it('+5 To the end, +2 Half the time, no Good challenge award, Challenge takes 1 point', () => {
-    expect(js).toContain("{ d: 5, label: '+5 To the end'")
-    expect(js).toContain("{ d: 2, label: '+2 Half the time'")
-    expect(js).not.toMatch(/Good challenge/)
-    expect(js).toContain('challenge: { penalty: 1 }')
+describe('Tag-Team Talk: hints, team spinner (Just a Second merged in)', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/tag-team/content.json', import.meta.url), 'utf8'))
+  const js = readFileSync(new URL('../public/games/tag-team/app.js', import.meta.url), 'utf8')
+  const html = readFileSync(new URL('../public/games/tag-team/index.html', import.meta.url), 'utf8')
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: 100 topics, each with 3 short hints`, () => {
+      const t = c[level].topics as { topic: string; ideas: string[] }[]
+      expect(t.length).toBeGreaterThanOrEqual(100)
+      for (const x of t) {
+        expect(typeof x.topic, JSON.stringify(x)).toBe('string')
+        expect(x.ideas, x.topic).toHaveLength(3)
+        for (const i of x.ideas) expect(i.length, i).toBeLessThanOrEqual(32)
+      }
+    })
+  }
+  it('Just a Second topics moved here', () => {
+    const all = ['M.1', 'M.2', 'M.3'].flatMap((l) => c[l].topics.map((x: { topic: string }) => x.topic))
+    for (const t of ['Pets', 'Social media', 'Should zoos exist?']) expect(all).toContain(t)
+  })
+  it('hints stay hidden until the teacher taps Hints; a new topic hides them again', () => {
+    expect(html).toContain('id="hints"')
+    expect(html).toMatch(/id="ideas" hidden/)
+    expect(js).toContain('S.hints = false;')
+  })
+  it('🎯 Pick a team chooses the team at the front (Talk only)', () => {
+    expect(html).toContain('/games/shared/kru-picker.js')
+    expect(js).toContain("C.mode !== 'debate' && window.KruPicker")
+    expect(js).toContain('onPick: function (t) { S.front = t.id;')
+  })
+  it('no Linking words bonus card', () => {
+    expect(JSON.stringify(c.bonus)).not.toMatch(/linking/i)
+  })
+})
+
+describe('Just a Second was removed (merged into Tag-Team Talk)', () => {
+  it('is out of the library, and its old sessions can still be reviewed under its title', async () => {
+    const { findGame, gameTitle, RETIRED_GAMES } = await import('../src/lib/games')
+    expect(findGame('just-a-minute')).toBeUndefined()
+    expect(RETIRED_GAMES['just-a-minute']).toBe('Just a Second')
+    expect(gameTitle('just-a-minute')).toBe('Just a Second')
+    expect(gameTitle('tag-team')).toBe('Tag-Team Talk')
   })
 })
 
@@ -241,10 +277,6 @@ describe('speaking + writing card games (shared card engine)', () => {
   const read = (slug: string) => JSON.parse(readFileSync(new URL(`../public/games/${slug}/content.json`, import.meta.url), 'utf8'))
   const check: Record<string, (it: Record<string, unknown>) => void> = {
     'would-you-rather': (it) => expect(it.a && it.b).toBeTruthy(),
-    'just-a-minute': (it) => {
-      expect(it.topic).toBeTruthy()
-      expect(it.ideas).toHaveLength(3)
-    },
     'sentence-builder': (it) => {
       expect(it.words).toHaveLength(3)
       expect(String(it.example)).toMatch(/^[A-Z].*[.?!]$/)

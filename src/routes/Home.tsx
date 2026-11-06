@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { SyncPill } from '../components/SyncPill'
 import { SectionIcon } from '../components/SectionIcon'
-import { findGame, librarySections, SECTIONS, type GameInfo, type SectionId } from '../lib/games'
+import { findGame, gameTitle, librarySections, SECTIONS, type GameInfo, type SectionId } from '../lib/games'
 import { useLibrary } from '../store/library'
 import { quickSession, todayKey } from '../lib/session'
 import { storage } from '../lib/storage'
@@ -78,7 +78,7 @@ export function Home() {
       {open.map((s) => (
         <Link key={s.id} className="resume" to={s.status === 'review' ? `/results/${s.id}` : `/play/${s.id}`}>
           <span>
-            {s.status === 'review' ? 'Scores to review' : 'Game in progress'}: <b>{findGame(s.game)?.title ?? s.game}</b> · {s.class}
+            {s.status === 'review' ? 'Scores to review' : 'Game in progress'}: <b>{gameTitle(s.game)}</b> · {s.class}
           </span>
           <span className="resume-go">{s.status === 'review' ? 'Review ▶' : 'Continue ▶'}</span>
         </Link>

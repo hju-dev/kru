@@ -18,7 +18,7 @@
     "slug": "tag-team",
     "title": "Tag-Team Talk",
     "file": "public/games/tag-team/index.html",
-    "description": "Relay talk at M.1, M.2 and M.3: one team at the front takes turns on a topic, TAG! at each chime. Topic spinner, huddle and turn timer, speaking-order lane with your teams, +3 Win / +1 Challenge scoring.",
+    "description": "Relay talk at M.1, M.2 and M.3: one team at the front takes turns on a topic, TAG! at each chime. 100 topics per level, each with 3 hints, a Pick a team spinner, huddle and turn timer, speaking-order lane with your teams, +3 Win / +1 Challenge scoring.",
     "levels": [
       "M.1",
       "M.2",
@@ -320,25 +320,6 @@
     "status": "ready",
     "section": "speaking",
     "results": "scored"
-  },
-  {
-    "slug": "just-a-minute",
-    "title": "Just a Second",
-    "file": "public/games/just-a-minute/index.html",
-    "description": "Students talk on a topic without stopping, one after another: each has their own timer (adjust by 10 s), then TAG. Challenge! for long stops or repeats, a team picker built in, ideas on Reveal. M.1, M.2 and M.3 topics.",
-    "levels": [
-      "M.1",
-      "M.2",
-      "M.3"
-    ],
-    "type": "speaking game",
-    "minutes": 15,
-    "modes": [
-      "group"
-    ],
-    "phoneLandscape": true,
-    "status": "ready",
-    "section": "speaking"
   },
   {
     "slug": "one-word-story",
