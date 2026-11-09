@@ -20,7 +20,7 @@ export function UpdateToast() {
 
   const { pathname } = useLocation()
   // never pop up over a game or tool on the board: it waits until Henry is back in the library
-  const inGame = pathname.startsWith('/play/') || pathname.startsWith('/tool/')
+  const inGame = pathname.startsWith('/play/') || pathname.startsWith('/tool/') || pathname.startsWith('/preview/')
   if (!needRefresh || inGame) return null
   return (
     <div className="toast" role="status">

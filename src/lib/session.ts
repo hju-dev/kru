@@ -45,6 +45,8 @@ export interface Session {
 
   // review
   scores: Record<string, number> | null
+  /** false = the teams screen hasn't been shown yet (group games show it once, before the game) */
+  teamsShown?: boolean
   notes: string
   submittedAt?: number
 }

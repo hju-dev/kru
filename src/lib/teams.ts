@@ -16,6 +16,10 @@ export function newBinId(): string {
 }
 
 /** How many teams for this many present students: rounded up, at least 1. */
+/** Team size on the setup screen and the class default (Henry: 1 to 15 per team). */
+export const TEAM_SIZE_MIN = 1
+export const TEAM_SIZE_MAX = 15
+
 export function binCountFor(present: number, size: number): number {
   return Math.max(1, Math.ceil(present / Math.max(1, size)))
 }
