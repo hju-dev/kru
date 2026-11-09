@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Reading Think Tank</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game tts rtt">
+      <header class="bar">
+        <span class="round" id="round">Reading <b>Think Tank</b></span>
+        <span class="digits" id="digits">0:00</span>
+        <button class="btn" id="go">Start</button>
+        <button class="btn teal" id="main">Reveal</button>
+        <span class="grow"></span>
+        <button class="small" id="mapBtn" aria-label="The island map">🗺</button>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+
+      <section class="stage" id="stage" aria-live="polite"><div id="card">Loading…</div></section>
+
+      <div class="strip" id="strip" role="group" aria-label="Teams"></div>
+      <div class="toast" id="toast" role="status" hidden>
+        <span id="toastText"></span>
+        <button class="small" id="toastUndo" hidden>Undo</button>
+      </div>
+    </main>
+
+    <!-- Who got it right? (then they claim islands) -->
+    <div class="backdrop" id="whoBack" hidden>
+      <div class="panel wpanel" role="dialog" aria-labelledby="whoTitle">
+        <div class="panel-head"><b id="whoTitle">Who got it right?</b><button class="small" id="whoClose" aria-label="Close">✕</button></div>
+        <div class="who" id="whoList"></div>
+        <div class="who-btns">
+          <button class="btn ghost" id="whoNone">Nobody</button>
+          <button class="btn gold" id="whoGo">Claim islands ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The island map -->
+    <div class="backdrop map-back" id="mapBack" hidden>
+      <div class="map-panel" role="dialog" aria-labelledby="mapTitle">
+        <div class="map-head">
+          <b id="mapTitle">The island map</b>
+          <span class="map-msg" id="mapMsg"></span>
+          <span class="grow"></span>
+          <button class="btn" id="mapUndo">Undo</button>
+          <button class="btn ghost" id="mapSkip">Skip</button>
+          <button class="btn gold" id="mapDone">Done ✓</button>
+        </div>
+        <div class="map" id="map" aria-label="Islands: tap one to claim it"></div>
+        <div class="map-key" id="mapKey"></div>
+      </div>
+    </div>
+
+    <!-- Final Wager: every team's bet -->
+    <div class="backdrop" id="betsBack" hidden>
+      <div class="panel wpanel" role="dialog" aria-labelledby="betsTitle">
+        <div class="panel-head"><b id="betsTitle">Bets: any of your points, or ALL IN</b><button class="btn gold" id="betsDone">Done</button></div>
+        <div class="wlist" id="betList"></div>
+      </div>
+    </div>
+
+    <!-- Final Wager: right or wrong for every team -->
+    <div class="backdrop" id="marksBack" hidden>
+      <div class="panel wpanel" role="dialog" aria-labelledby="marksTitle">
+        <div class="panel-head"><b id="marksTitle">Who got it right?</b><button class="small" id="markClose" aria-label="Close">✕</button></div>
+        <div class="wlist" id="markList"></div>
+        <button class="btn gold wapply" id="markApply">Add up the scores ✓</button>
+      </div>
+    </div>
+
+    <!-- ⋯ menu -->
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="opt-row"><span>Time for this round</span><button class="btn" id="secsLess" aria-label="15 seconds less">−15</button><b id="secsNow">60 s</b><button class="btn" id="secsMore" aria-label="15 seconds more">+15</button></div>
+        <div class="menu-rounds" id="menuRounds"></div>
+        <button class="btn" id="skipQ">Skip this question</button>
+        <button class="btn" id="howTo">How to play</button>
+        <button class="btn ghost danger" id="newGame">New game (new stories, empty map)</button>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-end.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

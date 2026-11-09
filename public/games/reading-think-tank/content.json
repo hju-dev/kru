@@ -1,7 +1,108 @@
 {
- "about": "Scan It! texts: menus, schedules, posters, weather, opening hours, sale ads, league tables and movie times, with three questions each. Generated from data so every answer is calculated (M.1 find a fact, M.2 compare, M.3 calculate). Times in AM/PM, prices in baht. 50+ per level, shuffled every game.",
+ "about": "Reading Think Tank (Henry, Nov 10): the five reading games in one game with an island map. Stories come from games/shared/stories.json (one level up). scan = the Scan It! texts (moved here from games/scan-it when that game was removed).",
+ "intro": [
+  {
+   "title": "Reading Think Tank",
+   "text": [
+    "A reading game show with an island map!",
+    "5 rounds, then the Final Wager."
+   ],
+   "example": {
+    "rows": [
+     [
+      "🧩 Order It",
+      "✅ True or False"
+     ],
+     [
+      "🔍 Spot It",
+      "🧠 Remember It"
+     ],
+     [
+      "📋 Scan It",
+      "💰 Final Wager"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Win islands",
+   "text": [
+    "Right answer? Your team claims an island: +1.",
+    "💎 Treasure island: +3 more!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Island",
+      "+1"
+     ],
+     [
+      "💎 Treasure",
+      "+4"
+     ],
+     [
+      "🌋 Secret volcano",
+      "lose one"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "⚔ Steal questions",
+   "text": [
+    "The last question of each round is a steal question.",
+    "Get it right and take an island from another team!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "⚔ Right answer",
+      "steal 1 island"
+     ],
+     [
+      "Full map",
+      "every right answer steals"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Build an empire",
+   "text": [
+    "Islands next to each other make a group.",
+    "Biggest group at the end: +5!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Biggest group",
+      "+5 🏝"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Final Wager",
+   "text": [
+    "Read the story. It hides. Bet your points.",
+    "Right: win your bet. Wrong: lose it!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Bet 3 and right",
+      "+3"
+     ],
+     [
+      "ALL IN and wrong",
+      "lose them all"
+     ]
+    ]
+   }
+  }
+ ],
  "M.1": {
-  "items": [
+  "scan": [
    {
     "kind": "Menu",
     "head": "Green Leaf Café",
@@ -2882,7 +2983,7 @@
   ]
  },
  "M.2": {
-  "items": [
+  "scan": [
    {
     "kind": "Menu",
     "head": "The Corner Café",
@@ -5763,7 +5864,7 @@
   ]
  },
  "M.3": {
-  "items": [
+  "scan": [
    {
     "kind": "Menu",
     "head": "Green Leaf Café",
@@ -8640,99 +8741,6 @@
       "a": "35 minutes"
      }
     ]
-   }
-  ]
- },
- "intro": [
-  {
-   "title": "Scan It!",
-   "text": [
-    "You see a real text: a menu, a schedule, a poster...",
-    "Don't read every word. Scan for the answer!"
-   ],
-   "example": {
-    "rows": [
-     [
-      "Fried rice",
-      "50 baht"
-     ],
-     [
-      "Iced tea",
-      "30 baht"
-     ]
-    ]
-   }
-  },
-  {
-   "title": "Three questions",
-   "text": [
-    "Find the answers as fast as you can.",
-    "Write them on your board."
-   ],
-   "example": {
-    "big": "How much is the iced tea?",
-    "tag": "Question"
-   }
-  },
-  {
-   "title": "Win points",
-   "text": [
-    "Each correct answer wins a point.",
-    "Some questions need a little math!"
-   ],
-   "example": {
-    "rows": [
-     [
-      "Each correct answer",
-      "+1"
-     ],
-     [
-      "All three",
-      "+3"
-     ]
-    ]
-   }
-  }
- ],
- "bonus": {
-  "before": [
-   {
-    "id": "one-pen",
-    "name": "One pen",
-    "text": "Only one student may write this round: +1",
-    "points": 1
-   },
-   {
-    "id": "full",
-    "name": "Full sentences",
-    "text": "Answer in full sentences: +2",
-    "points": 2
-   },
-   {
-    "id": "own-q",
-    "name": "Ask a question",
-    "text": "Write your own question about the text: +2",
-    "points": 2
-   }
-  ],
-  "secret": [
-   {
-    "id": "first",
-    "name": "Speed scanner",
-    "text": "+2 for the first team with all three right!",
-    "points": 2
-   },
-   {
-    "id": "units",
-    "name": "Units!",
-    "text": "+1 if your answers have baht, AM/PM or °C!",
-    "points": 1
-   },
-   {
-    "id": "neat",
-    "name": "Neat board",
-    "text": "+1 for the neatest board!",
-    "points": 1
    }
   ]
  }

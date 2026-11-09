@@ -1,5 +1,0 @@
-.story-title { align-self: flex-start; padding-right: 48px; }
-.hint { color: var(--muted); font-size: 18px; }
-del { color: var(--coral); text-decoration-thickness: 3px; }
-ins { color: var(--teal); text-decoration: none; font-weight: 800; border-bottom: 3px solid var(--teal); }
-.story { margin: 0; }
