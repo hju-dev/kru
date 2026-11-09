@@ -140,7 +140,7 @@ describe('Think Tank Showdown pools', () => {
   for (const level of ['M.1', 'M.2', 'M.3']) {
     it(`${level}: 50+ questions, each round's pool is big enough for a fresh draw every game`, () => {
       const rounds = c[level].rounds
-      expect(rounds.map((r) => r.kind)).toEqual(['answer', 'answer', 'ideas', 'wager'])
+      expect(rounds.map((r) => r.kind)).toEqual(['answer', 'rebus', 'logic', 'wager'])
       expect(rounds.reduce((n, r) => n + r.qs.length, 0)).toBeGreaterThanOrEqual(50)
       for (const r of rounds) {
         expect(r.play + r.spares, r.name).toBeLessThan(r.qs.length) // so the next game can differ
@@ -429,5 +429,51 @@ describe('Category Grid (Henry, Nov 9)', () => {
     expect(js).toContain("points: [{ d: 1, label: '+1' }, { d: 3, label: '+3' }, { d: 5, label: '+5' }, { d: -1, label: '−1' }],")
     expect(js).toContain('tally: true')
     expect(engine).toContain("if (sum) { addPoints(panelTeam.id, sum, 'round');")
+  })
+})
+
+describe('Think Tank Showdown (Henry, Nov 9)', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/think-tank-showdown/content.json', import.meta.url), 'utf8'))
+  const js = readFileSync(new URL('../public/games/think-tank-showdown/app.js', import.meta.url), 'utf8')
+  const html = readFileSync(new URL('../public/games/think-tank-showdown/index.html', import.meta.url), 'utf8')
+  type Q = { q: string; a: string; why: string; show?: string[]; herring?: boolean }
+  for (const level of ['M.1', 'M.2', 'M.3']) {
+    it(`${level}: round 2 is rebuses, round 3 logic puzzles`, () => {
+      const [, rebus, logic] = c[level].rounds as { name: string; qs: Q[] }[]
+      expect(rebus.name).toBe('Rebus Round')
+      expect(logic.name).toBe('Logic Puzzles')
+      for (const q of rebus.qs) {
+        expect(q.show?.length, q.q).toBeGreaterThan(0)
+        for (const row of q.show!) expect(row === '[line]' || !/\[(?!big:|small:|up:|down:)/.test(row), row).toBe(true)
+      }
+      for (const q of logic.qs) {
+        expect(q.q.split('\n').filter((l) => l.startsWith('• ')).length, q.q).toBeGreaterThanOrEqual(2)
+        expect(q.q.trim().endsWith('?'), q.q).toBe(true)
+      }
+    })
+  }
+  it('rebuses: a mix of emoji and text layouts', () => {
+    const all = ['M.1', 'M.2', 'M.3'].flatMap((l) => c[l].rounds[1].qs as Q[])
+    const emoji = all.filter((q) => /\p{Extended_Pictographic}/u.test(q.show!.join('')))
+    expect(emoji.length).toBeGreaterThan(15)
+    expect(all.length - emoji.length).toBeGreaterThan(15)
+  })
+  it('red herrings only in M.3: trick questions and a useless clue in every logic puzzle', () => {
+    for (const level of ['M.1', 'M.2']) expect(JSON.stringify(c[level].rounds)).not.toContain('"herring"')
+    const tricks = (c['M.3'].rounds[0].qs as Q[]).filter((q) => q.herring)
+    expect(tricks.length).toBeGreaterThanOrEqual(10)
+    for (const q of c['M.3'].rounds[2].qs as Q[]) {
+      expect(q.herring, q.q).toBe(true)
+      expect(q.why, q.q).toMatch(/Red herring/)
+    }
+    expect(html).toContain('id="herring"')
+  })
+  it('Final Wager: any points / ALL IN, bets above the score, mark every team, then add up', () => {
+    expect(js).toContain('function maxBet(id) { return Math.max(0, pts(id)); }')
+    expect(js).toContain("'ALL IN ' + bet : 'bet ' + bet) + '</span>' : '') +\n        '<span class=\"tp\">'")
+    expect(html).toContain('id="betsBack"')
+    expect(html).toContain('id="marksBack"')
+    expect(js).toContain("$('markApply').disabled = !all;")
+    expect(js).toContain("if (bet) addPoints(t.id, S.marks[t.id] === 'right' ? bet : -bet")
   })
 })

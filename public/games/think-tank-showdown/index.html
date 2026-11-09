@@ -23,6 +23,7 @@
         <p class="rule" id="rule"></p>
         <div class="q" id="q">Loading…</div>
         <div class="ans" id="ans" hidden>
+          <div class="herring" id="herring" hidden>🐟 Red herring!</div>
           <div class="a" id="a"></div>
           <div class="why" id="why"></div>
         </div>
@@ -31,9 +32,11 @@
       <div class="controls">
         <span class="digits" id="digits">0:00</span>
         <div class="progress"><i id="fill"></i></div>
+        <button class="btn gold" id="bets" hidden>Set bets</button>
         <button class="btn gold" id="show" hidden>Show question</button>
         <button class="btn" id="go">Start timer</button>
         <button class="btn teal" id="reveal">Reveal</button>
+        <button class="btn gold" id="mark" hidden>Mark answers</button>
         <button class="btn" id="next">Next ▶</button>
       </div>
 
@@ -59,16 +62,23 @@
           <button class="btn gold" data-d="1">+1</button>
           <button class="btn gold" data-d="2">+2</button>
         </div>
-        <div class="panel-btns" id="panelWager" hidden>
-          <span class="bet">
-            Bet
-            <button class="btn" id="betDown" aria-label="Bet minus 1">−</button>
-            <output id="bet">0</output>
-            <button class="btn" id="betUp" aria-label="Bet plus 1">+</button>
-          </span>
-          <button class="btn teal" id="betWin">✓ Right</button>
-          <button class="btn coral" id="betLose">✗ Wrong</button>
-        </div>
+      </div>
+    </div>
+
+    <!-- Final Wager: every team's bet -->
+    <div class="backdrop" id="betsBack" hidden>
+      <div class="panel wpanel" role="dialog" aria-labelledby="betsTitle">
+        <div class="panel-head"><b id="betsTitle">Bets: any of your points, or ALL IN</b><button class="btn gold" id="betsDone">Done</button></div>
+        <div class="wlist" id="betList"></div>
+      </div>
+    </div>
+
+    <!-- Final Wager: right or wrong for every team, then add up -->
+    <div class="backdrop" id="marksBack" hidden>
+      <div class="panel wpanel" role="dialog" aria-labelledby="marksTitle">
+        <div class="panel-head"><b id="marksTitle">Who got it right?</b><button class="small" id="markClose" aria-label="Close">✕</button></div>
+        <div class="wlist" id="markList"></div>
+        <button class="btn gold wapply" id="markApply">Add up the scores ✓</button>
       </div>
     </div>
 

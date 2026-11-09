@@ -1,5 +1,7 @@
-/* Think Tank Showdown: 4 rounds (Riddle Rush, Spot the Problem, What Would Happen If…?, Final Wager).
-   Teams come from the Kru session; questions from content.json for the session's level. */
+/* Think Tank Showdown: 4 rounds (Riddle Rush, Rebus Round, Logic Puzzles, Final Wager).
+   Teams come from the Kru session; questions from content.json for the session's level.
+   Final Wager (Henry, Nov 9): teams bet any of their points (ALL IN) before the question; the bet shows above each
+   team's score; after Reveal, Henry marks every team right or wrong, then the bets are added or taken away. */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
@@ -7,7 +9,7 @@
 
   var ROUNDS = [];
   var teams = [];
-  var S = null; // saved state: { v, level, r, qi, shown, revealed, pts, wager, log }
+  var S = null; // saved state: { v, level, r, qi, shown, revealed, pts, wager, marks, settled, log }
   var left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
   var panelTeam = null;
 
@@ -84,10 +86,28 @@
     return -1;
   }
 
+  // ---------- rebus: rows of words / emoji; [big:X] [small:X] [up:X] [down:X] and a [line] row ----------
+  function rebusHTML(Q) {
+    return '<div class="rebus">' + (Q.show || [Q.q]).map(function (row) {
+      if (row === '[line]') return '<hr class="rb-line">';
+      var html = esc(row).replace(/\[(big|small|up|down):([^\]]+)\]/g, function (m, kind, t) {
+        if (kind === 'up' || kind === 'down') {
+          var letters = t.split('');
+          if (kind === 'up') letters.reverse();
+          return '<span class="rb-col rb-' + kind + '">' + letters.map(function (x) { return '<i>' + x + '</i>'; }).join('') + '</span>';
+        }
+        return '<span class="rb-' + kind + '">' + t + '</span>';
+      });
+      return '<div class="rb-row">' + html + '</div>';
+    }).join('') + '</div>';
+  }
+
   /** Shrink the question until the stage fits (long questions, or the answer is showing). */
   function fitQuestion() {
-    var stage = $('stage'), q = $('q'), why = $('why'), size = 34, whySize = 17;
-    var over = function () { return stage.scrollHeight > stage.clientHeight + 1; };
+    var stage = $('stage'), q = $('q'), why = $('why'), whySize = 17;
+    // rebuses start big, logic puzzles (many clues) start small; never below 18 px
+    var size = q.classList.contains('is-rebus') ? 60 : q.classList.contains('logic') ? 26 : 34;
+    var over = function () { return stage.scrollHeight > stage.clientHeight + 1 || q.scrollWidth > q.clientWidth + 1; };
     q.style.fontSize = size + 'px';
     why.style.fontSize = whySize + 'px';
     while (size > 22 && over()) q.style.fontSize = (size -= 2) + 'px';
@@ -104,13 +124,24 @@
     $('qnum').innerHTML = Q.spare ? '<span class="spare">Spare question</span>' : '';
     KruCorner.set($('stage'), Q.spare ? '' : mainIndex() + '/' + mainCount());
     $('rule').textContent = R.rule;
-    $('rule').hidden = S.revealed; // room for the answer
+    // room for the answer; logic puzzles need the whole stage for their clues (the slides explain the rule)
+    $('rule').hidden = S.revealed || R.kind === 'logic';
+    document.querySelector('main.tts').classList.toggle('logic-round', R.kind === 'logic');
     var wager = R.kind === 'wager';
-    $('q').textContent = S.shown ? Q.q : 'Teams: write your bet first (0–5).';
+    if (S.shown && R.kind === 'rebus') $('q').innerHTML = rebusHTML(Q);
+    // a revealed logic puzzle keeps only its question, so the answer and the reason fit
+    else if (S.shown && R.kind === 'logic' && S.revealed) $('q').textContent = Q.q.split('\n').pop();
+    else $('q').textContent = S.shown ? Q.q : 'Teams: decide your bet first. Any of your points, or ALL IN!';
     $('q').classList.toggle('waiting', !S.shown);
+    $('q').classList.toggle('logic', S.shown && R.kind === 'logic');
+    $('q').classList.toggle('is-rebus', S.shown && R.kind === 'rebus');
     $('show').hidden = S.shown;
     $('go').hidden = !S.shown && wager;
-    $('a').textContent = Q.a || (R.kind === 'ideas' ? 'Example ideas' : '');
+    $('bets').hidden = !wager || S.shown;
+    $('mark').hidden = !wager || !S.revealed || !!S.settled;
+    $('reveal').hidden = !$('mark').hidden; // Mark answers takes Reveal's place (already revealed)
+    $('herring').hidden = !(S.revealed && Q.herring && R.kind === 'answer');
+    $('a').textContent = Q.a || '';
     $('why').textContent = Q.why || '';
     $('ans').hidden = !S.revealed;
     $('reveal').disabled = S.revealed;
@@ -125,8 +156,9 @@
   }
   function goTo(r, qi) {
     S.r = r; S.qi = qi;
-    S.shown = round().kind !== 'wager'; // wager: question hidden until bets are written
+    S.shown = round().kind !== 'wager'; // wager: question hidden until bets are made
     S.revealed = false;
+    S.wager = {}; S.marks = {}; S.settled = false; // a new question: new bets
     save();
     load();
   }
@@ -139,8 +171,9 @@
     $('strip').innerHTML = teams.map(function (t, i) {
       var p = pts(t.id), bet = S.wager[t.id] || 0;
       return '<button class="tile' + (max > 0 && p === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + p + ' points. Tap to give points">' +
-        '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + p + '</span>' +
-        (wager ? '<span class="tb">bet ' + bet + '</span>' : '') + '</button>';
+        '<span class="tn">' + esc(t.name) + '</span>' +
+        (wager && !S.settled ? '<span class="tb' + (bet && bet === p ? ' allin' : '') + '">' + (bet && bet === p ? 'ALL IN ' + bet : 'bet ' + bet) + '</span>' : '') +
+        '<span class="tp">' + p + '</span></button>';
     }).join('');
   }
 
@@ -175,21 +208,16 @@
   function hideToast() { $('toast').hidden = true; }
 
   // ---------- points panel ----------
-  function maxBet(id) { return Math.max(0, Math.min(5, pts(id))); }
+  function maxBet(id) { return Math.max(0, pts(id)); } // any of your points: ALL IN = all of them
   function openPanel(id) {
     var t = teams.find(function (x) { return x.id === id; });
     if (!t) return;
     panelTeam = t;
-    var wager = round().kind === 'wager';
+    // Final Wager: the bets (before the question) or right / wrong (after Reveal) for every team at once
+    if (round().kind === 'wager' && !S.settled) { panelTeam = null; if (S.revealed) openMarks(); else openBets(); return; }
     $('panelName').textContent = t.name;
     $('panelPts').textContent = pts(id) + ' points';
     $('panelMembers').textContent = t.teacher ? 'Teacher' : t.members.map(function (m) { return m.nick; }).join(', ');
-    $('panelNormal').hidden = wager;
-    $('panelWager').hidden = !wager;
-    if (wager) {
-      S.wager[id] = Math.min(S.wager[id] || 0, maxBet(id));
-      $('bet').textContent = S.wager[id];
-    }
     $('panelBack').hidden = false;
   }
   function closePanel() { $('panelBack').hidden = true; panelTeam = null; }
@@ -204,24 +232,61 @@
     addPoints(panelTeam.id, Number(b.dataset.d), round().name);
     closePanel();
   });
-  function setBet(delta) {
-    var id = panelTeam.id;
-    S.wager[id] = Math.max(0, Math.min(maxBet(id), (S.wager[id] || 0) + delta));
-    $('bet').textContent = S.wager[id];
+  // ---------- Final Wager: bets for every team (− / + / ALL IN), then right / wrong for every team ----------
+  function players() { return teams.filter(function (t) { return !t.teacher || pts(t.id) > 0; }); }
+  function openBets() {
+    $('betList').innerHTML = players().map(function (t) {
+      var b = S.wager[t.id] || 0, max = maxBet(t.id);
+      return '<div class="wrow" data-w="' + esc(t.id) + '"><span class="wn">' + esc(t.name) + '<small>' + pts(t.id) + ' pts</small></span>' +
+        '<button class="btn" data-bet="-1" aria-label="Bet 1 less"' + (b <= 0 ? ' disabled' : '') + '>−</button>' +
+        '<output class="wb' + (b && b === max ? ' allin' : '') + '">' + b + '</output>' +
+        '<button class="btn" data-bet="1" aria-label="Bet 1 more"' + (b >= max ? ' disabled' : '') + '>+</button>' +
+        '<button class="btn gold allin-btn" data-bet="all"' + (!max ? ' disabled' : '') + ' aria-pressed="' + (b > 0 && b === max) + '">ALL IN</button></div>';
+    }).join('');
+    $('betsBack').hidden = false;
+  }
+  $('betList').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-bet]'), row = e.target.closest('[data-w]');
+    if (!b || !row) return;
+    var id = row.dataset.w, max = maxBet(id), cur = S.wager[id] || 0;
+    S.wager[id] = b.dataset.bet === 'all' ? (cur === max ? 0 : max) : Math.max(0, Math.min(max, cur + Number(b.dataset.bet)));
+    save(); renderTeams(); openBets();
+  });
+  $('betsDone').addEventListener('click', function () { $('betsBack').hidden = true; });
+  $('betsBack').addEventListener('click', function (e) { if (e.target === this) this.hidden = true; });
+  $('bets').addEventListener('click', openBets);
+
+  function openMarks() {
+    $('markList').innerHTML = players().map(function (t) {
+      var m = S.marks[t.id], b = S.wager[t.id] || 0;
+      return '<div class="wrow" data-m="' + esc(t.id) + '"><span class="wn">' + esc(t.name) + '<small>' + (b && b === pts(t.id) ? 'ALL IN ' : 'bet ') + b + '</small></span>' +
+        '<button class="btn mk-right" data-mark="right" aria-pressed="' + (m === 'right') + '">✓ Right</button>' +
+        '<button class="btn mk-wrong" data-mark="wrong" aria-pressed="' + (m === 'wrong') + '">✗ Wrong</button></div>';
+    }).join('');
+    var all = players().every(function (t) { return S.marks[t.id]; });
+    $('markApply').disabled = !all;
+    $('markApply').textContent = all ? 'Add up the scores ✓' : 'Mark every team first';
+    $('marksBack').hidden = false;
+  }
+  $('markList').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-mark]'), row = e.target.closest('[data-m]');
+    if (!b || !row) return;
+    S.marks[row.dataset.m] = S.marks[row.dataset.m] === b.dataset.mark ? undefined : b.dataset.mark;
+    save(); openMarks();
+  });
+  $('markApply').addEventListener('click', function () {
+    players().forEach(function (t) {
+      var bet = S.wager[t.id] || 0;
+      if (bet) addPoints(t.id, S.marks[t.id] === 'right' ? bet : -bet, S.marks[t.id] === 'right' ? 'won the wager' : 'lost the wager');
+    });
+    S.settled = true;
     save();
-    renderTeams();
-  }
-  $('betUp').addEventListener('click', function () { setBet(1); });
-  $('betDown').addEventListener('click', function () { setBet(-1); });
-  function settleBet(win) {
-    var id = panelTeam.id, bet = S.wager[id] || 0;
-    S.wager[id] = 0;
-    if (bet) addPoints(id, win ? bet : -bet, win ? 'won the wager' : 'lost the wager');
-    else { save(); renderTeams(); }
-    closePanel();
-  }
-  $('betWin').addEventListener('click', function () { settleBet(true); });
-  $('betLose').addEventListener('click', function () { settleBet(false); });
+    $('marksBack').hidden = true;
+    load(true);
+    unlockAudio(); chime();
+  });
+  $('markClose').addEventListener('click', function () { $('marksBack').hidden = true; });
+  $('mark').addEventListener('click', openMarks);
   $('panelClose').addEventListener('click', closePanel);
   $('panelBack').addEventListener('click', function (e) { if (e.target === this) closePanel(); });
 
@@ -289,14 +354,14 @@
     teams.forEach(function (t) {
       if (pts(t.id)) Kru.score(t.id, -pts(t.id), 'reset');
     });
-    S.pts = {}; S.wager = {}; S.log = [];
+    S.pts = {}; S.wager = {}; S.marks = {}; S.settled = false; S.log = [];
     save();
     closeMenu();
     load(true);
   });
 
   document.addEventListener('keydown', function (e) {
-    if (!$('panelBack').hidden || !$('menuBack').hidden) return;
+    if (!$('panelBack').hidden || !$('menuBack').hidden || !$('betsBack').hidden || !$('marksBack').hidden) return;
     if (e.code === 'Space') { e.preventDefault(); $('go').click(); }
     else if (e.key === 'a' || e.key === 'A') $('reveal').click();
     else if (e.key === 'ArrowRight') $('next').click();
@@ -331,7 +396,9 @@
       Object.keys(r).forEach(function (k) { copy[k] = r[k]; });
       copy.qs = draw[i].map(function (k, j) {
         var q = r.qs[k];
-        return { q: q.q, a: q.a, why: q.why, todo: q.todo, spare: j >= (r.play || draw[i].length) };
+        var out = { spare: j >= (r.play || draw[i].length) };
+        Object.keys(q).forEach(function (k) { out[k] = q[k]; });
+        return out;
       });
       return copy;
     });
@@ -356,16 +423,16 @@
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); } });
       var saved = session.resume;
-      if (saved && saved.v === 2 && saved.level === level && validDraw(pools, saved.draw)) {
+      if (saved && saved.v === 3 && saved.level === level && validDraw(pools, saved.draw)) {
         S = saved;
         ROUNDS = drawRounds(pools, S.draw);
       }
       if (S && ROUNDS[S.r] && ROUNDS[S.r].qs[S.qi]) {
-        S.pts = S.pts || {}; S.wager = S.wager || {}; S.log = S.log || [];
+        S.pts = S.pts || {}; S.wager = S.wager || {}; S.marks = S.marks || {}; S.log = S.log || [];
         load();
       } else {
         // a new game: a fresh random mix of questions from each round's pool
-        S = { v: 2, level: level, draw: newDraw(pools), r: 0, qi: 0, shown: true, revealed: false, pts: {}, wager: {}, log: [] };
+        S = { v: 3, level: level, draw: newDraw(pools), r: 0, qi: 0, shown: true, revealed: false, pts: {}, wager: {}, marks: {}, settled: false, log: [] };
         ROUNDS = drawRounds(pools, S.draw);
         goTo(0, 0);
       INTRO = KruIntro.forLevel(content, level);
