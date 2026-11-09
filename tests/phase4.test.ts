@@ -245,8 +245,9 @@ describe('Tag-Team Talk: hints, team spinner (Just a Second merged in)', () => {
     expect(js).toContain("C.mode !== 'debate' && window.KruPicker")
     expect(js).toContain('onPick: function (t) { S.front = t.id;')
   })
-  it('no Linking words bonus card (Talk or Debate)', () => {
-    expect(JSON.stringify(c.bonus)).not.toMatch(/linking/i)
+  it('no Linking words bonus card (Talk or Debate); Talk has no bonus cards at all', () => {
+    expect(c.bonus).toBeUndefined()
+    expect(html).not.toContain('kru-bonus')
     const debate = JSON.parse(readFileSync(new URL('../public/games/tag-team-debate/content.json', import.meta.url), 'utf8'))
     expect(JSON.stringify(debate.bonus)).not.toMatch(/linking/i)
     expect(debate.bonus.before.length).toBeGreaterThanOrEqual(2)
@@ -367,4 +368,48 @@ describe('Scan It! texts', () => {
       }
     })
   }
+})
+
+describe('Tag-Team Talk (Henry, Nov 9)', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/tag-team/content.json', import.meta.url), 'utf8'))
+  const js = readFileSync(new URL('../public/games/tag-team/app.js', import.meta.url), 'utf8')
+  const html = readFileSync(new URL('../public/games/tag-team/index.html', import.meta.url), 'utf8')
+  const css = readFileSync(new URL('../public/games/tag-team/style.css', import.meta.url), 'utf8')
+  it('1 minute huddle and 20 s per speaker at every level', () => {
+    for (const l of ['M.1', 'M.2', 'M.3']) expect([c[l].huddle, c[l].turn]).toEqual([60, 20])
+  })
+  it('the clock stops after the huddle (Start talking when ready)', () => {
+    expect(js).toContain("if (!debate()) { running = false; clearInterval(timer); phase = 'set';")
+    expect(js).toContain("else if (phase === 'huddle' || phase === 'set') startTalk();")
+  })
+  it('speaking time in the ⋯ menu, 5 s steps, 5 to 120 s', () => {
+    expect(html).toContain('id="turnLess"')
+    expect(html).toContain('id="turnMore"')
+    expect(js).toContain('S.turnSecs = Math.max(5, Math.min(120, turnSecs() + d));')
+  })
+  for (const l of ['M.1', 'M.2', 'M.3']) {
+    it(`${l}: 50 crazy topics with 3 hints, not repeating the normal topics`, () => {
+      const crazy = c[l].crazy as { topic: string; ideas: string[] }[]
+      expect(crazy.length).toBeGreaterThanOrEqual(50)
+      const normal = new Set((c[l].topics as { topic: string }[]).map((t) => t.topic.toLowerCase()))
+      for (const t of crazy) {
+        expect(t.ideas, t.topic).toHaveLength(3)
+        for (const i of t.ideas) expect(i.length, i).toBeLessThanOrEqual(32)
+        expect(normal.has(t.topic.toLowerCase()), t.topic).toBe(false)
+      }
+    })
+  }
+  it('Crazy topics only toggle', () => {
+    expect(html).toContain('id="crazy"')
+    expect(js).toContain('S.crazy && C.crazy && C.crazy.length ? C.crazy : C.topics')
+  })
+  it('challenge rule: 5 seconds of silence (Talk and Debate)', () => {
+    const debate = readFileSync(new URL('../public/games/tag-team-debate/content.json', import.meta.url), 'utf8')
+    expect(JSON.stringify(c)).toContain('5 seconds of silence')
+    expect(JSON.stringify(c)).not.toContain('3-second')
+    expect(debate).toContain('5 seconds of silence')
+  })
+  it('bigger speaker boxes in Talk (easy to tap and drag)', () => {
+    expect(css).toMatch(/\.lane\.relay \.slot \{\s*min-height: 46px;/)
+  })
 })
