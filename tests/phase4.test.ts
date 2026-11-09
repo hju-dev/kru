@@ -413,3 +413,21 @@ describe('Tag-Team Talk (Henry, Nov 9)', () => {
     expect(css).toMatch(/\.lane\.relay \.slot \{\s*min-height: 46px;/)
   })
 })
+
+describe('Category Grid (Henry, Nov 9)', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/category-grid/content.json', import.meta.url), 'utf8'))
+  const js = readFileSync(new URL('../public/games/category-grid/app.js', import.meta.url), 'utf8')
+  const engine = readFileSync(new URL('../public/games/shared/kru-cards.js', import.meta.url), 'utf8')
+  it('no bonus cards; the slides teach "more words, more points" and "no word twice"', () => {
+    expect(c.bonus).toBeUndefined()
+    const titles = c.intro.map((s: { title: string }) => s.title)
+    expect(titles).toContain('More words, more points')
+    expect(titles).toContain('No word twice')
+    expect(JSON.stringify(c.intro)).toContain('huge heavy horse = 3')
+  })
+  it('points window: +1 / +3 / +5 / −1 add up, Done ✓ saves the round', () => {
+    expect(js).toContain("points: [{ d: 1, label: '+1' }, { d: 3, label: '+3' }, { d: 5, label: '+5' }, { d: -1, label: '−1' }],")
+    expect(js).toContain('tally: true')
+    expect(engine).toContain("if (sum) { addPoints(panelTeam.id, sum, 'round');")
+  })
+})

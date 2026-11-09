@@ -315,6 +315,30 @@ button:focus-visible {
   min-height: 56px;
   font-size: 22px;
 }
+/* tally (Category Grid): the round total, then Done */
+.tally-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+.tally {
+  flex: 1;
+  font-size: 18px;
+  color: var(--muted);
+}
+.tally b {
+  font: 800 28px var(--display);
+  color: var(--gold);
+}
+.tally small {
+  font-size: 15px;
+}
+.tally-done {
+  min-height: 56px;
+  min-width: 140px;
+  font-size: 22px;
+}
 .chal-none {
   width: 100%;
   margin-top: 8px;
