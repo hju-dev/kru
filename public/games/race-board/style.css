@@ -1,4 +1,4 @@
-/* Race Board, phone landscape: a snake track of 30 squares (10 x 3), team pieces, a legend. */
+/* Race Board, phone landscape: a snake track of 60 squares (12 x 5), team pieces, team buttons. */
 .rb .turn {
   display: inline-flex;
   align-items: center;
@@ -20,9 +20,9 @@
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(10, minmax(0, 1fr));
-  grid-template-rows: repeat(3, minmax(0, 1fr));
-  gap: 4px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: 3px;
 }
 .track .sq {
   position: relative;
@@ -183,4 +183,170 @@
   font: 800 30px/1.1 var(--display);
   color: var(--gold);
   text-align: center;
+}
+
+/* 60 squares: smaller labels and pieces, so 8 pieces fit on START */
+.track .sq {
+  padding: 1px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.track .num {
+  font-size: 13px;
+  white-space: nowrap;
+}
+.track .start .num,
+.track .finish .num {
+  font-size: 10px;
+}
+.track .pieces .piece {
+  width: 14px;
+  height: 14px;
+  font-size: 9px;
+}
+.track .chance {
+  border-color: var(--gold);
+  background: color-mix(in srgb, var(--gold) 16%, var(--stage));
+}
+.track .chance .num {
+  color: var(--gold);
+  font-size: 16px;
+}
+.track .secret {
+  border-color: var(--fg);
+  background: color-mix(in srgb, var(--fg) 14%, var(--stage));
+}
+/* the teams: tap one to see who is on it */
+.legend {
+  gap: 4px;
+}
+.legend .lg {
+  min-height: 40px;
+  padding: 0 8px;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background: var(--stage);
+  color: var(--muted);
+  font: 700 14px var(--body);
+  cursor: pointer;
+}
+.legend .lg.now {
+  border-color: var(--fg);
+}
+.team-panel {
+  width: min(520px, 100%);
+}
+.team-who {
+  font: 800 26px/1.25 var(--display);
+}
+.team-where {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 18px;
+}
+/* question tiers */
+.tier {
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 15px;
+  color: #111;
+}
+.tier.easy { background: var(--teal); }
+.tier.regular { background: var(--fg); }
+.tier.hard { background: var(--coral); }
+.tier.impossible { background: var(--violet); color: #fff; }
+/* two dice, and the back die */
+.dice-row {
+  display: flex;
+  gap: 18px;
+}
+.die[hidden] {
+  display: none;
+}
+.dice-box.back .die {
+  background: var(--coral);
+  box-shadow: 0 6px 0 #a33;
+}
+.dice-box.back .dice-text {
+  color: var(--coral);
+}
+/* chance cards and secret squares */
+.rb-card {
+  align-items: center;
+}
+.chance-box {
+  width: min(560px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  border: 4px solid var(--gold);
+  border-radius: 20px;
+  background: var(--stage);
+  text-align: center;
+}
+.chance-box.bad {
+  border-color: var(--coral);
+}
+.chance-title {
+  font: 800 30px/1.1 var(--display);
+  color: var(--gold);
+}
+.chance-box.bad .chance-title {
+  color: var(--coral);
+}
+.chance-text {
+  font: 700 24px/1.25 var(--display);
+}
+.chance-teams {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+.chance-teams:empty {
+  display: none;
+}
+.chance-teams .btn {
+  min-height: 44px;
+}
+.chance-teams small {
+  color: var(--muted);
+  font-weight: 600;
+}
+#cardOk {
+  min-width: 160px;
+  min-height: 48px;
+  font-size: 20px;
+}
+#cardOk[hidden] {
+  display: none;
+}
+/* one row of team buttons that share the width (8 teams fit at 712 px) */
+.legend {
+  flex-wrap: nowrap;
+}
+.legend .lg {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 4px;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.legend .lg i {
+  flex: none;
+}
+/* a crowded square (4+ pieces, e.g. START): small dots, 4 in a row */
+.track .pieces {
+  gap: 1px;
+}
+.track .sq.crowd .piece {
+  width: 11px;
+  height: 11px;
+  font-size: 0;
 }

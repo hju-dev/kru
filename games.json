@@ -185,7 +185,7 @@
     "slug": "race-board",
     "title": "Race Board",
     "file": "public/games/race-board/index.html",
-    "description": "A board-game race: on its turn a team answers a question; right = roll the dice and move. Forward, back and roll-again squares. First to the finish wins. Questions from Quiz Battle (and your Questions tab) for M.1, M.2 and M.3.",
+    "description": "A 60-square board-game race. Easy, regular, hard and impossible questions: harder ones roll 2 dice; a wrong answer rolls the back die. Chance cards, secret squares, exact roll to finish. Its own questions for M.1, M.2 and M.3 (plus your Questions tab or a unit).",
     "levels": [
       "M.1",
       "M.2",
