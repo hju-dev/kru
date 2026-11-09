@@ -341,20 +341,19 @@ describe('reading games: shared story bank', () => {
       }
     })
   }
-  it('the four story games load the shared bank', () => {
-    for (const slug of ['story-order', 'read-remember', 'true-false-race', 'spot-the-mistakes'])
-      expect(readFileSync(new URL(`../public/games/${slug}/app.js`, import.meta.url), 'utf8')).toContain("'/games/shared/stories.json'")
+  it('Reading Think Tank loads the shared bank', () => {
+    expect(readFileSync(new URL('../public/games/reading-think-tank/app.js', import.meta.url), 'utf8')).toContain("'/games/shared/stories.json'")
   })
 })
 
-describe('Scan It! texts', () => {
-  const c = JSON.parse(readFileSync(new URL('../public/games/scan-it/content.json', import.meta.url), 'utf8')) as Record<
+describe('Scan It! texts (now in Reading Think Tank)', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/reading-think-tank/content.json', import.meta.url), 'utf8')) as Record<
     string,
-    { items: { kind: string; head: string; cols: string[]; rows: string[][]; qs: { q: string; a: string }[] }[] }
+    { scan: { kind: string; head: string; cols: string[]; rows: string[][]; qs: { q: string; a: string }[] }[] }
   >
   for (const level of ['M.1', 'M.2', 'M.3']) {
     it(`${level}: at least 50 texts, 3 questions each, tidy tables`, () => {
-      const items = c[level].items
+      const items = c[level].scan
       expect(items.length).toBeGreaterThanOrEqual(50)
       expect(new Set(items.map((x) => x.kind)).size).toBeGreaterThanOrEqual(6)
       for (const it of items) {
@@ -478,35 +477,42 @@ describe('Think Tank Showdown (Henry, Nov 9)', () => {
   })
 })
 
-describe('reading games one level harder (Henry, Nov 10)', () => {
+describe('Reading Think Tank (Henry, Nov 10): the five reading games in one', () => {
   const bank = JSON.parse(readFileSync(new URL('../public/games/shared/stories.json', import.meta.url), 'utf8'))
-  const js = (slug: string) => readFileSync(new URL(`../public/games/${slug}/app.js`, import.meta.url), 'utf8')
-  const content = (slug: string) => JSON.parse(readFileSync(new URL(`../public/games/${slug}/content.json`, import.meta.url), 'utf8'))
-  it('Read & Remember, Story Order and Spot the Mistakes read one level up; True or False Race does not', () => {
-    for (const slug of ['read-remember', 'story-order', 'spot-the-mistakes']) {
-      expect(js(slug)).toContain("var UP = { 'M.1': 'M.2', 'M.2': 'M.3', 'M.3': 'M.4' };")
-      expect(js(slug)).toContain('return stories[UP[level]] || stories[level];')
+  const js = readFileSync(new URL('../public/games/reading-think-tank/app.js', import.meta.url), 'utf8')
+  const content = JSON.parse(readFileSync(new URL('../public/games/reading-think-tank/content.json', import.meta.url), 'utf8'))
+  const games = JSON.parse(readFileSync(new URL('../games.json', import.meta.url), 'utf8')) as { slug: string; section: string }[]
+  it('replaces Read & Remember, Scan It!, Spot the Mistakes, Story Order and True or False Race', async () => {
+    const { findGame, gameTitle } = await import('../src/lib/games')
+    for (const slug of ['read-remember', 'scan-it', 'spot-the-mistakes', 'story-order', 'true-false-race']) {
+      expect(findGame(slug), slug).toBeUndefined()
+      expect(gameTitle(slug), slug).not.toBe(slug) // old results keep their title
     }
-    expect(js('true-false-race')).not.toContain('UP[level]')
+    expect(games.find((g) => g.slug === 'reading-think-tank')).toMatchObject({ section: 'reading' })
   })
-  it('the stories Read & Remember uses have 3 questions: easy (kept), medium, hard (new)', () => {
+  it('five round types from the five games, then a Final Wager', () => {
+    for (const id of ['order', 'tf', 'spot', 'remember', 'scan', 'wager']) expect(js).toContain(`{ id: '${id}',`)
+  })
+  it('stories are one level up (M.1 reads the M.2 stories, … M.3 the harder M.4 set)', () => {
+    expect(js).toContain("var UP = { 'M.1': 'M.2', 'M.2': 'M.3', 'M.3': 'M.4' };")
     for (const L of ['M.2', 'M.3', 'M.4']) for (const st of bank[L]) expect(st.questions, st.title).toHaveLength(3)
-    expect(bank['M.2'][0].questions[2].q).toBe('Why were his shoes soaking wet?')
     expect(JSON.stringify(bank)).not.toContain('Chiang Ruby')
   })
-  it('Read & Remember: a reading timer and an answering timer, each −15 / +15', () => {
-    expect(js('read-remember')).toContain("adjust: 15, min: 15, max: 300, stepSecs: [60, 60], stepLabels: ['Read', 'Answer']")
+  it('island map: 40 islands, 4 treasures (+3 more), 3 hidden volcanoes, steal questions, +5 for the biggest group', () => {
+    expect(js).toContain('var COLS = 8, ROWS = 5, CELLS = COLS * ROWS, TREASURES = 4, VOLCANOES = 3, EMPIRE = 5;')
+    expect(js).toContain("addPts(id, tr ? 4 : 1, tr ? 'treasure island' : 'island');")
+    expect(js).toContain('function canSteal() { return (Q() && Q().steal) || !emptyCells().length; }')
+    expect(js).toContain('function finalPts(id) { return pts(id) + (empireLeaders().indexOf(id) >= 0 ? EMPIRE : 0); }')
   })
-  it('Read & Remember: no "Remember the title" card', () => {
-    expect(JSON.stringify(content('read-remember').bonus)).not.toMatch(/title/i)
+  it('a 30-minute plan: 7 different stories and 1 Scan It text, the last question of each round steals', () => {
+    expect(js).toContain("plan.push({ r: 0, s: o1 }, { r: 0, s: o2, steal: true });")
   })
-  it('all three: a challenge round every 4th story, double points, and a slide about it', () => {
-    for (const slug of ['read-remember', 'story-order', 'spot-the-mistakes']) {
-      expect(js(slug)).toMatch(/challengeRound: \{ every: 4,[^}]*double: true/)
-      expect(content(slug).intro.map((s: { title: string }) => s.title)).toContain('Challenge round!')
-    }
+  it('How to play slides explain the islands', () => {
+    const titles = content.intro.map((x: { title: string }) => x.title)
+    for (const t of ['Win islands', '⚔ Steal questions', 'Build an empire', 'Final Wager']) expect(titles).toContain(t)
+  })
+  it('the card engine keeps its challenge-round option', () => {
     const engine = readFileSync(new URL('../public/games/shared/kru-cards.js', import.meta.url), 'utf8')
     expect(engine).toContain('function isChal(pos)')
-    expect(engine).toContain("'\" data-d=\"' + b.d * x + '\"")
   })
 })

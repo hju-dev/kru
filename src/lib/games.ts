@@ -48,6 +48,12 @@ export const findGame = (slug: string) => GAMES.find((g) => g.slug === slug)
 /** Games taken out of the library (Henry). Their old sessions can still be reviewed and saved under this title. */
 export const RETIRED_GAMES: Record<string, string> = {
   'just-a-minute': 'Just a Second', // merged into Tag-Team Talk (Nov 2026)
+  // merged into Reading Think Tank (Nov 2026)
+  'read-remember': 'Read & Remember',
+  'scan-it': 'Scan It!',
+  'spot-the-mistakes': 'Spot the Mistakes',
+  'story-order': 'Story Order',
+  'true-false-race': 'True or False Race',
 }
 
 /** A game's title for screens and the Sheet, also for retired games. */

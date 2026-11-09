@@ -1,0 +1,548 @@
+/* Reading Think Tank (base copied from Think Tank Showdown), phone landscape: round bar with timer + buttons, the reading stage, team strip; the island map is an overlay. */
+.tts {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--tap);
+  padding-right: 56px; /* Kru's home button */
+}
+.round {
+  font: 800 20px/1.1 var(--display);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.round b {
+  color: var(--gold);
+}
+.qnum {
+  flex: 1;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.qnum .spare {
+  color: var(--coral);
+  font-family: var(--body);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+button.small {
+  min-height: var(--tap);
+  min-width: var(--tap);
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--panel);
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.stage {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  background: var(--stage);
+  border: 3px solid var(--line);
+  border-radius: 18px;
+  padding: 4px 16px;
+}
+.rule {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.3;
+}
+.q {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 32px; /* shrunk by app.js until it fits */
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.q.waiting {
+  color: var(--muted);
+}
+.ans {
+  border: 2px dashed var(--line);
+  border-radius: 12px;
+  padding: 4px 12px;
+}
+.ans .a {
+  font: 800 24px/1.15 var(--display);
+  color: var(--teal);
+}
+.ans .why {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.digits {
+  font-family: var(--mono);
+  font-size: 36px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.9ch;
+}
+.digits.warn {
+  color: var(--gold);
+}
+.digits.done {
+  color: var(--coral);
+}
+.progress {
+  flex: 1;
+  min-width: 40px;
+  height: 10px;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.progress i {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+  transform-origin: left;
+  transition: transform 0.25s linear;
+}
+.btn {
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 2px solid var(--fg);
+  background: transparent;
+  font-weight: 700;
+  font-size: 17px;
+  white-space: nowrap;
+}
+.btn.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+.btn.teal {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--bg);
+}
+.btn.coral {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--bg);
+}
+.btn.ghost {
+  border-color: var(--line);
+}
+.btn.danger {
+  color: var(--coral);
+}
+.btn.danger.armed {
+  background: var(--coral);
+  color: var(--bg);
+}
+.btn:disabled {
+  opacity: 0.35;
+}
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Team strip: one tile per team (tap to give points) */
+.strip {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.strip::-webkit-scrollbar {
+  display: none;
+}
+.tile {
+  flex: 1 1 auto; /* wider names get more room, so 8 teams + teacher fit without "Team…" */
+  min-width: 66px; /* 8 teams + T. Henry fit in 712 px */
+  min-height: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 2px;
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  border-top: 5px solid var(--c, var(--gold));
+  background: var(--panel);
+}
+.tile .tn {
+  max-width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tile .tp {
+  font-family: var(--mono);
+  font-size: 24px;
+  line-height: 1;
+}
+.tile .tb {
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+}
+.tile.lead {
+  box-shadow: 0 0 0 3px var(--gold);
+}
+
+.toast {
+  position: absolute;
+  top: 52px; /* over the top of the stage, clear of the buttons */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 4px 4px 14px;
+  border-radius: 14px;
+  background: var(--fg);
+  color: var(--bg);
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 3;
+}
+.toast button.small {
+  background: var(--bg);
+  color: var(--fg);
+  border-color: var(--bg);
+  font-size: 15px;
+}
+
+/* Overlays */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  background: rgb(0 0 0 / 0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px);
+}
+.panel,
+.menu {
+  width: min(560px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+  background: var(--stage);
+  border: 2px solid var(--line);
+  border-radius: 18px;
+  padding: 10px 12px 12px;
+}
+.panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+.panel-members {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.3;
+}
+.panel-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.panel-btns .btn {
+  flex: 1;
+  min-height: 56px;
+  font-size: 22px;
+}
+.bet {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 18px;
+}
+.bet .btn {
+  flex: none;
+  min-width: 52px;
+}
+.bet output {
+  font-family: var(--mono);
+  font-size: 30px;
+  min-width: 1.4ch;
+  text-align: center;
+}
+.menu {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.menu-rounds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+.menu-rounds .btn {
+  font-size: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.menu-rounds .btn[aria-pressed='true'] {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+/* Rebus Round: rows of words / emoji, sized in em so the fit loop shrinks the whole rebus */
+.q.is-rebus {
+  font-size: 44px;
+  text-align: center;
+}
+.rebus {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15em;
+  font-family: var(--display);
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+}
+.rb-row {
+  white-space: nowrap;
+}
+.rb-line {
+  width: 5em;
+  margin: 0;
+  border: 0;
+  border-top: 0.08em solid var(--fg);
+}
+.rb-big {
+  font-size: 1.7em;
+}
+.rb-small {
+  font-size: 0.5em;
+}
+.rb-col {
+  display: inline-flex;
+  flex-direction: column;
+  font-size: 0.6em;
+  line-height: 1;
+}
+.rb-col i {
+  font-style: normal;
+}
+/* Logic Puzzles: the clues as a list */
+.q.logic {
+  white-space: pre-line;
+  text-wrap: pretty;
+  text-align: left;
+  font-family: var(--body);
+  font-weight: 600;
+  line-height: 1.15;
+}
+/* logic round: shorter team tiles, so all the clues fit */
+.logic-round .tile {
+  min-height: 44px;
+  flex-direction: row;
+  justify-content: center;
+  gap: 6px;
+}
+.herring {
+  display: inline-block;
+  margin-bottom: 2px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--coral);
+  color: #111;
+  font-weight: 800;
+  font-size: 18px;
+}
+.herring[hidden] {
+  display: none;
+}
+
+/* Final Wager: the bet sits above the score on each team */
+.tile .tb.allin {
+  color: #111;
+  background: var(--gold);
+  border-radius: 6px;
+  padding: 0 4px;
+}
+.wpanel {
+  width: min(720px, 100%);
+  max-height: 100%;
+  overflow-y: auto;
+}
+.wpanel .panel-head {
+  align-items: center;
+}
+.wlist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 12px;
+}
+.wrow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.wrow .wn {
+  flex: 1;
+  min-width: 0;
+  font-weight: 800;
+  font-size: 17px;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wrow .wn small {
+  display: block;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+}
+.wrow .btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 8px;
+  font-size: 18px;
+}
+.wrow output {
+  min-width: 2ch;
+  text-align: center;
+  font: 800 24px var(--mono);
+}
+.wrow output.allin {
+  color: var(--gold);
+}
+.wrow .allin-btn {
+  font-size: 14px;
+}
+.wrow [aria-pressed='true'].mk-right {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #111;
+}
+.wrow [aria-pressed='true'].mk-wrong {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #111;
+}
+.wapply {
+  width: 100%;
+  margin-top: 8px;
+  min-height: 52px;
+  font-size: 20px;
+}
+
+/* ---------- Reading Think Tank ---------- */
+/* compact bar: round name, clock and the main button share the top bar (more room for long texts) */
+.rtt .bar { gap: 8px; }
+.rtt .round { font-size: 18px; min-width: 0; flex-shrink: 1; }
+.rtt .bar .digits { font-size: 26px; min-width: 3.2ch; }
+.rtt .bar .btn { min-height: 44px; padding: 0 14px; font-size: 17px; white-space: nowrap; }
+.rtt .grow { flex: 1; }
+.rtt .stage { padding: 2px 12px; }
+.rtt .stage.steal-q { border-color: var(--coral); }
+#card { width: 100%; }
+.rtt .tile { min-height: 46px; padding: 1px 4px; border-top-width: 4px; }
+.rtt .tile .tn { font-size: 15px; line-height: 1.1; }
+.rtt .tile .tp { font-size: 20px; }
+.rtt .tile .ti { font: 700 12px var(--body); color: var(--muted); }
+/* reading texts */
+.story { text-align: left; width: 100%; font-size: 22px; line-height: 1.3; margin: 0; }
+.story.small { line-height: 1.25; }
+.story del { color: var(--coral); }
+.story ins { color: var(--lime); text-decoration: none; font-weight: 800; }
+.lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; width: 100%; text-align: left; }
+.lines li { display: flex; gap: 10px; align-items: baseline; line-height: 1.1; }
+.lines li:first-child { padding-right: 70px; }
+.lines .tag { flex: none; min-width: 28px; height: 28px; border-radius: 8px; display: inline-grid; place-items: center; background: var(--gold); color: #111; font: 800 18px/1 var(--display); }
+.lines li.ok .tag { background: var(--lime); }
+.q-top { padding-right: 70px; text-align: left; font-size: 16px; }
+.q-top .hint, .hint { color: var(--muted); }
+.st-title { color: var(--gold); font: 800 19px var(--display); }
+.steal { color: var(--coral); font-weight: 800; white-space: nowrap; }
+.statement { margin-top: 6px; font: 800 26px/1.15 var(--display); text-align: left; }
+.question { font: 800 32px/1.15 var(--display); text-align: left; }
+.ans-line { margin-top: 4px; color: var(--teal); font: 800 22px/1.2 var(--display); text-align: left; }
+.big-msg { font: 800 30px/1.2 var(--display); color: var(--gold); text-align: center; }
+.lvl { display: inline-block; padding: 0 6px; border-radius: 6px; font: 800 0.55em/1.6 var(--body); color: #111; vertical-align: 0.2em; }
+.lvl.l0 { background: var(--teal); }
+.lvl.l1 { background: var(--gold); }
+.lvl.l2 { background: var(--coral); }
+/* Scan It texts */
+.scan { display: flex; gap: 12px; width: 100%; align-items: center; text-align: left; }
+.doc { flex: 0 0 auto; max-width: 64%; min-width: 0; background: #f6f1e6; color: #1b1b1b; border-radius: 10px; padding: 4px 8px 6px; line-height: 1.15; }
+.doc-head { font-family: var(--display); font-weight: 800; margin-bottom: 2px; display: flex; flex-wrap: wrap; gap: 0 8px; align-items: baseline; }
+.doc-head .kind { font-size: 0.7em; text-transform: uppercase; letter-spacing: 0.06em; color: #8a5a00; }
+.doc-t { border-collapse: collapse; width: 100%; }
+.doc-t th, .doc-t td { padding: 1px 6px 1px 0; text-align: left; vertical-align: top; white-space: nowrap; }
+.doc-t thead th { border-bottom: 2px solid #1b1b1b33; font-size: 0.85em; color: #555; }
+.doc-t tbody tr + tr td, .doc-t tbody tr + tr th { border-top: 1px solid #1b1b1b1a; }
+.scan-q { flex: 1; min-width: 180px; }
+.scan-q .question { font-size: 24px; }
+/* who got it right? */
+.who { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.who-t { min-height: 48px; border-color: var(--c); font-size: 18px; }
+.who-t[aria-pressed='true'] { background: var(--c); color: #111; }
+.who-btns { display: flex; gap: 8px; margin-top: 8px; }
+.who-btns .btn { flex: 1; min-height: 50px; font-size: 19px; }
+/* ⋯ menu: round time */
+.opt-row { display: flex; align-items: center; gap: 8px; }
+.opt-row span { flex: 1; font-weight: 700; }
+.opt-row b { min-width: 56px; text-align: center; font: 800 20px var(--display); }
+.opt-row .btn { min-width: 56px; }
+/* the island map */
+.map-back { align-items: stretch; }
+.map-panel { width: 100%; height: 100%; display: flex; flex-direction: column; gap: 4px; padding: 4px 56px 4px 4px; background: var(--bg); border-radius: 14px; }
+.map-head { display: flex; align-items: center; gap: 8px; min-height: 44px; }
+.map-head b { font: 800 18px var(--display); white-space: nowrap; }
+.map-msg { font-weight: 800; font-size: 17px; display: inline-flex; align-items: center; gap: 6px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.map-msg .dot { flex: none; width: 16px; height: 16px; border-radius: 50%; }
+.map-head .btn { min-height: 44px; padding: 0 12px; font-size: 16px; }
+.map { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); grid-template-rows: repeat(5, minmax(0, 1fr)); gap: 4px;
+  background: radial-gradient(circle at 30% 30%, #1d4e6b, #10283a); border-radius: 14px; padding: 6px; }
+.isle { border: 0; border-radius: 40% 55% 45% 50% / 50% 45% 55% 40%; background: #d9c38a; color: #111; font: 800 18px/1 var(--display); box-shadow: 0 3px 0 #9d8a57; }
+.isle.treasure { background: #ffe08a; box-shadow: 0 0 0 3px #ffb703, 0 3px 0 #9d8a57; font-size: 20px; }
+.isle.owned { background: var(--c); color: #111; }
+.isle.empire { outline: 3px solid #fff; outline-offset: -3px; }
+.isle.ash { background: #3a3340; color: #fff; box-shadow: none; font-size: 20px; }
+.isle.can { animation: rtt-pulse 1.1s ease-in-out infinite alternate; }
+@keyframes rtt-pulse { to { transform: scale(0.92); } }
+@media (prefers-reduced-motion: reduce) { .isle.can { animation: none; } }
+.map-key { display: flex; flex-wrap: nowrap; gap: 4px 10px; overflow: hidden; font-size: 14px; color: var(--muted); }
+.map-key .mk { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.map-key .mk.now { color: var(--fg); font-weight: 800; }
+.map-key i { width: 18px; height: 18px; border-radius: 50%; display: inline-grid; place-items: center; font: 800 11px/1 var(--body); font-style: normal; color: #111; }
