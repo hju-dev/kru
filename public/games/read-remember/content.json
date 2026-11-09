@@ -49,6 +49,29 @@
      ]
     ]
    }
+  },
+  {
+   "title": "Challenge round!",
+   "text": [
+    "Questions get harder: easy, medium, then hard.",
+    "Every 4th story: half the reading time. Double points!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Question 1",
+      "Easy"
+     ],
+     [
+      "Question 2",
+      "Medium"
+     ],
+     [
+      "Question 3",
+      "Hard"
+     ]
+    ]
+   }
   }
  ],
  "bonus": {
@@ -86,10 +109,10 @@
     "points": 1
    },
    {
-    "id": "title",
-    "name": "Remember the title",
-    "text": "+1 if your team can say the story title!",
-    "points": 1
+    "id": "hard-hero",
+    "name": "Hard question hero",
+    "text": "+2 for every team that got the HARD question right!",
+    "points": 2
    }
   ]
  }

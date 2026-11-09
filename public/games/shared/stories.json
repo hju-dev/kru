@@ -1,5 +1,5 @@
 {
- "about": "Shared story bank for the reading games (Story Order, Read & Remember, True or False Race, Spot the Mistakes). 5 sentences per story, in order. tf: statements (a = true/false, fix = the correct fact). questions: short answers. mistakes: in sentence i, the right word(s) are swapped for a wrong form (Spot the Mistakes). Written for Kru in American English. At least 50 stories per level, shuffled every game.",
+ "about": "Shared story bank for the reading games (Story Order, Read & Remember, True or False Race, Spot the Mistakes). 5 sentences per story, in order. tf: statements (a = true/false, fix = the correct fact). questions: short answers. mistakes: in sentence i, the right word(s) are swapped for a wrong form (Spot the Mistakes). Written for Kru in American English. At least 50 stories per level, shuffled every game. M.4 = harder stories (Henry, Nov 10): Read & Remember, Story Order and Spot the Mistakes show stories one level up (M.1 uses M.2, M.2 uses M.3, M.3 uses M.4); True or False Race is unchanged. Read & Remember questions go easy, medium, hard.",
  "M.1": [
   {
    "id": "m1-1",
@@ -1553,9 +1553,9 @@
   },
   {
    "id": "m1-26",
-   "title": "The Train to Chiang Ruby",
+   "title": "The Train to Chiang Rai",
    "sentences": [
-    "Ken and his family took the train to Chiang Ruby.",
+    "Ken and his family took the train to Chiang Rai.",
     "The trip was twelve hours long.",
     "They slept in small beds on the train.",
     "In the morning, Ken looked out the window.",
@@ -1563,7 +1563,7 @@
    ],
    "tf": [
     {
-     "s": "They went to Chiang Ruby.",
+     "s": "They went to Chiang Rai.",
      "a": true
     },
     {
@@ -3201,12 +3201,12 @@
      "a": "His alarm didn't ring"
     },
     {
-     "q": "How did he get to school?",
-     "a": "He walked"
+     "q": "Why did Daniel have to walk to school?",
+     "a": "The bus was already leaving when he got to the stop"
     },
     {
-     "q": "How late was he?",
-     "a": "Twenty minutes"
+     "q": "Why were his shoes soaking wet?",
+     "a": "He walked to school in the rain"
     }
    ],
    "mistakes": [
@@ -3263,12 +3263,12 @@
      "a": "Last month"
     },
     {
-     "q": "What amazed her?",
-     "a": "The tall buildings and busy streets"
+     "q": "How did Grace travel around the city?",
+     "a": "On the Skytrain"
     },
     {
-     "q": "What did she visit on the second day?",
-     "a": "The Grand Palace"
+     "q": "Is Grace's hometown big or small? How do you know?",
+     "a": "Small: the story says \"her small hometown\" and she found Bangkok more exciting"
     }
    ],
    "mistakes": [
@@ -3325,12 +3325,12 @@
      "a": "A model of a volcano"
     },
     {
-     "q": "How long did they work on it?",
-     "a": "A week"
+     "q": "What did they use to build the model?",
+     "a": "Paper, glue, and paint"
     },
     {
-     "q": "What did they add on the last day?",
-     "a": "Baking soda and vinegar"
+     "q": "Why did the class cheer?",
+     "a": "The volcano \"erupted\" when they added baking soda and vinegar"
     }
    ],
    "mistakes": [
@@ -3387,12 +3387,12 @@
      "a": "Her sister"
     },
     {
-     "q": "Who was the singer?",
-     "a": "Their favorite pop star"
+     "q": "How long did they wait for the tickets?",
+     "a": "Three months"
     },
     {
-     "q": "When did they get home?",
-     "a": "After midnight"
+     "q": "How do you know the concert was worth the wait?",
+     "a": "They were tired but happy; everyone was dancing; it was their favorite singer"
     }
    ],
    "mistakes": [
@@ -3449,12 +3449,12 @@
      "a": "His grandmother"
     },
     {
-     "q": "What can he make?",
+     "q": "What has Leo learned to make so far?",
      "a": "Fried rice and green curry"
     },
     {
-     "q": "Who did he cook dinner for?",
-     "a": "The whole family"
+     "q": "Was the family dinner a success? Why?",
+     "a": "Yes: everyone said it was better than restaurant food"
     }
    ],
    "mistakes": [
@@ -3507,16 +3507,16 @@
    ],
    "questions": [
     {
-     "q": "What were the boys doing?",
-     "a": "Playing soccer"
-    },
-    {
      "q": "What did the ball break?",
      "a": "A classroom window"
     },
     {
-     "q": "Why did the principal thank Ben?",
-     "a": "For being honest"
+     "q": "What did Ben do after the window broke?",
+     "a": "He went to the principal and told her the truth"
+    },
+    {
+     "q": "Why do you think the principal was angry AND thankful?",
+     "a": "Angry about the broken window, thankful that Ben was honest"
     }
    ],
    "mistakes": [
@@ -3541,15 +3541,15 @@
    "id": "m2-7",
    "title": "Moving to a New City",
    "sentences": [
-    "Last year, Anna's family moved from Phuket to Chiang Ruby.",
+    "Last year, Anna's family moved from Phuket to Chiang Rai.",
     "At first, she missed the beach and her old friends.",
-    "The weather in Chiang Ruby was cooler than in Phuket.",
+    "The weather in Chiang Rai was cooler than in Phuket.",
     "After a few weeks, she joined the school badminton club.",
     "Now she has many new friends and loves her new city."
    ],
    "tf": [
     {
-     "s": "Anna moved to Chiang Ruby.",
+     "s": "Anna moved to Chiang Rai.",
      "a": true
     },
     {
@@ -3558,7 +3558,7 @@
      "fix": "She lived in Phuket."
     },
     {
-     "s": "Chiang Ruby was cooler.",
+     "s": "Chiang Rai was cooler.",
      "a": true
     },
     {
@@ -3573,12 +3573,12 @@
      "a": "Phuket"
     },
     {
-     "q": "What did she miss at first?",
-     "a": "The beach and her old friends"
+     "q": "Why was Anna sad at first?",
+     "a": "She missed the beach and her old friends"
     },
     {
-     "q": "Which club did she join?",
-     "a": "The badminton club"
+     "q": "What helped Anna feel at home in Chiang Rai?",
+     "a": "Joining the badminton club and making new friends"
     }
    ],
    "mistakes": [
@@ -3635,12 +3635,12 @@
      "a": "On the sidewalk"
     },
     {
-     "q": "What was inside?",
-     "a": "Money and an ID card"
+     "q": "What did Sam do with the wallet?",
+     "a": "He took it to the police station"
     },
     {
-     "q": "What did the owner give him?",
-     "a": "A small reward"
+     "q": "How did the owner find Sam?",
+     "a": "Her ID was in the wallet, so the police could contact her, and she called Sam"
     }
    ],
    "mistakes": [
@@ -3693,16 +3693,16 @@
    ],
    "questions": [
     {
-     "q": "When is sports day?",
-     "a": "Next Friday"
-    },
-    {
      "q": "What am I going to compete in?",
      "a": "The long jump"
     },
     {
-     "q": "What does our teacher say?",
-     "a": "We will win if we work hard"
+     "q": "What does the class do every afternoon?",
+     "a": "Runs around the field three times"
+    },
+    {
+     "q": "Why does the class practice every day?",
+     "a": "To get ready for sports day / their teacher says they will win if they work hard"
     }
    ],
    "mistakes": [
@@ -3759,12 +3759,12 @@
      "a": "Five days"
     },
     {
-     "q": "Why was my brother happy?",
-     "a": "He could play at home"
+     "q": "Which days did the children miss school?",
+     "a": "Wednesday and Thursday"
     },
     {
-     "q": "When did the sun come out?",
-     "a": "By Saturday"
+     "q": "Why couldn't they go to school?",
+     "a": "The street was flooded after five days of rain"
     }
    ],
    "mistakes": [
@@ -3821,12 +3821,12 @@
      "a": "In March"
     },
     {
-     "q": "How did Lily feel before the show?",
-     "a": "Nervous"
+     "q": "What language did Lily sing in?",
+     "a": "English"
     },
     {
-     "q": "What did she get?",
-     "a": "A gold trophy"
+     "q": "How do you know the audience enjoyed her song?",
+     "a": "They clapped along, and she won second place"
     }
    ],
    "mistakes": [
@@ -3883,12 +3883,12 @@
      "a": "One day without phones"
     },
     {
-     "q": "What did I do in the morning?",
-     "a": "Read a book and played chess"
+     "q": "What did I do in the afternoon?",
+     "a": "Rode my bike to my friend's house"
     },
     {
-     "q": "Where did I ride my bike?",
-     "a": "To my friend's house"
+     "q": "What did the writer learn from the challenge?",
+     "a": "Life without a phone can be fun: it was the best day in a long time"
     }
    ],
    "mistakes": [
@@ -3941,16 +3941,16 @@
    ],
    "questions": [
     {
-     "q": "Where was the contest?",
-     "a": "At the mall"
-    },
-    {
      "q": "What did our team make?",
      "a": "Tom yum soup"
     },
     {
-     "q": "What did the judges say?",
-     "a": "It was too salty"
+     "q": "How long did each team have?",
+     "a": "One hour"
+    },
+    {
+     "q": "What two things went wrong with our soup?",
+     "a": "We forgot the lime, and it was too salty"
     }
    ],
    "mistakes": [
@@ -4003,16 +4003,16 @@
    ],
    "questions": [
     {
-     "q": "When did we visit the sanctuary?",
-     "a": "During summer vacation"
-    },
-    {
      "q": "What did we help do?",
      "a": "Wash the elephants"
     },
     {
-     "q": "What do I want to do when I'm older?",
-     "a": "Volunteer there again"
+     "q": "Why do the elephants live at the sanctuary?",
+     "a": "They were rescued from hard work"
+    },
+    {
+     "q": "How did the writer's feelings about elephants change?",
+     "a": "They found them bigger but gentler than expected, and now want to volunteer"
     }
    ],
    "mistakes": [
@@ -4065,16 +4065,16 @@
    ],
    "questions": [
     {
-     "q": "When did the new teacher start?",
-     "a": "On Monday"
-    },
-    {
      "q": "Where is she from?",
      "a": "New York"
     },
     {
-     "q": "Why did the principal laugh?",
-     "a": "The students were shouting English words"
+     "q": "What was Ms. Carter doing when the principal came in?",
+     "a": "Teaching a game"
+    },
+    {
+     "q": "Why do students like Ms. Carter's classes?",
+     "a": "They are fun: she teaches with games"
     }
    ],
    "mistakes": [
@@ -4131,12 +4131,12 @@
      "a": "To the beach"
     },
     {
-     "q": "Who helped them?",
-     "a": "A kind farmer"
+     "q": "Why couldn't Dad fix the tire?",
+     "a": "He didn't have the right tools"
     },
     {
-     "q": "How long did they wait?",
-     "a": "An hour"
+     "q": "Why was the flat tire a big problem there?",
+     "a": "They were on a quiet road far from any town, so help was hard to find"
     }
    ],
    "mistakes": [
@@ -4193,12 +4193,12 @@
      "a": "5,000 baht"
     },
     {
-     "q": "How much of his money does he save?",
-     "a": "Half"
+     "q": "How does Nick get extra money?",
+     "a": "He washes his neighbor's car"
     },
     {
-     "q": "When will he have enough?",
-     "a": "By December"
+     "q": "How much does Nick save from his pocket money every week?",
+     "a": "50 baht (half of 100 baht)"
     }
    ],
    "mistakes": [
@@ -4255,12 +4255,12 @@
      "a": "At the fair"
     },
     {
-     "q": "What was it like inside?",
-     "a": "Dark and full of strange noises"
+     "q": "What happened when the man jumped out?",
+     "a": "Kate's cousin screamed so loudly that everyone laughed"
     },
     {
-     "q": "What did they want when they came out?",
-     "a": "To go in again"
+     "q": "Were they really scared? How do you know?",
+     "a": "Not much: they laughed and wanted to go in again"
     }
    ],
    "mistakes": [
@@ -4317,12 +4317,12 @@
      "a": "A science museum"
     },
     {
-     "q": "What was the most interesting part?",
-     "a": "The space room"
+     "q": "What did the class learn about?",
+     "a": "How planes fly and how robots work"
     },
     {
-     "q": "What did I buy?",
-     "a": "A model rocket"
+     "q": "Which part of the trip did the writer like best, and what did they buy?",
+     "a": "The space room; a model rocket"
     }
    ],
    "mistakes": [
@@ -4379,12 +4379,12 @@
      "a": "A fisherman"
     },
     {
-     "q": "When does he tell stories?",
-     "a": "Every evening"
+     "q": "What happened to his boat once?",
+     "a": "It was caught in a terrible storm"
     },
     {
-     "q": "What did he see at night?",
-     "a": "A whale"
+     "q": "Why does the writer think Grandpa's life was exciting?",
+     "a": "He saw a whale and survived a storm at sea"
     }
    ],
    "mistakes": [
@@ -4441,12 +4441,12 @@
      "a": "Five"
     },
     {
-     "q": "For how long?",
-     "a": "Two weeks"
+     "q": "How old was Emma when she got her card?",
+     "a": "Thirteen"
     },
     {
-     "q": "What is she going to try next month?",
-     "a": "Science fiction"
+     "q": "What kind of books does Emma like now, and what will she try next?",
+     "a": "Mystery novels; science fiction"
     }
    ],
    "mistakes": [
@@ -4503,12 +4503,12 @@
      "a": "In November"
     },
     {
-     "q": "What countries did I try food from?",
-     "a": "Japan, Korea, and India"
+     "q": "How many food stalls were there?",
+     "a": "More than a hundred"
     },
     {
-     "q": "What was the spiciest dish?",
-     "a": "A curry from the south of Thailand"
+     "q": "Did the writer like the spicy curry? How do you know?",
+     "a": "Yes: it burned their mouth, but it was delicious"
     }
    ],
    "mistakes": [
@@ -4565,12 +4565,12 @@
      "a": "On Saturdays"
     },
     {
-     "q": "What does she do there?",
-     "a": "Feeds the dogs and cleans their cages"
+     "q": "What happened to the puppy Jenny loved?",
+     "a": "A family adopted it"
     },
     {
-     "q": "What job does she want?",
-     "a": "A vet"
+     "q": "Why was Jenny sad but also happy?",
+     "a": "She would miss the puppy, but it was going to a good home"
     }
    ],
    "mistakes": [
@@ -4627,12 +4627,12 @@
      "a": "My homework"
     },
     {
-     "q": "What did my mom do?",
-     "a": "Lit some candles"
+     "q": "Why was it hot?",
+     "a": "They couldn't use the fan"
     },
     {
-     "q": "When did the power come back?",
-     "a": "At eleven"
+     "q": "How do you know the family enjoyed the evening?",
+     "a": "They kept playing cards after the power came back"
     }
    ],
    "mistakes": [
@@ -4689,12 +4689,12 @@
      "a": "Last Sunday"
     },
     {
-     "q": "Why did the race start early?",
-     "a": "To avoid the heat"
+     "q": "How long did he train?",
+     "a": "Six months"
     },
     {
-     "q": "What will he do next year?",
-     "a": "Run another one"
+     "q": "How long was the race for him from start to finish?",
+     "a": "Four hours and twenty minutes"
     }
    ],
    "mistakes": [
@@ -4751,12 +4751,12 @@
      "a": "Class president"
     },
     {
-     "q": "What did Tom promise?",
-     "a": "To plant more trees"
+     "q": "How many students wanted the job?",
+     "a": "Three"
     },
     {
-     "q": "Why did Tom win?",
-     "a": "His idea was the most useful"
+     "q": "Why didn't Sara's promise work?",
+     "a": "The teacher said no to longer breaks"
     }
    ],
    "mistakes": [
@@ -4813,12 +4813,12 @@
      "a": "Our teacher's"
     },
     {
-     "q": "What did we shout?",
-     "a": "\"Surprise!\""
+     "q": "What did students bring?",
+     "a": "Snacks"
     },
     {
-     "q": "What did she drop?",
-     "a": "Her books"
+     "q": "Why did the teacher drop her books?",
+     "a": "She was so surprised when everyone shouted \"Surprise!\""
     }
    ],
    "mistakes": [
@@ -4875,12 +4875,12 @@
      "a": "In the kitchen"
     },
     {
-     "q": "How did Max wake the family?",
-     "a": "He barked loudly"
+     "q": "Who smelled the smoke first?",
+     "a": "Max, the dog"
     },
     {
-     "q": "What did the newspaper call Max?",
-     "a": "A hero"
+     "q": "Why might the family have been in danger without Max?",
+     "a": "Everyone was asleep and nobody else noticed the fire"
     }
    ],
    "mistakes": [
@@ -4937,12 +4937,12 @@
      "a": "My aunt"
     },
     {
-     "q": "What did I do on the plane?",
-     "a": "Watched two movies and ate a meal"
+     "q": "Where did we fly to?",
+     "a": "Tokyo"
     },
     {
-     "q": "How long was the flight?",
-     "a": "Six hours"
+     "q": "Why did the six-hour flight feel shorter?",
+     "a": "The writer was busy watching two movies and eating"
     }
    ],
    "mistakes": [
@@ -4999,12 +4999,12 @@
      "a": "Plastic, paper, and cans"
     },
     {
-     "q": "What did they buy with the money?",
-     "a": "Books"
+     "q": "How much plastic did they collect?",
+     "a": "More than 200 kilograms"
     },
     {
-     "q": "What does the principal say?",
-     "a": "The school is cleaner than ever"
+     "q": "How did the recycling project help the school in two ways?",
+     "a": "It made the school cleaner and paid for new books"
     }
    ],
    "mistakes": [
@@ -5061,12 +5061,12 @@
      "a": "Six"
     },
     {
-     "q": "Who helped him?",
-     "a": "A security guard"
+     "q": "What was Ben doing when he got lost?",
+     "a": "Looking at toys"
     },
     {
-     "q": "What does Ben do now in busy places?",
-     "a": "Stays close to his family"
+     "q": "How did Ben's mom find him?",
+     "a": "The guard announced his name"
     }
    ],
    "mistakes": [
@@ -5123,12 +5123,12 @@
      "a": "On a rice farm"
     },
     {
-     "q": "What time did she get up?",
-     "a": "At five"
+     "q": "What did Holly do in the evenings?",
+     "a": "Swam in the pond with the farm children"
     },
     {
-     "q": "What did she learn?",
-     "a": "Farmers work very hard"
+     "q": "Was the farm work easy for Holly? How do you know?",
+     "a": "No: it was harder than she expected, and she started at five a.m."
     }
    ],
    "mistakes": [
@@ -5185,12 +5185,12 @@
      "a": "At the park"
     },
     {
-     "q": "What happened in the middle of the race?",
-     "a": "It started to rain heavily"
+     "q": "How many riders started the race?",
+     "a": "Eighty"
     },
     {
-     "q": "What place did Jack finish?",
-     "a": "Tenth"
+     "q": "Why was Jack proud even though he didn't win?",
+     "a": "He fell off in the rain but got back on and finished tenth"
     }
    ],
    "mistakes": [
@@ -5247,12 +5247,12 @@
      "a": "Eighty"
     },
     {
-     "q": "What did her garden win?",
-     "a": "A prize from the city"
+     "q": "What does she plant every spring?",
+     "a": "Hundreds of colorful flowers"
     },
     {
-     "q": "What is her secret?",
-     "a": "Talking to her plants every day"
+     "q": "Why might her secret sound funny?",
+     "a": "Plants can't hear, but she talks to them every day"
     }
    ],
    "mistakes": [
@@ -5309,12 +5309,12 @@
      "a": "Under our desks"
     },
     {
-     "q": "Where did we stand?",
-     "a": "On the soccer field"
+     "q": "What did we do when the alarm rang?",
+     "a": "Hid under our desks"
     },
     {
-     "q": "What did the principal say?",
-     "a": "We did a good job but were too noisy"
+     "q": "What should the students do better next time?",
+     "a": "Be quieter"
     }
    ],
    "mistakes": [
@@ -5371,12 +5371,12 @@
      "a": "An old photo"
     },
     {
-     "q": "What did the photo show?",
-     "a": "Her parents as teenagers"
+     "q": "What did her father look like?",
+     "a": "He had long hair"
     },
     {
-     "q": "Where did her parents meet?",
-     "a": "At school"
+     "q": "Why did Ruby laugh at the photo?",
+     "a": "Her parents looked funny: long hair and big glasses"
     }
    ],
    "mistakes": [
@@ -5433,12 +5433,12 @@
      "a": "Her wallet"
     },
     {
-     "q": "Where was she standing?",
-     "a": "At the bus stop"
+     "q": "Who helped Lisa?",
+     "a": "An old man"
     },
     {
-     "q": "What does Lisa do now?",
-     "a": "Tries to help strangers"
+     "q": "Why did the old man help her?",
+     "a": "He noticed she was worried and had no money for a ticket"
     }
    ],
    "mistakes": [
@@ -5495,12 +5495,12 @@
      "a": "At the lake"
     },
     {
-     "q": "How long did they wait?",
-     "a": "Three hours"
+     "q": "How big was the fish?",
+     "a": "Bigger than Tim's arm"
     },
     {
-     "q": "What did they do with the fish?",
-     "a": "Took a photo and put it back"
+     "q": "Why was catching the fish lucky?",
+     "a": "They caught nothing for three hours, and it was just before they left"
     }
    ],
    "mistakes": [
@@ -5557,12 +5557,12 @@
      "a": "My mom"
     },
     {
-     "q": "What is the hardest word?",
-     "a": "\"Necessary\""
+     "q": "What happened last year?",
+     "a": "I was out in the second round"
     },
     {
-     "q": "What do I hope this time?",
-     "a": "To reach the final"
+     "q": "Why does the writer think they can do better this year?",
+     "a": "They have been practicing every night with their mom"
     }
    ],
    "mistakes": [
@@ -5619,12 +5619,12 @@
      "a": "He was scared"
     },
     {
-     "q": "How long did the dentist take?",
-     "a": "Twenty minutes"
+     "q": "How long did Joe have a toothache?",
+     "a": "Three days"
     },
     {
-     "q": "What does Joe do now?",
-     "a": "Brushes twice a day and eats less candy"
+     "q": "Why does Joe now eat less candy?",
+     "a": "He doesn't want another toothache"
     }
    ],
    "mistakes": [
@@ -5681,12 +5681,12 @@
      "a": "Every Wednesday"
     },
     {
-     "q": "What can their robot do?",
-     "a": "Follow a black line on the floor"
+     "q": "When did the robot club start?",
+     "a": "Last semester"
     },
     {
-     "q": "Where is the final?",
-     "a": "Singapore"
+     "q": "What must the club do to go to Singapore?",
+     "a": "Win the competition in Bangkok"
     }
    ],
    "mistakes": [
@@ -5743,12 +5743,12 @@
      "a": "Every October"
     },
     {
-     "q": "What do the teams race?",
-     "a": "Long boats"
+     "q": "Who was on our village team?",
+     "a": "My cousin"
     },
     {
-     "q": "How did they celebrate?",
-     "a": "With a big dinner"
+     "q": "How do you know the race was important to the village?",
+     "a": "The whole village cheered and celebrated with a big dinner"
     }
    ],
    "mistakes": [
@@ -5805,12 +5805,12 @@
      "a": "Snow"
     },
     {
-     "q": "Where did Amy see the dog?",
-     "a": "Near the park"
+     "q": "What kind of dog was Snow?",
+     "a": "A small white poodle"
     },
     {
-     "q": "How did the owner feel?",
-     "a": "So happy that she cried"
+     "q": "How did Amy know the dog near the park was Snow?",
+     "a": "It matched the poster: a small white poodle"
     }
    ],
    "mistakes": [
@@ -5863,16 +5863,16 @@
    ],
    "questions": [
     {
-     "q": "When was the camp?",
-     "a": "In January"
-    },
-    {
      "q": "What did each group do on the last night?",
      "a": "Performed a play"
     },
     {
-     "q": "Who did I make friends with?",
-     "a": "Students from other schools"
+     "q": "How many schools joined the camp?",
+     "a": "Four"
+    },
+    {
+     "q": "What was the best thing about the camp for the writer?",
+     "a": "Making friends with students from other schools"
     }
    ],
    "mistakes": [
@@ -5929,12 +5929,12 @@
      "a": "Math was his hardest subject"
     },
     {
-     "q": "Who helped him?",
-     "a": "His older sister"
+     "q": "How did Tom feel the next morning?",
+     "a": "Calmer and more confident"
     },
     {
-     "q": "What was his score?",
-     "a": "Eighty-five percent"
+     "q": "Why do you think Tom did so well?",
+     "a": "His sister helped him review the hard problems the night before"
     }
    ],
    "mistakes": [
@@ -5991,12 +5991,12 @@
      "a": "In Lopburi"
     },
     {
-     "q": "What did the monkey grab?",
-     "a": "My dad's sunglasses"
+     "q": "Where did the monkey run?",
+     "a": "Up a tree"
     },
     {
-     "q": "How did they get the sunglasses back?",
-     "a": "A shopkeeper gave the monkey a banana"
+     "q": "Why did the monkey drop the sunglasses?",
+     "a": "It wanted the banana more"
     }
    ],
    "mistakes": [
@@ -6053,12 +6053,12 @@
      "a": "Sleeping bags and pillows"
     },
     {
-     "q": "What did they make?",
-     "a": "Popcorn"
+     "q": "What movie did they watch?",
+     "a": "A scary movie"
     },
     {
-     "q": "How did they feel the next day?",
-     "a": "Too tired to do anything"
+     "q": "Why were they too tired the next day?",
+     "a": "They talked until three in the morning"
     }
    ],
    "mistakes": [
@@ -6115,12 +6115,12 @@
      "a": "On the roof"
     },
     {
-     "q": "What are they growing?",
-     "a": "Tomatoes, chilies, and lettuce"
+     "q": "When were the tomatoes ready?",
+     "a": "After two months"
     },
     {
-     "q": "What is different now?",
-     "a": "They buy fewer vegetables"
+     "q": "Why does the family buy fewer vegetables now?",
+     "a": "They grow their own on the roof"
     }
    ],
    "mistakes": [
@@ -6177,12 +6177,12 @@
      "a": "The violin"
     },
     {
-     "q": "Who filmed him?",
-     "a": "A TV reporter"
+     "q": "Where does he play every evening?",
+     "a": "Near the train station"
     },
     {
-     "q": "Where does he play now?",
-     "a": "At concerts"
+     "q": "How did the old man become famous?",
+     "a": "A TV reporter's video of him became popular"
     }
    ],
    "mistakes": [
@@ -6239,12 +6239,12 @@
      "a": "In the ceiling"
     },
     {
-     "q": "What did her dad find?",
-     "a": "A mother cat and three kittens"
+     "q": "What did Kate think the sound was at first?",
+     "a": "A ghost"
     },
     {
-     "q": "What did Kate keep?",
-     "a": "One kitten"
+     "q": "Why did the sound stop being scary?",
+     "a": "It was only a mother cat and kittens"
     }
    ],
    "mistakes": [
@@ -6299,16 +6299,16 @@
    ],
    "questions": [
     {
-     "q": "What did the school challenge students to do?",
-     "a": "Stop using single-use plastic"
-    },
-    {
      "q": "What did students start bringing?",
      "a": "Bottles, lunch boxes, and cloth bags"
     },
     {
-     "q": "What happened to the challenge in the end?",
-     "a": "It became a school rule"
+     "q": "How much did the school's plastic waste go down?",
+     "a": "By half"
+    },
+    {
+     "q": "How did students' opinions change during the challenge?",
+     "a": "At first they thought it was impossible; it worked so well it became a rule"
     }
    ],
    "mistakes": [
@@ -6365,12 +6365,12 @@
      "a": "Her grandmother often forgot her medicine"
     },
     {
-     "q": "What does the box do?",
-     "a": "Beeps at the right time"
+     "q": "What prize did Maya win?",
+     "a": "First prize at a national science fair"
     },
     {
-     "q": "What does a company want to do?",
-     "a": "Produce it for elderly people"
+     "q": "What does the story tell us about Maya's character?",
+     "a": "She doesn't give up: many attempts failed before it worked"
     }
    ],
    "mistakes": [
@@ -6423,16 +6423,16 @@
    ],
    "questions": [
     {
-     "q": "What was the problem?",
-     "a": "The camp was at the same time as his exams"
-    },
-    {
      "q": "What did Daniel choose?",
      "a": "To finish his exams first"
     },
     {
-     "q": "What did the coach do?",
-     "a": "Invited him to try again next year"
+     "q": "What would happen if Daniel went to the camp?",
+     "a": "He would take his exams a year later"
+    },
+    {
+     "q": "Was Daniel's choice a mistake? Why or why not?",
+     "a": "Probably not: the coach respected it and invited him to try again"
     }
    ],
    "mistakes": [
@@ -6489,12 +6489,12 @@
      "a": "Late on Saturday night"
     },
     {
-     "q": "Who stopped the fire from spreading?",
-     "a": "Firefighters"
+     "q": "How many stalls were destroyed?",
+     "a": "Three"
     },
     {
-     "q": "How did the community help?",
-     "a": "They collected money to help the owners rebuild"
+     "q": "Why did the community collect money?",
+     "a": "To help the stall owners rebuild after the fire"
     }
    ],
    "mistakes": [
@@ -6547,16 +6547,16 @@
    ],
    "questions": [
     {
-     "q": "Why did Sophie become interested in Japan?",
-     "a": "From watching anime"
-    },
-    {
-     "q": "How does she practice?",
-     "a": "With a language app"
-    },
-    {
      "q": "What does she hope to do?",
      "a": "Study at a university in Tokyo"
+    },
+    {
+     "q": "How long does she practice each evening?",
+     "a": "Thirty minutes"
+    },
+    {
+     "q": "Which language is NOT new for Sophie?",
+     "a": "Thai and English (she already speaks them)"
     }
    ],
    "mistakes": [
@@ -6609,16 +6609,16 @@
    ],
    "questions": [
     {
-     "q": "Where was the puppy?",
-     "a": "In a cardboard box beside the road"
-    },
-    {
-     "q": "How old was it?",
-     "a": "About four weeks old"
-    },
-    {
      "q": "What is the puppy's name?",
      "a": "Lucky"
+    },
+    {
+     "q": "Who said the puppy was four weeks old?",
+     "a": "A vet"
+    },
+    {
+     "q": "Why did Emma's family adopt the puppy?",
+     "a": "Nobody came forward to claim it"
     }
    ],
    "mistakes": [
@@ -6675,12 +6675,12 @@
      "a": "Two weeks"
     },
     {
-     "q": "What did he realize?",
-     "a": "He had been spending too much time online"
+     "q": "What did Ryan begin to enjoy?",
+     "a": "Hiking, cooking, and talking with the villagers"
     },
     {
-     "q": "What has he done since returning?",
-     "a": "Limited his screen time to two hours a day"
+     "q": "Why did Ryan check his phone at first?",
+     "a": "Out of habit: he was used to being online"
     }
    ],
    "mistakes": [
@@ -6737,12 +6737,12 @@
      "a": "He left the main trail to take photos"
     },
     {
-     "q": "How did the rescue team find him?",
-     "a": "Using a drone with a heat camera"
+     "q": "How did he survive for two nights?",
+     "a": "Drinking stream water and eating wild fruit"
     },
     {
-     "q": "What do officials remind visitors?",
-     "a": "Never to leave the marked trails"
+     "q": "Why was a heat camera useful for finding him?",
+     "a": "It can see a person's body heat in the forest"
     }
    ],
    "mistakes": [
@@ -6795,16 +6795,16 @@
    ],
    "questions": [
     {
-     "q": "What was the area like before?",
-     "a": "Empty and full of trash"
-    },
-    {
      "q": "Who helped the students?",
      "a": "Local farmers"
     },
     {
-     "q": "How many other schools were inspired?",
-     "a": "Three"
+     "q": "What did they plant?",
+     "a": "Vegetables, herbs, and fruit trees"
+    },
+    {
+     "q": "How did the garden help the school's cafeteria?",
+     "a": "The cafeteria uses the vegetables every week"
     }
    ],
    "mistakes": [
@@ -6861,12 +6861,12 @@
      "a": "Basketball"
     },
     {
-     "q": "What did their coach make them do?",
-     "a": "Share a room"
+     "q": "How long had they been rivals?",
+     "a": "Three years"
     },
     {
-     "q": "What happened by the end of the camp?",
-     "a": "They had become close friends"
+     "q": "Why did the coach make them share a room?",
+     "a": "To help them get along / become a team"
     }
    ],
    "mistakes": [
@@ -6919,16 +6919,16 @@
    ],
    "questions": [
     {
-     "q": "What does Mia do at the hospital?",
-     "a": "Reads stories and plays board games"
-    },
-    {
-     "q": "Why does she try to make children laugh?",
-     "a": "Some are nervous before operations"
-    },
-    {
      "q": "What career is she considering?",
      "a": "Nursing"
+    },
+    {
+     "q": "When does Mia volunteer?",
+     "a": "Every Saturday"
+    },
+    {
+     "q": "How do the nurses feel about Mia's visits?",
+     "a": "They say she makes a real difference to the children's mood"
     }
    ],
    "mistakes": [
@@ -6985,12 +6985,12 @@
      "a": "People began buying books online"
     },
     {
-     "q": "What did his granddaughter suggest?",
-     "a": "Turning part of the store into a café"
+     "q": "How long had Mr. Wong owned the store?",
+     "a": "Forty years"
     },
     {
-     "q": "How is the bookstore today?",
-     "a": "Busier than it has ever been"
+     "q": "Why did the café idea save the store?",
+     "a": "People came to read and relax, so it became busy again"
     }
    ],
    "mistakes": [
@@ -7047,12 +7047,12 @@
      "a": "Trucks to deliver water"
     },
     {
-     "q": "What did students in Bangkok organize?",
-     "a": "A campaign to collect bottled water"
+     "q": "Where did villages run out of water?",
+     "a": "In the north"
     },
     {
-     "q": "Why may droughts become more common?",
-     "a": "Climate change"
+     "q": "Why did the villages need help?",
+     "a": "The dry season lasted longer than usual, and they ran out of clean water"
     }
    ],
    "mistakes": [
@@ -7109,12 +7109,12 @@
      "a": "A string broke"
     },
     {
-     "q": "What did he do instead of leaving?",
-     "a": "Put down the guitar and continued singing"
+     "q": "Where was Ben when it happened?",
+     "a": "On stage at the school talent show"
     },
     {
-     "q": "What did the moment teach him?",
-     "a": "To stay calm when things go wrong"
+     "q": "Why did the audience give a standing ovation?",
+     "a": "He stayed calm and kept singing instead of leaving"
     }
    ],
    "mistakes": [
@@ -7171,12 +7171,12 @@
      "a": "Answer questions, check homework, and speak five languages"
     },
     {
-     "q": "What can't it do?",
-     "a": "Understand jokes or tell when students are upset"
+     "q": "How many languages can the robot speak?",
+     "a": "Five"
     },
     {
-     "q": "What do teachers believe?",
-     "a": "Robots should support teachers, not replace them"
+     "q": "Why can't the robot replace teachers?",
+     "a": "It can't understand jokes or tell when students are upset"
     }
    ],
    "mistakes": [
@@ -7233,12 +7233,12 @@
      "a": "A year"
     },
     {
-     "q": "What did the family teach her?",
-     "a": "To cook and speak Thai"
+     "q": "Where was Lena from?",
+     "a": "Germany"
     },
     {
-     "q": "What will she never forget?",
-     "a": "The kindness of the people she met"
+     "q": "How do you know Lena's Thai improved?",
+     "a": "By the end she could order food in Thai without help"
     }
    ],
    "mistakes": [
@@ -7295,12 +7295,12 @@
      "a": "From Chiang Rai to Singapore"
     },
     {
-     "q": "How far did he travel?",
-     "a": "More than 3,000 kilometers"
+     "q": "How long did the journey take?",
+     "a": "Two months"
     },
     {
-     "q": "How many operations did he raise money for?",
-     "a": "Twenty"
+     "q": "Why did he ride so far?",
+     "a": "To raise money for children's heart operations"
     }
    ],
    "mistakes": [
@@ -7357,12 +7357,12 @@
      "a": "A shark in a river"
     },
     {
-     "q": "Why did most students believe it?",
-     "a": "It had a photo and many shares"
+     "q": "What had happened to the photo?",
+     "a": "It had been edited"
     },
     {
-     "q": "What do I do now?",
-     "a": "Think twice before sharing anything online"
+     "q": "What should you check before you believe a story?",
+     "a": "The source, and whether trusted news websites report it"
     }
    ],
    "mistakes": [
@@ -7419,12 +7419,12 @@
      "a": "Fruit, noodles, and souvenirs"
     },
     {
-     "q": "What do some locals worry about?",
-     "a": "It has become too commercial"
+     "q": "Where is the floating market?",
+     "a": "Outside Bangkok"
     },
     {
-     "q": "What do they say about the vendors?",
-     "a": "Many no longer live in the area"
+     "q": "Why do some locals think the market is too commercial?",
+     "a": "Many vendors no longer live there; it is mainly for tourists"
     }
    ],
    "mistakes": [
@@ -7477,16 +7477,16 @@
    ],
    "questions": [
     {
-     "q": "Why wouldn't the car move?",
-     "a": "It was cloudy"
-    },
-    {
      "q": "What did Kevin connect?",
      "a": "A small battery"
     },
     {
-     "q": "Why did he win a special prize?",
-     "a": "The judges were impressed by his thinking"
+     "q": "What was Kevin building?",
+     "a": "A solar-powered car"
+    },
+    {
+     "q": "Why did the cloudy weather stop the car?",
+     "a": "It needs sunlight to work"
     }
    ],
    "mistakes": [
@@ -7543,12 +7543,12 @@
      "a": "Six years"
     },
     {
-     "q": "How do they keep in touch?",
-     "a": "Video calls and letters"
+     "q": "Where did Kim move to?",
+     "a": "Australia"
     },
     {
-     "q": "When did Anna visit?",
-     "a": "Last December"
+     "q": "How long had they been apart when Anna visited?",
+     "a": "About six years"
     }
    ],
    "mistakes": [
@@ -7605,12 +7605,12 @@
      "a": "More than two hours a day"
     },
     {
-     "q": "Why has the city built new train lines?",
-     "a": "To encourage people to leave their cars at home"
+     "q": "What is Bangkok famous for?",
+     "a": "Its traffic jams"
     },
     {
-     "q": "What else could reduce traffic?",
-     "a": "Working from home"
+     "q": "Why don't new train lines solve the problem completely?",
+     "a": "The trains are too crowded during rush hour"
     }
    ],
    "mistakes": [
@@ -7667,12 +7667,12 @@
      "a": "In a box at the front of the classroom"
     },
     {
-     "q": "Why did students complain?",
-     "a": "They needed phones to look things up"
+     "q": "How much did test scores improve?",
+     "a": "Ten percent"
     },
     {
-     "q": "What happened after three months?",
-     "a": "Test scores improved by ten percent"
+     "q": "Why do some students who complained now like the rule?",
+     "a": "Their test scores improved"
     }
    ],
    "mistakes": [
@@ -7729,12 +7729,12 @@
      "a": "On Koh Samui"
     },
     {
-     "q": "Why do they move the eggs?",
-     "a": "So dogs and people can't reach them"
+     "q": "When do the volunteers help the baby turtles reach the sea?",
+     "a": "At night"
     },
     {
-     "q": "How many baby turtles survive to become adults?",
-     "a": "About one in a thousand"
+     "q": "Why does every protected egg make a difference?",
+     "a": "Very few turtles survive (about one in a thousand)"
     }
    ],
    "mistakes": [
@@ -7791,12 +7791,12 @@
      "a": "During the summer vacation"
     },
     {
-     "q": "What did he buy?",
-     "a": "A laptop for school"
+     "q": "Where did Tom work?",
+     "a": "At a coffee shop"
     },
     {
-     "q": "What did the job teach him?",
-     "a": "To respect people who work in service jobs"
+     "q": "Why did Tom find the job harder than expected?",
+     "a": "Long hours from five to noon, and it was very busy"
     }
    ],
    "mistakes": [
@@ -7853,12 +7853,12 @@
      "a": "Last March"
     },
     {
-     "q": "Why were schools closed?",
-     "a": "The smoke was too thick"
+     "q": "Where did the wildfire spread?",
+     "a": "Across the hills near Chiang Mai"
     },
     {
-     "q": "What has the government announced?",
-     "a": "Stricter rules on burning farmland"
+     "q": "Why did the government make stricter rules?",
+     "a": "Burning farmland can start wildfires"
     }
    ],
    "mistakes": [
@@ -7915,12 +7915,12 @@
      "a": "Three dishes with unknown ingredients"
     },
     {
-     "q": "What did the judges praise?",
-     "a": "Her creativity"
+     "q": "How old was the student?",
+     "a": "Sixteen"
     },
     {
-     "q": "What did she win?",
-     "a": "A scholarship"
+     "q": "Why was reaching the final impressive?",
+     "a": "She was the youngest contestant"
     }
    ],
    "mistakes": [
@@ -7977,12 +7977,12 @@
      "a": "Products that failed"
     },
     {
-     "q": "What did the founder want to show?",
-     "a": "Failure is a normal part of innovation"
+     "q": "Which country has the museum?",
+     "a": "Sweden"
     },
     {
-     "q": "What do successful companies do?",
-     "a": "Learn from their mistakes"
+     "q": "Why do visitors laugh but also learn?",
+     "a": "The failed products are funny, but they show failure is part of innovation"
     }
    ],
    "mistakes": [
@@ -8039,12 +8039,12 @@
      "a": "An elderly woman struggled to climb the steps"
     },
     {
-     "q": "What did she bring him?",
-     "a": "Homemade cookies"
+     "q": "What did Mr. Davis start doing?",
+     "a": "Stopping the bus closer to the curb"
     },
     {
-     "q": "What happened to the story online?",
-     "a": "It was shared thousands of times"
+     "q": "Why did the woman bring cookies?",
+     "a": "To thank him for his kindness"
     }
    ],
    "mistakes": [
@@ -8101,12 +8101,12 @@
      "a": "His family couldn't afford flight school"
     },
     {
-     "q": "How long did he save?",
-     "a": "Five years"
+     "q": "What was Kai's dream?",
+     "a": "To become a pilot"
     },
     {
-     "q": "Where was his first passenger flight?",
-     "a": "From Bangkok to Phuket"
+     "q": "What does Kai's story show about him?",
+     "a": "He is hard-working and determined"
     }
    ],
    "mistakes": [
@@ -8163,12 +8163,12 @@
      "a": "The soil (water and temperature)"
     },
     {
-     "q": "How much less water does he use?",
-     "a": "Forty percent"
+     "q": "Where does the farmer live?",
+     "a": "Nakhon Ratchasima"
     },
     {
-     "q": "Why do other farmers visit?",
-     "a": "To learn the system"
+     "q": "Why has his harvest increased?",
+     "a": "The plants get exactly the water they need"
     }
    ],
    "mistakes": [
@@ -8225,12 +8225,12 @@
      "a": "In Lumpini Park"
     },
     {
-     "q": "What was the money for?",
-     "a": "A children's cancer hospital"
+     "q": "How many people took part?",
+     "a": "More than 5,000"
     },
     {
-     "q": "What do the organizers hope?",
-     "a": "To make the event bigger next year"
+     "q": "Why do you think the organizers want a bigger event?",
+     "a": "It raised a lot of money for the hospital"
     }
    ],
    "mistakes": [
@@ -8287,12 +8287,12 @@
      "a": "By dancing"
     },
     {
-     "q": "What does the direction of the dance show?",
-     "a": "Where the flowers are"
+     "q": "Where does the bee dance?",
+     "a": "In the hive"
     },
     {
-     "q": "What does the length of the dance tell?",
-     "a": "How far away the flowers are"
+     "q": "How do bees know which way to go and how far?",
+     "a": "The direction of the dance shows where; the length shows how far"
     }
    ],
    "mistakes": [
@@ -8345,16 +8345,16 @@
    ],
    "questions": [
     {
+     "q": "What did most students vote for?",
+     "a": "To keep homework, but less of it"
+    },
+    {
      "q": "What did the first team argue?",
      "a": "Homework causes stress and leaves no time for hobbies"
     },
     {
-     "q": "What did the other team say?",
-     "a": "It helps students practice and become independent"
-    },
-    {
-     "q": "What did most students vote for?",
-     "a": "To keep homework, but less of it"
+     "q": "Why was the result surprising?",
+     "a": "Students voted to KEEP homework (but less of it)"
     }
    ],
    "mistakes": [
@@ -8411,12 +8411,12 @@
      "a": "The express train didn't stop there"
     },
     {
-     "q": "What was wrong with her phone?",
-     "a": "The battery was almost dead"
+     "q": "What kind of train did Linda get on?",
+     "a": "An express train"
     },
     {
-     "q": "What does Linda say about getting lost?",
-     "a": "It was the best part of her trip"
+     "q": "Why was getting lost scary at first?",
+     "a": "She didn't speak Japanese, and her phone was almost dead"
     }
    ],
    "mistakes": [
@@ -8469,16 +8469,16 @@
    ],
    "questions": [
     {
-     "q": "How much sugar do Thai teenagers eat?",
-     "a": "Almost twice as much as they should"
-    },
-    {
      "q": "Where does much of the sugar come from?",
      "a": "Sweet drinks such as bubble tea and soda"
     },
     {
-     "q": "What do students drink now?",
-     "a": "More water"
+     "q": "What do doctors warn about?",
+     "a": "Too much sugar can cause serious health problems"
+    },
+    {
+     "q": "What changed at schools that stopped selling sweet drinks?",
+     "a": "Students drink more water and feel more energetic"
     }
    ],
    "mistakes": [
@@ -8535,12 +8535,12 @@
      "a": "His wedding ring"
     },
     {
-     "q": "What did the man use?",
-     "a": "A metal detector"
+     "q": "Where did he lose it?",
+     "a": "In the sand at the beach"
     },
     {
-     "q": "How long did it take him?",
-     "a": "Twenty minutes"
+     "q": "Why didn't the man take money?",
+     "a": "He simply enjoyed helping people"
     }
    ],
    "mistakes": [
@@ -8597,12 +8597,12 @@
      "a": "Reporter, photographer, or editor"
     },
     {
-     "q": "What was in the first issue?",
-     "a": "Interviews with teachers and a cafeteria review"
+     "q": "How often is the newspaper published?",
+     "a": "Monthly"
     },
     {
-     "q": "Who reads the newspaper now?",
-     "a": "Students and parents"
+     "q": "How do you know the cooks read the newspaper?",
+     "a": "They changed the menu after the review"
     }
    ],
    "mistakes": [
@@ -8659,12 +8659,12 @@
      "a": "Twelve"
     },
     {
-     "q": "What blocks the road?",
-     "a": "Mudslides"
+     "q": "Where is the school?",
+     "a": "In a remote village in Mae Hong Son"
     },
     {
-     "q": "What did volunteers install?",
-     "a": "Solar panels"
+     "q": "Why were solar panels needed?",
+     "a": "So the students could use computers (the village is remote)"
     }
    ],
    "mistakes": [
@@ -8721,12 +8721,12 @@
      "a": "Clothes, tires, and toothpaste"
     },
     {
-     "q": "Where have scientists found them?",
-     "a": "In fish and salt"
+     "q": "What are microplastics?",
+     "a": "Tiny pieces of plastic"
     },
     {
-     "q": "What are researchers developing?",
-     "a": "Materials that break down naturally"
+     "q": "Why are microplastics hard to stop?",
+     "a": "They are so small they pass through water filters"
     }
    ],
    "mistakes": [
@@ -8783,12 +8783,12 @@
      "a": "Her family recipes"
     },
     {
-     "q": "Why were some recipes difficult?",
-     "a": "The measurements were not exact"
+     "q": "Who did Amy make the book for?",
+     "a": "Her relatives"
     },
     {
-     "q": "Where is the book now?",
-     "a": "In every family member's kitchen"
+     "q": "Why did Amy cook every dish herself?",
+     "a": "To test the recipes and take photos of the results"
     }
    ],
    "mistakes": [
@@ -8845,12 +8845,12 @@
      "a": "More than 8,000 meters below the surface"
     },
     {
-     "q": "What does the fish look like?",
-     "a": "No eyes, almost transparent body"
+     "q": "Which ocean was the fish found in?",
+     "a": "The Pacific Ocean"
     },
     {
-     "q": "Why were scientists surprised?",
-     "a": "Anything could survive under such pressure"
+     "q": "Why doesn't the fish need eyes?",
+     "a": "It lives where it is completely dark"
     }
    ],
    "mistakes": [
@@ -8907,12 +8907,12 @@
      "a": "Three times"
     },
     {
-     "q": "What job did he have in Canada?",
-     "a": "Tour guide"
+     "q": "Where did Paul move?",
+     "a": "Canada"
     },
     {
-     "q": "What does he tell his students?",
-     "a": "Never to give up"
+     "q": "Why did Paul learn English so fast in Canada?",
+     "a": "He had to speak it every day"
     }
    ],
    "mistakes": [
@@ -8969,12 +8969,12 @@
      "a": "A storm damaged power lines"
     },
     {
-     "q": "What did neighbors do?",
-     "a": "Shared meals in the street"
+     "q": "How long was the town without power?",
+     "a": "Three days"
     },
     {
-     "q": "What did children do instead of watching screens?",
-     "a": "Played outside"
+     "q": "Why did people miss those three days?",
+     "a": "Neighbors came together and children played outside"
     }
    ],
    "mistakes": [
@@ -9031,12 +9031,12 @@
      "a": "In the back of a taxi"
     },
     {
-     "q": "What did the driver do?",
-     "a": "Drove back to the hotel to return it"
+     "q": "How much money was in the bag?",
+     "a": "50,000 baht"
     },
     {
-     "q": "Where did his story appear?",
-     "a": "In newspapers around the world"
+     "q": "Why did his story spread around the world?",
+     "a": "His honesty: he returned all the money and took only the fare"
     }
    ],
    "mistakes": [
@@ -9093,12 +9093,12 @@
      "a": "About nine hours"
     },
     {
-     "q": "What happened to students who slept less?",
-     "a": "Lower grades and harder to concentrate"
+     "q": "How long do most students in the study sleep?",
+     "a": "Six or seven hours"
     },
     {
-     "q": "What do researchers recommend?",
-     "a": "Turning off screens an hour before bed"
+     "q": "Why do researchers want schools to start later?",
+     "a": "Students would get more sleep and do better"
     }
    ],
    "mistakes": [
@@ -9151,16 +9151,16 @@
    ],
    "questions": [
     {
-     "q": "What did designers use?",
+     "q": "What happened to the ticket money?",
+     "a": "It was donated to an environmental group"
+    },
+    {
+     "q": "What were the dresses made from?",
      "a": "Newspapers, bottle caps, and old curtains"
     },
     {
-     "q": "What was the most creative outfit?",
-     "a": "A jacket made from plastic bags"
-    },
-    {
-     "q": "What happened to the ticket money?",
-     "a": "It was donated to an environmental group"
+     "q": "How do you know the show was popular?",
+     "a": "It will become an annual event"
     }
    ],
    "mistakes": [
@@ -9217,12 +9217,12 @@
      "a": "In Krabi"
     },
     {
-     "q": "What stopped him?",
-     "a": "His safety rope"
+     "q": "How far did he fall?",
+     "a": "Five meters"
     },
     {
-     "q": "What injury did he have?",
-     "a": "A broken arm"
+     "q": "What did the accident teach about safety?",
+     "a": "Safety equipment is very important: the rope saved him"
     }
    ],
    "mistakes": [
@@ -9279,12 +9279,12 @@
      "a": "Students in the coding club"
     },
     {
-     "q": "What does the website include?",
-     "a": "Photos, videos, and stories about each animal"
+     "q": "Who was the website for?",
+     "a": "A local animal shelter"
     },
     {
-     "q": "What is the club doing now?",
-     "a": "Building websites for two other charities"
+     "q": "How do we know the website helped the animals?",
+     "a": "Adoptions doubled"
     }
    ],
    "mistakes": [
@@ -9341,12 +9341,12 @@
      "a": "Wireless headphones"
     },
     {
-     "q": "Why did it look strange from outside?",
-     "a": "People danced to different songs in silence"
+     "q": "Who organized the silent disco?",
+     "a": "The student council"
     },
     {
-     "q": "What have other schools asked?",
-     "a": "How to organize one"
+     "q": "Why didn't the neighbors complain?",
+     "a": "There were no loudspeakers, so they heard nothing"
     }
    ],
    "mistakes": [
@@ -9364,6 +9364,3232 @@
      "i": 4,
      "right": "such a success",
      "wrong": "so a success"
+    }
+   ]
+  }
+ ],
+ "M.4": [
+  {
+   "id": "m4-1",
+   "title": "The Four-Day School Week",
+   "sentences": [
+    "Last year, a school in Chiang Mai decided to try a four-day week for one semester.",
+    "Students had longer days from Monday to Thursday, but Fridays were free.",
+    "Teachers had expected grades to fall, yet test scores actually rose slightly.",
+    "However, some parents struggled to find someone to look after their children on Fridays.",
+    "The school is now considering whether the benefits outweigh the problems."
+   ],
+   "tf": [
+    {
+     "s": "Fridays were free.",
+     "a": true
+    },
+    {
+     "s": "Test scores fell.",
+     "a": false,
+     "fix": "Test scores rose slightly."
+    },
+    {
+     "s": "The trial lasted one semester.",
+     "a": true
+    },
+    {
+     "s": "The school has already made it permanent.",
+     "a": false,
+     "fix": "The school is still considering it."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How many days a week did students go to school?",
+     "a": "Four"
+    },
+    {
+     "q": "What problem did some parents have?",
+     "a": "Finding someone to look after their children on Fridays"
+    },
+    {
+     "q": "Why might the school still be unsure, even though scores rose?",
+     "a": "Childcare on Fridays was a problem for some families"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "decided",
+     "wrong": "decide"
+    },
+    {
+     "i": 2,
+     "right": "had expected",
+     "wrong": "have expected"
+    },
+    {
+     "i": 4,
+     "right": "outweigh",
+     "wrong": "outweighs"
+    }
+   ]
+  },
+  {
+   "id": "m4-2",
+   "title": "The Glacier That Vanished",
+   "sentences": [
+    "In 2019, people in Iceland held a funeral for a glacier called Okjökull.",
+    "It had been shrinking for decades and was finally declared dead.",
+    "Scientists attached a metal plaque to a rock where the ice once stood.",
+    "The message warns that all the country's glaciers could disappear within 200 years.",
+    "Ending with the words \"you know what needs to be done,\" it is addressed to the future."
+   ],
+   "tf": [
+    {
+     "s": "The glacier was called Okjökull.",
+     "a": true
+    },
+    {
+     "s": "The glacier melted in one year.",
+     "a": false,
+     "fix": "It had been shrinking for decades."
+    },
+    {
+     "s": "The plaque is made of metal.",
+     "a": true
+    },
+    {
+     "s": "All of Iceland's glaciers have already gone.",
+     "a": false,
+     "fix": "They could disappear within 200 years."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where was the glacier?",
+     "a": "In Iceland"
+    },
+    {
+     "q": "What did scientists put where the ice used to be?",
+     "a": "A metal plaque on a rock"
+    },
+    {
+     "q": "Who is the message really written for, and why?",
+     "a": "People in the future, to warn them about climate change"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 1,
+     "right": "had been",
+     "wrong": "has been"
+    },
+    {
+     "i": 2,
+     "right": "attached",
+     "wrong": "attach"
+    },
+    {
+     "i": 3,
+     "right": "warns",
+     "wrong": "warn"
+    }
+   ]
+  },
+  {
+   "id": "m4-3",
+   "title": "The App That Listens",
+   "sentences": [
+    "A team of students has designed an app that helps deaf people follow conversations.",
+    "Using the phone's microphone, it turns speech into text almost instantly.",
+    "Had the students not tested it with deaf users, they would have missed several problems.",
+    "For example, the first version could not tell which person was speaking.",
+    "The improved app, which is free, has now been downloaded more than 50,000 times."
+   ],
+   "tf": [
+    {
+     "s": "The app turns speech into text.",
+     "a": true
+    },
+    {
+     "s": "The app costs money.",
+     "a": false,
+     "fix": "The app is free."
+    },
+    {
+     "s": "The first version had problems.",
+     "a": true
+    },
+    {
+     "s": "It has been downloaded 5,000 times.",
+     "a": false,
+     "fix": "More than 50,000 times."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Who is the app for?",
+     "a": "Deaf people"
+    },
+    {
+     "q": "What problem did the first version have?",
+     "a": "It couldn't tell which person was speaking"
+    },
+    {
+     "q": "Why was testing with deaf users so important?",
+     "a": "They found problems the students would have missed"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "has designed",
+     "wrong": "have designed"
+    },
+    {
+     "i": 2,
+     "right": "would have missed",
+     "wrong": "would missed"
+    },
+    {
+     "i": 4,
+     "right": "has now been downloaded",
+     "wrong": "has now been download"
+    }
+   ]
+  },
+  {
+   "id": "m4-4",
+   "title": "A Bridge Built by Roots",
+   "sentences": [
+    "In northeast India, villagers have been building bridges from living tree roots for centuries.",
+    "They guide the roots of rubber trees across rivers using hollow bamboo tubes.",
+    "It can take up to twenty years before a bridge is strong enough to walk on.",
+    "Unlike wooden bridges, which rot in the heavy rain, root bridges grow stronger with age.",
+    "Some of them are thought to be more than 500 years old."
+   ],
+   "tf": [
+    {
+     "s": "The bridges are in India.",
+     "a": true
+    },
+    {
+     "s": "Villagers use metal tubes.",
+     "a": false,
+     "fix": "They use hollow bamboo tubes."
+    },
+    {
+     "s": "Root bridges get stronger over time.",
+     "a": true
+    },
+    {
+     "s": "The oldest bridges are about 50 years old.",
+     "a": false,
+     "fix": "Some are thought to be over 500 years old."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What are the bridges made from?",
+     "a": "Living tree roots"
+    },
+    {
+     "q": "How long can it take to make one?",
+     "a": "Up to twenty years"
+    },
+    {
+     "q": "Why are root bridges better than wooden ones in this place?",
+     "a": "Wood rots in the heavy rain, but roots keep growing stronger"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "have been building",
+     "wrong": "have been build"
+    },
+    {
+     "i": 3,
+     "right": "which",
+     "wrong": "who"
+    },
+    {
+     "i": 4,
+     "right": "are thought",
+     "wrong": "is thought"
+    }
+   ]
+  },
+  {
+   "id": "m4-5",
+   "title": "The Last Video Store",
+   "sentences": [
+    "Although almost everyone streams movies now, one video store in Bangkok refuses to close.",
+    "Its owner, whose collection includes 20,000 films, opened the shop in 1995.",
+    "Many of the films cannot be found on any streaming service.",
+    "Film students often visit to borrow rare movies for their research.",
+    "The owner insists that the store will stay open as long as people keep coming."
+   ],
+   "tf": [
+    {
+     "s": "The store is in Bangkok.",
+     "a": true
+    },
+    {
+     "s": "The collection has 2,000 films.",
+     "a": false,
+     "fix": "It has 20,000 films."
+    },
+    {
+     "s": "Some films are not on streaming services.",
+     "a": true
+    },
+    {
+     "s": "The owner plans to close soon.",
+     "a": false,
+     "fix": "The owner says it will stay open."
+    }
+   ],
+   "questions": [
+    {
+     "q": "When did the shop open?",
+     "a": "In 1995"
+    },
+    {
+     "q": "Why do film students visit the store?",
+     "a": "To borrow rare movies for their research"
+    },
+    {
+     "q": "Why can the store survive when most video stores have closed?",
+     "a": "It has films you can't find on streaming services"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "refuses",
+     "wrong": "refuse"
+    },
+    {
+     "i": 1,
+     "right": "whose",
+     "wrong": "who's"
+    },
+    {
+     "i": 2,
+     "right": "cannot be found",
+     "wrong": "cannot be find"
+    }
+   ]
+  },
+  {
+   "id": "m4-6",
+   "title": "The Silent Classroom",
+   "sentences": [
+    "For one week, a teacher in Japan taught her class without saying a single word.",
+    "She communicated only through gestures, drawings, and written notes.",
+    "Surprisingly, the students paid closer attention than they had before.",
+    "They also began helping one another to understand the instructions.",
+    "She now believes that talking less can make students think more."
+   ],
+   "tf": [
+    {
+     "s": "The teacher was in Japan.",
+     "a": true
+    },
+    {
+     "s": "She spoke only in English.",
+     "a": false,
+     "fix": "She didn't say a word."
+    },
+    {
+     "s": "Students paid more attention.",
+     "a": true
+    },
+    {
+     "s": "The students stopped working together.",
+     "a": false,
+     "fix": "They began helping one another."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How long did the experiment last?",
+     "a": "One week"
+    },
+    {
+     "q": "How did she communicate?",
+     "a": "With gestures, drawings, and written notes"
+    },
+    {
+     "q": "Why do you think students helped each other more?",
+     "a": "Without spoken instructions, they had to work together to understand"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "taught",
+     "wrong": "teached"
+    },
+    {
+     "i": 2,
+     "right": "had",
+     "wrong": "have"
+    },
+    {
+     "i": 3,
+     "right": "began",
+     "wrong": "begun"
+    }
+   ]
+  },
+  {
+   "id": "m4-7",
+   "title": "Saving the Mangroves",
+   "sentences": [
+    "Along the coast of southern Thailand, volunteers are replanting mangrove forests.",
+    "Mangroves protect villages from storms because their roots slow down big waves.",
+    "They also provide a home for fish, crabs, and birds.",
+    "Many forests were cut down in the past to make room for shrimp farms.",
+    "If the replanting succeeds, the coast will be far safer during the next big storm."
+   ],
+   "tf": [
+    {
+     "s": "The volunteers are in southern Thailand.",
+     "a": true
+    },
+    {
+     "s": "Mangroves make waves bigger.",
+     "a": false,
+     "fix": "Their roots slow down big waves."
+    },
+    {
+     "s": "Fish and crabs live in mangroves.",
+     "a": true
+    },
+    {
+     "s": "The forests were cut down for rice fields.",
+     "a": false,
+     "fix": "They were cut down for shrimp farms."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What are the volunteers planting?",
+     "a": "Mangrove forests"
+    },
+    {
+     "q": "How do mangroves protect villages?",
+     "a": "Their roots slow down big waves"
+    },
+    {
+     "q": "Why did the forests need replanting?",
+     "a": "Many were cut down for shrimp farms"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "are replanting",
+     "wrong": "is replanting"
+    },
+    {
+     "i": 3,
+     "right": "were cut down",
+     "wrong": "were cutted down"
+    },
+    {
+     "i": 4,
+     "right": "succeeds",
+     "wrong": "will succeed"
+    }
+   ]
+  },
+  {
+   "id": "m4-8",
+   "title": "The Teenage Entrepreneur",
+   "sentences": [
+    "At sixteen, Ploy started selling handmade phone cases on social media.",
+    "Within a year, her business was earning more money than her parents' jobs.",
+    "Despite her success, she insisted on finishing high school first.",
+    "She spends her evenings answering orders and her weekends designing new cases.",
+    "Her advice to young people is to start small and learn from every mistake."
+   ],
+   "tf": [
+    {
+     "s": "Ploy started at sixteen.",
+     "a": true
+    },
+    {
+     "s": "She left school to run her business.",
+     "a": false,
+     "fix": "She insisted on finishing high school first."
+    },
+    {
+     "s": "She sells on social media.",
+     "a": true
+    },
+    {
+     "s": "Her business earns less than her parents.",
+     "a": false,
+     "fix": "It earns more than her parents' jobs."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What does Ploy sell?",
+     "a": "Handmade phone cases"
+    },
+    {
+     "q": "What does she do on weekends?",
+     "a": "Designs new cases"
+    },
+    {
+     "q": "What does her choice about school tell us about her?",
+     "a": "She values education even though her business is successful"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "started",
+     "wrong": "start"
+    },
+    {
+     "i": 2,
+     "right": "Despite",
+     "wrong": "Despite of"
+    },
+    {
+     "i": 3,
+     "right": "spends",
+     "wrong": "spend"
+    }
+   ]
+  },
+  {
+   "id": "m4-9",
+   "title": "The Mystery of the Moving Rocks",
+   "sentences": [
+    "In a dry lake in California, heavy rocks seemed to slide across the ground by themselves.",
+    "For decades, nobody had ever seen them move, so people invented strange theories.",
+    "In 2014, scientists finally solved the mystery using cameras and GPS.",
+    "Thin sheets of ice form on the lake in winter, and light winds push the ice.",
+    "As the ice moves, it pushes the rocks slowly, leaving long trails behind them."
+   ],
+   "tf": [
+    {
+     "s": "The rocks are in California.",
+     "a": true
+    },
+    {
+     "s": "The mystery was solved in 2004.",
+     "a": false,
+     "fix": "It was solved in 2014."
+    },
+    {
+     "s": "Ice and wind move the rocks.",
+     "a": true
+    },
+    {
+     "s": "The rocks move quickly.",
+     "a": false,
+     "fix": "They move slowly."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where are the moving rocks?",
+     "a": "In a dry lake in California"
+    },
+    {
+     "q": "What tools did scientists use?",
+     "a": "Cameras and GPS"
+    },
+    {
+     "q": "Why had nobody ever seen the rocks move?",
+     "a": "They move very slowly, and only when ice and wind are just right"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 1,
+     "right": "had",
+     "wrong": "has"
+    },
+    {
+     "i": 2,
+     "right": "solved",
+     "wrong": "solve"
+    },
+    {
+     "i": 4,
+     "right": "pushes",
+     "wrong": "push"
+    }
+   ]
+  },
+  {
+   "id": "m4-10",
+   "title": "The Hidden Cost of Fast Fashion",
+   "sentences": [
+    "A single cotton T-shirt can take around 2,700 liters of water to produce.",
+    "Because clothes are so cheap, many people wear them only a few times before throwing them away.",
+    "Most of these clothes end up in landfills, where they may take decades to break down.",
+    "Some young designers are now making clothes from recycled fabric instead.",
+    "Experts argue that buying fewer, better-quality clothes is the simplest solution."
+   ],
+   "tf": [
+    {
+     "s": "A T-shirt can use thousands of liters of water.",
+     "a": true
+    },
+    {
+     "s": "Clothes break down in landfills in a few days.",
+     "a": false,
+     "fix": "They may take decades."
+    },
+    {
+     "s": "Some designers use recycled fabric.",
+     "a": true
+    },
+    {
+     "s": "Experts say we should buy more clothes.",
+     "a": false,
+     "fix": "They say buy fewer, better-quality clothes."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How much water can one T-shirt take?",
+     "a": "About 2,700 liters"
+    },
+    {
+     "q": "Where do most thrown-away clothes end up?",
+     "a": "In landfills"
+    },
+    {
+     "q": "Why do cheap clothes cause more waste?",
+     "a": "People throw them away after wearing them only a few times"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "take",
+     "wrong": "takes"
+    },
+    {
+     "i": 2,
+     "right": "may take",
+     "wrong": "may takes"
+    },
+    {
+     "i": 4,
+     "right": "fewer",
+     "wrong": "less"
+    }
+   ]
+  },
+  {
+   "id": "m4-11",
+   "title": "The Boy Who Harnessed the Wind",
+   "sentences": [
+    "When a terrible drought hit his village in Malawi, fourteen-year-old William had to leave school.",
+    "Determined to keep learning, he borrowed science books from the local library.",
+    "Using bicycle parts and old wood, he built a windmill that produced electricity.",
+    "Later, he built a bigger one to pump water for his family's crops.",
+    "His story was turned into a book and a film, inspiring people around the world."
+   ],
+   "tf": [
+    {
+     "s": "William left school because of a drought.",
+     "a": true
+    },
+    {
+     "s": "He bought expensive parts.",
+     "a": false,
+     "fix": "He used bicycle parts and old wood."
+    },
+    {
+     "s": "A windmill pumped water for crops.",
+     "a": true
+    },
+    {
+     "s": "His story was never published.",
+     "a": false,
+     "fix": "It became a book and a film."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country is William from?",
+     "a": "Malawi"
+    },
+    {
+     "q": "What did he use to build the windmill?",
+     "a": "Bicycle parts and old wood"
+    },
+    {
+     "q": "How did leaving school lead to his success?",
+     "a": "He kept studying on his own from library books and used what he learned"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "hit",
+     "wrong": "hitted"
+    },
+    {
+     "i": 2,
+     "right": "built",
+     "wrong": "builded"
+    },
+    {
+     "i": 4,
+     "right": "was turned",
+     "wrong": "was turn"
+    }
+   ]
+  },
+  {
+   "id": "m4-12",
+   "title": "The Four-Minute Mile",
+   "sentences": [
+    "For many years, experts believed that no human could run a mile in under four minutes.",
+    "In 1954, a medical student named Roger Bannister proved them wrong.",
+    "He trained during his lunch breaks because he was busy studying medicine.",
+    "Just weeks after his record, another runner broke it.",
+    "His story shows how believing something is possible can change what people achieve."
+   ],
+   "tf": [
+    {
+     "s": "Bannister was a medical student.",
+     "a": true
+    },
+    {
+     "s": "His record was in 1945.",
+     "a": false,
+     "fix": "It was in 1954."
+    },
+    {
+     "s": "He trained at lunchtime.",
+     "a": true
+    },
+    {
+     "s": "Nobody beat his record for years.",
+     "a": false,
+     "fix": "Another runner broke it weeks later."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What did experts believe was impossible?",
+     "a": "Running a mile in under four minutes"
+    },
+    {
+     "q": "Why did he train during lunch breaks?",
+     "a": "He was busy studying medicine"
+    },
+    {
+     "q": "Why might another runner break the record so soon after?",
+     "a": "Once people knew it was possible, they believed they could do it too"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "believed",
+     "wrong": "believe"
+    },
+    {
+     "i": 1,
+     "right": "proved",
+     "wrong": "proven"
+    },
+    {
+     "i": 3,
+     "right": "broke",
+     "wrong": "breaked"
+    }
+   ]
+  },
+  {
+   "id": "m4-13",
+   "title": "The Bee Highway",
+   "sentences": [
+    "The city of Oslo, in Norway, has created a \"highway\" of flowers for bees.",
+    "Residents and companies plant flowers on rooftops and balconies along the route.",
+    "This allows bees to travel safely across the city from one food source to the next.",
+    "Bees are essential because they pollinate a third of the food we eat.",
+    "Other cities are now studying the idea to protect their own bee populations."
+   ],
+   "tf": [
+    {
+     "s": "Oslo is in Norway.",
+     "a": true
+    },
+    {
+     "s": "The flowers are planted in one big park.",
+     "a": false,
+     "fix": "They are on rooftops and balconies along a route."
+    },
+    {
+     "s": "Bees pollinate much of our food.",
+     "a": true
+    },
+    {
+     "s": "No other cities are interested.",
+     "a": false,
+     "fix": "Other cities are studying the idea."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which city made the bee highway?",
+     "a": "Oslo"
+    },
+    {
+     "q": "Where do people plant the flowers?",
+     "a": "On rooftops and balconies"
+    },
+    {
+     "q": "Why should we care about bees?",
+     "a": "They pollinate about a third of our food"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "has created",
+     "wrong": "have created"
+    },
+    {
+     "i": 2,
+     "right": "allows",
+     "wrong": "allow"
+    },
+    {
+     "i": 3,
+     "right": "pollinate",
+     "wrong": "pollinates"
+    }
+   ]
+  },
+  {
+   "id": "m4-14",
+   "title": "The Exam Without Phones",
+   "sentences": [
+    "During exam week, a university in Taiwan used drones to catch students who were cheating.",
+    "The drones flew above the exam hall and detected signals from hidden phones.",
+    "Some people praised the idea, while others thought it went too far.",
+    "Critics argued that the students' privacy should have been respected.",
+    "The university insisted that fairness for honest students was more important."
+   ],
+   "tf": [
+    {
+     "s": "The university was in Taiwan.",
+     "a": true
+    },
+    {
+     "s": "The drones took photos of answers.",
+     "a": false,
+     "fix": "They detected phone signals."
+    },
+    {
+     "s": "Some people criticized the idea.",
+     "a": true
+    },
+    {
+     "s": "The university agreed it went too far.",
+     "a": false,
+     "fix": "It said fairness was more important."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What did the university use?",
+     "a": "Drones"
+    },
+    {
+     "q": "How did the drones catch cheaters?",
+     "a": "They detected signals from hidden phones"
+    },
+    {
+     "q": "What were the two sides of the argument?",
+     "a": "Privacy for students versus fairness for honest students"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "were cheating",
+     "wrong": "was cheating"
+    },
+    {
+     "i": 1,
+     "right": "detected",
+     "wrong": "detect"
+    },
+    {
+     "i": 3,
+     "right": "should have been",
+     "wrong": "should have be"
+    }
+   ]
+  },
+  {
+   "id": "m4-15",
+   "title": "The Sleeping Village",
+   "sentences": [
+    "In a village in Kazakhstan, people kept falling asleep suddenly, sometimes for days.",
+    "Some residents fell asleep while they were walking or even riding a motorcycle.",
+    "For years, nobody could explain what was causing the strange illness.",
+    "Scientists eventually discovered that gas from an old mine had been leaking into the air.",
+    "Most villagers were moved to safer towns, and the sleeping stopped."
+   ],
+   "tf": [
+    {
+     "s": "Some people slept for days.",
+     "a": true
+    },
+    {
+     "s": "A virus caused the sleeping.",
+     "a": false,
+     "fix": "Gas from an old mine caused it."
+    },
+    {
+     "s": "The cause took years to find.",
+     "a": true
+    },
+    {
+     "s": "The villagers stayed in the village.",
+     "a": false,
+     "fix": "Most were moved to safer towns."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where was the village?",
+     "a": "In Kazakhstan"
+    },
+    {
+     "q": "What was causing the illness?",
+     "a": "Gas leaking from an old mine"
+    },
+    {
+     "q": "How do we know the scientists were right?",
+     "a": "When people moved away from the gas, the sleeping stopped"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "kept",
+     "wrong": "keeped"
+    },
+    {
+     "i": 3,
+     "right": "had been leaking",
+     "wrong": "had been leak"
+    },
+    {
+     "i": 4,
+     "right": "were moved",
+     "wrong": "was moved"
+    }
+   ]
+  },
+  {
+   "id": "m4-16",
+   "title": "Learning From Octopuses",
+   "sentences": [
+    "Octopuses are among the most intelligent animals in the ocean.",
+    "They can open jars, escape from tanks, and even recognize individual people.",
+    "One octopus in an aquarium repeatedly squirted water at a worker it disliked.",
+    "Since each arm has its own nerve cells, the arms can act almost independently.",
+    "Robot designers are studying octopuses to build machines that move more flexibly."
+   ],
+   "tf": [
+    {
+     "s": "Octopuses can escape from tanks.",
+     "a": true
+    },
+    {
+     "s": "Octopuses cannot recognize people.",
+     "a": false,
+     "fix": "They can recognize individual people."
+    },
+    {
+     "s": "Each arm has its own nerve cells.",
+     "a": true
+    },
+    {
+     "s": "Robot designers are not interested in octopuses.",
+     "a": false,
+     "fix": "They are studying them."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What can octopuses open?",
+     "a": "Jars"
+    },
+    {
+     "q": "What did one octopus do to a worker?",
+     "a": "Squirted water at him"
+    },
+    {
+     "q": "What does the squirting story suggest about octopuses?",
+     "a": "They can recognize people and have likes and dislikes"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 1,
+     "right": "recognize",
+     "wrong": "recognizes"
+    },
+    {
+     "i": 2,
+     "right": "squirted",
+     "wrong": "squirt"
+    },
+    {
+     "i": 4,
+     "right": "are studying",
+     "wrong": "is studying"
+    }
+   ]
+  },
+  {
+   "id": "m4-17",
+   "title": "The Long Walk Home",
+   "sentences": [
+    "When her flight was canceled because of a storm, Nina had no way to get home.",
+    "Rather than wait three days in the airport, she decided to take buses and trains instead.",
+    "The journey took two days and crossed three countries.",
+    "Along the way, she met travelers who shared food and stories with her.",
+    "She later said that the canceled flight was the best thing that had happened all year."
+   ],
+   "tf": [
+    {
+     "s": "Nina's flight was canceled.",
+     "a": true
+    },
+    {
+     "s": "She waited three days at the airport.",
+     "a": false,
+     "fix": "She took buses and trains instead."
+    },
+    {
+     "s": "The journey crossed three countries.",
+     "a": true
+    },
+    {
+     "s": "She traveled alone and met nobody.",
+     "a": false,
+     "fix": "She met travelers who shared food and stories."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Why was Nina's flight canceled?",
+     "a": "Because of a storm"
+    },
+    {
+     "q": "How did she get home?",
+     "a": "By buses and trains"
+    },
+    {
+     "q": "Why did she call the canceled flight the best thing that happened?",
+     "a": "She met kind travelers and had an adventure"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "was canceled",
+     "wrong": "was cancel"
+    },
+    {
+     "i": 1,
+     "right": "decided",
+     "wrong": "decide"
+    },
+    {
+     "i": 4,
+     "right": "had happened",
+     "wrong": "has happened"
+    }
+   ]
+  },
+  {
+   "id": "m4-18",
+   "title": "The Vertical Farm",
+   "sentences": [
+    "In Singapore, where land is scarce, farmers have started growing vegetables in tall towers.",
+    "The plants grow on shelves stacked on top of each other, under LED lights.",
+    "Because the towers are indoors, crops can be harvested all year round.",
+    "The farms use up to ninety percent less water than traditional fields.",
+    "However, the high cost of electricity remains the biggest challenge."
+   ],
+   "tf": [
+    {
+     "s": "The plants grow under LED lights.",
+     "a": true
+    },
+    {
+     "s": "Vertical farms use more water.",
+     "a": false,
+     "fix": "They use up to 90% less water."
+    },
+    {
+     "s": "Crops grow all year.",
+     "a": true
+    },
+    {
+     "s": "Electricity is cheap for the farms.",
+     "a": false,
+     "fix": "Its high cost is the biggest challenge."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where are the vertical farms?",
+     "a": "In Singapore"
+    },
+    {
+     "q": "Why can crops be harvested all year?",
+     "a": "The towers are indoors"
+    },
+    {
+     "q": "Why does Singapore need this kind of farm?",
+     "a": "It has very little land"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "have started",
+     "wrong": "has started"
+    },
+    {
+     "i": 2,
+     "right": "can be harvested",
+     "wrong": "can be harvest"
+    },
+    {
+     "i": 4,
+     "right": "remains",
+     "wrong": "remain"
+    }
+   ]
+  },
+  {
+   "id": "m4-19",
+   "title": "The Lost City in the Jungle",
+   "sentences": [
+    "Using laser scanners on airplanes, archaeologists discovered a huge lost city in Guatemala.",
+    "The lasers can see through thick jungle to reveal buildings hidden for centuries.",
+    "The scans showed more than 60,000 structures, including roads and pyramids.",
+    "Researchers had previously believed that the area was mostly empty.",
+    "The discovery suggests that millions more people lived there than anyone had thought."
+   ],
+   "tf": [
+    {
+     "s": "The city was found with lasers.",
+     "a": true
+    },
+    {
+     "s": "The scans found 600 structures.",
+     "a": false,
+     "fix": "They found more than 60,000."
+    },
+    {
+     "s": "Roads and pyramids were found.",
+     "a": true
+    },
+    {
+     "s": "Researchers always knew the city was there.",
+     "a": false,
+     "fix": "They believed the area was mostly empty."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where was the lost city found?",
+     "a": "In Guatemala"
+    },
+    {
+     "q": "How can the lasers find hidden buildings?",
+     "a": "They can see through thick jungle"
+    },
+    {
+     "q": "How did the discovery change what researchers believed?",
+     "a": "They thought the area was empty, but it had millions of people"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "discovered",
+     "wrong": "discover"
+    },
+    {
+     "i": 1,
+     "right": "can see",
+     "wrong": "can sees"
+    },
+    {
+     "i": 3,
+     "right": "had previously believed",
+     "wrong": "had previously believe"
+    }
+   ]
+  },
+  {
+   "id": "m4-20",
+   "title": "Too Much Screen Time?",
+   "sentences": [
+    "A study of 10,000 teenagers found that heavy social media users were more likely to feel anxious.",
+    "However, the researchers warned that the link did not prove one thing caused the other.",
+    "Teenagers who already feel anxious may simply use social media more.",
+    "The study also found that sleep and exercise made a bigger difference to mood.",
+    "Scientists say more research is needed before strict rules are introduced."
+   ],
+   "tf": [
+    {
+     "s": "The study looked at 10,000 teenagers.",
+     "a": true
+    },
+    {
+     "s": "The study proved social media causes anxiety.",
+     "a": false,
+     "fix": "It did not prove cause and effect."
+    },
+    {
+     "s": "Sleep and exercise affected mood.",
+     "a": true
+    },
+    {
+     "s": "Scientists want strict rules now.",
+     "a": false,
+     "fix": "They say more research is needed first."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How many teenagers were studied?",
+     "a": "10,000"
+    },
+    {
+     "q": "What made a bigger difference to mood?",
+     "a": "Sleep and exercise"
+    },
+    {
+     "q": "Why doesn't the study prove social media causes anxiety?",
+     "a": "Anxious teenagers might just use social media more"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "were",
+     "wrong": "was"
+    },
+    {
+     "i": 2,
+     "right": "may simply use",
+     "wrong": "may simply uses"
+    },
+    {
+     "i": 4,
+     "right": "is needed",
+     "wrong": "are needed"
+    }
+   ]
+  },
+  {
+   "id": "m4-21",
+   "title": "The River That Changed Color",
+   "sentences": [
+    "Every summer, a river in Colombia turns bright red, yellow, green, and blue.",
+    "The colors come from a special plant that grows on the riverbed.",
+    "Tourists travel from all over the world to see what locals call \"the river of five colors.\"",
+    "To protect the plant, visitors are not allowed to wear sunscreen in the water.",
+    "If the plant were damaged, the colors would disappear."
+   ],
+   "tf": [
+    {
+     "s": "The colors come from a plant.",
+     "a": true
+    },
+    {
+     "s": "The river is in Brazil.",
+     "a": false,
+     "fix": "It is in Colombia."
+    },
+    {
+     "s": "Sunscreen is not allowed in the water.",
+     "a": true
+    },
+    {
+     "s": "The colors come from paint.",
+     "a": false,
+     "fix": "They come from a plant on the riverbed."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country is the river in?",
+     "a": "Colombia"
+    },
+    {
+     "q": "What causes the colors?",
+     "a": "A special plant on the riverbed"
+    },
+    {
+     "q": "Why can't visitors wear sunscreen in the water?",
+     "a": "It could damage the plant that makes the colors"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "turns",
+     "wrong": "turn"
+    },
+    {
+     "i": 3,
+     "right": "are not allowed",
+     "wrong": "is not allowed"
+    },
+    {
+     "i": 4,
+     "right": "were",
+     "wrong": "was"
+    }
+   ]
+  },
+  {
+   "id": "m4-22",
+   "title": "The Robot Surgeon",
+   "sentences": [
+    "In a hospital in Bangkok, doctors now use a robot to help with difficult operations.",
+    "The surgeon controls the robot's arms from a desk a few meters away.",
+    "Because the robot's movements are extremely precise, patients recover more quickly.",
+    "Nevertheless, a human surgeon must always be in charge of every decision.",
+    "Some people worry about what would happen if the machine broke down mid-operation."
+   ],
+   "tf": [
+    {
+     "s": "The surgeon controls the robot.",
+     "a": true
+    },
+    {
+     "s": "The robot makes every decision.",
+     "a": false,
+     "fix": "A human surgeon is always in charge."
+    },
+    {
+     "s": "Patients recover more quickly.",
+     "a": true
+    },
+    {
+     "s": "Nobody has any worries about the robot.",
+     "a": false,
+     "fix": "Some worry it might break down."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where is the hospital?",
+     "a": "In Bangkok"
+    },
+    {
+     "q": "Why do patients recover faster?",
+     "a": "The robot's movements are extremely precise"
+    },
+    {
+     "q": "Why must a human always be in charge?",
+     "a": "Machines can break down, and important decisions need a person"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 1,
+     "right": "controls",
+     "wrong": "control"
+    },
+    {
+     "i": 2,
+     "right": "recover",
+     "wrong": "recovers"
+    },
+    {
+     "i": 3,
+     "right": "must always be",
+     "wrong": "must always being"
+    }
+   ]
+  },
+  {
+   "id": "m4-23",
+   "title": "The Language Nobody Speaks",
+   "sentences": [
+    "In 2010, the last fluent speaker of a language in India passed away.",
+    "With her, an entire way of describing the world was lost forever.",
+    "Experts estimate that one language disappears roughly every two weeks.",
+    "To prevent this, some communities are recording elders and teaching children their language.",
+    "Apps and online dictionaries are also helping young people learn the languages of their grandparents."
+   ],
+   "tf": [
+    {
+     "s": "A language disappears about every two weeks.",
+     "a": true
+    },
+    {
+     "s": "The last speaker died in 2001.",
+     "a": false,
+     "fix": "She died in 2010."
+    },
+    {
+     "s": "Communities record elders.",
+     "a": true
+    },
+    {
+     "s": "Technology cannot help save languages.",
+     "a": false,
+     "fix": "Apps and dictionaries are helping."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where did the last speaker live?",
+     "a": "In India"
+    },
+    {
+     "q": "How often does a language disappear?",
+     "a": "About every two weeks"
+    },
+    {
+     "q": "Why is losing a language a big loss?",
+     "a": "A whole way of seeing and describing the world disappears"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "passed away",
+     "wrong": "past away"
+    },
+    {
+     "i": 2,
+     "right": "disappears",
+     "wrong": "disappear"
+    },
+    {
+     "i": 3,
+     "right": "are recording",
+     "wrong": "is recording"
+    }
+   ]
+  },
+  {
+   "id": "m4-24",
+   "title": "The Plastic Road",
+   "sentences": [
+    "Engineers in the Netherlands have built a bicycle path made from recycled plastic.",
+    "Each section is made from around 500,000 plastic bottle caps.",
+    "The path is lighter than concrete, and it is hollow, so rainwater can drain through it.",
+    "Sensors inside the path measure temperature and how many cyclists use it.",
+    "If the test succeeds, plastic roads could be used for cars in the future."
+   ],
+   "tf": [
+    {
+     "s": "The path is in the Netherlands.",
+     "a": true
+    },
+    {
+     "s": "The path is heavier than concrete.",
+     "a": false,
+     "fix": "It is lighter than concrete."
+    },
+    {
+     "s": "Sensors count cyclists.",
+     "a": true
+    },
+    {
+     "s": "Cars already drive on plastic roads there.",
+     "a": false,
+     "fix": "That could happen in the future if the test succeeds."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What is the path made from?",
+     "a": "Recycled plastic"
+    },
+    {
+     "q": "Why is the path hollow?",
+     "a": "So rainwater can drain through it"
+    },
+    {
+     "q": "Why would plastic roads help the environment?",
+     "a": "They reuse plastic waste instead of sending it to landfills"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "have built",
+     "wrong": "has built"
+    },
+    {
+     "i": 1,
+     "right": "is made",
+     "wrong": "is make"
+    },
+    {
+     "i": 3,
+     "right": "measure",
+     "wrong": "measures"
+    }
+   ]
+  },
+  {
+   "id": "m4-25",
+   "title": "The Student Who Said No",
+   "sentences": [
+    "At a national science competition, sixteen-year-old Dan was offered first prize.",
+    "Shortly before the ceremony, he discovered a serious mistake in his own data.",
+    "Instead of keeping quiet, he told the judges, knowing that he would lose.",
+    "The judges were so impressed by his honesty that they created a special award for integrity.",
+    "He later said that winning dishonestly would have felt worse than losing."
+   ],
+   "tf": [
+    {
+     "s": "Dan found a mistake in his data.",
+     "a": true
+    },
+    {
+     "s": "Dan kept the mistake secret.",
+     "a": false,
+     "fix": "He told the judges."
+    },
+    {
+     "s": "The judges created a special award.",
+     "a": true
+    },
+    {
+     "s": "Dan won first prize in the end.",
+     "a": false,
+     "fix": "He lost first prize but got an award for integrity."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How old was Dan?",
+     "a": "Sixteen"
+    },
+    {
+     "q": "What did Dan discover?",
+     "a": "A serious mistake in his own data"
+    },
+    {
+     "q": "What does \"integrity\" mean, based on the story?",
+     "a": "Being honest and doing the right thing even when it costs you"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "was offered",
+     "wrong": "was offer"
+    },
+    {
+     "i": 2,
+     "right": "would lose",
+     "wrong": "will lose"
+    },
+    {
+     "i": 4,
+     "right": "would have felt",
+     "wrong": "would have feel"
+    }
+   ]
+  },
+  {
+   "id": "m4-26",
+   "title": "The Desert That Bloomed",
+   "sentences": [
+    "The Atacama Desert in Chile is one of the driest places on Earth.",
+    "Some areas receive less than one millimeter of rain a year.",
+    "Yet after unusually heavy rain, millions of pink and purple flowers suddenly cover the sand.",
+    "The seeds can survive underground for years, waiting for the right conditions.",
+    "Scientists study the event to learn how life survives in extreme environments."
+   ],
+   "tf": [
+    {
+     "s": "The Atacama is very dry.",
+     "a": true
+    },
+    {
+     "s": "It rains a lot every year.",
+     "a": false,
+     "fix": "Some areas get less than 1 mm a year."
+    },
+    {
+     "s": "Seeds wait underground.",
+     "a": true
+    },
+    {
+     "s": "The flowers are blue and white.",
+     "a": false,
+     "fix": "They are pink and purple."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country is the Atacama Desert in?",
+     "a": "Chile"
+    },
+    {
+     "q": "What happens after heavy rain?",
+     "a": "Millions of flowers cover the sand"
+    },
+    {
+     "q": "How can flowers appear in such a dry place?",
+     "a": "Their seeds survive underground for years and grow when it rains"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "is",
+     "wrong": "are"
+    },
+    {
+     "i": 2,
+     "right": "cover",
+     "wrong": "covers"
+    },
+    {
+     "i": 3,
+     "right": "can survive",
+     "wrong": "can survives"
+    }
+   ]
+  },
+  {
+   "id": "m4-27",
+   "title": "The Most Expensive Mistake",
+   "sentences": [
+    "In 1999, NASA lost a 125-million-dollar spacecraft that was orbiting Mars.",
+    "One team had used metric units, while another team had used imperial units.",
+    "Because nobody noticed, the spacecraft flew too close to the planet and was destroyed.",
+    "The mistake was so embarrassing that it is now taught in engineering classes.",
+    "It reminds students that even small details can have enormous consequences."
+   ],
+   "tf": [
+    {
+     "s": "The spacecraft was lost in 1999.",
+     "a": true
+    },
+    {
+     "s": "Both teams used metric units.",
+     "a": false,
+     "fix": "One used metric, the other imperial."
+    },
+    {
+     "s": "The spacecraft was destroyed.",
+     "a": true
+    },
+    {
+     "s": "The spacecraft cost 125 thousand dollars.",
+     "a": false,
+     "fix": "It cost 125 million dollars."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What did NASA lose?",
+     "a": "A spacecraft orbiting Mars"
+    },
+    {
+     "q": "What caused the mistake?",
+     "a": "Teams used different units (metric and imperial)"
+    },
+    {
+     "q": "What lesson do engineering students learn from it?",
+     "a": "Small details can have enormous consequences"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "lost",
+     "wrong": "losted"
+    },
+    {
+     "i": 1,
+     "right": "had used",
+     "wrong": "had use"
+    },
+    {
+     "i": 2,
+     "right": "was destroyed",
+     "wrong": "was destroy"
+    }
+   ]
+  },
+  {
+   "id": "m4-28",
+   "title": "Students Who Cleaned a River",
+   "sentences": [
+    "A canal near a school in Nonthaburi had become so polluted that it smelled terrible.",
+    "A group of students decided to do something instead of complaining.",
+    "Every weekend for a year, they collected trash and tested the water.",
+    "They also persuaded nearby shops to stop pouring waste into the canal.",
+    "Today, fish have returned, and the city has promised to keep the canal clean."
+   ],
+   "tf": [
+    {
+     "s": "The canal smelled terrible.",
+     "a": true
+    },
+    {
+     "s": "They cleaned it for one month.",
+     "a": false,
+     "fix": "They worked every weekend for a year."
+    },
+    {
+     "s": "Fish came back.",
+     "a": true
+    },
+    {
+     "s": "The shops refused to change.",
+     "a": false,
+     "fix": "The students persuaded them to stop."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where was the canal?",
+     "a": "Near a school in Nonthaburi"
+    },
+    {
+     "q": "What did they persuade the shops to do?",
+     "a": "Stop pouring waste into the canal"
+    },
+    {
+     "q": "How do we know their work succeeded?",
+     "a": "Fish have returned to the canal"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "had become",
+     "wrong": "had became"
+    },
+    {
+     "i": 2,
+     "right": "collected",
+     "wrong": "collect"
+    },
+    {
+     "i": 3,
+     "right": "persuaded",
+     "wrong": "persuade"
+    }
+   ]
+  },
+  {
+   "id": "m4-29",
+   "title": "The Pilot Who Landed on a River",
+   "sentences": [
+    "In 2009, a plane leaving New York lost both engines after hitting a flock of birds.",
+    "The pilot, Captain Sullenberger, had only a few minutes to make a decision.",
+    "Realizing that he could not reach an airport, he landed the plane on the Hudson River.",
+    "All 155 people on board survived, and boats quickly rescued them.",
+    "Investigators later concluded that his calm thinking had saved everyone's lives."
+   ],
+   "tf": [
+    {
+     "s": "The plane hit a flock of birds.",
+     "a": true
+    },
+    {
+     "s": "One engine kept working.",
+     "a": false,
+     "fix": "Both engines were lost."
+    },
+    {
+     "s": "Everyone survived.",
+     "a": true
+    },
+    {
+     "s": "The plane landed at an airport.",
+     "a": false,
+     "fix": "It landed on the Hudson River."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What hit the plane?",
+     "a": "A flock of birds"
+    },
+    {
+     "q": "Where did he land the plane?",
+     "a": "On the Hudson River"
+    },
+    {
+     "q": "Why didn't he fly to an airport?",
+     "a": "Both engines had failed and he couldn't reach one"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "lost",
+     "wrong": "losed"
+    },
+    {
+     "i": 2,
+     "right": "could not reach",
+     "wrong": "could not reached"
+    },
+    {
+     "i": 4,
+     "right": "had saved",
+     "wrong": "had save"
+    }
+   ]
+  },
+  {
+   "id": "m4-30",
+   "title": "The Scientist and the Pigeon",
+   "sentences": [
+    "For years, two radio astronomers kept hearing a strange hiss in their giant antenna.",
+    "At first, they blamed pigeons that were nesting inside it.",
+    "Even after the birds were removed, the noise continued from every direction in the sky.",
+    "They had accidentally discovered the leftover heat from the Big Bang.",
+    "The discovery, made in 1964, won them the Nobel Prize in Physics."
+   ],
+   "tf": [
+    {
+     "s": "They heard a hiss in their antenna.",
+     "a": true
+    },
+    {
+     "s": "The pigeons caused the noise.",
+     "a": false,
+     "fix": "The noise was leftover heat from the Big Bang."
+    },
+    {
+     "s": "The discovery was in 1964.",
+     "a": true
+    },
+    {
+     "s": "They never won a prize.",
+     "a": false,
+     "fix": "They won the Nobel Prize in Physics."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What did they first blame for the noise?",
+     "a": "Pigeons nesting in the antenna"
+    },
+    {
+     "q": "How did they know it wasn't the pigeons?",
+     "a": "The noise continued after the birds were removed"
+    },
+    {
+     "q": "Why is it surprising that this discovery won a Nobel Prize?",
+     "a": "It was an accident: they were trying to get rid of a noise"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "kept",
+     "wrong": "keeped"
+    },
+    {
+     "i": 2,
+     "right": "were removed",
+     "wrong": "was removed"
+    },
+    {
+     "i": 4,
+     "right": "won",
+     "wrong": "winned"
+    }
+   ]
+  },
+  {
+   "id": "m4-31",
+   "title": "The Island That Banned Cars",
+   "sentences": [
+    "On a small island off the coast of Italy, cars have been banned for decades.",
+    "Residents get around on foot, by bicycle, or in small electric carts.",
+    "Visitors say the island feels peaceful, and the air is noticeably cleaner.",
+    "Deliveries are made by boat and carried through the narrow streets by hand.",
+    "Some residents admit life is slower, but none of them want the cars to return."
+   ],
+   "tf": [
+    {
+     "s": "Cars are banned on the island.",
+     "a": true
+    },
+    {
+     "s": "People use big trucks for deliveries.",
+     "a": false,
+     "fix": "Deliveries come by boat and are carried by hand."
+    },
+    {
+     "s": "The air is cleaner.",
+     "a": true
+    },
+    {
+     "s": "Residents want cars to return.",
+     "a": false,
+     "fix": "None of them want cars back."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where is the island?",
+     "a": "Off the coast of Italy"
+    },
+    {
+     "q": "How are deliveries made?",
+     "a": "By boat, then carried by hand"
+    },
+    {
+     "q": "What is the downside of life without cars, and do people mind?",
+     "a": "Life is slower, but nobody wants the cars back"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "have been banned",
+     "wrong": "have been ban"
+    },
+    {
+     "i": 2,
+     "right": "feels",
+     "wrong": "feel"
+    },
+    {
+     "i": 3,
+     "right": "are made",
+     "wrong": "are make"
+    }
+   ]
+  },
+  {
+   "id": "m4-32",
+   "title": "The Memory Champion",
+   "sentences": [
+    "A teenager from Mongolia once memorized the order of a shuffled deck of cards in under twenty seconds.",
+    "She explained that she turns every card into a person or an object.",
+    "Then she imagines placing them along a route through a house she knows well.",
+    "This method, known as a memory palace, was used by ancient Greek speakers.",
+    "She believes that anyone can improve their memory with enough practice."
+   ],
+   "tf": [
+    {
+     "s": "She memorized cards in under twenty seconds.",
+     "a": true
+    },
+    {
+     "s": "She uses a new method she invented.",
+     "a": false,
+     "fix": "The method was used by ancient Greek speakers."
+    },
+    {
+     "s": "She imagines a house she knows.",
+     "a": true
+    },
+    {
+     "s": "She thinks memory cannot be improved.",
+     "a": false,
+     "fix": "She believes anyone can improve with practice."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where is the teenager from?",
+     "a": "Mongolia"
+    },
+    {
+     "q": "What does she turn each card into?",
+     "a": "A person or an object"
+    },
+    {
+     "q": "Why might a memory palace work so well?",
+     "a": "It is easier to remember pictures and places than plain information"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "memorized",
+     "wrong": "memorize"
+    },
+    {
+     "i": 1,
+     "right": "turns",
+     "wrong": "turn"
+    },
+    {
+     "i": 3,
+     "right": "was used",
+     "wrong": "were used"
+    }
+   ]
+  },
+  {
+   "id": "m4-33",
+   "title": "The Refugee Swimmer",
+   "sentences": [
+    "In 2015, Yusra Mardini fled the war in Syria with her sister.",
+    "When their small boat's engine failed at sea, the sisters jumped into the water and pushed it.",
+    "They swam for more than three hours until the boat reached Greece.",
+    "A year later, Yusra competed at the Olympic Games as part of a refugee team.",
+    "She now speaks around the world about the challenges refugees face."
+   ],
+   "tf": [
+    {
+     "s": "Yusra fled Syria.",
+     "a": true
+    },
+    {
+     "s": "The boat reached Italy.",
+     "a": false,
+     "fix": "It reached Greece."
+    },
+    {
+     "s": "She competed in the Olympics.",
+     "a": true
+    },
+    {
+     "s": "She swam alone.",
+     "a": false,
+     "fix": "She swam with her sister."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country did Yusra flee?",
+     "a": "Syria"
+    },
+    {
+     "q": "How long did the sisters swim?",
+     "a": "More than three hours"
+    },
+    {
+     "q": "Why is it remarkable that she swam at the Olympics a year later?",
+     "a": "She had just escaped a war and nearly drowned at sea"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "fled",
+     "wrong": "fleed"
+    },
+    {
+     "i": 1,
+     "right": "failed",
+     "wrong": "fail"
+    },
+    {
+     "i": 3,
+     "right": "competed",
+     "wrong": "competing"
+    }
+   ]
+  },
+  {
+   "id": "m4-34",
+   "title": "The Talking Tree Network",
+   "sentences": [
+    "Scientists have found that trees in a forest are connected by underground fungi.",
+    "Through this network, trees can share water and nutrients with one another.",
+    "Older \"mother trees\" send food to young trees growing in the shade.",
+    "When a tree is attacked by insects, it may even send warning signals to its neighbors.",
+    "The discovery has changed how many people think about cutting down old trees."
+   ],
+   "tf": [
+    {
+     "s": "Trees are connected by fungi.",
+     "a": true
+    },
+    {
+     "s": "Young trees feed the old trees.",
+     "a": false,
+     "fix": "Old trees send food to young trees."
+    },
+    {
+     "s": "Trees can send warning signals.",
+     "a": true
+    },
+    {
+     "s": "The network is above the ground.",
+     "a": false,
+     "fix": "It is underground."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What connects the trees?",
+     "a": "Underground fungi"
+    },
+    {
+     "q": "What do \"mother trees\" do?",
+     "a": "Send food to young trees in the shade"
+    },
+    {
+     "q": "Why might this make people think twice before cutting down old trees?",
+     "a": "Old trees help feed and protect the whole forest"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "have found",
+     "wrong": "has found"
+    },
+    {
+     "i": 2,
+     "right": "send",
+     "wrong": "sends"
+    },
+    {
+     "i": 3,
+     "right": "is attacked",
+     "wrong": "is attack"
+    }
+   ]
+  },
+  {
+   "id": "m4-35",
+   "title": "The Wrong Way Marathon",
+   "sentences": [
+    "During a city marathon, the runners in first and second place took a wrong turn.",
+    "They ran nearly two kilometers before realizing they had left the route.",
+    "By the time they returned, a runner who had been in fifth place was leading.",
+    "Instead of complaining, the leaders laughed and said they should have paid more attention.",
+    "The organizers promised to put up clearer signs for the following year."
+   ],
+   "tf": [
+    {
+     "s": "The leaders took a wrong turn.",
+     "a": true
+    },
+    {
+     "s": "They ran ten kilometers the wrong way.",
+     "a": false,
+     "fix": "Nearly two kilometers."
+    },
+    {
+     "s": "The organizers promised clearer signs.",
+     "a": true
+    },
+    {
+     "s": "The leaders blamed the organizers.",
+     "a": false,
+     "fix": "They laughed and said they should have paid more attention."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How far did they run the wrong way?",
+     "a": "Nearly two kilometers"
+    },
+    {
+     "q": "Who ended up leading the race?",
+     "a": "A runner who had been in fifth place"
+    },
+    {
+     "q": "What does the leaders' reaction tell us about them?",
+     "a": "They were good sports: they took responsibility and laughed"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "took",
+     "wrong": "taked"
+    },
+    {
+     "i": 1,
+     "right": "had left",
+     "wrong": "have left"
+    },
+    {
+     "i": 3,
+     "right": "should have paid",
+     "wrong": "should have pay"
+    }
+   ]
+  },
+  {
+   "id": "m4-36",
+   "title": "The Phone-Free Concert",
+   "sentences": [
+    "A famous singer recently asked fans to lock their phones in small pouches at her concerts.",
+    "The pouches could only be opened at special stations outside the hall.",
+    "At first, many fans were annoyed because they could not take photos or videos.",
+    "After the show, however, most of them said they had enjoyed the music more.",
+    "The singer believes people experience live events better when they are not filming them."
+   ],
+   "tf": [
+    {
+     "s": "Phones were locked in pouches.",
+     "a": true
+    },
+    {
+     "s": "Fans could open the pouches in their seats.",
+     "a": false,
+     "fix": "Only at stations outside the hall."
+    },
+    {
+     "s": "Fans enjoyed the music more.",
+     "a": true
+    },
+    {
+     "s": "The singer wants fans to film everything.",
+     "a": false,
+     "fix": "She thinks they enjoy it more without filming."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where did fans put their phones?",
+     "a": "In small locked pouches"
+    },
+    {
+     "q": "Why were fans annoyed at first?",
+     "a": "They couldn't take photos or videos"
+    },
+    {
+     "q": "Why did fans enjoy the concert more without phones?",
+     "a": "They watched and listened instead of filming"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "asked",
+     "wrong": "ask"
+    },
+    {
+     "i": 1,
+     "right": "could only be opened",
+     "wrong": "could only be open"
+    },
+    {
+     "i": 3,
+     "right": "had enjoyed",
+     "wrong": "has enjoyed"
+    }
+   ]
+  },
+  {
+   "id": "m4-37",
+   "title": "The Kindness Experiment",
+   "sentences": [
+    "In a study, researchers gave people money and asked half of them to spend it on others.",
+    "The other half were told to spend the money on themselves.",
+    "At the end of the day, those who had spent money on others felt significantly happier.",
+    "Surprisingly, the amount of money made almost no difference to the result.",
+    "The researchers concluded that generosity, not wealth, was the key to happiness."
+   ],
+   "tf": [
+    {
+     "s": "Half the people spent money on others.",
+     "a": true
+    },
+    {
+     "s": "People who spent on themselves were happier.",
+     "a": false,
+     "fix": "People who spent on others were happier."
+    },
+    {
+     "s": "The amount of money hardly mattered.",
+     "a": true
+    },
+    {
+     "s": "The study says wealth is the key to happiness.",
+     "a": false,
+     "fix": "It says generosity is."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What were half the people asked to do?",
+     "a": "Spend the money on others"
+    },
+    {
+     "q": "Who felt happier?",
+     "a": "Those who spent money on others"
+    },
+    {
+     "q": "What does \"the amount made no difference\" tell us?",
+     "a": "Even small acts of generosity make people happier"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "gave",
+     "wrong": "gived"
+    },
+    {
+     "i": 1,
+     "right": "were told",
+     "wrong": "were tell"
+    },
+    {
+     "i": 2,
+     "right": "had spent",
+     "wrong": "had spend"
+    }
+   ]
+  },
+  {
+   "id": "m4-38",
+   "title": "The Earthquake Warning",
+   "sentences": [
+    "In Japan, millions of phones receive an alarm seconds before strong earthquake shaking arrives.",
+    "Sensors detect the first, weaker waves and send a warning before the strong waves arrive.",
+    "Even ten seconds is enough time to stop trains, open doors, and hide under tables.",
+    "Thailand is now testing a similar system in its northern provinces.",
+    "Experts say it cannot predict earthquakes, but it can reduce the damage they cause."
+   ],
+   "tf": [
+    {
+     "s": "Phones get an alarm before strong shaking.",
+     "a": true
+    },
+    {
+     "s": "The system can predict earthquakes days early.",
+     "a": false,
+     "fix": "It cannot predict them; it warns seconds before."
+    },
+    {
+     "s": "Thailand is testing a similar system.",
+     "a": true
+    },
+    {
+     "s": "Ten seconds is too short to do anything.",
+     "a": false,
+     "fix": "It is enough to stop trains and hide."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country uses the phone alarms?",
+     "a": "Japan"
+    },
+    {
+     "q": "What can people do in ten seconds?",
+     "a": "Stop trains, open doors, hide under tables"
+    },
+    {
+     "q": "Why can the warning arrive before the strong shaking?",
+     "a": "The first, weaker waves are detected, and the warning travels faster than the strong waves"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "receive",
+     "wrong": "receives"
+    },
+    {
+     "i": 1,
+     "right": "detect",
+     "wrong": "detects"
+    },
+    {
+     "i": 3,
+     "right": "is now testing",
+     "wrong": "are now testing"
+    }
+   ]
+  },
+  {
+   "id": "m4-39",
+   "title": "The Accidental Actor",
+   "sentences": [
+    "Sasha was offered a role in a big movie after a director saw her school play online.",
+    "She had never acted professionally, so she felt extremely nervous on the first day.",
+    "The older actors, who had been in dozens of films, gave her helpful advice.",
+    "She worked twelve-hour days for three months while keeping up with her schoolwork.",
+    "When the film was released, critics praised her as the most natural actor in it."
+   ],
+   "tf": [
+    {
+     "s": "A director saw her school play online.",
+     "a": true
+    },
+    {
+     "s": "Sasha was an experienced actor.",
+     "a": false,
+     "fix": "She had never acted professionally."
+    },
+    {
+     "s": "She worked twelve-hour days.",
+     "a": true
+    },
+    {
+     "s": "Critics disliked her acting.",
+     "a": false,
+     "fix": "They praised her."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How did the director find Sasha?",
+     "a": "He saw her school play online"
+    },
+    {
+     "q": "Who helped her?",
+     "a": "The older, experienced actors"
+    },
+    {
+     "q": "Why might critics call her \"natural\"?",
+     "a": "She hadn't been trained professionally, so her acting felt real"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "was offered",
+     "wrong": "was offer"
+    },
+    {
+     "i": 2,
+     "right": "had been",
+     "wrong": "has been"
+    },
+    {
+     "i": 4,
+     "right": "was released",
+     "wrong": "was release"
+    }
+   ]
+  },
+  {
+   "id": "m4-40",
+   "title": "The Water From Thin Air",
+   "sentences": [
+    "In parts of Peru where it rarely rains, villagers collect water from fog.",
+    "They hang large nets on hillsides, and tiny drops of fog stick to the threads.",
+    "The drops join together and run down into tanks below the nets.",
+    "A single net can collect hundreds of liters of water on a foggy day.",
+    "The system costs very little and needs almost no electricity or maintenance."
+   ],
+   "tf": [
+    {
+     "s": "Villagers use nets to catch fog.",
+     "a": true
+    },
+    {
+     "s": "It rains a lot in these areas.",
+     "a": false,
+     "fix": "It rarely rains there."
+    },
+    {
+     "s": "One net can collect hundreds of liters.",
+     "a": true
+    },
+    {
+     "s": "The system needs a lot of electricity.",
+     "a": false,
+     "fix": "It needs almost none."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where do villagers collect fog water?",
+     "a": "In Peru"
+    },
+    {
+     "q": "Where does the water go?",
+     "a": "Into tanks below the nets"
+    },
+    {
+     "q": "Why is this system good for poor villages?",
+     "a": "It is cheap and needs almost no electricity or maintenance"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "collect",
+     "wrong": "collects"
+    },
+    {
+     "i": 1,
+     "right": "stick",
+     "wrong": "sticks"
+    },
+    {
+     "i": 4,
+     "right": "costs",
+     "wrong": "cost"
+    }
+   ]
+  },
+  {
+   "id": "m4-41",
+   "title": "The Teacher Who Lived at School",
+   "sentences": [
+    "When floods cut off a village in Nan, the only teacher stayed at the school for two weeks.",
+    "He cooked rice for the students whose families could not reach them.",
+    "At night, he taught them by candlelight because there was no electricity.",
+    "When rescue boats finally arrived, every student was safe and healthy.",
+    "Parents later raised money to build him a small house next to the school."
+   ],
+   "tf": [
+    {
+     "s": "The teacher stayed for two weeks.",
+     "a": true
+    },
+    {
+     "s": "The village had electricity.",
+     "a": false,
+     "fix": "There was no electricity."
+    },
+    {
+     "s": "All the students were safe.",
+     "a": true
+    },
+    {
+     "s": "Parents asked the teacher to leave.",
+     "a": false,
+     "fix": "They built him a house."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where was the village?",
+     "a": "In Nan"
+    },
+    {
+     "q": "Why did he teach by candlelight?",
+     "a": "There was no electricity"
+    },
+    {
+     "q": "Why did parents build him a house?",
+     "a": "To thank him for taking care of their children during the flood"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "stayed",
+     "wrong": "stay"
+    },
+    {
+     "i": 1,
+     "right": "whose",
+     "wrong": "who's"
+    },
+    {
+     "i": 3,
+     "right": "arrived",
+     "wrong": "arrive"
+    }
+   ]
+  },
+  {
+   "id": "m4-42",
+   "title": "The Recycled Orchestra",
+   "sentences": [
+    "In a town in Paraguay built on a garbage dump, children play in an unusual orchestra.",
+    "Their violins, cellos, and flutes are made from oil cans, forks, and old pipes.",
+    "A music teacher started the orchestra because real instruments were too expensive.",
+    "The orchestra has since performed in concert halls around the world.",
+    "For many of the children, music has opened doors that once seemed closed."
+   ],
+   "tf": [
+    {
+     "s": "The instruments are made from trash.",
+     "a": true
+    },
+    {
+     "s": "The town is in Peru.",
+     "a": false,
+     "fix": "It is in Paraguay."
+    },
+    {
+     "s": "The orchestra has toured the world.",
+     "a": true
+    },
+    {
+     "s": "The instruments were very expensive.",
+     "a": false,
+     "fix": "They were made from cheap trash."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where is the orchestra from?",
+     "a": "Paraguay"
+    },
+    {
+     "q": "Why did the teacher use trash?",
+     "a": "Real instruments were too expensive"
+    },
+    {
+     "q": "What does \"music has opened doors\" mean here?",
+     "a": "Music has given the children new opportunities in life"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "built",
+     "wrong": "build"
+    },
+    {
+     "i": 1,
+     "right": "are made",
+     "wrong": "is made"
+    },
+    {
+     "i": 3,
+     "right": "has since performed",
+     "wrong": "have since performed"
+    }
+   ]
+  },
+  {
+   "id": "m4-43",
+   "title": "The Wrong Answer That Was Right",
+   "sentences": [
+    "On a math exam, a student wrote an answer that the teacher marked as wrong.",
+    "The student politely argued that the question could be understood in two ways.",
+    "After checking carefully, the teacher agreed that both answers were correct.",
+    "She not only changed the mark but also rewrote the question for future classes.",
+    "The student learned that questioning a decision respectfully is worth the effort."
+   ],
+   "tf": [
+    {
+     "s": "The teacher first marked the answer wrong.",
+     "a": true
+    },
+    {
+     "s": "The student shouted at the teacher.",
+     "a": false,
+     "fix": "The student argued politely."
+    },
+    {
+     "s": "The teacher rewrote the question.",
+     "a": true
+    },
+    {
+     "s": "The question had only one possible meaning.",
+     "a": false,
+     "fix": "It could be understood in two ways."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What subject was the exam?",
+     "a": "Math"
+    },
+    {
+     "q": "What did the teacher do after checking?",
+     "a": "Agreed both answers were correct and changed the mark"
+    },
+    {
+     "q": "Why did the teacher rewrite the question?",
+     "a": "So it couldn't be understood in two ways again"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "marked",
+     "wrong": "mark"
+    },
+    {
+     "i": 2,
+     "right": "were",
+     "wrong": "was"
+    },
+    {
+     "i": 3,
+     "right": "rewrote",
+     "wrong": "rewrited"
+    }
+   ]
+  },
+  {
+   "id": "m4-44",
+   "title": "The Monkey Selfie",
+   "sentences": [
+    "A photographer in Indonesia left his camera unattended, and a curious monkey picked it up.",
+    "The monkey took hundreds of photos, including several smiling selfies.",
+    "When the photos became famous, a court case began over who owned them.",
+    "The photographer argued that he had set up the equipment, so the photos were his.",
+    "The judges eventually decided that animals cannot own the rights to a photo."
+   ],
+   "tf": [
+    {
+     "s": "A monkey took selfies.",
+     "a": true
+    },
+    {
+     "s": "The photographer gave the camera to the monkey.",
+     "a": false,
+     "fix": "He left it unattended and the monkey picked it up."
+    },
+    {
+     "s": "There was a court case.",
+     "a": true
+    },
+    {
+     "s": "The judges said the monkey owned the photos.",
+     "a": false,
+     "fix": "They said animals cannot own the rights."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country was the photographer in?",
+     "a": "Indonesia"
+    },
+    {
+     "q": "What did the photographer argue?",
+     "a": "He set up the equipment, so the photos were his"
+    },
+    {
+     "q": "Why was the case so unusual?",
+     "a": "A monkey took the photos, so it was unclear who owned them"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "left",
+     "wrong": "leaved"
+    },
+    {
+     "i": 1,
+     "right": "took",
+     "wrong": "taked"
+    },
+    {
+     "i": 4,
+     "right": "decided",
+     "wrong": "decide"
+    }
+   ]
+  },
+  {
+   "id": "m4-45",
+   "title": "The Six-Hour Workday",
+   "sentences": [
+    "A company in Sweden reduced its working day from eight hours to six without cutting pay.",
+    "Managers had feared that less work would be done, but productivity actually increased.",
+    "Workers took fewer sick days and said they felt less stressed.",
+    "However, the company had to hire extra staff to cover all the shifts.",
+    "Whether shorter days could work for every type of job is still being debated."
+   ],
+   "tf": [
+    {
+     "s": "The workday became six hours.",
+     "a": true
+    },
+    {
+     "s": "Workers were paid less.",
+     "a": false,
+     "fix": "Pay was not cut."
+    },
+    {
+     "s": "Productivity increased.",
+     "a": true
+    },
+    {
+     "s": "Everyone agrees it works for every job.",
+     "a": false,
+     "fix": "It is still being debated."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country is the company in?",
+     "a": "Sweden"
+    },
+    {
+     "q": "What happened to sick days?",
+     "a": "Workers took fewer sick days"
+    },
+    {
+     "q": "What was the main cost of the change?",
+     "a": "The company had to hire extra staff"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "reduced",
+     "wrong": "reduce"
+    },
+    {
+     "i": 1,
+     "right": "had feared",
+     "wrong": "had fear"
+    },
+    {
+     "i": 4,
+     "right": "is still being debated",
+     "wrong": "is still been debated"
+    }
+   ]
+  },
+  {
+   "id": "m4-46",
+   "title": "The Message in a Bottle",
+   "sentences": [
+    "While walking on a beach in Australia, a family found a bottle with a message inside.",
+    "The note had been thrown into the sea from a German ship in 1886.",
+    "Experts confirmed that it was the oldest message in a bottle ever discovered.",
+    "It had been part of an experiment to study how ocean currents move.",
+    "The family donated the bottle to a museum so that everyone could see it."
+   ],
+   "tf": [
+    {
+     "s": "The bottle came from a German ship.",
+     "a": true
+    },
+    {
+     "s": "The note was written in 1986.",
+     "a": false,
+     "fix": "It was from 1886."
+    },
+    {
+     "s": "It was part of an experiment.",
+     "a": true
+    },
+    {
+     "s": "The family sold the bottle.",
+     "a": false,
+     "fix": "They donated it to a museum."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where was the bottle found?",
+     "a": "On a beach in Australia"
+    },
+    {
+     "q": "Why was the note thrown into the sea?",
+     "a": "For an experiment on ocean currents"
+    },
+    {
+     "q": "How old was the message when it was found?",
+     "a": "More than 130 years old (from 1886)"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "found",
+     "wrong": "founded"
+    },
+    {
+     "i": 1,
+     "right": "had been thrown",
+     "wrong": "had been threw"
+    },
+    {
+     "i": 4,
+     "right": "donated",
+     "wrong": "donate"
+    }
+   ]
+  },
+  {
+   "id": "m4-47",
+   "title": "The Girl Who Fought for School",
+   "sentences": [
+    "Malala Yousafzai began writing a blog about girls' education when she was only eleven.",
+    "In her region of Pakistan, armed groups had banned girls from going to school.",
+    "In 2012, she was attacked on her school bus because of her campaign.",
+    "She survived and continued speaking out, even more determined than before.",
+    "Two years later, she became the youngest person ever to win the Nobel Peace Prize."
+   ],
+   "tf": [
+    {
+     "s": "Malala wrote a blog.",
+     "a": true
+    },
+    {
+     "s": "She stopped campaigning after the attack.",
+     "a": false,
+     "fix": "She continued, more determined."
+    },
+    {
+     "s": "She won the Nobel Peace Prize.",
+     "a": true
+    },
+    {
+     "s": "Girls were free to go to school in her region.",
+     "a": false,
+     "fix": "Armed groups had banned them."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How old was Malala when she started her blog?",
+     "a": "Eleven"
+    },
+    {
+     "q": "Why was she attacked?",
+     "a": "Because of her campaign for girls' education"
+    },
+    {
+     "q": "What does \"even more determined\" show about her?",
+     "a": "The attack made her stronger, not afraid"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "began",
+     "wrong": "begun"
+    },
+    {
+     "i": 1,
+     "right": "had banned",
+     "wrong": "had ban"
+    },
+    {
+     "i": 4,
+     "right": "became",
+     "wrong": "become"
+    }
+   ]
+  },
+  {
+   "id": "m4-48",
+   "title": "The Tallest Wooden Building",
+   "sentences": [
+    "In Norway, engineers have built an apartment tower almost entirely from wood.",
+    "The wood is specially treated so that it resists fire better than many people expect.",
+    "Building with wood produces far less carbon dioxide than using concrete and steel.",
+    "Critics worry about how the building will cope with strong winds over many years.",
+    "Nevertheless, architects around the world are planning even taller wooden towers."
+   ],
+   "tf": [
+    {
+     "s": "The tower is made almost entirely of wood.",
+     "a": true
+    },
+    {
+     "s": "The wood burns very easily.",
+     "a": false,
+     "fix": "It is treated to resist fire."
+    },
+    {
+     "s": "Wood produces less carbon dioxide than concrete.",
+     "a": true
+    },
+    {
+     "s": "No one has any worries about the building.",
+     "a": false,
+     "fix": "Critics worry about strong winds."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Which country is the wooden tower in?",
+     "a": "Norway"
+    },
+    {
+     "q": "Why is building with wood better for the climate?",
+     "a": "It produces far less carbon dioxide than concrete and steel"
+    },
+    {
+     "q": "What does \"nevertheless\" tell us about the architects?",
+     "a": "They are going ahead despite the critics' worries"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "have built",
+     "wrong": "has built"
+    },
+    {
+     "i": 1,
+     "right": "resists",
+     "wrong": "resist"
+    },
+    {
+     "i": 3,
+     "right": "will cope",
+     "wrong": "will copes"
+    }
+   ]
+  },
+  {
+   "id": "m4-49",
+   "title": "The Bookshop Run by Volunteers",
+   "sentences": [
+    "When the only bookshop in a small Scottish town was about to close, the residents bought it together.",
+    "Now it is run entirely by volunteers, who take turns working there.",
+    "Each volunteer chooses which books to recommend in the window.",
+    "Profits are used to fund reading programs for local children.",
+    "The idea has been copied by several other towns that were losing their shops."
+   ],
+   "tf": [
+    {
+     "s": "Residents bought the bookshop.",
+     "a": true
+    },
+    {
+     "s": "The staff are paid workers.",
+     "a": false,
+     "fix": "It is run by volunteers."
+    },
+    {
+     "s": "Profits help local children read.",
+     "a": true
+    },
+    {
+     "s": "No other town has tried the idea.",
+     "a": false,
+     "fix": "Several towns have copied it."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where is the bookshop?",
+     "a": "In a small town in Scotland"
+    },
+    {
+     "q": "What are the profits used for?",
+     "a": "Reading programs for local children"
+    },
+    {
+     "q": "Why did other towns copy the idea?",
+     "a": "They were losing their shops too, and this kept one open"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "bought",
+     "wrong": "buyed"
+    },
+    {
+     "i": 1,
+     "right": "is run",
+     "wrong": "is ran"
+    },
+    {
+     "i": 4,
+     "right": "has been copied",
+     "wrong": "has been copy"
+    }
+   ]
+  },
+  {
+   "id": "m4-50",
+   "title": "The Sleep-Deprived Experiment",
+   "sentences": [
+    "In 1964, a seventeen-year-old student stayed awake for eleven days for a science fair project.",
+    "As the days passed, he found it harder to concentrate and remember simple things.",
+    "By the end, he was seeing things that were not really there.",
+    "Surprisingly, he recovered fully after sleeping for fourteen hours.",
+    "Doctors now warn that such experiments are extremely dangerous and should never be repeated."
+   ],
+   "tf": [
+    {
+     "s": "He stayed awake for eleven days.",
+     "a": true
+    },
+    {
+     "s": "He was a university professor.",
+     "a": false,
+     "fix": "He was a seventeen-year-old student."
+    },
+    {
+     "s": "He saw things that weren't there.",
+     "a": true
+    },
+    {
+     "s": "He needed a month to recover.",
+     "a": false,
+     "fix": "He recovered after sleeping fourteen hours."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How long did he stay awake?",
+     "a": "Eleven days"
+    },
+    {
+     "q": "What happened to his memory?",
+     "a": "He found it harder to remember simple things"
+    },
+    {
+     "q": "Why do doctors say it should never be repeated?",
+     "a": "Losing so much sleep is extremely dangerous for the brain and body"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "stayed",
+     "wrong": "stay"
+    },
+    {
+     "i": 1,
+     "right": "found",
+     "wrong": "finded"
+    },
+    {
+     "i": 4,
+     "right": "should never be repeated",
+     "wrong": "should never be repeat"
+    }
+   ]
+  },
+  {
+   "id": "m4-51",
+   "title": "The Lost Hiker's Phone",
+   "sentences": [
+    "A hiker who had fallen into a deep valley in New Zealand had no phone signal.",
+    "However, her smartwatch detected the fall and automatically sent her location to rescuers.",
+    "A helicopter found her within two hours, even though she was unconscious.",
+    "Doctors said that without the watch, she might not have survived the cold night.",
+    "Her story has made many hikers rethink what equipment they carry."
+   ],
+   "tf": [
+    {
+     "s": "The hiker was in New Zealand.",
+     "a": true
+    },
+    {
+     "s": "She called for help on her phone.",
+     "a": false,
+     "fix": "She had no signal; her watch sent the alert."
+    },
+    {
+     "s": "A helicopter found her.",
+     "a": true
+    },
+    {
+     "s": "Rescuers took two days to find her.",
+     "a": false,
+     "fix": "They found her within two hours."
+    }
+   ],
+   "questions": [
+    {
+     "q": "Where did the hiker fall?",
+     "a": "Into a deep valley in New Zealand"
+    },
+    {
+     "q": "How did rescuers know where she was?",
+     "a": "Her smartwatch sent her location automatically"
+    },
+    {
+     "q": "Why was the automatic message so important?",
+     "a": "She was unconscious and couldn't call for help"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "had fallen",
+     "wrong": "had fell"
+    },
+    {
+     "i": 1,
+     "right": "detected",
+     "wrong": "detect"
+    },
+    {
+     "i": 3,
+     "right": "might not have survived",
+     "wrong": "might not have survive"
+    }
+   ]
+  },
+  {
+   "id": "m4-52",
+   "title": "The Chess Prodigy",
+   "sentences": [
+    "At the age of twelve, an Indian boy became one of the youngest chess grandmasters in history.",
+    "He started playing at five after watching his older sister compete.",
+    "He practices for up to eight hours a day, studying famous games from the past.",
+    "Despite his fame, his parents insist that he keeps going to school.",
+    "He says that losing teaches him far more than winning ever could."
+   ],
+   "tf": [
+    {
+     "s": "He became a grandmaster at twelve.",
+     "a": true
+    },
+    {
+     "s": "He started playing at ten.",
+     "a": false,
+     "fix": "He started at five."
+    },
+    {
+     "s": "He studies famous old games.",
+     "a": true
+    },
+    {
+     "s": "He has stopped going to school.",
+     "a": false,
+     "fix": "His parents insist he keeps going."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How old was he when he became a grandmaster?",
+     "a": "Twelve"
+    },
+    {
+     "q": "Who inspired him to start playing?",
+     "a": "His older sister"
+    },
+    {
+     "q": "Why might losing teach him more than winning?",
+     "a": "He learns from his mistakes when he loses"
+    }
+   ],
+   "mistakes": [
+    {
+     "i": 0,
+     "right": "became",
+     "wrong": "become"
+    },
+    {
+     "i": 2,
+     "right": "practices",
+     "wrong": "practice"
+    },
+    {
+     "i": 4,
+     "right": "teaches",
+     "wrong": "teach"
     }
    ]
   }

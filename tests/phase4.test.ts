@@ -318,7 +318,7 @@ describe('reading games: shared story bank', () => {
     mistakes: { i: number; right: string; wrong: string }[]
   }
   const bank = JSON.parse(readFileSync(new URL('../public/games/shared/stories.json', import.meta.url), 'utf8')) as Record<string, Story[]>
-  for (const level of ['M.1', 'M.2', 'M.3']) {
+  for (const level of ['M.1', 'M.2', 'M.3', 'M.4']) {
     it(`${level}: at least 50 stories, each complete`, () => {
       const list = bank[level]
       expect(list.length).toBeGreaterThanOrEqual(50)
@@ -475,5 +475,38 @@ describe('Think Tank Showdown (Henry, Nov 9)', () => {
     expect(html).toContain('id="marksBack"')
     expect(js).toContain("$('markApply').disabled = !all;")
     expect(js).toContain("if (bet) addPoints(t.id, S.marks[t.id] === 'right' ? bet : -bet")
+  })
+})
+
+describe('reading games one level harder (Henry, Nov 10)', () => {
+  const bank = JSON.parse(readFileSync(new URL('../public/games/shared/stories.json', import.meta.url), 'utf8'))
+  const js = (slug: string) => readFileSync(new URL(`../public/games/${slug}/app.js`, import.meta.url), 'utf8')
+  const content = (slug: string) => JSON.parse(readFileSync(new URL(`../public/games/${slug}/content.json`, import.meta.url), 'utf8'))
+  it('Read & Remember, Story Order and Spot the Mistakes read one level up; True or False Race does not', () => {
+    for (const slug of ['read-remember', 'story-order', 'spot-the-mistakes']) {
+      expect(js(slug)).toContain("var UP = { 'M.1': 'M.2', 'M.2': 'M.3', 'M.3': 'M.4' };")
+      expect(js(slug)).toContain('return stories[UP[level]] || stories[level];')
+    }
+    expect(js('true-false-race')).not.toContain('UP[level]')
+  })
+  it('the stories Read & Remember uses have 3 questions: easy (kept), medium, hard (new)', () => {
+    for (const L of ['M.2', 'M.3', 'M.4']) for (const st of bank[L]) expect(st.questions, st.title).toHaveLength(3)
+    expect(bank['M.2'][0].questions[2].q).toBe('Why were his shoes soaking wet?')
+    expect(JSON.stringify(bank)).not.toContain('Chiang Ruby')
+  })
+  it('Read & Remember: a reading timer and an answering timer, each −15 / +15', () => {
+    expect(js('read-remember')).toContain("adjust: 15, min: 15, max: 300, stepSecs: [60, 60], stepLabels: ['Read', 'Answer']")
+  })
+  it('Read & Remember: no "Remember the title" card', () => {
+    expect(JSON.stringify(content('read-remember').bonus)).not.toMatch(/title/i)
+  })
+  it('all three: a challenge round every 4th story, double points, and a slide about it', () => {
+    for (const slug of ['read-remember', 'story-order', 'spot-the-mistakes']) {
+      expect(js(slug)).toMatch(/challengeRound: \{ every: 4,[^}]*double: true/)
+      expect(content(slug).intro.map((s: { title: string }) => s.title)).toContain('Challenge round!')
+    }
+    const engine = readFileSync(new URL('../public/games/shared/kru-cards.js', import.meta.url), 'utf8')
+    expect(engine).toContain('function isChal(pos)')
+    expect(engine).toContain("'\" data-d=\"' + b.d * x + '\"")
   })
 })
