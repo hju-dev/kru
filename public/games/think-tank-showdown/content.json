@@ -1,5 +1,5 @@
 {
- "about": "Think Tank Showdown question pools per level. Each round has a pool (qs); every new game draws \"play\" main questions and \"spares\" spare questions at random from it. kind: answer / ideas / wager. todo = something for Henry to check. The first questions of each M.3 round are the original set; the rest were written for Kru.",
+ "about": "Think Tank Showdown question pools per level. Rounds: Riddle Rush (answer), Rebus Round (rebus: show = rows; tokens [big:X] [small:X] [up:X] [down:X], row [line]), Logic Puzzles (logic: checked by a solver, exactly one answer; M.3 puzzles have one red herring clue), Final Wager (wager: bet any points, ALL IN). M.3 Riddle Rush includes trick questions (herring: true). Each round has a pool (qs); every new game draws \"play\" main and \"spares\" spare questions at random. todo = something for Henry to check.",
  "M.1": {
   "rounds": [
    {
@@ -114,143 +114,233 @@
     "spares": 2
    },
    {
-    "name": "Spot the Problem",
+    "name": "Rebus Round",
     "tag": "Round 2",
-    "secs": 60,
-    "kind": "answer",
-    "rule": "60 s to talk in your team. Hands up to answer. A NEW speaker each time · Right = 2",
+    "secs": 30,
+    "kind": "rebus",
+    "play": 4,
+    "spares": 2,
+    "rule": "30 seconds. What word or phrase is hiding in the picture? Write it, hold it up · 1 point",
     "qs": [
      {
-      "q": "\"My cat is black. So all cats are black.\"",
-      "a": "One cat can't tell you about all cats.",
-      "why": "Award 2 for: only one cat / you can't say \"all\" / there are white, orange and gray cats."
+      "q": "🐝 + 4",
+      "show": [
+       "🐝 + 4"
+      ],
+      "a": "Before",
+      "why": "B (bee) + four = before"
      },
      {
-      "q": "\"I ate an ice cream and then it rained. So ice cream makes it rain.\"",
-      "a": "The two things happened together, but one didn't cause the other.",
-      "why": "Award 2 for: it was just at the same time / ice cream can't change the weather."
+      "q": "🌧️ + 🎀",
+      "show": [
+       "🌧️ + 🎀"
+      ],
+      "a": "Rainbow",
+      "why": "rain + bow"
      },
      {
-      "q": "\"This phone is the best because it is the most expensive.\"",
-      "a": "Expensive doesn't always mean the best.",
-      "why": "Award 2 for: price isn't quality / you need to check what the phone can do."
+      "q": "⭐ + 🐟",
+      "show": [
+       "⭐ + 🐟"
+      ],
+      "a": "Starfish",
+      "why": "star + fish"
      },
      {
-      "q": "\"Everyone in my class has a phone. So every child in the world has a phone.\"",
-      "a": "One class is too small to say something about the whole world.",
-      "why": "Award 2 for: small group / some children are poor / you can't say \"every\"."
+      "q": "🧈 + 🪰",
+      "show": [
+       "🧈 + 🪰"
+      ],
+      "a": "Butterfly",
+      "why": "butter + fly"
      },
      {
-      "q": "\"My brother is tall, so he must be good at basketball.\"",
-      "a": "Being tall doesn't make you good at a sport.",
-      "why": "Award 2 for: you need practice / skill, not just height."
+      "q": "🐱 + 🐟",
+      "show": [
+       "🐱 + 🐟"
+      ],
+      "a": "Catfish",
+      "why": "cat + fish"
      },
      {
-      "q": "\"I saw one rude tourist. So all tourists are rude.\"",
-      "a": "One person can't tell you about everyone.",
-      "why": "Award 2 for: only one person / you can't say \"all\"."
+      "q": "🥚 + 🌱",
+      "show": [
+       "🥚 + 🌱"
+      ],
+      "a": "Eggplant",
+      "why": "egg + plant"
      },
      {
-      "q": "\"My team lost today. So my team is the worst team in the world.\"",
-      "a": "One game doesn't show that.",
-      "why": "Award 2 for: only one game / they can win next time."
+      "q": "🌙 + 💡",
+      "show": [
+       "🌙 + 💡"
+      ],
+      "a": "Moonlight",
+      "why": "moon + light"
      },
      {
-      "q": "\"Everybody has a new phone, so you need one too.\"",
-      "a": "Doing what everyone does isn't a good reason.",
-      "why": "Award 2 for: do you really need it? / you can decide for yourself."
+      "q": "❄️ + 👨",
+      "show": [
+       "❄️ + 👨"
+      ],
+      "a": "Snowman",
+      "why": "snow + man"
      },
      {
-      "q": "\"If you don't like dogs, you must love cats.\"",
-      "a": "There are more than two choices.",
-      "why": "Award 2 for: you can like neither / you can like both."
+      "q": "🐴 + 👞",
+      "show": [
+       "🐴 + 👞"
+      ],
+      "a": "Horseshoe",
+      "why": "horse + shoe"
      },
      {
-      "q": "\"I didn't study and I passed. So studying is not important.\"",
-      "a": "One lucky time doesn't prove it.",
-      "why": "Award 2 for: you were lucky / most people need to study."
+      "q": "✋ + 👜",
+      "show": [
+       "✋ + 👜"
+      ],
+      "a": "Handbag",
+      "why": "hand + bag"
      },
      {
-      "q": "\"This store is near my house, so it is the best store.\"",
-      "a": "Near doesn't mean best.",
-      "why": "Award 2 for: other stores can be better or cheaper."
+      "q": "🐶 + 🏠",
+      "show": [
+       "🐶 + 🏠"
+      ],
+      "a": "Doghouse",
+      "why": "dog + house"
      },
      {
-      "q": "\"My friend is good at math, so she is good at English too.\"",
-      "a": "Good at one thing doesn't mean good at everything.",
-      "why": "Award 2 for: they are different subjects."
+      "q": "💧 + 🍈",
+      "show": [
+       "💧 + 🍈"
+      ],
+      "a": "Watermelon",
+      "why": "water + melon"
      },
      {
-      "q": "\"It's on the internet, so it must be true.\"",
-      "a": "Not everything online is true.",
-      "why": "Award 2 for: anyone can write online / check other places."
+      "q": "🧺 + 🏐",
+      "show": [
+       "🧺 + 🏐"
+      ],
+      "a": "Basketball",
+      "why": "basket + ball"
      },
      {
-      "q": "\"The new student is quiet, so she must be unfriendly.\"",
-      "a": "Quiet doesn't mean unfriendly.",
-      "why": "Award 2 for: she may be shy / she is new."
+      "q": "🍳 + 🎂",
+      "show": [
+       "🍳 + 🎂"
+      ],
+      "a": "Pancake",
+      "why": "pan + cake"
+     },
+     {
+      "q": "🌳 + 🏠",
+      "show": [
+       "🌳 + 🏠"
+      ],
+      "a": "Treehouse",
+      "why": "tree + house"
+     },
+     {
+      "q": "CYCLE CYCLE CYCLE",
+      "show": [
+       "CYCLE CYCLE CYCLE"
+      ],
+      "a": "Tricycle",
+      "why": "three (tri) cycles"
+     },
+     {
+      "q": "🐱 + 💤",
+      "show": [
+       "🐱 + 💤"
+      ],
+      "a": "Catnap",
+      "why": "cat + nap (a short sleep)"
+     },
+     {
+      "q": "🌽 + 🍞",
+      "show": [
+       "🌽 + 🍞"
+      ],
+      "a": "Cornbread",
+      "why": "corn + bread"
+     },
+     {
+      "q": "🧀 + 🎂",
+      "show": [
+       "🧀 + 🎂"
+      ],
+      "a": "Cheesecake",
+      "why": "cheese + cake"
+     },
+     {
+      "q": "🌧️ + 🧥",
+      "show": [
+       "🌧️ + 🧥"
+      ],
+      "a": "Raincoat",
+      "why": "rain + coat"
      }
-    ],
-    "play": 3,
-    "spares": 2
+    ]
    },
    {
-    "name": "What Would Happen If…?",
+    "name": "Logic Puzzles",
     "tag": "Round 3",
-    "secs": 90,
-    "kind": "ideas",
-    "rule": "90 s: write as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round",
+    "secs": 60,
+    "kind": "logic",
+    "play": 2,
+    "spares": 1,
+    "rule": "60 with your team. Read every clue. Write ONE answer · Right = 2 points",
     "qs": [
      {
-      "q": "What would happen if it rained every day for a month?",
-      "a": "",
-      "why": "Floods · no outdoor sport · wet clothes · plants grow fast · people stay at home · stores sell lots of umbrellas."
+      "q": "Ann, Ben and Cat each have one pet: a dog, a cat or a fish.\n• Ann's pet lives in water.\n• Ben does not have a dog.\nWho has the dog?",
+      "a": "Cat",
+      "why": "Ann has the fish. Ben has no dog, so Ben has the cat and Cat has the dog."
      },
      {
-      "q": "What would happen if there were no cars?",
-      "a": "",
-      "why": "People walk or ride bikes · cleaner air · trips take longer · quieter streets · more buses and trains."
+      "q": "Tom, Mia and Joe each like one color: red, blue or green.\n• Tom likes the color of the sky.\n• Mia does not like green.\nWhat color does Joe like?",
+      "a": "Green",
+      "why": "Tom likes blue. Mia doesn't like green, so Mia likes red and Joe likes green."
      },
      {
-      "q": "What would happen if animals could talk?",
-      "a": "",
-      "why": "Pets tell us what they want · zoos change · farmers talk to their animals · new job: animal translator."
+      "q": "Sam, Lily and Max each play one sport: soccer, swimming or tennis.\n• Lily's sport is in the water.\n• Max does not play soccer.\nWhat does Sam play?",
+      "a": "Soccer",
+      "why": "Lily swims. Max doesn't play soccer, so Max plays tennis and Sam plays soccer."
      },
      {
-      "q": "What would happen if there was no school for a year?",
-      "a": "",
-      "why": "More free time · students forget what they learned · parents need childcare · more online lessons · friends miss each other."
+      "q": "Nok, Ploy and Bank each eat one fruit: a mango, a banana or an apple.\n• Nok's fruit is long and yellow.\n• Bank does not eat the apple.\nWho eats the apple?",
+      "a": "Ploy",
+      "why": "Nok has the banana. Bank has no apple, so Bank has the mango and Ploy has the apple."
      },
      {
-      "q": "What would happen if everyone had a pet dinosaur?",
-      "a": "",
-      "why": "Big houses and gardens · lots of food needed · dinosaur parks · traffic problems · dinosaur doctors."
+      "q": "Amy, Ben and Kim each drink one thing: milk, juice or water.\n• Amy's drink is white.\n• Kim does not drink water.\nWhat does Ben drink?",
+      "a": "Water",
+      "why": "Amy drinks milk. Kim doesn't drink water, so Kim drinks juice and Ben drinks water."
      },
      {
-      "q": "What would happen if it was always night?",
-      "a": "",
-      "why": "No sun for plants · cold weather · lights on all day · people sleep more · stars all the time."
+      "q": "Leo, Ava and Zac go to school by bike, by bus or by car.\n• Leo goes with lots of other students.\n• Ava's way to school has two wheels.\nHow does Zac go to school?",
+      "a": "By car",
+      "why": "Leo takes the bus and Ava rides a bike, so Zac goes by car."
      },
      {
-      "q": "What would happen if people could fly?",
-      "a": "",
-      "why": "No need for cars · fewer traffic jams · new sky rules · more accidents? · birds are surprised!"
+      "q": "Dan, Eve and Fay live on floors 1, 2 and 3 of the same building.\n• Dan lives on the top floor.\n• Eve lives above Fay.\nWho lives on floor 1?",
+      "a": "Fay",
+      "why": "Dan is on floor 3. Eve is above Fay, so Eve is on 2 and Fay is on 1."
      },
      {
-      "q": "What would happen if there was no ice cream?",
-      "a": "",
-      "why": "Sad children · ice cream shops close · people eat other candy · less sugar · new desserts."
+      "q": "Gus, Hana and Ivy are 10, 11 and 12 years old.\n• Gus is older than Hana.\n• Ivy is older than Gus.\nWho is the youngest?",
+      "a": "Hana",
+      "why": "Ivy is older than Gus, and Gus is older than Hana. So Hana is the youngest (10)."
      }
-    ],
-    "play": 1,
-    "spares": 2
+    ]
    },
    {
     "name": "Final Wager",
     "tag": "Round 4",
     "secs": 60,
     "kind": "wager",
-    "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it",
+    "rule": "BEFORE you see it: bet any of your points (ALL IN = all of them). Right = win your bet · Wrong = lose it",
     "qs": [
      {
       "q": "A farmer has 5 cows. All but 2 run away. How many cows are left?",
@@ -413,143 +503,255 @@
     "spares": 2
    },
    {
-    "name": "Spot the Problem",
+    "name": "Rebus Round",
     "tag": "Round 2",
-    "secs": 45,
-    "kind": "answer",
-    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2",
+    "secs": 30,
+    "kind": "rebus",
+    "play": 4,
+    "spares": 2,
+    "rule": "30 seconds. What word or phrase is hiding in the picture? Write it, hold it up · 1 point",
     "qs": [
      {
-      "q": "\"My grandfather smoked all his life and lived to 95. So smoking isn't bad for you.\"",
-      "a": "One person's story doesn't prove something for everyone.",
-      "why": "Award 2 for: only one example / he was lucky / doctors study many people, not one."
+      "q": "☀️ + 👓",
+      "show": [
+       "☀️ + 👓"
+      ],
+      "a": "Sunglasses",
+      "why": "sun + glasses"
      },
      {
-      "q": "\"9 out of 10 movie stars use this shampoo. It will make your hair beautiful.\"",
-      "a": "The stars may be paid, and their hair is beautiful for other reasons.",
-      "why": "Award 2 for: it's an advert / who asked the stars? / no proof the shampoo did it."
+      "q": "👁️ + 😱",
+      "show": [
+       "👁️ + 😱"
+      ],
+      "a": "Ice cream",
+      "why": "\"I scream\" sounds like ice cream"
      },
      {
-      "q": "\"If we let students use phones at break, soon they will use them in every lesson, and then nobody will learn anything.\"",
-      "a": "One small change doesn't have to lead to the worst result.",
-      "why": "Award 2 for: that's a big jump / rules can stop it / it might not happen."
+      "q": "🧠 + 🌪️",
+      "show": [
+       "🧠 + 🌪️"
+      ],
+      "a": "Brainstorm",
+      "why": "brain + storm"
      },
      {
-      "q": "\"Lots of people believe it, so it must be true.\"",
-      "a": "Many people can still be wrong.",
-      "why": "Award 2 for: popular isn't the same as true / check the facts."
+      "q": "🌊 + 🐴",
+      "show": [
+       "🌊 + 🐴"
+      ],
+      "a": "Seahorse",
+      "why": "sea + horse"
      },
      {
-      "q": "\"You don't play soccer, so your ideas about the team are wrong.\"",
-      "a": "Judge the idea, not the person.",
-      "why": "Award 2 for: anyone can have a good idea / look at the reasons."
+      "q": "👂 + 💍",
+      "show": [
+       "👂 + 💍"
+      ],
+      "a": "Earring",
+      "why": "ear + ring"
      },
      {
-      "q": "\"Ten people liked this restaurant online, so it must be the best in Thailand.\"",
-      "a": "Ten reviews are too few to say \"the best in Thailand\".",
-      "why": "Award 2 for: small number / maybe they are friends / other restaurants."
+      "q": "🦷 + 🧚",
+      "show": [
+       "🦷 + 🧚"
+      ],
+      "a": "Tooth fairy",
+      "why": "tooth + fairy"
      },
      {
-      "q": "\"Don't listen to her advice about food. She's only 14.\"",
-      "a": "Age doesn't make an idea right or wrong.",
-      "why": "Award 2 for: listen to the idea, not the age."
+      "q": "📖 + 🐛",
+      "show": [
+       "📖 + 🐛"
+      ],
+      "a": "Bookworm",
+      "why": "book + worm (someone who loves reading)"
      },
      {
-      "q": "\"If you eat one sweet, you'll eat the whole bag, and then all your teeth will fall out!\"",
-      "a": "One small thing won't always lead to the worst result.",
-      "why": "Award 2 for: that's a big jump / you can stop at one."
+      "q": "🔑 + BOARD",
+      "show": [
+       "🔑 + BOARD"
+      ],
+      "a": "Keyboard",
+      "why": "key + board"
      },
      {
-      "q": "\"Either you come to my party or you're not my friend.\"",
-      "a": "There are more than two choices.",
-      "why": "Award 2 for: you can be a friend and still miss a party."
+      "q": "🔥 + 🪵",
+      "show": [
+       "🔥 + 🪵"
+      ],
+      "a": "Firewood",
+      "why": "fire + wood"
      },
      {
-      "q": "\"Most of my class says the test was easy, so it was easy for everyone.\"",
-      "a": "Your class isn't everyone.",
-      "why": "Award 2 for: other people may find it hard."
+      "q": "🦶 + 🖨️",
+      "show": [
+       "🦶 + 🖨️"
+      ],
+      "a": "Footprint",
+      "why": "foot + print"
      },
      {
-      "q": "\"This medicine is natural, so it can't be bad for you.\"",
-      "a": "Natural doesn't always mean safe.",
-      "why": "Award 2 for: some plants are poisonous / ask a doctor."
+      "q": "🚪 + 🔔",
+      "show": [
+       "🚪 + 🔔"
+      ],
+      "a": "Doorbell",
+      "why": "door + bell"
      },
      {
-      "q": "\"I've never seen a crocodile in this river, so there are no crocodiles here.\"",
-      "a": "Not seeing something doesn't prove it isn't there.",
-      "why": "Award 2 for: they can hide / you need more proof."
+      "q": "SIDE SIDE",
+      "show": [
+       "SIDE SIDE"
+      ],
+      "a": "Side by side",
+      "why": "one SIDE by the other SIDE"
      },
      {
-      "q": "\"The price went up, so the quality must be better.\"",
-      "a": "A higher price doesn't prove better quality.",
-      "why": "Award 2 for: maybe they just want more money."
+      "q": "HEAD / HEELS",
+      "show": [
+       "HEAD",
+       "HEELS"
+      ],
+      "a": "Head over heels",
+      "why": "HEAD is over HEELS"
      },
      {
-      "q": "\"Our team always wins on Fridays, so we will win this Friday.\"",
-      "a": "The past doesn't guarantee the future.",
-      "why": "Award 2 for: the other team may be better / it was luck."
+      "q": "ONCE / TIME",
+      "show": [
+       "ONCE",
+       "TIME"
+      ],
+      "a": "Once upon a time",
+      "why": "ONCE is upon TIME"
+     },
+     {
+      "q": "STAND / I",
+      "show": [
+       "STAND",
+       "I"
+      ],
+      "a": "I understand",
+      "why": "I is under STAND"
+     },
+     {
+      "q": "MAN / BOARD",
+      "show": [
+       "MAN",
+       "BOARD"
+      ],
+      "a": "Man overboard",
+      "why": "MAN is over BOARD"
+     },
+     {
+      "q": "HANDS",
+      "show": [
+       "[up:HANDS]"
+      ],
+      "a": "Hands up",
+      "why": "HANDS goes up"
+     },
+     {
+      "q": "TOUCH",
+      "show": [
+       "[down:TOUCH]"
+      ],
+      "a": "Touchdown",
+      "why": "TOUCH goes down"
+     },
+     {
+      "q": "DEAL",
+      "show": [
+       "[big:DEAL]"
+      ],
+      "a": "Big deal",
+      "why": "a big DEAL"
+     },
+     {
+      "q": "EGGS / EASY",
+      "show": [
+       "EGGS",
+       "EASY"
+      ],
+      "a": "Eggs over easy",
+      "why": "EGGS over EASY (a way to cook eggs)"
+     },
+     {
+      "q": "ALL / WORLD",
+      "show": [
+       "ALL",
+       "WORLD"
+      ],
+      "a": "All over the world",
+      "why": "ALL is over WORLD"
+     },
+     {
+      "q": "BROTHER",
+      "show": [
+       "[big:BROTHER]"
+      ],
+      "a": "Big brother",
+      "why": "a big BROTHER"
      }
-    ],
-    "play": 3,
-    "spares": 2
+    ]
    },
    {
-    "name": "What Would Happen If…?",
+    "name": "Logic Puzzles",
     "tag": "Round 3",
-    "secs": 90,
-    "kind": "ideas",
-    "rule": "90 s: list as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round",
+    "secs": 120,
+    "kind": "logic",
+    "play": 2,
+    "spares": 1,
+    "rule": "2 minutes with your team. Read every clue. Write ONE answer · Right = 2 points",
     "qs": [
      {
-      "q": "What would happen if homework was banned in every school?",
-      "a": "",
-      "why": "More free time · more sleep · some students forget lessons · more time for family, sport or part-time jobs · teachers change how they teach."
+      "q": "Alex, Beth and Chris each have a favorite pet (cat, dog or bird) and a favorite fruit (apple, banana or cherry).\n• Alex does not like apples and does not own a cat.\n• The person who likes apples owns a bird.\n• Beth owns a cat and loves bananas.\n• Chris does not like cherries.\nWho owns the dog, and what is their favorite fruit?",
+      "a": "Alex, cherry",
+      "why": "Beth: cat + banana. Chris doesn't like cherries, so Chris likes apples and owns the bird. Alex has the dog and cherries."
      },
      {
-      "q": "What would happen if everyone in Thailand could speak only English for one day?",
-      "a": "",
-      "why": "Stores and taxis have problems · people use their hands to explain · lots of laughing · English improves fast · the TV news changes."
+      "q": "Dee, Eli and Fon each have one hobby (drawing, singing or dancing) and one snack (chips, cookies or popcorn).\n• Eli sings.\n• The dancer eats popcorn.\n• Dee does not dance and does not eat cookies.\nWhat does Eli eat?",
+      "a": "Cookies",
+      "why": "Eli sings and Dee doesn't dance, so Dee draws and Fon dances (popcorn). Dee has no cookies, so Dee eats chips and Eli eats cookies."
      },
      {
-      "q": "What would happen if people could live for 200 years?",
-      "a": "",
-      "why": "More people on Earth · people work for longer · families with six generations · we need more food and houses."
+      "q": "Gam, Hugo and Iris are going to Japan, France or Brazil. Each has a red, blue or green bag.\n• Hugo's bag is red.\n• The person going to Japan has a green bag.\n• Iris is going to Brazil.\nWhere is Hugo going?",
+      "a": "France",
+      "why": "Hugo's bag is red, so he isn't going to Japan (green). Iris goes to Brazil, so Hugo goes to France."
      },
      {
-      "q": "What would happen if there was no electricity for a week?",
-      "a": "",
-      "why": "No phones or internet · food goes bad · candles and flashlights · no air conditioning · people talk more."
+      "q": "Jay, Kai and Lin are 12, 13 and 14. Each wants to be a doctor, a chef or a pilot.\n• The pilot is the oldest.\n• Kai is 12.\n• Lin wants to be a chef.\n• Jay is older than Lin.\nWhat does Kai want to be?",
+      "a": "A doctor",
+      "why": "Jay is 14 and Lin is 13. The oldest (Jay) is the pilot, Lin is the chef, so Kai wants to be a doctor."
      },
      {
-      "q": "What would happen if everyone in the world spoke the same language?",
-      "a": "",
-      "why": "Easy travel · no English lessons! · more friends abroad · some cultures change · no translators needed."
+      "q": "Mo, Nan and Oak each play one sport (basketball, badminton or running) on Monday, Wednesday or Friday.\n• Nan plays badminton.\n• The runner trains on Friday.\n• Mo trains on Monday.\n• Oak does not play basketball.\nWho trains on Wednesday, and what sport do they play?",
+      "a": "Nan, badminton",
+      "why": "Oak runs (Friday). Mo plays basketball on Monday, so Nan plays badminton on Wednesday."
      },
      {
-      "q": "What would happen if tourists stopped coming to Thailand?",
-      "a": "",
-      "why": "Hotels close · people lose jobs · quieter beaches · less money · new kinds of business."
+      "q": "Pim, Quinn and Rose sit in the front, middle or back row. Each likes math, art or science best.\n• Rose sits in the back.\n• The person in the front likes science.\n• Pim does not sit in the middle.\n• Quinn likes art.\nWhich subject does Rose like?",
+      "a": "Math",
+      "why": "Pim sits in the front (science), Quinn likes art, so Rose likes math."
      },
      {
-      "q": "What would happen if you could be invisible for one day?",
-      "a": "",
-      "why": "Play tricks · hear secrets · go anywhere free · nobody sees you in photos · people get scared."
+      "q": "Sun, Tao and Uma have a black, white or pink phone. Each likes chess, puzzles or cards.\n• Uma's phone is pink.\n• Sun plays chess.\n• The person with the white phone plays cards.\n• Tao's phone is not black.\nWho likes puzzles, and what color is their phone?",
+      "a": "Uma, pink",
+      "why": "Tao has the white phone and plays cards. Sun plays chess, so Uma (pink phone) likes puzzles."
      },
      {
-      "q": "What would happen if school was only online?",
-      "a": "",
-      "why": "No travel to school · more screen time · less sport · miss friends · learn at home."
+      "q": "Vic, Wan and Xia live in a yellow, blue or white house. Each has a rabbit, a hamster or a turtle.\n• Wan lives in the blue house.\n• The turtle lives in the white house.\n• Vic has a hamster.\n• Xia's house is not yellow.\nWho has the rabbit?",
+      "a": "Wan",
+      "why": "Xia lives in the white house with the turtle. Vic has the hamster, so Wan has the rabbit."
      }
-    ],
-    "play": 1,
-    "spares": 2
+    ]
    },
    {
     "name": "Final Wager",
     "tag": "Round 4",
     "secs": 60,
     "kind": "wager",
-    "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it",
+    "rule": "BEFORE you see it: bet any of your points (ALL IN = all of them). Right = win your bet · Wrong = lose it",
     "qs": [
      {
       "q": "You are running a race and you pass the person in second place. What place are you in now?",
@@ -705,149 +907,329 @@
       "q": "What four-letter word reads the same forwards, backwards and upside down?",
       "a": "NOON",
       "why": ""
+     },
+     {
+      "q": "How many of each animal did Moses take on the ark?",
+      "a": "None",
+      "why": "🐟 Red herring! It was Noah, not Moses, who built the ark.",
+      "herring": true
+     },
+     {
+      "q": "A plane crashes on the border of Thailand and Laos. Where do they bury the survivors?",
+      "a": "Nowhere",
+      "why": "🐟 Red herring! You don't bury survivors: they are alive!",
+      "herring": true
+     },
+     {
+      "q": "Some months have 31 days. How many months have 28 days?",
+      "a": "All 12",
+      "why": "🐟 Red herring! Every month has at least 28 days.",
+      "herring": true
+     },
+     {
+      "q": "A farmer has 17 sheep. All but 9 run away. How many are left?",
+      "a": "9",
+      "why": "🐟 Red herring! \"All but 9\" means 9 stay.",
+      "herring": true
+     },
+     {
+      "q": "A rooster lays an egg on top of a roof. Which way does the egg roll?",
+      "a": "No way",
+      "why": "🐟 Red herring! Roosters don't lay eggs.",
+      "herring": true
+     },
+     {
+      "q": "If a red house is made of red bricks and a blue house is made of blue bricks, what is a greenhouse made of?",
+      "a": "Glass",
+      "why": "🐟 Red herring! A greenhouse is the glass house for plants.",
+      "herring": true
+     },
+     {
+      "q": "What do cows drink?",
+      "a": "Water",
+      "why": "🐟 Red herring! Not milk! Cows make milk, but they drink water.",
+      "herring": true
+     },
+     {
+      "q": "An electric train is going north. The wind is blowing south. Which way does the smoke go?",
+      "a": "There is no smoke",
+      "why": "🐟 Red herring! Electric trains don't make smoke.",
+      "herring": true
+     },
+     {
+      "q": "Mary's father has five daughters: Nana, Nene, Nini and Nono. What is the fifth daughter's name?",
+      "a": "Mary",
+      "why": "🐟 Red herring! The question tells you: Mary's father.",
+      "herring": true
+     },
+     {
+      "q": "A boy fell off a 10-meter ladder but didn't get hurt. How?",
+      "a": "He fell off the bottom step",
+      "why": "🐟 Red herring! Nobody said he was at the top.",
+      "herring": true
+     },
+     {
+      "q": "Where does Thursday come before Wednesday?",
+      "a": "In the dictionary",
+      "why": "🐟 Red herring! T comes before W in A to Z order.",
+      "herring": true
      }
     ],
     "play": 4,
     "spares": 2
    },
    {
-    "name": "Spot the Problem",
+    "name": "Rebus Round",
     "tag": "Round 2",
-    "secs": 45,
-    "kind": "answer",
-    "rule": "45 s to discuss. Hands up to answer. A NEW speaker each time · Right = 2",
+    "secs": 30,
+    "kind": "rebus",
+    "play": 4,
+    "spares": 2,
+    "rule": "30 seconds. What word or phrase is hiding in the picture? Write it, hold it up · 1 point",
     "qs": [
      {
-      "q": "\"I wore my red socks and passed my math test. So red socks help you pass tests.\"",
-      "a": "Two things happened together, but one didn't cause the other.",
-      "why": "Award 2 for: coincidence / no proof the socks did it / she passed because she studied."
+      "q": "🐝 + 🍃",
+      "show": [
+       "🐝 + 🍃"
+      ],
+      "a": "Belief",
+      "why": "B (bee) + leaf"
      },
      {
-      "q": "\"All five of my friends love K-pop. So every teenager in Thailand loves K-pop.\"",
-      "a": "Five people are too few to say something about everyone.",
-      "why": "Award 2 for: small group / you can't generalise / your friends are similar to you."
+      "q": "🍯 + 🌙",
+      "show": [
+       "🍯 + 🌙"
+      ],
+      "a": "Honeymoon",
+      "why": "honey + moon"
      },
      {
-      "q": "\"A famous soccer player drinks this energy drink. So it must make you run faster.\"",
-      "a": "The soccer player is paid to say it. He was fast before the drink.",
-      "why": "Award 2 for: advertising / he's paid / no evidence about the drink itself."
+      "q": "🏠 + 💼",
+      "show": [
+       "🏠 + 💼"
+      ],
+      "a": "Homework",
+      "why": "home + work"
      },
      {
-      "q": "\"Nobody has proved that ghosts are NOT real. So ghosts must be real.\"",
-      "a": "No proof against something isn't proof for it.",
-      "why": "Award 2 for: the person saying 'ghosts are real' needs the evidence."
+      "q": "MIND / ——— / MATTER",
+      "show": [
+       "MIND",
+       "[line]",
+       "MATTER"
+      ],
+      "a": "Mind over matter",
+      "why": "MIND is over MATTER"
      },
      {
-      "q": "\"You either love this school or you hate it.\"",
-      "a": "There are more than two choices.",
-      "why": "Award 2 for: you can like some parts and not others / it's in the middle."
+      "q": "WEAR / LONG",
+      "show": [
+       "WEAR",
+       "LONG"
+      ],
+      "a": "Long underwear",
+      "why": "LONG is under WEAR"
      },
      {
-      "q": "\"Crime went up after the new mall opened. So the mall caused the crime.\"",
-      "a": "Two things happening together doesn't prove one caused the other.",
-      "why": "Award 2 for: other reasons / more people in the area / need evidence."
+      "q": "ECNALG",
+      "show": [
+       "ECNALG"
+      ],
+      "a": "A backward glance",
+      "why": "GLANCE written backward"
      },
      {
-      "q": "\"Everyone is buying this new coin, so it's a smart investment.\"",
-      "a": "Popularity isn't evidence of value.",
-      "why": "Award 2 for: following the crowd / prices can fall."
+      "q": "GROUND / FEET FEET FEET FEET FEET FEET",
+      "show": [
+       "GROUND",
+       "FEET FEET FEET FEET FEET FEET"
+      ],
+      "a": "Six feet underground",
+      "why": "six FEETs under GROUND"
      },
      {
-      "q": "\"We've always done it this way, so it's the right way.\"",
-      "a": "Tradition alone isn't a good reason.",
-      "why": "Award 2 for: there may be a better way now."
+      "q": "MILL1ON",
+      "show": [
+       "MILL1ON"
+      ],
+      "a": "One in a million",
+      "why": "a 1 in MILLION"
      },
      {
-      "q": "\"You either support every new school rule or you don't care about safety.\"",
-      "a": "There are more than two positions.",
-      "why": "Award 2 for: you can agree with some rules and not others."
+      "q": "TALK",
+      "show": [
+       "[small:TALK]"
+      ],
+      "a": "Small talk",
+      "why": "a small TALK"
      },
      {
-      "q": "\"He's a great soccer player, so his advice about medicine must be right.\"",
-      "a": "Being an expert in one thing doesn't make you an expert in another.",
-      "why": "Award 2 for: ask a doctor / wrong kind of expert."
+      "q": "LE / VEL",
+      "show": [
+       "LE",
+       "VEL"
+      ],
+      "a": "Split level",
+      "why": "LEVEL is split"
      },
      {
-      "q": "\"If we ban junk food at school, next they'll ban all the food we like.\"",
-      "a": "One rule doesn't have to lead to an extreme result.",
-      "why": "Award 2 for: slippery slope / that's a big jump."
+      "q": "STOOD / MIS",
+      "show": [
+       "STOOD",
+       "MIS"
+      ],
+      "a": "Misunderstood",
+      "why": "MIS is under STOOD"
      },
      {
-      "q": "\"Nobody complained about the new schedule, so everyone loves it.\"",
-      "a": "Silence isn't the same as agreement.",
-      "why": "Award 2 for: maybe they didn't dare / didn't know how to complain."
+      "q": "R|E|A|D|I|N|G",
+      "show": [
+       "R|E|A|D|I|N|G"
+      ],
+      "a": "Reading between the lines",
+      "why": "READING with lines between the letters"
      },
      {
-      "q": "\"That scientist was wrong once, so all her research is wrong.\"",
-      "a": "One mistake doesn't make everything wrong.",
-      "why": "Award 2 for: judge each piece of research on its evidence."
+      "q": "BJACKOX",
+      "show": [
+       "BJACKOX"
+      ],
+      "a": "Jack in the box",
+      "why": "JACK is in BOX"
      },
      {
-      "q": "\"This app has a million downloads, so it must be safe.\"",
-      "a": "Popular isn't the same as safe.",
-      "why": "Award 2 for: check privacy / reviews / who made it."
+      "q": "HAYNEEDLESTACK",
+      "show": [
+       "HAYNEEDLESTACK"
+      ],
+      "a": "A needle in a haystack",
+      "why": "NEEDLE is in HAYSTACK"
+     },
+     {
+      "q": "XQQQME",
+      "show": [
+       "XQQQME"
+      ],
+      "a": "Excuse me",
+      "why": "X + Qs (cues) + ME"
+     },
+     {
+      "q": "WEATHER / I'M",
+      "show": [
+       "WEATHER",
+       "I'M"
+      ],
+      "a": "I'm under the weather",
+      "why": "I'M is under WEATHER (= I feel sick)"
+     },
+     {
+      "q": "HISTORY HISTORY HISTORY",
+      "show": [
+       "HISTORY HISTORY HISTORY"
+      ],
+      "a": "History repeats itself",
+      "why": "HISTORY again and again"
+     },
+     {
+      "q": "DICE DICE",
+      "show": [
+       "DICE DICE"
+      ],
+      "a": "Paradise",
+      "why": "a pair of dice"
+     },
+     {
+      "q": "TRAVEL / CCCCCCC",
+      "show": [
+       "TRAVEL",
+       "CCCCCCC"
+      ],
+      "a": "Travel overseas",
+      "why": "TRAVEL over Cs (seas)"
+     },
+     {
+      "q": "COF FEE",
+      "show": [
+       "COF FEE"
+      ],
+      "a": "Coffee break",
+      "why": "COFFEE with a break in it"
+     },
+     {
+      "q": "YOU JUST ME",
+      "show": [
+       "YOU JUST ME"
+      ],
+      "a": "Just between you and me",
+      "why": "JUST is between YOU and ME"
      }
-    ],
-    "play": 3,
-    "spares": 2
+    ]
    },
    {
-    "name": "What Would Happen If…?",
+    "name": "Logic Puzzles",
     "tag": "Round 3",
-    "secs": 90,
-    "kind": "ideas",
-    "rule": "90 s: list as many results as you can. Then each team says one NEW idea · 1 point each, 2 times round",
+    "secs": 120,
+    "kind": "logic",
+    "play": 2,
+    "spares": 1,
+    "rule": "2 minutes with your team. Read every clue. Write ONE answer · Right = 2 points · Careful: one clue is a red herring!",
     "qs": [
      {
-      "q": "What would happen if school started at 11 a.m.?",
-      "a": "",
-      "why": "Students sleep more · school finishes later · more traffic in the evening · parents need childcare in the morning · less time for homework or sport."
+      "q": "Ana, Bo, Cy and Di sit in seats 1-4. They drink coffee, tea, juice or water.\n• Ana sits in seat 1.\n• The tea drinker sits next to Ana.\n• Di's favorite color is green.\n• Cy drinks water and sits in seat 4.\n• Bo does not drink tea.\n• The juice drinker sits next to the water drinker.\nWhat does Ana drink, and who sits in seat 2?",
+      "a": "Coffee, Di",
+      "why": "Tea is in seat 2, and Bo doesn't drink tea, so Di is in seat 2 and Bo in seat 3. Juice is next to water (seat 4), so Bo has juice and Ana has coffee. Red herring: Di's favorite color.",
+      "herring": true
      },
      {
-      "q": "What would happen if nobody could tell a lie for one whole day?",
-      "a": "",
-      "why": "Friendships break · honest reviews · surprise parties fail · politicians in trouble · fewer arguments later?"
+      "q": "Ben, Cara and Dev are in the drama, robotics or music club. The clubs meet on Monday, Tuesday or Wednesday.\n• The robotics club meets the day after the drama club.\n• Cara is in the music club.\n• The music club has the most members.\n• Dev's club meets on Monday.\n• Ben is not in the drama club.\nOn which day does Cara's club meet?",
+      "a": "Wednesday",
+      "why": "Ben is in robotics, so Dev is in drama (Monday). Robotics is the next day (Tuesday), so music (Cara) is Wednesday. Red herring: the number of members.",
+      "herring": true
      },
      {
-      "q": "What would happen if every phone stopped working for one week?",
-      "a": "",
-      "why": "People talk face to face · get lost (no maps) · banks and stores have problems · less screen time · emergencies are harder."
+      "q": "Eli, Fah, Gus and Hong live on floors 1-4. Pets: a cat, dog, bird and fish.\n• The dog lives on the floor right above the cat.\n• Fah lives on floor 1 and has a fish.\n• The building has a lift.\n• Gus lives on the top floor.\n• Eli has the bird.\n• Hong does not live on floor 2.\nWho has the dog, and on which floor?",
+      "a": "Gus, floor 4",
+      "why": "Fah 1, Gus 4, Hong 3, Eli 2 (bird). The dog is right above the cat, so Hong (3) has the cat and Gus (4) has the dog. Red herring: the lift.",
+      "herring": true
      },
      {
-      "q": "What would happen if robots did all the jobs?",
-      "a": "",
-      "why": "People lose jobs · more free time · need new skills · cheaper products · who earns money?"
+      "q": "Ivy, Jon and Kit ran a race and finished 1st, 2nd and 3rd. Their shirts were red, green and yellow.\n• The runner in red finished just before the runner in yellow.\n• Jon finished last.\n• It was raining during the race.\n• Kit's shirt was not red.\n• Ivy did not win.\nWhat color was the winner wearing?",
+      "a": "Green",
+      "why": "Jon was 3rd and Ivy wasn't 1st, so Kit won and Ivy was 2nd. Red is just before yellow, and Kit isn't red: Ivy red, Jon yellow, Kit green. Red herring: the rain.",
+      "herring": true
      },
      {
-      "q": "What would happen if the internet disappeared forever?",
-      "a": "",
-      "why": "Letters and phone calls · libraries busy again · banks and stores have problems · less fake news · businesses close."
+      "q": "Lek, May and Nut came at 6, 7 or 8 p.m. with cake, fruit or drinks.\n• Whoever brought drinks came first.\n• May arrived before Nut.\n• The party was on a Saturday.\n• Lek brought cake.\n• Nut did not bring drinks.\n• Lek arrived last.\nWhen did Nut arrive, and what did Nut bring?",
+      "a": "7 p.m., fruit",
+      "why": "Lek brought cake and Nut didn't bring drinks, so May brought drinks and came first (6). Lek came last (8), so Nut came at 7 with fruit. Red herring: Saturday.",
+      "herring": true
      },
      {
-      "q": "What would happen if everyone lived to 150?",
-      "a": "",
-      "why": "More people on Earth · work for longer · huge families · need more food and homes · new hobbies."
+      "q": "Opal, Pete, Rin and Sai are 13, 14, 15 and 16. Each plays the piano, guitar, drums or violin.\n• The drummer is the oldest.\n• Rin is 13 and does not play the piano.\n• Two of them have birthdays in May.\n• Pete is older than Opal but younger than Sai.\n• Opal plays the violin.\nWho plays the piano, and how old are they?",
+      "a": "Pete, 15",
+      "why": "Rin is 13, so Opal 14, Pete 15, Sai 16 (drums). Opal plays violin, Rin isn't piano (guitar), so Pete plays piano. Red herring: the birthdays.",
+      "herring": true
      },
      {
-      "q": "What would happen if money didn't exist?",
-      "a": "",
-      "why": "Swap things (barter) · harder to save · no banks · people share more? · prices disappear."
+      "q": "Tan, Ung and Vee ordered pizza, pad thai or a burger. Each paid by cash, card or phone.\n• The burger was paid by card.\n• Tan paid with his phone.\n• The restaurant was very busy.\n• Ung did not order the burger.\n• The pizza was not paid with a phone.\nWhat did Tan order?",
+      "a": "Pad thai",
+      "why": "Tan paid by phone, so no burger (card) and no pizza. Tan ordered pad thai. Red herring: the busy restaurant.",
+      "herring": true
      },
      {
-      "q": "What would happen if Thailand had snow every winter?",
-      "a": "",
-      "why": "Ski resorts · warm clothes in stores · tourists come for snow · crops change · snow days off school."
+      "q": "Wit, Xen and Yui each have a poster of Mars, Saturn or Jupiter on a blue, gray or white wall.\n• Yui's poster is Saturn.\n• The Mars poster is on a white wall.\n• Saturn has rings.\n• Wit's wall is gray.\n• Xen's poster is not Jupiter.\nWhose wall is blue, and which planet is on it?",
+      "a": "Yui, Saturn",
+      "why": "Xen has Mars (white wall). Wit (gray) has Jupiter, so Yui has Saturn on the blue wall. Red herring: Saturn's rings.",
+      "herring": true
      }
-    ],
-    "play": 1,
-    "spares": 2
+    ]
    },
    {
     "name": "Final Wager",
     "tag": "Round 4",
     "secs": 60,
     "kind": "wager",
-    "rule": "BEFORE you see it: write your bet (0–5 points). Right = win your bet · Wrong = lose it",
+    "rule": "BEFORE you see it: bet any of your points (ALL IN = all of them). Right = win your bet · Wrong = lose it",
     "qs": [
      {
       "q": "A girl has as many brothers as sisters. Each brother has only half as many brothers as sisters. How many brothers and sisters are in the family?",
@@ -893,6 +1275,111 @@
     "play": 1,
     "spares": 1
    }
+  ],
+  "intro": [
+   {
+    "title": "Think Tank Showdown",
+    "text": [
+     "A game show for thinkers!",
+     "4 rounds. Work with your team."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Round 1",
+       "Riddle Rush"
+      ],
+      [
+       "Round 2",
+       "Rebus Round"
+      ],
+      [
+       "Round 3",
+       "Logic Puzzles"
+      ],
+      [
+       "Round 4",
+       "Final Wager"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Riddle Rush",
+    "text": [
+     "Solve the riddle. Write ONE answer.",
+     "Watch out for trick questions (red herrings 🐟)!"
+    ],
+    "example": {
+     "big": "What do cows drink?",
+     "result": "Water (not milk!)"
+    }
+   },
+   {
+    "title": "Rebus Round",
+    "text": [
+     "Words and pictures hide a word or phrase.",
+     "Look at WHERE the words are, too!"
+    ],
+    "example": {
+     "rows": [
+      [
+       "🌧️ + 🎀",
+       "Rainbow"
+      ],
+      [
+       "HEAD over HEELS",
+       "Head over heels"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Logic Puzzles",
+    "text": [
+     "Read every clue. ONE clue is a red herring:",
+     "true, but no help! Find the ONE right answer."
+    ],
+    "example": {
+     "rows": [
+      [
+       "Clue",
+       "helps"
+      ],
+      [
+       "Red herring 🐟",
+       "no help"
+      ],
+      [
+       "Right answer",
+       "+2"
+      ]
+     ]
+    }
+   },
+   {
+    "title": "Final Wager",
+    "text": [
+     "Bet any of your points BEFORE you see the question.",
+     "Go ALL IN? Right: win your bet. Wrong: lose it!"
+    ],
+    "example": {
+     "rows": [
+      [
+       "Bet 3 and right",
+       "+3"
+      ],
+      [
+       "Bet 3 and wrong",
+       "−3"
+      ],
+      [
+       "ALL IN (10) and right",
+       "+10"
+      ]
+     ]
+    }
+   }
   ]
  },
  "intro": [
@@ -910,11 +1397,11 @@
      ],
      [
       "Round 2",
-      "Spot the Problem"
+      "Rebus Round"
      ],
      [
       "Round 3",
-      "What Would Happen If…?"
+      "Logic Puzzles"
      ],
      [
       "Round 4",
@@ -935,32 +1422,43 @@
    }
   },
   {
-   "title": "Spot the Problem",
+   "title": "Rebus Round",
    "text": [
-    "Find what is wrong with the idea.",
-    "Right = 2 points."
+    "Words and pictures hide a word or phrase.",
+    "Look at WHERE the words are, too!"
    ],
    "example": {
-    "big": "\"My cat is black, so all cats are black.\"",
-    "result": "One cat can't tell us about all cats."
+    "rows": [
+     [
+      "🌧️ + 🎀",
+      "Rainbow"
+     ],
+     [
+      "HEAD over HEELS",
+      "Head over heels"
+     ]
+    ]
    }
   },
   {
-   "title": "What Would Happen If…?",
+   "title": "Logic Puzzles",
    "text": [
-    "List as many results as you can.",
-    "Each NEW idea wins a point."
+    "Read every clue with your team.",
+    "Find the ONE right answer. Right = 2 points."
    ],
    "example": {
-    "label": "…school started at 11 a.m.?",
     "rows": [
      [
-      "Idea",
-      "We sleep more"
+      "Ann has the fish",
+      "clue"
      ],
      [
-      "Idea",
-      "More traffic later"
+      "Ben has no dog",
+      "clue"
+     ],
+     [
+      "Who has the dog?",
+      "Cat"
      ]
     ]
    }
@@ -968,8 +1466,8 @@
   {
    "title": "Final Wager",
    "text": [
-    "Bet 0 to 5 points BEFORE you see the question.",
-    "Right: win your bet. Wrong: lose it!"
+    "Bet any of your points BEFORE you see the question.",
+    "Go ALL IN? Right: win your bet. Wrong: lose it!"
    ],
    "example": {
     "rows": [
@@ -980,6 +1478,10 @@
      [
       "Bet 3 and wrong",
       "−3"
+     ],
+     [
+      "ALL IN (10) and right",
+      "+10"
      ]
     ]
    }
