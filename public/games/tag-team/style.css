@@ -184,10 +184,15 @@ button:focus-visible {
 .ideas[hidden] {
   display: none;
 }
+/* hints showing: drop the small TOPIC label to make room */
+.topicbox.with-hints .eyebrow {
+  display: none;
+}
 .ideas span {
   border: 2px dashed var(--line);
   border-radius: 10px;
-  padding: 1px 10px;
+  padding: 0 8px;
+  line-height: 1.2;
   font-size: 18px;
   font-weight: 700;
   color: var(--teal);
@@ -283,7 +288,48 @@ button:focus-visible {
 .slot small {
   display: block;
   font-weight: 500;
-  font-size: 11px;
+  font-size: 12px;
+}
+/* Talk: one row of speakers, so bigger boxes, easy to tap and drag on the phone */
+.lane.relay .slot {
+  min-height: 46px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.lane.relay .slot small {
+  font-size: 13px;
+}
+/* ⋯ menu (Talk): speaking time and crazy topics */
+.talk-opts[hidden] {
+  display: none;
+}
+.talk-opts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.opt-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.opt-row span {
+  flex: 1;
+  font-weight: 700;
+}
+.opt-row b {
+  min-width: 52px;
+  text-align: center;
+  font: 800 20px var(--display);
+}
+.opt-row .btn {
+  min-width: 56px;
+}
+#crazy[aria-pressed='true'] {
+  border-color: var(--coral);
+  color: var(--coral);
 }
 .slot.for {
   border-color: color-mix(in srgb, var(--for) 45%, var(--line));
@@ -485,4 +531,21 @@ button:focus-visible {
   flex: 1;
   min-height: 56px;
   font-size: 19px;
+}
+
+/* ⋯ menu: two columns, so every option fits on the phone without scrolling */
+#menuBack .menu {
+  width: min(680px, 100%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 8px;
+}
+#menuBack .menu > .talk-opts {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+#menuBack .menu > .talk-opts[hidden] {
+  display: none;
 }

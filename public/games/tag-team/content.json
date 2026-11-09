@@ -1,10 +1,10 @@
 {
- "about": "Tag-Team Talk topics per level: one team at the front, speakers take turns on one topic (relay). Times in seconds. Every topic has 3 hints (ideas), shown when the teacher taps Hints. M.2 is the original set; the Just a Second topics moved here when that game was removed; the rest were written for Kru. Spin picks a random topic, no repeats until all are used. The FOR vs AGAINST version is its own game: tag-team-debate.",
+ "about": "Tag-Team Talk topics per level: one team at the front, speakers take turns on one topic (relay). Times in seconds. Every topic has 3 hints (ideas), shown when the teacher taps Hints. M.2 is the original set; the Just a Second topics moved here when that game was removed; the rest were written for Kru. crazy = the \"Crazy topics only\" list (⋯ menu), also with 3 hints. Huddle 1 minute, 20 s per speaker (the teacher can change it in 5 s steps). No bonus cards. Spin picks a random topic, no repeats until all are used. The FOR vs AGAINST version is its own game: tag-team-debate.",
  "M.1": {
   "mode": "relay",
   "title": "Talk",
   "label": "Topic",
-  "huddle": 30,
+  "huddle": 60,
   "turn": 20,
   "topics": [
    {
@@ -850,14 +850,14 @@
    {
     "title": "Huddle first",
     "text": [
-     "Plan with your team for 30 seconds.",
+     "Plan with your team for 1 minute.",
      "Who says what? Who starts? Who finishes?"
     ],
     "example": {
      "rows": [
       [
        "Huddle",
-       "0:30"
+       "1:00"
       ],
       [
        "Each speaker",
@@ -893,7 +893,7 @@
     "title": "Challenge!",
     "text": [
      "The audience can challenge for:",
-     "a 3-second silence, repeating an idea, off topic or Thai."
+     "5 seconds of silence, repeating an idea, off topic or Thai."
     ],
     "example": {
      "rows": [
@@ -908,14 +908,416 @@
      ]
     }
    }
+  ],
+  "crazy": [
+   {
+    "topic": "My cat is the new school principal",
+    "ideas": [
+     "First new rule?",
+     "What's for lunch?",
+     "Who gets in trouble?"
+    ]
+   },
+   {
+    "topic": "I woke up as a banana",
+    "ideas": [
+     "What color are you?",
+     "Where do you go?",
+     "Who wants to eat you?"
+    ]
+   },
+   {
+    "topic": "My shoes can talk",
+    "ideas": [
+     "What do they say?",
+     "Are they nice?",
+     "Where do they want to go?"
+    ]
+   },
+   {
+    "topic": "It rains candy every day",
+    "ideas": [
+     "Which candy?",
+     "Good things?",
+     "Bad things?"
+    ]
+   },
+   {
+    "topic": "My dog can drive a car",
+    "ideas": [
+     "Where does it go?",
+     "Is it a good driver?",
+     "What car?"
+    ]
+   },
+   {
+    "topic": "A dinosaur is in my classroom",
+    "ideas": [
+     "Its name?",
+     "What does it eat?",
+     "Where does it sit?"
+    ]
+   },
+   {
+    "topic": "I can talk to fish",
+    "ideas": [
+     "What do fish say?",
+     "Which fish?",
+     "Your best fish friend?"
+    ]
+   },
+   {
+    "topic": "My bed can fly",
+    "ideas": [
+     "Where do you fly?",
+     "Who comes with you?",
+     "Scary or fun?"
+    ]
+   },
+   {
+    "topic": "Our school is on the moon",
+    "ideas": [
+     "How do you get there?",
+     "Lunch on the moon?",
+     "Fun or boring?"
+    ]
+   },
+   {
+    "topic": "My teacher is a robot",
+    "ideas": [
+     "What can it do?",
+     "Is it strict?",
+     "Does it ever break?"
+    ]
+   },
+   {
+    "topic": "I am the size of an ant",
+    "ideas": [
+     "What do you see?",
+     "Who are your friends?",
+     "Dangers?"
+    ]
+   },
+   {
+    "topic": "My pencil does my homework",
+    "ideas": [
+     "Is it good at it?",
+     "Any mistakes?",
+     "Does the teacher know?"
+    ]
+   },
+   {
+    "topic": "A giant chicken lives on my street",
+    "ideas": [
+     "How big?",
+     "What does it eat?",
+     "Do people like it?"
+    ]
+   },
+   {
+    "topic": "I have a tail",
+    "ideas": [
+     "What color?",
+     "What can it do?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "Everything I touch turns to ice cream",
+    "ideas": [
+     "Which flavor?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "My grandma is a superhero",
+    "ideas": [
+     "Her power?",
+     "Her costume?",
+     "Who does she help?"
+    ]
+   },
+   {
+    "topic": "My house is made of chocolate",
+    "ideas": [
+     "Which rooms?",
+     "Problems in summer?",
+     "Who visits?"
+    ]
+   },
+   {
+    "topic": "I can see through walls",
+    "ideas": [
+     "What do you see?",
+     "Good or bad?",
+     "Who would you tell?"
+    ]
+   },
+   {
+    "topic": "An elephant is my new best friend",
+    "ideas": [
+     "Where does it sleep?",
+     "What do you do together?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Cars have legs, not wheels",
+    "ideas": [
+     "How fast?",
+     "What do they look like?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "My backpack is a door to another world",
+    "ideas": [
+     "What is there?",
+     "Who lives there?",
+     "Do you go back?"
+    ]
+   },
+   {
+    "topic": "I can only speak in songs",
+    "ideas": [
+     "Which songs?",
+     "Easy or hard?",
+     "What do friends think?"
+    ]
+   },
+   {
+    "topic": "Monkeys run my favorite store",
+    "ideas": [
+     "What do they sell?",
+     "Prices?",
+     "Is it a good store?"
+    ]
+   },
+   {
+    "topic": "My hair grows one meter a day",
+    "ideas": [
+     "What do you do?",
+     "How do you cut it?",
+     "Good things?"
+    ]
+   },
+   {
+    "topic": "The sun is purple today",
+    "ideas": [
+     "What changes?",
+     "Do people like it?",
+     "What do you wear?"
+    ]
+   },
+   {
+    "topic": "I found a talking egg",
+    "ideas": [
+     "What does it say?",
+     "What comes out?",
+     "Do you keep it?"
+    ]
+   },
+   {
+    "topic": "My goldfish wants a job",
+    "ideas": [
+     "Which job?",
+     "Can it do it?",
+     "How much money?"
+    ]
+   },
+   {
+    "topic": "Snow falls in Bangkok",
+    "ideas": [
+     "What do people do?",
+     "What do you wear?",
+     "Food?"
+    ]
+   },
+   {
+    "topic": "I swapped bodies with my teacher",
+    "ideas": [
+     "What do you teach?",
+     "Who is in your seat?",
+     "Fun or scary?"
+    ]
+   },
+   {
+    "topic": "My toothbrush is alive",
+    "ideas": [
+     "Its name?",
+     "Does it like you?",
+     "What does it do at night?"
+    ]
+   },
+   {
+    "topic": "There are no colors anymore",
+    "ideas": [
+     "What does it look like?",
+     "What do you miss?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "My shadow ran away",
+    "ideas": [
+     "Where did it go?",
+     "How do you find it?",
+     "What does it do?"
+    ]
+   },
+   {
+    "topic": "I can fly but only one meter high",
+    "ideas": [
+     "Is it useful?",
+     "Where do you fly?",
+     "What do people say?"
+    ]
+   },
+   {
+    "topic": "Giant snails are our school buses",
+    "ideas": [
+     "How slow?",
+     "Are they comfortable?",
+     "Late for school?"
+    ]
+   },
+   {
+    "topic": "My phone eats my food",
+    "ideas": [
+     "Which food?",
+     "Is it hungry?",
+     "What do you do?"
+    ]
+   },
+   {
+    "topic": "A ghost lives in my fridge",
+    "ideas": [
+     "Is it friendly?",
+     "What does it eat?",
+     "Do you open the fridge?"
+    ]
+   },
+   {
+    "topic": "I have a pet cloud",
+    "ideas": [
+     "What does it do?",
+     "Is it rainy?",
+     "Where does it sleep?"
+    ]
+   },
+   {
+    "topic": "My mom is the president of the world",
+    "ideas": [
+     "New rules?",
+     "Is she busy?",
+     "Good things for you?"
+    ]
+   },
+   {
+    "topic": "Everyone at school is a cat",
+    "ideas": [
+     "Lessons?",
+     "Lunch?",
+     "Who is the best cat?"
+    ]
+   },
+   {
+    "topic": "I can talk to plants",
+    "ideas": [
+     "What do they say?",
+     "Which plant?",
+     "Do you water them?"
+    ]
+   },
+   {
+    "topic": "My birthday is every day",
+    "ideas": [
+     "Presents?",
+     "Cake every day?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "The ocean is made of orange juice",
+    "ideas": [
+     "Fish?",
+     "Swimming?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "I can turn invisible but only my head",
+    "ideas": [
+     "Is it scary?",
+     "What do people say?",
+     "Is it useful?"
+    ]
+   },
+   {
+    "topic": "A penguin is in my bathtub",
+    "ideas": [
+     "How did it get there?",
+     "What does it eat?",
+     "Do you keep it?"
+    ]
+   },
+   {
+    "topic": "My chair can run",
+    "ideas": [
+     "Where does it run?",
+     "Can you sit on it?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "All the animals can talk for one day",
+    "ideas": [
+     "Which animal first?",
+     "What would they say?",
+     "Funny or scary?"
+    ]
+   },
+   {
+    "topic": "I live in a tree house in the jungle",
+    "ideas": [
+     "Animals?",
+     "Food?",
+     "Friends?"
+    ]
+   },
+   {
+    "topic": "My clothes change color every hour",
+    "ideas": [
+     "Favorite color?",
+     "What do people say?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "I am a famous singer for one day",
+    "ideas": [
+     "Your song?",
+     "Where do you sing?",
+     "Fans?"
+    ]
+   },
+   {
+    "topic": "My kitchen is a swimming pool",
+    "ideas": [
+     "How do you cook?",
+     "Is it fun?",
+     "Problems?"
+    ]
+   }
   ]
  },
  "M.2": {
   "mode": "relay",
   "title": "Talk",
   "label": "Topic",
-  "huddle": 30,
-  "turn": 25,
+  "huddle": 60,
+  "turn": 20,
   "topics": [
    {
     "topic": "If our school had a robot teacher",
@@ -1760,18 +2162,18 @@
    {
     "title": "Huddle first",
     "text": [
-     "Plan with your team for 30 seconds.",
+     "Plan with your team for 1 minute.",
      "Who says what? Who starts? Who finishes?"
     ],
     "example": {
      "rows": [
       [
        "Huddle",
-       "0:30"
+       "1:00"
       ],
       [
        "Each speaker",
-       "0:25"
+       "0:20"
       ]
      ]
     }
@@ -1803,7 +2205,7 @@
     "title": "Challenge!",
     "text": [
      "The audience can challenge for:",
-     "a 3-second silence, repeating an idea, off topic or Thai."
+     "5 seconds of silence, repeating an idea, off topic or Thai."
     ],
     "example": {
      "rows": [
@@ -1818,14 +2220,416 @@
      ]
     }
    }
+  ],
+  "crazy": [
+   {
+    "topic": "Your phone can read your mind",
+    "ideas": [
+     "What would it say?",
+     "Good things?",
+     "Dangers?"
+    ]
+   },
+   {
+    "topic": "Gravity stops for one hour every day",
+    "ideas": [
+     "What do people do?",
+     "Problems?",
+     "Fun ideas?"
+    ]
+   },
+   {
+    "topic": "All teachers are replaced by cats",
+    "ideas": [
+     "Lessons?",
+     "Rules?",
+     "Would you learn more?"
+    ]
+   },
+   {
+    "topic": "You wake up 100 years in the future",
+    "ideas": [
+     "What has changed?",
+     "What do you miss?",
+     "What do you do first?"
+    ]
+   },
+   {
+    "topic": "Every lie you tell makes your nose grow",
+    "ideas": [
+     "Who would get caught?",
+     "Would you lie less?",
+     "Funny stories?"
+    ]
+   },
+   {
+    "topic": "Your school is inside a giant whale",
+    "ideas": [
+     "How do you get in?",
+     "Lunch?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "You can only eat one food forever",
+    "ideas": [
+     "Which food?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Dogs rule the world and humans are pets",
+    "ideas": [
+     "What do humans do?",
+     "Rules?",
+     "Better or worse?"
+    ]
+   },
+   {
+    "topic": "You have a twin who is your opposite",
+    "ideas": [
+     "What are they like?",
+     "Problems?",
+     "Fun things?"
+    ]
+   },
+   {
+    "topic": "Homework is now done by robots",
+    "ideas": [
+     "What do students do?",
+     "Good or bad?",
+     "Would you learn?"
+    ]
+   },
+   {
+    "topic": "The internet disappears forever",
+    "ideas": [
+     "First problem?",
+     "What would you do?",
+     "Good things?"
+    ]
+   },
+   {
+    "topic": "You can rewind time by ten seconds",
+    "ideas": [
+     "How would you use it?",
+     "Problems?",
+     "Funny moments?"
+    ]
+   },
+   {
+    "topic": "Aliens choose you to visit their planet",
+    "ideas": [
+     "What do you take?",
+     "What do you tell them?",
+     "Do you come back?"
+    ]
+   },
+   {
+    "topic": "Thailand has snow every winter",
+    "ideas": [
+     "New sports?",
+     "What do people wear?",
+     "Food?"
+    ]
+   },
+   {
+    "topic": "You become a famous YouTuber overnight",
+    "ideas": [
+     "Your videos?",
+     "Fans?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Every day is your birthday",
+    "ideas": [
+     "Presents?",
+     "Parties?",
+     "Would you get bored?"
+    ]
+   },
+   {
+    "topic": "You can talk to animals but not people",
+    "ideas": [
+     "Who do you talk to?",
+     "Problems?",
+     "Best animal friend?"
+    ]
+   },
+   {
+    "topic": "Your shadow does what it wants",
+    "ideas": [
+     "What does it do?",
+     "Funny or scary?",
+     "How do you stop it?"
+    ]
+   },
+   {
+    "topic": "Your pet becomes the class captain",
+    "ideas": [
+     "First new rule?",
+     "Is it good at it?",
+     "What do students think?"
+    ]
+   },
+   {
+    "topic": "Money grows on trees",
+    "ideas": [
+     "What happens to jobs?",
+     "Who is rich?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "You can be invisible but you glow at night",
+    "ideas": [
+     "Good things?",
+     "Problems?",
+     "How would you use it?"
+    ]
+   },
+   {
+    "topic": "Your school uniform is a superhero costume",
+    "ideas": [
+     "Your power?",
+     "Colors?",
+     "What do you do?"
+    ]
+   },
+   {
+    "topic": "Chocolate becomes the healthiest food",
+    "ideas": [
+     "What do people eat?",
+     "New problems?",
+     "Your diet?"
+    ]
+   },
+   {
+    "topic": "You live in a house that walks",
+    "ideas": [
+     "Where does it go?",
+     "Problems?",
+     "Fun things?"
+    ]
+   },
+   {
+    "topic": "Everyone has to sing instead of talk",
+    "ideas": [
+     "School?",
+     "Shopping?",
+     "Funny problems?"
+    ]
+   },
+   {
+    "topic": "You swap lives with a famous person",
+    "ideas": [
+     "Who?",
+     "What do you do?",
+     "Would you swap back?"
+    ]
+   },
+   {
+    "topic": "Cars can fly but only on Mondays",
+    "ideas": [
+     "Traffic?",
+     "Accidents?",
+     "What about other days?"
+    ]
+   },
+   {
+    "topic": "You are stuck in a video game",
+    "ideas": [
+     "Which game?",
+     "How do you escape?",
+     "Your power-ups?"
+    ]
+   },
+   {
+    "topic": "Insects grow as big as dogs",
+    "ideas": [
+     "Pets?",
+     "Problems?",
+     "What do people do?"
+    ]
+   },
+   {
+    "topic": "You can taste colors",
+    "ideas": [
+     "What does red taste like?",
+     "Your favorite?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Your town is moved to the bottom of the sea",
+    "ideas": [
+     "Transport?",
+     "Food?",
+     "Fish neighbors?"
+    ]
+   },
+   {
+    "topic": "Sleep is not needed anymore",
+    "ideas": [
+     "What do you do at night?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Your teacher is twelve years old",
+    "ideas": [
+     "Lessons?",
+     "Rules?",
+     "Fun or not?"
+    ]
+   },
+   {
+    "topic": "Every song you hear makes you dance",
+    "ideas": [
+     "Problems at school?",
+     "Funny moments?",
+     "Favorite song?"
+    ]
+   },
+   {
+    "topic": "A dragon wants to be your friend",
+    "ideas": [
+     "Where does it live?",
+     "What do you do together?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Your reflection talks back",
+    "ideas": [
+     "What does it say?",
+     "Is it nice?",
+     "What do you do?"
+    ]
+   },
+   {
+    "topic": "Plants start walking around",
+    "ideas": [
+     "Gardens?",
+     "Problems?",
+     "Funny moments?"
+    ]
+   },
+   {
+    "topic": "You can only move by jumping",
+    "ideas": [
+     "Getting to school?",
+     "Sports?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Everyone in the world speaks Thai",
+    "ideas": [
+     "Travel?",
+     "School?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "Your bedroom is a secret spaceship",
+    "ideas": [
+     "Where do you go?",
+     "Who knows?",
+     "Missions?"
+    ]
+   },
+   {
+    "topic": "Rain is made of noodles",
+    "ideas": [
+     "What do people do?",
+     "Food problems?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "You have a robot butler for a week",
+    "ideas": [
+     "What does it do?",
+     "Problems?",
+     "Do you give it back?"
+    ]
+   },
+   {
+    "topic": "Your best friend becomes a cat",
+    "ideas": [
+     "What do you do?",
+     "How do you talk?",
+     "How do you help?"
+    ]
+   },
+   {
+    "topic": "The sun rises at night",
+    "ideas": [
+     "Sleep?",
+     "School times?",
+     "What changes?"
+    ]
+   },
+   {
+    "topic": "You can hear what people really think",
+    "ideas": [
+     "Good things?",
+     "Problems?",
+     "Would you want it?"
+    ]
+   },
+   {
+    "topic": "Your bike can talk and gives advice",
+    "ideas": [
+     "What does it say?",
+     "Good advice?",
+     "Do you listen?"
+    ]
+   },
+   {
+    "topic": "School starts at midnight",
+    "ideas": [
+     "Sleep?",
+     "What changes?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "You have a magic pen that draws real things",
+    "ideas": [
+     "What do you draw?",
+     "Problems?",
+     "Who knows?"
+    ]
+   },
+   {
+    "topic": "Your family becomes a famous band",
+    "ideas": [
+     "Who plays what?",
+     "Your songs?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "You can visit any time in history for a day",
+    "ideas": [
+     "Which time?",
+     "What do you do?",
+     "What do you bring back?"
+    ]
+   }
   ]
  },
  "M.3": {
   "mode": "relay",
   "title": "Talk",
   "label": "Topic",
-  "huddle": 45,
-  "turn": 30,
+  "huddle": 60,
+  "turn": 20,
   "topics": [
    {
     "topic": "The biggest problem for teenagers today",
@@ -2670,18 +3474,18 @@
    {
     "title": "Huddle first",
     "text": [
-     "Plan with your team for 45 seconds.",
+     "Plan with your team for 1 minute.",
      "Who says what? Who starts? Who finishes?"
     ],
     "example": {
      "rows": [
       [
        "Huddle",
-       "0:45"
+       "1:00"
       ],
       [
        "Each speaker",
-       "0:30"
+       "0:20"
       ]
      ]
     }
@@ -2713,7 +3517,7 @@
     "title": "Challenge!",
     "text": [
      "The audience can challenge for:",
-     "a 3-second silence, repeating an idea, off topic or Thai."
+     "5 seconds of silence, repeating an idea, off topic or Thai."
     ],
     "example": {
      "rows": [
@@ -2728,41 +3532,407 @@
      ]
     }
    }
-  ]
- },
- "bonus": {
-  "before": [
-   {
-    "id": "no-umm",
-    "name": "No umm!",
-    "text": "No \"umm\" and no silence: +2.",
-    "points": 2
-   },
-   {
-    "id": "question",
-    "name": "Ask the audience",
-    "text": "Ask the audience a question in your talk: +1.",
-    "points": 1
-   }
   ],
-  "secret": [
+  "crazy": [
    {
-    "id": "new-word",
-    "name": "New word",
-    "text": "+1 for the best new word you used.",
-    "points": 1
+    "topic": "Social media is banned for everyone under 30",
+    "ideas": [
+     "What changes?",
+     "Good effects?",
+     "Bad effects?"
+    ]
    },
    {
-    "id": "eyes",
-    "name": "Eye contact",
-    "text": "+1 if you looked at the audience.",
-    "points": 1
+    "topic": "Robots demand equal rights",
+    "ideas": [
+     "What do they want?",
+     "Fair or not?",
+     "What happens next?"
+    ]
    },
    {
-    "id": "best",
-    "name": "Best speaker",
-    "text": "+2 for your team's best speaker.",
-    "points": 2
+    "topic": "Humans can photosynthesize like plants",
+    "ideas": [
+     "Food?",
+     "Farms?",
+     "What changes in society?"
+    ]
+   },
+   {
+    "topic": "Everyone gets a new random job every year",
+    "ideas": [
+     "Good things?",
+     "Problems?",
+     "Your dream draw?"
+    ]
+   },
+   {
+    "topic": "You can buy extra hours in a day",
+    "ideas": [
+     "Price?",
+     "Who buys them?",
+     "Is it fair?"
+    ]
+   },
+   {
+    "topic": "Memories can be bought and sold",
+    "ideas": [
+     "Which ones would you sell?",
+     "Dangers?",
+     "Who gets rich?"
+    ]
+   },
+   {
+    "topic": "The oceans dry up overnight",
+    "ideas": [
+     "First problems?",
+     "New land?",
+     "What do people do?"
+    ]
+   },
+   {
+    "topic": "All exams are replaced by video games",
+    "ideas": [
+     "Fair or not?",
+     "Which games?",
+     "What do teachers think?"
+    ]
+   },
+   {
+    "topic": "You are the last person who knows how to read",
+    "ideas": [
+     "What do you do?",
+     "Your job?",
+     "Power or problem?"
+    ]
+   },
+   {
+    "topic": "Animals can vote in elections",
+    "ideas": [
+     "Who wins?",
+     "New laws?",
+     "Fair or not?"
+    ]
+   },
+   {
+    "topic": "Every lie you tell appears on your forehead",
+    "ideas": [
+     "Friendships?",
+     "Politics?",
+     "Better world?"
+    ]
+   },
+   {
+    "topic": "Money is replaced by kindness points",
+    "ideas": [
+     "How do you earn them?",
+     "Rich people?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "A time machine is sold at 7-Eleven",
+    "ideas": [
+     "Price?",
+     "Rules?",
+     "Dangers?"
+    ]
+   },
+   {
+    "topic": "You can upload your brain to the internet",
+    "ideas": [
+     "Good things?",
+     "Risks?",
+     "Would you do it?"
+    ]
+   },
+   {
+    "topic": "Everyone can fly, so roads are useless",
+    "ideas": [
+     "Cities?",
+     "Jobs?",
+     "New problems?"
+    ]
+   },
+   {
+    "topic": "Sleep becomes illegal",
+    "ideas": [
+     "How do people cope?",
+     "Health?",
+     "Who made the law?"
+    ]
+   },
+   {
+    "topic": "Aliens offer to fix climate change for a price",
+    "ideas": [
+     "What price?",
+     "Should we pay?",
+     "Risks?"
+    ]
+   },
+   {
+    "topic": "Your phone becomes your boss",
+    "ideas": [
+     "What does it make you do?",
+     "Can you quit?",
+     "Better or worse?"
+    ]
+   },
+   {
+    "topic": "Teenagers run the government for a year",
+    "ideas": [
+     "First laws?",
+     "Good things?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Humans hibernate for three months a year",
+    "ideas": [
+     "Which months?",
+     "Economy?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "Every country must swap leaders for a month",
+    "ideas": [
+     "Chaos?",
+     "What could improve?",
+     "Your choice?"
+    ]
+   },
+   {
+    "topic": "Food becomes pills only",
+    "ideas": [
+     "Health?",
+     "Culture?",
+     "What would you miss?"
+    ]
+   },
+   {
+    "topic": "The internet becomes a real place you can walk into",
+    "ideas": [
+     "What is it like?",
+     "Dangers?",
+     "Your first visit?"
+    ]
+   },
+   {
+    "topic": "Clones do your boring tasks",
+    "ideas": [
+     "Which tasks?",
+     "Problems?",
+     "Who is the real you?"
+    ]
+   },
+   {
+    "topic": "Gravity is half as strong",
+    "ideas": [
+     "Sports?",
+     "Buildings?",
+     "Daily life?"
+    ]
+   },
+   {
+    "topic": "Everyone must change their name every year",
+    "ideas": [
+     "Identity?",
+     "Fun or chaos?",
+     "Your next name?"
+    ]
+   },
+   {
+    "topic": "Your dreams are broadcast on TV",
+    "ideas": [
+     "Embarrassing?",
+     "Popular shows?",
+     "Privacy?"
+    ]
+   },
+   {
+    "topic": "AI writes all music and movies",
+    "ideas": [
+     "Quality?",
+     "Artists' jobs?",
+     "Would you notice?"
+    ]
+   },
+   {
+    "topic": "You can delete one invention from history",
+    "ideas": [
+     "Which one?",
+     "What changes?",
+     "Risks?"
+    ]
+   },
+   {
+    "topic": "Cities float in the sky",
+    "ideas": [
+     "Transport?",
+     "Who lives there?",
+     "Problems?"
+    ]
+   },
+   {
+    "topic": "Everyone has a personal soundtrack others can hear",
+    "ideas": [
+     "Embarrassing?",
+     "Mood?",
+     "Your theme song?"
+    ]
+   },
+   {
+    "topic": "School lasts only one hour a day",
+    "ideas": [
+     "What is taught?",
+     "Free time?",
+     "Good or bad?"
+    ]
+   },
+   {
+    "topic": "A billionaire buys the moon",
+    "ideas": [
+     "What does he do?",
+     "Who allows it?",
+     "Fair or not?"
+    ]
+   },
+   {
+    "topic": "Plants can scream when you cut them",
+    "ideas": [
+     "Vegetarians?",
+     "Farming?",
+     "What changes?"
+    ]
+   },
+   {
+    "topic": "Every person must live in a different country each year",
+    "ideas": [
+     "Culture?",
+     "Families?",
+     "Benefits?"
+    ]
+   },
+   {
+    "topic": "You can pause the world but you age while it's paused",
+    "ideas": [
+     "How would you use it?",
+     "Costs?",
+     "Would you?"
+    ]
+   },
+   {
+    "topic": "Weather can be ordered like food delivery",
+    "ideas": [
+     "Who decides?",
+     "Conflicts?",
+     "Your order?"
+    ]
+   },
+   {
+    "topic": "Smartphones only work for one hour a day",
+    "ideas": [
+     "Which hour?",
+     "Changes?",
+     "Better or worse?"
+    ]
+   },
+   {
+    "topic": "Everyone tells the truth for one day",
+    "ideas": [
+     "Chaos?",
+     "Relationships?",
+     "Lessons learned?"
+    ]
+   },
+   {
+    "topic": "Humans can breathe underwater",
+    "ideas": [
+     "New cities?",
+     "Jobs?",
+     "Environment?"
+    ]
+   },
+   {
+    "topic": "Your future self sends you one message",
+    "ideas": [
+     "What does it say?",
+     "Would you listen?",
+     "Risks?"
+    ]
+   },
+   {
+    "topic": "Days off are chosen by a public vote every year",
+    "ideas": [
+     "Popular choices?",
+     "Traditions?",
+     "Fair or not?"
+    ]
+   },
+   {
+    "topic": "Cats become smarter than humans",
+    "ideas": [
+     "Who is in charge?",
+     "Our role?",
+     "Better world?"
+    ]
+   },
+   {
+    "topic": "Teachers are paid like soccer stars",
+    "ideas": [
+     "Who becomes a teacher?",
+     "Education?",
+     "Fair or not?"
+    ]
+   },
+   {
+    "topic": "Mirrors show you in ten years",
+    "ideas": [
+     "Motivation?",
+     "Fear?",
+     "Would you look?"
+    ]
+   },
+   {
+    "topic": "Every building must be made of recycled plastic",
+    "ideas": [
+     "Safety?",
+     "Environment?",
+     "Design?"
+    ]
+   },
+   {
+    "topic": "You inherit a haunted hotel",
+    "ideas": [
+     "Keep it or sell it?",
+     "Guests?",
+     "Business plan?"
+    ]
+   },
+   {
+    "topic": "Emotions are visible as colors around people",
+    "ideas": [
+     "Privacy?",
+     "Relationships?",
+     "Advantages?"
+    ]
+   },
+   {
+    "topic": "The government gives everyone a free robot",
+    "ideas": [
+     "What jobs disappear?",
+     "Benefits?",
+     "Risks?"
+    ]
+   },
+   {
+    "topic": "You can learn any skill instantly but forget another",
+    "ideas": [
+     "Which skill?",
+     "What would you lose?",
+     "Worth it?"
+    ]
    }
   ]
  }

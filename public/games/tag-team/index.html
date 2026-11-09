@@ -7,7 +7,6 @@
     <title>Tag-Team Talk</title>
     <link rel="stylesheet" href="/games/shared/kru-game.css" />
     <link rel="stylesheet" href="/games/shared/kru-intro.css" />
-    <link rel="stylesheet" href="/games/shared/kru-bonus.css" />
     <link rel="stylesheet" href="/games/shared/kru-end.css" />
     <link rel="stylesheet" href="/games/shared/kru-picker.css" />
     <link rel="stylesheet" href="style.css" />
@@ -85,6 +84,15 @@
     <!-- ⋯ menu -->
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="More options">
+        <div class="talk-opts" id="talkOpts">
+          <div class="opt-row">
+            <span>Speaking time</span>
+            <button class="btn" id="turnLess" aria-label="5 seconds less">−5</button>
+            <b id="turnSecs">20 s</b>
+            <button class="btn" id="turnMore" aria-label="5 seconds more">+5</button>
+          </div>
+          <button class="btn" id="crazy" aria-pressed="false">Crazy topics only: off</button>
+        </div>
         <button class="btn" id="resetTimer">Reset the timer</button>
         <button class="btn" id="resetOrder">Reset the speaking order</button>
         <button class="btn" id="undo">Undo last points</button>
@@ -97,7 +105,6 @@
 
     <script src="/sdk/kru.js"></script>
     <script src="/games/shared/kru-intro.js"></script>
-    <script src="/games/shared/kru-bonus.js"></script>
     <script src="/games/shared/kru-end.js"></script>
     <script src="/games/shared/kru-picker.js"></script>
     <script src="app.js"></script>

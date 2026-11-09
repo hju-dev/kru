@@ -3,7 +3,8 @@
    Relay (Tag-Team Talk): one team at the front; its speakers take turns on one topic; at each chime: TAG!
    Debate (Tag-Team Debate): FOR team vs AGAINST team; speakers alternate, starting with FOR.
    Teams and speakers come from the Kru session. Speaking order: tap two names to swap, or hold and drag.
-   Talk only: topics come with 3 hints (Hints button), and 🎯 Pick a team spins for the team at the front. */
+   Talk only: topics come with 3 hints (Hints button), 🎯 Pick a team spins for the team at the front, the clock stops
+   after the huddle (Start talking when ready), speaking time ±5 s in the ⋯ menu, "Crazy topics only", no bonus cards. */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
@@ -11,7 +12,7 @@
 
   var C = null;       // content for this level
   var teams = [];
-  var S = null;       // saved: { v, level, mode, front, forT, againstT, order, used, topic, hints, picked, pts, log }
+  var S = null;       // saved: { v, level, mode, front, forT, againstT, order, used, topic, hints, picked, turnSecs, crazy, pts, log }
   var phase = 'ready', turn = 0, total = 0, left = 0, running = false, endAt = 0, timer = 0, audio = null;
   var picked = null;  // { team, k } waiting for a second tap
 
@@ -23,6 +24,10 @@
   function debate() { return C.mode === 'debate'; }
   function team(id) { return teams.find(function (t) { return t.id === id; }); }
   function pts(id) { return S.pts[id] || 0; }
+  /** Seconds per speaker: Talk can change it in the ⋯ menu (5 s steps). */
+  function turnSecs() { return (!debate() && S.turnSecs) || C.turn; }
+  var BONUS = false; // bonus cards: Debate only (Henry turned them off for Talk)
+  function bonusReveal() { if (BONUS) KruBonus.reveal(); }
 
   // ---------- speakers ----------
   function key(m) { return m.no + ':' + m.nick; }
@@ -122,14 +127,19 @@
     if (!running) return;
     left = (endAt - Date.now()) / 1000;
     if (left <= 0) {
-      if (phase === 'huddle') { tone([523, 659, 784]); startTalk(); return; }
+      if (phase === 'huddle') {
+        tone([523, 659, 784]);
+        // Talk: stop after the huddle; Henry taps Start talking when the first speaker is ready
+        if (!debate()) { running = false; clearInterval(timer); phase = 'set'; total = left = turnSecs(); render(); return; }
+        startTalk(); return;
+      }
       if (phase === 'talk') {
         if (turn + 1 < turns()) {
-          turn++; total = C.turn; endAt = Date.now() + total * 1000; left = total;
+          turn++; total = turnSecs(); endAt = Date.now() + total * 1000; left = total;
           tone([880, 1175], 0.12, 0.22); flash('TAG!', 'tag-flash', 700);
         } else {
           left = 0; running = false; clearInterval(timer); phase = 'done';
-          KruBonus.reveal();
+          bonusReveal();
           tone([784, 659, 523, 392], 0.2, 0.35);
         }
       }
@@ -137,19 +147,19 @@
     render();
   }
   function startHuddle() { phase = 'huddle'; total = left = C.huddle; turn = 0; picked = null; run(); }
-  function startTalk() { phase = 'talk'; turn = 0; total = left = C.turn; picked = null; tone([660, 880], 0.12); run(); }
+  function startTalk() { phase = 'talk'; turn = 0; total = left = turnSecs(); picked = null; tone([660, 880], 0.12); run(); }
   function nextSpeaker() {
     if (phase !== 'talk') return;
     if (turn + 1 < turns()) {
-      turn++; total = left = C.turn;
+      turn++; total = left = turnSecs();
       tone([880, 1175], 0.12, 0.22); flash('TAG!', 'tag-flash', 600);
       if (running) endAt = Date.now() + left * 1000;
       render();
-    } else { pause(); phase = 'done'; render(); KruBonus.reveal(); }
+    } else { pause(); phase = 'done'; render(); bonusReveal(); }
   }
   function resetAll() {
     if (phase === 'done') S.turnNo = (S.turnNo || 0) + 1; // the next team's turn
-    pause(); phase = 'ready'; turn = 0; total = left = C.turn;
+    pause(); phase = 'ready'; turn = 0; total = left = turnSecs();
     bonusRound('turn' + (S.turnNo || 0));
     render();
   }
@@ -157,8 +167,10 @@
   // ---------- topic ----------
   // a topic is text (debate motions) or { topic, ideas: [3 hints] } (Talk)
   function topicText(t) { return typeof t === 'string' ? t : t.topic; }
+  /** Talk: the crazy topics only, when that is on in the ⋯ menu */
+  function topicList() { return !debate() && S.crazy && C.crazy && C.crazy.length ? C.crazy : C.topics; }
   function ideasFor(text) {
-    var t = C.topics.find(function (x) { return topicText(x) === text; });
+    var t = C.topics.concat(C.crazy || []).find(function (x) { return topicText(x) === text; });
     return t && t.ideas ? t.ideas : [];
   }
   function fitTopic() {
@@ -175,12 +187,13 @@
     btn.textContent = S.hints ? 'Hide hints' : 'Hints';
     btn.setAttribute('aria-pressed', String(!!S.hints));
     box.hidden = !(S.hints && ideas.length);
+    $('topic').parentNode.parentNode.classList.toggle('with-hints', !box.hidden);
     box.innerHTML = S.hints ? ideas.map(function (i) { return '<span>' + esc(i) + '</span>'; }).join('') : '';
     fitTopic();
   }
   function spin() {
     unlockAudio();
-    var list = C.topics.map(topicText), pool = list.filter(function (t) { return S.used.indexOf(t) < 0; });
+    var list = topicList().map(topicText), pool = list.filter(function (t) { return S.used.indexOf(t) < 0; });
     if (!pool.length) { S.used = []; pool = list.slice(); }
     var pick = pool[Math.floor(Math.random() * pool.length)];
     S.used.push(pick);
@@ -204,7 +217,8 @@
   var TEXT = {
     ready: ['Ready', function () { return S.topic ? 'Start the huddle when the team is ready.' : 'Spin a topic, then start the huddle.'; }],
     huddle: ['Huddle!', function () { return debate() ? 'FOR team and AGAINST team: plan your points and your replies.' : 'Plan who says what. The first speaker starts, the last speaker finishes.'; }],
-    talk: [null, function () { return debate() ? 'Answer the last point first, then add a new one.' : 'Keep talking until the chime. Then TAG!'; }],
+    set: ['Huddle over!', function () { return 'Tap Start talking when the first speaker is ready.'; }],
+    talk: [null, function () { return debate() ? 'Answer the last point first, then add a new one.' : 'Keep talking until the chime. 5 seconds of silence = challenge!'; }],
     done: ["Time's up!", function () { return 'Audience: any challenges? Give points, then the next team.'; }],
   };
   function render() {
@@ -214,14 +228,15 @@
     $('phase').textContent = phase === 'talk' ? slot(turn)[0] + ' is talking' : TEXT[phase][0];
     $('sub').textContent = TEXT[phase][1]();
     var main = $('main');
-    main.textContent = phase === 'ready' ? 'Start huddle' : phase === 'huddle' ? 'Start talking' : phase === 'talk' ? (turn + 1 < turns() ? 'Next speaker' : 'Finish turn') : 'New round';
+    main.textContent = phase === 'ready' ? 'Start huddle' : phase === 'huddle' || phase === 'set' ? 'Start talking' : phase === 'talk' ? (turn + 1 < turns() ? 'Next speaker' : 'Finish turn') : 'New round';
     $('pause').textContent = running ? 'Pause' : 'Resume';
-    $('pause').disabled = phase === 'ready' || phase === 'done';
+    $('pause').disabled = phase === 'ready' || phase === 'done' || phase === 'set';
     paintLane();
   }
   function renderLane() {
     var n = size(), lane = $('lane');
     lane.style.setProperty('--n', n);
+    lane.classList.toggle('relay', !debate());
     var html = '';
     for (var i = 0; i < turns(); i++) {
       var s = slot(i), cls = debate() ? (i % 2 ? ' against' : ' for') : '';
@@ -414,7 +429,7 @@
   if ($('hints')) $('hints').addEventListener('click', function () { S.hints = !S.hints; save(); renderHints(); });
   $('main').addEventListener('click', function () {
     if (phase === 'ready') startHuddle();
-    else if (phase === 'huddle') startTalk();
+    else if (phase === 'huddle' || phase === 'set') startTalk();
     else if (phase === 'talk') nextSpeaker();
     else resetAll();
   });
@@ -429,7 +444,7 @@
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'Reset all scores'; }
-  $('more').addEventListener('click', function () { $('undo').disabled = !S.log.length; disarm(); $('menuBack').hidden = false; });
+  $('more').addEventListener('click', function () { $('undo').disabled = !S.log.length; disarm(); renderTalkMenu(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('resetTimer').addEventListener('click', function () { resetAll(); closeMenu(); });
@@ -438,6 +453,27 @@
     picked = null; save(); renderLane(); closeMenu();
   });
   $('undo').addEventListener('click', function () { undo(); closeMenu(); });
+  // Talk: speaking time per student (5 s steps) and crazy topics only
+  function renderTalkMenu() {
+    if (!$('turnSecs')) return;
+    $('talkOpts').hidden = debate();
+    $('turnSecs').textContent = turnSecs() + ' s';
+    $('turnLess').disabled = turnSecs() <= 5;
+    $('turnMore').disabled = turnSecs() >= 120;
+    $('crazy').setAttribute('aria-pressed', String(!!S.crazy));
+    $('crazy').textContent = 'Crazy topics only: ' + (S.crazy ? 'ON' : 'off');
+  }
+  function setTurnSecs(d) {
+    S.turnSecs = Math.max(5, Math.min(120, turnSecs() + d));
+    save();
+    if (phase === 'ready' || phase === 'set') { total = left = turnSecs(); }
+    renderTalkMenu(); render();
+  }
+  if ($('turnSecs')) {
+    $('turnLess').addEventListener('click', function () { setTurnSecs(-5); });
+    $('turnMore').addEventListener('click', function () { setTurnSecs(5); });
+    $('crazy').addEventListener('click', function () { S.crazy = !S.crazy; save(); renderTalkMenu(); });
+  }
   // How to play slides: before the game starts, and from the ⋯ menu
   var INTRO = [];
   function showIntro() { return KruIntro.show(INTRO, { title: debate() ? 'Tag-Team Debate' : 'Tag-Team Talk' }); }
@@ -460,7 +496,7 @@
     var k = e.key.toLowerCase();
     if (e.code === 'Space') {
       e.preventDefault();
-      if (phase === 'ready') startHuddle(); else if (phase === 'done') resetAll(); else running ? pause() : run();
+      if (phase === 'ready') startHuddle(); else if (phase === 'set') startTalk(); else if (phase === 'done') resetAll(); else running ? pause() : run();
     } else if (k === 'n') nextSpeaker();
     else if (k === 'c') $('challenge').click();
     else if (k === 's') spin();
@@ -476,7 +512,7 @@
   // ---------- start ----------
   // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
   // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
-  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
+  function bonusRound(key) { if (!BONUS) return; var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
@@ -494,7 +530,8 @@
           get: function () { return S.picked || []; }, set: function (ids) { S.picked = ids; save(); },
           onPick: function (t) { S.front = t.id; picked = null; save(); resetAll(); renderAll(); } });
       }
-      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
+      BONUS = !!content.bonus && !!window.KruBonus;
+      if (BONUS) KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { bump(id, d, 'bonus: ' + card.name); } });
       var students = teams.filter(function (t) { return !t.teacher; });
       var first = (students[0] || teams[0]).id, second = (students[1] || teams.find(function (t) { return t.id !== first; }) || teams[0]).id;
@@ -509,7 +546,7 @@
       if (!team(S.againstT)) S.againstT = second;
       S.mode = C.mode;
       S.order = S.order || {}; S.pts = S.pts || {}; S.log = S.log || []; S.used = S.used || [];
-      total = left = C.turn;
+      total = left = turnSecs();
       bonusRound('turn' + (S.turnNo || 0));
       renderAll();
       INTRO = KruIntro.forLevel(content, level);
