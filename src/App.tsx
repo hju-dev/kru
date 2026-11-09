@@ -4,6 +4,7 @@ import { ErrorScreen } from './components/ErrorScreen'
 import { UpdateToast } from './components/UpdateToast'
 import { Home } from './routes/Home'
 import { Play } from './routes/Play'
+import { Preview } from './routes/Preview'
 import { Results } from './routes/Results'
 import { Setup } from './routes/Setup'
 import { SignIn } from './routes/SignIn'
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: 'setup/:game', element: <Setup /> },
       { path: 'play/:id', element: <Play /> },
+      { path: 'preview/:game', element: <Preview /> },
       { path: 'tool/:game', element: <Tool /> },
       { path: 'results/:id', element: <Results /> },
       {

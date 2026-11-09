@@ -206,6 +206,21 @@
 .fav-btn.on {
   color: var(--gold);
 }
+/* ? = How to play: try the game with made-up teams before setting up (under the star) */
+.try-btn {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: 800 20px/1 var(--display);
+  cursor: pointer;
+}
 .sec-recent .section-head,
 .sec-favorites .section-head {
   color: var(--sec);

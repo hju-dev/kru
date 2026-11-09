@@ -60,6 +60,11 @@ export function Home() {
     navigate(`/setup/${g.slug}`)
   }
 
+  /** ? on a card: try the game (How to play slides, then practice with made-up teams) before setting up teams */
+  function tryGame(g: GameInfo) {
+    navigate(`/preview/${g.slug}${selected?.level ? `?level=${selected.level}` : ''}`)
+  }
+
   return (
     <main className="screen home">
       <header className="topbar">
@@ -125,21 +130,21 @@ export function Home() {
       )}
 
       {classes.length > 0 && favGames.length > 0 && (
-        <GameRow id="favorites" title="Favorites" color="var(--gold)" games={favGames} favorites={favorites} onPick={pickGame} />
+        <GameRow id="favorites" title="Favorites" color="var(--gold)" games={favGames} favorites={favorites} onPick={pickGame} onTry={tryGame} />
       )}
       {classes.length > 0 && recentGames.length > 0 && (
-        <GameRow id="recent" title="Recently played" color="var(--muted)" games={recentGames} favorites={favorites} onPick={pickGame} />
+        <GameRow id="recent" title="Recently played" color="var(--muted)" games={recentGames} favorites={favorites} onPick={pickGame} onTry={tryGame} />
       )}
       {classes.length > 0 &&
         librarySections().map((sec) => (
-          <GameRow key={sec.id} id={sec.id} title={sec.title} color={sec.color} games={sec.games} favorites={favorites} onPick={pickGame} />
+          <GameRow key={sec.id} id={sec.id} title={sec.title} color={sec.color} games={sec.games} favorites={favorites} onPick={pickGame} onTry={tryGame} />
         ))}
     </main>
   )
 }
 
-function GameRow(props: { id: SectionId | 'favorites' | 'recent'; title: string; color: string; games: GameInfo[]; favorites: string[]; onPick: (g: GameInfo) => void }) {
-  const { id, title, color, games, favorites, onPick } = props
+function GameRow(props: { id: SectionId | 'favorites' | 'recent'; title: string; color: string; games: GameInfo[]; favorites: string[]; onPick: (g: GameInfo) => void; onTry: (g: GameInfo) => void }) {
+  const { id, title, color, games, favorites, onPick, onTry } = props
   return (
     <section aria-label={title} className={`library-section sec-${id}`}>
       <h2 className="section-head" style={{ '--sec': color } as React.CSSProperties}>
@@ -148,14 +153,14 @@ function GameRow(props: { id: SectionId | 'favorites' | 'recent'; title: string;
       </h2>
       <div className="library">
         {games.map((g) => (
-          <GameCard key={g.slug} game={g} fav={favorites.includes(g.slug)} onPick={onPick} />
+          <GameCard key={g.slug} game={g} fav={favorites.includes(g.slug)} onPick={onPick} onTry={onTry} />
         ))}
       </div>
     </section>
   )
 }
 
-function GameCard({ game: g, fav, onPick }: { game: GameInfo; fav: boolean; onPick: (g: GameInfo) => void }) {
+function GameCard({ game: g, fav, onPick, onTry }: { game: GameInfo; fav: boolean; onPick: (g: GameInfo) => void; onTry: (g: GameInfo) => void }) {
   return (
     <div className="game-card-wrap" style={{ '--sec': SECTIONS.find((x) => x.id === g.section)?.color } as React.CSSProperties}>
       <button className={`game-card${g.status === 'ready' ? '' : ' soon'}`} onClick={() => onPick(g)} disabled={g.status !== 'ready'}>
@@ -184,6 +189,11 @@ function GameCard({ game: g, fav, onPick }: { game: GameInfo; fav: boolean; onPi
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" fill={fav ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
           </svg>
+        </button>
+      )}
+      {g.status === 'ready' && g.modes.length > 0 && (
+        <button className="try-btn" aria-label={`How to play ${g.title} (try it first)`} onClick={() => onTry(g)}>
+          ?
         </button>
       )}
     </div>

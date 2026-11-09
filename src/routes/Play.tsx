@@ -8,6 +8,7 @@ import { useWakeLock } from '../lib/useWakeLock'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import { FrameStuck } from '../components/FrameStuck'
+import { TeamsReveal } from '../components/TeamsReveal'
 import { useFrameReady } from '../lib/useFrameReady'
 import './Play.css'
 
@@ -32,9 +33,26 @@ export function Play() {
   if (!loaded) return <main className="play" />
   if (!session) return <Navigate to="/" replace />
   if (session.status === 'review') return <Navigate to={`/results/${id}`} replace />
+  // "Change teams" on the teams screen: back to team setup with the same teams
+  if (session.status === 'setup') return <Navigate to={`/setup/${session.game}`} replace />
   if (session.status !== 'playing') return <Navigate to="/" replace />
   if (RETIRED_GAMES[session.game]) return <RetiredGame session={session} />
+  if (session.teamsShown === false) return <TeamsScreen session={session} />
   return <PlayFrame session={session} />
+}
+
+/** Group games: the teams, big, before the game's own slides (students find their team and move). */
+function TeamsScreen({ session }: { session: Session }) {
+  const patch = useSessions((st) => st.patch)
+  return (
+    <TeamsReveal
+      session={session}
+      title={findGame(session.game)?.title ?? session.game}
+      onStart={() => patch(session.id, { teamsShown: true })}
+      // back to team setup with the same teams (the setup screen reuses this session; Play then redirects there)
+      onChange={() => patch(session.id, { status: 'setup', teams: [], teamsShown: undefined })}
+    />
+  )
 }
 
 /** A game that was taken out of the library: skip straight to the review screen with the points it had. */

@@ -17,6 +17,8 @@ import {
   resizeBins,
   shuffleTeams,
   TEACHER_TEAM_ID,
+  TEAM_SIZE_MAX,
+  TEAM_SIZE_MIN,
   unassigned,
   type Bin,
 } from '../lib/teams'
@@ -174,7 +176,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   }
 
   function setSize(size: number) {
-    const n = Math.min(6, Math.max(2, size))
+    const n = Math.min(TEAM_SIZE_MAX, Math.max(TEAM_SIZE_MIN, size))
     update({ size: n, bins: resizeBins(s.bins, binCountFor(presentIds.length, n)) })
   }
 
@@ -210,6 +212,8 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
       state: undefined,
       log: [],
       scores: null,
+      // group games: show the teams big on screen first, so students can find their team and move
+      teamsShown: group ? false : undefined,
     })
     onStart(s.id)
   }
@@ -281,13 +285,13 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
         )}
         {group && (
           <div className="stepper" aria-label="Team size">
-            <button onClick={() => setSize(s.size - 1)} disabled={s.size <= 2} aria-label="Smaller teams">
+            <button onClick={() => setSize(s.size - 1)} disabled={s.size <= TEAM_SIZE_MIN} aria-label="Smaller teams">
               −
             </button>
             <span>
               <b>{s.size}</b> per team
             </span>
-            <button onClick={() => setSize(s.size + 1)} disabled={s.size >= 6} aria-label="Bigger teams">
+            <button onClick={() => setSize(s.size + 1)} disabled={s.size >= TEAM_SIZE_MAX} aria-label="Bigger teams">
               +
             </button>
           </div>
