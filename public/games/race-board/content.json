@@ -1,5 +1,5 @@
 {
- "about": "Race Board (Henry, Nov 9): a 60-square race. questions = its own bank per level in 4 tiers: easy (1 die, mostly 1-3), regular (1 die), hard (2 dice, mostly 7+), impossible (2 dice, mostly 9+); cat = english / math / science / general (the \"math or science\" chance card). A wrong answer rolls the back die. With a unit picked on the setup screen, the unit's questions are used instead (tiers guessed: A-D = regular, short answer or double = hard). Exact roll to finish (extra steps bounce back). The How to play slides live here too.",
+ "about": "Race Board (Henry, Nov 9): a 60-square race. questions = its own bank per level, 165 each (Henry, Nov 10: the old M.1 set was removed, old M.2 became M.1, old M.3 became M.2, and M.3 is a new harder set). A wrong answer rolls the back die. With a unit picked on the setup screen, the unit's questions are used instead (tiers guessed: A-D = regular, short answer or double = hard). Exact roll to finish (extra steps bounce back). The How to play slides live here too.",
  "intro": [
   {
    "title": "Race Board",
@@ -92,626 +92,6 @@
  ],
  "questions": {
   "M.1": [
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "What is the opposite of \"hot\"?",
-    "choices": [
-     "cold",
-     "warm",
-     "wet",
-     "fast"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "Which one is a fruit?",
-    "choices": [
-     "a carrot",
-     "rice",
-     "a banana",
-     "bread"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "easy",
-    "cat": "math",
-    "q": "How many days are in a week?",
-    "choices": [
-     "5",
-     "6",
-     "8",
-     "7"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "easy",
-    "cat": "math",
-    "q": "What is 6 + 7?",
-    "choices": [
-     "12",
-     "13",
-     "14",
-     "15"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "easy",
-    "cat": "math",
-    "q": "What is 5 × 3?",
-    "choices": [
-     "8",
-     "12",
-     "15",
-     "18"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "Which animal can fly?",
-    "choices": [
-     "a bird",
-     "a cat",
-     "a fish",
-     "a cow"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "What color is the sky on a sunny day?",
-    "choices": [
-     "green",
-     "blue",
-     "red",
-     "brown"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "\"I ___ a student.\"",
-    "choices": [
-     "is",
-     "are",
-     "be",
-     "am"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "What do you use to write?",
-    "choices": [
-     "a spoon",
-     "a shoe",
-     "a cup",
-     "a pen"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "What do plants need from the sun?",
-    "choices": [
-     "sand",
-     "light",
-     "milk",
-     "salt"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "Which word is a number?",
-    "choices": [
-     "twelve",
-     "table",
-     "tiger",
-     "tomato"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "easy",
-    "cat": "math",
-    "q": "What is 20 − 8?",
-    "choices": [
-     "11",
-     "13",
-     "12",
-     "28"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "Which month comes after March?",
-    "choices": [
-     "May",
-     "April",
-     "February",
-     "June"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "How many legs does a spider have?",
-    "choices": [
-     "6",
-     "4",
-     "10",
-     "8"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "easy",
-    "cat": "english",
-    "q": "What is the plural of \"box\"?",
-    "choices": [
-     "boxs",
-     "boxies",
-     "boxes",
-     "boxen"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "\"She ___ to school every day.\"",
-    "choices": [
-     "goes",
-     "go",
-     "going",
-     "gone"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "What is the past tense of \"eat\"?",
-    "choices": [
-     "ate",
-     "eated",
-     "eats",
-     "eaten"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "Which word means \"very big\"?",
-    "choices": [
-     "tiny",
-     "quiet",
-     "huge",
-     "slow"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "math",
-    "q": "What is 9 × 8?",
-    "choices": [
-     "64",
-     "81",
-     "63",
-     "72"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "math",
-    "q": "What is half of 150?",
-    "choices": [
-     "50",
-     "75",
-     "70",
-     "100"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "What is the closest star to Earth?",
-    "choices": [
-     "the Moon",
-     "Mars",
-     "the Sun",
-     "the North Star"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which gas do people need to breathe in?",
-    "choices": [
-     "oxygen",
-     "carbon dioxide",
-     "helium",
-     "smoke"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the capital city of Thailand?",
-    "choices": [
-     "Chiang Mai",
-     "Bangkok",
-     "Phuket",
-     "Pattaya"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "\"There ___ three cats in the garden.\"",
-    "choices": [
-     "is",
-     "am",
-     "be",
-     "are"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "Which word is an adjective?",
-    "choices": [
-     "quickly",
-     "run",
-     "under",
-     "beautiful"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "How many planets are in our solar system?",
-    "choices": [
-     "7",
-     "8",
-     "9",
-     "10"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "regular",
-    "cat": "math",
-    "q": "What is 100 ÷ 4?",
-    "choices": [
-     "25",
-     "20",
-     "40",
-     "50"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "What is the opposite of \"early\"?",
-    "choices": [
-     "soon",
-     "fast",
-     "late",
-     "first"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "\"I have lived here ___ 2020.\"",
-    "choices": [
-     "for",
-     "since",
-     "from",
-     "at"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Water freezes at ___ °C.",
-    "choices": [
-     "10",
-     "100",
-     "−10",
-     "0"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "math",
-    "q": "A pizza has 8 slices. You eat 3. How many slices are left?",
-    "answer": "5"
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "Spell the number 40.",
-    "answer": "forty"
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which part of the body pumps blood?",
-    "choices": [
-     "the lungs",
-     "the brain",
-     "the heart",
-     "the stomach"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "math",
-    "q": "How many minutes are in one hour?",
-    "choices": [
-     "60",
-     "100",
-     "30",
-     "24"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
-    "cat": "english",
-    "q": "Which one is a question word?",
-    "choices": [
-     "where",
-     "there",
-     "here",
-     "were"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "hard",
-    "cat": "english",
-    "q": "What is the past tense of \"bring\"?",
-    "choices": [
-     "bringed",
-     "brang",
-     "brought",
-     "brung"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "hard",
-    "cat": "english",
-    "q": "\"If it rains tomorrow, we ___ stay home.\"",
-    "choices": [
-     "would",
-     "are",
-     "did",
-     "will"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "hard",
-    "cat": "math",
-    "q": "What is 15 × 12?",
-    "choices": [
-     "150",
-     "180",
-     "170",
-     "165"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "hard",
-    "cat": "math",
-    "q": "What is 25% of 80?",
-    "choices": [
-     "25",
-     "40",
-     "20",
-     "15"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "What is the biggest planet in our solar system?",
-    "choices": [
-     "Jupiter",
-     "Saturn",
-     "Earth",
-     "Neptune"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "What do we call an animal that eats only plants?",
-    "choices": [
-     "a carnivore",
-     "a herbivore",
-     "an omnivore",
-     "a predator"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "hard",
-    "cat": "english",
-    "q": "Which word is spelled correctly?",
-    "choices": [
-     "neccessary",
-     "necesary",
-     "nessecary",
-     "necessary"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "Which ocean is the biggest?",
-    "choices": [
-     "the Atlantic",
-     "the Indian",
-     "the Arctic",
-     "the Pacific"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "hard",
-    "cat": "english",
-    "q": "What is the opposite of \"expensive\"?",
-    "answer": "cheap"
-   },
-   {
-    "tier": "hard",
-    "cat": "math",
-    "q": "What is the next number? 3, 6, 12, 24, …",
-    "answer": "48"
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "How many bones does an adult human have?",
-    "choices": [
-     "106",
-     "206",
-     "306",
-     "186"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "hard",
-    "cat": "english",
-    "q": "\"My brother is ___ than me.\"",
-    "choices": [
-     "taller",
-     "tallest",
-     "more tall",
-     "tall"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "impossible",
-    "cat": "science",
-    "q": "What is the chemical symbol for gold?",
-    "choices": [
-     "Go",
-     "Gd",
-     "Au",
-     "Ag"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "What is 17 × 17?",
-    "answer": "289"
-   },
-   {
-    "tier": "impossible",
-    "cat": "science",
-    "q": "What is the hardest natural material?",
-    "choices": [
-     "gold",
-     "diamond",
-     "iron",
-     "glass"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "impossible",
-    "cat": "english",
-    "q": "What is the past tense of \"fly\"?",
-    "choices": [
-     "flied",
-     "flown",
-     "flyed",
-     "flew"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "impossible",
-    "cat": "general",
-    "q": "How many countries share a land border with Thailand?",
-    "choices": [
-     "3",
-     "5",
-     "4",
-     "6"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "impossible",
-    "cat": "science",
-    "q": "Which planet is closest to the Sun?",
-    "choices": [
-     "Mercury",
-     "Venus",
-     "Mars",
-     "Earth"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "impossible",
-    "cat": "english",
-    "q": "Spell the day that comes after Tuesday.",
-    "answer": "Wednesday"
-   },
-   {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "How many seconds are in 10 minutes?",
-    "answer": "600"
-   }
-  ],
-  "M.2": [
    {
     "tier": "easy",
     "cat": "english",
@@ -1347,9 +727,1293 @@
     "cat": "math",
     "q": "How many prime numbers are there between 1 and 20?",
     "answer": "8"
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the past tense of \"see\"?",
+    "choices": [
+     "saw",
+     "seed",
+     "seen",
+     "sawed"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the past tense of \"make\"?",
+    "choices": [
+     "maked",
+     "make",
+     "made",
+     "mades"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word is a noun?",
+    "choices": [
+     "teach",
+     "quickly",
+     "tall",
+     "teacher"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the opposite of \"strong\"?",
+    "choices": [
+     "fast",
+     "weak",
+     "tall",
+     "happy"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"We ___ to the beach last weekend.\"",
+    "choices": [
+     "go",
+     "goes",
+     "went",
+     "going"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word is spelled correctly?",
+    "choices": [
+     "friend",
+     "freind",
+     "frend",
+     "freand"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the plural of \"foot\"?",
+    "choices": [
+     "foots",
+     "feet",
+     "feets",
+     "footes"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"___ you like pizza?\"",
+    "choices": [
+     "Does",
+     "Are",
+     "Is",
+     "Do"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word means \"not old\" for a person?",
+    "choices": [
+     "tired",
+     "early",
+     "slow",
+     "young"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the opposite of \"always\"?",
+    "choices": [
+     "often",
+     "never",
+     "sometimes",
+     "usually"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"Look! It ___ raining.\"",
+    "choices": [
+     "is",
+     "are",
+     "am",
+     "be"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which one is a day of the week?",
+    "choices": [
+     "March",
+     "Summer",
+     "Friday",
+     "Morning"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 9 × 6?",
+    "choices": [
+     "56",
+     "54",
+     "48",
+     "63"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 72 ÷ 8?",
+    "choices": [
+     "8",
+     "7",
+     "6",
+     "9"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 150 + 275?",
+    "choices": [
+     "415",
+     "325",
+     "425",
+     "435"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many centimeters are in one meter?",
+    "choices": [
+     "100",
+     "10",
+     "1,000",
+     "60"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is half of 90?",
+    "choices": [
+     "45",
+     "40",
+     "50",
+     "35"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 1,000 − 250?",
+    "choices": [
+     "850",
+     "650",
+     "750",
+     "800"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many hours are in a day?",
+    "choices": [
+     "12",
+     "20",
+     "30",
+     "24"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 10 × 10?",
+    "choices": [
+     "20",
+     "100",
+     "1,000",
+     "110"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which planet do we live on?",
+    "choices": [
+     "Mars",
+     "Venus",
+     "Earth",
+     "Jupiter"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What do fish use to breathe?",
+    "choices": [
+     "gills",
+     "lungs",
+     "fins",
+     "scales"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is frozen water called?",
+    "choices": [
+     "steam",
+     "ice",
+     "rain",
+     "fog"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which sense do you use with your nose?",
+    "choices": [
+     "taste",
+     "touch",
+     "hearing",
+     "smell"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What do caterpillars turn into?",
+    "choices": [
+     "bees",
+     "spiders",
+     "birds",
+     "butterflies"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which animal lays eggs?",
+    "choices": [
+     "a cow",
+     "a chicken",
+     "a dog",
+     "a cat"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What gives us light during the day?",
+    "choices": [
+     "the Sun",
+     "the Moon",
+     "the stars",
+     "the clouds"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the capital city of Japan?",
+    "choices": [
+     "Osaka",
+     "Kyoto",
+     "Tokyo",
+     "Seoul"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What do we call a baby dog?",
+    "choices": [
+     "a kitten",
+     "a puppy",
+     "a calf",
+     "a chick"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What color are most leaves?",
+    "choices": [
+     "blue",
+     "purple",
+     "black",
+     "green"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the past tense of \"think\"?",
+    "choices": [
+     "thinked",
+     "thank",
+     "thought",
+     "thunk"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the past tense of \"catch\"?",
+    "choices": [
+     "caught",
+     "catched",
+     "cought",
+     "catches"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"I'm good ___ drawing.\"",
+    "choices": [
+     "at",
+     "in",
+     "on",
+     "for"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"She has lived in Bangkok ___ ten years.\"",
+    "choices": [
+     "since",
+     "from",
+     "for",
+     "during"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word is an adverb?",
+    "choices": [
+     "slow",
+     "slowness",
+     "slower",
+     "slowly"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the superlative of \"big\"?",
+    "choices": [
+     "bigest",
+     "biggest",
+     "most big",
+     "bigger"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"If you heat ice, it ___.\"",
+    "choices": [
+     "melt",
+     "melted",
+     "melts",
+     "melting"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means \"very tired\"?",
+    "choices": [
+     "exhausted",
+     "excited",
+     "angry",
+     "hungry"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"There isn't ___ milk in the fridge.\"",
+    "choices": [
+     "some",
+     "any",
+     "many",
+     "a"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the opposite of \"borrow\"?",
+    "choices": [
+     "buy",
+     "take",
+     "keep",
+     "lend"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"How ___ money do you have?\"",
+    "choices": [
+     "many",
+     "lot",
+     "more",
+     "much"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which one is correct?",
+    "choices": [
+     "He has already ate.",
+     "He has already eaten.",
+     "He have already eaten.",
+     "He already has eat."
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the noun form of \"happy\"?",
+    "choices": [
+     "happiness",
+     "happily",
+     "happier",
+     "happen"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"While I ___ TV, the phone rang.\"",
+    "choices": [
+     "watched",
+     "am watching",
+     "was watching",
+     "watch"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What do we call a person who writes books?",
+    "choices": [
+     "a pilot",
+     "an author",
+     "a chef",
+     "a judge"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the opposite of \"dangerous\"?",
+    "answer": "safe"
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 12 × 12?",
+    "choices": [
+     "124",
+     "132",
+     "154",
+     "144"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 20% of 50?",
+    "choices": [
+     "20",
+     "5",
+     "10",
+     "25"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the perimeter of a square with sides of 5 cm?",
+    "choices": [
+     "20 cm",
+     "25 cm",
+     "10 cm",
+     "15 cm"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "How many minutes are in two and a half hours?",
+    "choices": [
+     "150",
+     "120",
+     "130",
+     "250"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 0.5 + 0.25?",
+    "choices": [
+     "0.30",
+     "0.55",
+     "0.75",
+     "1.25"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "A box has 6 rows of 8 eggs. How many eggs are there?",
+    "answer": "48"
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 1/4 of 200?",
+    "choices": [
+     "25",
+     "40",
+     "100",
+     "50"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the next number? 5, 10, 20, 40, …",
+    "answer": "80"
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 81 ÷ 9?",
+    "choices": [
+     "8",
+     "9",
+     "7",
+     "11"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "How many sides does a triangle have?",
+    "choices": [
+     "4",
+     "5",
+     "3",
+     "6"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What do we call animals that eat only meat?",
+    "choices": [
+     "carnivores",
+     "herbivores",
+     "omnivores",
+     "insects"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which organ do we use to breathe?",
+    "choices": [
+     "the heart",
+     "the lungs",
+     "the liver",
+     "the stomach"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the Sun?",
+    "choices": [
+     "a planet",
+     "a moon",
+     "a comet",
+     "a star"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What makes a rainbow?",
+    "choices": [
+     "wind and clouds",
+     "the Moon",
+     "snow",
+     "sunlight and raindrops"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which part of a plant takes in water from the soil?",
+    "choices": [
+     "the leaves",
+     "the roots",
+     "the flowers",
+     "the fruit"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which material does a magnet pull?",
+    "choices": [
+     "iron",
+     "wood",
+     "plastic",
+     "glass"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which planet has big, bright rings?",
+    "choices": [
+     "Mars",
+     "Venus",
+     "Saturn",
+     "Mercury"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What do we call the path a planet takes around the Sun?",
+    "choices": [
+     "a tunnel",
+     "an orbit",
+     "a shadow",
+     "a cloud"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "How many legs does an insect have?",
+    "choices": [
+     "8",
+     "4",
+     "10",
+     "6"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is a baby frog called?",
+    "choices": [
+     "a puppy",
+     "a cub",
+     "a tadpole",
+     "a chick"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country is famous for the pyramids of Giza?",
+    "choices": [
+     "Egypt",
+     "Mexico",
+     "India",
+     "Greece"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the capital city of South Korea?",
+    "choices": [
+     "Seoul",
+     "Busan",
+     "Tokyo",
+     "Beijing"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country has the Eiffel Tower?",
+    "choices": [
+     "Italy",
+     "Germany",
+     "France",
+     "Spain"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What money does Thailand use?",
+    "choices": [
+     "the dollar",
+     "the yen",
+     "the ringgit",
+     "the baht"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country is shaped like a boot?",
+    "choices": [
+     "Spain",
+     "Italy",
+     "France",
+     "Greece"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What is the past participle of \"speak\"?",
+    "choices": [
+     "spoke",
+     "speaked",
+     "spoken",
+     "speaken"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"I ___ my homework yet.\"",
+    "choices": [
+     "haven't finished",
+     "didn't finish",
+     "don't finish",
+     "wasn't finished"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"This is the girl ___ won the prize.\"",
+    "choices": [
+     "which",
+     "who",
+     "whose",
+     "where"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"If I ___ you, I would study more.\"",
+    "choices": [
+     "am",
+     "be",
+     "will be",
+     "were"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "Which word means \"to make something smaller\"?",
+    "choices": [
+     "increase",
+     "repeat",
+     "replace",
+     "reduce"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"The letter ___ written yesterday.\"",
+    "choices": [
+     "is",
+     "was",
+     "were",
+     "has"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What is the adjective form of \"danger\"?",
+    "choices": [
+     "dangerous",
+     "dangerly",
+     "dangerful",
+     "endanger"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "Which word means the same as \"begin\"?",
+    "choices": [
+     "finish",
+     "stop",
+     "start",
+     "wait"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 18 × 15?",
+    "choices": [
+     "260",
+     "270",
+     "250",
+     "280"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "Solve: 2x − 4 = 10. What is x?",
+    "choices": [
+     "3",
+     "6",
+     "14",
+     "7"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is the area of a triangle with a base of 10 cm and a height of 6 cm?",
+    "choices": [
+     "60 cm²",
+     "16 cm²",
+     "30 cm²",
+     "36 cm²"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 3² + 4²?",
+    "choices": [
+     "25",
+     "49",
+     "14",
+     "12"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 40% of 150?",
+    "choices": [
+     "60",
+     "40",
+     "50",
+     "75"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "How many degrees are in a right angle?",
+    "answer": "90"
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 7 × 7 × 7?",
+    "answer": "343"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What do we call a scientist who studies rocks?",
+    "choices": [
+     "a biologist",
+     "a chemist",
+     "a geologist",
+     "an astronomer"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "At what temperature does water freeze in degrees Fahrenheit?",
+    "choices": [
+     "0 °F",
+     "100 °F",
+     "212 °F",
+     "32 °F"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which part of a cell holds its DNA?",
+    "choices": [
+     "the cell wall",
+     "the nucleus",
+     "the membrane",
+     "the cytoplasm"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What does a solar panel use to make electricity?",
+    "choices": [
+     "wind",
+     "heat from the ground",
+     "sunlight",
+     "sound"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the hardest part of the human body?",
+    "choices": [
+     "tooth enamel",
+     "bone",
+     "nails",
+     "hair"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which planet is the hottest?",
+    "choices": [
+     "Mercury",
+     "Venus",
+     "Mars",
+     "Jupiter"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is the capital city of China?",
+    "choices": [
+     "Shanghai",
+     "Hong Kong",
+     "Taipei",
+     "Beijing"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which is the largest continent?",
+    "choices": [
+     "Africa",
+     "Europe",
+     "South America",
+     "Asia"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "How many players does a basketball team have on the court?",
+    "choices": [
+     "6",
+     "5",
+     "7",
+     "11"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "What is the chemical symbol for silver?",
+    "choices": [
+     "Ag",
+     "Si",
+     "Sv",
+     "Au"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "How many hearts does an octopus have?",
+    "choices": [
+     "1",
+     "2",
+     "3",
+     "8"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "Which vitamin does your skin make in sunlight?",
+    "choices": [
+     "vitamin C",
+     "vitamin D",
+     "vitamin A",
+     "vitamin B12"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "What force slows things down when they rub together?",
+    "choices": [
+     "gravity",
+     "magnetism",
+     "pressure",
+     "friction"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 23 × 23?",
+    "answer": "529"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 1/3 + 1/6?",
+    "choices": [
+     "2/9",
+     "1/9",
+     "1/2",
+     "2/6"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is the square root of 225?",
+    "answer": "15"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "How many seconds are in one hour?",
+    "answer": "3,600"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 0.2 × 0.3?",
+    "choices": [
+     "0.06",
+     "0.6",
+     "0.006",
+     "6"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What is the past participle of \"swim\"?",
+    "choices": [
+     "swum",
+     "swam",
+     "swimmed",
+     "swummed"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "Which spelling is correct?",
+    "choices": [
+     "embarass",
+     "embarras",
+     "embarrass",
+     "embbarass"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What is the plural of \"cactus\"?",
+    "choices": [
+     "cactuss",
+     "cactoes",
+     "cactis",
+     "cacti"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What do we call the main character of a story?",
+    "choices": [
+     "the narrator",
+     "the protagonist",
+     "the author",
+     "the villain"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "What is the capital city of New Zealand?",
+    "choices": [
+     "Auckland",
+     "Sydney",
+     "Wellington",
+     "Christchurch"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "In which country is the city of Istanbul?",
+    "choices": [
+     "Turkey",
+     "Greece",
+     "Egypt",
+     "Iran"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "How many strings does a violin usually have?",
+    "choices": [
+     "5",
+     "4",
+     "6",
+     "3"
+    ],
+    "answer": 1
    }
   ],
-  "M.3": [
+  "M.2": [
    {
     "tier": "easy",
     "cat": "english",
@@ -1979,6 +2643,3200 @@
      "Montreal"
     ],
     "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the past tense of \"teach\"?",
+    "choices": [
+     "teached",
+     "tought",
+     "teaches",
+     "taught"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the past tense of \"build\"?",
+    "choices": [
+     "builded",
+     "build",
+     "bilt",
+     "built"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word is a preposition?",
+    "choices": [
+     "beautiful",
+     "between",
+     "quickly",
+     "believe"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the opposite of \"increase\"?",
+    "choices": [
+     "decrease",
+     "include",
+     "improve",
+     "invent"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"She can't come because she ___ sick.\"",
+    "choices": [
+     "are",
+     "be",
+     "is",
+     "being"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the plural of \"woman\"?",
+    "choices": [
+     "womans",
+     "women",
+     "womens",
+     "womanes"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word means \"to make something better\"?",
+    "choices": [
+     "ignore",
+     "imagine",
+     "invite",
+     "improve"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"I usually ___ to school by bus.\"",
+    "choices": [
+     "goes",
+     "going",
+     "go",
+     "went"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the opposite of \"push\"?",
+    "answer": "pull"
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word is a conjunction?",
+    "choices": [
+     "because",
+     "beside",
+     "below",
+     "behind"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Who designs buildings?",
+    "choices": [
+     "an architect",
+     "a mechanic",
+     "a dentist",
+     "a pilot"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 25 × 4?",
+    "choices": [
+     "90",
+     "125",
+     "100",
+     "75"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 144 ÷ 12?",
+    "choices": [
+     "11",
+     "14",
+     "10",
+     "12"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 3.5 + 2.5?",
+    "choices": [
+     "5.5",
+     "6",
+     "6.5",
+     "5"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many grams are in a kilogram?",
+    "choices": [
+     "100",
+     "10",
+     "1,000",
+     "10,000"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 10% of 300?",
+    "choices": [
+     "30",
+     "3",
+     "13",
+     "60"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 9²?",
+    "choices": [
+     "18",
+     "81",
+     "99",
+     "72"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many sides does a pentagon have?",
+    "choices": [
+     "6",
+     "4",
+     "8",
+     "5"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many days are in a leap year?",
+    "choices": [
+     "365",
+     "364",
+     "360",
+     "366"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is at the center of our solar system?",
+    "choices": [
+     "the Earth",
+     "the Sun",
+     "the Moon",
+     "Jupiter"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What do plants give off that we need to breathe?",
+    "choices": [
+     "oxygen",
+     "carbon dioxide",
+     "nitrogen",
+     "smoke"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which organ controls the body?",
+    "choices": [
+     "the heart",
+     "the lungs",
+     "the brain",
+     "the skin"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is water vapor?",
+    "choices": [
+     "frozen water",
+     "water as a gas",
+     "salty water",
+     "dirty water"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which animal is a reptile?",
+    "choices": [
+     "a dolphin",
+     "a frog",
+     "a penguin",
+     "a crocodile"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What do we call melted rock that comes out of a volcano?",
+    "choices": [
+     "sand",
+     "clay",
+     "lava",
+     "ash"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which tool do we use to see very small things?",
+    "choices": [
+     "a microscope",
+     "a telescope",
+     "a thermometer",
+     "a compass"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "How many years are in a century?",
+    "choices": [
+     "100",
+     "10",
+     "1,000",
+     "50"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which country is Mount Fuji in?",
+    "choices": [
+     "China",
+     "Korea",
+     "Japan",
+     "Nepal"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the capital city of the United Kingdom?",
+    "choices": [
+     "Paris",
+     "Dublin",
+     "Edinburgh",
+     "London"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which instrument has 88 keys?",
+    "choices": [
+     "the guitar",
+     "the piano",
+     "the violin",
+     "the drum"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"I ___ here since 2019.\"",
+    "choices": [
+     "lived",
+     "am living",
+     "have lived",
+     "live"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"He asked me where I ___.\"",
+    "choices": [
+     "lived",
+     "live",
+     "do live",
+     "am living"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the adjective form of \"success\"?",
+    "choices": [
+     "successly",
+     "successful",
+     "succeed",
+     "successive"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"The film was ___ interesting that I watched it twice.\"",
+    "choices": [
+     "such",
+     "too",
+     "very",
+     "so"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means \"able to be seen\"?",
+    "choices": [
+     "valuable",
+     "vocal",
+     "variable",
+     "visible"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"Unless you hurry, you ___ the bus.\"",
+    "choices": [
+     "miss",
+     "will miss",
+     "would miss",
+     "missed"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the opposite of \"permanent\"?",
+    "choices": [
+     "temporary",
+     "perfect",
+     "personal",
+     "possible"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"She is used to ___ up early.\"",
+    "choices": [
+     "get",
+     "got",
+     "getting",
+     "gets"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means the same as \"difficult\"?",
+    "choices": [
+     "heavy",
+     "hard",
+     "harmful",
+     "high"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"Neither of the answers ___ correct.\"",
+    "choices": [
+     "are",
+     "were",
+     "be",
+     "is"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the noun form of \"explain\"?",
+    "choices": [
+     "explaining",
+     "explained",
+     "explanation",
+     "explainer"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"I'd rather ___ at home tonight.\"",
+    "choices": [
+     "stay",
+     "to stay",
+     "staying",
+     "stayed"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What do we call a person who comes to live in a new country?",
+    "choices": [
+     "an immigrant",
+     "a tourist",
+     "a pilot",
+     "a guide"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the opposite of \"guilty\"?",
+    "answer": "innocent"
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What do we call a word that describes a noun?",
+    "choices": [
+     "a verb",
+     "an adverb",
+     "an adjective",
+     "a pronoun"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"The meeting was put ___ until next week.\"",
+    "choices": [
+     "on",
+     "up",
+     "in",
+     "off"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 15% of 80?",
+    "choices": [
+     "15",
+     "12",
+     "8",
+     "10"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "Solve: 4x + 3 = 27. What is x?",
+    "choices": [
+     "5",
+     "7",
+     "6",
+     "8"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the area of a rectangle 9 m long and 7 m wide?",
+    "choices": [
+     "63 m²",
+     "32 m²",
+     "16 m²",
+     "56 m²"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the median of 3, 7, 9, 12, 20?",
+    "choices": [
+     "7",
+     "9",
+     "10.2",
+     "12"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 2/3 of 90?",
+    "choices": [
+     "30",
+     "45",
+     "65",
+     "60"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "A phone costs 8,000 baht. It is 15% off. What is the new price?",
+    "choices": [
+     "7,200 baht",
+     "6,500 baht",
+     "7,850 baht",
+     "6,800 baht"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is −5 + 12?",
+    "choices": [
+     "−7",
+     "7",
+     "17",
+     "−17"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "How many degrees are in a full circle?",
+    "choices": [
+     "360",
+     "180",
+     "90",
+     "100"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 4 × (6 + 3)?",
+    "choices": [
+     "27",
+     "42",
+     "36",
+     "33"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the square root of 64?",
+    "answer": "8"
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "How many sides does an octagon have?",
+    "answer": "8"
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the chemical symbol for carbon?",
+    "choices": [
+     "Ca",
+     "C",
+     "Co",
+     "Cr"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which blood vessels carry blood away from the heart?",
+    "choices": [
+     "veins",
+     "nerves",
+     "muscles",
+     "arteries"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What do we call the change from liquid to gas?",
+    "choices": [
+     "condensation",
+     "freezing",
+     "evaporation",
+     "melting"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which planet is farthest from the Sun?",
+    "choices": [
+     "Neptune",
+     "Uranus",
+     "Saturn",
+     "Pluto"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What kind of animal is a whale?",
+    "choices": [
+     "a mammal",
+     "a fish",
+     "a reptile",
+     "an amphibian"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What does a seismograph measure?",
+    "choices": [
+     "wind speed",
+     "rainfall",
+     "earthquakes",
+     "temperature"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the unit of force?",
+    "choices": [
+     "the meter",
+     "the kilogram",
+     "the second",
+     "the newton"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the longest bone in the human body?",
+    "choices": [
+     "the skull",
+     "the femur (thigh bone)",
+     "the spine",
+     "a rib"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which ocean is between Africa and Australia?",
+    "choices": [
+     "the Atlantic Ocean",
+     "the Arctic Ocean",
+     "the Indian Ocean",
+     "the Pacific Ocean"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the capital city of Vietnam?",
+    "choices": [
+     "Hanoi",
+     "Ho Chi Minh City",
+     "Vientiane",
+     "Phnom Penh"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "On which continent is Brazil?",
+    "choices": [
+     "Africa",
+     "South America",
+     "Europe",
+     "North America"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which language has the most native speakers?",
+    "choices": [
+     "English",
+     "Spanish",
+     "Hindi",
+     "Chinese (Mandarin)"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country has the city of Venice?",
+    "choices": [
+     "France",
+     "Spain",
+     "Greece",
+     "Italy"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"If I had known, I ___ you.\"",
+    "choices": [
+     "would tell",
+     "would have told",
+     "will tell",
+     "had told"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"The bridge ___ built in 1990.\"",
+    "choices": [
+     "was",
+     "has",
+     "is",
+     "were"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What is the past participle of \"begin\"?",
+    "choices": [
+     "began",
+     "beginned",
+     "begun",
+     "begin"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"Not only ___ late, but he also forgot his book.\"",
+    "choices": [
+     "he was",
+     "was he",
+     "he is",
+     "did he"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "Which word means \"to say what will happen in the future\"?",
+    "choices": [
+     "protect",
+     "prevent",
+     "produce",
+     "predict"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"She suggested ___ to the beach.\"",
+    "choices": [
+     "to go",
+     "go",
+     "going",
+     "went"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What is the noun form of \"able\"?",
+    "choices": [
+     "ability",
+     "ableness",
+     "ably",
+     "enable"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"By next year, I ___ here for ten years.\"",
+    "choices": [
+     "will have worked",
+     "will work",
+     "have worked",
+     "am working"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is the sum of the angles inside a square?",
+    "choices": [
+     "180°",
+     "90°",
+     "360°",
+     "270°"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "Solve: x ÷ 4 = 9. What is x?",
+    "choices": [
+     "13",
+     "2.25",
+     "5",
+     "36"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 1.5 × 1.5?",
+    "choices": [
+     "3",
+     "2.25",
+     "2.5",
+     "1.25"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is the area of a circle with a radius of 5 cm? (π = 3.14)",
+    "choices": [
+     "31.4 cm²",
+     "15.7 cm²",
+     "78.5 cm²",
+     "25 cm²"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is the next prime number after 19?",
+    "answer": "23"
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "A train leaves at 9:45 and arrives at 12:20. How long is the trip?",
+    "choices": [
+     "2 hours 35 minutes",
+     "2 hours 25 minutes",
+     "3 hours 35 minutes",
+     "2 hours 75 minutes"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 5 × 4 × 3 × 2 × 1?",
+    "answer": "120"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the chemical formula for table salt?",
+    "choices": [
+     "H₂O",
+     "NaCl",
+     "CO₂",
+     "O₂"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What type of rock forms when lava cools?",
+    "choices": [
+     "sedimentary",
+     "metamorphic",
+     "limestone",
+     "igneous"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which part of a plant cell uses light to make food?",
+    "choices": [
+     "the nucleus",
+     "the vacuole",
+     "the cell wall",
+     "the chloroplast"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "About how fast does sound travel in air?",
+    "choices": [
+     "34 meters per second",
+     "340 meters per second",
+     "3,400 meters per second",
+     "300,000 km per second"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which organ makes insulin?",
+    "choices": [
+     "the pancreas",
+     "the liver",
+     "the kidney",
+     "the heart"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Who painted the Mona Lisa?",
+    "choices": [
+     "Pablo Picasso",
+     "Vincent van Gogh",
+     "Leonardo da Vinci",
+     "Michelangelo"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is the capital city of the Philippines?",
+    "choices": [
+     "Cebu",
+     "Manila",
+     "Jakarta",
+     "Davao"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which African country has the most people?",
+    "choices": [
+     "Egypt",
+     "South Africa",
+     "Kenya",
+     "Nigeria"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "In which city is the Colosseum?",
+    "choices": [
+     "Athens",
+     "Paris",
+     "Rome",
+     "Madrid"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "What is the chemical symbol for potassium?",
+    "choices": [
+     "K",
+     "P",
+     "Po",
+     "Pt"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "What is the smallest unit of life?",
+    "choices": [
+     "the cell",
+     "the atom",
+     "the organ",
+     "the tissue"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "About how long does sunlight take to reach Earth?",
+    "choices": [
+     "8 seconds",
+     "8 hours",
+     "8 minutes",
+     "8 days"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "What is the most common element in the universe?",
+    "choices": [
+     "oxygen",
+     "helium",
+     "carbon",
+     "hydrogen"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 31 × 29?",
+    "answer": "899"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 2⁸?",
+    "answer": "256"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 0.125 as a fraction?",
+    "choices": [
+     "1/4",
+     "1/8",
+     "1/12",
+     "1/5"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is the cube root of 125?",
+    "answer": "5"
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What is the past participle of \"tear\"?",
+    "choices": [
+     "tore",
+     "teared",
+     "torn",
+     "tearen"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "Which spelling is correct?",
+    "choices": [
+     "rhythm",
+     "rythm",
+     "rhythym",
+     "rhytm"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What is the plural of \"phenomenon\"?",
+    "choices": [
+     "phenomenons",
+     "phenomena",
+     "phenomenas",
+     "phenomenen"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What do we call a word made from the first letters of other words, like NASA?",
+    "choices": [
+     "a synonym",
+     "a homophone",
+     "a prefix",
+     "an acronym"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "Who discovered penicillin?",
+    "choices": [
+     "Isaac Newton",
+     "Marie Curie",
+     "Louis Pasteur",
+     "Alexander Fleming"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "What is the longest river in Asia?",
+    "choices": [
+     "the Mekong",
+     "the Yangtze",
+     "the Ganges",
+     "the Yellow River"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "In which year did people first land on the Moon?",
+    "choices": [
+     "1969",
+     "1959",
+     "1979",
+     "1972"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "What is the capital city of Brazil?",
+    "choices": [
+     "Rio de Janeiro",
+     "São Paulo",
+     "Brasília",
+     "Buenos Aires"
+    ],
+    "answer": 2
+   }
+  ],
+  "M.3": [
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the past tense of \"lead\"?",
+    "choices": [
+     "leaded",
+     "led",
+     "lead",
+     "lid"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the opposite of \"optimistic\"?",
+    "choices": [
+     "realistic",
+     "enthusiastic",
+     "energetic",
+     "pessimistic"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the noun form of \"fail\"?",
+    "choices": [
+     "failing",
+     "failed",
+     "failure",
+     "failness"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"She ___ to the gym three times a week.\"",
+    "choices": [
+     "goes",
+     "go",
+     "going",
+     "gone"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word means \"very old\"?",
+    "choices": [
+     "ancient",
+     "anxious",
+     "accurate",
+     "awkward"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the opposite of \"maximum\"?",
+    "choices": [
+     "medium",
+     "minor",
+     "minimum",
+     "minus"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word means \"to say no to something\"?",
+    "choices": [
+     "reveal",
+     "repair",
+     "remind",
+     "refuse"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"I look forward to ___ from you.\"",
+    "choices": [
+     "hear",
+     "hearing",
+     "heard",
+     "be hearing"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the plural of \"crisis\"?",
+    "choices": [
+     "crisises",
+     "crisis",
+     "crises",
+     "crisi"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word means the same as \"brave\"?",
+    "choices": [
+     "courageous",
+     "curious",
+     "careful",
+     "cruel"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"He's the person ___ car was stolen.\"",
+    "choices": [
+     "who",
+     "whose",
+     "who's",
+     "which"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the adjective form of \"environment\"?",
+    "choices": [
+     "environmentful",
+     "environmently",
+     "environed",
+     "environmental"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word means \"to stop something from happening\"?",
+    "choices": [
+     "predict",
+     "pretend",
+     "provide",
+     "prevent"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "What is the opposite of \"include\"?",
+    "answer": "exclude"
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "\"Hardly anyone ___ the answer.\"",
+    "choices": [
+     "know",
+     "knew",
+     "knowing",
+     "known"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "english",
+    "q": "Which word means \"the study of living things\"?",
+    "choices": [
+     "biology",
+     "geology",
+     "psychology",
+     "astronomy"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 15²?",
+    "choices": [
+     "150",
+     "255",
+     "225",
+     "215"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 3/4 as a decimal?",
+    "choices": [
+     "0.34",
+     "0.75",
+     "0.43",
+     "0.25"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is −8 × −3?",
+    "choices": [
+     "−24",
+     "−11",
+     "11",
+     "24"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 12% of 50?",
+    "choices": [
+     "12",
+     "5",
+     "6",
+     "60"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is the mean of 10, 20 and 30?",
+    "choices": [
+     "20",
+     "30",
+     "60",
+     "10"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "Solve: x + 17 = 40. What is x?",
+    "choices": [
+     "23",
+     "57",
+     "27",
+     "33"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many millimeters are in a meter?",
+    "choices": [
+     "100",
+     "10",
+     "1,000",
+     "10,000"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is 2⁴?",
+    "choices": [
+     "8",
+     "6",
+     "32",
+     "16"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "Simplify the fraction 12/16.",
+    "choices": [
+     "2/3",
+     "3/4",
+     "4/5",
+     "1/2"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "What is the value of π to two decimal places?",
+    "choices": [
+     "3.41",
+     "3.12",
+     "3.14",
+     "3.16"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is the chemical formula for water?",
+    "choices": [
+     "H₂O",
+     "CO₂",
+     "O₂",
+     "H₂O₂"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What are the three common states of matter?",
+    "choices": [
+     "rock, metal and wood",
+     "solid, liquid and gas",
+     "light, sound and heat",
+     "sun, moon and stars"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which planet is famous for its Great Red Spot?",
+    "choices": [
+     "Mars",
+     "Saturn",
+     "Venus",
+     "Jupiter"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What do we call an animal with a backbone?",
+    "choices": [
+     "an invertebrate",
+     "an insect",
+     "a mollusk",
+     "a vertebrate"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is the main job of red blood cells?",
+    "choices": [
+     "fighting germs",
+     "carrying oxygen",
+     "digesting food",
+     "making bones"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which force keeps the Moon in orbit around the Earth?",
+    "choices": [
+     "gravity",
+     "friction",
+     "magnetism",
+     "wind"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is the opposite of a positive electric charge?",
+    "answer": "a negative charge"
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which part of the body does asthma affect?",
+    "choices": [
+     "the liver",
+     "the eyes",
+     "the lungs",
+     "the knees"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which energy source is renewable?",
+    "choices": [
+     "coal",
+     "wind",
+     "oil",
+     "natural gas"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is the hottest layer of the Earth?",
+    "choices": [
+     "the crust",
+     "the mantle",
+     "the outer core",
+     "the inner core"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which ocean is the Bermuda Triangle in?",
+    "choices": [
+     "the Pacific",
+     "the Indian",
+     "the Atlantic",
+     "the Arctic"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the capital city of Germany?",
+    "choices": [
+     "Berlin",
+     "Munich",
+     "Frankfurt",
+     "Hamburg"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "How many years are in a millennium?",
+    "choices": [
+     "1,000",
+     "100",
+     "10",
+     "10,000"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Who was the first person to walk on the Moon?",
+    "choices": [
+     "Buzz Aldrin",
+     "Yuri Gagarin",
+     "Neil Armstrong",
+     "Elon Musk"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which South American country has the most people?",
+    "choices": [
+     "Argentina",
+     "Colombia",
+     "Peru",
+     "Brazil"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What does \"www\" stand for in a web address?",
+    "choices": [
+     "World Web Window",
+     "World Wide Web",
+     "Wide World Web",
+     "Web World Wide"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "How often are the Summer Olympic Games held?",
+    "choices": [
+     "every 2 years",
+     "every year",
+     "every 4 years",
+     "every 5 years"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the largest desert in Africa?",
+    "choices": [
+     "the Sahara",
+     "the Gobi",
+     "the Kalahari",
+     "the Atacama"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which of these countries is in both Europe and Asia?",
+    "choices": [
+     "Spain",
+     "Turkey",
+     "Japan",
+     "Brazil"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"If it hadn't rained, we ___ the match.\"",
+    "choices": [
+     "would win",
+     "will win",
+     "had won",
+     "would have won"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"The report ___ by the end of the day.\"",
+    "choices": [
+     "will finish",
+     "is finishing",
+     "finished",
+     "will be finished"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means \"impossible to avoid\"?",
+    "choices": [
+     "incredible",
+     "inevitable",
+     "invisible",
+     "inflexible"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"She denied ___ the window.\"",
+    "choices": [
+     "breaking",
+     "to break",
+     "break",
+     "broke"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the noun form of \"analyze\"?",
+    "choices": [
+     "analyzement",
+     "analyzity",
+     "analysis",
+     "analyzation"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"I wish I ___ speak French.\"",
+    "choices": [
+     "can",
+     "could",
+     "will",
+     "would be"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means \"to make pain or worry less\"?",
+    "choices": [
+     "receive",
+     "reveal",
+     "refuse",
+     "relieve"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"If only I ___ more time!\"",
+    "choices": [
+     "have",
+     "has",
+     "had",
+     "having"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"The man ___ I met yesterday is a doctor.\"",
+    "choices": [
+     "whom",
+     "whose",
+     "which",
+     "what"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means the same as \"essential\"?",
+    "choices": [
+     "necessary",
+     "optional",
+     "elegant",
+     "expensive"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What does \"procrastinate\" mean?",
+    "choices": [
+     "to work very hard",
+     "to plan carefully",
+     "to delay doing something",
+     "to give up"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"It's high time we ___.\"",
+    "choices": [
+     "leave",
+     "leaving",
+     "will leave",
+     "left"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"She is said ___ very rich.\"",
+    "choices": [
+     "being",
+     "to be",
+     "be",
+     "is"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the opposite of \"voluntary\"?",
+    "choices": [
+     "valuable",
+     "visible",
+     "compulsory",
+     "vulnerable"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means \"a short summary of a story\"?",
+    "choices": [
+     "a synopsis",
+     "a synonym",
+     "a symptom",
+     "a syllable"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"I'd prefer you ___ smoke here.\"",
+    "choices": [
+     "don't",
+     "didn't",
+     "won't",
+     "not"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the adverb form of \"public\"?",
+    "choices": [
+     "publically",
+     "publicily",
+     "publicy",
+     "publicly"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "Which word means \"able to read and write\"?",
+    "choices": [
+     "literal",
+     "literary",
+     "liberal",
+     "literate"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"No sooner had we arrived ___ it started to rain.\"",
+    "choices": [
+     "when",
+     "than",
+     "then",
+     "that"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"He apologized for ___ late.\"",
+    "choices": [
+     "being",
+     "to be",
+     "be",
+     "was"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "What is the opposite of \"expand\"?",
+    "choices": [
+     "explode",
+     "extend",
+     "shrink",
+     "explore"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "english",
+    "q": "\"Despite ___ tired, she finished the race.\"",
+    "choices": [
+     "she was",
+     "being",
+     "to be",
+     "been"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "Solve: 3(x − 2) = 15. What is x?",
+    "choices": [
+     "5",
+     "9",
+     "3",
+     "7"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the slope of the line y = 4x + 1?",
+    "choices": [
+     "1",
+     "5",
+     "4",
+     "1/4"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 35% of 240?",
+    "choices": [
+     "84",
+     "72",
+     "96",
+     "35"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the area of a triangle with a base of 14 cm and a height of 9 cm?",
+    "choices": [
+     "63 cm²",
+     "126 cm²",
+     "23 cm²",
+     "46 cm²"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is (−2)³?",
+    "choices": [
+     "8",
+     "−6",
+     "−8",
+     "6"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the mode of 4, 7, 7, 9, 12?",
+    "choices": [
+     "9",
+     "4",
+     "12",
+     "7"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "A price goes up from 200 to 250 baht. What is the percentage increase?",
+    "choices": [
+     "50%",
+     "25%",
+     "20%",
+     "5%"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is √49 + √16?",
+    "choices": [
+     "13",
+     "65",
+     "11",
+     "9"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "Expand: 2(x + 5)",
+    "choices": [
+     "2x + 10",
+     "2x + 5",
+     "x + 10",
+     "2x + 7"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 5/8 as a percentage?",
+    "choices": [
+     "58%",
+     "62.5%",
+     "65%",
+     "85%"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "How many edges does a cube have?",
+    "choices": [
+     "8",
+     "6",
+     "24",
+     "12"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the chance of rolling a 6 with one die?",
+    "choices": [
+     "1/2",
+     "1/3",
+     "1/12",
+     "1/6"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is the lowest common multiple of 4 and 6?",
+    "choices": [
+     "24",
+     "12",
+     "2",
+     "10"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 10⁻¹ as a decimal?",
+    "choices": [
+     "0.1",
+     "−10",
+     "0.01",
+     "10"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 3x when x = −4?",
+    "choices": [
+     "12",
+     "−1",
+     "−12",
+     "7"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What is 7.2 ÷ 0.9?",
+    "choices": [
+     "0.8",
+     "8",
+     "80",
+     "6.3"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the chemical symbol for calcium?",
+    "choices": [
+     "C",
+     "Cl",
+     "Cm",
+     "Ca"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is a catalyst?",
+    "choices": [
+     "a type of acid",
+     "a kind of rock",
+     "a substance that speeds up a reaction",
+     "a unit of energy"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which part of the brain controls balance?",
+    "choices": [
+     "the cerebellum",
+     "the cerebrum",
+     "the skull",
+     "the spinal cord"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the pH of an acid?",
+    "choices": [
+     "less than 7",
+     "exactly 7",
+     "more than 7",
+     "always 14"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which type of energy is stored in food?",
+    "choices": [
+     "nuclear energy",
+     "sound energy",
+     "chemical energy",
+     "light energy"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What do we call it when a solid turns straight into a gas?",
+    "choices": [
+     "evaporation",
+     "condensation",
+     "melting",
+     "sublimation"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What unit is used to measure power?",
+    "choices": [
+     "the volt",
+     "the watt",
+     "the ampere",
+     "the ohm"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "How do you work out speed?",
+    "choices": [
+     "time ÷ distance",
+     "distance × time",
+     "distance ÷ time",
+     "mass × time"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which gas makes up about 21% of the air?",
+    "choices": [
+     "oxygen",
+     "nitrogen",
+     "carbon dioxide",
+     "argon"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What kind of lens corrects short sight?",
+    "choices": [
+     "a convex lens",
+     "a concave lens",
+     "a flat mirror",
+     "a prism"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Where does most digestion and absorption of food happen?",
+    "choices": [
+     "the stomach",
+     "the large intestine",
+     "the liver",
+     "the small intestine"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the name of our galaxy?",
+    "choices": [
+     "Andromeda",
+     "the Solar System",
+     "Orion",
+     "the Milky Way"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which is the smallest planet in our solar system?",
+    "choices": [
+     "Mars",
+     "Mercury",
+     "Venus",
+     "Pluto"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Who developed the theory of relativity?",
+    "choices": [
+     "Albert Einstein",
+     "Isaac Newton",
+     "Galileo Galilei",
+     "Stephen Hawking"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the capital city of Egypt?",
+    "choices": [
+     "Alexandria",
+     "Luxor",
+     "Cairo",
+     "Giza"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which river flows through London?",
+    "choices": [
+     "the Seine",
+     "the Thames",
+     "the Danube",
+     "the Rhine"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the official language of Brazil?",
+    "choices": [
+     "Spanish",
+     "Brazilian",
+     "French",
+     "Portuguese"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country hosted the 2008 Summer Olympics?",
+    "choices": [
+     "Japan",
+     "Greece",
+     "China",
+     "the UK"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Who invented the telephone in 1876?",
+    "choices": [
+     "Alexander Graham Bell",
+     "Thomas Edison",
+     "Nikola Tesla",
+     "Guglielmo Marconi"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which mountain range has Mount Everest?",
+    "choices": [
+     "the Himalayas",
+     "the Andes",
+     "the Alps",
+     "the Rockies"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the capital city of Spain?",
+    "choices": [
+     "Barcelona",
+     "Lisbon",
+     "Madrid",
+     "Seville"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the capital city of Laos?",
+    "choices": [
+     "Luang Prabang",
+     "Hanoi",
+     "Phnom Penh",
+     "Vientiane"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"Had I known about the problem, I ___ earlier.\"",
+    "choices": [
+     "would act",
+     "would have acted",
+     "had acted",
+     "will act"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"Rarely ___ such a beautiful sunset.\"",
+    "choices": [
+     "I have seen",
+     "I saw",
+     "have I seen",
+     "did I saw"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What does \"ambiguous\" mean?",
+    "choices": [
+     "having more than one meaning",
+     "very large",
+     "completely clear",
+     "full of energy"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"The project, ___ was started last year, is almost finished.\"",
+    "choices": [
+     "that",
+     "which",
+     "who",
+     "what"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "Which word means \"lasting for a very short time\"?",
+    "choices": [
+     "eternal",
+     "essential",
+     "ethical",
+     "ephemeral"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"She'd rather you ___ her the truth yesterday.\"",
+    "choices": [
+     "told",
+     "tell",
+     "have told",
+     "had told"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What is the past participle of \"lie\" (to say something untrue)?",
+    "choices": [
+     "lain",
+     "lied",
+     "laid",
+     "lay"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"It's no use ___ about it now.\"",
+    "choices": [
+     "complaining",
+     "to complain",
+     "complain",
+     "complained"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "Which sentence is in reported speech?",
+    "choices": [
+     "She said, \"I am tired.\"",
+     "She is tired.",
+     "She said that she was tired.",
+     "\"Are you tired?\" she asked."
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What does \"mis-\" mean in \"misunderstand\"?",
+    "choices": [
+     "again",
+     "wrongly",
+     "before",
+     "not enough"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "\"Were I in your position, I ___ accept the offer.\"",
+    "choices": [
+     "will",
+     "am",
+     "had",
+     "would"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "english",
+    "q": "What is the noun form of \"persuade\"?",
+    "choices": [
+     "persuadement",
+     "persuasive",
+     "persuasion",
+     "persuadance"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "Solve: x² − 9 = 0, with x > 0. What is x?",
+    "answer": "3"
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is the volume of a cube with sides of 4 cm?",
+    "choices": [
+     "64 cm³",
+     "16 cm³",
+     "48 cm³",
+     "12 cm³"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "Factorize: x² + 5x + 6",
+    "choices": [
+     "(x + 2)(x + 3)",
+     "(x + 1)(x + 6)",
+     "(x + 5)(x + 1)",
+     "(x − 2)(x − 3)"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "A right triangle has sides of 6 and 8. How long is the hypotenuse?",
+    "choices": [
+     "14",
+     "12",
+     "10",
+     "48"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 2/5 ÷ 1/10?",
+    "choices": [
+     "1/25",
+     "2/50",
+     "0.4",
+     "4"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "x + y = 10 and x − y = 4. What is x?",
+    "choices": [
+     "3",
+     "7",
+     "6",
+     "14"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is the sum of the angles inside a pentagon?",
+    "choices": [
+     "360°",
+     "720°",
+     "540°",
+     "450°"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is 6.4 × 10⁻² written as a normal number?",
+    "choices": [
+     "0.064",
+     "0.64",
+     "64",
+     "0.0064"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "A shirt costs 600 baht after a 25% discount. What was the original price?",
+    "choices": [
+     "750 baht",
+     "800 baht",
+     "625 baht",
+     "450 baht"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "What is the greatest common factor of 36 and 48?",
+    "answer": "12"
+   },
+   {
+    "tier": "hard",
+    "cat": "math",
+    "q": "If f(x) = 2x² − 1, what is f(3)?",
+    "answer": "17"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the chemical formula for carbon dioxide?",
+    "choices": [
+     "CO",
+     "C₂O",
+     "O₂C",
+     "CO₂"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the atomic number of carbon?",
+    "choices": [
+     "12",
+     "8",
+     "14",
+     "6"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which part of a cell releases energy from food?",
+    "choices": [
+     "the ribosome",
+     "the mitochondria",
+     "the nucleus",
+     "the vacuole"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What does Newton's second law say?",
+    "choices": [
+     "force = mass × acceleration",
+     "every action has an equal reaction",
+     "objects stay still unless pushed",
+     "energy cannot be destroyed"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which blood cells help blood to clot?",
+    "choices": [
+     "red blood cells",
+     "white blood cells",
+     "platelets",
+     "plasma"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What do we call atoms of the same element with different numbers of neutrons?",
+    "choices": [
+     "ions",
+     "isotopes",
+     "molecules",
+     "compounds"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What kind of wave is light?",
+    "choices": [
+     "sound",
+     "mechanical",
+     "seismic",
+     "electromagnetic"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which element has the symbol \"Pb\"?",
+    "choices": [
+     "lithium",
+     "platinum",
+     "lead",
+     "potassium"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Who wrote the novel \"1984\"?",
+    "choices": [
+     "George Orwell",
+     "Charles Dickens",
+     "Mark Twain",
+     "J.K. Rowling"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which country has the longest coastline in the world?",
+    "choices": [
+     "Canada",
+     "Russia",
+     "Australia",
+     "Indonesia"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is the capital city of Turkey?",
+    "choices": [
+     "Istanbul",
+     "Izmir",
+     "Ankara",
+     "Antalya"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "In which year did the Berlin Wall fall?",
+    "choices": [
+     "1991",
+     "1979",
+     "1961",
+     "1989"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which planet is often called the \"Morning Star\"?",
+    "choices": [
+     "Mars",
+     "Venus",
+     "Jupiter",
+     "Mercury"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What is the plural of \"criterion\"?",
+    "choices": [
+     "criterions",
+     "criterias",
+     "criteria",
+     "criterium"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "Which spelling is correct?",
+    "choices": [
+     "conscientious",
+     "conscientous",
+     "consciencious",
+     "concientious"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What does \"ubiquitous\" mean?",
+    "choices": [
+     "very rare",
+     "found everywhere",
+     "extremely old",
+     "hard to understand"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What is the past participle of \"forsake\"?",
+    "choices": [
+     "forsook",
+     "forsaked",
+     "forsake",
+     "forsaken"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "\"The wind whispered through the trees.\" What is this?",
+    "choices": [
+     "a simile",
+     "alliteration",
+     "hyperbole",
+     "personification"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "english",
+    "q": "What does \"a red herring\" mean?",
+    "choices": [
+     "a lucky event",
+     "something that misleads you",
+     "a dangerous animal",
+     "a secret plan"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 47 × 53?",
+    "answer": "2,491"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is log₁₀ 1,000?",
+    "answer": "3"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is 1 + 2 + 3 + … + 10?",
+    "answer": "55"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "Solve: 2ˣ = 64. What is x?",
+    "answer": "6"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "You flip two coins. What is the chance of two heads?",
+    "choices": [
+     "1/4",
+     "1/2",
+     "1/3",
+     "2/3"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is the area of a circle with a diameter of 10 cm? (π = 3.14)",
+    "choices": [
+     "314 cm²",
+     "31.4 cm²",
+     "78.5 cm²",
+     "157 cm²"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "What is the chemical symbol for tungsten?",
+    "choices": [
+     "Tu",
+     "W",
+     "Tg",
+     "Tn"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "About how cold is absolute zero?",
+    "choices": [
+     "−100 °C",
+     "0 °C",
+     "−459 °C",
+     "−273 °C"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "Which scientist wrote the three laws of motion?",
+    "choices": [
+     "Albert Einstein",
+     "Galileo Galilei",
+     "Isaac Newton",
+     "Johannes Kepler"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "How many bones are in an adult hand and wrist together?",
+    "choices": [
+     "27",
+     "14",
+     "19",
+     "32"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "Which gas is there most of in the Sun?",
+    "choices": [
+     "hydrogen",
+     "helium",
+     "oxygen",
+     "carbon"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "What is the unit of electrical resistance?",
+    "choices": [
+     "the volt",
+     "the ampere",
+     "the ohm",
+     "the watt"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "Who was the first woman to win a Nobel Prize?",
+    "choices": [
+     "Florence Nightingale",
+     "Rosalind Franklin",
+     "Ada Lovelace",
+     "Marie Curie"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "What is the smallest country in Southeast Asia by area?",
+    "choices": [
+     "Brunei",
+     "Singapore",
+     "Timor-Leste",
+     "Laos"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "Which city was the capital of Thailand just before Bangkok?",
+    "choices": [
+     "Ayutthaya",
+     "Sukhothai",
+     "Thonburi",
+     "Chiang Mai"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "In which year did World War I begin?",
+    "choices": [
+     "1914",
+     "1918",
+     "1939",
+     "1905"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "What is the deepest ocean trench in the world?",
+    "choices": [
+     "the Java Trench",
+     "the Mariana Trench",
+     "the Puerto Rico Trench",
+     "the Tonga Trench"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "Who made the first vaccine, for smallpox?",
+    "choices": [
+     "Louis Pasteur",
+     "Alexander Fleming",
+     "Jonas Salk",
+     "Edward Jenner"
+    ],
+    "answer": 3
    }
   ]
  }
