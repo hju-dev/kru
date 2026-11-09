@@ -1,5 +1,8 @@
 .lines { gap: 1px; }
-.lines li { line-height: 1.15; }
+.lines li { line-height: 1.1; }
 .lines li:first-child { padding-right: 44px; } /* room for the 3/50 counter */
 .lines .tag { min-width: 28px; height: 28px; }
 .lines li.ok .tag { background: var(--lime); } /* after Reveal: green letters, in the right order */
+/* challenge round: the missing sentence */
+.lines li.missing { color: var(--muted); font-style: italic; border-style: dashed; }
+.lines li.missing.ok { color: var(--gold); font-style: normal; }

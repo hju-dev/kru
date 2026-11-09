@@ -414,3 +414,13 @@ button:focus-visible {
 .kc.compact .tile .tn { font-size: 15px; line-height: 1.1; }
 .kc.compact .tile .tp { font-size: 20px; }
 .kc.compact .stage { padding: 2px 12px; }
+/* challenge round (engine option challengeRound): a banner on the card, a gold stage, ×2 points */
+.kc-chal { margin: 0 0 4px; color: var(--gold); font: 800 18px/1.2 var(--display); }
+.kc-chal span { color: var(--fg); font: 600 15px var(--body); }
+.kc.chal .stage { border-color: var(--gold); box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold) 40%, transparent) inset; }
+.chal-x { width: 100%; color: var(--gold); font-weight: 800; font-size: 15px; text-align: center; }
+/* each reveal step has its own timer (Read & Remember): its name beside the clock */
+.tlabel { color: var(--muted); font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+.chal-tag { color: var(--gold); font-weight: 800; white-space: nowrap; }
+/* compact bar with −/+ time buttons (Read & Remember): no room for the logo; the READ / ANSWER label says where you are */
+.kc.compact.has-adj .bar .logo { display: none; }

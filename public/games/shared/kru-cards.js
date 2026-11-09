@@ -23,6 +23,10 @@
  *   challenge: { penalty: 1 },                         // optional: a Challenge! button that stops the timer and asks
  *                                                      //   which team loses the points (or no one)
  *   timer: { secs: 30, adjust: 10, min: 10, max: 300 }, // adjust: −10 / +10 buttons beside the clock
+ *   timer: { ..., stepSecs: [60, 45], stepLabels: ['Read', 'Answer'] }, // optional: its own time for each reveal step
+ *   challengeRound: { every: 4, title, text, timer: 0.5, timerStep: 0, double: true, banner: false }, // optional: every
+ *                                                      //   4th card is a challenge round (gold stage, a message, o.challenge
+ *                                                      //   in card(), ×2 points; banner: false = the game marks it itself)
  *   tag: true,                                         // optional: "Tag ▶" restarts the clock for the next speaker
  *   picker: true,                                      // optional: "Pick a team" spinner in the top bar
  *   noScores: true,                                    // optional: no team strip, points or final scores (warm-ups)
@@ -50,20 +54,24 @@
     var hasTimer = !!cfg.timer;
     var adjust = hasTimer && cfg.timer.adjust ? cfg.timer.adjust : 0;
     var MIN = hasTimer && cfg.timer.min || 10, MAX = hasTimer && cfg.timer.max || 600;
+    var stepSecs = hasTimer && Array.isArray(cfg.timer.stepSecs) ? cfg.timer.stepSecs : null;
+    var CH = cfg.challengeRound || null;
 
     // ---------- the screen ----------
     var main = document.querySelector('main.game');
     main.classList.add('kc');
     if (cfg.noScores) main.classList.add('no-scores');
     if (cfg.compact) main.classList.add('compact');
+    if (adjust) main.classList.add('has-adj');
     main.innerHTML =
       '<header class="bar"><span class="logo">' + (cfg.logo || esc(cfg.title)) + '</span><span class="grow"></span>' +
       '<button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button></header>' +
       '<section class="stage" id="stage" aria-live="polite"><div class="card" id="card">Loading…</div></section>' +
       '<div class="controls' + (adjust || cfg.tag ? ' tight' : '') + '">' +
-      (hasTimer ? (adjust ? '<button class="btn adj" id="minus" aria-label="10 seconds less">−10</button>' : '') +
+      (hasTimer ? (stepSecs ? '<span class="tlabel" id="tlabel"></span>' : '') +
+        (adjust ? '<button class="btn adj" id="minus" aria-label="' + adjust + ' seconds less">−' + adjust + '</button>' : '') +
         '<span class="digits" id="digits">0:00</span>' +
-        (adjust ? '<button class="btn adj" id="plus" aria-label="10 seconds more">+10</button>' : '') +
+        (adjust ? '<button class="btn adj" id="plus" aria-label="' + adjust + ' seconds more">+' + adjust + '</button>' : '') +
         '<div class="progress"><i id="fill"></i></div><button class="btn" id="go">Start timer</button>' +
         (cfg.tag ? '<button class="btn teal" id="tag">Tag ▶</button>' : '') : '<span class="grow"></span>') +
       (cfg.challenge ? '<button class="btn coral" id="challenge">Challenge!</button>' : '') +
@@ -99,6 +107,18 @@
     function stepOf(pos) { var r = S.revealed[pos]; return r === true ? STEPS.length : r || 0; }
     function newOrder() { return cfg.order ? cfg.order(ITEMS) : shuffled(ITEMS.length); }
     function canReveal(it) { return typeof cfg.reveal === 'function' ? !!cfg.reveal(it) : !!cfg.reveal; }
+    /** Every CH.every-th card is a challenge round. */
+    function isChal(pos) { if (pos == null) pos = S.pos; return !!CH && (pos + 1) % CH.every === 0; }
+    function mult() { return isChal() && CH.double ? 2 : 1; }
+    /** The timer setting for this step (Read & Remember: reading time, then answering time). */
+    function stepIndex() { return stepSecs ? Math.min(stepOf(S.pos), stepSecs.length - 1) : 0; }
+    function baseSecs() { return stepSecs ? S.secsBy[stepIndex()] : S.secs; }
+    /** What the clock counts from: the setting, shorter in a challenge round. */
+    function curSecs() {
+      var b = baseSecs();
+      if (isChal() && CH.timer && (CH.timerStep == null || CH.timerStep === stepIndex())) b = Math.max(5, Math.round((b * CH.timer) / 5) * 5);
+      return b;
+    }
 
     // ---------- sound (after a tap) ----------
     function unlockAudio() {
@@ -124,7 +144,8 @@
       $('fill').style.transform = 'scaleX(' + (total ? Math.max(0, left) / total : 0) + ')';
       $('digits').className = 'digits' + (left <= 0 ? ' done' : left <= 10 && running ? ' warn' : '');
       $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : cfg.compact || adjust ? 'Start' : 'Start timer';
-      if (adjust) { $('minus').disabled = S.secs <= MIN; $('plus').disabled = S.secs >= MAX; }
+      if (adjust) { $('minus').disabled = baseSecs() <= MIN; $('plus').disabled = baseSecs() >= MAX; }
+      if (stepSecs) $('tlabel').textContent = (cfg.timer.stepLabels || [])[stepIndex()] || '';
     }
     function tick() {
       if (!running) return;
@@ -142,7 +163,7 @@
       running = true; endAt = Date.now() + left * 1000;
       clearInterval(timer); timer = setInterval(tick, 200); renderClock();
     }
-    function resetTimer() { if (!hasTimer) return; stopTimer(); total = left = S.secs; renderClock(); }
+    function resetTimer() { if (!hasTimer) return; stopTimer(); total = left = curSecs(); renderClock(); }
 
     // ---------- card ----------
     function fit() {
@@ -163,7 +184,10 @@
       var it = item();
       if (!it) return;
       var step = stepOf(S.pos), revealed = step >= STEPS.length;
-      $('card').innerHTML = cfg.card(it, { step: step, revealed: revealed, level: S.level, esc: esc });
+      var chal = isChal();
+      main.classList.toggle('chal', chal);
+      $('card').innerHTML = (chal && CH.banner !== false ? '<div class="kc-chal">⚡ ' + esc(CH.title || 'Challenge round') + (CH.text ? ' <span>' + esc(CH.text) + '</span>' : '') + '</div>' : '') +
+        cfg.card(it, { step: step, revealed: revealed, level: S.level, esc: esc, challenge: chal });
       KruCorner.set($('stage'), (S.pos + 1) + '/' + S.order.length);
       var r = canReveal(it);
       $('reveal').hidden = !r;
@@ -181,6 +205,7 @@
       } else S.pos = Math.max(0, pos);
       S.speaker = 1;
       save(); resetTimer(); render();
+      if (isChal()) toast('⚡ ' + (CH.title || 'Challenge round') + (CH.text ? ': ' + CH.text : ''), false);
       if (cfg.onNext) cfg.onNext(item());
     }
 
@@ -237,9 +262,11 @@
       $('panelName').textContent = t.name;
       $('panelPts').textContent = pts(id) + ' points';
       $('panelMembers').textContent = t.teacher ? 'Teacher' : t.members.map(function (m) { return m.nick; }).join(', ');
+      var x = mult();
       $('panelBtns').innerHTML = (cfg.points || [{ d: -1, label: '−1' }, { d: 1, label: '+1' }, { d: 2, label: '+2' }]).map(function (b) {
-        return '<button class="btn' + (b.d > 0 ? ' gold' : '') + '" data-d="' + b.d + '" data-why="' + esc(b.why || b.label) + '">' + esc(b.label) + '</button>';
-      }).join('');
+        return '<button class="btn' + (b.d > 0 ? ' gold' : '') + '" data-d="' + b.d * x + '" data-why="' + esc((b.why || b.label) + (x > 1 ? ' (challenge ×2)' : '')) + '">' +
+          esc(x > 1 ? b.label.replace(/^([+−-]?)(\d+)/, function (m, sign, n) { return sign + n * x; }) : b.label) + '</button>';
+      }).join('') + (x > 1 ? '<span class="chal-x">⚡ Challenge round: double points</span>' : '');
       $('panelBack').hidden = false;
     }
     function closePanel() { $('panelBack').hidden = true; panelTeam = null; pending = []; }
@@ -297,9 +324,11 @@
     // ---------- main buttons ----------
     if (hasTimer) $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
     function adjustBy(d) {
-      var secs = Math.max(MIN, Math.min(MAX, S.secs + d)), real = secs - S.secs;
-      if (!real) return;
-      S.secs = secs; save();
+      var before = curSecs(), base = Math.max(MIN, Math.min(MAX, baseSecs() + d));
+      if (base === baseSecs()) return;
+      if (stepSecs) S.secsBy[stepIndex()] = base; else S.secs = base;
+      save();
+      var secs = curSecs(), real = secs - before;
       if (running) { left = Math.max(1, left + real); endAt = Date.now() + left * 1000; } else left = left >= total || left <= 0 ? secs : Math.max(1, left + real);
       total = secs;
       renderClock();
@@ -313,7 +342,7 @@
       unlockAudio();
       S.speaker = (S.speaker || 1) + 1; save();
       tone([880, 1175], 0.1);
-      stopTimer(); left = total = S.secs; startTimer();
+      stopTimer(); left = total = curSecs(); startTimer();
       toast('TAG! Speaker ' + S.speaker + ': go!', false);
     });
     $('reveal').addEventListener('click', function () {
@@ -334,6 +363,7 @@
     // ---------- ⋯ menu ----------
     function renderSecs() {
       if (!hasTimer) return;
+      if (stepSecs) { $('secsRow').hidden = true; return; } // the −/+ buttons set each step's time
       $('secsRow').innerHTML = cfg.timer.options.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + fmt(s) + '</button>'; }).join('');
     }
     function closeMenu() { $('menuBack').hidden = true; }
@@ -365,6 +395,8 @@
     });
     document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
     window.addEventListener('resize', fit);
+    // the fonts may load after the first card is drawn: fit again then, so nothing spills over
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 
     Kru.onFinishRequest(function () {
       Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
@@ -388,7 +420,8 @@
         if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === ITEMS.length) S = saved;
         else S = { v: 1, level: level, order: newOrder(), pos: 0, revealed: {}, secs: hasTimer ? cfg.timer.secs : 0, pts: {}, log: [], introDone: false };
         if (adjust) S.secs = Math.max(MIN, Math.min(MAX, S.secs || cfg.timer.secs));
-        total = left = S.secs;
+        if (stepSecs && !(Array.isArray(S.secsBy) && S.secsBy.length === stepSecs.length)) S.secsBy = stepSecs.slice();
+        total = left = hasTimer ? curSecs() : 0;
         render();
         INTRO = KruIntro.forLevel(c, level);
         if (!S.introDone) KruIntro.show(INTRO, { title: cfg.title }).then(function () { S.introDone = true; save(); });

@@ -53,6 +53,25 @@
      ]
     ]
    }
+  },
+  {
+   "title": "Challenge round!",
+   "text": [
+    "Every 4th story, one sentence is missing.",
+    "Order the other 4 and say what is missing. Double points!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "A B C D",
+      "in order"
+     ],
+     [
+      "?",
+      "What happens there?"
+     ]
+    ]
+   }
   }
  ],
  "bonus": {

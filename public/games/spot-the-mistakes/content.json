@@ -40,6 +40,29 @@
      ]
     ]
    }
+  },
+  {
+   "title": "Challenge round!",
+   "text": [
+    "Every 4th story: how many mistakes? It is a secret!",
+    "Fix each one and say WHY it is wrong. Double points!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Find the mistake",
+      "✓"
+     ],
+     [
+      "Fix it",
+      "✓"
+     ],
+     [
+      "Say why",
+      "✓"
+     ]
+    ]
+   }
   }
  ],
  "bonus": {
