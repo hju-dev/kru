@@ -1,22 +1,55 @@
-/* Race Board: a 30-square race. On its turn a team answers a question; right = roll the dice and move.
-   Special squares: ★ forward, ⚠ back, 🎲 roll again. First to FINISH wins; the race goes on for 2nd and 3rd.
-   Points (for the Sheet and the podium) = squares moved, plus 3 / 2 / 1 for finishing 1st / 2nd / 3rd.
-   Questions: Quiz Battle's built-in sets for the level + Henry's own from the Questions tab, shuffled.
+/* Race Board (Henry, Nov 9): a 60-square race. On its turn a team answers a question.
+   Questions come in 4 tiers: easy (1 die, mostly 1-3), regular (1 fair die), hard (2 dice, mostly 7+) and
+   impossible (2 dice, mostly 9+); hard and impossible are rarer. Wrong = roll the back die and move back.
+   Exact roll to finish: extra steps bounce back. Squares: ★ forward, ⚠ back, 🎲 roll again, ? chance card,
+   plus two secret squares (a trap that skips your next turn, a slide forward) that work only for the first team there.
+   Points (for the Sheet and the podium) = squares from START, plus 3 / 2 / 1 for finishing 1st / 2nd / 3rd.
+   Questions: Race Board's own bank for the level (+ Henry's Questions tab), or the unit picked on the setup screen.
    The teacher's team doesn't race. */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
   var FACES = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
   var TIMES = [10, 20, 30, 45, 60];
-  var FINISH = 29; // squares 0 (START) to 29 (FINISH)
-  var SPECIAL = { 3: { t: 'go', n: 2 }, 7: { t: 'back', n: 2 }, 12: { t: 'again' }, 16: { t: 'go', n: 3 }, 21: { t: 'back', n: 3 }, 25: { t: 'again' } };
+  var COLS = 12, FINISH = 59; // squares 0 (START) to 59 (FINISH), a snake of 12 x 5
+  var SPECIAL = {
+    4: { t: 'chance' }, 8: { t: 'go', n: 2 }, 11: { t: 'chance' }, 15: { t: 'back', n: 2 }, 18: { t: 'chance' }, 22: { t: 'again' },
+    26: { t: 'chance' }, 30: { t: 'go', n: 3 }, 33: { t: 'chance' }, 37: { t: 'back', n: 3 }, 41: { t: 'chance' }, 44: { t: 'go', n: 2 },
+    47: { t: 'again' }, 48: { t: 'chance' }, 52: { t: 'back', n: 3 }, 55: { t: 'chance' },
+  };
+  var SLIDE = 8; // the secret slide: forward 8
   var BONUS = [3, 2, 1];
+  // how often each tier comes up, and its dice (weights for the faces 1-6 of each die)
+  var TIERS = {
+    easy: { label: 'Easy', share: 30, dice: 1, w: [3, 3, 3, 1, 1, 1], note: '1 small die' },
+    regular: { label: 'Regular', share: 45, dice: 1, w: [1, 1, 1, 1, 1, 1], note: '1 die' },
+    hard: { label: 'Hard', share: 17, dice: 2, w: [1, 1, 2, 2, 3, 3], note: '2 dice!' },
+    impossible: { label: 'Impossible', share: 8, dice: 2, w: [1, 1, 1, 3, 5, 7], note: '2 big dice!!' },
+  };
+  var BACK_DIE = [1, 1, 1, 1, 1, 1]; // a wrong answer: an ordinary die, backwards
+  var ORDER = ['easy', 'regular', 'hard', 'impossible'];
+  // chance cards (Henry's list + a few more); each is equally likely
+  var CHANCE = [
+    { id: 'back2', text: 'Go back 2 squares.' },
+    { id: 'ahead3', text: 'Move ahead 3 squares!' },
+    { id: 'ahead1', text: 'Move ahead 1 square.' },
+    { id: 'roll2', text: 'Double dice roll: roll 2 dice now!' },
+    { id: 'again', text: 'Roll again!' },
+    { id: 'dbl', text: 'Double dice: your next right answer rolls 2 dice.' },
+    { id: 'skip', text: 'Oh no! Skip your next turn.' },
+    { id: 'mathsci', text: 'Your next question is a math or science question.' },
+    { id: 'swap', text: 'Switch places with the team of your choice!' },
+    { id: 'shield', text: 'Shield 🛡: your next wrong answer does not move you back.' },
+    { id: 'others', text: 'Everyone else goes back 1 square!' },
+    { id: 'leap', text: 'Leapfrog: jump just past the team in front of you.' },
+  ];
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
 
-  var POOL = [], teams = [], racers = [], INTRO = [];
-  var S = null; // saved: { v, level, pos: {id: square}, finished: [ids], turn, qorder, qi, secs, last }
+  var POOL = {}, MATHSCI = [], teams = [], racers = [], INTRO = [];
+  var S = null; // saved: { v, level, pos, finished, turn, order: {tier: [i]}, qi: {tier: n}, msOrder, msI, secs, last, skip, shield, dbl, mathsci, secret }
   var busy = false, left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
+  var Q = null; // the question on screen: { q, tier, ... }
 
   function save() { Kru.saveState(S); }
   function shuffle(a) {
@@ -28,12 +61,13 @@
   function points(id) { var f = S.finished.indexOf(id); return pos(id) + (f >= 0 && f < BONUS.length ? BONUS[f] : 0); }
   function color(t) { return COLORS[teams.indexOf(t) % COLORS.length]; }
   function current() { return racers[S.turn % Math.max(1, racers.length)]; }
-  function question() { return POOL[S.qorder[S.qi % S.qorder.length]]; }
+  function racer(id) { return racers.filter(function (x) { return x.id === id; })[0]; }
+  function weighted(w) { var sum = 0, i; for (i = 0; i < w.length; i++) sum += w[i]; var r = Math.random() * sum; for (i = 0; i < w.length; i++) { r -= w[i]; if (r < 0) return i; } return w.length - 1; }
 
-  /** Where a square sits on the screen: a snake, 10 per row. */
+  /** Where a square sits on the screen: a snake, 12 per row. */
   function cell(n) {
-    var row = Math.floor(n / 10), col = n % 10;
-    return { row: row + 1, col: row % 2 ? 10 - col : col + 1 };
+    var row = Math.floor(n / COLS), col = n % COLS;
+    return { row: row + 1, col: row % 2 ? COLS - col : col + 1 };
   }
 
   // ---------- sound (after a tap) ----------
@@ -54,36 +88,64 @@
   }
 
   // ---------- the track ----------
+  function squareLabel(n) {
+    var sp = SPECIAL[n], sec = S.secret;
+    if (n === 0) return 'START';
+    if (n === FINISH) return 'FINISH';
+    if (sec.trapUsed && n === sec.trap) return '🪤';
+    if (sec.slideUsed && n === sec.slide) return '🛝';
+    if (!sp) return String(n);
+    return sp.t === 'go' ? '★+' + sp.n : sp.t === 'back' ? '⚠−' + sp.n : sp.t === 'again' ? '🎲' : '?';
+  }
   function renderTrack() {
     var html = '';
     for (var n = 0; n <= FINISH; n++) {
       var c = cell(n), sp = SPECIAL[n];
-      var cls = 'sq' + (n === 0 ? ' start' : n === FINISH ? ' finish' : '') + (sp ? ' ' + sp.t : '');
-      var label = n === 0 ? 'START' : n === FINISH ? 'FINISH' : String(n);
-      var tag = sp ? (sp.t === 'go' ? '★ +' + sp.n : sp.t === 'back' ? '⚠ −' + sp.n : '🎲 again') : '';
-      var here = racers.filter(function (t) { return pos(t.id) === n; }).map(function (t) {
+      var used = (S.secret.trapUsed && n === S.secret.trap) || (S.secret.slideUsed && n === S.secret.slide);
+      var on = racers.filter(function (t) { return pos(t.id) === n; });
+      var cls = 'sq' + (n === 0 ? ' start' : n === FINISH ? ' finish' : '') + (sp ? ' ' + sp.t : '') + (used ? ' secret' : '') + (on.length > 3 ? ' crowd' : '');
+      var here = on.map(function (t) {
         return '<i class="piece' + (current() && t.id === current().id ? ' now' : '') + '" style="background:' + color(t) + '">' + (racers.indexOf(t) + 1) + '</i>';
       }).join('');
-      html += '<div class="' + cls + '" style="grid-row:' + c.row + ';grid-column:' + c.col + '"><span class="num">' + label + '</span>' +
-        (tag ? '<span class="tag">' + tag + '</span>' : '') + '<span class="pieces">' + here + '</span></div>';
+      html += '<div class="' + cls + '" style="grid-row:' + c.row + ';grid-column:' + c.col + '"><span class="num">' + squareLabel(n) + '</span>' +
+        '<span class="pieces">' + here + '</span></div>';
     }
     $('track').innerHTML = html;
     $('legend').innerHTML = racers.map(function (t, i) {
-      var f = S.finished.indexOf(t.id);
-      return '<span class="lg' + (current() && t.id === current().id ? ' now' : '') + '"><i style="background:' + color(t) + '">' + (i + 1) + '</i>' + esc(t.name) +
-        (f >= 0 && f < 3 ? ' <b>' + ['1st', '2nd', '3rd'][f] + '</b>' : f >= 3 ? ' <b>done</b>' : '') + '</span>';
+      var f = S.finished.indexOf(t.id), flags = (S.skip[t.id] ? ' ⏸' : '') + (S.shield[t.id] ? ' 🛡' : '') + (S.dbl[t.id] ? ' 🎲🎲' : '');
+      return '<button class="lg' + (current() && t.id === current().id ? ' now' : '') + '" data-team="' + esc(t.id) + '" aria-label="' + esc(t.name) + ': who is on this team?">' +
+        '<i style="background:' + color(t) + '">' + (i + 1) + '</i>' + esc(t.name) + flags +
+        (f >= 0 && f < 3 ? ' <b>' + ['1st', '2nd', '3rd'][f] + '</b>' : f >= 3 ? ' <b>done</b>' : '') + '</button>';
     }).join('');
     var t = current(), done = S.finished.length >= racers.length;
     $('turn').innerHTML = done ? 'Race over!' : t ? '<span class="dot" style="background:' + color(t) + '"></span>' + esc(t.name) + "'s turn" : '';
     $('ask').disabled = done || busy || !t;
   }
 
+  // ---------- who is on a team (tap a team in the legend) ----------
+  $('legend').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-team]');
+    if (!b) return;
+    var t = racer(b.dataset.team);
+    if (!t) return;
+    $('teamName').textContent = t.name;
+    $('teamName').style.color = color(t);
+    $('teamWho').textContent = (t.members || []).map(function (m) { return m.nick; }).join(', ') || '—';
+    $('teamWhere').textContent = pos(t.id) === 0 ? 'On START' : pos(t.id) === FINISH ? 'Finished!' : 'On square ' + pos(t.id) + ' · ' + points(t.id) + ' points';
+    $('teamBack').hidden = false;
+  });
+  $('teamClose').addEventListener('click', function () { $('teamBack').hidden = true; });
+  $('teamBack').addEventListener('click', function (e) { if (e.target === this) this.hidden = true; });
+
   // ---------- turns ----------
   function nextTurn() {
     if (S.finished.length >= racers.length) { S.turn = 0; save(); renderTrack(); return; }
-    for (var k = 0; k < racers.length; k++) {
+    for (var k = 0; k < racers.length * 3; k++) {
       S.turn = (S.turn + 1) % racers.length;
-      if (S.finished.indexOf(current().id) < 0) break;
+      var id = current().id;
+      if (S.finished.indexOf(id) >= 0) continue;
+      if (S.skip[id]) { S.skip[id]--; toast('⏸ ' + current().name + ' skips this turn.'); continue; }
+      break;
     }
     save();
     renderTrack();
@@ -95,32 +157,122 @@
     var d = points(id) - before;
     if (d) Kru.score(id, d, 'race board');
   }
-  /** Moves a piece one square at a time, then does what the square says. */
+  /** After a move: a piece on FINISH has finished; the points change goes to Kru. */
+  function settle(id, base) {
+    if (pos(id) === FINISH && S.finished.indexOf(id) < 0) S.finished.push(id);
+    var d = points(id) - base;
+    if (d) Kru.score(id, d, 'race board');
+  }
+  /** Moves a piece one square at a time. Forward past FINISH bounces back (an exact roll is needed to finish). */
   function move(id, steps, then) {
-    var dir = steps < 0 ? -1 : 1, n = Math.abs(steps);
+    var dir = steps < 0 ? -1 : 1, n = Math.abs(steps), bounced = false, base = points(id);
     (function step() {
-      if (!n || (dir > 0 && pos(id) >= FINISH) || (dir < 0 && pos(id) <= 0)) { save(); renderTrack(); then(); return; }
-      setPos(id, pos(id) + dir); n--;
-      tone([dir > 0 ? 520 + pos(id) * 12 : 300], 0, 0.08);
+      if (!n || (dir < 0 && pos(id) <= 0)) {
+        settle(id, base);
+        save(); renderTrack();
+        if (bounced) toast('↩ ' + racer(id).name + ' bounced back: an exact roll is needed to finish!');
+        then(); return;
+      }
+      if (dir > 0 && pos(id) >= FINISH) { dir = -1; bounced = true; }
+      S.pos[id] = pos(id) + dir; n--;
+      tone([dir > 0 ? 520 + pos(id) * 6 : 300], 0, 0.08);
       renderTrack();
-      setTimeout(step, 260);
+      setTimeout(step, 200);
     })();
   }
   function landed(id) {
-    var t = racers.filter(function (x) { return x.id === id; })[0], p = pos(id), sp = SPECIAL[p];
+    var t = racer(id), p = pos(id), sp = SPECIAL[p], sec = S.secret;
     if (p === FINISH) {
       var place = S.finished.indexOf(id);
       tone([523, 659, 784, 1047], 0.12, 0.4);
-      toast(t.name + ' finished ' + (['1st', '2nd', '3rd'][place] || '') + (place < 3 ? '! +' + BONUS[place] + ' bonus' : '!'), false);
+      toast(t.name + ' finished ' + (['1st', '2nd', '3rd'][place] || '') + (place < 3 ? '! +' + BONUS[place] + ' bonus' : '!'));
       busy = false; nextTurn();
       // 1st, 2nd and 3rd are decided (or everyone is home): the podium. Keep playing to race on.
       if (S.finished.length === Math.min(3, racers.length)) setTimeout(function () { KruEnd.show(); }, 1600);
       return;
     }
-    if (sp && sp.t === 'go') { toast('★ ' + t.name + ': forward ' + sp.n + '!', false); tone([784, 988], 0.1); setTimeout(function () { move(id, sp.n, function () { landed(id); }); }, 500); return; }
-    if (sp && sp.t === 'back') { toast('⚠ ' + t.name + ': back ' + sp.n + '!', false); tone([330, 262], 0.15); setTimeout(function () { move(id, -sp.n, function () { busy = false; nextTurn(); }); }, 500); return; }
-    if (sp && sp.t === 'again') { toast('🎲 ' + t.name + ': roll again!', false); setTimeout(function () { roll(id); }, 700); return; }
+    // the secret squares: only the first team to land there
+    if (p === sec.trap && !sec.trapUsed) {
+      sec.trapUsed = true; S.skip[id] = (S.skip[id] || 0) + 1; save();
+      return card('🪤 Secret trap!', t.name + ' skips the next turn.', function () { busy = false; nextTurn(); }, 'bad');
+    }
+    if (p === sec.slide && !sec.slideUsed) {
+      sec.slideUsed = true; save();
+      return card('🛝 Secret slide!', t.name + ' slides forward ' + SLIDE + ' squares!', function () { move(id, SLIDE, function () { landed(id); }); }, 'good');
+    }
+    if (sp && sp.t === 'go') { toast('★ ' + t.name + ': forward ' + sp.n + '!'); tone([784, 988], 0.1); setTimeout(function () { move(id, sp.n, function () { landed(id); }); }, 500); return; }
+    if (sp && sp.t === 'back') { toast('⚠ ' + t.name + ': back ' + sp.n + '!'); tone([330, 262], 0.15); setTimeout(function () { move(id, -sp.n, function () { landedBack(id); }); }, 500); return; }
+    if (sp && sp.t === 'again') { toast('🎲 ' + t.name + ': roll again!'); setTimeout(function () { roll(id, 'regular'); }, 700); return; }
+    if (sp && sp.t === 'chance') return chance(id);
     busy = false; nextTurn();
+  }
+
+  /** After moving back: a secret square still springs (first team only); ★ / ⚠ / ? squares don't, so moves don't chain. */
+  function landedBack(id) {
+    var p = pos(id), sec = S.secret;
+    if ((p === sec.trap && !sec.trapUsed) || (p === sec.slide && !sec.slideUsed)) return landed(id);
+    busy = false; nextTurn();
+  }
+
+  // ---------- a card in the middle of the screen (chance, secret squares) ----------
+  function card(title, text, then, mood) {
+    $('cardTitle').textContent = title;
+    $('cardText').textContent = text;
+    $('cardBox').className = 'chance-box ' + (mood || '');
+    $('cardTeams').innerHTML = '';
+    $('cardOk').hidden = false;
+    $('cardBack').hidden = false;
+    tone(mood === 'bad' ? [392, 330, 262] : [660, 880, 1047], 0.12);
+    cardThen = then;
+  }
+  var cardThen = null;
+  $('cardOk').addEventListener('click', function () { $('cardBack').hidden = true; var f = cardThen; cardThen = null; if (f) f(); });
+
+  function chance(id) {
+    var t = racer(id), cd = CHANCE[Math.floor(Math.random() * CHANCE.length)];
+    var done = function () { busy = false; nextTurn(); };
+    var after = {
+      back2: function () { move(id, -2, function () { landedBack(id); }); },
+      ahead3: function () { move(id, 3, function () { landed(id); }); },
+      ahead1: function () { move(id, 1, function () { landed(id); }); },
+      roll2: function () { roll(id, 'double'); },
+      again: function () { roll(id, 'regular'); },
+      dbl: function () { S.dbl[id] = true; save(); done(); },
+      skip: function () { S.skip[id] = (S.skip[id] || 0) + 1; save(); done(); },
+      mathsci: function () { S.mathsci[id] = true; save(); done(); },
+      shield: function () { S.shield[id] = true; save(); done(); },
+      others: function () { racers.forEach(function (o) { if (o.id !== id && S.finished.indexOf(o.id) < 0 && pos(o.id) > 0) setPos(o.id, pos(o.id) - 1); }); save(); renderTrack(); done(); },
+      leap: function () {
+        var ahead = racers.filter(function (o) { return o.id !== id && S.finished.indexOf(o.id) < 0 && pos(o.id) > pos(id); })
+          .map(function (o) { return pos(o.id); }).sort(function (a, b) { return a - b; })[0];
+        if (ahead === undefined) { toast(t.name + ' is already in front!'); return done(); }
+        move(id, Math.min(ahead + 1, FINISH - 1) - pos(id), function () { landed(id); });
+      },
+    };
+    if (cd.id === 'swap') return swapCard(id);
+    card('? Chance card', cd.text, after[cd.id], cd.id === 'back2' || cd.id === 'skip' ? 'bad' : 'good');
+  }
+  function swapCard(id) {
+    var t = racer(id), others = racers.filter(function (o) { return o.id !== id && S.finished.indexOf(o.id) < 0; });
+    card('? Chance card', 'Switch places with the team of your choice!', null, 'good');
+    if (!others.length) { $('cardText').textContent = 'No team to switch with.'; cardThen = function () { busy = false; nextTurn(); }; return; }
+    $('cardOk').hidden = true;
+    $('cardTeams').innerHTML = others.map(function (o) {
+      return '<button class="btn" data-swap="' + esc(o.id) + '" style="border-color:' + color(o) + '">' + esc(o.name) + ' <small>square ' + pos(o.id) + '</small></button>';
+    }).join('') + '<button class="btn ghost" data-swap="">No switch</button>';
+    $('cardTeams').onclick = function (e) {
+      var b = e.target.closest('[data-swap]');
+      if (!b) return;
+      $('cardTeams').onclick = null;
+      $('cardBack').hidden = true;
+      if (b.dataset.swap) {
+        var o = b.dataset.swap, a = pos(id), z = pos(o);
+        setPos(id, z); setPos(o, a);
+        toast('⇄ ' + t.name + ' and ' + racer(o).name + ' switched places!');
+        tone([523, 784], 0.1);
+      }
+      save(); busy = false; nextTurn();
+    };
   }
 
   // ---------- the dice ----------
@@ -129,27 +281,42 @@
     for (var i = 0; i < 9; i++) h += '<span class="pip' + (FACES[n].indexOf(i) >= 0 ? ' on' : '') + '"></span>';
     return h;
   }
-  function roll(id) {
+  /** kind: easy / regular / hard / impossible / double (2 fair dice) / back (a wrong answer). */
+  function roll(id, kind) {
     unlockAudio();
     busy = true; renderTrack();
-    var value = 1 + Math.floor(Math.random() * 6), k = 0;
-    var t = racers.filter(function (x) { return x.id === id; })[0];
-    $('diceText').textContent = t.name + ' rolls…';
+    if (S.dbl[id] && kind !== 'back' && kind !== 'double' && TIERS[kind] && TIERS[kind].dice === 1) { kind = 'double'; S.dbl[id] = false; }
+    var info = kind === 'back' ? { dice: 1, w: BACK_DIE } : kind === 'double' ? { dice: 2, w: [1, 1, 1, 1, 1, 1] } : TIERS[kind];
+    var values = [];
+    for (var d = 0; d < info.dice; d++) values.push(1 + weighted(info.w));
+    var sum = values.reduce(function (a, b) { return a + b; }, 0), k = 0;
+    var t = racer(id);
+    $('die2').hidden = info.dice < 2;
+    $('diceBox').className = 'dice-box' + (kind === 'back' ? ' back' : '');
+    $('diceText').textContent = t.name + (kind === 'back' ? ' rolls the back die…' : info.dice > 1 ? ' rolls 2 dice…' : ' rolls…');
     $('diceBack').hidden = false;
-    $('die').classList.add('rolling');
+    $('die').classList.add('rolling'); $('die2').classList.add('rolling');
+    S.last = snapshot();
     (function spin() {
-      $('die').innerHTML = dieHtml(k < 11 ? 1 + Math.floor(Math.random() * 6) : value);
+      var last = k >= 11;
+      $('die').innerHTML = dieHtml(last ? values[0] : 1 + Math.floor(Math.random() * 6));
+      if (info.dice > 1) $('die2').innerHTML = dieHtml(last ? values[1] : 1 + Math.floor(Math.random() * 6));
       tone([300 + k * 35], 0, 0.05);
       if (++k <= 11) { setTimeout(spin, 50 + k * 14); return; }
-      $('die').classList.remove('rolling');
-      $('diceText').textContent = t.name + ' rolled ' + value + '!';
-      tone([880], 0, 0.2);
-      S.last = { id: id, from: pos(id), finished: S.finished.slice(), turn: S.turn };
+      $('die').classList.remove('rolling'); $('die2').classList.remove('rolling');
+      $('diceText').textContent = kind === 'back' ? t.name + ': back ' + sum + '!' : t.name + ' rolled ' + (info.dice > 1 ? values.join(' + ') + ' = ' : '') + sum + '!';
+      tone(kind === 'back' ? [330, 262] : [880], 0.15, 0.2);
       setTimeout(function () {
         $('diceBack').hidden = true;
-        move(id, value, function () { landed(id); });
-      }, 900);
+        if (kind === 'back') move(id, -sum, function () { landedBack(id); });
+        else move(id, sum, function () { landed(id); });
+      }, 1100);
     })();
+  }
+
+  // ---------- undo: the whole board as it was before the last roll ----------
+  function snapshot() {
+    return JSON.parse(JSON.stringify({ pos: S.pos, finished: S.finished, turn: S.turn, skip: S.skip, shield: S.shield, dbl: S.dbl, mathsci: S.mathsci, secret: S.secret }));
   }
 
   // ---------- the question ----------
@@ -172,12 +339,30 @@
     running = true; endAt = Date.now() + left * 1000;
     clearInterval(timer); timer = setInterval(tick, 200); renderClock();
   }
+  /** The next question: a tier picked at random (hard and impossible are rare), or math / science after that chance card. */
+  function pickQuestion(id) {
+    if (S.mathsci[id] && MATHSCI.length) {
+      S.mathsci[id] = false;
+      var m = MATHSCI[S.msOrder[S.msI % S.msOrder.length]];
+      S.msI++; if (S.msI % S.msOrder.length === 0) S.msOrder = shuffle(range(MATHSCI.length));
+      return m;
+    }
+    var avail = ORDER.filter(function (t) { return POOL[t] && POOL[t].length; });
+    var tier = avail[weighted(avail.map(function (t) { return TIERS[t].share; }))];
+    var list = POOL[tier], order = S.order[tier];
+    var q = list[order[S.qi[tier] % order.length]];
+    S.qi[tier]++;
+    if (S.qi[tier] % order.length === 0) S.order[tier] = shuffle(range(list.length));
+    return q;
+  }
   var shown = false;
   function renderQuestion() {
-    var q = question(), t = current();
+    var t = current(), tier = TIERS[Q.tier] || TIERS.regular;
     $('qWho').textContent = t.name;
-    $('qTopic').textContent = q.set;
-    $('qBody').innerHTML = KruQuiz.html(q, shown);
+    $('qTier').textContent = tier.label + ' · ' + tier.note;
+    $('qTier').className = 'tier ' + Q.tier;
+    $('qTopic').textContent = Q.set ? '· ' + Q.set : '';
+    $('qBody').innerHTML = KruQuiz.html(Q, shown);
     $('reveal').disabled = shown;
     KruQuiz.fit($('stage'));
   }
@@ -185,18 +370,15 @@
     if (busy || !current()) return;
     unlockAudio();
     shown = false;
+    Q = pickQuestion(current().id);
+    save();
     stopTimer(); total = left = S.secs; renderClock();
     $('qBack').hidden = false;
     renderQuestion();
     tone([660, 880], 0.12);
+    startTimer(); // Henry: the timer starts by itself
   }
-  function closeQuestion() {
-    stopTimer();
-    $('qBack').hidden = true;
-    S.qi = (S.qi + 1) % S.qorder.length;
-    if (S.qi === 0) S.qorder = shuffle(range(POOL.length));
-    save();
-  }
+  function closeQuestion() { stopTimer(); $('qBack').hidden = true; }
 
   // ---------- toast ----------
   var toastTimer = 0;
@@ -211,14 +393,14 @@
   $('ask').addEventListener('click', ask);
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
   $('reveal').addEventListener('click', function () { unlockAudio(); stopTimer(); renderClock(); shown = true; tone([523, 659]); renderQuestion(); });
-  $('right').addEventListener('click', function () { var id = current().id; closeQuestion(); roll(id); });
+  $('right').addEventListener('click', function () { var id = current().id, tier = Q.tier || 'regular'; closeQuestion(); roll(id, tier); });
   $('wrong').addEventListener('click', function () {
     unlockAudio();
     var t = current();
     closeQuestion();
-    tone([330, 262], 0.15);
-    toast(t.name + ': no move this time.');
-    nextTurn();
+    if (S.shield[t.id]) { S.shield[t.id] = false; save(); toast('🛡 ' + t.name + "'s shield: no move back!"); tone([660, 880], 0.1); nextTurn(); return; }
+    if (pos(t.id) === 0) { toast(t.name + ' is on START: no move back.'); nextTurn(); return; }
+    roll(t.id, 'back');
   });
 
   // ---------- ⋯ menu ----------
@@ -233,10 +415,10 @@
   $('undoMove').addEventListener('click', function () {
     var L = S.last;
     if (!L || busy) return;
-    var before = points(L.id);
-    S.finished = L.finished; S.pos[L.id] = L.from; S.turn = L.turn; S.last = null;
-    var d = points(L.id) - before;
-    if (d) Kru.score(L.id, d, 'undo');
+    var before = {};
+    racers.forEach(function (t) { before[t.id] = points(t.id); });
+    S.pos = L.pos; S.finished = L.finished; S.turn = L.turn; S.skip = L.skip; S.shield = L.shield; S.dbl = L.dbl; S.mathsci = L.mathsci; S.secret = L.secret; S.last = null;
+    racers.forEach(function (t) { var d = points(t.id) - before[t.id]; if (d) Kru.score(t.id, d, 'undo'); });
     save(); closeMenu(); renderTrack();
   });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Race Board' }); });
@@ -244,12 +426,12 @@
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: everyone back to START'; setTimeout(disarm, 3500); return; }
     racers.forEach(function (t) { var p = points(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
-    S.pos = {}; S.finished = []; S.turn = 0; S.last = null;
+    S.pos = {}; S.finished = []; S.turn = 0; S.last = null; S.skip = {}; S.shield = {}; S.dbl = {}; S.mathsci = {}; S.secret = newSecret();
     save(); closeMenu(); renderTrack();
   });
 
   document.addEventListener('keydown', function (e) {
-    if (!$('menuBack').hidden) return;
+    if (!$('menuBack').hidden || !$('cardBack').hidden || !$('teamBack').hidden) return;
     if (!$('qBack').hidden) {
       if (e.code === 'Space') { e.preventDefault(); $('go').click(); }
       else if (e.key === 'a' || e.key === 'A') $('reveal').click();
@@ -260,20 +442,42 @@
 
   Kru.onFinishRequest(function () { Kru.finish(teams.map(function (t) { return { teamId: t.id, points: t.teacher ? 0 : points(t.id) }; })); });
 
+  // ---------- start ----------
+  /** Two secret squares on plain squares (not START, FINISH or a special), different every game. */
+  function newSecret() {
+    var plain = range(FINISH).filter(function (n) { return n > 2 && n < FINISH - SLIDE - 1 && !SPECIAL[n] && !SPECIAL[n + SLIDE]; });
+    shuffle(plain);
+    return { trap: plain[0], slide: plain[1], trapUsed: false, slideUsed: false };
+  }
+  /** A unit's or the Sheet's question has no tier: A-D = regular; short answer or double = hard. */
+  function guessTier(q) { return q.double || !Array.isArray(q.choices) ? 'hard' : 'regular'; }
+
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     Promise.all([contentReady, KruQuiz.load(session.level, session)]).then(function (both) {
-      var c = both[0], Q = both[1];
-      POOL = [];
-      (Q.unit ? Q.unit.sets : Q.builtIn.concat(Q.fromSheet)).forEach(function (s) { s.questions.forEach(function (q) { POOL.push(Object.assign({ set: s.name }, q)); }); });
+      var c = both[0], QZ = both[1], lv = c.questions && c.questions[QZ.level] ? QZ.level : 'M.2';
+      var own = (c.questions && c.questions[lv]) || [];
+      POOL = { easy: [], regular: [], hard: [], impossible: [] };
+      var add = function (q, tier, set) { POOL[tier].push(Object.assign({ tier: tier, set: set || '' }, q)); };
+      if (QZ.unit) QZ.unit.sets.forEach(function (s) { s.questions.forEach(function (q) { add(q, guessTier(q), s.name); }); });
+      else {
+        own.forEach(function (q) { add(q, TIERS[q.tier] ? q.tier : 'regular'); });
+        QZ.fromSheet.forEach(function (s) { s.questions.forEach(function (q) { add(q, guessTier(q), s.name); }); });
+      }
+      MATHSCI = own.filter(function (q) { return q.cat === 'math' || q.cat === 'science'; }).map(function (q) { return Object.assign({ set: q.cat === 'math' ? 'Math' : 'Science' }, q); });
       teams = Kru.allTeams();
       racers = teams.filter(function (t) { return !t.teacher; });
       KruEnd.setup({ standings: function () { return racers.map(function (t) { return { name: t.name, points: points(t.id) }; }); } });
+      var sizes = ORDER.map(function (t) { return POOL[t].length; }).join(',') + ':' + MATHSCI.length;
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === Q.level && Array.isArray(saved.qorder) && saved.qorder.length === POOL.length) S = saved;
-      else S = { v: 1, level: Q.level, pos: {}, finished: [], turn: 0, qorder: shuffle(range(POOL.length)), qi: 0, secs: 20, last: null, introDone: false };
+      if (saved && saved.v === 2 && saved.level === QZ.level && saved.sizes === sizes) S = saved;
+      else {
+        S = { v: 2, level: QZ.level, sizes: sizes, pos: {}, finished: [], turn: 0, order: {}, qi: {}, msOrder: shuffle(range(MATHSCI.length)), msI: 0,
+          secs: 20, last: null, skip: {}, shield: {}, dbl: {}, mathsci: {}, secret: newSecret(), introDone: false };
+        ORDER.forEach(function (t) { S.order[t] = shuffle(range(POOL[t].length)); S.qi[t] = 0; });
+      }
       renderTrack();
-      INTRO = KruIntro.forLevel(c, Q.level);
+      INTRO = KruIntro.forLevel(c, QZ.level);
       if (!S.introDone) KruIntro.show(INTRO, { title: 'Race Board' }).then(function () { S.introDone = true; save(); });
     }).catch(function (err) {
       $('track').textContent = 'Could not load the questions. Close the game and open it again.';

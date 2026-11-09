@@ -30,7 +30,7 @@
     <div class="backdrop rb-q" id="qBack" hidden>
       <div class="panel qpanel" role="dialog" aria-labelledby="qWho">
         <section class="stage" id="stage" aria-live="polite">
-          <div class="qhead"><b id="qWho"></b> · <span id="qTopic"></span></div>
+          <div class="qhead"><b id="qWho"></b> <span class="tier" id="qTier"></span> <span id="qTopic"></span></div>
           <div id="qBody"></div>
         </section>
         <div class="controls">
@@ -46,9 +46,28 @@
 
     <!-- The dice -->
     <div class="backdrop rb-dice" id="diceBack" hidden>
-      <div class="dice-box">
-        <div class="die" id="die"></div>
+      <div class="dice-box" id="diceBox">
+        <div class="dice-row"><div class="die" id="die"></div><div class="die" id="die2" hidden></div></div>
         <div class="dice-text" id="diceText"></div>
+      </div>
+    </div>
+
+    <!-- Chance cards and the secret squares -->
+    <div class="backdrop rb-card" id="cardBack" hidden>
+      <div class="chance-box" id="cardBox" role="dialog" aria-labelledby="cardTitle">
+        <div class="chance-title" id="cardTitle"></div>
+        <div class="chance-text" id="cardText"></div>
+        <div class="chance-teams" id="cardTeams"></div>
+        <button class="btn gold" id="cardOk">OK ▶</button>
+      </div>
+    </div>
+
+    <!-- Who is on a team -->
+    <div class="backdrop" id="teamBack" hidden>
+      <div class="panel team-panel" role="dialog" aria-labelledby="teamName">
+        <div class="panel-head"><b id="teamName"></b><button class="small" id="teamClose" aria-label="Close">✕</button></div>
+        <div class="team-who" id="teamWho"></div>
+        <div class="team-where" id="teamWhere"></div>
       </div>
     </div>
 
