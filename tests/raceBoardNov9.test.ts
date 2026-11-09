@@ -68,9 +68,9 @@ describe('Race Board board and rules', () => {
 
 describe('Race Board questions', () => {
   for (const level of ['M.1', 'M.2', 'M.3']) {
-    it(`${level}: 50+ questions in 4 tiers, hard and impossible rarer, 10+ math or science`, () => {
+    it(`${level}: 165+ questions (Henry, Nov 10: triple) in 4 tiers, hard and impossible rarer, 10+ math or science`, () => {
       const qs = content.questions[level] as Q[]
-      expect(qs.length).toBeGreaterThanOrEqual(50)
+      expect(qs.length).toBeGreaterThanOrEqual(165)
       const n = (t: string) => qs.filter((q) => q.tier === t).length
       expect(n('easy')).toBeGreaterThan(0)
       expect(n('regular')).toBeGreaterThan(n('hard'))
@@ -88,4 +88,17 @@ describe('Race Board questions', () => {
       for (const i of [0, 1, 2, 3]) expect(at.filter((x) => x === i).length, `answer ${'ABCD'[i]}`).toBeGreaterThan(at.length / 6)
     })
   }
+})
+
+describe('Race Board levels moved up (Henry, Nov 10)', () => {
+  const qs = (l: string) => (content.questions[l] as Q[]).map((q) => q.q)
+  it('the old, too-easy M.1 questions are gone', () => {
+    for (const l of ['M.1', 'M.2', 'M.3']) for (const old of ['What is 6 + 7?', 'Which one is a fruit?', 'What is the opposite of "hot"?']) expect(qs(l)).not.toContain(old)
+  })
+  it('M.1 starts from the old M.2 questions, M.2 from the old M.3 ones, M.3 is all new', () => {
+    expect(qs('M.1')).toContain('What is the past tense of "go"?')
+    expect(qs('M.2')).toContain('What is the past tense of "take"?')
+    expect(qs('M.3')).not.toContain('What is the past tense of "take"?')
+    expect(qs('M.3')).toContain('What is the plural of "criterion"?')
+  })
 })
