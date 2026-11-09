@@ -18,6 +18,8 @@
  *   reveal: true | function (item) { return bool },    // is there an answer to reveal?
  *   timer: { secs: 60, options: [30, 60, 90] } | null,
  *   points: [{ d: 1, label: '+1 Good reason' }, ...],  // the buttons when you tap a team
+ *   tally: true,                                       // optional: the points window stays open; taps add up a round
+ *                                                      //   total, Done ✓ saves it as one score (Category Grid)
  *   challenge: { penalty: 1 },                         // optional: a Challenge! button that stops the timer and asks
  *                                                      //   which team loses the points (or no one)
  *   timer: { secs: 30, adjust: 10, min: 10, max: 300 }, // adjust: −10 / +10 buttons beside the clock
@@ -71,7 +73,9 @@
     document.body.insertAdjacentHTML('beforeend',
       '<div class="backdrop" id="panelBack" hidden><div class="panel" role="dialog" aria-labelledby="panelName">' +
       '<div class="panel-head"><div><b id="panelName"></b> · <span id="panelPts"></span><div class="panel-members" id="panelMembers"></div></div>' +
-      '<button class="small" id="panelClose" aria-label="Close">✕</button></div><div class="panel-btns" id="panelBtns"></div></div></div>' +
+      '<button class="small" id="panelClose" aria-label="Close">✕</button></div><div class="panel-btns" id="panelBtns"></div>' +
+      (cfg.tally ? '<div class="tally-row"><span class="tally" id="tally" aria-live="polite"></span><button class="btn gold tally-done" id="tallyDone">Done ✓</button></div>' : '') +
+      '</div></div>' +
       (cfg.challenge ? '<div class="backdrop" id="chalBack" hidden><div class="panel" role="dialog" aria-labelledby="chalTitle">' +
         '<div class="panel-head"><div><b id="chalTitle">Challenge!</b><div class="panel-members">Which team made the mistake? They lose ' + cfg.challenge.penalty + '.</div></div>' +
         '<button class="small" id="chalClose" aria-label="Close">✕</button></div><div class="panel-btns" id="chalBtns"></div>' +
@@ -214,10 +218,22 @@
       clearTimeout(toastTimer);
       toastTimer = setTimeout(function () { $('toast').hidden = true; }, 3500);
     }
+    // tally: taps add up here until Done ✓ (✕ or tapping outside throws the round total away)
+    var pending = [];
+    function renderTally() {
+      if (!cfg.tally) return;
+      var sum = pending.reduce(function (a, b) { return a + b; }, 0);
+      $('tally').innerHTML = pending.length
+        ? 'This round: <b>' + (sum > 0 ? '+' : sum < 0 ? '−' : '') + Math.abs(sum) + '</b> <small>(' + pending.map(function (d) { return d > 0 ? '+' + d : '−' + Math.abs(d); }).join(' ') + ')</small>'
+        : 'Tap the points for each word, then Done.';
+      $('tallyDone').disabled = !pending.length;
+    }
     function openPanel(id) {
       var t = team(id);
       if (!t) return;
       panelTeam = t;
+      pending = [];
+      renderTally();
       $('panelName').textContent = t.name;
       $('panelPts').textContent = pts(id) + ' points';
       $('panelMembers').textContent = t.teacher ? 'Teacher' : t.members.map(function (m) { return m.nick; }).join(', ');
@@ -226,14 +242,26 @@
       }).join('');
       $('panelBack').hidden = false;
     }
-    function closePanel() { $('panelBack').hidden = true; panelTeam = null; }
+    function closePanel() { $('panelBack').hidden = true; panelTeam = null; pending = []; }
     $('strip').addEventListener('click', function (e) { var b = e.target.closest('[data-t]'); if (b) openPanel(b.dataset.t); });
     $('panelBtns').addEventListener('click', function (e) {
       var b = e.target.closest('[data-d]');
       if (!b || !panelTeam) return;
       unlockAudio();
+      if (cfg.tally) {
+        pending.push(Number(b.dataset.d));
+        tone(Number(b.dataset.d) > 0 ? [660] : [330], 0, 0.12);
+        renderTally();
+        return;
+      }
       addPoints(panelTeam.id, Number(b.dataset.d), b.dataset.why);
       if (Number(b.dataset.d) > 0) tone([784, 988], 0.1);
+      closePanel();
+    });
+    if (cfg.tally) $('tallyDone').addEventListener('click', function () {
+      if (!panelTeam || !pending.length) return;
+      var sum = pending.reduce(function (a, b) { return a + b; }, 0);
+      if (sum) { addPoints(panelTeam.id, sum, 'round'); if (sum > 0) tone([784, 988], 0.1); }
       closePanel();
     });
     $('panelClose').addEventListener('click', closePanel);
