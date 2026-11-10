@@ -1,5 +1,7 @@
 /* 20 Questions: Henry thinks of the answer; the board shows only the category. Teams (or the whole
-   class, in Solo) count down their questions. Got it! -> the winner gets a point for every question left. */
+   class, in Solo) count down their questions. Got it! -> the winner gets a point for every question left.
+   Optional (⋯ menu, Henry Nov 10): a timer (−15 / +15, resets each round) and a name picker that spins to choose
+   the student who asks the next question (no repeats until everyone has had a turn). */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
@@ -10,8 +12,9 @@
   var INTRO = [];
   var solo = false;
   var teams = [];      // group: the teams; solo: every student (for picking the winner)
-  var S = null;        // saved: { v, total, round, cat, left: {id: n}, winner, done, pts, log, introDone }
+  var S = null;        // saved: { v, total, round, cat, left: {id: n}, winner, done, pts, log, opts, asked, introDone }
   var audio = null;
+  var tLeft = 0, tTotal = 0, running = false, endAt = 0, timer = 0;
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
@@ -78,7 +81,89 @@
     renderStrip();
     $('totalOut').textContent = S.total;
     $('undo').disabled = !S.log.length;
+    // optional timer + name picker
+    $('clock').hidden = !S.opts.timer;
+    // Solo with the timer and the picker on: a shorter label, so the row fits the phone
+    $('minusClass').textContent = S.opts.timer && S.opts.picker ? 'Asked −1' : 'Question asked −1';
+    $('pick').hidden = !S.opts.picker || !!S.done;
+    $('timerOpt').textContent = 'Timer: ' + (S.opts.timer ? 'ON' : 'off');
+    $('timerOpt').setAttribute('aria-pressed', String(!!S.opts.timer));
+    $('secsOut').textContent = fmt(S.opts.secs);
+    $('secsLess').disabled = S.opts.secs <= 15;
+    $('secsMore').disabled = S.opts.secs >= 600;
+    $('pickOpt').textContent = 'Name picker (who asks): ' + (S.opts.picker ? 'ON' : 'off');
+    $('pickOpt').setAttribute('aria-pressed', String(!!S.opts.picker));
+    renderClock();
   }
+
+  // ---------- optional timer ----------
+  function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function renderClock() {
+    $('digits').textContent = fmt(tLeft);
+    $('digits').className = 'digits' + (tLeft <= 0 ? ' done' : tLeft <= 10 && running ? ' warn' : '');
+    $('go').textContent = running ? 'Pause' : tLeft <= 0 ? 'Again' : tLeft < tTotal ? 'Resume' : 'Start';
+  }
+  function tick() {
+    if (!running) return;
+    tLeft = (endAt - Date.now()) / 1000;
+    if (tLeft <= 0) { tLeft = 0; running = false; clearInterval(timer); tone([880, 660, 990], 0.2); toast("Time's up!", false); }
+    renderClock();
+  }
+  function stopTimer() { if (running) tLeft = Math.max(0, (endAt - Date.now()) / 1000); running = false; clearInterval(timer); }
+  function resetTimer() { stopTimer(); tTotal = tLeft = S.opts.secs; renderClock(); }
+  $('go').addEventListener('click', function () {
+    unlockAudio();
+    if (running) { stopTimer(); renderClock(); return; }
+    if (tLeft <= 0) tLeft = tTotal;
+    running = true; endAt = Date.now() + tLeft * 1000;
+    clearInterval(timer); timer = setInterval(tick, 200); renderClock();
+  });
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
+
+  // ---------- optional name picker: who asks the next question ----------
+  /** Students who can ask: everyone (Solo) or members of teams that still have questions (Group). */
+  function askers() {
+    var list = [];
+    teams.forEach(function (t) {
+      if (!solo && left(t.id) <= 0) return;
+      t.members.forEach(function (m) { list.push({ key: t.id + ':' + m.no + ':' + m.nick, nick: m.nick, team: t }); });
+    });
+    return list;
+  }
+  var spinning = false;
+  function pickName() {
+    if (spinning) return;
+    var all = askers();
+    if (!all.length) { toast('Nobody has any questions left.', false); return; }
+    unlockAudio();
+    var fresh = all.filter(function (a) { return S.asked.indexOf(a.key) < 0; });
+    if (!fresh.length) { S.asked = []; fresh = all.slice(); toast('Everyone has had a turn: starting again.', false); }
+    var chosen = fresh[Math.floor(Math.random() * fresh.length)];
+    S.asked.push(chosen.key); save();
+    $('pickBack').hidden = false;
+    $('pickTeam').textContent = ''; $('pickLeft').textContent = '';
+    $('pickName').classList.remove('landed');
+    var steps = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 14 + Math.floor(Math.random() * 5), k = 0;
+    spinning = true;
+    (function step() {
+      if (k < steps) {
+        $('pickName').textContent = all[Math.floor(Math.random() * all.length)].nick;
+        tone([420 + (k % 4) * 70], 0); k++;
+        setTimeout(step, 45 + k * k * 0.6);
+        return;
+      }
+      spinning = false;
+      $('pickName').textContent = chosen.nick;
+      $('pickName').classList.add('landed');
+      $('pickTeam').textContent = solo ? '' : chosen.team.name + ' · ' + Math.max(0, left(chosen.team.id)) + ' questions left';
+      var still = all.filter(function (a) { return S.asked.indexOf(a.key) < 0; }).length;
+      $('pickLeft').textContent = still ? still + ' still to ask' : 'Everyone has asked once';
+      tone([784, 1047], 0.12);
+    })();
+  }
+  $('pick').addEventListener('click', pickName);
+  $('pickAgain').addEventListener('click', function () { if (!spinning) pickName(); });
+  $('pickOk').addEventListener('click', function () { if (!spinning) $('pickBack').hidden = true; });
   function renderStrip() {
     var strip = $('strip');
     if (solo) {
@@ -167,6 +252,7 @@
     render();
   }
   function newRound() {
+    resetTimer();
     S.round++;
     S.cat = null; S.left = {}; S.winner = null; S.done = null;
     S.log = S.log.filter(function (L) { return L.k === 'win'; }); // can't undo questions from old rounds
@@ -209,6 +295,11 @@
     });
   });
   $('undo').addEventListener('click', function () { undo(); closeMenu(); });
+  $('timerOpt').addEventListener('click', function () { S.opts.timer = !S.opts.timer; if (!S.opts.timer) stopTimer(); save(); render(); });
+  function setSecs(d) { S.opts.secs = Math.max(15, Math.min(600, S.opts.secs + d)); save(); resetTimer(); render(); }
+  $('secsLess').addEventListener('click', function () { setSecs(-15); });
+  $('secsMore').addEventListener('click', function () { setSecs(15); });
+  $('pickOpt').addEventListener('click', function () { S.opts.picker = !S.opts.picker; save(); render(); });
   $('howTo').addEventListener('click', function () { closeMenu(); showIntro(); });
   $('resetScores').addEventListener('click', function () {
     var btn = this;
@@ -240,6 +331,9 @@
       var saved = session.resume;
       if (saved && saved.v === 1 && saved.solo === solo) S = saved;
       else S = { v: 1, solo: solo, total: 20, round: 1, cat: null, left: {}, winner: null, done: null, pts: {}, log: [], introDone: false };
+      S.opts = S.opts || { timer: false, secs: 60, picker: false };
+      S.asked = S.asked || [];
+      tTotal = tLeft = S.opts.secs;
       render();
       if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
     }).catch(function () {

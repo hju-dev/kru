@@ -320,3 +320,28 @@ button:focus-visible {
 .small {
   font-size: 14px;
 }
+
+/* optional timer + name picker (⋯ menu) */
+.clock { display: inline-flex; align-items: center; gap: 6px; }
+.clock .digits { font-family: var(--mono); font-size: 26px; min-width: 3.2ch; font-variant-numeric: tabular-nums; }
+.clock .digits.warn { color: var(--gold); }
+.clock .digits.done { color: var(--coral); }
+.pick-btn { white-space: nowrap; }
+.btn.opt { width: 100%; }
+.btn.opt[aria-pressed='true'] { border-color: var(--teal); color: var(--teal); }
+.menu-row .btn.opt { flex: 1; width: auto; }
+#pickBack { align-items: center; justify-content: center; }
+.pick-card { width: min(560px, 100%); padding: 16px; border-radius: 20px; border: 4px solid var(--gold); background: var(--stage); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.pick-label { color: var(--muted); font-weight: 800; font-size: 18px; }
+.pick-name { font: 800 64px/1.05 var(--display); color: var(--muted); min-height: 1.1em; }
+.pick-name.landed { color: var(--gold); animation: tq-pop 0.35s ease-out; }
+@keyframes tq-pop { from { transform: scale(0.7); } }
+@media (prefers-reduced-motion: reduce) { .pick-name.landed { animation: none; } }
+.pick-team { font: 800 22px var(--display); }
+.pick-left { color: var(--muted); font-size: 16px; }
+.pick-btns { display: flex; gap: 10px; margin-top: 6px; }
+.pick-btns .btn { min-width: 150px; min-height: 52px; font-size: 20px; }
+/* ⋯ menu: two columns, so it fits the phone without scrolling */
+#menuBack .menu { width: min(680px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 6px 8px; }
+#menuBack .menu > .menu-row, #menuBack .menu > p { grid-column: 1 / -1; margin: 0; }
+#menuBack .menu .btn.opt { width: auto; }

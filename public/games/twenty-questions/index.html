@@ -35,6 +35,8 @@
       <div class="controls">
         <span class="hint" id="hint"></span>
         <span class="grow"></span>
+        <span class="clock" id="clock" hidden><span class="digits" id="digits">1:00</span><button class="btn" id="go">Start</button></span>
+        <button class="btn pick-btn" id="pick" hidden>🎯 Who asks?</button>
         <button class="btn" id="minusClass" hidden>Question asked −1</button>
         <button class="btn gold" id="gotIt">Got it!</button>
         <button class="btn" id="newRound" hidden>New round ▶</button>
@@ -57,6 +59,17 @@
       </div>
     </div>
 
+    <!-- Name picker: who asks the next question -->
+    <div class="backdrop" id="pickBack" hidden>
+      <div class="pick-card" role="dialog" aria-label="Who asks the next question?">
+        <div class="pick-label">Next question from…</div>
+        <div class="pick-name" id="pickName" aria-live="polite"></div>
+        <div class="pick-team" id="pickTeam"></div>
+        <div class="pick-left" id="pickLeft"></div>
+        <div class="pick-btns"><button class="btn ghost" id="pickAgain">Pick again</button><button class="btn gold" id="pickOk">OK</button></div>
+      </div>
+    </div>
+
     <!-- ⋯ menu -->
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="More options">
@@ -69,6 +82,13 @@
           <button class="btn step" data-q="10">+10</button>
         </div>
         <p class="muted small" id="totalNote">Used from the next round (or now, if nobody has asked yet).</p>
+        <div class="menu-row">
+          <button class="btn opt" id="timerOpt" aria-pressed="false">Timer: off</button>
+          <button class="btn step" id="secsLess" aria-label="15 seconds less">−15</button>
+          <output id="secsOut">1:00</output>
+          <button class="btn step" id="secsMore" aria-label="15 seconds more">+15</button>
+        </div>
+        <button class="btn opt" id="pickOpt" aria-pressed="false">Name picker (who asks): off</button>
         <button class="btn" id="undo">Undo last</button>
         <button class="btn" id="howTo">How to play</button>
         <button class="btn ghost danger" id="resetScores">Reset all scores</button>

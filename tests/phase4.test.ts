@@ -516,3 +516,21 @@ describe('Reading Think Tank (Henry, Nov 10): the five reading games in one', ()
     expect(engine).toContain('function isChal(pos)')
   })
 })
+
+describe('20 Questions: optional timer and name picker (Henry, Nov 10)', () => {
+  const js = readFileSync(new URL('../public/games/twenty-questions/app.js', import.meta.url), 'utf8')
+  const html = readFileSync(new URL('../public/games/twenty-questions/index.html', import.meta.url), 'utf8')
+  it('both are off until switched on in the ⋯ menu', () => {
+    expect(js).toContain("S.opts = S.opts || { timer: false, secs: 60, picker: false };")
+    expect(html).toContain('id="timerOpt"')
+    expect(html).toContain('id="pickOpt"')
+  })
+  it('timer: −15 / +15 (15 s to 10 min), resets each round', () => {
+    expect(js).toContain('S.opts.secs = Math.max(15, Math.min(600, S.opts.secs + d));')
+    expect(js).toMatch(/function newRound\(\) \{\s*resetTimer\(\);/)
+  })
+  it('name picker: no repeats until everyone has asked; Group skips teams with no questions left', () => {
+    expect(js).toContain('if (!solo && left(t.id) <= 0) return;')
+    expect(js).toContain('var fresh = all.filter(function (a) { return S.asked.indexOf(a.key) < 0; });')
+  })
+})

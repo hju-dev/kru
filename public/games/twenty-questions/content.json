@@ -1,26 +1,115 @@
 {
   "about": "20 Questions has no question bank: Henry thinks of the answer. This file holds the categories and the How to play slides.",
-  "categories": ["Person", "Place", "Thing", "Idea", "Any noun"],
+  "categories": [
+    "Person",
+    "Place",
+    "Thing",
+    "Idea",
+    "Any noun"
+  ],
   "intro": [
     {
       "title": "20 Questions",
-      "text": ["Your teacher is thinking of something.", "Ask yes / no questions to find out what it is!"],
-      "example": { "rows": [["Is it an animal?", "Yes"], ["Can it fly?", "No"], ["Is it big?", "Yes"]] }
+      "text": [
+        "Your teacher is thinking of something.",
+        "Ask yes / no questions to find out what it is!"
+      ],
+      "example": {
+        "rows": [
+          [
+            "Is it an animal?",
+            "Yes"
+          ],
+          [
+            "Can it fly?",
+            "No"
+          ],
+          [
+            "Is it big?",
+            "Yes"
+          ]
+        ]
+      }
     },
     {
       "title": "Look at the category",
-      "text": ["The board shows what kind of word it is.", "Any noun = it could be anything!"],
-      "example": { "rows": [["Person", "a doctor"], ["Place", "a beach"], ["Thing", "a phone"], ["Idea", "love"]] }
+      "text": [
+        "The board shows what kind of word it is.",
+        "Any noun = it could be anything!"
+      ],
+      "example": {
+        "rows": [
+          [
+            "Person",
+            "a doctor"
+          ],
+          [
+            "Place",
+            "a beach"
+          ],
+          [
+            "Thing",
+            "a phone"
+          ],
+          [
+            "Idea",
+            "love"
+          ]
+        ]
+      }
     },
     {
       "title": "Every question counts",
-      "text": ["Each question uses one of your questions.", "No questions left? You're out!"],
-      "example": { "rows": [["Start", "20 questions"], ["Each question", "−1"]] }
+      "text": [
+        "Each question uses one of your questions.",
+        "No questions left? You're out!"
+      ],
+      "example": {
+        "rows": [
+          [
+            "Start",
+            "20 questions"
+          ],
+          [
+            "Each question",
+            "−1"
+          ]
+        ]
+      }
     },
     {
       "title": "Guess it!",
-      "text": ["Think you know? Make a guess!", "The winner gets a point for every question left."],
-      "example": { "rows": [["Got it with 12 left", "+12 points"]] }
+      "text": [
+        "Think you know? Make a guess!",
+        "The winner gets a point for every question left."
+      ],
+      "example": {
+        "rows": [
+          [
+            "Got it with 12 left",
+            "+12 points"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Timer and name picker",
+      "text": [
+        "Your teacher may start a timer for the round.",
+        "🎯 Who asks? picks the student who asks next!"
+      ],
+      "example": {
+        "rows": [
+          [
+            "🎯 Who asks?",
+            "S12"
+          ],
+          [
+            "Timer",
+            "1:00"
+          ]
+        ]
+      }
     }
   ]
 }
