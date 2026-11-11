@@ -350,3 +350,17 @@
   height: 11px;
   font-size: 0;
 }
+
+/* power-ups (one of each per team per game) */
+.powers { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.powers .pw-lab { color: var(--muted); font-weight: 800; font-size: 14px; white-space: nowrap; }
+.powers .pw { flex: 1; min-height: 44px; padding: 0 8px; font-size: 16px; white-space: nowrap; border-color: var(--violet); color: var(--fg); }
+.powers .pw.used { text-decoration: line-through; }
+.powers .pw:disabled { opacity: 0.3; }
+.powers .pw.on { background: var(--violet); color: #fff; }
+.kq-choice.gone { opacity: 0.18; text-decoration: line-through; }
+/* the big dice are purple (4 to 9) */
+.die.big { background: #9b7bff; box-shadow: 0 6px 0 #5d43b8; }
+.die.big .pip { background: #fff; }
+.dice-box.back .die.big { background: #9b7bff; box-shadow: 0 6px 0 #a33, 0 0 0 4px var(--coral); }
+.dice-row .die[hidden] { display: none; }

@@ -7,41 +7,44 @@ const html = read('public/games/race-board/index.html')
 const content = JSON.parse(read('public/games/race-board/content.json'))
 type Q = { tier: string; cat: string; q: string; choices?: string[]; answer: number | string }
 
-/** The face weights of a tier, read from app.js */
-function weights(tier: string): number[] {
-  const m = js.match(new RegExp(`${tier}: \\{[^}]*w: \\[([\\d, ]+)\\]`))
-  if (!m) throw new Error('no weights for ' + tier)
-  return m[1].split(',').map(Number)
-}
-function chanceOf(w: number[], dice: number, test: (sum: number) => boolean) {
-  const t = w.reduce((a, b) => a + b, 0)
-  const p = w.map((x) => x / t)
-  let s = 0
-  if (dice === 1) p.forEach((x, i) => { if (test(i + 1)) s += x })
-  else p.forEach((a, i) => p.forEach((b, j) => { if (test(i + j + 2)) s += a * b }))
-  return s
-}
-
-describe('Race Board dice (Henry, Nov 9)', () => {
-  it('easy: 1 die, mostly 1-3', () => expect(chanceOf(weights('easy'), 1, (n) => n <= 3)).toBeGreaterThanOrEqual(0.7))
-  it('regular: 1 fair die', () => expect(weights('regular')).toEqual([1, 1, 1, 1, 1, 1]))
-  it('hard: 2 dice, 7 or more is more likely than with fair dice', () => {
-    expect(js).toMatch(/hard: \{[^}]*dice: 2/)
-    expect(chanceOf(weights('hard'), 2, (n) => n >= 7)).toBeGreaterThan(0.75)
+describe('Race Board dice (Henry, Nov 11)', () => {
+  it('easy and regular: 1 die; hard: 2 dice; impossible: 2 big dice', () => {
+    expect(js).toMatch(/easy: \{[^}]*dice: 1, big: false/)
+    expect(js).toMatch(/regular: \{[^}]*dice: 1, big: false/)
+    expect(js).toMatch(/hard: \{[^}]*dice: 2, big: false/)
+    expect(js).toMatch(/impossible: \{[^}]*dice: 2, big: true/)
   })
-  it('impossible: 2 dice, most likely 9 or more', () => {
-    expect(js).toMatch(/impossible: \{[^}]*dice: 2/)
-    expect(chanceOf(weights('impossible'), 2, (n) => n >= 9)).toBeGreaterThan(0.65)
+  it('a big die shows 4 to 9, so two big dice are never less than 8', () => {
+    expect(js).toContain('var BIG_MIN = 4;')
+    expect(js).toContain('return big ? BIG_MIN + Math.floor(Math.random() * 6) : 1 + Math.floor(Math.random() * 6);')
+  })
+  it('a wrong answer rolls the same dice backwards; Risk It = 2 big (3 on impossible) or 2 big back dice', () => {
+    expect(js).toContain("if (risk) return { n: right && tier === 'impossible' ? 3 : 2, big: true, back: !right };")
+    expect(js).toContain('return { n: t.dice, big: t.big, back: !right };')
+    expect(js).toContain('if (spec.back) move(id, -sum,')
   })
   it('hard and impossible questions are rarer', () => {
     const share = (t: string) => Number(js.match(new RegExp(`${t}: \\{[^}]*share: (\\d+)`))![1])
     expect(share('hard')).toBeLessThan(share('regular'))
     expect(share('impossible')).toBeLessThan(share('hard'))
   })
-  it('a wrong answer rolls the back die (an ordinary die) and moves back', () => {
-    expect(js).toContain('var BACK_DIE = [1, 1, 1, 1, 1, 1];')
-    expect(js).toContain("roll(t.id, 'back');")
-    expect(js).toContain("if (kind === 'back') move(id, -sum,")
+  it('the big dice are purple', () => {
+    expect(read('public/games/race-board/style.css')).toContain('.die.big { background: #9b7bff;')
+  })
+})
+
+describe('Race Board power-ups (Henry, Nov 11)', () => {
+  it('50/50, +20 s, Free answer, Risk it: one of each per team per game', () => {
+    for (const p of ["{ id: 'fifty', label: '50/50' }", "{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free answer' }", "{ id: 'risk', label: 'Risk it' }"]) expect(js).toContain(p)
+    expect(js).toContain('function used(id, p) { return !!(S.powers[id] && S.powers[id][p]); }')
+    expect(html).toContain('id="powers"')
+  })
+  it('+20 s works even after the clock hit zero', () => {
+    expect(js).toContain('left = Math.max(0, left) + 20;')
+  })
+  it("the switch-places card shows every team's square and comes up more often", () => {
+    expect(js).toContain("{ id: 'swap', text: 'Switch places with the team of your choice!', w: 3 }")
+    expect(js).toContain("t.name + ' is on ' + (pos(id) ? 'square ' + pos(id) : 'START')")
   })
 })
 

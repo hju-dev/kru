@@ -23,17 +23,13 @@
   {
    "title": "Your turn",
    "text": [
-    "Answer one question. Harder questions = bigger dice!",
-    "Wrong? Roll the back dice and move back."
+    "Answer one question. Harder questions = more dice!",
+    "Wrong? Roll the same dice backwards."
    ],
    "example": {
     "rows": [
      [
-      "Easy",
-      "1 die (small)"
-     ],
-     [
-      "Regular",
+      "Easy or Regular",
       "1 die"
      ],
      [
@@ -42,7 +38,30 @@
      ],
      [
       "Impossible",
-      "2 big dice"
+      "2 big purple dice (8+)"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Power-ups",
+   "text": [
+    "Each team can use each power-up ONCE per game.",
+    "50/50, +20 seconds, Free answer, or Risk it!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "50/50",
+      "2 wrong answers go"
+     ],
+     [
+      "Free answer",
+      "counts as right"
+     ],
+     [
+      "Risk it",
+      "right 2 big dice, wrong 2 big back"
      ]
     ]
    }
