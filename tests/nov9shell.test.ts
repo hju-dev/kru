@@ -64,3 +64,22 @@ describe('teams screen never cuts names off (Henry, Nov 11)', () => {
     expect(css).toContain('justify-content: safe center;')
   })
 })
+
+describe('names never cut off in any game (Henry, Nov 11)', () => {
+  const sdk = read('public/sdk/kru.js')
+  it('every game sizes its text again once the fonts have loaded', () => {
+    expect(sdk).toContain("if (fonts.addEventListener) fonts.addEventListener('loadingdone', again);")
+    expect(sdk).toContain("window.dispatchEvent(new Event('resize'))")
+  })
+  it('practice mode can use long names (&long=1) to check every screen', () => {
+    expect(sdk).toContain("nick: (long ? 'Student ' : 'S') + i")
+  })
+  it('the podium shrinks its steps, then the member names, for big teams', () => {
+    expect(read('public/games/shared/kru-end.js')).toContain('function fitPodium(b)')
+    expect(read('public/games/shared/kru-end.css')).toContain('calc(min(150px, 34vh) * var(--kp-step, 1))')
+  })
+  it('big names leave room for g, p and y', () => {
+    expect(read('public/games/name-picker/style.css')).toContain('font: 800 72px/1.2 var(--display);')
+    expect(read('public/games/class-order/style.css')).toContain('.now { font: 800 64px/1.2 var(--display);')
+  })
+})

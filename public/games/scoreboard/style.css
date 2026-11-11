@@ -109,15 +109,18 @@ button:disabled {
   margin-top: 4px;
 }
 .teams.many .team {
-  padding: 4px 8px 6px;
-  border-top-width: 5px;
+  padding: 2px 8px 4px;
+  border-top-width: 4px;
+}
+.teams.many .btns {
+  margin-top: 1px;
 }
 .teams.many .members {
   display: none;
 }
 .teams.many .pts {
   grid-row: auto;
-  font-size: 30px;
+  font-size: 26px;
 }
 .teams.many + .hint {
   display: none;

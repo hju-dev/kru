@@ -69,7 +69,7 @@ button.small {
   font-size: 40px;
 }
 .who .name {
-  font: 800 72px/1 var(--display); /* shrunk by app.js until it fits */
+  font: 800 72px/1.2 var(--display); /* shrunk by app.js until it fits; 1.2 so g, p, y are never cut */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
