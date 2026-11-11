@@ -47,3 +47,20 @@ describe('How to play preview from the library', () => {
     expect(preview).toContain("'kru-mock-state:'") // cleared, so the slides show first
   })
 })
+
+describe('teams screen never cuts names off (Henry, Nov 11)', () => {
+  const tsx = read('src/components/TeamsReveal.tsx')
+  const css = read('src/components/TeamsReveal.css')
+  it('measures each card\'s text block, not just the card', () => {
+    expect(tsx).toContain('if (inner.offsetHeight > room - 2 ||')
+    expect(tsx).toContain('<div className="tr-in">')
+  })
+  it('measures again once the fonts have loaded and when the grid changes size', () => {
+    expect(tsx).toContain("fonts?.addEventListener?.('loadingdone', fit)")
+    expect(tsx).toContain('fonts?.ready.then(')
+    expect(tsx).toContain('new ResizeObserver(')
+  })
+  it('if anything ever spills, the team name at the top stays visible', () => {
+    expect(css).toContain('justify-content: safe center;')
+  })
+})

@@ -60,6 +60,13 @@
 .tr-team > * {
   flex-shrink: 0; /* never squash the name: the font shrinks instead */
 }
+/* if anything ever spills, it spills at the bottom: the team name at the top is never cut */
+.tr-team {
+  justify-content: safe center;
+}
+.tr-in {
+  min-width: 0;
+}
 .tr-team h2 {
   margin: 0;
   font: 800 1.1em/1.1 var(--display);
