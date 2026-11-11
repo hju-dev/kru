@@ -12,7 +12,7 @@ button.small { min-height: var(--tap); min-width: var(--tap); border-radius: 12p
   background: var(--stage); border: 3px solid var(--gold); border-radius: 20px; padding: 4px 16px; text-align: center;
 }
 .now-label { font-size: 14px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-.now { font: 800 64px/1 var(--display); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.now { font: 800 64px/1.2 var(--display); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .now .no { color: var(--gold); font-family: var(--mono); font-size: 0.6em; margin-right: 0.3em; }
 .now.finished { font-size: 34px; color: var(--teal); white-space: normal; }
 .deck { font-size: 20px; color: var(--muted); font-weight: 700; }

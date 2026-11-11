@@ -41,14 +41,16 @@
     var mode = params.get('mode') === 'solo' ? 'solo' : 'group';
     var level = /^M\.[123]$/.test(params.get('level') || '') ? params.get('level') : 'M.2';
     var students = [];
-    for (var i = 1; i <= 30; i++) students.push({ no: i, nick: 'S' + i });
+    // &long=1: long student names, &long=2: long team names too (placeholders), to check that nothing gets cut off
+    var long = params.get('long') === '1' || params.get('long') === '2', longTeams = params.get('long') === '2';
+    for (var i = 1; i <= 30; i++) students.push({ no: i, nick: (long ? 'Student ' : 'S') + i });
     var teams;
     if (mode === 'solo') {
       teams = students.map(function (s) { return { id: 's' + s.no, name: s.nick, members: [s] }; });
     } else {
       var n = Math.max(2, Math.min(10, Number(params.get('teams')) || 6));
       teams = [];
-      for (var t = 0; t < n; t++) teams.push({ id: 't' + (t + 1), name: 'Team ' + (t + 1), members: [] });
+      for (var t = 0; t < n; t++) teams.push({ id: 't' + (t + 1), name: (longTeams ? 'Super Team ' : 'Team ') + (t + 1), members: [] });
       students.forEach(function (s, k) { teams[k % n].members.push(s); });
     }
     var resume, day = null;
@@ -69,6 +71,16 @@
       keep: keep,
     };
   }
+
+  // The iPhone may still be loading the fonts when a game first sizes its text. Wider letters can then push names and
+  // questions out of their boxes, so every game sizes its text again (on 'resize') once the fonts are in.
+  (function () {
+    var fonts = document.fonts;
+    if (!fonts) return;
+    var again = function () { try { window.dispatchEvent(new Event('resize')); } catch (e) {} };
+    if (fonts.ready) fonts.ready.then(again);
+    if (fonts.addEventListener) fonts.addEventListener('loadingdone', again);
+  })();
 
   window.addEventListener('message', function (e) {
     if (e.origin !== location.origin || e.source !== window.parent) return;

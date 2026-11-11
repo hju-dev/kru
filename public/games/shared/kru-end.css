@@ -205,14 +205,14 @@ button.end {
   text-wrap: balance;
 }
 .kp-mem {
-  font-size: 16px;
+  font-size: calc(var(--kp-mem, 17px) - 1px); /* shrunk by kru-end.js for big teams */
   line-height: 1.2;
   color: var(--fg, #f6f3ec);
   overflow-wrap: anywhere;
   text-wrap: balance;
 }
 .p1 .kp-mem {
-  font-size: 17px;
+  font-size: var(--kp-mem, 17px);
   font-weight: 700;
 }
 .kp-pts {
@@ -228,9 +228,9 @@ button.end {
   font: 800 34px/1 var(--display, sans-serif);
   color: #17151f;
 }
-.p1 .kp-step { height: min(150px, 34vh); background: linear-gradient(#ffd25e, #e09b00); box-shadow: 0 0 40px rgb(255 183 3 / 0.55); }
-.p2 .kp-step { height: min(105px, 24vh); background: linear-gradient(#e9e7f0, #a9a6b6); }
-.p3 .kp-step { height: min(75px, 17vh); background: linear-gradient(#f0b27a, #b86b2f); }
+.p1 .kp-step { height: calc(min(150px, 34vh) * var(--kp-step, 1)); background: linear-gradient(#ffd25e, #e09b00); box-shadow: 0 0 40px rgb(255 183 3 / 0.55); }
+.p2 .kp-step { height: calc(min(105px, 24vh) * var(--kp-step, 1)); background: linear-gradient(#e9e7f0, #a9a6b6); }
+.p3 .kp-step { height: calc(min(75px, 17vh) * var(--kp-step, 1)); background: linear-gradient(#f0b27a, #b86b2f); }
 .p1 .kp-name { font-size: 34px; color: var(--gold, #ffb703); text-shadow: 0 0 18px rgb(255 183 3 / 0.5); }
 .p1.up .kp-name { animation: kp-win 0.9s ease-out 0.5s both; }
 @keyframes kp-win {

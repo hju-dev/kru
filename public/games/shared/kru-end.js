@@ -185,6 +185,20 @@
 
   var box = null, timers = [];
   function clear() { timers.forEach(clearTimeout); timers = []; }
+  /** Big teams (up to 15 students): shorter steps first, then smaller member names, until every column fits. */
+  function fitPodium(b) {
+    if (!b || !b.isConnected) return;
+    var stage = b.querySelector('.kp-stage'), cols = b.querySelectorAll('.kp-col');
+    var tooTall = function () {
+      for (var i = 0; i < cols.length; i++) if (cols[i].offsetHeight > stage.clientHeight + 1) return true;
+      return false;
+    };
+    var step = 1, mem = 17;
+    b.style.setProperty('--kp-step', step); b.style.setProperty('--kp-mem', mem + 'px');
+    while (tooTall() && step > 0.35) { step = Math.round((step - 0.1) * 100) / 100; b.style.setProperty('--kp-step', step); }
+    while (tooTall() && mem > 11) { mem--; b.style.setProperty('--kp-mem', mem + 'px'); }
+  }
+  window.addEventListener('resize', function () { fitPodium(box); });
   function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
 
   function show(standings, then, actions) {
@@ -217,6 +231,7 @@
       }).join('') + '</div>' +
       '<div class="kp-btns"><button class="ke-btn ghost" data-k="skip">Skip ▶</button></div>';
     document.body.appendChild(box);
+    fitPodium(box);
 
     function reveal(p) {
       var col = box && box.querySelector('.kp-col.p' + p);
