@@ -75,8 +75,8 @@
   // The iPhone may still be loading the fonts when a game first sizes its text. Wider letters can then push names and
   // questions out of their boxes, so every game sizes its text again (on 'resize') once the fonts are in.
   (function () {
-    var fonts = document.fonts;
-    if (!fonts) return;
+    var fonts = typeof document !== 'undefined' && document.fonts;
+    if (!fonts || !window.dispatchEvent) return;
     var again = function () { try { window.dispatchEvent(new Event('resize')); } catch (e) {} };
     if (fonts.ready) fonts.ready.then(again);
     if (fonts.addEventListener) fonts.addEventListener('loadingdone', again);
