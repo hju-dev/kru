@@ -105,3 +105,19 @@ describe('Race Board levels moved up (Henry, Nov 10)', () => {
     expect(qs('M.3')).toContain('What is the plural of "criterion"?')
   })
 })
+
+describe('Quiz Board: choosing team only + power-ups (Henry, Nov 11)', () => {
+  const qb = read('public/games/quiz-board/app.js')
+  const qbHtml = read('public/games/quiz-board/index.html')
+  it('a ⋯ menu switch: all teams (default) or the choosing team only', () => {
+    expect(qbHtml).toContain('id="oneTeamOpt"')
+    expect(qb).toContain("'Who answers: ' + (S.oneTeam ? 'choosing team only' : 'all teams')")
+  })
+  it('✓ Right / ✗ Wrong for the choosing team; Risk it = double or lose the points', () => {
+    expect(qb).toContain('var d = right ? v * (S.risk ? 2 : 1) : (S.risk ? -v : 0);')
+  })
+  it('power-ups once each per team per game: 50/50, +20 s, Free answer, Risk it', () => {
+    for (const p of ["{ id: 'fifty', label: '50/50' }", "{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free answer' }", "{ id: 'risk', label: 'Risk it' }"]) expect(qb).toContain(p)
+    expect(qb).toContain('left = Math.max(0, left) + 20;')
+  })
+})

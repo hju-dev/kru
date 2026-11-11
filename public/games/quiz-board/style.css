@@ -142,3 +142,17 @@
   border-color: var(--teal);
   color: var(--bg);
 }
+
+/* "Choosing team only" + power-ups */
+.q-ans { color: var(--gold); }
+.powers { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.powers[hidden] { display: none; }
+.powers .pw-lab { color: var(--muted); font-weight: 800; font-size: 14px; white-space: nowrap; }
+.powers .pw { flex: 1; min-height: 44px; padding: 0 8px; font-size: 16px; white-space: nowrap; border-color: var(--violet); color: var(--fg); }
+.powers .pw.used { text-decoration: line-through; }
+.powers .pw:disabled { opacity: 0.3; }
+.powers .pw.on { background: var(--violet); color: #fff; }
+.kq-choice.gone { opacity: 0.18; text-decoration: line-through; }
+.btn.opt[aria-pressed='true'] { border-color: var(--teal); color: var(--teal); }
+/* one team answers: no team strip under the question (the board shows the scores), so the question has room */
+.one-team .strip { display: none; }
