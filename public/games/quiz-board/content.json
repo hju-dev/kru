@@ -45,6 +45,25 @@
     "big": "DOUBLE!",
     "tag": "Surprise"
    }
+  },
+  {
+   "title": "One team at a time",
+   "text": [
+    "Sometimes only the team that chose answers.",
+    "Power-ups (once each): 50/50, +20 s, Free answer, Risk it!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Risk it and right",
+      "points ×2"
+     ],
+     [
+      "Risk it and wrong",
+      "lose the points"
+     ]
+    ]
+   }
   }
  ]
 }

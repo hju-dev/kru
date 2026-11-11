@@ -30,15 +30,18 @@
       <!-- One question -->
       <div class="qb-q" id="qView" hidden>
         <section class="stage" id="stage" aria-live="polite">
-          <div class="qhead"><span id="qTopic"></span> · <b id="qValue"></b> <span class="double" id="qDouble" hidden>DOUBLE!</span></div>
+          <div class="qhead"><span id="qTopic"></span> · <b id="qValue"></b> <span class="double" id="qDouble" hidden>DOUBLE!</span> <b class="q-ans" id="qAns" hidden></b></div>
           <div id="qBody"></div>
         </section>
+        <div class="powers" id="powers" role="group" aria-label="Power-ups: one of each per team per game" hidden></div>
         <div class="controls">
           <span class="digits" id="digits">0:20</span>
           <div class="progress"><i id="fill"></i></div>
           <button class="btn" id="go">Start timer</button>
           <button class="btn teal" id="reveal">Reveal</button>
           <button class="btn gold" id="back">Back to board ▶</button>
+          <button class="btn ghost" id="wrong" hidden>✗ Wrong</button>
+          <button class="btn gold" id="right" hidden>✓ Right</button>
         </div>
         <div class="strip" id="strip" role="group" aria-label="Teams: tap the teams that were right"></div>
       </div>
@@ -52,6 +55,7 @@
           <button class="btn" id="newBoard">New board</button>
           <button class="btn" id="howTo">How to play</button>
         </div>
+        <button class="btn opt" id="oneTeamOpt" aria-pressed="false">Who answers: all teams</button>
         <button class="btn ghost danger" id="resetScores">Reset all scores</button>
         <button class="btn ghost" id="menuClose">Close</button>
       </div>

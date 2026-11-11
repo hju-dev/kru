@@ -2,7 +2,10 @@
    The question opens with a timer; Henry taps the teams that were right (tap again to take it back),
    then Reveal, then Back to board. One square on each board is a secret DOUBLE (twice the points).
    Questions: Quiz Battle's built-in sets for the level (games/quiz-battle/content.json), 5 per topic,
-   easier ones (A-D choices) on the low squares, short answers on the high ones. */
+   easier ones (A-D choices) on the low squares, short answers on the high ones.
+   Optional (⋯ menu, Henry Nov 11): "Choosing team only": only the team that picked the square answers; Henry taps
+   ✓ Right or ✗ Wrong. That team can use power-ups, one of each per game: 50/50, +20 s, Free answer, Risk it
+   (right = double points, wrong = lose the square's points). */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
@@ -11,7 +14,7 @@
   var esc = KruQuiz.esc;
 
   var SETS = [], teams = [], INTRO = [];
-  var S = null; // saved: { v, level, cols: [setIndex], board: [[questionIndex x5] x5], used: {key: [teamIds]}, dd, turn, open, revealed, secs, pts, log }
+  var S = null; // saved: { v, level, cols, board, used: {key: [teamIds]}, dd, turn, open, revealed, secs, pts, log, oneTeam, powers, gone, risk }
   var left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
 
   function save() { Kru.saveState(S); }
@@ -115,7 +118,12 @@
     $('qValue').textContent = value(c, r) + (value(c, r) === 1 ? ' point' : ' points');
     $('qDouble').hidden = S.dd !== S.open;
     $('qBody').innerHTML = KruQuiz.html(qq, S.revealed);
+    (S.gone || []).forEach(function (i) { var el = $('qBody').querySelectorAll('.kq-choice')[i]; if (el) el.classList.add('gone'); });
     $('reveal').disabled = S.revealed;
+    var one = !!S.oneTeam;
+    $('qView').classList.toggle('one-team', one);
+    $('powers').hidden = !one; $('right').hidden = !one; $('wrong').hidden = !one; $('back').hidden = one;
+    if (one) { $('qAns').hidden = false; $('qAns').textContent = '· ' + picker().name + ' answers'; renderPowers(qq); } else $('qAns').hidden = true;
     var right = S.used[S.open] || [], max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
     $('strip').innerHTML = teams.map(function (t, i) {
       var on = right.indexOf(t.id) >= 0;
@@ -133,7 +141,8 @@
   }
   function openSquare(k) {
     unlockAudio();
-    S.open = k; S.revealed = false; S.used[k] = S.used[k] || [];
+    S.open = k; S.revealed = false; S.used[k] = S.used[k] || []; S.gone = null; S.risk = false;
+    var who = picker(); S.lastPowers = who ? JSON.parse(JSON.stringify(S.powers[who.id] || {})) : null;
     save();
     resetTimer();
     show();
@@ -141,7 +150,7 @@
   }
   function closeSquare() {
     stopTimer();
-    S.open = null; S.revealed = false;
+    S.open = null; S.revealed = false; S.gone = null; S.risk = false;
     S.turn = (S.turn + 1) % Math.max(1, students().length);
     save();
     show();
@@ -174,16 +183,89 @@
 
   // ---------- buttons ----------
   $('board').addEventListener('click', function (e) { var b = e.target.closest('[data-k]'); if (b) openSquare(b.dataset.k); });
-  $('strip').addEventListener('click', function (e) { var b = e.target.closest('[data-t]'); if (b && S.open) { unlockAudio(); toggleRight(b.dataset.t); } });
+  $('strip').addEventListener('click', function (e) { var b = e.target.closest('[data-t]'); if (b && S.open && !S.oneTeam) { unlockAudio(); toggleRight(b.dataset.t); } });
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
   $('reveal').addEventListener('click', function () { unlockAudio(); stopTimer(); renderClock(); S.revealed = true; save(); tone([523, 659]); renderQuestion(); });
   $('back').addEventListener('click', closeSquare);
+
+  // ---------- "Choosing team only": ✓ Right / ✗ Wrong for the team that picked the square ----------
+  function markOne(right) {
+    unlockAudio();
+    var k = S.open, c = +k.split('-')[0], r = +k.split('-')[1], v = value(c, r), t = picker();
+    var d = right ? v * (S.risk ? 2 : 1) : (S.risk ? -v : 0);
+    var powersBefore = JSON.parse(JSON.stringify(S.powers[t.id] || {}));
+    if (S.risk) use(t.id, 'risk');
+    S.used[k] = right ? [t.id] : [];
+    if (d) { S.pts[t.id] = pts(t.id) + d; Kru.score(t.id, d, right ? 'quiz board' : 'risk it'); }
+    // Undo gives back the points AND the power-ups used on this question (a mis-tap shouldn't cost a power-up)
+    S.last = { k: k, t: t.id, d: d, turn: S.turn, powers: S.lastPowers || powersBefore };
+    S.lastPowers = null;
+    tone(right ? [784, 988] : [330, 262], 0.12);
+    closeSquare();
+    toast(t.name + (d > 0 ? ' +' + d : d < 0 ? ' −' + Math.abs(d) : ': no points') + (S.last && right ? ' ✓' : ' ✗'), true);
+  }
+  $('right').addEventListener('click', function () { markOne(true); });
+  $('wrong').addEventListener('click', function () { markOne(false); });
+  $('toastUndo').addEventListener('click', function () {
+    var L = S.last;
+    if (!L || S.open) return;
+    if (L.d) { S.pts[L.t] = pts(L.t) - L.d; Kru.score(L.t, -L.d, 'undo'); }
+    delete S.used[L.k]; S.turn = L.turn; S.last = null;
+    if (L.powers) S.powers[L.t] = L.powers;
+    save(); $('toast').hidden = true; openSquare(L.k);
+  });
+
+  // ---------- power-ups (one of each per team per game, "Choosing team only") ----------
+  var POWERS = [
+    { id: 'fifty', label: '50/50' },
+    { id: 'time', label: '+20 s' },
+    { id: 'free', label: 'Free answer' },
+    { id: 'risk', label: 'Risk it' },
+  ];
+  function used(id, p) { return !!(S.powers[id] && S.powers[id][p]); }
+  function use(id, p) { (S.powers[id] = S.powers[id] || {})[p] = true; save(); }
+  function renderPowers(qq) {
+    var id = picker().id;
+    $('powers').innerHTML = '<span class="pw-lab">Power-ups:</span>' + POWERS.map(function (p) {
+      var off = used(id, p.id) || (p.id === 'fifty' && (!Array.isArray(qq.choices) || qq.choices.length < 4 || !!S.gone)) || (S.revealed && p.id !== 'time');
+      var on = p.id === 'risk' && S.risk;
+      return '<button class="btn pw' + (on ? ' on' : '') + (used(id, p.id) ? ' used' : '') + '" data-pw="' + p.id + '"' + (off && !on ? ' disabled' : '') +
+        ' aria-pressed="' + on + '">' + (on ? '🎲 Risk it: ON (×2)' : p.label) + '</button>';
+    }).join('');
+  }
+  $('powers').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-pw]');
+    if (!b || b.disabled || !S.open) return;
+    unlockAudio();
+    var id = picker().id, p = b.dataset.pw, c = +S.open.split('-')[0], r = +S.open.split('-')[1], qq = q(c, r);
+    if (p === 'fifty') {
+      var wrong = qq.choices.map(function (_, i) { return i; }).filter(function (i) { return i !== qq.answer; });
+      for (var j = wrong.length - 1; j > 0; j--) { var x = Math.floor(Math.random() * (j + 1)); var y = wrong[j]; wrong[j] = wrong[x]; wrong[x] = y; }
+      S.gone = wrong.slice(0, 2); use(id, 'fifty'); tone([523, 392], 0.1); renderQuestion();
+    } else if (p === 'time') {
+      left = Math.max(0, left) + 20; total = Math.max(total, left); use(id, 'time'); tone([660, 880, 1047], 0.08);
+      if (!running) startTimer(); else { endAt = Date.now() + left * 1000; renderClock(); }
+      renderQuestion();
+    } else if (p === 'free') {
+      use(id, 'free'); toast('🎟 Free answer!', false); markOne(true);
+    } else if (p === 'risk') {
+      S.risk = !S.risk; save(); tone(S.risk ? [392, 523, 659] : [440], 0.08); renderQuestion();
+    }
+  });
+  $('oneTeamOpt').addEventListener('click', function () {
+    if (S.open) { toast('Go back to the board first.', false); return; }
+    S.oneTeam = !S.oneTeam; save(); renderOneOpt();
+  });
+  function renderOneOpt() {
+    $('oneTeamOpt').textContent = 'Who answers: ' + (S.oneTeam ? 'choosing team only' : 'all teams');
+    $('oneTeamOpt').setAttribute('aria-pressed', String(!!S.oneTeam));
+  }
 
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'Reset all scores'; }
   function renderSecs() { $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join(''); }
-  $('more').addEventListener('click', function () { renderSecs(); disarm(); $('menuBack').hidden = false; });
+  $('more').addEventListener('click', function () { renderSecs(); renderOneOpt(); disarm(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('secsRow').addEventListener('click', function (e) { var b = e.target.closest('[data-secs]'); if (!b) return; S.secs = +b.dataset.secs; save(); resetTimer(); renderSecs(); });
@@ -231,6 +313,7 @@
         var b = newBoard();
         Object.keys(b).forEach(function (k) { S[k] = b[k]; });
       }
+      S.powers = S.powers || {};
       total = left = S.secs;
       show();
       INTRO = KruIntro.forLevel(c, Q.level);
