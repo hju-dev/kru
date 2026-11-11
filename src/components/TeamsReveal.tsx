@@ -28,9 +28,14 @@ export function TeamsReveal({ session, title, onStart, onChange }: { session: Se
         const cards = el.children
         let ok = el.scrollHeight <= H + 1
         for (let i = 0; ok && i < cards.length; i++) {
+          // measure the text block itself: a centered block that is too tall spills out at the top AND the bottom,
+          // and the card's own scroll size misses the top half (Henry's iPhone, Nov 11)
           const c = cards[i] as HTMLElement
-          const h = c.firstElementChild as HTMLElement | null
-          if (c.scrollWidth > c.clientWidth + 1 || c.scrollHeight > c.clientHeight + 1 || (h && h.scrollWidth > h.clientWidth + 1)) ok = false
+          const inner = c.firstElementChild as HTMLElement
+          const h = inner.firstElementChild as HTMLElement
+          const cs = getComputedStyle(c)
+          const room = c.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom)
+          if (inner.offsetHeight > room - 2 || inner.scrollWidth > inner.clientWidth + 1 || h.scrollWidth > h.clientWidth + 1) ok = false
         }
         if (ok) {
           if (size > best.size) best = { cols, size }
@@ -45,7 +50,20 @@ export function TeamsReveal({ session, title, onStart, onChange }: { session: Se
   useLayoutEffect(() => {
     fit()
     window.addEventListener('resize', fit)
-    return () => window.removeEventListener('resize', fit)
+    // the iPhone may still be loading the fonts when the screen first draws: wider letters wrap names onto
+    // more lines, so measure again once the fonts are in (and whenever the grid changes size)
+    const fonts = document.fonts
+    let alive = true
+    fonts?.ready.then(() => alive && fit())
+    fonts?.addEventListener?.('loadingdone', fit)
+    const ro = typeof ResizeObserver === 'function' && grid.current ? new ResizeObserver(() => fit()) : null
+    if (ro && grid.current) ro.observe(grid.current)
+    return () => {
+      alive = false
+      window.removeEventListener('resize', fit)
+      fonts?.removeEventListener?.('loadingdone', fit)
+      ro?.disconnect()
+    }
   }, [fit])
 
   return (
@@ -68,12 +86,14 @@ export function TeamsReveal({ session, title, onStart, onChange }: { session: Se
       <div className="tr-grid" ref={grid} role="list" aria-label="Teams">
         {teams.map((t, i) => (
           <section key={t.id} className="tr-team" role="listitem" style={{ '--c': COLORS[i % COLORS.length] } as React.CSSProperties}>
-            <h2>{t.name}</h2>
-            <p>
-              {t.members.map((m) => (
-                <span key={`${m.no}:${m.nick}`}>{m.nick}</span>
-              ))}
-            </p>
+            <div className="tr-in">
+              <h2>{t.name}</h2>
+              <p>
+                {t.members.map((m) => (
+                  <span key={`${m.no}:${m.nick}`}>{m.nick}</span>
+                ))}
+              </p>
+            </div>
           </section>
         ))}
       </div>
