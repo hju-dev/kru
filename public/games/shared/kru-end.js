@@ -198,7 +198,7 @@
     while (tooTall() && step > 0.35) { step = Math.round((step - 0.1) * 100) / 100; b.style.setProperty('--kp-step', step); }
     while (tooTall() && mem > 11) { mem--; b.style.setProperty('--kp-mem', mem + 'px'); }
   }
-  window.addEventListener('resize', function () { fitPodium(box); });
+  if (window.addEventListener) window.addEventListener('resize', function () { fitPodium(box); });
   function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
 
   function show(standings, then, actions) {
