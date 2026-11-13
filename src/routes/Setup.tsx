@@ -86,7 +86,7 @@ export function Setup() {
   if (!cls) return <Problem text="Choose a class on the home screen first." />
   if (roster.length === 0) return <Problem text={`${cls.name} has no active students yet. Add them in Dashboard → Rosters (or in the Rosters tab of your Sheet), then tap the sync button.`} />
   if (!session) return <main className="screen" />
-  return <SetupBoard key={session.id} session={session} roster={roster} gameTitle={game.title} modes={game.modes} hasLevels={game.levels.length > 0} hasUnits={!!game.units} patch={patch} onStart={(id) => navigate(`/play/${id}`, { replace: true })} />
+  return <SetupBoard key={session.id} session={session} roster={roster} gameTitle={game.title} modes={game.modes} hasLevels={game.levels.length > 0} hasUnits={!!game.units} slug={slug} patch={patch} onStart={(id) => navigate(`/play/${id}`, { replace: true })} />
 }
 
 function Problem({ text }: { text: string }) {
@@ -107,11 +107,12 @@ interface BoardProps {
   modes: Mode[]
   hasLevels: boolean
   hasUnits: boolean
+  slug: string
   patch: (id: string, change: Partial<Session> | ((s: Session) => Partial<Session>)) => void
   onStart: (id: string) => void
 }
 
-function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits, patch, onStart }: BoardProps) {
+function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits, slug, patch, onStart }: BoardProps) {
   const allSets = useApp((st) => st.data?.teamSets)
   const teamSets = allSets ?? []
   const [selected, setSelected] = useState<number[]>([])
@@ -239,6 +240,8 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
     )
   }
 
+  // units and lesson packs for this game, level and class
+  const units = hasUnits ? unitsFor(s.level, slug, s.class) : []
   return (
     <main className={`setup${selected.length ? ' placing' : ''}`}>
       <header className="setup-bar">
@@ -258,7 +261,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
             ))}
           </div>
         )}
-        {hasUnits && unitsFor(s.level).length > 0 && (
+        {units.length > 0 && (
           <select
             className="unit-pick"
             aria-label="Content: built-in or a unit from your lessons"
@@ -266,7 +269,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
             onChange={(e) => update({ unit: e.target.value || undefined })}
           >
             <option value="">Built-in content</option>
-            {unitsFor(s.level).map((u) => (
+            {units.map((u) => (
               <option key={u.id} value={u.id}>
                 {u.title}
               </option>

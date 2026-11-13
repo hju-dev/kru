@@ -1,0 +1,193 @@
+{
+ "id": "m3-u8-l1",
+ "level": "M.3",
+ "course": "M.3 Communication",
+ "title": "Unit 8 L1: Regret & Forgiveness",
+ "games": [
+  "quiz-battle",
+  "quiz-board",
+  "sentence-scramble"
+ ],
+ "classes": [
+  "M.3/2",
+  "M.3/3"
+ ],
+ "source": "Henry's Unit 8 lesson packs (M.3 Communication), Nov 13. American spelling (apologize, not the British -ise).",
+ "sets": [
+  {
+   "name": "Regret & Forgiveness",
+   "questions": [
+    {
+     "q": "Ava's friend needed her, but she stayed home to babysit. Ava says: \"I really regret ___ you down.\"",
+     "choices": [
+      "let",
+      "to let",
+      "letting",
+      "lets"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I really regret letting you down."
+    },
+    {
+     "q": "Sasha called a classmate a bad name. She talks to her teacher, so she needs a formal phrase. What does she say?",
+     "choices": [
+      "I apologize for calling Ben that name.",
+      "Sorry, I feel awful about Ben.",
+      "Ben, it won't happen again.",
+      "I wish I didn't call Ben that."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I apologize for calling Ben that name."
+    },
+    {
+     "q": "Ruth dropped Luis's tablet by accident, and Luis shouted at her. Now he says: \"I'm sorry, I ___ have shouted at you like that.\"",
+     "choices": [
+      "should",
+      "shouldn't",
+      "couldn't",
+      "wouldn't"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I'm sorry, I shouldn't have shouted at you like that."
+    },
+    {
+     "q": "Tom wants Ava to know she did nothing wrong. Which phrase expresses forgiveness?",
+     "choices": [
+      "It won't happen again.",
+      "I feel really bad.",
+      "It wasn't your fault.",
+      "I really regret it."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "It wasn't your fault."
+    },
+    {
+     "q": "Nora told Emma a secret about Ellie's parents. Now she feels regret. She says: \"I wish I ___ told Emma.\"",
+     "choices": [
+      "hadn't",
+      "haven't",
+      "didn't",
+      "don't"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish I hadn't told Emma."
+    },
+    {
+     "q": "Luis feels bad about his angry words. He says: \"I'm really sorry for ___ you.\"",
+     "choices": [
+      "upset",
+      "to upset",
+      "upsets",
+      "upsetting"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I'm really sorry for upsetting you."
+    },
+    {
+     "q": "Sasha promises the teacher she won't do it again. What does she say?",
+     "choices": [
+      "It doesn't matter, I promise.",
+      "It won't happen again, I promise.",
+      "It wasn't my fault, I promise.",
+      "Don't worry about it, I promise."
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "It won't happen again, I promise."
+    },
+    {
+     "q": "Which forgiveness phrase means \"It was not your choice. You had no control\"?",
+     "choices": [
+      "You couldn't help it.",
+      "That's all right.",
+      "It doesn't matter.",
+      "Don't worry about it."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "You couldn't help it."
+    },
+    {
+     "q": "Your best friend forgot your birthday and says sorry. You want to forgive them in an informal way. What do you say?",
+     "choices": [
+      "I apologize for forgetting.",
+      "I feel awful about it.",
+      "I should have remembered.",
+      "Don't worry about it."
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "Don't worry about it."
+    },
+    {
+     "q": "A friend says: \"I really regret letting you down.\" How does your friend feel?",
+     "choices": [
+      "happy and proud",
+      "angry with you",
+      "surprised and excited",
+      "sorry and unhappy"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I really regret letting you down."
+    }
+   ]
+  }
+ ],
+ "scramble": [
+  {
+   "text": "I wish I hadn't told her.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I'm sorry if I upset you.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I feel really bad about it.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I shouldn't have shouted at you.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I'm really sorry for upsetting you.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I apologize for calling him a name.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "It won't happen again, I promise.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I really regret letting you down.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "Don't worry about it.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "It doesn't matter.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "You couldn't help it.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "It wasn't your fault.",
+   "focus": "regret & forgiveness"
+  }
+ ]
+}

@@ -243,16 +243,20 @@
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
-    contentReady.then(function (content) {
+    Promise.all([contentReady, KruQuiz.unit(session)]).then(function (both) {
+      var content = both[0], unit = both[1];
       var level = content[session.level] ? session.level : 'M.2';
-      SENTENCES = content[level].sentences;
+      // a lesson pack's "scramble" sentences (e.g. Unit 8 L1), if it has some; otherwise the built-in ones
+      var mine = unit && Array.isArray(unit.scramble) ? unit.scramble.filter(function (x) { return x && x.text; }) : [];
+      SENTENCES = mine.length >= 5 ? mine : content[level].sentences;
+      var unitId = mine.length >= 5 ? unit.id : null;
       teams = Kru.allTeams();
       KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
         award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); renderTeams(); } });
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === SENTENCES.length) S = saved;
-      else S = { v: 1, level: level, order: shuffled(SENTENCES.length), pos: 0, shuffles: {}, places: {}, revealed: {}, shownAt: {}, revealedAt: {}, pts: {}, log: [] };
+      if (saved && saved.v === 1 && saved.level === level && (saved.unit || null) === unitId && Array.isArray(saved.order) && saved.order.length === SENTENCES.length) S = saved;
+      else S = { v: 1, level: level, unit: unitId, order: shuffled(SENTENCES.length), pos: 0, shuffles: {}, places: {}, revealed: {}, shownAt: {}, revealedAt: {}, pts: {}, log: [] };
       renderStage();
       INTRO = KruIntro.forLevel(content, level);
       if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });

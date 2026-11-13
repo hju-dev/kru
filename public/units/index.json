@@ -1,5 +1,5 @@
 {
- "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it. Kru's M.1 / M.2 / M.3 are Henry's R&W courses; titles start with the course (R&W or English).",
+ "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it. Kru's M.1 / M.2 / M.3 are Henry's R&W courses; titles start with the course (R&W or English). A lesson pack can list \"games\" (slugs) and \"classes\" (e.g. M.3/2); it then shows only for those games and classes.",
  "units": [
   {
    "id": "m1-rw-u5",
@@ -24,6 +24,62 @@
    "level": "M.3",
    "course": "M.3 R&W",
    "title": "R&W Unit 5: Careers of the Future"
+  },
+  {
+   "id": "m3-u8-l1",
+   "level": "M.3",
+   "course": "M.3 Communication",
+   "title": "Unit 8 L1: Regret & Forgiveness",
+   "games": [
+    "quiz-battle",
+    "quiz-board",
+    "sentence-scramble"
+   ],
+   "classes": [
+    "M.3/2",
+    "M.3/3"
+   ]
+  },
+  {
+   "id": "m3-u8-l2",
+   "level": "M.3",
+   "course": "M.3 Communication",
+   "title": "Unit 8 L2: I wish / If only",
+   "games": [
+    "quiz-battle",
+    "quiz-board"
+   ],
+   "classes": [
+    "M.3/2",
+    "M.3/3"
+   ]
+  },
+  {
+   "id": "m3-u8-l3-vocab",
+   "level": "M.3",
+   "course": "M.3 Communication",
+   "title": "Unit 8 L3: Relationship phrasal verbs",
+   "games": [
+    "hot-seat-vocab"
+   ],
+   "classes": [
+    "M.3/2",
+    "M.3/3"
+   ]
+  },
+  {
+   "id": "m3-u8-review",
+   "level": "M.3",
+   "course": "M.3 Communication",
+   "title": "Unit 8 Review: Lessons 1 to 4",
+   "games": [
+    "quiz-battle",
+    "quiz-board"
+   ],
+   "classes": [
+    "M.3/2",
+    "M.3/3"
+   ]
   }
  ]
 }

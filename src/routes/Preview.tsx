@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router'
 import { findGame, gameUrl } from '../lib/games'
+import { unitsFor } from '../lib/units'
 import type { Level } from '../types'
 import './Play.css'
 
@@ -32,14 +33,19 @@ export function Preview() {
     return 0
   })
   const [menu, setMenu] = useState(false)
+  const [unit, setUnit] = useState('')
 
   if (!game || game.status !== 'ready') return <Navigate to="/" replace />
   const solo = !game.modes.includes('group')
-  const src = `${gameUrl(slug)}?mock=1&level=${level}&teams=4${solo ? '&mode=solo' : ''}`
+  // practice any unit or lesson pack for this game and level (every class), like the setup screen's menu
+  const units = game.units ? unitsFor(level, slug) : []
+  const pick = units.some((u) => u.id === unit) ? unit : ''
+  const src = `${gameUrl(slug)}?mock=1&level=${level}&teams=4${solo ? '&mode=solo' : ''}${pick ? `&unit=${pick}` : ''}`
 
-  function restart(l: Level) {
+  function restart(l: Level, u = pick) {
     clearPractice(slug)
     setLevel(l)
+    setUnit(u)
     setKey((k) => k + 1)
     setMenu(false)
   }
@@ -64,6 +70,16 @@ export function Preview() {
                   </button>
                 ))}
               </div>
+            )}
+            {units.length > 0 && (
+              <select className="unit-pick" aria-label="Content: built-in or a unit from your lessons" value={pick} onChange={(e) => restart(level, e.target.value)}>
+                <option value="">Built-in content</option>
+                {units.map((u) => (
+                  <option key={u.id} value={u.id}>
+                    {u.title}
+                  </option>
+                ))}
+              </select>
             )}
             <button className="btn" onClick={() => restart(level)}>
               Start again (slides first)

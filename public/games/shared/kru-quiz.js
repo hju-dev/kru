@@ -7,7 +7,8 @@
  *   KruQuiz.load(level, session) -> Promise<{ level, builtIn: [{ name, questions }], fromSheet: [...], unit }>
  *   KruQuiz.unit(session)        -> Promise<unit | null>: the unit Henry picked on the setup screen
  *                                   (public/units/<id>.json: { title, level, sets, words, motions }), if it fits the level
- *   KruQuiz.html(q, shown)       -> the question, A-D choices (right one green once shown) or the short answer
+ *   KruQuiz.html(q, shown)       -> the question, A-D choices (right one green once shown) or the short answer;
+ *                                   a lesson pack's read_aloud sentence shows big after the reveal (wrong choices hidden then)
  *   KruQuiz.fit(stageEl)         -> shrinks the question, then the choices, until the stage fits
  */
 (function () {
@@ -45,30 +46,42 @@
     });
   }
 
+  /** The sentence the class reads aloud after the reveal (Unit 8 lesson packs). */
+  function say(text) {
+    return '<div class="kq-say" data-kq="say"><span class="kq-say-lab">🗣 Read aloud</span><span class="kq-say-t">' + esc(text) + '</span></div>';
+  }
+
   function html(q, shown) {
     var h = '<div class="kq-q" data-kq="q">' + esc(q.q) + '</div>';
     if (Array.isArray(q.choices)) {
-      h += '<div class="kq-choices" data-kq="ch">' + q.choices.map(function (c, i) {
+      var said = shown && q.read_aloud;
+      h += '<div class="kq-choices' + (said ? ' kq-said' : '') + '" data-kq="ch">' + q.choices.map(function (c, i) {
         var cls = shown ? (i === q.answer ? ' right' : ' wrong') : '';
         return '<div class="kq-choice' + cls + '"><span class="kq-letter">' + 'ABCD'.charAt(i) + '</span><span>' + esc(c) + '</span></div>';
       }).join('') + '</div>';
     } else {
       h += shown ? '<div class="kq-ans">' + esc(q.answer) + '</div>' : '<div class="kq-short">Short answer: write or say it</div>';
     }
+    if (shown && q.read_aloud) h += say(q.read_aloud);
     return h;
   }
 
   function fit(stage) {
     if (!stage) return;
-    var q = stage.querySelector('[data-kq=q]'), ch = stage.querySelector('[data-kq=ch]'), qs = 32, cs = 24;
+    var q = stage.querySelector('[data-kq=q]'), ch = stage.querySelector('[data-kq=ch]'), sy = stage.querySelector('[data-kq=say]'), qs = 32, cs = 24, ss = 34;
     if (!q) return;
     var over = function () { return stage.scrollHeight > stage.clientHeight + 1; };
     q.style.fontSize = qs + 'px';
     if (ch) ch.style.setProperty('--ch', cs + 'px');
+    if (sy) sy.style.fontSize = ss + 'px';
     while (qs > 22 && over()) q.style.fontSize = (qs -= 2) + 'px';
     while (ch && cs > 18 && over()) ch.style.setProperty('--ch', (cs -= 2) + 'px');
     while (qs > 18 && over()) q.style.fontSize = (qs -= 2) + 'px';
+    while (sy && ss > 18 && over()) sy.style.fontSize = (ss -= 2) + 'px';
+    // still too tall: drop the right-answer box when the read-aloud sentence already says it
+    var right = ch && ch.querySelector('.kq-choice.right span:last-child'), norm = function (t) { return t.toLowerCase().replace(/[.!?]+$/, '').trim(); };
+    if (sy && right && over() && norm(sy.textContent).indexOf(norm(right.textContent)) >= 0) ch.style.display = 'none';
   }
 
-  window.KruQuiz = { load: load, unit: unit, html: html, fit: fit, valid: valid, esc: esc };
+  window.KruQuiz = { load: load, unit: unit, html: html, say: say, fit: fit, valid: valid, esc: esc };
 })();
