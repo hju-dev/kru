@@ -96,13 +96,15 @@
 
   // ---------- question ----------
   function fit() {
-    var stage = $('stage'), q = $('q'), ch = $('choices'), qs = 32, cs = 24;
+    var stage = $('stage'), q = $('q'), ch = $('choices'), sy = $('say').firstChild, qs = 32, cs = 24, ss = 34;
     var over = function () { return stage.scrollHeight > stage.clientHeight + 1; };
     q.style.fontSize = qs + 'px';
     ch.style.setProperty('--ch', cs + 'px');
+    if (sy) sy.style.fontSize = ss + 'px';
     while (qs > 22 && over()) q.style.fontSize = (qs -= 2) + 'px';
     while (cs > 18 && over()) ch.style.setProperty('--ch', (cs -= 2) + 'px');
     while (qs > 18 && over()) q.style.fontSize = (qs -= 2) + 'px';
+    while (sy && ss > 20 && over()) sy.style.fontSize = (ss -= 2) + 'px';
   }
   function render() {
     var s = set(), q = question(), shown = !!S.revealed[S.pos];
@@ -115,6 +117,7 @@
       $('choices').hidden = false;
       $('short').hidden = true;
       $('shortAns').hidden = true;
+      $('choices').classList.toggle('said', !!(shown && q.read_aloud));
       $('choices').innerHTML = q.choices.map(function (c, i) {
         var cls = shown ? (i === q.answer ? ' right' : ' wrong') : '';
         return '<div class="choice' + cls + '"><span class="letter">' + 'ABCD'.charAt(i) + '</span><span>' + esc(c) + '</span></div>';
@@ -125,6 +128,8 @@
       $('shortAns').hidden = !shown;
       $('shortAns').textContent = String(q.answer);
     }
+    // a lesson pack's read-aloud sentence, big, after the reveal
+    $('say').innerHTML = shown && q.read_aloud ? KruQuiz.say(q.read_aloud) : '';
     $('reveal').disabled = shown;
     var last = S.pos + 1 >= s.questions.length;
     $('next').textContent = last ? 'Finish set ▶' : 'Next ▶';
@@ -278,7 +283,7 @@
       var content = both[0];
       UNIT = both[1];
       unitSets = UNIT ? UNIT.sets : [];
-      UNIT_ALL = UNIT ? { name: UNIT.title.replace(/^.*Unit \d+: /, '') + ': all, shuffled', questions: [].concat.apply([], unitSets.map(function (s) { return s.questions; })) } : null;
+      UNIT_ALL = UNIT ? { name: UNIT.title.replace(/^.*Unit \d+[^:]*: /, '') + ': all, shuffled', questions: [].concat.apply([], unitSets.map(function (s) { return s.questions; })) } : null;
       var level = content[session.level] ? session.level : 'M.2';
       builtIn = content[level].sets;
       ALL = { name: 'All topics, shuffled', questions: [].concat.apply([], builtIn.map(function (s) { return s.questions; })) };

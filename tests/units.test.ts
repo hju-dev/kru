@@ -7,7 +7,7 @@ import { UNITS, unitsFor } from '../src/lib/units'
 // Units: game content made from Henry's Gamma lessons (public/units/<id>.json), picked on the setup screen.
 const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
 type Q = { q: string; choices?: string[]; answer: number | string; double?: boolean }
-type Unit = { id: string; level: string; title: string; sets: { name: string; questions: Q[] }[]; words?: { word: string }[]; motions?: string[] }
+type Unit = { id: string; level: string; title: string; games?: string[]; sets: { name: string; questions: Q[] }[]; words?: { word: string }[]; motions?: string[] }
 const files = readdirSync(new URL('../public/units/', import.meta.url)).filter((f) => f !== 'index.json' && f.endsWith('.json'))
 
 describe('units', () => {
@@ -29,20 +29,22 @@ describe('units', () => {
           else expect(String(q.answer).length, q.q).toBeGreaterThan(0)
         }
       })
-      it('enough for a full Quiz Board (5 topics with 5+ questions)', () => {
+      it('enough for a full Quiz Board (5 topics with 5+ questions), unless it is a small lesson pack', () => {
+        if (u.games) return expect(u.sets.reduce((n, s) => n + s.questions.length, 0) >= 10 || !u.games.includes('quiz-board')).toBe(true)
         expect(u.sets.filter((s) => s.questions.length >= 5).length).toBeGreaterThanOrEqual(5)
       })
       it('right answers are spread over the choices (not nearly always one letter)', () => {
         const counts = [0, 0, 0, 0]
         for (const s of u.sets) for (const q of s.questions) if (q.choices?.length === 4) counts[q.answer as number]++
         const total = counts.reduce((a, b) => a + b, 0)
-        for (const n of counts) expect(n / total).toBeGreaterThanOrEqual(0.15)
+        if (total) for (const n of counts) expect(n / total).toBeGreaterThanOrEqual(0.15)
       })
       it('American spelling (Gamma decks can be British: organisation, practise, centre…)', () => {
         const british = /\b(\w+is(e|ed|ing|ation)s?\b(?<=(organis|realis|apologis|recognis|memoris|summaris|criticis|analys)\w+)|colou?r(?<=colour)|favour|behaviour|centre|practis(e|ed|ing)|judgement|cashpoint|adverts?)\b/i
         expect(read(`public/units/${f}`).match(british)?.[0]).toBeUndefined()
       })
       it('words for Hot Seat Vocab (10+) and motions for Tag-Team Debate, no repeats', () => {
+        if (u.games) return // a lesson pack has only what its games need (tests/unit8.test.ts)
         const words = (u.words ?? []).map((w) => w.word.toLowerCase())
         expect(words.length).toBeGreaterThanOrEqual(10)
         expect(new Set(words).size).toBe(words.length)
@@ -55,7 +57,7 @@ describe('units', () => {
 describe('picking a unit', () => {
   it('only games that use a unit offer the choice', () => {
     const withUnits = games.filter((g) => (g as { units?: boolean }).units).map((g) => g.slug).sort()
-    expect(withUnits).toEqual(['hot-seat-vocab', 'quiz-battle', 'quiz-board', 'race-board', 'tag-team-debate'])
+    expect(withUnits).toEqual(['hot-seat-vocab', 'quiz-battle', 'quiz-board', 'race-board', 'sentence-scramble', 'tag-team-debate'])
     for (const slug of withUnits) {
       const html = read(`public/games/${slug}/index.html`)
       expect(html, slug).toContain('/games/shared/kru-quiz.js')
@@ -71,11 +73,11 @@ describe('picking a unit', () => {
     expect(unitsFor('M.1').some((u) => u.id === 'm3-rw-u5')).toBe(false)
   })
   it('Henry\'s current units: R&W Unit 5 for every level, and English Unit 7 for M.3', () => {
-    expect(UNITS.map((u) => u.id).sort()).toEqual(['m1-rw-u5', 'm2-rw-u5', 'm3-english-u7', 'm3-rw-u5'])
+    expect(UNITS.filter((u) => !u.games).map((u) => u.id).sort()).toEqual(['m1-rw-u5', 'm2-rw-u5', 'm3-english-u7', 'm3-rw-u5'])
     expect(unitsFor('M.1').map((u) => u.title)).toEqual(['R&W Unit 5: What Are You Afraid Of?'])
     expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception'])
-    expect(unitsFor('M.3').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future'])
-    // every title says which course it is from
-    for (const u of UNITS) expect(u.title).toMatch(/^(R&W|English) Unit \d+: /)
+    expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future'])
+    // every title says which course (or lesson pack) it is from
+    for (const u of UNITS) expect(u.title).toMatch(/^((R&W|English) )?Unit \d+( L\d+| Review)?: /)
   })
 })

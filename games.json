@@ -138,6 +138,7 @@
     "description": "A sentence appears as shuffled word tiles. Teams write it correctly on paper. First three correct teams get 3 / 2 / 1 points, then Reveal.",
     "type": "grammar race",
     "phoneLandscape": true,
+    "units": true,
     "section": "writing"
   },
   {

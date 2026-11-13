@@ -1,5 +1,7 @@
 /* Hot Seat Vocab: one student per team sits facing away from the board. The word is shown; teammates
-   describe it without saying it. 60-second rounds, Got it (+1) or Skip. Then the next team. */
+   describe it without saying it. 60-second rounds, Got it (+1) or Skip. Then the next team.
+   A lesson pack (unit "hotseat": { word, meaning, taboo }) also shows the words the team must not say, and after
+   the round the meaning of every word that came up, for the student in the hot seat. */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
@@ -9,7 +11,7 @@
   var WORDS = [];
   var teams = [];
   var S = null; // saved: { v, level, seat, order, next, secs, pts, log, last }
-  var phase = 'ready', word = -1, got = 0, skipped = 0;
+  var phase = 'ready', word = -1, got = 0, skipped = 0, seen = []; // seen: this round's words, for the meanings after it
   var left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
 
   function esc(s) {
@@ -70,7 +72,7 @@
   function startRound() {
     unlockAudio();
     if (!team(S.seat)) S.seat = teams[0].id;
-    phase = 'live'; got = 0; skipped = 0;
+    phase = 'live'; got = 0; skipped = 0; seen = [];
     total = left = S.secs;
     nextWord();
     running = true;
@@ -82,6 +84,7 @@
   }
   function endRound() {
     left = 0; running = false; clearInterval(timer);
+    if (word >= 0) seen.push({ w: word, got: false });
     phase = 'over';
     S.last = { t: S.seat, got: got, skipped: skipped };
     save();
@@ -102,7 +105,20 @@
   // ---------- render ----------
   function fitWord() {
     var stage = $('stage'), w = $('word'), size = 84;
-    if (w.classList.contains('waiting')) { w.style.fontSize = ''; return; }
+    var over = function () { return stage.scrollHeight > stage.clientHeight + 1; };
+    if (w.classList.contains('waiting')) {
+      w.style.fontSize = '';
+      var m = $('meanings'), ms = 24, items = m.children;
+      if (m.hidden) return;
+      // the list scrolls when a round had many words; first try smaller text, then two columns
+      var full = function () { return over() || m.scrollHeight > m.clientHeight + 1; };
+      m.style.fontSize = ms + 'px';
+      m.classList.remove('two', 'more');
+      while (ms > 18 && full()) m.style.fontSize = (ms -= 2) + 'px';
+      if (full() && items.length > 3) { m.classList.add('two'); m.style.fontSize = (ms = 22) + 'px'; while (ms > 18 && full()) m.style.fontSize = (ms -= 2) + 'px'; }
+      if (full()) { w.style.fontSize = '22px'; m.classList.add('more'); m.scrollTop = 0; }
+      return;
+    }
     w.style.fontSize = size + 'px';
     while (size > 30 && (w.scrollWidth > w.clientWidth + 1 || stage.scrollHeight > stage.clientHeight + 1)) w.style.fontSize = (size -= 4) + 'px';
   }
@@ -119,16 +135,28 @@
       cat.textContent = item.cat || '';
       cat.className = 'cat ' + (item.cat || '');
       $('note').innerHTML = 'Got <b>' + got + '</b>' + (skipped ? ' · skipped ' + skipped : '');
+      $('taboo').hidden = !(item.taboo && item.taboo.length);
+      $('taboo').innerHTML = item.taboo && item.taboo.length ? '🚫 Don’t say: ' + item.taboo.map(function (t) { return '<b>' + esc(t) + '</b>'; }).join(' · ') : '';
+      $('meanings').hidden = true; $('note').hidden = false;
     } else if (phase === 'over') {
       w.className = 'word waiting';
       cat.hidden = true;
       var L = S.last || { got: 0, skipped: 0 };
       w.textContent = "Time's up! " + (seat ? seat.name : '') + ' got ' + L.got + ' word' + (L.got === 1 ? '' : 's') + '.';
       $('note').textContent = item ? 'The last word was: ' + item.word + (L.skipped ? ' · skipped ' + L.skipped : '') : '';
+      $('taboo').hidden = true;
+      // lesson pack: what each word of this round means (the student in the hot seat turns around and reads them)
+      var mean = seen.filter(function (x, i) { return WORDS[x.w] && WORDS[x.w].meaning && seen.findIndex(function (y) { return y.w === x.w; }) === i; });
+      $('meanings').hidden = !mean.length;
+      $('meanings').innerHTML = mean.map(function (x) {
+        return '<li class="' + (x.got ? 'got' : '') + '"><b>' + esc(WORDS[x.w].word) + '</b> = ' + esc(WORDS[x.w].meaning) + '</li>';
+      }).join('');
+      $('note').hidden = !!mean.length; // room for the meanings
     } else {
       w.className = 'word waiting';
       cat.hidden = true;
       w.textContent = (seat ? seat.name : 'A team') + ': one student sits in the hot seat, facing the class. Tap Start round when ready.';
+      $('taboo').hidden = true; $('meanings').hidden = true; $('note').hidden = false;
       $('note').textContent = WORDS.length && WORDS[0].cat ? 'Words can be a Person, a Place, a Thing or an Idea.' : 'Describe the word without saying it!';
     }
     var main = $('main');
@@ -154,6 +182,7 @@
     S.log.push({ t: id, d: 1, w: word });
     if (S.log.length > 500) S.log.shift();
     got++;
+    seen.push({ w: word, got: true });
     Kru.score(id, 1, 'word');
     tone([784, 1047], 0.08);
     toast(team(id).name + ' +1 (' + WORDS[word].word + ')', true);
@@ -162,6 +191,7 @@
   }
   function skip() {
     skipped++;
+    seen.push({ w: word, got: false });
     tone([330], 0);
     nextWord();
     render();
@@ -191,6 +221,7 @@
     else nextTeam();
   });
   $('skip').addEventListener('click', skip);
+  $('meanings').addEventListener('scroll', function () { var m = $('meanings'); m.classList.toggle('more', m.scrollTop + m.clientHeight < m.scrollHeight - 2); });
   $('toastUndo').addEventListener('click', undo);
   $('strip').addEventListener('click', function (e) {
     var b = e.target.closest('[data-t]');
@@ -262,7 +293,8 @@
       var content = both[0], unit = both[1];
       var level = content[session.level] ? session.level : 'M.2';
       // a unit from Henry's lessons: its words (no Person/Place/Thing tag)
-      WORDS = unit && unit.words && unit.words.length >= 10 ? unit.words : content[level].words;
+      WORDS = unit && unit.hotseat && unit.hotseat.length >= 5 ? unit.hotseat.filter(function (h) { return h && h.word; })
+        : unit && unit.words && unit.words.length >= 10 ? unit.words : content[level].words;
       teams = Kru.allTeams();
       KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
       KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },

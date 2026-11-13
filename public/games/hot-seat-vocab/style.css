@@ -270,3 +270,47 @@ button:focus-visible {
   background: var(--fg);
   color: var(--bg);
 }
+
+/* lesson packs: words the team must not say, and the meanings after the round */
+.taboo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fg);
+}
+.taboo b {
+  color: var(--coral);
+}
+.meanings {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  line-height: 1.25;
+  text-align: left;
+  max-width: 100%;
+}
+.meanings b {
+  color: var(--gold);
+}
+.meanings li.got::before {
+  content: '✓ ';
+  color: var(--teal);
+}
+.meanings {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* more words than fit: a hint to scroll the list */
+.meanings.more {
+  padding-bottom: 4px;
+  -webkit-mask-image: linear-gradient(#000 80%, transparent);
+  mask-image: linear-gradient(#000 80%, transparent);
+}
+.meanings.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
+  width: 100%;
+}

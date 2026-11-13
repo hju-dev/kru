@@ -1,0 +1,99 @@
+{
+ "id": "m3-u8-l3-vocab",
+ "level": "M.3",
+ "course": "M.3 Communication",
+ "title": "Unit 8 L3: Relationship phrasal verbs",
+ "games": [
+  "hot-seat-vocab"
+ ],
+ "classes": [
+  "M.3/2",
+  "M.3/3"
+ ],
+ "source": "Henry's Unit 8 lesson packs (M.3 Communication), Nov 13. American spelling (apologize, not the British -ise).",
+ "sets": [],
+ "hotseat": [
+  {
+   "word": "ask out",
+   "meaning": "invite someone on a date",
+   "taboo": [
+    "date",
+    "invite"
+   ]
+  },
+  {
+   "word": "break up",
+   "meaning": "end a romantic relationship",
+   "taboo": [
+    "end",
+    "boyfriend",
+    "girlfriend"
+   ]
+  },
+  {
+   "word": "fall out",
+   "meaning": "argue and stop being friends",
+   "taboo": [
+    "argue",
+    "fight"
+   ]
+  },
+  {
+   "word": "get on (with)",
+   "meaning": "have a good relationship",
+   "taboo": [
+    "good",
+    "relationship"
+   ]
+  },
+  {
+   "word": "get over",
+   "meaning": "feel better after something sad",
+   "taboo": [
+    "better",
+    "sad"
+   ]
+  },
+  {
+   "word": "get together",
+   "meaning": "meet, or start a relationship",
+   "taboo": [
+    "meet",
+    "start"
+   ]
+  },
+  {
+   "word": "go out (with)",
+   "meaning": "have a romantic relationship",
+   "taboo": [
+    "boyfriend",
+    "girlfriend",
+    "date"
+   ]
+  },
+  {
+   "word": "let down",
+   "meaning": "disappoint someone",
+   "taboo": [
+    "disappoint",
+    "sad"
+   ]
+  },
+  {
+   "word": "make up",
+   "meaning": "become friends again after an argument",
+   "taboo": [
+    "friends",
+    "again"
+   ]
+  },
+  {
+   "word": "put up with",
+   "meaning": "accept something annoying",
+   "taboo": [
+    "accept",
+    "annoying"
+   ]
+  }
+ ]
+}

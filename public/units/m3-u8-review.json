@@ -1,0 +1,166 @@
+{
+ "id": "m3-u8-review",
+ "level": "M.3",
+ "course": "M.3 Communication",
+ "title": "Unit 8 Review: Lessons 1 to 4",
+ "games": [
+  "quiz-battle",
+  "quiz-board"
+ ],
+ "classes": [
+  "M.3/2",
+  "M.3/3"
+ ],
+ "source": "Henry's Unit 8 lesson packs (M.3 Communication), Nov 13. American spelling (apologize, not the British -ise).",
+ "sets": [
+  {
+   "name": "Unit 8 Review",
+   "questions": [
+    {
+     "q": "Sasha is speaking to her teacher. Which apology is the most formal?",
+     "choices": [
+      "I apologize for calling Ben that name.",
+      "Sorry about Ben.",
+      "My bad, teacher.",
+      "Don't worry about it."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I apologize for calling Ben that name."
+    },
+    {
+     "q": "Luis feels bad about his angry words. \"I'm really sorry for ___ you.\"",
+     "choices": [
+      "upset",
+      "to upset",
+      "upsetting",
+      "upsets"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I'm really sorry for upsetting you."
+    },
+    {
+     "q": "I never have time for my hobbies. \"I wish I ___ more free time.\"",
+     "choices": [
+      "have",
+      "had",
+      "had had",
+      "will have"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish I had more free time."
+    },
+    {
+     "q": "I didn't do my homework and the teacher was angry. \"If only I ___ my homework.\"",
+     "choices": [
+      "did",
+      "have done",
+      "do",
+      "had done"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "If only I had done my homework."
+    },
+    {
+     "q": "Mint: \"I'm tired.\" Report it: Mint said she ___ tired.",
+     "choices": [
+      "was",
+      "is",
+      "has been",
+      "had"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "Mint said she was tired."
+    },
+    {
+     "q": "Beam: \"I've finished.\" Report it: Beam said he ___ .",
+     "choices": [
+      "has finished",
+      "finished has",
+      "had finished",
+      "have finished"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "Beam said he had finished."
+    },
+    {
+     "q": "Ellie: \"I'll call you tomorrow.\" Report it: Ellie said she would call me ___ .",
+     "choices": [
+      "tomorrow",
+      "the day before",
+      "that day",
+      "the next day"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "Ellie said she would call me the next day."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "He said me he was sorry.",
+      "He told me he was sorry.",
+      "He told that he was sorry.",
+      "He said to me that sorry."
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "He told me he was sorry."
+    },
+    {
+     "q": "Tom: \"Where are you going?\" Report it: Tom asked Ava where ___ .",
+     "choices": [
+      "was she going",
+      "is she going",
+      "she was going",
+      "she is going"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "Tom asked Ava where she was going."
+    },
+    {
+     "q": "Ava: \"Did you see it?\" Report it: Ava asked him ___ he had seen it.",
+     "choices": [
+      "if",
+      "what",
+      "did",
+      "that"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "Ava asked him if he had seen it."
+    },
+    {
+     "q": "Ruth: \"Don't shout!\" Report it: Ruth told Luis ___ .",
+     "choices": [
+      "to not shouting",
+      "don't shout",
+      "to shout not",
+      "not to shout"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "Ruth told Luis not to shout."
+    },
+    {
+     "q": "Beam: \"No! I won't help.\" Which reporting verb fits? Beam ___ to help.",
+     "choices": [
+      "threatened",
+      "refused",
+      "reminded",
+      "offered"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "Beam refused to help."
+    }
+   ]
+  }
+ ]
+}

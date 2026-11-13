@@ -27,7 +27,7 @@
   min-width: 0;
   display: grid;
   grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
-  grid-template-rows: auto repeat(5, minmax(44px, 1fr));
+  grid-template-rows: auto repeat(var(--rows, 5), minmax(44px, 1fr));
   gap: 4px;
 }
 .topic {

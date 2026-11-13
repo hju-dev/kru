@@ -1,0 +1,142 @@
+{
+ "id": "m3-u8-l2",
+ "level": "M.3",
+ "course": "M.3 Communication",
+ "title": "Unit 8 L2: I wish / If only",
+ "games": [
+  "quiz-battle",
+  "quiz-board"
+ ],
+ "classes": [
+  "M.3/2",
+  "M.3/3"
+ ],
+ "source": "Henry's Unit 8 lesson packs (M.3 Communication), Nov 13. American spelling (apologize, not the British -ise).",
+ "sets": [
+  {
+   "name": "I wish / If only",
+   "questions": [
+    {
+     "q": "I'm shy and I don't like it. \"I wish I ___ so shy.\"",
+     "choices": [
+      "am not",
+      "wasn't",
+      "hadn't been",
+      "won't be"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish I wasn't so shy."
+    },
+    {
+     "q": "Last night I shouted at my friend. Now I feel bad. \"If only I ___ at her.\"",
+     "choices": [
+      "don't shout",
+      "didn't shout",
+      "haven't shouted",
+      "hadn't shouted"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "If only I hadn't shouted at her."
+    },
+    {
+     "q": "I can't swim, and my friends are going to the pool. \"I wish I ___ swim.\"",
+     "choices": [
+      "could",
+      "can",
+      "had",
+      "would"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish I could swim."
+    },
+    {
+     "q": "Which sentence is about the PAST?",
+     "choices": [
+      "I wish I had more money.",
+      "If only I was taller.",
+      "I wish I had studied for the test.",
+      "I wish I could drive."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish I had studied for the test."
+    },
+    {
+     "q": "Which sentence is about NOW?",
+     "choices": [
+      "I wish I had a bigger room.",
+      "I wish I hadn't told him.",
+      "If only I had listened.",
+      "If only I hadn't lost my phone."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish I had a bigger room."
+    },
+    {
+     "q": "\"I wish I was taller.\" After I wish, which other word is also correct here?",
+     "choices": [
+      "be",
+      "were",
+      "is",
+      "being"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish I were taller."
+    },
+    {
+     "q": "I didn't study for the exam and I failed. \"If only I ___!\"",
+     "choices": [
+      "studied",
+      "would study",
+      "study",
+      "had studied"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "If only I had studied!"
+    },
+    {
+     "q": "A friend says: \"I wish I hadn't eaten so much.\" How does your friend feel?",
+     "choices": [
+      "hungry",
+      "proud of the dinner",
+      "bad about eating so much",
+      "excited to eat more"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish I hadn't eaten so much."
+    },
+    {
+     "q": "A friend says: \"If only I could play the guitar.\" Can your friend play the guitar?",
+     "choices": [
+      "No, but they want to.",
+      "Yes, very well.",
+      "Yes, a little.",
+      "No, and they don't care."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "If only I could play the guitar."
+    },
+    {
+     "q": "My friend is angry because I forgot her birthday. \"I wish I ___ her birthday.\"",
+     "choices": [
+      "didn't forget",
+      "hadn't forgotten",
+      "don't forget",
+      "haven't forgotten"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish I hadn't forgotten her birthday."
+    }
+   ]
+  }
+ ]
+}

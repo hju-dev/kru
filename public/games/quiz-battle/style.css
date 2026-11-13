@@ -423,3 +423,7 @@ button:focus-visible {
 .menu-rounds .btn {
   padding: 0 6px;
 }
+
+/* lesson packs: after the reveal only the right answer stays, and the read-aloud sentence shows big */
+.choices.said .choice.wrong { display: none; }
+.choices.said { grid-template-columns: minmax(0, 1fr); }

@@ -50,3 +50,24 @@
   font: 800 30px/1.15 var(--display);
   color: var(--teal);
 }
+
+/* Lesson packs: the sentence to read aloud, big, after the reveal (the wrong choices step aside) */
+.kq-said .kq-choice.wrong { display: none; }
+.kq-said { grid-template-columns: minmax(0, 1fr); }
+.kq-say {
+  padding: 4px 12px;
+  border-radius: 14px;
+  border: 3px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 14%, var(--panel));
+  font: 800 34px/1.15 var(--display);
+  text-wrap: balance;
+}
+.kq-say-lab {
+  margin-right: 10px;
+  vertical-align: 0.15em;
+  white-space: nowrap;
+  color: var(--gold);
+  font: 800 16px/1.2 var(--body, inherit);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

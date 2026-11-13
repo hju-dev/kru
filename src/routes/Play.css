@@ -60,6 +60,17 @@
   text-align: center;
   font-size: 13px;
 }
+/* practice: built-in content or a unit / lesson pack */
+.play-menu .unit-pick {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 2px solid var(--teal);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--fg);
+  font: 700 16px var(--body);
+  text-overflow: ellipsis;
+}
 
 /* Games are landscape-only: in portrait, ask to turn the phone */
 .turn-hint {

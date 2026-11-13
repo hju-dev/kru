@@ -9,7 +9,7 @@
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
-  var TIMES = [10, 20, 30, 45, 60], ROWS = 5, COLS = 5;
+  var TIMES = [10, 20, 30, 45, 60], ROWS = 5, COLS = 5, PACKED = false;
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
 
@@ -29,9 +29,29 @@
   function q(c, r) { var s = SETS[S.cols[c]]; return s && s.questions[S.board[c][r]]; }
   function value(c, r) { return (r + 1) * (S.dd === key(c, r) ? 2 : 1); }
 
+  /**
+   * A unit as board columns. A full unit has 5+ topics of 5+ questions. A small lesson pack (e.g. Unit 8 L1: one set
+   * of 10, or the review: 12) is cut into columns in its own order, so every question is on the board:
+   * 10 = 2 columns of 5, 12 = 3 columns of 4, 15 = 3 of 5, 20 = 4 of 5 (more than 25: the first 25).
+   */
+  function unitColumns(u) {
+    var big = u.sets.filter(function (s) { return s.questions.length >= 5; });
+    if (big.length >= COLS) return { rows: 5, sets: big };
+    var all = [];
+    u.sets.forEach(function (s) { s.questions.forEach(function (x) { all.push(x); }); });
+    var n = Math.min(all.length, 25);
+    var rows = n % 5 === 0 || n % 4 !== 0 ? 5 : 4, cols = Math.min(COLS, Math.floor(n / rows));
+    if (cols < 2) return null;
+    var name = u.sets.length === 1 ? u.sets[0].name : u.title.replace(/^.*?: /, '');
+    var sets = [];
+    for (var c = 0; c < cols; c++) sets.push({ name: name + ' ' + (c + 1), questions: all.slice(c * rows, c * rows + rows) });
+    return { rows: rows, sets: sets, packed: true };
+  }
+
   /** A new board: 5 topics, 5 questions each; multiple choice first (lower squares), short answers last. */
   function newBoard() {
-    var cols = shuffle(SETS.map(function (s, i) { return i; })).slice(0, COLS);
+    var ids = SETS.map(function (s, i) { return i; });
+    var cols = PACKED ? ids : shuffle(ids).slice(0, COLS); // a lesson pack keeps its columns in order
     var board = cols.map(function (si) {
       var qs = SETS[si].questions;
       var pick = shuffle(qs.map(function (x, i) { return i; })).slice(0, ROWS);
@@ -101,6 +121,7 @@
       }
     }
     $('board').style.setProperty('--cols', S.cols.length);
+    $('board').style.setProperty('--rows', ROWS);
     $('board').innerHTML = html;
     var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
     var p = picker();
@@ -298,9 +319,11 @@
   Kru.ready(function (session) {
     Promise.all([contentReady, KruQuiz.load(session.level, session)]).then(function (both) {
       var c = both[0], Q = both[1];
-      // a unit from Henry's lessons, if it has enough for a board (5 topics of 5); otherwise the built-in topics
-      var unitOk = Q.unit && Q.unit.sets.filter(function (s) { return s.questions.length >= ROWS; }).length >= COLS;
-      SETS = unitOk ? Q.unit.sets.filter(function (s) { return s.questions.length >= ROWS; }) : Q.builtIn;
+      // a unit from Henry's lessons (5 topics of 5, or a small lesson pack cut into columns); otherwise the built-in topics
+      var U = Q.unit && unitColumns(Q.unit), unitOk = !!U;
+      SETS = unitOk ? U.sets : Q.builtIn;
+      ROWS = unitOk ? U.rows : 5;
+      PACKED = unitOk && !!U.packed;
       if (unitOk) $('turn').title = Q.unit.title;
       teams = Kru.allTeams();
       KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
