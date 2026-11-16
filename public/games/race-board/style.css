@@ -364,3 +364,12 @@
 .die.big .pip { background: #fff; }
 .dice-box.back .die.big { background: #9b7bff; box-shadow: 0 6px 0 #a33, 0 0 0 4px var(--coral); }
 .dice-row .die[hidden] { display: none; }
+
+/* Christmas Race Board: 🎄 Challenge squares */
+.track .xmas {
+  border-color: var(--lime);
+  background: color-mix(in srgb, var(--lime) 16%, var(--stage));
+}
+.track .xmas .num {
+  font-size: 16px;
+}

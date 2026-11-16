@@ -204,6 +204,21 @@
     "units": true
   },
   {
+    "slug": "christmas-race-board",
+    "title": "Christmas Race Board",
+    "file": "public/games/christmas-race-board/index.html",
+    "description": "Race Board with a Christmas question bank: 100 general-knowledge questions (multiple choice and spoken) for every level. 🎄 squares draw a Challenge card; after a wrong answer a team can do a Forfeit and stay put instead of rolling back.",
+    "levels": [],
+    "type": "team quiz",
+    "minutes": 40,
+    "phoneLandscape": true,
+    "modes": [
+      "group"
+    ],
+    "status": "ready",
+    "section": "quizzes"
+  },
+  {
     "slug": "board-race",
     "title": "Board Race",
     "file": "public/games/board-race/index.html",

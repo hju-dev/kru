@@ -1,0 +1,1226 @@
+{
+ "about": "Christmas Race Board (Henry, Nov 2026): Race Board's rules and code (games/race-board/app.js) with a Christmas question bank, Challenge squares and Forfeit cards. 100 questions for every level, with the answer in 'answer' (an index for A-D questions, text for spoken ones): 30 easy, 30 regular, 25 hard, 15 impossible, drawn in those proportions (shares). Math and science questions have a cat for the math-or-science chance card. christmas.squares = the Challenge squares; challenge and forfeit = the two card decks (20 each).",
+ "title": "Christmas Race Board",
+ "shares": {
+  "easy": 30,
+  "regular": 30,
+  "hard": 25,
+  "impossible": 15
+ },
+ "christmas": {
+  "squares": [
+   6,
+   12,
+   24,
+   35,
+   43,
+   51
+  ],
+  "challenge": [
+   {
+    "title": "Frozen Snowman",
+    "text": "Everyone must freeze like a snowman for 5 seconds. No laughing or moving!"
+   },
+   {
+    "title": "Reindeer Antlers",
+    "text": "One player must make reindeer antlers with their hands and pose for 5 seconds."
+   },
+   {
+    "title": "Penguin Party",
+    "text": "Everyone must waddle like penguins without moving away from their spots."
+   },
+   {
+    "title": "Robot Dance",
+    "text": "One player must perform their best robot dance for 5 seconds."
+   },
+   {
+    "title": "Giant Present",
+    "text": "Mime opening the biggest Christmas present imaginable. Make it dramatic!"
+   },
+   {
+    "title": "Santa's Laugh",
+    "text": "Everyone must perform their best Santa laugh together."
+   },
+   {
+    "title": "The Invisible Orchestra",
+    "text": "One player must conduct an imaginary orchestra for 10 seconds."
+   },
+   {
+    "title": "Christmas Tree",
+    "text": "Your entire team must create a Christmas tree pose together."
+   },
+   {
+    "title": "Slow-Motion Celebration",
+    "text": "Celebrate winning a million dollars in extreme slow motion!"
+   },
+   {
+    "title": "Hot Chocolate Disaster",
+    "text": "Mime drinking extremely hot chocolate. Don't burn your tongue!"
+   },
+   {
+    "title": "Animal Kingdom",
+    "text": "Everyone chooses an animal and makes its noise at the same time."
+   },
+   {
+    "title": "Ice Skating",
+    "text": "Mime performing an amazing ice-skating routine without moving from your spot."
+   },
+   {
+    "title": "Jazz Hands",
+    "text": "Everyone must do their best jazz hands for 5 seconds."
+   },
+   {
+    "title": "The Wave",
+    "text": "Create a mini wave with your team, one person after another."
+   },
+   {
+    "title": "Christmas Sound Effects",
+    "text": "Make three Christmas-themed sound effects. The other team must guess what they are."
+   },
+   {
+    "title": "Stuck in the Chimney",
+    "text": "One player must act like Santa trying to get out of a chimney."
+   },
+   {
+    "title": "Snowball Fight",
+    "text": "Mime being in a snowball fight. No actual throwing or touching anyone!"
+   },
+   {
+    "title": "Superhero Landing",
+    "text": "Everyone must strike their most dramatic superhero pose."
+   },
+   {
+    "title": "Sleigh Pullers",
+    "text": "Your team must pretend to pull Santa's heavy sleigh. Make it look difficult!"
+   },
+   {
+    "title": "Elf Workshop",
+    "text": "Everyone must pretend to be a busy elf making Christmas presents."
+   }
+  ],
+  "forfeit": [
+   {
+    "title": "Sleepy Santa",
+    "text": "Say \"Ho, ho, ho!\" like the sleepiest Santa in the world."
+   },
+   {
+    "title": "The Royal Bow",
+    "text": "Give everyone a very dramatic royal bow."
+   },
+   {
+    "title": "Robot Voice",
+    "text": "Say \"Our team is still going to win!\" in your best robot voice."
+   },
+   {
+    "title": "Dropped Present",
+    "text": "Pretend you have dropped your Christmas presents. React dramatically!"
+   },
+   {
+    "title": "Frozen!",
+    "text": "Freeze in your funniest position for 5 seconds."
+   },
+   {
+    "title": "Jazz Hands",
+    "text": "Do your best jazz hands while shouting your team's name."
+   },
+   {
+    "title": "Animal Impression",
+    "text": "Make the sound of any animal. Your team must guess which animal it is."
+   },
+   {
+    "title": "North Pole News",
+    "text": "Give a 10-second news report about something happening at the North Pole."
+   },
+   {
+    "title": "Reindeer Sneeze",
+    "text": "Do your best reindeer sneeze. Make it dramatic!"
+   },
+   {
+    "title": "Tiny Mouse",
+    "text": "Say \"Merry Christmas!\" in the tiniest mouse voice possible."
+   },
+   {
+    "title": "Air Guitar",
+    "text": "Play an imaginary guitar like a rock star for 5 seconds."
+   },
+   {
+    "title": "Sports Commentator",
+    "text": "Announce your team's name like you're commentating on a World Cup final."
+   },
+   {
+    "title": "Cookie Monster",
+    "text": "Mime eating the world's biggest Christmas cookie."
+   },
+   {
+    "title": "Funny Face",
+    "text": "Make your funniest face and hold it for 5 seconds."
+   },
+   {
+    "title": "Snow Angel",
+    "text": "Make an imaginary snow angel using only your arms. You can do this seated!"
+   },
+   {
+    "title": "Sleepy Reindeer",
+    "text": "Say \"I need more sleep!\" in your sleepiest voice."
+   },
+   {
+    "title": "Shoulder Disco",
+    "text": "Do three shoulder rolls followed by your best disco pose."
+   },
+   {
+    "title": "The Christmas Whisper",
+    "text": "Whisper \"It's Christmas!\" like you're sharing a very important secret."
+   },
+   {
+    "title": "Monster Voice",
+    "text": "Say \"Where are my presents?\" in your best monster voice."
+   },
+   {
+    "title": "Christmas Morning",
+    "text": "Your whole team must create a frozen statue showing Christmas morning."
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Christmas Race!",
+   "text": [
+    "Every team has a piece on START.",
+    "First team to land exactly on FINISH wins!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "START",
+      "1 2 3 …"
+     ],
+     [
+      "FINISH",
+      "59"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Your turn",
+   "text": [
+    "Answer one question. Harder questions = more dice!",
+    "Wrong? Roll the same dice backwards, or take a Forfeit."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Easy or Regular",
+      "1 die"
+     ],
+     [
+      "Hard",
+      "2 dice"
+     ],
+     [
+      "Impossible",
+      "2 big purple dice (8+)"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Power-ups",
+   "text": [
+    "Each team can use each power-up ONCE per game.",
+    "50/50, +20 seconds, Free answer, or Risk it!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "50/50",
+      "2 wrong answers go"
+     ],
+     [
+      "Free answer",
+      "counts as right"
+     ],
+     [
+      "Risk it",
+      "right 2 big dice, wrong 2 big back"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Special squares",
+   "text": [
+    "★ forward · ⚠ back · 🎲 roll again · ? chance · 🎄 challenge.",
+    "Some squares are secret…"
+   ],
+   "example": {
+    "rows": [
+     [
+      "★ +2",
+      "Forward 2"
+     ],
+     [
+      "⚠ −2",
+      "Back 2"
+     ],
+     [
+      "🎄",
+      "Challenge card"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Challenges and forfeits",
+   "text": [
+    "🎄 square: draw a Challenge card and do it together!",
+    "Wrong answer? Do a Forfeit and stay put, or roll back."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Forfeit done",
+      "Stay on your square"
+     ],
+     [
+      "Forfeit refused",
+      "Roll the back dice"
+     ],
+     [
+      "Risk it and wrong",
+      "No forfeit: back dice"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Exact finish",
+   "text": [
+    "You need the exact number to land on FINISH.",
+    "Too many? Bounce back the extra squares."
+   ],
+   "example": {
+    "rows": [
+     [
+      "2 squares to go, roll 2",
+      "Win!"
+     ],
+     [
+      "2 squares to go, roll 5",
+      "Back 3"
+     ]
+    ]
+   }
+  }
+ ],
+ "questions": {
+  "all": [
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which planet is known as the Red Planet?",
+    "choices": [
+     "Venus",
+     "Jupiter",
+     "Mars",
+     "Mercury"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many sides does a triangle have?",
+    "answer": "3"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What do bees make?",
+    "choices": [
+     "Milk",
+     "Honey",
+     "Bread",
+     "Cheese"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the largest ocean in the world?",
+    "answer": "Pacific Ocean"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the capital city of France?",
+    "choices": [
+     "Paris",
+     "London",
+     "Madrid",
+     "Rome"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What do we call a baby dog?",
+    "answer": "Puppy"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which animal is the tallest in the world?",
+    "choices": [
+     "Elephant",
+     "Camel",
+     "Horse",
+     "Giraffe"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What do we call water when it freezes?",
+    "answer": "Ice"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which sport uses a racket and a shuttlecock?",
+    "choices": [
+     "Tennis",
+     "Badminton",
+     "Volleyball",
+     "Basketball"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many days are there in a week?",
+    "answer": "7"
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "Which shape has four equal sides and four right angles?",
+    "choices": [
+     "Triangle",
+     "Circle",
+     "Rectangle",
+     "Square"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which country is famous for its ancient pyramids?",
+    "answer": "Egypt"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which type of tree is traditionally decorated at Christmas?",
+    "choices": [
+     "Palm tree",
+     "Pine tree",
+     "Apple tree",
+     "Banana tree"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "On which date is Christmas Day celebrated?",
+    "answer": "December 25"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which of these is a fruit?",
+    "choices": [
+     "Apple",
+     "Carrot",
+     "Potato",
+     "Onion"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What do we call someone who flies an airplane?",
+    "answer": "Pilot"
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which animal lives underwater and breathes through gills?",
+    "choices": [
+     "Cat",
+     "Fish",
+     "Rabbit",
+     "Monkey"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "easy",
+    "cat": "math",
+    "q": "How many months are there in a year?",
+    "answer": "12"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the name of Santa's famous red-nosed reindeer?",
+    "choices": [
+     "Dasher",
+     "Comet",
+     "Blitzen",
+     "Rudolph"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is the name of the star closest to Earth?",
+    "answer": "The Sun"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Thailand is located on which continent?",
+    "choices": [
+     "Asia",
+     "Africa",
+     "Europe",
+     "South America"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What do we call a house made entirely of snow and ice?",
+    "answer": "Igloo"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which musical instrument usually has black and white keys?",
+    "choices": [
+     "Guitar",
+     "Drum",
+     "Trumpet",
+     "Piano"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "What is the name of the planet we live on?",
+    "answer": "Earth"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What do children traditionally hang up for Santa to fill with presents?",
+    "choices": [
+     "Hats",
+     "Shoes",
+     "Stockings",
+     "Gloves"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which animal is often called the king of the jungle?",
+    "answer": "Lion"
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "Which of these animals is a mammal?",
+    "choices": [
+     "Dolphin",
+     "Shark",
+     "Octopus",
+     "Trout"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "What is the name of the vehicle Santa uses to deliver presents?",
+    "answer": "Sleigh"
+   },
+   {
+    "tier": "easy",
+    "cat": "general",
+    "q": "Which country is famous for sushi?",
+    "choices": [
+     "Italy",
+     "Mexico",
+     "Japan",
+     "India"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "easy",
+    "cat": "science",
+    "q": "How many legs does a spider have?",
+    "answer": "8"
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which planet is famous for its large, visible rings?",
+    "choices": [
+     "Mars",
+     "Saturn",
+     "Venus",
+     "Mercury"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the largest animal in the world?",
+    "answer": "Blue whale"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "In the movie Home Alone, where is Kevin's family traveling for Christmas?",
+    "choices": [
+     "London",
+     "Paris",
+     "New York",
+     "Tokyo"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which gas do plants absorb from the air?",
+    "answer": "Carbon dioxide"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the currency of Japan?",
+    "choices": [
+     "Yen",
+     "Dollar",
+     "Euro",
+     "Won"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "How many players are there on the field for one soccer team during a match?",
+    "answer": "11"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country is famous for kangaroos?",
+    "choices": [
+     "Canada",
+     "Brazil",
+     "Germany",
+     "Australia"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "What is the hardest naturally occurring substance on Earth?",
+    "answer": "Diamond"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which drink is traditionally associated with Christmas in the United States?",
+    "choices": [
+     "Lemonade",
+     "Eggnog",
+     "Iced tea",
+     "Orange juice"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the name of the little fairy in Peter Pan?",
+    "answer": "Tinker Bell"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which ocean is between Africa and Australia?",
+    "choices": [
+     "Atlantic Ocean",
+     "Arctic Ocean",
+     "Indian Ocean",
+     "Pacific Ocean"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the capital city of Thailand?",
+    "answer": "Bangkok"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "How many keys does a standard full-size piano have?",
+    "choices": [
+     "66",
+     "72",
+     "88",
+     "100"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which bird is famous for being able to fly backwards?",
+    "answer": "Hummingbird"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the main ingredient in guacamole?",
+    "choices": [
+     "Avocado",
+     "Cucumber",
+     "Tomato",
+     "Potato"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which metal is liquid at normal room temperature?",
+    "answer": "Mercury"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the day after Christmas Day called in the United Kingdom?",
+    "choices": [
+     "Christmas Eve",
+     "New Year's Day",
+     "Easter Monday",
+     "Boxing Day"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the tallest mountain above sea level?",
+    "answer": "Mount Everest"
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which organ pumps blood around the human body?",
+    "choices": [
+     "Heart",
+     "Brain",
+     "Stomach",
+     "Lungs"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "How many colors are traditionally named in a rainbow?",
+    "answer": "7"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country gave the Statue of Liberty to the United States?",
+    "choices": [
+     "Spain",
+     "France",
+     "Germany",
+     "Italy"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "What is the name of the cowboy toy in Toy Story?",
+    "answer": "Woody"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which plant is famous for its bright red leaves around Christmas?",
+    "choices": [
+     "Sunflower",
+     "Rose",
+     "Tulip",
+     "Poinsettia"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "On which continent is the Sahara Desert?",
+    "answer": "Africa"
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which animal is famous for being able to change the color of its skin?",
+    "choices": [
+     "Zebra",
+     "Panda",
+     "Kangaroo",
+     "Chameleon"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "How many minutes are there in two hours?",
+    "answer": "120"
+   },
+   {
+    "tier": "regular",
+    "cat": "science",
+    "q": "Which of these is the smallest?",
+    "choices": [
+     "A human cell",
+     "An organ",
+     "An atom",
+     "A molecule"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "math",
+    "q": "What do we call a shape with eight sides?",
+    "answer": "Octagon"
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Where is Santa Claus traditionally said to live?",
+    "choices": [
+     "South Pole",
+     "Mount Everest",
+     "North Pole",
+     "The moon"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "regular",
+    "cat": "general",
+    "q": "Which country is credited with inventing paper?",
+    "answer": "China"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which planet takes longer to spin once on its axis than it takes to orbit the Sun?",
+    "choices": [
+     "Venus",
+     "Earth",
+     "Mars",
+     "Jupiter"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is the name of the imaginary line that goes around the middle of the Earth at 0° latitude?",
+    "answer": "Equator"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is Scrooge's first name in A Christmas Carol?",
+    "choices": [
+     "Ebenezer",
+     "Ernest",
+     "Edward",
+     "Edgar"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which mammal is capable of true, powered flight?",
+    "answer": "Bat"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the chemical symbol for gold?",
+    "choices": [
+     "Go",
+     "Gd",
+     "Ag",
+     "Au"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which country has the most natural lakes in the world?",
+    "answer": "Canada"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the smallest bone in the human body?",
+    "choices": [
+     "Stapes",
+     "Femur",
+     "Humerus",
+     "Tibia"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which famous passenger ship sank on its first voyage in 1912?",
+    "answer": "Titanic"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What three gifts did the Wise Men bring to baby Jesus?",
+    "choices": [
+     "Silver, gold and diamonds",
+     "Food, clothes and gold",
+     "Gold, frankincense and myrrh",
+     "Gold, spices and flowers"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the largest solid internal organ in the human body?",
+    "answer": "Liver"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Who developed the three famous laws of motion?",
+    "choices": [
+     "Albert Einstein",
+     "Galileo Galilei",
+     "Charles Darwin",
+     "Isaac Newton"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which American city is known as \"The Big Apple\"?",
+    "answer": "New York City"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which chemical element has the atomic number 1?",
+    "choices": [
+     "Oxygen",
+     "Hydrogen",
+     "Carbon",
+     "Helium"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the name of the process in which a caterpillar changes into a butterfly?",
+    "answer": "Metamorphosis"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which famous ballet features the Sugar Plum Fairy and a toy soldier?",
+    "choices": [
+     "Swan Lake",
+     "Sleeping Beauty",
+     "The Nutcracker",
+     "Cinderella"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which continent is the coldest on Earth?",
+    "answer": "Antarctica"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "The ancient city of Petra is located in which country?",
+    "choices": [
+     "Egypt",
+     "Greece",
+     "Turkey",
+     "Jordan"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is the capital city of New Zealand?",
+    "answer": "Wellington"
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "Which blood type is commonly known as the universal red blood cell donor?",
+    "choices": [
+     "AB positive",
+     "A negative",
+     "B positive",
+     "O negative"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What do you call a word or number that reads the same forwards and backwards?",
+    "answer": "Palindrome"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which Christmas song begins with the words \"You better watch out, you better not cry\"?",
+    "choices": [
+     "Jingle Bells",
+     "Silent Night",
+     "Santa Claus Is Coming to Town",
+     "Last Christmas"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "hard",
+    "cat": "science",
+    "q": "What is the name of the galaxy that contains our Solar System?",
+    "answer": "Milky Way"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is the name of the currency used in Hungary?",
+    "choices": [
+     "Franc",
+     "Forint",
+     "Krona",
+     "Peso"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "What is the largest hot desert in the world?",
+    "answer": "Sahara Desert"
+   },
+   {
+    "tier": "hard",
+    "cat": "general",
+    "q": "Which ocean is the deepest in the world?",
+    "choices": [
+     "Indian Ocean",
+     "Pacific Ocean",
+     "Atlantic Ocean",
+     "Arctic Ocean"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "Which letter of the alphabet does NOT appear in the name of any US state?",
+    "choices": [
+     "X",
+     "Z",
+     "J",
+     "Q"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "A farmer has 17 sheep. All but 9 run away. How many sheep are left?",
+    "answer": "9 sheep"
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "Which animal has three hearts?",
+    "choices": [
+     "Octopus",
+     "Shark",
+     "Dolphin",
+     "Crocodile"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "What gets wetter the more it dries?",
+    "answer": "A towel"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "In the song The Twelve Days of Christmas, how many gifts are given on the twelfth day, counting all the repeated gifts together?",
+    "choices": [
+     "12",
+     "36",
+     "66",
+     "78"
+    ],
+    "answer": 3
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "How many zeros are there in one billion?",
+    "answer": "9 zeros"
+   },
+   {
+    "tier": "impossible",
+    "cat": "science",
+    "q": "Which Australian animal is famous for having fingerprints that look very similar to human fingerprints?",
+    "choices": [
+     "Koala",
+     "Kangaroo",
+     "Wombat",
+     "Platypus"
+    ],
+    "answer": 0
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "You are running in a race. You overtake the person in second place. What position are you now in?",
+    "answer": "Second place"
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "What is the name of the snowman in the Disney movie Frozen?",
+    "choices": [
+     "Sven",
+     "Kristoff",
+     "Olaf",
+     "Hans"
+    ],
+    "answer": 2
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "You have three apples and you take away two. How many apples do you have?",
+    "answer": "2 apples"
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "Which of these numbers is both a perfect square and a perfect cube, other than 1?",
+    "choices": [
+     "36",
+     "64",
+     "81",
+     "100"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "What is the next number in this sequence? 2, 3, 5, 8, 12, 17, ___",
+    "answer": "23 (add 1, then 2, then 3, then 4, then 5, then 6)"
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "Which country is located in both Europe and Asia, with Istanbul being one of its most famous cities?",
+    "choices": [
+     "Spain",
+     "Türkiye (Turkey)",
+     "Japan",
+     "Australia"
+    ],
+    "answer": 1
+   },
+   {
+    "tier": "impossible",
+    "cat": "math",
+    "q": "A clock takes 5 seconds to strike 6 times. How many seconds will it take to strike 12 times?",
+    "answer": "11 seconds"
+   },
+   {
+    "tier": "impossible",
+    "cat": "general",
+    "q": "Santa Claus is partly based on which historical Christian saint?",
+    "choices": [
+     "Saint Patrick",
+     "Saint George",
+     "Saint Nicholas",
+     "Saint Valentine"
+    ],
+    "answer": 2
+   }
+  ]
+ }
+}
