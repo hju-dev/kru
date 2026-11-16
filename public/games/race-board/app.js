@@ -5,7 +5,11 @@
    plus two secret squares (a trap that skips your next turn, a slide forward) that work only for the first team there.
    Points (for the Sheet and the podium) = squares from START, plus 3 / 2 / 1 for finishing 1st / 2nd / 3rd.
    Questions: Race Board's own bank for the level (+ Henry's Questions tab), or the unit picked on the setup screen.
-   The teacher's team doesn't race. */
+   The teacher's team doesn't race.
+   Christmas Race Board (Henry, Nov 2026) runs this same file from games/christmas-race-board/: its content.json
+   adds a title, tier shares, one question bank for every level (questions.all), 🎄 Challenge squares + a deck of
+   Challenge cards (landing = draw one and do it), and Forfeit cards (after a wrong answer: do a forfeit and stay put,
+   or roll the back dice; no forfeit after Risk it). Without those keys this is the normal Race Board. */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
@@ -37,6 +41,8 @@
     return { n: t.dice, big: t.big, back: !right };
   }
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
+  var GAME_TITLE = 'Race Board';
+  var XMAS = null; // Christmas Race Board (content.json "christmas"): { squares: [n], challenge: [{ title, text }], forfeit: [{ title, text }] }
   // chance cards (Henry's list + a few more); each is equally likely
   var CHANCE = [
     { id: 'back2', text: 'Go back 2 squares.' },
@@ -104,6 +110,7 @@
     if (sec.trapUsed && n === sec.trap) return '🪤';
     if (sec.slideUsed && n === sec.slide) return '🛝';
     if (!sp) return String(n);
+    if (sp.t === 'xmas') return '🎄';
     return sp.t === 'go' ? '★+' + sp.n : sp.t === 'back' ? '⚠−' + sp.n : sp.t === 'again' ? '🎲' : '?';
   }
   function renderTrack() {
@@ -213,6 +220,7 @@
     if (sp && sp.t === 'back') { toast('⚠ ' + t.name + ': back ' + sp.n + '!'); tone([330, 262], 0.15); setTimeout(function () { move(id, -sp.n, function () { landedBack(id); }); }, 500); return; }
     if (sp && sp.t === 'again') { toast('🎲 ' + t.name + ': roll again!'); setTimeout(function () { roll(id, { n: 1 }); }, 700); return; }
     if (sp && sp.t === 'chance') return chance(id);
+    if (sp && sp.t === 'xmas') return challenge(id);
     busy = false; nextTurn();
   }
 
@@ -282,6 +290,48 @@
         tone([523, 784], 0.1);
       }
       save(); busy = false; nextTurn();
+    };
+  }
+
+  // ---------- Christmas Race Board: Challenge cards and Forfeit cards (two decks, no repeats until all 20 are used) ----------
+  function draw(kind) {
+    var d = S.xdeck[kind], list = XMAS[kind], c = list[d.order[d.i % d.order.length]];
+    d.i++;
+    if (d.i % d.order.length === 0) d.order = shuffle(range(list.length));
+    save();
+    return c;
+  }
+  /** Landing on a 🎄 square: draw a Challenge card. The team just does it (no points). */
+  function challenge(id) {
+    var c = draw('challenge');
+    card('🎄 Challenge: ' + c.title, c.text, function () { busy = false; nextTurn(); }, 'good');
+  }
+  /** A wrong answer: the team can take a Forfeit (done = stay put, refused = the back dice) instead of rolling back. */
+  function forfeitOffer(id, spec) {
+    var t = racer(id);
+    busy = true; renderTrack();
+    card('🎭 Wrong answer!', t.name + ': roll the back dice, or take a Forfeit and stay where you are?', null, 'bad');
+    $('cardOk').hidden = true;
+    var choices = function (a, b) { $('cardTeams').innerHTML = '<button class="btn gold" data-fo="' + a[0] + '">' + a[1] + '</button><button class="btn" data-fo="roll">' + b + '</button>'; };
+    choices(['draw', '🎭 Take a Forfeit'], 'Roll the back dice');
+    $('cardTeams').onclick = function (e) {
+      var b = e.target.closest('[data-fo]');
+      if (!b) return;
+      var what = b.dataset.fo;
+      if (what === 'draw') {
+        var f = draw('forfeit');
+        card('🎭 Forfeit: ' + f.title, f.text, null, 'good');
+        $('cardOk').hidden = true;
+        choices(['done', '✓ Done: stay put'], 'Refuse: roll the back dice');
+        return;
+      }
+      $('cardTeams').onclick = null;
+      $('cardBack').hidden = true;
+      if (what === 'roll') { roll(id, spec); return; }
+      S.last = snapshot(); // Undo goes back to this team's turn
+      toast('🎭 ' + t.name + ' did the forfeit and stays on ' + (pos(id) ? 'square ' + pos(id) : 'START') + '!');
+      tone([523, 659], 0.1);
+      busy = false; nextTurn();
     };
   }
 
@@ -461,11 +511,12 @@
   });
   $('wrong').addEventListener('click', function () {
     unlockAudio();
-    var t = current(), spec = diceFor(Q.tier || 'regular', false, risk);
+    var t = current(), spec = diceFor(Q.tier || 'regular', false, risk), rk = risk;
     if (risk) use(t.id, 'risk');
     closeQuestion();
     if (S.shield[t.id]) { S.shield[t.id] = false; save(); toast('🛡 ' + t.name + "'s shield: no move back!"); tone([660, 880], 0.1); nextTurn(); return; }
     if (pos(t.id) === 0) { toast(t.name + ' is on START: no move back.'); nextTurn(); return; }
+    if (XMAS && !rk) return forfeitOffer(t.id, spec); // Risk it: no forfeit
     roll(t.id, spec);
   });
 
@@ -487,7 +538,7 @@
     racers.forEach(function (t) { var d = points(t.id) - before[t.id]; if (d) Kru.score(t.id, d, 'undo'); });
     save(); closeMenu(); renderTrack();
   });
-  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Race Board' }); });
+  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: GAME_TITLE }); });
   $('restart').addEventListener('click', function () {
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: everyone back to START'; setTimeout(disarm, 3500); return; }
@@ -522,7 +573,13 @@
   Kru.ready(function (session) {
     Promise.all([contentReady, KruQuiz.load(session.level, session)]).then(function (both) {
       var c = both[0], QZ = both[1], lv = c.questions && c.questions[QZ.level] ? QZ.level : 'M.2';
-      var own = (c.questions && c.questions[lv]) || [];
+      var own = (c.questions && (c.questions.all || c.questions[lv])) || []; // Christmas: one bank for every level
+      GAME_TITLE = c.title || GAME_TITLE;
+      if (c.shares) ORDER.forEach(function (t) { if (c.shares[t]) TIERS[t].share = c.shares[t]; });
+      if (c.christmas && c.christmas.challenge && c.christmas.challenge.length && c.christmas.forfeit && c.christmas.forfeit.length) {
+        XMAS = c.christmas;
+        (XMAS.squares || []).forEach(function (n) { if (n > 0 && n < FINISH && !SPECIAL[n]) SPECIAL[n] = { t: 'xmas' }; });
+      }
       POOL = { easy: [], regular: [], hard: [], impossible: [] };
       var add = function (q, tier, set) { POOL[tier].push(Object.assign({ tier: tier, set: set || '' }, q)); };
       if (QZ.unit) QZ.unit.sets.forEach(function (s) { s.questions.forEach(function (q) { add(q, guessTier(q), s.name); }); });
@@ -543,9 +600,14 @@
         ORDER.forEach(function (t) { S.order[t] = shuffle(range(POOL[t].length)); S.qi[t] = 0; });
       }
       S.powers = S.powers || {};
+      S.xdeck = S.xdeck || {};
+      if (XMAS) ['challenge', 'forfeit'].forEach(function (k) {
+        var d = S.xdeck[k];
+        if (!d || d.order.length !== XMAS[k].length) S.xdeck[k] = { order: shuffle(range(XMAS[k].length)), i: 0 };
+      });
       renderTrack();
       INTRO = KruIntro.forLevel(c, QZ.level);
-      if (!S.introDone) KruIntro.show(INTRO, { title: 'Race Board' }).then(function () { S.introDone = true; save(); });
+      if (!S.introDone) KruIntro.show(INTRO, { title: GAME_TITLE }).then(function () { S.introDone = true; save(); });
     }).catch(function (err) {
       $('track').textContent = 'Could not load the questions. Close the game and open it again.';
       if (window.console) console.error(err);
