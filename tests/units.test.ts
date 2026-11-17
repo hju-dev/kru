@@ -78,6 +78,6 @@ describe('picking a unit', () => {
     expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception'])
     expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future'])
     // every title says which course (or lesson pack) it is from
-    for (const u of UNITS) expect(u.title).toMatch(/^((R&W|English) )?Unit \d+( L\d+| Review)?: /)
+    for (const u of UNITS) expect(u.title).toMatch(/^(((R&W|English) )?Unit \d+( L\d+| Review)?: |English: Reported Speech)/)
   })
 })
