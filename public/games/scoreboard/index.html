@@ -4,19 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
-    <title>Scoreboard</title>
+    <title>Team Builder &amp; Scoreboard</title>
     <link rel="stylesheet" href="/games/shared/kru-game.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <main class="game">
       <header class="bar">
-        <h1>Scoreboard</h1>
+        <h1>Team Builder &amp; Scoreboard</h1>
         <span class="meta" id="meta"></span>
         <button class="small" id="undo" disabled>Undo</button>
       </header>
       <section class="teams" id="teams" aria-live="polite"></section>
       <p class="hint" id="hint">Loading…</p>
+      <div class="pop" id="pop" hidden>
+        <div class="card" role="dialog" aria-modal="true" aria-labelledby="popName">
+          <h2 id="popName"></h2>
+          <ul id="popList"></ul>
+          <button class="close" id="popClose">Close</button>
+        </div>
+      </div>
     </main>
     <script src="/sdk/kru.js"></script>
     <script src="app.js"></script>

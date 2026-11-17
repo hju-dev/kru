@@ -129,3 +129,17 @@
 .notes {
   max-width: 480px;
 }
+/* Team Builder & Scoreboard: the note says what the points were for, so it stands out */
+.notes-big {
+  border: 2px solid var(--gold, #ffb703);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+.notes-big label {
+  font-weight: 800;
+  font-size: 1.05em;
+}
+.notes-big input {
+  min-height: 48px;
+  font-size: 1.1em;
+}

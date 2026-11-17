@@ -26,3 +26,22 @@ describe('Reported Speech unit', () => {
     expect(JSON.stringify(u)).not.toMatch(/colour|favourite|realise|organise/i)
   })
 })
+
+// Team Builder & Scoreboard (Henry, Nov 17): the old Scoreboard, renamed, with a members pop-up and a prominent note.
+describe('Team Builder & Scoreboard', () => {
+  const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
+  it('is renamed in the library and the page; the internal name stays scoreboard', () => {
+    const g = (JSON.parse(read('games.json')) as { slug: string; title: string }[]).find((x) => x.slug === 'scoreboard')!
+    expect(g.title).toBe('Team Builder & Scoreboard')
+    expect(read('public/games/scoreboard/index.html')).toContain('<title>Team Builder &amp; Scoreboard</title>')
+  })
+  it('tapping a team name opens a pop-up with its members', () => {
+    const js = read('public/games/scoreboard/app.js')
+    expect(js).toContain('data-members')
+    expect(js).toContain('function showMembers(teamId)')
+    expect(read('public/games/scoreboard/index.html')).toContain('id="popList"')
+  })
+  it('the review note says what the points were for', () => {
+    expect(read('src/routes/Results.tsx')).toContain('What were these points for?')
+  })
+})
