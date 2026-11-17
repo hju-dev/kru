@@ -80,6 +80,15 @@
     "M.3/2",
     "M.3/3"
    ]
+  },
+  {
+   "id": "m3-english-reported-speech",
+   "level": "M.3",
+   "course": "M.3 English",
+   "title": "English: Reported Speech",
+   "games": [
+    "quiz-battle"
+   ]
   }
  ]
 }

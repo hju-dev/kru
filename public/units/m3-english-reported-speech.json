@@ -1,0 +1,280 @@
+{
+ "id": "m3-english-reported-speech",
+ "level": "M.3",
+ "course": "M.3 English",
+ "title": "English: Reported Speech",
+ "games": [
+  "quiz-battle"
+ ],
+ "source": "Written for Henry (Nov 17): direct → reported, reported → direct, tense backshift (past simple → past perfect etc.), rules. American spelling. Written answers show one model answer; other correct versions are fine (that is optional).",
+ "sets": [
+  {
+   "name": "Direct → reported",
+   "questions": [
+    {
+     "q": "Change to reported speech: Tom said, \"I am tired.\"",
+     "answer": "Tom said (that) he was tired.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: Mia said, \"I like this song.\"",
+     "answer": "Mia said (that) she liked that song.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: \"We are playing soccer,\" the boys said.",
+     "answer": "The boys said (that) they were playing soccer.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: Dad told me, \"I will call you tomorrow.\"",
+     "answer": "Dad told me (that) he would call me the next day.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: Anna said, \"I have finished my homework.\"",
+     "answer": "Anna said (that) she had finished her homework.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: \"I can swim,\" Ben said.",
+     "answer": "Ben said (that) he could swim.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: Lisa said, \"I went to Phuket yesterday.\"",
+     "answer": "Lisa said (that) she had gone to Phuket the day before.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: The teacher said to us, \"Open your books.\"",
+     "answer": "The teacher told us to open our books.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: Mom said to me, \"Don't be late.\"",
+     "answer": "Mom told me not to be late.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: \"Where do you live?\" Sam asked me.",
+     "answer": "Sam asked me where I lived.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: Ploy asked me, \"Do you like pizza?\"",
+     "answer": "Ploy asked me if (whether) I liked pizza.",
+     "double": false
+    },
+    {
+     "q": "Change to reported speech: Nok said, \"I am going to study here tonight.\"",
+     "answer": "Nok said (that) she was going to study there that night.",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Reported → direct",
+   "questions": [
+    {
+     "q": "Change to direct speech: He said (that) he was hungry.",
+     "answer": "He said, \"I am hungry.\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: She said (that) she had lost her phone.",
+     "answer": "She said, \"I have lost my phone.\" (or \"I lost my phone.\")",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: They said (that) they would come the next day.",
+     "answer": "They said, \"We will come tomorrow.\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: Kim said (that) she could not find her keys.",
+     "answer": "Kim said, \"I cannot find my keys.\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: He said (that) he was reading a book then.",
+     "answer": "He said, \"I am reading a book now.\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: The doctor told me to rest.",
+     "answer": "The doctor said to me, \"Rest!\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: She asked me where I lived.",
+     "answer": "She asked me, \"Where do you live?\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: He asked me if I was ready.",
+     "answer": "He asked me, \"Are you ready?\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: Mom told us not to run.",
+     "answer": "Mom said to us, \"Don't run!\"",
+     "double": false
+    },
+    {
+     "q": "Change to direct speech: Jim said (that) he had seen the movie the week before.",
+     "answer": "Jim said, \"I saw the movie last week.\" (or \"I have seen the movie.\")",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Tenses: backshift",
+   "questions": [
+    {
+     "q": "\"I live in Bangkok.\" She said she ___ in Bangkok.",
+     "answer": "lived",
+     "double": false
+    },
+    {
+     "q": "\"I am cooking.\" He said he ___.",
+     "answer": "was cooking",
+     "double": false
+    },
+    {
+     "q": "Past simple → past perfect: \"I broke my phone.\" He said he ___ his phone.",
+     "answer": "had broken",
+     "double": false
+    },
+    {
+     "q": "Past simple → past perfect: \"We won the game.\" They said they ___ the game.",
+     "answer": "had won",
+     "double": false
+    },
+    {
+     "q": "\"I have finished.\" She said she ___ finished.",
+     "answer": "had",
+     "double": false
+    },
+    {
+     "q": "\"I will help you.\" He said he ___ help me.",
+     "answer": "would",
+     "double": false
+    },
+    {
+     "q": "\"I can speak French.\" She said she ___ speak French.",
+     "answer": "could",
+     "double": false
+    },
+    {
+     "q": "Past continuous → past perfect continuous: \"I was sleeping.\" He said he ___.",
+     "answer": "had been sleeping",
+     "double": false
+    },
+    {
+     "q": "\"I must go now.\" He said he ___ go then.",
+     "answer": "had to",
+     "double": false
+    },
+    {
+     "q": "\"I have been waiting for an hour.\" She said she ___ for an hour.",
+     "answer": "had been waiting",
+     "double": false
+    }
+   ]
+  },
+  {
+   "name": "Rules: multiple choice",
+   "questions": [
+    {
+     "q": "\"I am happy,\" she said. Which is correct?",
+     "choices": [
+      "She said she is happy.",
+      "She said she was happy.",
+      "She said she were happy.",
+      "She said she has been happy."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "In reported speech, \"tomorrow\" usually becomes ___.",
+     "choices": [
+      "the next day",
+      "yesterday",
+      "today",
+      "next day ago"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "In reported speech, \"yesterday\" usually becomes ___.",
+     "choices": [
+      "tomorrow",
+      "today",
+      "the day before",
+      "the next day"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "In reported speech, \"here\" usually becomes ___.",
+     "choices": [
+      "now",
+      "this",
+      "then",
+      "there"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The teacher ___ us to be quiet.",
+     "choices": [
+      "said",
+      "told",
+      "spoke",
+      "talked"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Are you tired?\" he asked. → He asked ___ I was tired.",
+     "choices": [
+      "if",
+      "that",
+      "what",
+      "do"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"I have seen him.\" → She said she ___ him.",
+     "choices": [
+      "has seen",
+      "sees",
+      "had seen",
+      "would see"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which sentence is NOT correct?",
+     "choices": [
+      "He asked me where I lived.",
+      "She said that she was busy.",
+      "Tom told me to wait.",
+      "He asked where did I live."
+     ],
+     "answer": 3,
+     "double": false
+    }
+   ]
+  }
+ ]
+}
