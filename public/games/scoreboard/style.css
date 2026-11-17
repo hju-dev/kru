@@ -55,6 +55,15 @@ button:disabled {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  /* a button: tap the name to see the team's members */
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  min-height: 32px;
+  color: inherit;
+  text-align: left;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
 }
 .pts {
   font: 500 38px/1 var(--mono);
@@ -129,4 +138,50 @@ button:disabled {
   color: var(--muted);
   font-size: 13px;
   margin: 8px 0 0;
+}
+
+/* Members pop-up */
+.pop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+.pop[hidden] {
+  display: none;
+}
+.pop .card {
+  background: var(--panel);
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 16px;
+  width: min(560px, 90vw);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+}
+.pop h2 {
+  margin: 0 0 6px;
+  font: 800 22px var(--display);
+}
+.pop ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  columns: 3 140px;
+  column-gap: 12px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.pop .close {
+  margin-top: 8px;
+  min-height: var(--tap);
+  border-radius: 12px;
+  border: 2px solid var(--line);
+  background: var(--gold);
+  color: var(--bg);
+  font: 800 18px var(--body);
 }

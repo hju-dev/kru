@@ -1,9 +1,9 @@
 [
   {
     "slug": "scoreboard",
-    "title": "Scoreboard",
+    "title": "Team Builder & Scoreboard",
     "file": "public/games/scoreboard/index.html",
-    "description": "A simple team scoreboard for any paper, board or speaking activity: +1 / -1 per team.",
+    "description": "Make teams for a spontaneous activity and keep score: +1 / +2 / -1 per team. Tap a team's name to see who is in it. Add a note at the end saying what the points were for.",
     "levels": [],
     "type": "tool",
     "minutes": null,

@@ -17,7 +17,7 @@
       var lead = max > 0 && p === max ? ' lead' : '';
       var members = t.teacher ? 'Teacher' : t.members.map(function (m) { return m.nick; }).join(', ');
       return '<div class="team' + lead + (t.teacher ? ' teacher' : '') + '" style="--c:' + COLORS[i % COLORS.length] + '">' +
-        '<div class="name">' + esc(t.name) + '</div>' +
+        '<button class="name" data-members="' + esc(t.id) + '">' + esc(t.name) + '</button>' +
         '<div class="pts" id="pts-' + esc(t.id) + '">' + p + '</div>' +
         '<div class="members">' + esc(members) + '</div>' +
         '<div class="btns">' +
@@ -38,7 +38,21 @@
     render();
   }
 
+  /** Tap a team's name: a pop-up with every member's name. */
+  function showMembers(teamId) {
+    var t = teams.filter(function (x) { return x.id === teamId; })[0];
+    if (!t) return;
+    $('popName').textContent = t.name;
+    $('popList').innerHTML = t.teacher ? '<li>Teacher</li>' :
+      t.members.length ? t.members.map(function (m) { return '<li>' + esc(m.nick) + '</li>'; }).join('') : '<li>No students</li>';
+    $('pop').hidden = false;
+  }
+  $('popClose').addEventListener('click', function () { $('pop').hidden = true; });
+  $('pop').addEventListener('click', function (e) { if (e.target === $('pop')) $('pop').hidden = true; });
+
   $('teams').addEventListener('click', function (e) {
+    var n = e.target.closest('[data-members]');
+    if (n) { showMembers(n.dataset.members); return; }
     var b = e.target.closest('button[data-t]');
     if (b) change(b.dataset.t, Number(b.dataset.d));
   });

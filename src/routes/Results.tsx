@@ -162,9 +162,9 @@ function ResultsView({ session: s }: { session: Session }) {
       </section>
 
       {!submitted && (
-        <div className="field notes">
-          <label htmlFor="notes">Notes (optional)</label>
-          <input id="notes" value={s.notes} maxLength={200} placeholder="e.g. Unit 3 vocabulary" onChange={(e) => patch(s.id, { notes: e.target.value })} />
+        <div className={'field notes' + (s.game === 'scoreboard' ? ' notes-big' : '')}>
+          <label htmlFor="notes">{s.game === 'scoreboard' ? 'What were these points for? (optional)' : 'Notes (optional)'}</label>
+          <input id="notes" value={s.notes} maxLength={200} placeholder={s.game === 'scoreboard' ? 'e.g. Spelling race, Friday review' : 'e.g. Unit 3 vocabulary'} onChange={(e) => patch(s.id, { notes: e.target.value })} />
         </div>
       )}
     </main>
