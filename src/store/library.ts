@@ -1,5 +1,6 @@
 import { createStore, get, set } from 'idb-keyval'
 import { create } from 'zustand'
+import { currentSlug } from '../lib/games'
 import { addRecent, toggleFavorite } from '../lib/library'
 
 const store = createStore('kru-prefs', 'kv')
@@ -24,7 +25,8 @@ export const useLibrary = create<LibraryState>((setState, getState) => ({
       get<string[]>('favorites', store).catch(() => undefined),
       get<string[]>('recent', store).catch(() => undefined),
     ])
-    setState({ favorites: favorites ?? [], recent: recent ?? [], loaded: true })
+    const fix = (list: string[] | undefined) => [...new Set((list ?? []).map(currentSlug))]
+    setState({ favorites: fix(favorites), recent: fix(recent), loaded: true })
   },
   toggleFavorite(slug) {
     const favorites = toggleFavorite(getState().favorites, slug)

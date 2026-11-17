@@ -106,9 +106,9 @@ describe('Race Board levels moved up (Henry, Nov 10)', () => {
   })
 })
 
-describe('Quiz Board: choosing team only + power-ups (Henry, Nov 11)', () => {
-  const qb = read('public/games/quiz-board/app.js')
-  const qbHtml = read('public/games/quiz-board/index.html')
+describe('Jeopardy: choosing team only + power-ups (Henry, Nov 11)', () => {
+  const qb = read('public/games/jeopardy/app.js')
+  const qbHtml = read('public/games/jeopardy/index.html')
   it('a ⋯ menu switch: all teams (default) or the choosing team only', () => {
     expect(qbHtml).toContain('id="oneTeamOpt"')
     expect(qb).toContain("'Who answers: ' + (S.oneTeam ? 'choosing team only' : 'all teams')")

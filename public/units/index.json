@@ -32,7 +32,7 @@
    "title": "Unit 8 L1: Regret & Forgiveness",
    "games": [
     "quiz-battle",
-    "quiz-board",
+    "jeopardy",
     "sentence-scramble"
    ],
    "classes": [
@@ -47,7 +47,7 @@
    "title": "Unit 8 L2: I wish / If only",
    "games": [
     "quiz-battle",
-    "quiz-board"
+    "jeopardy"
    ],
    "classes": [
     "M.3/2",
@@ -74,7 +74,7 @@
    "title": "Unit 8 Review: Lessons 1 to 4",
    "games": [
     "quiz-battle",
-    "quiz-board"
+    "jeopardy"
    ],
    "classes": [
     "M.3/2",

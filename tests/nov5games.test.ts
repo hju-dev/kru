@@ -107,7 +107,7 @@ describe('One-Word Story is a game now', () => {
   })
 })
 
-describe('Quiz Board and Race Board use Quiz Battle questions', () => {
+describe('Jeopardy and Race Board use Quiz Battle questions', () => {
   const qb = json('public/games/quiz-battle/content.json')
   for (const level of ['M.1', 'M.2', 'M.3']) {
     it(`${level}: at least 5 topics with 5+ questions each (a full 5 x 5 board)`, () => {
@@ -115,7 +115,7 @@ describe('Quiz Board and Race Board use Quiz Battle questions', () => {
       expect(sets.filter((s) => s.questions.length >= 5).length).toBeGreaterThanOrEqual(5)
     })
   }
-  for (const slug of ['quiz-board', 'race-board']) {
+  for (const slug of ['jeopardy', 'race-board']) {
     it(`${slug}: loads the shared quiz, podium and How to play`, () => {
       const html = read(`public/games/${slug}/index.html`)
       for (const f of ['kru-quiz.js', 'kru-quiz.css', 'kru-end.js', 'kru-intro.js']) expect(html, f).toContain('/games/shared/' + f)

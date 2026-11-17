@@ -1,4 +1,4 @@
-/* Quiz Board: a board of 5 topics x 5 squares (1 to 5 points). Teams take turns choosing a square.
+/* Jeopardy: a board of 5 topics x 5 squares (1 to 5 points). Teams take turns choosing a square.
    The question opens with a timer; Henry taps the teams that were right (tap again to take it back),
    then Reveal, then Back to board. One square on each board is a secret DOUBLE (twice the points).
    Questions: Quiz Battle's built-in sets for the level (games/quiz-battle/content.json), 5 per topic,
@@ -187,7 +187,7 @@
     S.pts[id] = pts(id) + d;
     S.log.push({ t: id, d: d, k: k });
     save();
-    Kru.score(id, d, 'quiz board');
+    Kru.score(id, d, 'jeopardy');
     if (d > 0) tone([784, 988], 0.1);
     renderQuestion();
   }
@@ -217,7 +217,7 @@
     var powersBefore = JSON.parse(JSON.stringify(S.powers[t.id] || {}));
     if (S.risk) use(t.id, 'risk');
     S.used[k] = right ? [t.id] : [];
-    if (d) { S.pts[t.id] = pts(t.id) + d; Kru.score(t.id, d, right ? 'quiz board' : 'risk it'); }
+    if (d) { S.pts[t.id] = pts(t.id) + d; Kru.score(t.id, d, right ? 'jeopardy' : 'risk it'); }
     // Undo gives back the points AND the power-ups used on this question (a mis-tap shouldn't cost a power-up)
     S.last = { k: k, t: t.id, d: d, turn: S.turn, powers: S.lastPowers || powersBefore };
     S.lastPowers = null;
@@ -295,7 +295,7 @@
     Object.keys(b).forEach(function (k) { S[k] = b[k]; });
     save(); closeMenu(); stopTimer(); show();
   });
-  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Quiz Board' }); });
+  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Jeopardy' }); });
   $('resetScores').addEventListener('click', function () {
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: all scores back to 0'; setTimeout(disarm, 3500); return; }
@@ -340,7 +340,7 @@
       total = left = S.secs;
       show();
       INTRO = KruIntro.forLevel(c, Q.level);
-      if (!S.introDone) KruIntro.show(INTRO, { title: 'Quiz Board' }).then(function () { S.introDone = true; save(); });
+      if (!S.introDone) KruIntro.show(INTRO, { title: 'Jeopardy' }).then(function () { S.introDone = true; save(); });
     }).catch(function (err) {
       $('board').textContent = 'Could not load the questions. Close the game and open it again.';
       if (window.console) console.error(err);

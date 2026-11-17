@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import type { Session } from '../lib/session'
+import { currentSlug } from '../lib/games'
 import { storage } from '../lib/storage'
 
 interface SessionsState {
@@ -37,6 +38,7 @@ export const useSessions = create<SessionsState>((setState, getState) => ({
   async load() {
     if (getState().loaded) return
     const saved = (await storage.getSessions()) ?? {}
+    for (const id of Object.keys(saved)) saved[id] = { ...saved[id], game: currentSlug(saved[id].game) } // renamed games keep working
     setState({ sessions: { ...saved, ...getState().sessions }, loaded: true })
   },
 
