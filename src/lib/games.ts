@@ -43,7 +43,11 @@ export function librarySections(games: GameInfo[] = GAMES) {
   })).filter((s) => s.games.length > 0)
 }
 
-export const findGame = (slug: string) => GAMES.find((g) => g.slug === slug)
+/** Games whose id changed: old saved sessions, favorites and recents use the old id (Quiz Board became Jeopardy, Nov 2026). */
+export const RENAMED_GAMES: Record<string, string> = { 'quiz-board': 'jeopardy' }
+export const currentSlug = (slug: string) => RENAMED_GAMES[slug] ?? slug
+
+export const findGame = (slug: string) => GAMES.find((g) => g.slug === currentSlug(slug))
 
 /** Games taken out of the library (Henry). Their old sessions can still be reviewed and saved under this title. */
 export const RETIRED_GAMES: Record<string, string> = {
@@ -60,4 +64,4 @@ export const RETIRED_GAMES: Record<string, string> = {
 export const gameTitle = (slug: string) => findGame(slug)?.title ?? RETIRED_GAMES[slug] ?? slug
 
 /** Every game is its own page, loaded in a same-origin frame. */
-export const gameUrl = (slug: string) => `/games/${slug}/index.html`
+export const gameUrl = (slug: string) => `/games/${currentSlug(slug)}/index.html`

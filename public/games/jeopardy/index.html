@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
-    <title>Quiz Board</title>
+    <title>Jeopardy</title>
     <link rel="stylesheet" href="/games/shared/kru-game.css" />
     <link rel="stylesheet" href="/games/shared/kru-intro.css" />
     <link rel="stylesheet" href="/games/shared/kru-end.css" />
@@ -15,7 +15,7 @@
   <body>
     <main class="game kc qb">
       <header class="bar">
-        <span class="logo">Quiz <b>Board</b></span>
+        <span class="logo"><b>Jeopardy</b></span>
         <span class="turn" id="turn"></span>
         <span class="grow"></span>
         <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
@@ -23,7 +23,7 @@
 
       <!-- The board: 5 topics x 5 squares, scores beside it -->
       <div class="qb-main" id="boardView">
-        <div class="board" id="board" role="grid" aria-label="Quiz board: tap a square"></div>
+        <div class="board" id="board" role="grid" aria-label="Jeopardy: tap a square"></div>
         <ol class="scores" id="scores" aria-label="Scores"></ol>
       </div>
 

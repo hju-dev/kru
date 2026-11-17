@@ -10,7 +10,7 @@ const u = JSON.parse(readFileSync(new URL('../public/units/m3-english-reported-s
 describe('Reported Speech unit', () => {
   it('shows for M.3 in Quiz Battle only, for every class', () => {
     expect(unitsFor('M.3', 'quiz-battle', 'M.3/1').map((x) => x.id)).toContain('m3-english-reported-speech')
-    expect(unitsFor('M.3', 'quiz-board').map((x) => x.id)).not.toContain('m3-english-reported-speech')
+    expect(unitsFor('M.3', 'jeopardy').map((x) => x.id)).not.toContain('m3-english-reported-speech')
     expect(unitsFor('M.2', 'quiz-battle').map((x) => x.id)).not.toContain('m3-english-reported-speech')
   })
   it('has direct to reported, reported to direct, tense and multiple-choice sets', () => {
@@ -43,5 +43,20 @@ describe('Team Builder & Scoreboard', () => {
   })
   it('the review note says what the points were for', () => {
     expect(read('src/routes/Results.tsx')).toContain('What were these points for?')
+  })
+})
+
+// Quiz Board became Jeopardy (Henry, Nov 17): new id and title; old saved ids still work; old Sheet rows keep "Quiz Board".
+describe('Jeopardy rename', () => {
+  it('old Quiz Board ids resolve to Jeopardy', async () => {
+    const g = await import('../src/lib/games')
+    expect(g.findGame('quiz-board')?.title).toBe('Jeopardy')
+    expect(g.gameTitle('jeopardy')).toBe('Jeopardy')
+    expect(g.gameUrl('quiz-board')).toBe('/games/jeopardy/index.html')
+    expect(g.GAMES.some((x) => x.slug === 'quiz-board')).toBe(false)
+  })
+  it('the game lives in games/jeopardy and says Jeopardy', () => {
+    const html = readFileSync(new URL('../public/games/jeopardy/index.html', import.meta.url), 'utf8')
+    expect(html).toContain('<title>Jeopardy</title>')
   })
 })

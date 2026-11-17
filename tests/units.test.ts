@@ -29,8 +29,8 @@ describe('units', () => {
           else expect(String(q.answer).length, q.q).toBeGreaterThan(0)
         }
       })
-      it('enough for a full Quiz Board (5 topics with 5+ questions), unless it is a small lesson pack', () => {
-        if (u.games) return expect(u.sets.reduce((n, s) => n + s.questions.length, 0) >= 10 || !u.games.includes('quiz-board')).toBe(true)
+      it('enough for a full Jeopardy (5 topics with 5+ questions), unless it is a small lesson pack', () => {
+        if (u.games) return expect(u.sets.reduce((n, s) => n + s.questions.length, 0) >= 10 || !u.games.includes('jeopardy')).toBe(true)
         expect(u.sets.filter((s) => s.questions.length >= 5).length).toBeGreaterThanOrEqual(5)
       })
       it('right answers are spread over the choices (not nearly always one letter)', () => {
@@ -57,7 +57,7 @@ describe('units', () => {
 describe('picking a unit', () => {
   it('only games that use a unit offer the choice', () => {
     const withUnits = games.filter((g) => (g as { units?: boolean }).units).map((g) => g.slug).sort()
-    expect(withUnits).toEqual(['hot-seat-vocab', 'quiz-battle', 'quiz-board', 'race-board', 'sentence-scramble', 'tag-team-debate'])
+    expect(withUnits).toEqual(['hot-seat-vocab', 'jeopardy', 'quiz-battle', 'race-board', 'sentence-scramble', 'tag-team-debate'])
     for (const slug of withUnits) {
       const html = read(`public/games/${slug}/index.html`)
       expect(html, slug).toContain('/games/shared/kru-quiz.js')

@@ -1,4 +1,4 @@
-/* Quiz Board, phone landscape: the board (5 topics x 5 squares) with scores beside it; one question at a time. */
+/* Jeopardy, phone landscape: the board (5 topics x 5 squares) with scores beside it; one question at a time. */
 .qb .turn {
   display: inline-flex;
   align-items: center;

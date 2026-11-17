@@ -62,7 +62,7 @@ describe('podium first, then the scores are sent (every scored game)', () => {
     expect(end).toContain('data-k="save">Save scores &amp; finish ✓')
   })
   it('games with a natural end open the podium themselves', () => {
-    for (const slug of ['quiz-battle', 'quiz-board', 'race-board', 'think-tank-showdown', 'word-rush']) {
+    for (const slug of ['quiz-battle', 'jeopardy', 'race-board', 'think-tank-showdown', 'word-rush']) {
       expect(read(`public/games/${slug}/app.js`), slug).toMatch(/KruEnd\.show\(/)
     }
   })

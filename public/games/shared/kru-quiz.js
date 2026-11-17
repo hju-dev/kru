@@ -1,5 +1,5 @@
 /**
- * Shared quiz questions for Quiz Board and Race Board.
+ * Shared quiz questions for Jeopardy and Race Board.
  * Questions come from Quiz Battle's built-in sets (games/quiz-battle/content.json, 5 sets of 10 per level),
  * plus Henry's own sets from the Questions tab of his Sheet (session.questions) when a game wants them.
  * A question: { q, choices?: [A, B, C, D], answer: index (multiple choice) or text (short answer), double }.
