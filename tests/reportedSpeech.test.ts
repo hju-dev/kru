@@ -156,3 +156,23 @@ describe('Reading Island', () => {
     expect(js).toContain('S.map.pirate = S.map.pirate || []')
   })
 })
+
+// One-Word Story writing relay (Henry, Nov 18).
+describe('One-Word Story writing relay', () => {
+  const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
+  const js = read('public/games/one-word-story/app.js')
+  it('picks one writer per team with no repeats until the team has all gone', () => {
+    expect(js).toContain('KruPicker.next(S.picked[t.id] || [], ids)')
+    expect(read('public/games/one-word-story/index.html')).toContain('/games/shared/kru-picker.js')
+  })
+  it('the best story gets 3 points, a draw 1 each, and the award can be changed', () => {
+    expect(js).toContain('var WIN = 3, DRAW = 1;')
+    expect(js).toContain("data-j=\"undo\"")
+  })
+  it('How to play slides: 4 short slides about writing one word in 5 seconds', () => {
+    const c = JSON.parse(read('public/games/one-word-story/content.json')) as { intro: { title: string; text: string[] }[] }
+    expect(c.intro).toHaveLength(4)
+    for (const s of c.intro) { expect(s.title.length).toBeLessThanOrEqual(30); for (const l of s.text) expect(l.length).toBeLessThanOrEqual(90) }
+    expect(JSON.stringify(c.intro)).toContain('5 seconds')
+  })
+})

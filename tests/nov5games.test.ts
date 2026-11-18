@@ -97,8 +97,10 @@ describe('One-Word Story is a game now', () => {
       expect(new Set(list.map((x) => x.toLowerCase())).size).toBe(list.length)
     })
   }
-  it('whole class, no team setup, nothing written to the Sheet without points', () => {
-    expect(games.find((g) => g.slug === 'one-word-story')).toMatchObject({ classTool: true, results: 'scored', status: 'ready' })
+  it('a team writing game (group mode, Writing section); only teams with points are written to the Sheet', () => {
+    const g = games.find((x) => x.slug === 'one-word-story')
+    expect(g).toMatchObject({ modes: ['group'], section: 'writing', results: 'scored', status: 'ready' })
+    expect((g as { classTool?: boolean }).classTool).toBeUndefined()
   })
   it('the old Talk Timer preset is gone (and removed from saved presets)', () => {
     const t = json('public/games/talk-timer/content.json') as { presets: { id: string }[] }

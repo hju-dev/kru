@@ -1,5 +1,5 @@
 {
- "about": "One-Word Story openers per level: the class goes round in a circle, one word each, to the beat. M.1 simple, M.2 past-tense stories, M.3 longer, more open openers. Written for Kru (the old Talk Timer preset turned into a game). Whole class, no points. At least 50 per level, shuffled every game.",
+ "about": "One-Word Story, a writing game (rebuilt Nov 18): two teams each write a story on the board, one word at a time, 5 seconds per word. Story openers for M.1, M.2 and M.3. Henry picks the best story (+3).",
  "M.1": {
   "openers": [
    "Yesterday, I found a",
@@ -166,60 +166,72 @@
   {
    "title": "One-Word Story",
    "text": [
-    "Make a circle. Read the opener together.",
-    "Go round: one word each, building the story."
+    "Two teams write a story, one word at a time.",
+    "Read the story opener together first."
    ],
    "example": {
     "label": "Example",
     "chips": [
-     "Yesterday",
-     "I",
-     "found",
+     "One",
+     "day",
      "a",
+     "dragon",
      "…"
     ]
    }
   },
   {
-   "title": "Follow the beat",
+   "title": "Writers, go!",
    "text": [
-    "Every beep, the next person says ONE word.",
-    "Too slow? The circle helps you."
+    "One student from each team runs to the board.",
+    "You have 5 seconds to write ONE word!"
+   ],
+   "example": {
+    "big": "5",
+    "tag": "seconds"
+   }
+  },
+  {
+   "title": "Keep the story going",
+   "text": [
+    "The next writers come. Make a sentence that makes sense!",
+    "Everyone on your team gets a turn."
    ],
    "example": {
     "rows": [
      [
-      "Each word",
-      "3 seconds"
+      "Writer 1",
+      "dragon"
      ],
      [
-      "Story",
-      "4 minutes"
+      "Writer 2",
+      "ate"
+     ],
+     [
+      "Writer 3",
+      "my"
      ]
     ]
    }
   },
   {
-   "title": "Keep it right",
+   "title": "Best story wins",
    "text": [
-    "The story must make sense and be correct.",
-    "End a sentence? Say \"Full stop!\""
+    "Read both stories out loud.",
+    "The best story gets 3 points!"
    ],
    "example": {
     "rows": [
      [
-      "\"Full stop!\"",
-      "ends a sentence"
+      "Best story",
+      "+3"
+     ],
+     [
+      "Draw",
+      "+1 each"
      ]
     ]
    }
-  },
-  {
-   "title": "Time's up!",
-   "text": [
-    "The last person finishes the sentence.",
-    "Then one person retells the whole story (30 s)."
-   ]
   }
  ]
 }
