@@ -216,7 +216,8 @@
       "group"
     ],
     "status": "ready",
-    "section": "quizzes"
+    "section": "quizzes",
+    "mixed": true
   },
   {
     "slug": "quiz-island",

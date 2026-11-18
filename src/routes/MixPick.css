@@ -1,0 +1,154 @@
+/* Mixed group pick list: every class, a header per class, tap students to add them. Phone (both ways) and laptop. */
+.mix {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: calc(var(--sa-top) + 8px + var(--top-extra)) max(var(--sa-right), 12px) 0 max(var(--sa-left), 12px);
+  overflow: hidden;
+}
+.mix-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+}
+.mix-title {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+}
+.mix-title b {
+  font-family: var(--display);
+  font-size: 18px;
+}
+.mix-count {
+  white-space: nowrap;
+  font-size: 15px;
+  color: var(--muted);
+}
+.mix-count b {
+  font: 600 22px var(--mono);
+  color: var(--gold);
+}
+.mix-count {
+  flex-shrink: 0;
+}
+/* phone sideways: no room for the game's name */
+@media (max-width: 960px) {
+  .mix-title .game-name {
+    display: none;
+  }
+}
+.mix-search {
+  flex: 1 1 200px;
+  min-width: 0;
+  display: flex;
+  gap: 8px;
+}
+/* phone upright: the search gets its own row under the title */
+@media (max-width: 600px) {
+  .mix-bar {
+    flex-wrap: wrap;
+  }
+  .mix-title {
+    flex: 1 1 0;
+  }
+  .mix-search {
+    order: 9;
+    flex-basis: 100%;
+  }
+}
+.mix-search input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--tap);
+  padding: 0 12px;
+  border-radius: var(--radius);
+  border: 2px solid var(--line);
+  background: var(--surface);
+}
+.mix-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-bottom: max(var(--sa-bottom), 12px);
+  -webkit-overflow-scrolling: touch;
+}
+.mix-class + .mix-class {
+  margin-top: 12px;
+}
+.mix-head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  background: var(--bg);
+}
+.mix-head h2 {
+  font-size: 20px;
+}
+.mix-head .grow {
+  flex: 1;
+}
+.mix-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 6px;
+}
+.mix-st {
+  min-height: var(--tap);
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--panel);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  text-align: left;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.mix-st .nick {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 700;
+}
+.mix-st .meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  line-height: 1.1;
+}
+.mix-st .meta b {
+  font: 500 13px var(--mono);
+  color: var(--gold);
+}
+.mix-st .played {
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.mix-st.on {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+}
+.mix-st.on .meta b,
+.mix-st.on .played {
+  color: var(--bg);
+}

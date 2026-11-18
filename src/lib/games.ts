@@ -28,6 +28,8 @@ export interface GameInfo {
   sheetQuestions?: boolean
   /** true = the setup screen offers a unit (content from Henry's Gamma lessons) for the level */
   units?: boolean
+  /** true = can be played by a mixed group picked from every class (Christmas Race Board) */
+  mixed?: boolean
   /** ready = playable; migrate / new = coming in a later phase */
   status: 'ready' | 'migrate' | 'new'
   section: SectionId

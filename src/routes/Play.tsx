@@ -34,7 +34,7 @@ export function Play() {
   if (!session) return <Navigate to="/" replace />
   if (session.status === 'review') return <Navigate to={`/results/${id}`} replace />
   // "Change teams" on the teams screen: back to team setup with the same teams
-  if (session.status === 'setup') return <Navigate to={`/setup/${session.game}`} replace />
+  if (session.status === 'setup') return <Navigate to={`/setup/${session.game}${session.mix ? '?mix=1' : ''}`} replace />
   if (session.status !== 'playing') return <Navigate to="/" replace />
   if (RETIRED_GAMES[session.game]) return <RetiredGame session={session} />
   if (session.teamsShown === false) return <TeamsScreen session={session} />

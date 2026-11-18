@@ -27,7 +27,7 @@ describe('teams screen before every group game', () => {
     expect(play).toContain('onStart={() => patch(session.id, { teamsShown: true })}')
   })
   it('Change teams goes back to setup with the same teams', () => {
-    expect(play).toContain("if (session.status === 'setup') return <Navigate to={`/setup/${session.game}`} replace />")
+    expect(play).toContain("if (session.status === 'setup') return <Navigate to={`/setup/${session.game}${session.mix ? '?mix=1' : ''}`} replace />")
   })
   it('the teams screen shrinks the text to fit (no scrolling)', () => {
     const tsx = read('src/components/TeamsReveal.tsx')

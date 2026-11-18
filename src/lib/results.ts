@@ -1,5 +1,6 @@
 import type { Session } from './session'
 import { todayKey } from './session'
+import { levelFromClass } from './bootstrap'
 
 /** Competition ranking, highest first: 17, 12, 12, 5 -> 1, 2, 2, 4. */
 export function rankTeams(points: { teamId: string; points: number }[]): Record<string, number> {
@@ -68,9 +69,10 @@ export function buildSubmission(
       rows.push({
         Date: date,
         Time: time,
-        Class: s.class,
+        Class: m.class ?? s.class, // mixed groups: each student's own class
         Game: gameTitle,
-        Level: s.level,
+        // mixed groups: each student's own level (from their class)
+        Level: m.class ? (levelFromClass(m.class) ?? s.level) : s.level,
         Mode: s.mode,
         Team: team.name,
         No: m.no,
@@ -91,7 +93,7 @@ export function buildSubmission(
       Date: date,
       Class: s.class,
       Game: gameTitle,
-      Level: s.level,
+      Level: s.mix ? '' : s.level, // a mixed group has no one level
       Mode: s.mode,
       TeamCount: teams.length,
       TeacherTeamPoints: s.teacherTeam ? (points[s.teacherTeam.id] ?? 0) : '',

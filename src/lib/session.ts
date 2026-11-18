@@ -1,5 +1,6 @@
 import type { Level } from '../types'
 import type { Bin } from './teams'
+import { displayTeams, type MixStudent } from './mix'
 
 export type Mode = 'solo' | 'group'
 export type SessionStatus = 'setup' | 'playing' | 'review' | 'submitted' | 'discarded'
@@ -7,6 +8,8 @@ export type SessionStatus = 'setup' | 'playing' | 'review' | 'submitted' | 'disc
 export interface Member {
   no: number
   nick: string
+  /** mixed groups only: the student's own class (their Results row goes there) */
+  class?: string
 }
 
 export interface Team {
@@ -27,6 +30,8 @@ export interface Session {
   mode: Mode
   /** a unit made from Henry's Gamma lessons (public/units/<id>.json), picked on the setup screen; none = built-in content */
   unit?: string
+  /** a mixed group from several classes (Christmas Race Board): the students picked, with session ids 1..n */
+  mix?: MixStudent[]
 
   // team setup (status "setup")
   size: number
@@ -97,7 +102,8 @@ export function initMessage(s: Session) {
       level: s.level,
       unit: s.unit ?? null,
       mode: s.mode,
-      teams: s.teams,
+      // mixed groups: "Nok (2/3)" when two students share a nickname
+      teams: displayTeams(s.teams),
       teacherTeam: s.teacherTeam,
       resume: s.state,
     },

@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router'
 import { DEMO_URL } from '../lib/demo'
 import { findGame, gameTitle } from '../lib/games'
 import { buildSubmission, rankTeams, submittedTeams } from '../lib/results'
+import { displayTeams } from '../lib/mix'
 import type { Session } from '../lib/session'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
@@ -77,6 +78,8 @@ function ResultsView({ session: s }: { session: Session }) {
     navigate('/', { replace: true })
   }
 
+  // mixed groups: "S2 (1/3)" when two students share a nickname
+  const shownNames = new Map(displayTeams(s.teams).map((t) => [t.id, t.members]))
   return (
     <main className="screen results">
       <header className="results-bar">
@@ -86,7 +89,7 @@ function ResultsView({ session: s }: { session: Session }) {
           </button>
         )}
         <h1>
-          {gameTitle(s.game)} <span className="muted">· {s.class} · {s.level}</span>
+          {gameTitle(s.game)} <span className="muted">· {s.class}{s.mix ? '' : ` · ${s.level}`}</span>
         </h1>
         {!submitted && (
           <>
@@ -144,7 +147,7 @@ function ResultsView({ session: s }: { session: Session }) {
             </span>
             <div className="result-team">
               <b>{t.name}</b>
-              {s.mode === 'group' && <span className="muted">{t.members.map((m) => m.nick).join(', ')}</span>}
+              {s.mode === 'group' && <span className="muted">{(shownNames.get(t.id) ?? t.members).map((m) => m.nick).join(', ')}</span>}
             </div>
             <Points value={pts(t.id)} disabled={submitted} onChange={(v) => setPoints(t.id, v)} label={t.name} />
           </div>
