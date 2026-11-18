@@ -6,6 +6,7 @@ import { storage } from '../lib/storage'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import './MixPick.css'
+import '../components/Christmas.css'
 
 /**
  * Mixed group (Christmas Race Board): one list of every class, with a header per class.
@@ -80,7 +81,8 @@ export function MixPick() {
   }
 
   return (
-    <main className="mix">
+    <main className={`mix${game.theme === 'christmas' ? ' xmas-theme' : ''}`}>
+      {game.theme === 'christmas' && <div className="xmas-snow" aria-hidden />}
       <header className="mix-bar">
         <Link className="btn small ghost" to={session ? `/setup/${slug}?mix=1` : '/'} aria-label="Back">
           ←
