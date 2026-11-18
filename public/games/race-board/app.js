@@ -62,6 +62,9 @@
   var esc = KruQuiz.esc;
 
   var POOL = {}, MATHSCI = [], teams = [], racers = [], INTRO = [];
+  // Christmas Race Board: questions already asked to any group, kept on the phone across games (Kru.saveKeep).
+  // A question comes back only after every question in the bank has been asked once (Henry, Nov 18).
+  var MEMORY = false, USED = {}, BANK = [];
   var S = null; // saved: { v, level, pos, finished, turn, order: {tier: [i]}, qi: {tier: n}, msOrder, msI, secs, last, skip, shield, dbl, mathsci, secret }
   var busy = false, left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
   var Q = null; // the question on screen: { q, tier, ... }
@@ -402,7 +405,27 @@
     clearInterval(timer); timer = setInterval(tick, 200); renderClock();
   }
   /** The next question: a tier picked at random (hard and impossible are rare), or math / science after that chance card. */
+  function fresh(list) { return list.filter(function (q) { return !USED[q.id]; }); }
+  function useQ(q) {
+    USED[q.id] = 1;
+    Kru.saveKeep({ used: Object.keys(USED) });
+    return q;
+  }
+  /** Christmas: an unasked question (from any group's game); a tier with none left gives way to the others. */
+  function pickFresh(id) {
+    if (!BANK.some(function (q) { return !USED[q.id]; })) USED = {}; // every question asked once: start again
+    if (S.mathsci[id]) {
+      S.mathsci[id] = false;
+      var ms = fresh(MATHSCI);
+      if (ms.length) return useQ(ms[Math.floor(Math.random() * ms.length)]);
+    }
+    var avail = ORDER.filter(function (t) { return fresh(POOL[t]).length; });
+    var tier = avail[weighted(avail.map(function (t) { return TIERS[t].share; }))];
+    var left = fresh(POOL[tier]);
+    return useQ(left[Math.floor(Math.random() * left.length)]);
+  }
   function pickQuestion(id) {
+    if (MEMORY) return pickFresh(id);
     if (S.mathsci[id] && MATHSCI.length) {
       S.mathsci[id] = false;
       var m = MATHSCI[S.msOrder[S.msI % S.msOrder.length]];
@@ -608,6 +631,14 @@
         QZ.fromSheet.forEach(function (s) { s.questions.forEach(function (q) { add(q, guessTier(q), s.name); }); });
       }
       MATHSCI = own.filter(function (q) { return q.cat === 'math' || q.cat === 'science'; }).map(function (q) { return Object.assign({ set: q.cat === 'math' ? 'Math' : 'Science' }, q); });
+      // Christmas bank (every question has an id, no unit): remember asked questions across games
+      MEMORY = !!XMAS && !QZ.unit && own.length > 0 && own.every(function (q) { return q.id; });
+      if (MEMORY) {
+        BANK = own;
+        USED = {};
+        var kept = session.keep && Array.isArray(session.keep.used) ? session.keep.used : [];
+        kept.forEach(function (k) { USED[k] = 1; });
+      }
       teams = Kru.allTeams();
       racers = teams.filter(function (t) { return !t.teacher; });
       KruEnd.setup({ standings: function () { return racers.map(function (t) { return { name: t.name, points: points(t.id) }; }); } });

@@ -1,5 +1,5 @@
 {
- "about": "Christmas Race Board (Henry, Nov 2026): Race Board's rules and code (games/race-board/app.js) with a Christmas question bank, Challenge squares and Forfeit cards. 100 questions for every level, with the answer in 'answer' (an index for A-D questions, text for spoken ones): 30 easy, 30 regular, 25 hard, 15 impossible, drawn in those proportions (shares). Math and science questions have a cat for the math-or-science chance card. christmas.squares = the Challenge squares; challenge and forfeit = the two card decks (20 each).",
+ "about": "Christmas Race Board (Henry, Nov 2026): Race Board's rules and code (games/race-board/app.js) with a Christmas question bank, Challenge squares and Forfeit cards. 200 Christmas questions (Nov 18) for every level, each with an id: 92 trivia, 33 rebus puzzles (rebus = lines shown big), 33 brain teasers, 17 reindeer math, 25 Christmas science; 60 easy, 60 regular, 50 hard, 30 impossible, drawn in those proportions (shares). The answer is an index for A-D questions, text for spoken ones. Asked questions are remembered on the phone (Kru.saveKeep) so later groups get new ones until every question has been asked. Math and science questions have a cat for the math-or-science chance card. christmas.squares = the Challenge squares; challenge and forfeit = the two card decks (20 each).",
  "title": "Christmas Race Board",
  "shares": {
   "easy": 30,
@@ -108,14 +108,6 @@
     "text": "Give everyone a very dramatic royal bow."
    },
    {
-    "title": "Robot Voice",
-    "text": "Say \"Our team is still going to win!\" in your best robot voice."
-   },
-   {
-    "title": "Dropped Present",
-    "text": "Pretend you have dropped your Christmas presents. React dramatically!"
-   },
-   {
     "title": "Frozen!",
     "text": "Freeze in your funniest position for 5 seconds."
    },
@@ -128,24 +120,12 @@
     "text": "Make the sound of any animal. Your team must guess which animal it is."
    },
    {
-    "title": "North Pole News",
-    "text": "Give a 10-second news report about something happening at the North Pole."
-   },
-   {
-    "title": "Reindeer Sneeze",
-    "text": "Do your best reindeer sneeze. Make it dramatic!"
-   },
-   {
     "title": "Tiny Mouse",
     "text": "Say \"Merry Christmas!\" in the tiniest mouse voice possible."
    },
    {
     "title": "Air Guitar",
     "text": "Play an imaginary guitar like a rock star for 5 seconds."
-   },
-   {
-    "title": "Sports Commentator",
-    "text": "Announce your team's name like you're commentating on a World Cup final."
    },
    {
     "title": "Cookie Monster",
@@ -157,19 +137,11 @@
    },
    {
     "title": "Snow Angel",
-    "text": "Make an imaginary snow angel using only your arms. You can do this seated!"
+    "text": "Lie down on the floor and make a snow angel with your arms and legs!"
    },
    {
-    "title": "Sleepy Reindeer",
-    "text": "Say \"I need more sleep!\" in your sleepiest voice."
-   },
-   {
-    "title": "Shoulder Disco",
-    "text": "Do three shoulder rolls followed by your best disco pose."
-   },
-   {
-    "title": "The Christmas Whisper",
-    "text": "Whisper \"It's Christmas!\" like you're sharing a very important secret."
+    "title": "Christmas Dance",
+    "text": "Show the class your three best dance moves."
    },
    {
     "title": "Monster Voice",
@@ -178,6 +150,34 @@
    {
     "title": "Christmas Morning",
     "text": "Your whole team must create a frozen statue showing Christmas morning."
+   },
+   {
+    "title": "Reindeer Jumps",
+    "text": "Do 10 jumping jacks while counting out loud."
+   },
+   {
+    "title": "Santa Squats",
+    "text": "Do 10 squats. Say \"Ho!\" every time you go down."
+   },
+   {
+    "title": "Elf Balance",
+    "text": "Stand on one foot with your arms out for 10 seconds."
+   },
+   {
+    "title": "Late for the Sleigh",
+    "text": "Run on the spot as fast as you can for 10 seconds."
+   },
+   {
+    "title": "Snowman Plank",
+    "text": "Hold a plank on the floor for 10 seconds."
+   },
+   {
+    "title": "Touch the Snow",
+    "text": "Touch your toes, then reach for the sky. Do it 5 times!"
+   },
+   {
+    "title": "Rudolph Hops",
+    "text": "Hop on one foot 10 times. Then switch feet!"
    }
   ]
  },
@@ -316,910 +316,2369 @@
  "questions": {
   "all": [
    {
+    "id": "x001",
     "tier": "easy",
-    "cat": "science",
-    "q": "Which planet is known as the Red Planet?",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What color is Santa’s suit?",
     "choices": [
-     "Venus",
-     "Jupiter",
-     "Mars",
-     "Mercury"
+     "Blue",
+     "Green",
+     "Yellow",
+     "Red"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x002",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is the date of Christmas Day?",
+    "choices": [
+     "December 24",
+     "January 1",
+     "December 31",
+     "December 25"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x003",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which animals pull Santa’s sleigh?",
+    "choices": [
+     "Horses",
+     "Polar bears",
+     "Dogs",
+     "Reindeer"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x004",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which reindeer has a red nose?",
+    "choices": [
+     "Blitzen",
+     "Rudolph",
+     "Comet",
+     "Dasher"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x005",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Where does Santa live?",
+    "choices": [
+     "The South Pole",
+     "The North Pole",
+     "Hawaii",
+     "The Moon"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x006",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do children hang up for Santa to fill with presents?",
+    "choices": [
+     "Gloves",
+     "Hats",
+     "Shoes",
+     "Stockings"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x007",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What does Santa say when he laughs?",
+    "choices": [
+     "Hi, hi, hi!",
+     "Ho, ho, ho!",
+     "Hee, hee, hee!",
+     "Ha, ha, ha!"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x008",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Who helps Santa make the toys?",
+    "choices": [
+     "Fairies",
+     "Pirates",
+     "Robots",
+     "Elves"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x009",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do people often put on top of a Christmas tree?",
+    "choices": [
+     "A star",
+     "A cup",
+     "A clock",
+     "A shoe"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x010",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is a snowman’s nose often made from?",
+    "choices": [
+     "A banana",
+     "A potato",
+     "A carrot",
+     "An apple"
     ],
     "answer": 2
    },
    {
-    "tier": "easy",
-    "cat": "math",
-    "q": "How many sides does a triangle have?",
-    "answer": "3"
-   },
-   {
+    "id": "x011",
     "tier": "easy",
     "cat": "general",
-    "q": "What do bees make?",
+    "set": "Christmas trivia",
+    "q": "In the stories, how does Santa get into houses?",
     "choices": [
-     "Milk",
-     "Honey",
-     "Bread",
-     "Cheese"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "What is the largest ocean in the world?",
-    "answer": "Pacific Ocean"
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "What is the capital city of France?",
-    "choices": [
-     "Paris",
-     "London",
-     "Madrid",
-     "Rome"
+     "Down the chimney",
+     "Under the door",
+     "Through the garage",
+     "Through the window"
     ],
     "answer": 0
    },
    {
+    "id": "x012",
     "tier": "easy",
     "cat": "general",
-    "q": "What do we call a baby dog?",
-    "answer": "Puppy"
+    "set": "Christmas trivia",
+    "q": "What do children leave out for Santa on Christmas Eve?",
+    "choices": [
+     "Milk and cookies",
+     "Pizza and soda",
+     "Noodles and juice",
+     "Rice and soup"
+    ],
+    "answer": 0
    },
    {
+    "id": "x013",
     "tier": "easy",
     "cat": "general",
-    "q": "Which animal is the tallest in the world?",
+    "set": "Christmas trivia",
+    "q": "Santa checks his list to see who is naughty or ___.",
+    "answer": "Nice"
+   },
+   {
+    "id": "x014",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Finish the song name: “Frosty the ___”",
+    "answer": "Snowman"
+   },
+   {
+    "id": "x015",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "At Christmas, people kiss under which plant?",
     "choices": [
-     "Elephant",
-     "Camel",
-     "Horse",
-     "Giraffe"
+     "A rose",
+     "A palm tree",
+     "A cactus",
+     "Mistletoe"
     ],
     "answer": 3
    },
    {
-    "tier": "easy",
-    "cat": "science",
-    "q": "What do we call water when it freezes?",
-    "answer": "Ice"
-   },
-   {
+    "id": "x016",
     "tier": "easy",
     "cat": "general",
-    "q": "Which sport uses a racket and a shuttlecock?",
+    "set": "Christmas trivia",
+    "q": "A candy cane looks like which letter?",
     "choices": [
-     "Tennis",
-     "Badminton",
-     "Volleyball",
-     "Basketball"
+     "X",
+     "T",
+     "J",
+     "O"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x017",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What colors is a candy cane?",
+    "choices": [
+     "Green and yellow",
+     "Red and white",
+     "Blue and white",
+     "Black and orange"
     ],
     "answer": 1
    },
    {
+    "id": "x018",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "On a “white Christmas,” what falls from the sky?",
+    "choices": [
+     "Sand",
+     "Rain",
+     "Snow",
+     "Leaves"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x019",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do people wrap presents in?",
+    "choices": [
+     "Towels",
+     "Aluminum foil",
+     "Wrapping paper",
+     "Plastic bags"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x020",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is the name of the funny snowman in “Frozen”?",
+    "choices": [
+     "Hans",
+     "Sven",
+     "Kristoff",
+     "Olaf"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x021",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do we call a Christmas song?",
+    "choices": [
+     "A speech",
+     "A carol",
+     "A story",
+     "A poem"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x022",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What does Santa ride in?",
+    "choices": [
+     "A car",
+     "A boat",
+     "A sleigh",
+     "A bus"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x023",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is a gingerbread man?",
+    "choices": [
+     "A snowman",
+     "A toy",
+     "A cookie",
+     "A song"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x024",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do people put on a Christmas tree to make it shine?",
+    "choices": [
+     "Spoons",
+     "Lights",
+     "Books",
+     "Socks"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x025",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which month is Christmas in?",
+    "answer": "December"
+   },
+   {
+    "id": "x026",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is the date of Christmas Eve?",
+    "choices": [
+     "December 30",
+     "December 23",
+     "December 24",
+     "December 26"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x027",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What does Santa carry the presents in?",
+    "choices": [
+     "A backpack",
+     "A big sack",
+     "A shopping cart",
+     "A suitcase"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x028",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What kind of tree is a Christmas tree usually?",
+    "choices": [
+     "A pine tree",
+     "A palm tree",
+     "A banana tree",
+     "A mango tree"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x029",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do people send to their friends at Christmas?",
+    "choices": [
+     "Cards",
+     "Plants",
+     "Pillows",
+     "Shoes"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x030",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is Santa’s wife called?",
+    "choices": [
+     "Mrs. Snow",
+     "Mrs. Claus",
+     "Mrs. Holly",
+     "Mrs. Elf"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x031",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What sweet house do people make at Christmas?",
+    "choices": [
+     "A cookie boat",
+     "A candy plane",
+     "A gingerbread house",
+     "A chocolate car"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x032",
+    "tier": "easy",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do children write to Santa?",
+    "choices": [
+     "A letter",
+     "A book",
+     "A song",
+     "A poem"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x033",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "❄️ + 👨"
+    ],
+    "answer": "Snowman (snow + man)"
+   },
+   {
+    "id": "x034",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "❄️ + ⚽"
+    ],
+    "answer": "Snowball (snow + ball)"
+   },
+   {
+    "id": "x035",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "❄️ + 👼"
+    ],
+    "answer": "Snow angel (snow + angel)"
+   },
+   {
+    "id": "x036",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "❄️ + 🌍"
+    ],
+    "answer": "Snow globe (snow + globe)"
+   },
+   {
+    "id": "x037",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🍬 + 🦯"
+    ],
+    "answer": "Candy cane (candy + cane)"
+   },
+   {
+    "id": "x038",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🔥 + 🍫"
+    ],
+    "answer": "Hot chocolate (hot + chocolate)"
+   },
+   {
+    "id": "x039",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "❄️ + ⛈️"
+    ],
+    "answer": "Snowstorm (snow + storm)"
+   },
+   {
+    "id": "x040",
+    "tier": "easy",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "X-MAS + 🌲"
+    ],
+    "answer": "Christmas tree (X-mas = Christmas)"
+   },
+   {
+    "id": "x041",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "What do you call a snowman in the summer?",
+    "answer": "A puddle (it melted!)"
+   },
+   {
+    "id": "x042",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Which is heavier: 1 kilogram of snow or 1 kilogram of presents?",
+    "answer": "Neither: they both weigh 1 kilogram"
+   },
+   {
+    "id": "x043",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "What falls in winter but never gets hurt?",
+    "answer": "Snow"
+   },
+   {
+    "id": "x044",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "What can you catch in winter but can’t throw?",
+    "answer": "A cold"
+   },
+   {
+    "id": "x045",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "You tear me and throw me away so you can open your present. What am I?",
+    "answer": "Wrapping paper"
+   },
+   {
+    "id": "x046",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "What goes up when the snow comes down?",
+    "answer": "An umbrella"
+   },
+   {
+    "id": "x047",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "I am tall when I am young and short when I am old. I give light on Christmas Eve. What am I?",
+    "answer": "A candle"
+   },
+   {
+    "id": "x048",
+    "tier": "easy",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Christmas Day was on a Saturday. Which day was Christmas Eve?",
+    "answer": "Friday"
+   },
+   {
+    "id": "x049",
     "tier": "easy",
     "cat": "math",
-    "q": "How many days are there in a week?",
+    "set": "Reindeer math",
+    "q": "Santa has 9 reindeer. 2 are sleeping. How many are awake?",
     "answer": "7"
    },
    {
+    "id": "x050",
     "tier": "easy",
     "cat": "math",
-    "q": "Which shape has four equal sides and four right angles?",
-    "choices": [
-     "Triangle",
-     "Circle",
-     "Rectangle",
-     "Square"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "Which country is famous for its ancient pyramids?",
-    "answer": "Egypt"
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "Which type of tree is traditionally decorated at Christmas?",
-    "choices": [
-     "Palm tree",
-     "Pine tree",
-     "Apple tree",
-     "Banana tree"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "On which date is Christmas Day celebrated?",
-    "answer": "December 25"
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "Which of these is a fruit?",
-    "choices": [
-     "Apple",
-     "Carrot",
-     "Potato",
-     "Onion"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "What do we call someone who flies an airplane?",
-    "answer": "Pilot"
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "Which animal lives underwater and breathes through gills?",
-    "choices": [
-     "Cat",
-     "Fish",
-     "Rabbit",
-     "Monkey"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "easy",
-    "cat": "math",
-    "q": "How many months are there in a year?",
+    "set": "Reindeer math",
+    "q": "A reindeer has 4 legs. How many legs do 3 reindeer have?",
     "answer": "12"
    },
    {
+    "id": "x051",
     "tier": "easy",
-    "cat": "general",
-    "q": "What is the name of Santa's famous red-nosed reindeer?",
-    "choices": [
-     "Dasher",
-     "Comet",
-     "Blitzen",
-     "Rudolph"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "What is the name of the star closest to Earth?",
-    "answer": "The Sun"
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "Thailand is located on which continent?",
-    "choices": [
-     "Asia",
-     "Africa",
-     "Europe",
-     "South America"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "What do we call a house made entirely of snow and ice?",
-    "answer": "Igloo"
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "Which musical instrument usually has black and white keys?",
-    "choices": [
-     "Guitar",
-     "Drum",
-     "Trumpet",
-     "Piano"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "What is the name of the planet we live on?",
-    "answer": "Earth"
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "What do children traditionally hang up for Santa to fill with presents?",
-    "choices": [
-     "Hats",
-     "Shoes",
-     "Stockings",
-     "Gloves"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "Which animal is often called the king of the jungle?",
-    "answer": "Lion"
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "Which of these animals is a mammal?",
-    "choices": [
-     "Dolphin",
-     "Shark",
-     "Octopus",
-     "Trout"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "What is the name of the vehicle Santa uses to deliver presents?",
-    "answer": "Sleigh"
-   },
-   {
-    "tier": "easy",
-    "cat": "general",
-    "q": "Which country is famous for sushi?",
-    "choices": [
-     "Italy",
-     "Mexico",
-     "Japan",
-     "India"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "easy",
-    "cat": "science",
-    "q": "How many legs does a spider have?",
-    "answer": "8"
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which planet is famous for its large, visible rings?",
-    "choices": [
-     "Mars",
-     "Saturn",
-     "Venus",
-     "Mercury"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "What is the largest animal in the world?",
-    "answer": "Blue whale"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "In the movie Home Alone, where is Kevin's family traveling for Christmas?",
-    "choices": [
-     "London",
-     "Paris",
-     "New York",
-     "Tokyo"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which gas do plants absorb from the air?",
-    "answer": "Carbon dioxide"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the currency of Japan?",
-    "choices": [
-     "Yen",
-     "Dollar",
-     "Euro",
-     "Won"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "How many players are there on the field for one soccer team during a match?",
-    "answer": "11"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "Which country is famous for kangaroos?",
-    "choices": [
-     "Canada",
-     "Brazil",
-     "Germany",
-     "Australia"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "What is the hardest naturally occurring substance on Earth?",
-    "answer": "Diamond"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "Which drink is traditionally associated with Christmas in the United States?",
-    "choices": [
-     "Lemonade",
-     "Eggnog",
-     "Iced tea",
-     "Orange juice"
-    ],
-    "answer": 1
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the name of the little fairy in Peter Pan?",
-    "answer": "Tinker Bell"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "Which ocean is between Africa and Australia?",
-    "choices": [
-     "Atlantic Ocean",
-     "Arctic Ocean",
-     "Indian Ocean",
-     "Pacific Ocean"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the capital city of Thailand?",
-    "answer": "Bangkok"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "How many keys does a standard full-size piano have?",
-    "choices": [
-     "66",
-     "72",
-     "88",
-     "100"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which bird is famous for being able to fly backwards?",
-    "answer": "Hummingbird"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the main ingredient in guacamole?",
-    "choices": [
-     "Avocado",
-     "Cucumber",
-     "Tomato",
-     "Potato"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which metal is liquid at normal room temperature?",
-    "answer": "Mercury"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the day after Christmas Day called in the United Kingdom?",
-    "choices": [
-     "Christmas Eve",
-     "New Year's Day",
-     "Easter Monday",
-     "Boxing Day"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the tallest mountain above sea level?",
-    "answer": "Mount Everest"
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which organ pumps blood around the human body?",
-    "choices": [
-     "Heart",
-     "Brain",
-     "Stomach",
-     "Lungs"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "regular",
     "cat": "math",
-    "q": "How many colors are traditionally named in a rainbow?",
+    "set": "Reindeer math",
+    "q": "An elf makes 5 toys in the morning and 4 in the afternoon. How many toys is that?",
+    "answer": "9"
+   },
+   {
+    "id": "x052",
+    "tier": "easy",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "There are 10 cookies for Santa. He eats 3. How many are left?",
     "answer": "7"
    },
    {
-    "tier": "regular",
-    "cat": "general",
-    "q": "Which country gave the Statue of Liberty to the United States?",
+    "id": "x053",
+    "tier": "easy",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "A Christmas tree has 6 red balls and 6 gold balls. How many balls is that?",
+    "answer": "12"
+   },
+   {
+    "id": "x054",
+    "tier": "easy",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "2 snowmen have 3 buttons each. How many buttons is that?",
+    "answer": "6"
+   },
+   {
+    "id": "x055",
+    "tier": "easy",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Snow is frozen…",
     "choices": [
-     "Spain",
-     "France",
-     "Germany",
-     "Italy"
+     "Sugar",
+     "Water",
+     "Milk",
+     "Salt"
     ],
     "answer": 1
    },
    {
-    "tier": "regular",
-    "cat": "general",
-    "q": "What is the name of the cowboy toy in Toy Story?",
-    "answer": "Woody"
+    "id": "x056",
+    "tier": "easy",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "What happens to a snowman when it gets warm?",
+    "choices": [
+     "It melts",
+     "It freezes",
+     "It sings",
+     "It grows"
+    ],
+    "answer": 0
    },
    {
+    "id": "x057",
+    "tier": "easy",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Water freezes at what temperature?",
+    "choices": [
+     "0 °C",
+     "10 °C",
+     "50 °C",
+     "100 °C"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x058",
+    "tier": "easy",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Which part of your body do you use to smell Christmas cookies?",
+    "choices": [
+     "Your ears",
+     "Your elbow",
+     "Your nose",
+     "Your eyes"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x059",
+    "tier": "easy",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "What do Christmas lights need to shine?",
+    "choices": [
+     "Electricity",
+     "Water",
+     "Sound",
+     "Snow"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x060",
+    "tier": "easy",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Where do polar bears live?",
+    "choices": [
+     "The Arctic (near the North Pole)",
+     "Antarctica",
+     "The Amazon",
+     "Africa"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x061",
     "tier": "regular",
     "cat": "general",
-    "q": "Which plant is famous for its bright red leaves around Christmas?",
+    "set": "Christmas trivia",
+    "q": "Which name is NOT one of Santa’s reindeer?",
     "choices": [
+     "Dasher",
+     "Vixen",
+     "Rover",
+     "Prancer"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x062",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the song “Jingle Bells,” how many horses pull the sleigh?",
+    "answer": "1 (a one-horse open sleigh)"
+   },
+   {
+    "id": "x063",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is the name of the Grinch’s dog?",
+    "choices": [
+     "Buddy",
+     "Rex",
+     "Max",
+     "Charlie"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x064",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What color is the Grinch?",
+    "choices": [
+     "Green",
+     "Red",
+     "Blue",
+     "Purple"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x065",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “The Twelve Days of Christmas,” what is the gift on the first day?",
+    "choices": [
+     "A partridge in a pear tree",
+     "Two turtle doves",
+     "Five gold rings",
+     "A golden goose"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x066",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is another name for Santa Claus?",
+    "choices": [
+     "Father Christmas",
+     "Uncle Snow",
+     "Mister Winter",
+     "King December"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x067",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What shape is a Christmas wreath?",
+    "choices": [
+     "A star",
+     "A circle",
+     "A triangle",
+     "A square"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x068",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do we call the four weeks before Christmas?",
+    "choices": [
+     "Spring break",
+     "Halloween",
+     "Advent",
+     "Easter"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x069",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "On an Advent calendar, what do you open every day?",
+    "choices": [
+     "A little door",
+     "A letter",
+     "A big box",
+     "A book"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x070",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the movie “Home Alone,” where does Kevin’s family fly?",
+    "choices": [
+     "Tokyo",
+     "Rome",
+     "London",
+     "Paris"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x071",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the movie “Elf,” Buddy goes from the North Pole to which city?",
+    "choices": [
+     "Los Angeles",
+     "Las Vegas",
+     "New York City",
+     "Chicago"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x072",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which plant with big red leaves is a Christmas flower?",
+    "choices": [
+     "Lotus",
+     "Poinsettia",
      "Sunflower",
-     "Rose",
-     "Tulip",
-     "Poinsettia"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "On which continent is the Sahara Desert?",
-    "answer": "Africa"
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which animal is famous for being able to change the color of its skin?",
-    "choices": [
-     "Zebra",
-     "Panda",
-     "Kangaroo",
-     "Chameleon"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "regular",
-    "cat": "math",
-    "q": "How many minutes are there in two hours?",
-    "answer": "120"
-   },
-   {
-    "tier": "regular",
-    "cat": "science",
-    "q": "Which of these is the smallest?",
-    "choices": [
-     "A human cell",
-     "An organ",
-     "An atom",
-     "A molecule"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "math",
-    "q": "What do we call a shape with eight sides?",
-    "answer": "Octagon"
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "Where is Santa Claus traditionally said to live?",
-    "choices": [
-     "South Pole",
-     "Mount Everest",
-     "North Pole",
-     "The moon"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "regular",
-    "cat": "general",
-    "q": "Which country is credited with inventing paper?",
-    "answer": "China"
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "Which planet takes longer to spin once on its axis than it takes to orbit the Sun?",
-    "choices": [
-     "Venus",
-     "Earth",
-     "Mars",
-     "Jupiter"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "What is the name of the imaginary line that goes around the middle of the Earth at 0° latitude?",
-    "answer": "Equator"
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "What is Scrooge's first name in A Christmas Carol?",
-    "choices": [
-     "Ebenezer",
-     "Ernest",
-     "Edward",
-     "Edgar"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "Which mammal is capable of true, powered flight?",
-    "answer": "Bat"
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "What is the chemical symbol for gold?",
-    "choices": [
-     "Go",
-     "Gd",
-     "Ag",
-     "Au"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "Which country has the most natural lakes in the world?",
-    "answer": "Canada"
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "What is the smallest bone in the human body?",
-    "choices": [
-     "Stapes",
-     "Femur",
-     "Humerus",
-     "Tibia"
-    ],
-    "answer": 0
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "Which famous passenger ship sank on its first voyage in 1912?",
-    "answer": "Titanic"
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "What three gifts did the Wise Men bring to baby Jesus?",
-    "choices": [
-     "Silver, gold and diamonds",
-     "Food, clothes and gold",
-     "Gold, frankincense and myrrh",
-     "Gold, spices and flowers"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "What is the largest solid internal organ in the human body?",
-    "answer": "Liver"
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "Who developed the three famous laws of motion?",
-    "choices": [
-     "Albert Einstein",
-     "Galileo Galilei",
-     "Charles Darwin",
-     "Isaac Newton"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "Which American city is known as \"The Big Apple\"?",
-    "answer": "New York City"
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "Which chemical element has the atomic number 1?",
-    "choices": [
-     "Oxygen",
-     "Hydrogen",
-     "Carbon",
-     "Helium"
+     "Daisy"
     ],
     "answer": 1
    },
    {
-    "tier": "hard",
-    "cat": "science",
-    "q": "What is the name of the process in which a caterpillar changes into a butterfly?",
-    "answer": "Metamorphosis"
-   },
-   {
-    "tier": "hard",
+    "id": "x073",
+    "tier": "regular",
     "cat": "general",
-    "q": "Which famous ballet features the Sugar Plum Fairy and a toy soldier?",
+    "set": "Christmas trivia",
+    "q": "Which Christmas plant has red berries and spiky leaves?",
     "choices": [
-     "Swan Lake",
-     "Sleeping Beauty",
-     "The Nutcracker",
-     "Cinderella"
+     "Ivy",
+     "Mistletoe",
+     "Holly",
+     "Bamboo"
     ],
     "answer": 2
    },
    {
-    "tier": "hard",
+    "id": "x074",
+    "tier": "regular",
     "cat": "general",
-    "q": "Which continent is the coldest on Earth?",
-    "answer": "Antarctica"
+    "set": "Christmas trivia",
+    "q": "Eggnog is a Christmas drink. What is it mostly made of?",
+    "choices": [
+     "Coffee and sugar",
+     "Milk and eggs",
+     "Tea and lemon",
+     "Juice and ice"
+    ],
+    "answer": 1
    },
    {
-    "tier": "hard",
+    "id": "x075",
+    "tier": "regular",
     "cat": "general",
-    "q": "The ancient city of Petra is located in which country?",
+    "set": "Christmas trivia",
+    "q": "Which country started the Christmas tree tradition?",
     "choices": [
+     "Brazil",
+     "Japan",
      "Egypt",
-     "Greece",
-     "Turkey",
-     "Jordan"
+     "Germany"
     ],
     "answer": 3
    },
    {
-    "tier": "hard",
+    "id": "x076",
+    "tier": "regular",
     "cat": "general",
-    "q": "What is the capital city of New Zealand?",
-    "answer": "Wellington"
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "Which blood type is commonly known as the universal red blood cell donor?",
+    "set": "Christmas trivia",
+    "q": "What makes Frosty the Snowman come to life?",
     "choices": [
-     "AB positive",
-     "A negative",
-     "B positive",
-     "O negative"
+     "A magic carrot",
+     "A magic button",
+     "A magic scarf",
+     "A magic hat"
     ],
     "answer": 3
    },
    {
-    "tier": "hard",
+    "id": "x077",
+    "tier": "regular",
     "cat": "general",
-    "q": "What do you call a word or number that reads the same forwards and backwards?",
-    "answer": "Palindrome"
+    "set": "Christmas trivia",
+    "q": "Why did Santa ask Rudolph to lead the sleigh?",
+    "choices": [
+     "It was too hot",
+     "Rudolph had a map",
+     "Rudolph was the fastest",
+     "It was foggy"
+    ],
+    "answer": 3
    },
    {
-    "tier": "hard",
+    "id": "x078",
+    "tier": "regular",
     "cat": "general",
-    "q": "Which Christmas song begins with the words \"You better watch out, you better not cry\"?",
+    "set": "Christmas trivia",
+    "q": "How many reindeer pull Santa’s sleigh, counting Rudolph?",
+    "answer": "9"
+   },
+   {
+    "id": "x079",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do many American families eat for Christmas dinner?",
     "choices": [
+     "Tacos",
+     "Pad thai",
+     "Sushi",
+     "Turkey"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x080",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "A “Yule log” cake looks like what?",
+    "choices": [
+     "A piece of wood",
+     "A tree",
+     "A snowman",
+     "A star"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x081",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “The Polar Express,” where does the train go?",
+    "choices": [
+     "The South Pole",
+     "The Moon",
+     "The North Pole",
+     "Paris"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x082",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "A person who hates Christmas is often called a…",
+    "choices": [
+     "Scrooge",
+     "Rudolph",
+     "Frosty",
+     "Santa"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x083",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which spice gives gingerbread its name?",
+    "choices": [
+     "Pepper",
+     "Cinnamon",
+     "Salt",
+     "Ginger"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x084",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the stories, what does Santa give to naughty children?",
+    "choices": [
+     "Candy",
+     "Money",
+     "Coal",
+     "Toys"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x085",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What do we call people who sing Christmas songs from house to house?",
+    "choices": [
+     "Bakers",
+     "Carolers",
+     "Dancers",
+     "Painters"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x086",
+    "tier": "regular",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which Christmas song starts with “Dashing through the snow”?",
+    "choices": [
+     "Deck the Halls",
      "Jingle Bells",
      "Silent Night",
-     "Santa Claus Is Coming to Town",
-     "Last Christmas"
-    ],
-    "answer": 2
-   },
-   {
-    "tier": "hard",
-    "cat": "science",
-    "q": "What is the name of the galaxy that contains our Solar System?",
-    "answer": "Milky Way"
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "What is the name of the currency used in Hungary?",
-    "choices": [
-     "Franc",
-     "Forint",
-     "Krona",
-     "Peso"
+     "Let It Snow"
     ],
     "answer": 1
    },
    {
-    "tier": "hard",
+    "id": "x087",
+    "tier": "regular",
     "cat": "general",
-    "q": "What is the largest hot desert in the world?",
-    "answer": "Sahara Desert"
-   },
-   {
-    "tier": "hard",
-    "cat": "general",
-    "q": "Which ocean is the deepest in the world?",
+    "set": "Christmas trivia",
+    "q": "In the song, the other reindeer would not let Rudolph join in any reindeer…",
     "choices": [
-     "Indian Ocean",
-     "Pacific Ocean",
-     "Atlantic Ocean",
-     "Arctic Ocean"
+     "Classes",
+     "Games",
+     "Songs",
+     "Dinners"
     ],
     "answer": 1
    },
    {
-    "tier": "impossible",
+    "id": "x088",
+    "tier": "regular",
     "cat": "general",
-    "q": "Which letter of the alphabet does NOT appear in the name of any US state?",
+    "set": "Christmas trivia",
+    "q": "What does the Grinch try to steal?",
     "choices": [
-     "X",
-     "Z",
-     "J",
-     "Q"
-    ],
-    "answer": 3
-   },
-   {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "A farmer has 17 sheep. All but 9 run away. How many sheep are left?",
-    "answer": "9 sheep"
-   },
-   {
-    "tier": "impossible",
-    "cat": "science",
-    "q": "Which animal has three hearts?",
-    "choices": [
-     "Octopus",
-     "Shark",
-     "Dolphin",
-     "Crocodile"
+     "Christmas",
+     "Santa’s sleigh",
+     "The Moon",
+     "A pizza"
     ],
     "answer": 0
    },
    {
-    "tier": "impossible",
-    "cat": "general",
-    "q": "What gets wetter the more it dries?",
-    "answer": "A towel"
-   },
-   {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "In the song The Twelve Days of Christmas, how many gifts are given on the twelfth day, counting all the repeated gifts together?",
-    "choices": [
-     "12",
-     "36",
-     "66",
-     "78"
+    "id": "x089",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🌧️ + 🦌"
     ],
-    "answer": 3
+    "answer": "Reindeer (rain + deer)"
    },
    {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "How many zeros are there in one billion?",
-    "answer": "9 zeros"
-   },
-   {
-    "tier": "impossible",
-    "cat": "science",
-    "q": "Which Australian animal is famous for having fingerprints that look very similar to human fingerprints?",
-    "choices": [
-     "Koala",
-     "Kangaroo",
-     "Wombat",
-     "Platypus"
+    "id": "x090",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "SANTA + 🦞"
     ],
-    "answer": 0
+    "answer": "Santa Claus (Santa + claws)"
    },
    {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "You are running in a race. You overtake the person in second place. What position are you now in?",
+    "id": "x091",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas song is this?",
+    "rebus": [
+     "🤫 + 🌙"
+    ],
+    "answer": "Silent Night (silent + night)"
+   },
+   {
+    "id": "x092",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What does Santa say?",
+    "rebus": [
+     "HO × 3"
+    ],
+    "answer": "Ho, ho, ho! (ho three times)"
+   },
+   {
+    "id": "x093",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🎁 + 🌯"
+    ],
+    "answer": "Gift wrap (gift + wrap)"
+   },
+   {
+    "id": "x094",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🌲 + 🍦"
+    ],
+    "answer": "Pine cone (pine + cone)"
+   },
+   {
+    "id": "x095",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🔥 + 📍"
+    ],
+    "answer": "Fireplace (fire + place)"
+   },
+   {
+    "id": "x096",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🕯️ + 💡"
+    ],
+    "answer": "Candlelight (candle + light)"
+   },
+   {
+    "id": "x097",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "GINGER + 🍞 + 👨"
+    ],
+    "answer": "Gingerbread man (ginger + bread + man)"
+   },
+   {
+    "id": "x098",
+    "tier": "regular",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "X-MAS + 🃏"
+    ],
+    "answer": "Christmas card (X-mas + card)"
+   },
+   {
+    "id": "x099",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Rudolph’s mom has four children: Dasher, Dancer, Prancer and… who?",
+    "answer": "Rudolph"
+   },
+   {
+    "id": "x100",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "There are 5 presents under the tree. You take 2. How many presents do YOU have?",
+    "answer": "2 (the two you took)"
+   },
+   {
+    "id": "x101",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "A rooster lays an egg on top of Santa’s roof. Which way does the egg roll?",
+    "answer": "It doesn’t: roosters don’t lay eggs"
+   },
+   {
+    "id": "x102",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "An electric train goes to the North Pole. Which way does the smoke go?",
+    "answer": "There is no smoke: it’s an electric train"
+   },
+   {
+    "id": "x103",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "What has lots of needles but never sews?",
+    "answer": "A Christmas tree (a pine tree)"
+   },
+   {
+    "id": "x104",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Santa’s workshop has something with 88 keys, but it can’t open a door. What is it?",
+    "answer": "A piano"
+   },
+   {
+    "id": "x105",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "A man walked in the snow on Christmas Eve with no hat. Not one hair on his head got wet. Why?",
+    "answer": "He was bald"
+   },
+   {
+    "id": "x106",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "In a race, Santa passes the person in second place. What place is Santa in now?",
     "answer": "Second place"
    },
    {
-    "tier": "impossible",
-    "cat": "general",
-    "q": "What is the name of the snowman in the Disney movie Frozen?",
+    "id": "x107",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "It is dark. You have one match, a candle, a lamp and a fireplace. What do you light first?",
+    "answer": "The match"
+   },
+   {
+    "id": "x108",
+    "tier": "regular",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "What goes all around the world on a Christmas card but stays in the corner?",
+    "answer": "A stamp"
+   },
+   {
+    "id": "x109",
+    "tier": "regular",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "How many legs do Santa’s 9 reindeer have altogether?",
+    "answer": "36"
+   },
+   {
+    "id": "x110",
+    "tier": "regular",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "Santa visits 8 houses every minute. How many houses does he visit in 10 minutes?",
+    "answer": "80"
+   },
+   {
+    "id": "x111",
+    "tier": "regular",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "4 elves share 24 candy canes equally. How many does each elf get?",
+    "answer": "6"
+   },
+   {
+    "id": "x112",
+    "tier": "regular",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "Today is December 1. In how many days is Christmas Day?",
+    "answer": "24"
+   },
+   {
+    "id": "x113",
+    "tier": "regular",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "A present costs 150 baht. Santa buys 3. How much does he pay?",
+    "answer": "450 baht"
+   },
+   {
+    "id": "x114",
+    "tier": "regular",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Reindeer eat only plants. What are they?",
     "choices": [
-     "Sven",
-     "Kristoff",
-     "Olaf",
-     "Hans"
+     "Omnivores",
+     "Carnivores",
+     "Insectivores",
+     "Herbivores"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x115",
+    "tier": "regular",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "How many points does a snowflake have?",
+    "choices": [
+     "4",
+     "5",
+     "6",
+     "8"
     ],
     "answer": 2
    },
    {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "You have three apples and you take away two. How many apples do you have?",
-    "answer": "2 apples"
+    "id": "x116",
+    "tier": "regular",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Which gas does a Christmas tree take in from the air?",
+    "choices": [
+     "Helium",
+     "Oxygen",
+     "Carbon dioxide",
+     "Nitrogen"
+    ],
+    "answer": 2
    },
    {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "Which of these numbers is both a perfect square and a perfect cube, other than 1?",
+    "id": "x117",
+    "tier": "regular",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "A candle flame needs which gas from the air to burn?",
     "choices": [
-     "36",
-     "64",
-     "81",
-     "100"
+     "Oxygen",
+     "Helium",
+     "Carbon dioxide",
+     "Hydrogen"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x118",
+    "tier": "regular",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Why does ice float on water?",
+    "choices": [
+     "Ice is sweeter",
+     "Ice is lighter than the same amount of water",
+     "Ice is heavier",
+     "Ice is hotter"
     ],
     "answer": 1
    },
    {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "What is the next number in this sequence? 2, 3, 5, 8, 12, 17, ___",
-    "answer": "23 (add 1, then 2, then 3, then 4, then 5, then 6)"
+    "id": "x119",
+    "tier": "regular",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Santa lives at the North Pole. Which way does a compass needle point?",
+    "choices": [
+     "North",
+     "East",
+     "West",
+     "South"
+    ],
+    "answer": 0
    },
    {
-    "tier": "impossible",
-    "cat": "general",
-    "q": "Which country is located in both Europe and Asia, with Istanbul being one of its most famous cities?",
+    "id": "x120",
+    "tier": "regular",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Snow is made of water. What is the chemical formula for water?",
     "choices": [
-     "Spain",
+     "CO₂",
+     "H₂O",
+     "NaCl",
+     "O₂"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x121",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “The Twelve Days of Christmas,” what is the gift on the fifth day?",
+    "choices": [
+     "Five swimming swans",
+     "Five French hens",
+     "Five gold rings",
+     "Five silver bells"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x122",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “A Christmas Carol,” what is the name of the mean old man?",
+    "choices": [
+     "Ebenezer Scrooge",
+     "Bob Cratchit",
+     "Jacob Marley",
+     "Tiny Tim"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x123",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “A Christmas Carol,” what is the name of Scrooge’s dead business partner?",
+    "choices": [
+     "Fred",
+     "Jacob Marley",
+     "Bob Cratchit",
+     "Mr. Fezziwig"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x124",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “A Christmas Carol,” what is Tiny Tim’s family name?",
+    "choices": [
+     "Marley",
+     "Scrooge",
+     "Cratchit",
+     "Smith"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x125",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which country sends a big Christmas tree to London every year?",
+    "choices": [
+     "Canada",
+     "Sweden",
+     "Germany",
+     "Norway"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x126",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What is the date of Boxing Day?",
+    "choices": [
+     "December 24",
+     "January 1",
+     "December 27",
+     "December 26"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x127",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In which country is it summer at Christmas?",
+    "choices": [
+     "Norway",
+     "Australia",
+     "Russia",
+     "Canada"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x128",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Who wrote “A Christmas Carol”?",
+    "choices": [
+     "J.K. Rowling",
+     "William Shakespeare",
+     "Mark Twain",
+     "Charles Dickens"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x129",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the Christmas story, which three gifts did the wise men bring?",
+    "choices": [
+     "Gold, silver and bronze",
+     "Gold, frankincense and myrrh",
+     "Bread, milk and honey",
+     "Rice, salt and tea"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x130",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “How the Grinch Stole Christmas!”, what is the name of the town?",
+    "choices": [
+     "Mountville",
+     "Snowtown",
+     "Whoville",
+     "Grinchville"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x131",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "At the start of the story, how big is the Grinch’s heart?",
+    "choices": [
+     "One size too big",
+     "Two sizes too small",
+     "Ten sizes too big",
+     "Just right"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x132",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Who wrote the music for the ballet “The Nutcracker”?",
+    "choices": [
+     "Mozart",
+     "Bach",
+     "Tchaikovsky",
+     "Beethoven"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x133",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the poem “The Night Before Christmas,” which reindeer is named first?",
+    "choices": [
+     "Dasher",
+     "Rudolph",
+     "Comet",
+     "Blitzen"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x134",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "“Feliz Navidad” means “Merry Christmas” in which language?",
+    "choices": [
+     "French",
+     "Italian",
+     "Spanish",
+     "Portuguese"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x135",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "“Joyeux Noël” means “Merry Christmas” in which language?",
+    "choices": [
+     "Italian",
+     "German",
+     "Spanish",
+     "French"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x136",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "The real Saint Nicholas lived in which country (today)?",
+    "choices": [
      "Türkiye (Turkey)",
-     "Japan",
-     "Australia"
+     "Canada",
+     "Germany",
+     "Finland"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x137",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "On Christmas Day, many families in Japan eat which food?",
+    "choices": [
+     "Fried chicken",
+     "Sushi",
+     "Ramen",
+     "Pizza"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x138",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the song “Frosty the Snowman,” what are Frosty’s eyes made of?",
+    "choices": [
+     "Buttons",
+     "Coal",
+     "Rocks",
+     "Grapes"
     ],
     "answer": 1
    },
    {
-    "tier": "impossible",
-    "cat": "math",
-    "q": "A clock takes 5 seconds to strike 6 times. How many seconds will it take to strike 12 times?",
-    "answer": "11 seconds"
+    "id": "x139",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the song “Frosty the Snowman,” what is Frosty’s nose?",
+    "choices": [
+     "A carrot",
+     "A button",
+     "A cherry",
+     "A stick"
+    ],
+    "answer": 1
    },
    {
-    "tier": "impossible",
+    "id": "x140",
+    "tier": "hard",
     "cat": "general",
-    "q": "Santa Claus is partly based on which historical Christian saint?",
+    "set": "Christmas trivia",
+    "q": "In the UK, what goes “BANG” when two people pull it at Christmas dinner?",
     "choices": [
-     "Saint Patrick",
-     "Saint George",
-     "Saint Nicholas",
-     "Saint Valentine"
+     "A candy cane",
+     "A balloon",
+     "A Christmas cracker",
+     "A stocking"
     ],
     "answer": 2
+   },
+   {
+    "id": "x141",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the movie “Elf,” what does Buddy put on his spaghetti?",
+    "choices": [
+     "Chocolate milk",
+     "Maple syrup",
+     "Ketchup",
+     "Mustard"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x142",
+    "tier": "hard",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “A Christmas Carol,” how many ghosts visit Scrooge after Marley?",
+    "answer": "3 (Past, Present and Yet to Come)"
+   },
+   {
+    "id": "x143",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "MIST + 🦶"
+    ],
+    "answer": "Mistletoe (mist + toe)"
+   },
+   {
+    "id": "x144",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "❄️ + 🍂"
+    ],
+    "answer": "Snowfall (snow + fall)"
+   },
+   {
+    "id": "x145",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🧊 + 🚲"
+    ],
+    "answer": "Icicle (ice + cycle)"
+   },
+   {
+    "id": "x146",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "MIT + 🔟"
+    ],
+    "answer": "Mitten (mit + ten)"
+   },
+   {
+    "id": "x147",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🦉 + 👨👨👨"
+    ],
+    "answer": "Wise men (wise + men)"
+   },
+   {
+    "id": "x148",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas song is this?",
+    "rebus": [
+     "12 × ☀️",
+     "of X-MAS"
+    ],
+    "answer": "The Twelve Days of Christmas"
+   },
+   {
+    "id": "x149",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas song is this?",
+    "rebus": [
+     "🛳️ DECK",
+     "the HALL HALL"
+    ],
+    "answer": "Deck the Halls (deck the halls)"
+   },
+   {
+    "id": "x150",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "SELF − S"
+    ],
+    "answer": "Elf (self without the S)"
+   },
+   {
+    "id": "x151",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "SLEIGHT − T"
+    ],
+    "answer": "Sleigh (sleight without the T)"
+   },
+   {
+    "id": "x152",
+    "tier": "hard",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "NORTH + 🎣"
+    ],
+    "answer": "North Pole (north + fishing pole)"
+   },
+   {
+    "id": "x153",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "How many presents can you put into an empty sack?",
+    "answer": "One: after that, it isn’t empty"
+   },
+   {
+    "id": "x154",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "The day before yesterday was Christmas Day. What is the date tomorrow?",
+    "answer": "December 28"
+   },
+   {
+    "id": "x155",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Christmas Day is on a Monday. Which day is New Year’s Day?",
+    "answer": "Monday (7 days later)"
+   },
+   {
+    "id": "x156",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "An elf has 10 candy canes. All but 3 are eaten. How many are left?",
+    "answer": "3"
+   },
+   {
+    "id": "x157",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Two fathers and two sons buy 3 presents, one each. How is that possible?",
+    "answer": "They are a grandfather, a father and a son"
+   },
+   {
+    "id": "x158",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "A girl was born on December 25, but her birthday is always in summer. How?",
+    "answer": "She lives in the south, for example in Australia"
+   },
+   {
+    "id": "x159",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "An elf builds a house. All four walls face south. A bear walks past. What color is the bear?",
+    "answer": "White: the house is at the North Pole, so it’s a polar bear"
+   },
+   {
+    "id": "x160",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Which letter in “Christmas” do we not say?",
+    "answer": "T"
+   },
+   {
+    "id": "x161",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Which has more legs: 3 reindeer or 5 elves?",
+    "answer": "3 reindeer (12 legs, the elves have 10)"
+   },
+   {
+    "id": "x162",
+    "tier": "hard",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Santa’s elves keep one about your present. If you share it, you don’t have it anymore. What is it?",
+    "answer": "A secret"
+   },
+   {
+    "id": "x163",
+    "tier": "hard",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "Santa’s 9 reindeer each eat 3 carrots a day. How many carrots do they eat in 1 week?",
+    "answer": "189"
+   },
+   {
+    "id": "x164",
+    "tier": "hard",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "Santa’s sleigh flies 120 km in 1 hour. How far does it fly in 15 minutes?",
+    "answer": "30 km"
+   },
+   {
+    "id": "x165",
+    "tier": "hard",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "An elf wraps 1 present every 4 minutes. How many presents can the elf wrap in 2 hours?",
+    "answer": "30"
+   },
+   {
+    "id": "x166",
+    "tier": "hard",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Which part of a candle flame is the hottest?",
+    "choices": [
+     "The blue part",
+     "The yellow part",
+     "The orange part",
+     "The black part"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x167",
+    "tier": "hard",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "On a cold Christmas morning you can see your breath. Why?",
+    "choices": [
+     "It is dust",
+     "It is smoke",
+     "It is snow",
+     "Water in your breath turns into tiny drops"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x168",
+    "tier": "hard",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "We breathe out carbon dioxide. What is its chemical formula?",
+    "choices": [
+     "C₂O",
+     "CO",
+     "O₂",
+     "CO₂"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x169",
+    "tier": "hard",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Gold was a gift of the wise men. What is the chemical symbol for gold?",
+    "choices": [
+     "Au",
+     "Gd",
+     "Ag",
+     "Go"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x170",
+    "tier": "hard",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "People put salt on icy roads in winter. What is the chemical formula for salt?",
+    "choices": [
+     "NaCl",
+     "CO₂",
+     "O₂",
+     "H₂O"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x171",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “The Twelve Days of Christmas,” what is the gift on the eighth day?",
+    "choices": [
+     "Eight maids a-milking",
+     "Eight pipers piping",
+     "Eight lords a-leaping",
+     "Eight ladies dancing"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x172",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “The Twelve Days of Christmas,” what is the gift on the eleventh day?",
+    "choices": [
+     "Eleven ladies dancing",
+     "Eleven drummers drumming",
+     "Eleven pipers piping",
+     "Eleven lords a-leaping"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x173",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In which year was “A Christmas Carol” first published?",
+    "choices": [
+     "1743",
+     "1812",
+     "1843",
+     "1900"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x174",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Rudolph was first made in 1939 for which American store?",
+    "choices": [
+     "Macy’s",
+     "Target",
+     "Walmart",
+     "Montgomery Ward"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x175",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “Home Alone,” what is Kevin’s family name?",
+    "choices": [
+     "McCallister",
+     "McDonald",
+     "Mitchell",
+     "Morrison"
+    ],
+    "answer": 0
+   },
+   {
+    "id": "x176",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Which two reindeer names mean “thunder” and “lightning”?",
+    "choices": [
+     "Comet and Cupid",
+     "Prancer and Vixen",
+     "Donner and Blitzen",
+     "Dasher and Dancer"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x177",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "What was the real Saint Nicholas’s job?",
+    "choices": [
+     "A king",
+     "A bishop",
+     "A farmer",
+     "A soldier"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x178",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "Poinsettias first came from which country?",
+    "choices": [
+     "Brazil",
+     "Spain",
+     "Mexico",
+     "Egypt"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x179",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In “The Night Before Christmas,” how many “tiny reindeer” pull the sleigh?",
+    "answer": "8"
+   },
+   {
+    "id": "x180",
+    "tier": "impossible",
+    "cat": "general",
+    "set": "Christmas trivia",
+    "q": "In the movie “It’s a Wonderful Life,” what is the name of the town?",
+    "choices": [
+     "Pine Hill",
+     "Snowtown",
+     "Whoville",
+     "Bedford Falls"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x181",
+    "tier": "impossible",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "🌶️ + 🪙"
+    ],
+    "answer": "Peppermint (pepper + mint, a coin is made at a mint)"
+   },
+   {
+    "id": "x182",
+    "tier": "impossible",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas word is this?",
+    "rebus": [
+     "STOCK",
+     "+ 💍 RING − R"
+    ],
+    "answer": "Stocking (stock + ing)"
+   },
+   {
+    "id": "x183",
+    "tier": "impossible",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas song is this?",
+    "rebus": [
+     "SANTA 🦞",
+     "is ➡️ to 🏙️"
+    ],
+    "answer": "Santa Claus Is Coming to Town"
+   },
+   {
+    "id": "x184",
+    "tier": "impossible",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas song is this?",
+    "rebus": [
+     "🪨 + IN",
+     "around the X-MAS 🌲"
+    ],
+    "answer": "Rockin’ Around the Christmas Tree"
+   },
+   {
+    "id": "x185",
+    "tier": "impossible",
+    "cat": "rebus",
+    "set": "Rebus",
+    "q": "What Christmas song is this?",
+    "rebus": [
+     "💤💭 of a",
+     "⬜ X-MAS"
+    ],
+    "answer": "I’m Dreaming of a White Christmas"
+   },
+   {
+    "id": "x186",
+    "tier": "impossible",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "5 elves make 5 toys in 5 minutes. How long do 100 elves take to make 100 toys?",
+    "answer": "5 minutes"
+   },
+   {
+    "id": "x187",
+    "tier": "impossible",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "A Christmas pudding weighs 1 kilogram plus half of its own weight. How much does it weigh?",
+    "answer": "2 kilograms"
+   },
+   {
+    "id": "x188",
+    "tier": "impossible",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "Two days ago I was 10. Next year I will be 13. What is my birthday?",
+    "answer": "December 31 (and today is January 1)"
+   },
+   {
+    "id": "x189",
+    "tier": "impossible",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "A coin is inside a bottle with a cork in it. How can you get the coin out without taking out the cork or breaking the bottle?",
+    "answer": "Push the cork into the bottle"
+   },
+   {
+    "id": "x190",
+    "tier": "impossible",
+    "cat": "teaser",
+    "set": "Brain teaser",
+    "q": "What is the next letter: J, F, M, A, M, J, J, A, S, O, N, …?",
+    "answer": "D (for December: they are the months)"
+   },
+   {
+    "id": "x191",
+    "tier": "impossible",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "In “The Twelve Days of Christmas” you get 1 gift on day 1, 1 + 2 on day 2, 1 + 2 + 3 on day 3… How many gifts after all 12 days?",
+    "answer": "364"
+   },
+   {
+    "id": "x192",
+    "tier": "impossible",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "Rudolph flies 1 km in the first minute, 2 km in the second minute, 3 km in the third… How far after 10 minutes?",
+    "answer": "55 km"
+   },
+   {
+    "id": "x193",
+    "tier": "impossible",
+    "cat": "math",
+    "set": "Reindeer math",
+    "q": "In Santa’s workshop there are reindeer and elves: 20 heads and 56 legs. How many reindeer are there?",
+    "answer": "8 reindeer (and 12 elves)"
+   },
+   {
+    "id": "x194",
+    "tier": "impossible",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Santa gives coal to naughty children. Coal and diamonds are both made of which element?",
+    "choices": [
+     "Copper",
+     "Carbon",
+     "Chlorine",
+     "Calcium"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x195",
+    "tier": "impossible",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Silver bells ring at Christmas. What is the chemical symbol for silver?",
+    "choices": [
+     "Sv",
+     "Au",
+     "Ag",
+     "Si"
+    ],
+    "answer": 2
+   },
+   {
+    "id": "x196",
+    "tier": "impossible",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "Santa’s sleigh has iron runners. What is the chemical symbol for iron?",
+    "choices": [
+     "I",
+     "Fe",
+     "In",
+     "Ir"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x197",
+    "tier": "impossible",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "How fast does the light from Christmas lights travel?",
+    "choices": [
+     "About 30 km per second",
+     "About 300 km per second",
+     "About 3,000 km per second",
+     "About 300,000 km per second"
+    ],
+    "answer": 3
+   },
+   {
+    "id": "x198",
+    "tier": "impossible",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "In the USA, water freezes at what temperature in Fahrenheit?",
+    "choices": [
+     "0 °F",
+     "32 °F",
+     "100 °F",
+     "212 °F"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x199",
+    "tier": "impossible",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "In winter, the eyes of Arctic reindeer change color from gold to which color?",
+    "choices": [
+     "Green",
+     "Blue",
+     "Red",
+     "Black"
+    ],
+    "answer": 1
+   },
+   {
+    "id": "x200",
+    "tier": "impossible",
+    "cat": "science",
+    "set": "Christmas science",
+    "q": "A poinsettia looks like a big red flower. Which part of the plant is red?",
+    "choices": [
+     "The flowers",
+     "The roots",
+     "The fruits",
+     "The leaves"
+    ],
+    "answer": 3
    }
   ]
  }
