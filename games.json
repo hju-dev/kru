@@ -341,22 +341,21 @@
     "slug": "one-word-story",
     "title": "One-Word Story",
     "file": "public/games/one-word-story/index.html",
-    "description": "The whole class in a circle builds a story one word each, to a beat (no tapping per word). Story openers for M.1, M.2 and M.3, a button to end each sentence, then a 30-second retell. A warm-up with no points.",
+    "description": "A writing relay for teams. Each round one student per team runs to the board and has 5 seconds to write ONE word, building the team's story from an opener. The class reads the stories, you pick the best (+3). M.1, M.2 and M.3.",
     "levels": [
       "M.1",
       "M.2",
       "M.3"
     ],
-    "type": "speaking game",
-    "minutes": 10,
+    "type": "writing game",
+    "minutes": 15,
     "modes": [
-      "solo"
+      "group"
     ],
-    "classTool": true,
     "results": "scored",
     "phoneLandscape": true,
     "status": "ready",
-    "section": "speaking"
+    "section": "writing"
   },
   {
     "slug": "sentence-builder",

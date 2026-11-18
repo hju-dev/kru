@@ -1,19 +1,21 @@
-/* One-Word Story: the whole class in a circle, one word each, building a story from an opener.
-   A beat tells the next person when to say their word (no tapping for each word). "Full stop!" ends a
-   sentence. When the story time is up, the last person finishes the sentence, then one student
-   retells the whole story in 30 seconds. No points: a speaking warm-up. */
+/* One-Word Story (rebuilt Nov 18 as a writing game). Each team writes its own story on the board, one word at a time.
+   Every round one student from every team (picked at random, nobody twice until the whole team has gone) runs to the
+   board and has 5 seconds to write ONE word. Then the next writers. When the story is long enough, the class reads the
+   stories aloud and Henry taps the best one (+3), or a draw (+1 each). The phone is only the timer, the picker and the
+   scoreboard: the students write on the board or on paper. */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
-  var ROUNDS = [120, 180, 240, 300], BEATS = [3, 4, 5, 6, 8, 10], RETELL = 30;
+  var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A'];
+  var WORDS = [8, 12, 16, 20, 30], WRITE = [3, 5, 7, 10], GAP = [2, 3, 5, 8];
+  var WIN = 3, DRAW = 1;
 
-  var OPENERS = [], S = null, INTRO = [];
-  var phase = 'ready', left = 0, total = 0, beatLeft = 0, running = false, endAt = 0, beatAt = 0, timer = 0, audio = null;
+  var OPENERS = [], S = null, INTRO = [], teams = [], players = [];
+  var phase = 'ready', running = false, left = 0, total = 0, endAt = 0, timer = 0, audio = null, writersNow = [];
 
   function esc(s) {
     return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
   }
-  function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
   function save() { Kru.saveState(S); }
   function shuffled(n) {
     var a = [];
@@ -21,6 +23,7 @@
     for (var j = n - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var x = a[j]; a[j] = a[k]; a[k] = x; }
     return a;
   }
+  function pts(id) { return S.pts[id] || 0; }
 
   // ---------- sound (after a tap) ----------
   function unlockAudio() {
@@ -31,170 +34,177 @@
     if (!audio) return;
     try {
       freqs.forEach(function (f, i) {
-        var t = audio.currentTime + i * (gap || 0.15), o = audio.createOscillator(), g = audio.createGain();
+        var t = audio.currentTime + i * (gap || 0.12), o = audio.createOscillator(), g = audio.createGain();
         o.type = 'triangle'; o.frequency.value = f;
-        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.3, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + (dur || 0.25));
-        o.connect(g).connect(audio.destination); o.start(t); o.stop(t + (dur || 0.25) + 0.05);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.3, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + (dur || 0.2));
+        o.connect(g).connect(audio.destination); o.start(t); o.stop(t + (dur || 0.2) + 0.05);
       });
     } catch (e) {}
   }
-  function flash(text, ms) {
-    var f = $('flash');
-    f.textContent = text;
-    f.hidden = false;
-    clearTimeout(flash.t);
-    flash.t = setTimeout(function () { f.hidden = true; }, ms || 800);
+
+  // ---------- who writes ----------
+  /** One writer per team: random, nobody twice until the whole team has gone (KruPicker.next keeps the list). */
+  function pickWriters() {
+    S.picked = S.picked || {};
+    return players.map(function (t) {
+      var list = t.members || [];
+      if (!list.length) return { team: t, name: 'Anyone' };
+      var ids = list.map(function (m) { return String(m.id != null ? m.id : m.no); });
+      var r = KruPicker.next(S.picked[t.id] || [], ids);
+      S.picked[t.id] = r.picked;
+      var m = list.filter(function (x) { return String(x.id != null ? x.id : x.no) === r.id; })[0];
+      return { team: t, name: m.nick };
+    });
   }
 
-  // ---------- the story ----------
-  function opener() { return OPENERS[S.order[S.pos]] || ''; }
-  function fitOpener() {
-    var stage = $('stage'), el = $('opener'), size = 46;
-    el.style.fontSize = size + 'px';
-    while (size > 24 && stage.scrollHeight > stage.clientHeight + 1) el.style.fontSize = (size -= 2) + 'px';
-  }
-  var TEXT = {
-    ready: 'Ready',
-    story: 'One word each!',
-    last: 'Finish the sentence!',
-    retell: 'Retell the story',
-    done: 'The end!',
-  };
+  // ---------- the clock (phase 'pick' = get ready, 'write' = write one word) ----------
   function render() {
-    $('opener').textContent = opener() + ' …';
-    $('counts').textContent = phase === 'ready' ? 'Make a circle · read the opener together' :
-      S.words + ' word' + (S.words === 1 ? '' : 's') + ' · ' + S.sentences + ' sentence' + (S.sentences === 1 ? '' : 's');
-    $('digits').textContent = fmt(left);
-    $('digits').className = 'digits' + (left <= 0 && phase !== 'ready' ? ' done' : left <= 10 && running ? ' warn' : '');
-    $('phase').textContent = TEXT[phase];
-    var story = phase === 'story';
-    $('beat').classList.toggle('on', story && running);
-    $('beatNum').textContent = story ? Math.max(1, Math.ceil(beatLeft)) : S.beat;
-    $('go').hidden = phase === 'last' || phase === 'done';
-    $('go').textContent = phase === 'ready' ? 'Start story' : running ? 'Pause' : 'Resume';
-    $('period').disabled = !(story || phase === 'last');
-    $('retell').hidden = !(phase === 'last' || phase === 'retell' || phase === 'done');
-    $('retell').disabled = phase === 'retell';
-    $('retell').textContent = phase === 'done' ? 'Retell again' : 'Retell ' + fmt(RETELL);
-    fitOpener();
+    var judging = phase === 'judge';
+    $('opener').textContent = OPENERS[S.order[S.pos]] || '';
+    $('label').textContent = 'Story opener';
+    $('judge').hidden = !judging;
+    $('writers').hidden = judging;
+    $('count').textContent = phase === 'ready' ? S.words + ' words' : judging ? 'Story done' : 'Word ' + Math.min(S.n + (phase === 'write' ? 1 : 1), S.words) + '/' + S.words;
+    $('secs').textContent = phase === 'ready' || judging ? '' : String(Math.max(0, Math.ceil(left)));
+    $('secs').className = 'secs ' + phase + (phase === 'write' && left <= 2 ? ' hot' : '');
+    $('phase').textContent = { ready: 'Ready', pick: 'Get to the board!', write: 'Write ONE word!', judge: 'Read your stories' }[phase];
+    $('go').textContent = phase === 'ready' ? 'Start' : running ? 'Pause' : 'Resume';
+    $('go').hidden = judging;
+    $('next').textContent = judging ? 'Next story ▶' : 'New opener ▶';
+    $('writers').innerHTML = phase === 'ready' ? '<div class="hint">' + players.length + ' teams. Read the opener together, then tap Start.</div>' :
+      writersNow.map(function (w) {
+        return '<div class="writer" style="--c:' + color(w.team.id) + '"><span class="wt">' + esc(w.team.name) + '</span><b>' + esc(w.name) + '</b></div>';
+      }).join('');
+    renderJudge(); renderTotals(); fitOpener();
   }
-
-  // ---------- timers ----------
-  function run() {
-    unlockAudio();
-    running = true;
-    endAt = Date.now() + left * 1000;
-    beatAt = Date.now() + beatLeft * 1000;
-    clearInterval(timer);
-    timer = setInterval(tick, 100);
-    render();
-  }
-  function pause() {
-    if (running) { left = Math.max(0, (endAt - Date.now()) / 1000); beatLeft = Math.max(0, (beatAt - Date.now()) / 1000); }
-    running = false;
-    clearInterval(timer);
-    render();
+  function color(id) { var i = teams.map(function (t) { return t.id; }).indexOf(id); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }
+  function fitOpener() {
+    var stage = $('stage'), el = $('opener'), size = 38;
+    el.style.fontSize = size + 'px';
+    while (size > 20 && stage.scrollHeight > stage.clientHeight + 1) el.style.fontSize = (size -= 2) + 'px';
   }
   function tick() {
     if (!running) return;
-    var now = Date.now();
-    left = (endAt - now) / 1000;
-    if (phase === 'story') {
-      beatLeft = (beatAt - now) / 1000;
-      if (beatLeft <= 0) {
-        // the beat: the next person says their word
-        S.words++; save();
-        beatAt = now + S.beat * 1000; beatLeft = S.beat;
-        tone([660], 0, 0.12, 0.25);
-        var b = $('beat'); b.classList.remove('pulse'); void b.offsetWidth; b.classList.add('pulse');
-      }
-      if (left <= 0) {
-        running = false; clearInterval(timer); left = 0; phase = 'last';
-        tone([880, 660, 990], 0.2);
-        flash("TIME'S UP!", 1400);
-      }
-    } else if (phase === 'retell' && left <= 0) {
-      running = false; clearInterval(timer); left = 0; phase = 'done';
-      tone([784, 659, 523, 392], 0.18, 0.35);
+    var was = Math.ceil(left);
+    left = (endAt - Date.now()) / 1000;
+    if (left <= 0) { left = 0; advance(); return; }
+    if (phase === 'write' && Math.ceil(left) !== was) tone([left <= 2 ? 880 : 520], 0, 0.09, 0.22);
+    $('secs').textContent = String(Math.ceil(left));
+    $('secs').className = 'secs ' + phase + (phase === 'write' && left <= 2 ? ' hot' : '');
+  }
+  function begin(p, secs) {
+    phase = p; total = left = secs; running = true; endAt = Date.now() + secs * 1000;
+    clearInterval(timer); timer = setInterval(tick, 100);
+  }
+  /** pick -> write -> (next words | judge) */
+  function advance() {
+    if (phase === 'pick') {
+      begin('write', S.write);
+      tone([660, 880], 0.1, 0.2, 0.35);
+    } else if (phase === 'write') {
+      S.n++; save();
+      tone([392, 330], 0.12, 0.3, 0.35);
+      if (S.n >= S.words) { running = false; clearInterval(timer); phase = 'judge'; tone([523, 659, 784], 0.12, 0.3, 0.35); }
+      else { writersNow = pickWriters(); save(); begin('pick', S.gap); }
     }
     render();
   }
-  function startStory() {
-    phase = 'story'; total = left = S.round; beatLeft = S.beat;
-    S.words = 0; S.sentences = 0; save();
-    tone([523, 659, 784], 0.12);
-    run();
-  }
-  function startRetell() { phase = 'retell'; total = left = RETELL; tone([660, 880], 0.12); run(); }
-  function resetStory() {
-    pause(); phase = 'ready'; total = left = S.round; beatLeft = S.beat; S.words = 0; S.sentences = 0; save(); render();
-  }
-  function goTo(pos) {
-    if (pos >= S.order.length) { S.order = shuffled(OPENERS.length); pos = 0; }
-    S.pos = pos; save(); resetStory();
-  }
-
-  // ---------- buttons ----------
   $('go').addEventListener('click', function () {
-    if (phase === 'ready') startStory(); else if (running) pause(); else run();
-  });
-  $('period').addEventListener('click', function () {
     unlockAudio();
-    S.sentences++; save();
-    tone([392, 523], 0.1, 0.3, 0.35);
-    flash('FULL STOP!', 700);
+    if (phase === 'ready') { S.n = 0; writersNow = pickWriters(); save(); begin('pick', S.gap); tone([440, 660], 0.1, 0.2, 0.3); }
+    else if (running) { left = Math.max(0, (endAt - Date.now()) / 1000); running = false; clearInterval(timer); }
+    else { running = true; endAt = Date.now() + left * 1000; clearInterval(timer); timer = setInterval(tick, 100); }
     render();
   });
-  $('retell').addEventListener('click', function () { if (phase !== 'retell') { pause(); startRetell(); } });
-  $('next').addEventListener('click', function () { unlockAudio(); goTo(S.pos + 1); });
+
+  // ---------- points: the best story ----------
+  function renderJudge() {
+    if (phase !== 'judge') return;
+    var done = S.award;
+    $('judgeBtns').innerHTML = done ?
+      '<div class="awarded">' + esc(done.label) + '</div><button class="btn" data-j="undo">Change</button>' :
+      players.map(function (t) { return '<button class="btn gold" data-j="' + esc(t.id) + '" style="--c:' + color(t.id) + '">' + esc(t.name) + ' +' + WIN + '</button>'; }).join('') +
+      '<button class="btn" data-j="draw">Draw +' + DRAW + ' each</button><button class="btn ghost" data-j="none">No points</button>';
+  }
+  function give(id, d, why) { if (!d) return; S.pts[id] = pts(id) + d; Kru.score(id, d, why); }
+  $('judgeBtns').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-j]');
+    if (!b) return;
+    var j = b.dataset.j;
+    if (j === 'undo') {
+      var a = S.award;
+      if (a) { a.gave.forEach(function (g) { give(g.id, -g.d, 'undo'); }); S.award = null; }
+    } else if (!S.award) {
+      var gave = [], label = 'No points this time';
+      if (j === 'draw') { players.forEach(function (t) { gave.push({ id: t.id, d: DRAW }); }); label = 'Draw: +' + DRAW + ' each'; }
+      else if (j !== 'none') { gave.push({ id: j, d: WIN }); label = teams.filter(function (t) { return t.id === j; })[0].name + ' wins: +' + WIN; }
+      gave.forEach(function (g) { give(g.id, g.d, 'best story'); });
+      S.award = { label: label, gave: gave };
+      if (gave.length) tone([523, 659, 784, 1047], 0.1, 0.25, 0.35);
+    }
+    save(); render();
+  });
+  function renderTotals() {
+    $('totals').innerHTML = players.map(function (t) {
+      return '<span class="tot" style="--c:' + color(t.id) + '">' + esc(t.name) + ' <b>' + pts(t.id) + '</b></span>';
+    }).join('');
+  }
+
+  // ---------- next story ----------
+  function stop() { running = false; clearInterval(timer); }
+  function newStory(keepPos) {
+    stop();
+    phase = 'ready'; writersNow = []; S.n = 0; S.award = null;
+    if (!keepPos) S.pos = (S.pos + 1) % OPENERS.length;
+    save(); render();
+  }
+  $('next').addEventListener('click', function () { unlockAudio(); newStory(false); });
 
   // ---------- ⋯ menu ----------
-  function renderMenu() {
-    $('roundRow').innerHTML = ROUNDS.map(function (s) { return '<button class="btn" data-round="' + s + '" aria-pressed="' + (s === S.round) + '">' + fmt(s) + '</button>'; }).join('');
-    $('beatRow').innerHTML = BEATS.map(function (s) { return '<button class="btn" data-beat="' + s + '" aria-pressed="' + (s === S.beat) + '">' + s + ' s</button>'; }).join('');
+  function row(el, list, cur, attr, unit) {
+    $(el).innerHTML = list.map(function (v) { return '<button class="btn" data-' + attr + '="' + v + '" aria-pressed="' + (v === cur) + '">' + v + unit + '</button>'; }).join('');
   }
+  function renderMenu() { row('wordsRow', WORDS, S.words, 'words', ''); row('writeRow', WRITE, S.write, 'write', ' s'); row('gapRow', GAP, S.gap, 'gap', ' s'); }
   function closeMenu() { $('menuBack').hidden = true; }
   $('more').addEventListener('click', function () { renderMenu(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-  $('roundRow').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-round]');
-    if (!b) return;
-    S.round = +b.dataset.round; save(); renderMenu();
-    if (phase === 'ready') { total = left = S.round; render(); }
-  });
-  $('beatRow').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-beat]');
-    if (!b) return;
-    S.beat = +b.dataset.beat; save(); renderMenu();
-    if (phase !== 'story') { beatLeft = S.beat; render(); }
+  [['wordsRow', 'words'], ['writeRow', 'write'], ['gapRow', 'gap']].forEach(function (p) {
+    $(p[0]).addEventListener('click', function (e) {
+      var b = e.target.closest('[data-' + p[1] + ']');
+      if (!b) return;
+      S[p[1]] = +b.dataset[p[1]]; save(); renderMenu(); render();
+    });
   });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'One-Word Story' }); });
-  $('resetStory').addEventListener('click', function () { closeMenu(); resetStory(); });
+  $('resetStory').addEventListener('click', function () { closeMenu(); newStory(true); });
 
   document.addEventListener('keydown', function (e) {
     if (!$('menuBack').hidden) return;
-    if (e.code === 'Space') { e.preventDefault(); $('go').hidden ? $('retell').click() : $('go').click(); }
-    else if (e.key === '.' || e.key === 'p') $('period').click();
+    if (e.code === 'Space') { e.preventDefault(); if (!$('go').hidden) $('go').click(); }
     else if (e.key === 'ArrowRight') $('next').click();
   });
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
   window.addEventListener('resize', fitOpener);
 
-  // no points in this game: Finish just closes it
-  Kru.onFinishRequest(function () { Kru.finish([]); });
+  Kru.onFinishRequest(function () {
+    Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
+  });
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     contentReady.then(function (c) {
       var level = c[session.level] ? session.level : 'M.2';
       OPENERS = c[level].openers;
+      teams = Kru.allTeams();
+      players = teams.filter(function (t) { return !t.teacher; });
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === OPENERS.length) S = saved;
-      else S = { v: 1, level: level, order: shuffled(OPENERS.length), pos: 0, round: 240, beat: 3, words: 0, sentences: 0, introDone: false };
-      if (ROUNDS.indexOf(S.round) < 0) S.round = 240;
-      if (BEATS.indexOf(S.beat) < 0) S.beat = 3;
-      total = left = S.round; beatLeft = S.beat;
+      if (saved && saved.v === 2 && saved.level === level && Array.isArray(saved.order) && saved.order.length === OPENERS.length) S = saved;
+      else S = { v: 2, level: level, order: shuffled(OPENERS.length), pos: 0, words: 12, write: 5, gap: 3, n: 0, pts: {}, picked: {}, award: null, introDone: false };
+      if (WORDS.indexOf(S.words) < 0) S.words = 12;
+      if (WRITE.indexOf(S.write) < 0) S.write = 5;
+      if (GAP.indexOf(S.gap) < 0) S.gap = 3;
+      S.n = 0; S.award = S.award || null; // a story that was running starts again after a reload
       render();
       INTRO = KruIntro.forLevel(c, level);
       if (!S.introDone) KruIntro.show(INTRO, { title: 'One-Word Story' }).then(function () { S.introDone = true; save(); });

@@ -1,83 +1,123 @@
-/* One-Word Story: opener card, a beat that pulses for each word, the story clock. Phone landscape. */
-.ows .stage {
-  position: relative;
+/* One-Word Story (writing relay), phone landscape 712 x 354: opener, the writers of each team, a big countdown,
+   points per team along the bottom. */
+.ows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
 }
-.ows .card {
+.ows .count {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 18px;
+  margin-left: 12px;
+}
+.ows .stage {
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
+  overflow: hidden;
 }
 .ows .sub {
   color: var(--muted);
   font-size: 18px;
 }
 .opener {
-  font: 800 46px/1.1 var(--display);
+  font: 800 38px/1.1 var(--display);
   text-wrap: balance;
 }
-.counts {
-  font-family: var(--mono);
-  font-size: 18px;
-}
-.flash {
-  position: absolute;
-  inset: 0;
+.writers {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  font: 800 64px/1 var(--display);
-  color: var(--bg);
-  background: color-mix(in srgb, var(--coral) 90%, transparent);
-  border-radius: 16px;
+  gap: 10px;
+  width: 100%;
 }
-.flash[hidden] {
+.writers[hidden],
+.judge[hidden] {
   display: none;
 }
-.beat {
-  width: 58px;
-  height: 58px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid var(--line);
-  font: 800 28px/1 var(--mono);
+.writers .hint {
+  color: var(--muted);
+  font-size: 18px;
+}
+.writer {
+  flex: 1 1 180px;
+  max-width: 320px;
+  border: 3px solid var(--c, var(--gold));
+  border-radius: 16px;
+  padding: 4px 10px 6px;
+  background: color-mix(in srgb, var(--c, var(--gold)) 14%, var(--stage));
+}
+.writer .wt {
+  display: block;
+  font-size: 18px;
   color: var(--muted);
 }
-.beat.on {
-  border-color: var(--teal);
-  color: var(--fg);
+.writer b {
+  display: block;
+  font: 800 34px/1.1 var(--display);
+  overflow-wrap: anywhere;
 }
-.beat.pulse {
-  animation: ows-pulse 0.4s ease-out;
-}
-@keyframes ows-pulse {
-  0% { background: var(--teal); color: var(--bg); transform: scale(1.18); }
-  100% { background: transparent; transform: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .beat.pulse { animation: none; }
-}
-.clock {
+.judge {
   display: flex;
   flex-direction: column;
-  line-height: 1;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
 }
-.phase {
-  font-weight: 700;
-  font-size: 16px;
+.judge-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.judge-btns .btn[style] {
+  border-color: var(--c);
+}
+.awarded {
+  font: 800 28px/1.1 var(--display);
+  color: var(--gold);
+  align-self: center;
+}
+.secs {
+  min-width: 70px;
+  text-align: center;
+  font: 800 58px/1 var(--mono);
   color: var(--muted);
 }
-.menu-label {
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 4px;
-}
-.menu-row .btn[aria-pressed='true'] {
-  border-color: var(--teal);
+.secs.pick {
   color: var(--teal);
+}
+.secs.write {
+  color: var(--gold);
+}
+.secs.hot {
+  color: var(--coral);
+}
+.ows .phase {
+  font: 800 20px/1.1 var(--display);
+  max-width: 190px;
+}
+.totals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-size: 18px;
+}
+.tot {
+  border-top: 4px solid var(--c);
+  padding: 2px 10px;
+  background: var(--panel);
+  border-radius: 8px;
+}
+.tot b {
+  font-family: var(--mono);
+  margin-left: 4px;
 }

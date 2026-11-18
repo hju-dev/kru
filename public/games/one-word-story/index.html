@@ -14,39 +14,40 @@
     <main class="game kc ows">
       <header class="bar">
         <span class="logo">One-Word <b>Story</b></span>
+        <span class="count" id="count" aria-live="polite"></span>
         <span class="grow"></span>
         <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
       </header>
 
-      <section class="stage" id="stage">
-        <div class="card">
-          <div class="sub" id="label">Story opener</div>
-          <div class="big opener" id="opener">Loading…</div>
-          <div class="sub counts" id="counts" aria-live="polite"></div>
+      <section class="stage" id="stage" aria-live="polite">
+        <div class="sub" id="label">Story opener</div>
+        <div class="opener" id="opener">Loading…</div>
+        <div class="writers" id="writers"></div>
+        <div class="judge" id="judge" hidden>
+          <div class="sub">Read both stories out loud. Which story is best?</div>
+          <div class="judge-btns" id="judgeBtns"></div>
         </div>
-        <div class="flash" id="flash" hidden></div>
       </section>
 
       <div class="controls">
-        <div class="beat" id="beat" aria-hidden="true"><span id="beatNum">5</span></div>
-        <div class="clock">
-          <span class="digits" id="digits">4:00</span>
-          <span class="phase" id="phase">Ready</span>
-        </div>
+        <div class="secs" id="secs" aria-hidden="true">5</div>
+        <span class="phase" id="phase">Ready</span>
         <span class="grow"></span>
-        <button class="btn" id="go">Start story</button>
-        <button class="btn coral" id="period">Full stop!</button>
-        <button class="btn teal" id="retell" hidden>Retell 0:30</button>
-        <button class="btn gold" id="next">New opener ▶</button>
+        <button class="btn" id="go">Start</button>
+        <button class="btn gold" id="next">Next story ▶</button>
       </div>
+
+      <div class="totals" id="totals" aria-label="Points"></div>
     </main>
 
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="More options">
-        <div class="menu-label">Story time</div>
-        <div class="menu-row" id="roundRow"></div>
-        <div class="menu-label">One word every…</div>
-        <div class="menu-row" id="beatRow"></div>
+        <div class="menu-label">Words in the story</div>
+        <div class="menu-row" id="wordsRow"></div>
+        <div class="menu-label">Time to write one word</div>
+        <div class="menu-row" id="writeRow"></div>
+        <div class="menu-label">Get-ready time between words</div>
+        <div class="menu-row" id="gapRow"></div>
         <div class="menu-row">
           <button class="btn" id="howTo">How to play</button>
           <button class="btn" id="resetStory">Start this story again</button>
@@ -57,6 +58,7 @@
 
     <script src="/sdk/kru.js"></script>
     <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-picker.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
