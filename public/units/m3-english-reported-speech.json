@@ -4,9 +4,10 @@
  "course": "M.3 English",
  "title": "English: Reported Speech",
  "games": [
-  "quiz-battle"
+  "quiz-battle",
+  "race-board"
  ],
- "source": "Written for Henry (Nov 17): direct → reported, reported → direct, tense backshift (past simple → past perfect etc.), rules. American spelling. Written answers show one model answer; other correct versions are fine (that is optional).",
+ "source": "Written for Henry (Nov 17-18): direct to reported, reported to direct, tense backshift, rules, relationship phrasal verbs, said or told. Concepts from his Unit 8 worksheet; new sentences. American spelling. Every question has a tier (easy, regular, hard, impossible) for Race Board; Quiz Battle ignores it. Written answers show one model answer; other correct versions are fine (that is optional).",
  "sets": [
   {
    "name": "Direct → reported",
@@ -14,62 +15,74 @@
     {
      "q": "Change to reported speech: Tom said, \"I am tired.\"",
      "answer": "Tom said (that) he was tired.",
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "Change to reported speech: Mia said, \"I like this song.\"",
      "answer": "Mia said (that) she liked that song.",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to reported speech: \"We are playing soccer,\" the boys said.",
      "answer": "The boys said (that) they were playing soccer.",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to reported speech: Dad told me, \"I will call you tomorrow.\"",
      "answer": "Dad told me (that) he would call me the next day.",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to reported speech: Anna said, \"I have finished my homework.\"",
      "answer": "Anna said (that) she had finished her homework.",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to reported speech: \"I can swim,\" Ben said.",
      "answer": "Ben said (that) he could swim.",
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "Change to reported speech: Lisa said, \"I went to Phuket yesterday.\"",
      "answer": "Lisa said (that) she had gone to Phuket the day before.",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to reported speech: The teacher said to us, \"Open your books.\"",
      "answer": "The teacher told us to open our books.",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to reported speech: Mom said to me, \"Don't be late.\"",
      "answer": "Mom told me not to be late.",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to reported speech: \"Where do you live?\" Sam asked me.",
      "answer": "Sam asked me where I lived.",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to reported speech: Ploy asked me, \"Do you like pizza?\"",
      "answer": "Ploy asked me if (whether) I liked pizza.",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to reported speech: Nok said, \"I am going to study here tonight.\"",
      "answer": "Nok said (that) she was going to study there that night.",
-     "double": false
+     "double": false,
+     "tier": "impossible"
     }
    ]
   },
@@ -79,52 +92,62 @@
     {
      "q": "Change to direct speech: He said (that) he was hungry.",
      "answer": "He said, \"I am hungry.\"",
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "Change to direct speech: She said (that) she had lost her phone.",
      "answer": "She said, \"I have lost my phone.\" (or \"I lost my phone.\")",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to direct speech: They said (that) they would come the next day.",
      "answer": "They said, \"We will come tomorrow.\"",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to direct speech: Kim said (that) she could not find her keys.",
      "answer": "Kim said, \"I cannot find my keys.\"",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to direct speech: He said (that) he was reading a book then.",
      "answer": "He said, \"I am reading a book now.\"",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to direct speech: The doctor told me to rest.",
      "answer": "The doctor said to me, \"Rest!\"",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to direct speech: She asked me where I lived.",
      "answer": "She asked me, \"Where do you live?\"",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to direct speech: He asked me if I was ready.",
      "answer": "He asked me, \"Are you ready?\"",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "Change to direct speech: Mom told us not to run.",
      "answer": "Mom said to us, \"Don't run!\"",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Change to direct speech: Jim said (that) he had seen the movie the week before.",
      "answer": "Jim said, \"I saw the movie last week.\" (or \"I have seen the movie.\")",
-     "double": false
+     "double": false,
+     "tier": "impossible"
     }
    ]
   },
@@ -134,52 +157,62 @@
     {
      "q": "\"I live in Bangkok.\" She said she ___ in Bangkok.",
      "answer": "lived",
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "\"I am cooking.\" He said he ___.",
      "answer": "was cooking",
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "Past simple → past perfect: \"I broke my phone.\" He said he ___ his phone.",
      "answer": "had broken",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Past simple → past perfect: \"We won the game.\" They said they ___ the game.",
      "answer": "had won",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "\"I have finished.\" She said she ___ finished.",
      "answer": "had",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "\"I will help you.\" He said he ___ help me.",
      "answer": "would",
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "\"I can speak French.\" She said she ___ speak French.",
      "answer": "could",
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "Past continuous → past perfect continuous: \"I was sleeping.\" He said he ___.",
      "answer": "had been sleeping",
-     "double": false
+     "double": false,
+     "tier": "hard"
     },
     {
      "q": "\"I must go now.\" He said he ___ go then.",
      "answer": "had to",
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "\"I have been waiting for an hour.\" She said she ___ for an hour.",
      "answer": "had been waiting",
-     "double": false
+     "double": false,
+     "tier": "hard"
     }
    ]
   },
@@ -195,7 +228,8 @@
       "She said she has been happy."
      ],
      "answer": 1,
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "In reported speech, \"tomorrow\" usually becomes ___.",
@@ -206,7 +240,8 @@
       "next day ago"
      ],
      "answer": 0,
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "In reported speech, \"yesterday\" usually becomes ___.",
@@ -217,7 +252,8 @@
       "the next day"
      ],
      "answer": 2,
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "In reported speech, \"here\" usually becomes ___.",
@@ -228,7 +264,8 @@
       "there"
      ],
      "answer": 3,
-     "double": false
+     "double": false,
+     "tier": "easy"
     },
     {
      "q": "The teacher ___ us to be quiet.",
@@ -239,7 +276,8 @@
       "talked"
      ],
      "answer": 1,
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "\"Are you tired?\" he asked. → He asked ___ I was tired.",
@@ -250,7 +288,8 @@
       "do"
      ],
      "answer": 0,
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "\"I have seen him.\" → She said she ___ him.",
@@ -261,7 +300,8 @@
       "would see"
      ],
      "answer": 2,
-     "double": false
+     "double": false,
+     "tier": "regular"
     },
     {
      "q": "Which sentence is NOT correct?",
@@ -272,7 +312,329 @@
       "He asked where did I live."
      ],
      "answer": 3,
-     "double": false
+     "double": false,
+     "tier": "hard"
+    }
+   ]
+  },
+  {
+   "name": "Relationship phrasal verbs",
+   "questions": [
+    {
+     "q": "Mint and Beam ___ after their argument. Now they are friends again.",
+     "choices": [
+      "made up",
+      "fell out",
+      "broke up",
+      "got over"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "I ___ really well with my sister. We never argue.",
+     "choices": [
+      "get over",
+      "go out",
+      "get on",
+      "fall out"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Last month Beam and Mint ___ about a secret. They did not talk for a week.",
+     "choices": [
+      "made up",
+      "got on",
+      "asked out",
+      "fell out"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Ava's friends ___ her ___. They forgot her party.",
+     "choices": [
+      "asked ... out",
+      "let ... down",
+      "put ... up",
+      "got ... over"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "I cannot ___ my neighbor's loud music any more.",
+     "choices": [
+      "make up",
+      "go out",
+      "get over",
+      "put up with"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "It took Tom a week to ___ losing the soccer final.",
+     "choices": [
+      "get over",
+      "get on",
+      "fall out",
+      "break up"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Beam wants to ___ Mint ___ to the movies.",
+     "choices": [
+      "let ... down",
+      "fall ... out",
+      "ask ... out",
+      "put ... up"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Let's ___ this weekend and watch a movie.",
+     "choices": [
+      "break up",
+      "let down",
+      "fall out",
+      "get together"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "After two years, Sam and Pim decided to ___. They are not a couple now.",
+     "choices": [
+      "get together",
+      "break up",
+      "make up",
+      "ask out"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Which phrasal verb means \"to end a romantic relationship\"?",
+     "choices": [
+      "get on",
+      "make up",
+      "go out",
+      "break up"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Which phrasal verb means \"to accept something annoying without complaining\"?",
+     "choices": [
+      "put up with",
+      "get on with",
+      "let down",
+      "fall out"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Mia and Ben have been ___ for six months. They are a couple.",
+     "choices": [
+      "getting over",
+      "falling out",
+      "going out",
+      "letting down"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard"
+    }
+   ]
+  },
+  {
+   "name": "Said or told?",
+   "questions": [
+    {
+     "q": "She ___ me that she was tired.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "He ___ that he was busy.",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "They ___ us the movie was great.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Ruth ___ she understood.",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "He said me that he was late.",
+      "He told me that he was late.",
+      "He told that he was late.",
+      "He said to that he was late."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "She told she was sorry.",
+      "She said me she was sorry.",
+      "She said she was sorry.",
+      "She said to that she was sorry."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "The coach ___ the team to run faster.",
+     "answer": "told",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Nok ___ Ploy that she would call later.",
+     "answer": "told",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"Tell\" is always followed by ___ (me, us, her...).",
+     "choices": [
+      "a person",
+      "a place",
+      "a time",
+      "a question word"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Fix the mistake: \"He said me that he was hungry.\"",
+     "answer": "He told me that he was hungry. (or: He said that he was hungry.)",
+     "double": false,
+     "tier": "hard"
+    }
+   ]
+  },
+  {
+   "name": "Report it: relationships",
+   "questions": [
+    {
+     "q": "Change to reported speech: Pim: \"I am sorry.\"",
+     "answer": "Pim said (that) she was sorry.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: Nat: \"I can't come tonight.\"",
+     "answer": "Nat said (that) he couldn't (could not) come that night.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Gift: \"I've made up with Fon.\"",
+     "answer": "Gift said (that) she had made up with Fon.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Mac: \"I'm going to ask Jane out tomorrow.\"",
+     "answer": "Mac said (that) he was going to ask Jane out the next day.",
+     "double": false,
+     "tier": "impossible"
+    },
+    {
+     "q": "Change to reported speech: Dan: \"I'm watching a movie now.\"",
+     "answer": "Dan said (that) he was watching a movie then.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Bank: \"I will get over it.\"",
+     "answer": "Bank said (that) he would get over it.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Fon: \"We broke up last week.\"",
+     "answer": "Fon said (that) they had broken up the week before.",
+     "double": false,
+     "tier": "impossible"
+    },
+    {
+     "q": "Change to reported speech: Jane: \"I get on well with my brother.\"",
+     "answer": "Jane said (that) she got on well with her brother.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Pim told me: \"I don't want to go out with him.\"",
+     "answer": "Pim told me (that) she didn't (did not) want to go out with him.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Nat: \"My friends let me down yesterday.\"",
+     "answer": "Nat said (that) his friends had let him down the day before.",
+     "double": false,
+     "tier": "impossible"
+    },
+    {
+     "q": "Change to reported speech: Gift: \"We are getting together here on Friday.\"",
+     "answer": "Gift said (that) they were getting together there on Friday.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Mac: \"I can't put up with this noise.\"",
+     "answer": "Mac said (that) he couldn't (could not) put up with that noise.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Ava asked me, \"Why did you break up with him?\"",
+     "answer": "Ava asked me why I had broken up with him.",
+     "double": false,
+     "tier": "impossible"
+    },
+    {
+     "q": "Change to reported speech: Tom asked me, \"Are you going to ask her out tomorrow?\"",
+     "answer": "Tom asked me if (whether) I was going to ask her out the next day.",
+     "double": false,
+     "tier": "impossible"
     }
    ]
   }

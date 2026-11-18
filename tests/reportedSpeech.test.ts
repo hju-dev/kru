@@ -8,13 +8,14 @@ const u = JSON.parse(readFileSync(new URL('../public/units/m3-english-reported-s
 }
 
 describe('Reported Speech unit', () => {
-  it('shows for M.3 in Quiz Battle only, for every class', () => {
+  it('shows for M.3 in Quiz Battle and Race Board, for every class', () => {
     expect(unitsFor('M.3', 'quiz-battle', 'M.3/1').map((x) => x.id)).toContain('m3-english-reported-speech')
     expect(unitsFor('M.3', 'jeopardy').map((x) => x.id)).not.toContain('m3-english-reported-speech')
+    expect(unitsFor('M.3', 'race-board', 'M.3/2P').map((x) => x.id)).toContain('m3-english-reported-speech')
     expect(unitsFor('M.2', 'quiz-battle').map((x) => x.id)).not.toContain('m3-english-reported-speech')
   })
   it('has direct to reported, reported to direct, tense and multiple-choice sets', () => {
-    expect(u.sets.map((s) => s.name)).toEqual(['Direct → reported', 'Reported → direct', 'Tenses: backshift', 'Rules: multiple choice'])
+    expect(u.sets.map((s) => s.name)).toEqual(['Direct → reported', 'Reported → direct', 'Tenses: backshift', 'Rules: multiple choice', 'Relationship phrasal verbs', 'Said or told?', 'Report it: relationships'])
     for (const s of u.sets) expect(s.questions.length, s.name).toBeGreaterThanOrEqual(8)
     expect(u.sets[3].questions.every((q) => q.choices?.length === 4)).toBe(true)
     expect(u.sets.slice(0, 3).every((s) => s.questions.every((q) => !q.choices && String(q.answer).length > 0))).toBe(true)
@@ -24,6 +25,37 @@ describe('Reported Speech unit', () => {
     expect(new Set(mc.map((q) => q.answer)).size).toBe(4)
     for (const q of mc) expect(new Set(q.choices).size).toBe(4)
     expect(JSON.stringify(u)).not.toMatch(/colour|favourite|realise|organise/i)
+  })
+})
+
+// Reported Speech: Race Board deck + worksheet concepts (Henry, Nov 18).
+describe('Reported Speech: tiers and worksheet concepts', () => {
+  const all = u.sets.flatMap((s) => s.questions) as { q: string; choices?: string[]; answer: number | string; tier: string }[]
+  it('every question has a tier; each tier has enough questions for a Race Board game', () => {
+    const n = (t: string) => all.filter((q) => q.tier === t).length
+    for (const q of all) expect(['easy', 'regular', 'hard', 'impossible'], q.q).toContain(q.tier)
+    expect(all.length).toBeGreaterThanOrEqual(60)
+    expect(n('easy')).toBeGreaterThanOrEqual(12)
+    expect(n('regular')).toBeGreaterThanOrEqual(15)
+    expect(n('hard')).toBeGreaterThanOrEqual(12)
+    expect(n('impossible')).toBeGreaterThanOrEqual(6)
+  })
+  it('covers relationship phrasal verbs, said vs. told, and time-word changes', () => {
+    const text = JSON.stringify(u)
+    for (const v of ['made up', 'get on', 'fell out', 'let ... down', 'put up with', 'get over', 'ask ... out', 'get together', 'break up', 'going out']) expect(text, v).toContain(v)
+    expect(u.sets.find((s) => s.name === 'Said or told?')!.questions.some((q) => q.answer === 'told')).toBe(true)
+    expect(text).toContain('the next day')
+    expect(text).toContain('that night')
+    expect(text).toContain('the day before')
+  })
+  it('the right answer is spread over A-D and no multiple-choice answer repeats an option', () => {
+    const mc = all.filter((q) => q.choices)
+    for (const i of [0, 1, 2, 3]) expect(mc.filter((q) => q.answer === i).length).toBeGreaterThanOrEqual(3)
+    for (const q of mc) expect(new Set(q.choices).size, q.q).toBe(q.choices!.length)
+  })
+  it("American spelling; Race Board uses each question's own tier", () => {
+    expect(JSON.stringify(u)).not.toMatch(/neighbour|\bfilm\b|colour|favourite/i)
+    expect(readFileSync(new URL('../public/games/race-board/app.js', import.meta.url), 'utf8')).toContain('TIERS[q.tier] ? q.tier : guessTier(q)')
   })
 })
 
