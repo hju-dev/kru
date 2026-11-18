@@ -1,4 +1,4 @@
-/* Reading Think Tank (base copied from Think Tank Showdown), phone landscape: round bar with timer + buttons, the reading stage, team strip; the island map is an overlay. */
+/* Reading Island (base copied from Think Tank Showdown), phone landscape: round bar with timer + buttons, the reading stage, team strip; the island map is an overlay. */
 .tts {
   height: 100%;
   display: flex;
@@ -466,7 +466,7 @@ button:focus-visible {
   font-size: 20px;
 }
 
-/* ---------- Reading Think Tank ---------- */
+/* ---------- Reading Island ---------- */
 /* compact bar: round name, clock and the main button share the top bar (more room for long texts) */
 .rtt .bar { gap: 8px; }
 .rtt .round { font-size: 18px; min-width: 0; flex-shrink: 1; }

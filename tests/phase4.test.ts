@@ -341,13 +341,13 @@ describe('reading games: shared story bank', () => {
       }
     })
   }
-  it('Reading Think Tank loads the shared bank', () => {
-    expect(readFileSync(new URL('../public/games/reading-think-tank/app.js', import.meta.url), 'utf8')).toContain("'/games/shared/stories.json'")
+  it('Reading Island loads the shared bank', () => {
+    expect(readFileSync(new URL('../public/games/reading-island/app.js', import.meta.url), 'utf8')).toContain("'/games/shared/stories.json'")
   })
 })
 
-describe('Scan It! texts (now in Reading Think Tank)', () => {
-  const c = JSON.parse(readFileSync(new URL('../public/games/reading-think-tank/content.json', import.meta.url), 'utf8')) as Record<
+describe('Scan It! texts (now in Reading Island)', () => {
+  const c = JSON.parse(readFileSync(new URL('../public/games/reading-island/content.json', import.meta.url), 'utf8')) as Record<
     string,
     { scan: { kind: string; head: string; cols: string[]; rows: string[][]; qs: { q: string; a: string }[] }[] }
   >
@@ -477,10 +477,10 @@ describe('Think Tank Showdown (Henry, Nov 9)', () => {
   })
 })
 
-describe('Reading Think Tank (Henry, Nov 10): the five reading games in one', () => {
+describe('Reading Island (Henry, Nov 10): the five reading games in one', () => {
   const bank = JSON.parse(readFileSync(new URL('../public/games/shared/stories.json', import.meta.url), 'utf8'))
-  const js = readFileSync(new URL('../public/games/reading-think-tank/app.js', import.meta.url), 'utf8')
-  const content = JSON.parse(readFileSync(new URL('../public/games/reading-think-tank/content.json', import.meta.url), 'utf8'))
+  const js = readFileSync(new URL('../public/games/reading-island/app.js', import.meta.url), 'utf8')
+  const content = JSON.parse(readFileSync(new URL('../public/games/reading-island/content.json', import.meta.url), 'utf8'))
   const games = JSON.parse(readFileSync(new URL('../games.json', import.meta.url), 'utf8')) as { slug: string; section: string }[]
   it('replaces Read & Remember, Scan It!, Spot the Mistakes, Story Order and True or False Race', async () => {
     const { findGame, gameTitle } = await import('../src/lib/games')
@@ -488,7 +488,7 @@ describe('Reading Think Tank (Henry, Nov 10): the five reading games in one', ()
       expect(findGame(slug), slug).toBeUndefined()
       expect(gameTitle(slug), slug).not.toBe(slug) // old results keep their title
     }
-    expect(games.find((g) => g.slug === 'reading-think-tank')).toMatchObject({ section: 'reading' })
+    expect(games.find((g) => g.slug === 'reading-island')).toMatchObject({ section: 'reading' })
   })
   it('five round types from the five games, then a Final Wager', () => {
     for (const id of ['order', 'tf', 'spot', 'remember', 'scan', 'wager']) expect(js).toContain(`{ id: '${id}',`)
@@ -498,8 +498,8 @@ describe('Reading Think Tank (Henry, Nov 10): the five reading games in one', ()
     for (const L of ['M.2', 'M.3', 'M.4']) for (const st of bank[L]) expect(st.questions, st.title).toHaveLength(3)
     expect(JSON.stringify(bank)).not.toContain('Chiang Ruby')
   })
-  it('island map: 40 islands, 4 treasures (+3 more), 3 hidden volcanoes, steal questions, +5 for the biggest group', () => {
-    expect(js).toContain('var COLS = 8, ROWS = 5, CELLS = COLS * ROWS, TREASURES = 4, VOLCANOES = 3, EMPIRE = 5;')
+  it('island map: 40 islands, 4 treasures (+3 more), 4 hidden volcanoes, 4 pirates, 4 chests, steal questions, +5 for the biggest group', () => {
+    expect(js).toContain('var COLS = 8, ROWS = 5, CELLS = COLS * ROWS, TREASURES = 4, VOLCANOES = 4, PIRATES = 4, CHESTS = 4, EMPIRE = 5;')
     expect(js).toContain("addPts(id, tr ? 4 : 1, tr ? 'treasure island' : 'island');")
     expect(js).toContain('function canSteal() { return (Q() && Q().steal) || !emptyCells().length; }')
     expect(js).toContain('function finalPts(id) { return pts(id) + (empireLeaders().indexOf(id) >= 0 ? EMPIRE : 0); }')
@@ -509,7 +509,7 @@ describe('Reading Think Tank (Henry, Nov 10): the five reading games in one', ()
   })
   it('How to play slides explain the islands', () => {
     const titles = content.intro.map((x: { title: string }) => x.title)
-    for (const t of ['Win islands', '⚔ Steal questions', 'Build an empire', 'Final Wager']) expect(titles).toContain(t)
+    for (const t of ['Win islands', 'Secret islands', '⚔ Steal questions', 'Build an empire', 'Final Wager']) expect(titles).toContain(t)
   })
   it('the card engine keeps its challenge-round option', () => {
     const engine = readFileSync(new URL('../public/games/shared/kru-cards.js', import.meta.url), 'utf8')

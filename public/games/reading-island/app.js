@@ -1,8 +1,9 @@
-/* Reading Think Tank (Henry, Nov 10): the five reading games in one game show, with an island map.
+/* Reading Island (Henry, Nov 10): the five reading games in one game show, with an island map.
    Rounds: 🧩 Order It (2 stories) · ✅ True or False (4 statements) · 🔍 Spot It (2 stories) · 🧠 Remember It
    (read, then the story hides, 3 questions) · 📋 Scan It (3 questions) · 💰 Final Wager (read, hide, bet, answer).
    After each question Henry marks who got it right; each of those teams claims an island (+1).
    💎 treasure island +3 more · 🌋 hidden volcano: it erupts and you lose your newest island ·
+   ☠ hidden pirates: you miss your next claim · 🧰 hidden chest: +3 bonus (Nov 18: 4 of each) ·
    ⚔ the last question of each round is a steal question (take another team's island) · a full map = every right answer
    steals · at the end the biggest connected group of islands gets +5 🏝.
    Stories: games/shared/stories.json, one level up (M.1 → M.2 stories, …, M.3 → M.4). Scan It texts: content.json. */
@@ -10,7 +11,7 @@
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
   var UP = { 'M.1': 'M.2', 'M.2': 'M.3', 'M.3': 'M.4' };
-  var COLS = 8, ROWS = 5, CELLS = COLS * ROWS, TREASURES = 4, VOLCANOES = 3, EMPIRE = 5;
+  var COLS = 8, ROWS = 5, CELLS = COLS * ROWS, TREASURES = 4, VOLCANOES = 4, PIRATES = 4, CHESTS = 4, EMPIRE = 5;
   var L = 'ABCDE';
   var ROUNDS = [
     { id: 'order', name: 'Order It', icon: '🧩', secs: 90, rule: 'Write the right order of the letters.' },
@@ -81,10 +82,15 @@
   // ---------- the island map ----------
   function newMap() {
     var cells = shuffle(range(CELLS));
-    return { own: new Array(CELLS).fill(null), ash: [], treasure: cells.slice(0, TREASURES), volcano: cells.slice(TREASURES, TREASURES + VOLCANOES), order: {} };
+    var at = TREASURES;
+    var m = { own: new Array(CELLS).fill(null), ash: [], pirated: [], treasure: cells.slice(0, at), order: {} };
+    m.volcano = cells.slice(at, at += VOLCANOES); // hidden: the island turns to ash and you lose your newest island
+    m.pirate = cells.slice(at, at += PIRATES);    // hidden: pirates take the island and your team misses its next claim
+    m.chest = cells.slice(at, at += CHESTS);      // hidden: the island and +3 bonus points
+    return m;
   }
   function owned(id) { var a = []; S.map.own.forEach(function (o, c) { if (o === id) a.push(c); }); return a; }
-  function emptyCells() { var a = []; S.map.own.forEach(function (o, c) { if (!o && S.map.ash.indexOf(c) < 0) a.push(c); }); return a; }
+  function emptyCells() { var a = []; S.map.own.forEach(function (o, c) { if (!o && S.map.ash.indexOf(c) < 0 && S.map.pirated.indexOf(c) < 0) a.push(c); }); return a; }
   function biggestGroup(id) {
     var mine = owned(id), seen = {}, best = 0;
     mine.forEach(function (c) {
@@ -114,11 +120,11 @@
   function renderMap() {
     var claimer = S.queue && S.queue.length ? S.queue[0] : null, stealing = claimer && canSteal(), leaders = empireLeaders();
     $('map').innerHTML = range(CELLS).map(function (c) {
-      var o = S.map.own[c], ash = S.map.ash.indexOf(c) >= 0, tr = S.map.treasure.indexOf(c) >= 0;
+      var o = S.map.own[c], pir = S.map.pirated.indexOf(c) >= 0, ash = pir || S.map.ash.indexOf(c) >= 0, tr = S.map.treasure.indexOf(c) >= 0;
       var cls = 'isle' + (o ? ' owned' : '') + (ash ? ' ash' : '') + (tr && !o ? ' treasure' : '') +
         (claimer && !ash && (!o || (stealing && o !== claimer)) ? ' can' : '') + (o && leaders.indexOf(o) >= 0 ? ' empire' : '');
-      var label = ash ? '🌋' : o ? String(teams.indexOf(team(o)) + 1) : tr ? '💎' : '';
-      return '<button class="' + cls + '" data-c="' + c + '"' + (o ? ' style="--c:' + color(o) + '"' : '') + ' aria-label="Island ' + (c + 1) + (o ? ', ' + esc(team(o).name) : ash ? ', volcano' : tr ? ', treasure' : ', empty') + '">' + label + '</button>';
+      var label = pir ? '☠' : ash ? '🌋' : o ? String(teams.indexOf(team(o)) + 1) : tr ? '💎' : '';
+      return '<button class="' + cls + '" data-c="' + c + '"' + (o ? ' style="--c:' + color(o) + '"' : '') + ' aria-label="Island ' + (c + 1) + (o ? ', ' + esc(team(o).name) : pir ? ', pirates' : ash ? ', volcano' : tr ? ', treasure' : ', empty') + '">' + label + '</button>';
     }).join('');
     $('mapKey').innerHTML = teams.map(function (t, i) {
       var n = owned(t.id).length;
@@ -140,7 +146,7 @@
     if (S.phase === 'claim') { S.queue = []; S.phase = 'done'; save(); }
     render();
   }
-  function snapshot() { S.hist.push({ own: S.map.own.slice(), ash: S.map.ash.slice(), pts: JSON.parse(JSON.stringify(S.pts)), queue: (S.queue || []).slice() }); if (S.hist.length > 40) S.hist.shift(); }
+  function snapshot() { S.hist.push({ own: S.map.own.slice(), ash: S.map.ash.slice(), pirated: S.map.pirated.slice(), skip: JSON.parse(JSON.stringify(S.skip)), pts: JSON.parse(JSON.stringify(S.pts)), queue: (S.queue || []).slice() }); if (S.hist.length > 40) S.hist.shift(); }
   function addPts(id, d, why) {
     if (!d) return;
     S.pts[id] = pts(id) + d;
@@ -149,7 +155,7 @@
   function claim(c) {
     var id = S.queue[0];
     if (!id) return;
-    var o = S.map.own[c], ash = S.map.ash.indexOf(c) >= 0;
+    var o = S.map.own[c], ash = S.map.ash.indexOf(c) >= 0 || S.map.pirated.indexOf(c) >= 0;
     if (ash || o === id) return;
     if (o && !canSteal()) { toast('Only ⚔ steal questions can take another team\'s island.'); return; }
     unlockAudio();
@@ -166,6 +172,17 @@
       if (lost == null && mine.length) lost = mine[mine.length - 1];
       if (lost != null) { S.map.own[lost] = null; addPts(id, -1, 'volcano'); }
       toast('🌋 A volcano! ' + team(id).name + (lost != null ? ' loses an island.' : ' had nothing to lose.')); tone([196, 165, 131], 0.16, 0.4);
+    } else if (S.map.pirate.indexOf(c) >= 0) {
+      // pirates: they keep the island (a skull on the map) and this team misses its next claim
+      S.map.pirated.push(c);
+      S.skip[id] = 1;
+      toast('☠ Pirates! ' + team(id).name + ' misses its next turn.'); tone([220, 185, 147], 0.16, 0.4);
+    } else if (S.map.chest.indexOf(c) >= 0) {
+      // a hidden treasure chest: the island and +3 bonus points
+      S.map.own[c] = id;
+      (S.map.order[id] = S.map.order[id] || []).push(c);
+      addPts(id, 4, 'treasure chest');
+      toast('🧰 A treasure chest! +4 ' + team(id).name + ' (island +1, bonus +3)'); tone([523, 659, 784, 1047], 0.1);
     } else {
       S.map.own[c] = id;
       (S.map.order[id] = S.map.order[id] || []).push(c);
@@ -185,7 +202,7 @@
     var h = S.hist.pop();
     if (!h) return;
     teams.forEach(function (t) { var d = (h.pts[t.id] || 0) - pts(t.id); if (d) Kru.score(t.id, d, 'undo'); });
-    S.map.own = h.own; S.map.ash = h.ash; S.pts = h.pts; S.queue = h.queue;
+    S.map.own = h.own; S.map.ash = h.ash; S.map.pirated = h.pirated || []; S.skip = h.skip || {}; S.pts = h.pts; S.queue = h.queue;
     if (S.queue.length && S.phase === 'done') S.phase = 'claim';
     save(); renderMap(); renderTeams();
   });
@@ -350,6 +367,12 @@
     $('whoBack').hidden = true;
     // claiming order: the order of the teams on the strip
     S.queue = teams.map(function (t) { return t.id; }).filter(function (id) { return picked.indexOf(id) >= 0; });
+    // a team the pirates caught misses this claim
+    var missed = S.queue.filter(function (id) { return S.skip[id]; });
+    missed.forEach(function (id) { S.skip[id] = 0; });
+    S.queue = S.queue.filter(function (id) { return missed.indexOf(id) < 0; });
+    if (missed.length) toast('☠ ' + missed.map(function (id) { return team(id).name; }).join(', ') + ' missed the claim (pirates).');
+    if (!S.queue.length) { S.phase = 'done'; save(); render(); return; }
     S.phase = 'claim'; save(); render(); openMap();
   });
 
@@ -434,7 +457,7 @@
   $('secsMore').addEventListener('click', function () { setSecs(15); });
   $('menuRounds').addEventListener('click', function (e) { var b = e.target.closest('[data-go]'); if (b) { closeMenu(); goTo(+b.dataset.go); } });
   $('skipQ').addEventListener('click', function () { closeMenu(); if (S.i + 1 < S.plan.length) goTo(S.i + 1); });
-  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Reading Think Tank' }); });
+  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Reading Island' }); });
   $('newGame').addEventListener('click', function () {
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: new stories, empty map, scores to 0'; setTimeout(disarm, 3500); return; }
@@ -470,10 +493,11 @@
       var okPlan = saved && Array.isArray(saved.plan) && saved.plan.every(function (q) { return (q.s == null || STORIES[q.s]) && (q.sc == null || SCANS[q.sc]); });
       if (saved && saved.v === 1 && saved.level === level && okPlan && saved.map && saved.map.own && saved.map.own.length === CELLS) S = saved;
       else S = { v: 1, level: level, plan: newPlan(), i: 0, phase: 'ask', map: newMap(), pts: {}, secs: {}, wager: {}, marks: {}, settled: false, queue: [], hist: [], introDone: false };
-      S.hist = S.hist || []; S.queue = S.queue || []; S.secs = S.secs || {}; S.wager = S.wager || {}; S.marks = S.marks || {};
+      S.hist = S.hist || []; S.skip = S.skip || {}; S.queue = S.queue || [];
+      S.map.pirate = S.map.pirate || []; S.map.chest = S.map.chest || []; S.map.pirated = S.map.pirated || []; // maps saved before pirates and chests S.secs = S.secs || {}; S.wager = S.wager || {}; S.marks = S.marks || {};
       if (!saved || S !== saved) goTo(0); else { total = left = secsFor(); render(); if (S.phase === 'claim') openMap(); }
       INTRO = KruIntro.forLevel(c, level);
-      if (!S.introDone) KruIntro.show(INTRO, { title: 'Reading Think Tank' }).then(function () { S.introDone = true; save(); });
+      if (!S.introDone) KruIntro.show(INTRO, { title: 'Reading Island' }).then(function () { S.introDone = true; save(); });
     }).catch(function (err) {
       $('card').textContent = 'Could not load the stories. Close the game and open it again.';
       if (window.console) console.error(err);

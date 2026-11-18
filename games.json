@@ -397,9 +397,9 @@
     "section": "writing"
   },
   {
-    "slug": "reading-think-tank",
-    "title": "Reading Think Tank",
-    "file": "public/games/reading-think-tank/index.html",
+    "slug": "reading-island",
+    "title": "Reading Island",
+    "file": "public/games/reading-island/index.html",
     "description": "A reading game show with an island map. Five rounds (Order It, True or False, Spot It, Remember It, Scan It) and a Final Wager. Right answers claim islands: treasure islands, hidden volcanoes, steal questions, and +5 for the biggest group. M.1, M.2 and M.3.",
     "levels": [
       "M.1",
