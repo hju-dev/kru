@@ -1,0 +1,85 @@
+/* Christmas look for Kru screens that belong to a Christmas game (games.json "theme": "christmas"):
+   the Find your team screen and the Mixed group pick list. Same colors as the game (christmas.css). */
+.xmas-theme {
+  --bg: #0b1d15;
+  --surface: #12301f;
+  --panel: #1a3e2b;
+  --line: #2f5d45;
+  --fg: #fbf7ef;
+  --muted: #a8c6b4;
+  --gold: #ffc94a;
+  background: radial-gradient(ellipse at 50% -20%, #1c4a33 0%, #0b1d15 60%) #0b1d15;
+  color: var(--fg);
+}
+/* a candy-cane stripe along the top of the screen */
+.xmas-theme::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  z-index: 3;
+  background: repeating-linear-gradient(-45deg, #d7263d 0 7px, #fbf7ef 7px 14px);
+  pointer-events: none;
+}
+.xmas-snow {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.xmas-snow::before,
+.xmas-snow::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -240px;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20px 40px, rgb(255 255 255 / 0.85) 1.6px, transparent 2.4px),
+    radial-gradient(circle at 110px 150px, rgb(255 255 255 / 0.7) 1.2px, transparent 2px),
+    radial-gradient(circle at 190px 70px, rgb(255 255 255 / 0.8) 2px, transparent 2.8px),
+    radial-gradient(circle at 70px 200px, rgb(255 255 255 / 0.6) 1.2px, transparent 2px);
+  background-size: 240px 240px;
+  animation: xmas-fall 14s linear infinite;
+}
+.xmas-snow::after {
+  top: -170px;
+  background-size: 170px 170px;
+  opacity: 0.6;
+  animation: xmas-fall-small 9s linear infinite;
+}
+@keyframes xmas-fall {
+  to { transform: translateY(240px); }
+}
+@keyframes xmas-fall-small {
+  to { transform: translateY(170px) translateX(12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xmas-snow::before,
+  .xmas-snow::after {
+    animation: none;
+  }
+}
+/* team cards: a little ornament before each team name */
+.xmas-theme .tr-team h2 .orn {
+  margin-right: 0.2em;
+}
+.xmas-theme .tr-title b::before {
+  content: '🎄 ';
+}
+.xmas-theme .mix-title b {
+  color: var(--gold);
+}
+.xmas-theme .mix-st.on {
+  background: #d7263d;
+  border-color: #d7263d;
+  color: #fff;
+}
+.xmas-theme .mix-st.on .meta b,
+.xmas-theme .mix-st.on .played {
+  color: #fff;
+}

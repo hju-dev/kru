@@ -30,6 +30,8 @@ export interface GameInfo {
   units?: boolean
   /** true = can be played by a mixed group picked from every class (Christmas Race Board) */
   mixed?: boolean
+  /** a special look for the screens around the game (Find your team, Mixed group list) */
+  theme?: 'christmas'
   /** ready = playable; migrate / new = coming in a later phase */
   status: 'ready' | 'migrate' | 'new'
   section: SectionId

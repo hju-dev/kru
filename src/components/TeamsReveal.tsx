@@ -1,8 +1,12 @@
 import { useCallback, useLayoutEffect, useMemo, useRef } from 'react'
 import { displayTeams } from '../lib/mix'
+import { findGame } from '../lib/games'
+import './Christmas.css'
 import type { Session } from '../lib/session'
 import './TeamsReveal.css'
 
+// Christmas games: an ornament before each team name
+const ORNAMENTS = ['🎄', '🎁', '⛄', '🦌', '🔔', '⭐', '🍪', '🧦', '🕯️', '❄️']
 const COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C']
 
 /**
@@ -14,6 +18,7 @@ export function TeamsReveal({ session, title, onStart, onChange }: { session: Se
   // mixed groups: "Nok (2/3)" when two students share a nickname
   const teams = useMemo(() => displayTeams(session.teams), [session.teams])
   const n = teams.length
+  const xmas = findGame(session.game)?.theme === 'christmas'
 
   // Biggest text that fits: try a few column counts, shrink the font until nothing overflows.
   const fit = useCallback(() => {
@@ -69,7 +74,8 @@ export function TeamsReveal({ session, title, onStart, onChange }: { session: Se
   }, [fit])
 
   return (
-    <main className="teams-reveal">
+    <main className={`teams-reveal${xmas ? ' xmas-theme' : ''}`}>
+      {xmas && <div className="xmas-snow" aria-hidden />}
       <header className="tr-bar">
         <button className="btn small ghost" onClick={onChange}>
           ← Change teams
@@ -89,7 +95,14 @@ export function TeamsReveal({ session, title, onStart, onChange }: { session: Se
         {teams.map((t, i) => (
           <section key={t.id} className="tr-team" role="listitem" style={{ '--c': COLORS[i % COLORS.length] } as React.CSSProperties}>
             <div className="tr-in">
-              <h2>{t.name}</h2>
+              <h2>
+                {xmas && (
+                  <span className="orn" aria-hidden>
+                    {ORNAMENTS[i % ORNAMENTS.length]}
+                  </span>
+                )}
+                {t.name}
+              </h2>
               <p>
                 {t.members.map((m) => (
                   <span key={`${m.no}:${m.nick}`}>{m.nick}</span>

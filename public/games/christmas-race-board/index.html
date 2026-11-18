@@ -12,16 +12,18 @@
     <link rel="stylesheet" href="/games/shared/kru-quiz.css" />
     <link rel="stylesheet" href="/games/shared/kru-picker.css" />
     <link rel="stylesheet" href="/games/race-board/style.css" />
+    <link rel="stylesheet" href="christmas.css" />
   </head>
   <body>
     <main class="game kc rb">
       <header class="bar">
-        <span class="logo">🎄 Race <b>Board</b></span>
+        <span class="logo">🎄 Christmas <b>Race</b></span>
         <span class="turn" id="turn" aria-live="polite"></span>
         <span class="grow"></span>
         <button class="btn gold" id="ask">Question ▶</button>
         <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
       </header>
+      <div class="lights" aria-hidden="true"></div>
       <div class="track" id="track" aria-label="The race track"></div>
       <div class="legend" id="legend"></div>
       <div class="toast" id="toast" role="status" hidden><span id="toastText"></span><button class="small" id="toastUndo" hidden>Undo</button></div>
@@ -90,6 +92,8 @@
         <button class="btn ghost" id="menuClose">Close</button>
       </div>
     </div>
+
+    <div class="snow" aria-hidden="true"></div>
 
     <script src="/sdk/kru.js"></script>
     <script src="/games/shared/kru-intro.js"></script>

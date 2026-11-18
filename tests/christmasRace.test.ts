@@ -160,3 +160,26 @@ describe('Christmas Race Board game', () => {
     expect(Object.keys(JSON.parse(read('public/games/race-board/content.json')))).not.toContain('christmas')
   })
 })
+
+describe('Christmas look (Nov 18)', () => {
+  const html = read(`${dir}/index.html`)
+  const css = read(`${dir}/christmas.css`)
+  it('the game links its own Christmas styles, a string of lights and falling snow', () => {
+    expect(html).toContain('<link rel="stylesheet" href="christmas.css" />')
+    expect(html).toContain('<div class="lights" aria-hidden="true"></div>')
+    expect(html).toContain('<div class="snow" aria-hidden="true"></div>')
+    expect(html).toContain('🎄 Christmas <b>Race</b>')
+  })
+  it('snow never blocks a tap and stops for Reduce Motion', () => {
+    expect(css).toMatch(/\.snow \{[^}]*pointer-events: none/)
+    expect(css).toMatch(/prefers-reduced-motion: reduce\)[\s\S]*\.snow::before/)
+    expect(read('src/components/Christmas.css')).toMatch(/\.xmas-snow \{[^}]*pointer-events: none/)
+  })
+  it('Find your team and the Mixed group list use the Christmas look for this game only', () => {
+    const g = games.find((x) => x.slug === 'christmas-race-board') as Record<string, unknown>
+    expect(g.theme).toBe('christmas')
+    expect(games.filter((x) => (x as Record<string, unknown>).theme).length).toBe(1)
+    expect(read('src/components/TeamsReveal.tsx')).toContain("findGame(session.game)?.theme === 'christmas'")
+    expect(read('src/routes/MixPick.tsx')).toContain("game.theme === 'christmas' ? ' xmas-theme' : ''")
+  })
+})

@@ -217,7 +217,8 @@
     ],
     "status": "ready",
     "section": "quizzes",
-    "mixed": true
+    "mixed": true,
+    "theme": "christmas"
   },
   {
     "slug": "quiz-island",
