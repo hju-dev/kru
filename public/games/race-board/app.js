@@ -586,7 +586,7 @@
     shuffle(plain);
     return { trap: plain[0], slide: plain[1], trapUsed: false, slideUsed: false };
   }
-  /** A unit's or the Sheet's question has no tier: A-D = regular; short answer or double = hard. */
+  /** A unit's or the Sheet's question with no tier: A-D = regular; short answer or double = hard. */
   function guessTier(q) { return q.double || !Array.isArray(q.choices) ? 'hard' : 'regular'; }
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
@@ -602,7 +602,7 @@
       }
       POOL = { easy: [], regular: [], hard: [], impossible: [] };
       var add = function (q, tier, set) { POOL[tier].push(Object.assign({ tier: tier, set: set || '' }, q)); };
-      if (QZ.unit) QZ.unit.sets.forEach(function (s) { s.questions.forEach(function (q) { add(q, guessTier(q), s.name); }); });
+      if (QZ.unit) QZ.unit.sets.forEach(function (s) { s.questions.forEach(function (q) { add(q, TIERS[q.tier] ? q.tier : guessTier(q), s.name); }); }); // a unit can give each question its own tier
       else {
         own.forEach(function (q) { add(q, TIERS[q.tier] ? q.tier : 'regular'); });
         QZ.fromSheet.forEach(function (s) { s.questions.forEach(function (q) { add(q, guessTier(q), s.name); }); });
