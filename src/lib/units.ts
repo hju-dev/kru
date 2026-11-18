@@ -20,7 +20,7 @@ export interface UnitInfo {
 export const UNITS: UnitInfo[] = (index as { units: UnitInfo[] }).units
 
 /** The games a full unit (sets, words, motions; no "games" list) works in. */
-export const FULL_UNIT_GAMES = ['hot-seat-vocab', 'quiz-battle', 'jeopardy', 'race-board', 'tag-team-debate']
+export const FULL_UNIT_GAMES = ['hot-seat-vocab', 'quiz-battle', 'jeopardy', 'quiz-island', 'race-board', 'tag-team-debate']
 
 /** "M.3/2", "m.3 / 2" and "3/2" are the same class. */
 export function classKey(name: string): string {
