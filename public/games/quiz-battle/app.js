@@ -71,6 +71,18 @@
     $('fill').style.transform = 'scaleX(' + (total ? Math.max(0, left) / total : 0) + ')';
     $('digits').className = 'digits' + (left <= 0 ? ' done' : left <= 5 && running ? ' warn' : '');
     $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : 'Start timer';
+    renderWrite();
+  }
+  /** Students write the answer first. The answer can be shown only when the time is up (or with "Show the answer now"). */
+  function renderWrite() {
+    if (!S || !set() || !question()) return;
+    var shown = !!S.revealed[S.pos], q = question();
+    $('write').hidden = shown;
+    $('write').className = 'write' + (left <= 0 ? ' up' : '');
+    $('write').textContent = left <= 0
+      ? '⏱ Time’s up! Boards up, then tap Reveal.'
+      : q.choices ? '✍ Write your answer on your board: A, B, C or D. Reveal opens when time is up.' : '✍ Write your answer in words on your board. Reveal opens when time is up.';
+    $('reveal').disabled = shown || left > 0;
   }
   function tick() {
     if (!running) return;
@@ -124,13 +136,13 @@
       }).join('');
     } else {
       $('choices').hidden = true;
-      $('short').hidden = shown;
+      $('short').hidden = true; // the "write your answer" line below the question covers short answers too
       $('shortAns').hidden = !shown;
       $('shortAns').textContent = String(q.answer);
     }
     // a lesson pack's read-aloud sentence, big, after the reveal
     $('say').innerHTML = shown && q.read_aloud ? KruQuiz.say(q.read_aloud) : '';
-    $('reveal').disabled = shown;
+    renderWrite();
     var last = S.pos + 1 >= s.questions.length;
     $('next').textContent = last ? 'Finish set ▶' : 'Next ▶';
     renderTeams();
@@ -190,7 +202,9 @@
 
   $('strip').addEventListener('click', function (e) { var b = e.target.closest('[data-t]'); if (b) toggleRight(b.dataset.t); });
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
-  $('reveal').addEventListener('click', function () { unlockAudio(); stopTimer(); S.revealed[S.pos] = true; save(); tone([523, 659]); render(); KruBonus.reveal(); });
+  function doReveal() { unlockAudio(); stopTimer(); S.revealed[S.pos] = true; save(); tone([523, 659]); render(); KruBonus.reveal(); }
+  $('reveal').addEventListener('click', function () { if (!$('reveal').disabled) doReveal(); });
+  $('showNow').addEventListener('click', function () { closeMenu(); if (!S.revealed[S.pos]) { left = 0; doReveal(); } }); // skips the wait
   $('next').addEventListener('click', function () { goTo(S.pos + 1); });
 
   // ---------- choosing a set ----------

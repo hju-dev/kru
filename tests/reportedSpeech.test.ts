@@ -60,3 +60,16 @@ describe('Jeopardy rename', () => {
     expect(html).toContain('<title>Jeopardy</title>')
   })
 })
+
+// Quiz Battle (Henry, Nov 18): students write the answer first; Reveal opens when the time is up.
+describe('Quiz Battle write first', () => {
+  const js = readFileSync(new URL('../public/games/quiz-battle/app.js', import.meta.url), 'utf8')
+  it('shows a write-it-down line and locks Reveal until 0:00', () => {
+    expect(js).toContain('Write your answer on your board: A, B, C or D')
+    expect(js).toContain("$('reveal').disabled = shown || left > 0;")
+  })
+  it('has a way to show the answer now', () => {
+    expect(js).toContain("$('showNow').addEventListener")
+    expect(readFileSync(new URL('../public/games/quiz-battle/index.html', import.meta.url), 'utf8')).toContain('id="showNow"')
+  })
+})
