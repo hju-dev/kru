@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router'
+import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router'
 import { Sheet } from '../components/Sheet'
 import { ApiError } from '../lib/api'
 import { teamSetsForClass } from '../lib/bootstrap'
@@ -27,6 +27,7 @@ import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import type { Level, Student, TeamSet } from '../types'
 import { unitsFor } from '../lib/units'
+import { markPlayed, MIXED_CLASS, mixRoster, shortClass } from '../lib/mix'
 import './Setup.css'
 
 const LEVELS: Level[] = ['M.1', 'M.2', 'M.3']
@@ -37,18 +38,24 @@ export function Setup() {
   const game = findGame(slug)
   const { data, lastClass } = useApp()
   const { sessions, loaded, put, patch } = useSessions()
-  const cls = data?.classes.find((c) => c.name === lastClass) ?? null
-  const roster: Student[] = useMemo(
-    () => (cls ? (data?.rosters[cls.name] ?? []).filter((s) => s.active) : []),
-    [cls, data],
-  )
+  // ?mix=1: a mixed group picked from every class (/mix/<game>), not the class chosen on Home
+  const mixed = useSearchParams()[0].get('mix') === '1'
+  const cls = mixed ? null : (data?.classes.find((c) => c.name === lastClass) ?? null)
 
   useEffect(() => void useSessions.getState().load(), [])
 
   // Reuse an unfinished setup for this class + game, otherwise start a new one
-  const session = Object.values(sessions).find((s) => s.status === 'setup' && s.class === cls?.name && s.game === slug)
+  const session = Object.values(sessions).find(
+    (s) => s.status === 'setup' && s.game === slug && (mixed ? !!s.mix && s.class === MIXED_CLASS : !s.mix && s.class === cls?.name),
+  )
+  // a mixed game that was just started: this screen is on its way to /play (don't bounce to /mix)
+  const [started, setStarted] = useState(false)
+  const roster: Student[] = useMemo(
+    () => (mixed ? mixRoster(session?.mix ?? []) : cls ? (data?.rosters[cls.name] ?? []).filter((s) => s.active) : []),
+    [mixed, session?.mix, cls, data],
+  )
   useEffect(() => {
-    if (!loaded || !cls || !game || session) return
+    if (mixed || !loaded || !cls || !game || session) return
     let cancelled = false
     void storage.getAbsent(cls.name, todayKey()).then((absent = []) => {
       if (cancelled) return
@@ -80,9 +87,16 @@ export function Setup() {
     return () => {
       cancelled = true
     }
-  }, [loaded, cls, game, session, roster, put])
+  }, [mixed, loaded, cls, game, session, roster, put])
 
   if (!game || game.status !== 'ready') return <Problem text="That game isn’t available yet." />
+  if (mixed) {
+    if (!loaded) return <main className="screen" />
+    if (started) return <main className="screen" />
+    // no group picked yet (or it was finished): pick the students first
+    if (!session || roster.length === 0) return <Navigate to={`/mix/${slug}`} replace />
+    return <SetupBoard key={session.id} session={session} roster={roster} gameTitle={game.title} modes={game.modes} hasLevels={game.levels.length > 0} hasUnits={!!game.units} slug={slug} patch={patch} onStart={(id) => { setStarted(true); navigate(`/play/${id}`, { replace: true }) }} />
+  }
   if (!cls) return <Problem text="Choose a class on the home screen first." />
   if (roster.length === 0) return <Problem text={`${cls.name} has no active students yet. Add them in Dashboard → Rosters (or in the Rosters tab of your Sheet), then tap the sync button.`} />
   if (!session) return <main className="screen" />
@@ -202,7 +216,12 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   }
 
   function start() {
-    const member = (id: number) => ({ no: byId.get(id)?.no ?? id, nick: byId.get(id)?.nick ?? `No. ${id}` })
+    const mixOf = new Map((s.mix ?? []).map((m) => [m.id, m]))
+    const member = (id: number) => {
+      const m = { no: byId.get(id)?.no ?? id, nick: byId.get(id)?.nick ?? `No. ${id}` }
+      const cls = mixOf.get(id)?.class
+      return cls ? { ...m, class: cls } : m
+    }
     const teams: Team[] = group
       ? bins.filter((b) => b.members.length > 0).map((b) => ({ id: b.id, name: b.name, members: b.members.map(member) }))
       : presentIds.map((id) => ({ id: `s${id}`, name: member(id).nick, members: [member(id)] }))
@@ -216,6 +235,12 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
       // group games: show the teams big on screen first, so students can find their team and move
       teamsShown: group ? false : undefined,
     })
+    if (s.mix) {
+      // mixed group: everyone who plays gets a "played" tag on the pick list for the next groups
+      const playing = new Set(group ? bins.flatMap((b) => b.members) : presentIds)
+      const mix = s.mix.filter((m) => playing.has(m.id))
+      void storage.getPlayed(s.game).then((p = {}) => storage.setPlayed(s.game, markPlayed(p, s.id, mix)))
+    }
     onStart(s.id)
   }
 
@@ -223,6 +248,8 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   const emptyBins = bins.length - filledTeams
   const canStart = group ? filledTeams > 0 && (pool.length === 0 || s.leaveOut) : presentIds.length > 0
 
+  // mixed group: chips show the class ("2/3") instead of the number
+  const mixTag = new Map((s.mix ?? []).map((m) => [m.id, shortClass(m.class)]))
   const chip = (no: number, where: 'pool' | 'bin') => {
     const st = byId.get(no)
     if (!st) return null
@@ -235,7 +262,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
         onClick={(e) => tapChip(no, e)}
         aria-pressed={selected.includes(no)}
       >
-        <b>{st.no}</b> · {st.nick}
+        <b>{mixTag.get(st.id) ?? st.no}</b> · {st.nick}
       </button>
     )
   }
@@ -250,8 +277,13 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
         </Link>
         <div className="setup-title">
           <b>{gameTitle}</b>
-          <span className="muted"> · {s.class}</span>
+          <span className="muted"> · {s.mix ? `🎄 Mixed group (${s.mix.length})` : s.class}</span>
         </div>
+        {s.mix && (
+          <Link className="btn small" to={`/mix/${slug}`}>
+            Edit the group
+          </Link>
+        )}
         {hasLevels && (
           <div className="seg" role="group" aria-label="Level">
             {LEVELS.map((l) => (
@@ -309,9 +341,11 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
           <button className={`tool${several ? ' on' : ''}`} onClick={() => setSeveral((v) => !v)} aria-pressed={several}>
             Pick several
           </button>
-          <button className={`tool${absentMode ? ' on' : ''}`} onClick={() => { setAbsentMode((v) => !v); setSelected([]) }} aria-pressed={absentMode}>
-            Absent
-          </button>
+          {!s.mix && (
+            <button className={`tool${absentMode ? ' on' : ''}`} onClick={() => { setAbsentMode((v) => !v); setSelected([]) }} aria-pressed={absentMode}>
+              Absent
+            </button>
+          )}
           <button className="tool" onClick={() => setBins(shuffleTeams(s.bins, presentIds))}>
             Shuffle
           </button>
@@ -324,12 +358,16 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
           <button className={`tool${s.teacher ? ' on' : ''}`} onClick={() => update({ teacher: !s.teacher })} aria-pressed={s.teacher} title="Add a teacher team">
             {TEACHER_NAME}
           </button>
-          <button className="tool" onClick={() => setSheet('load')}>
-            Load teams
-          </button>
-          <button className="tool" onClick={() => setSheet('save')} disabled={filledTeams === 0}>
-            Save teams
-          </button>
+          {!s.mix && (
+            <>
+              <button className="tool" onClick={() => setSheet('load')}>
+                Load teams
+              </button>
+              <button className="tool" onClick={() => setSheet('save')} disabled={filledTeams === 0}>
+                Save teams
+              </button>
+            </>
+          )}
         </div>
       ) : (
         <div className="setup-tools">

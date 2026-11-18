@@ -34,6 +34,9 @@ export const storage = {
   /** A game's long-term memory for one class (e.g. Class Order: who has had a turn), kept across lessons. */
   getKeepState: (game: string, cls: string) => get<unknown>(`keep:${game}:${cls}`, store),
   setKeepState: (game: string, cls: string, data: unknown) => set(`keep:${game}:${cls}`, data, store),
+  /** Mixed groups: who already played a game ("class|student id" -> session id), kept on this phone. */
+  getPlayed: (game: string) => get<Record<string, string>>(`played:${game}`, store),
+  setPlayed: (game: string, played: Record<string, string>) => set(`played:${game}`, played, store),
   /** A tool's own saved settings (for example Talk Timer presets), kept on this phone. */
   getToolState: (slug: string) => get<unknown>(`tool:${slug}`, store),
   setToolState: (slug: string, state: unknown) => set(`tool:${slug}`, state, store),

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
+import { Sheet } from '../components/Sheet'
 import { SyncPill } from '../components/SyncPill'
 import { SectionIcon } from '../components/SectionIcon'
 import { findGame, gameTitle, librarySections, SECTIONS, type GameInfo, type SectionId } from '../lib/games'
@@ -15,6 +16,8 @@ export function Home() {
   const sessions = useSessions((s) => s.sessions)
   const navigate = useNavigate()
   const [nudge, setNudge] = useState(false)
+  // a game that a mixed group can play (Christmas Race Board): ask "this class or a mixed group?"
+  const [whoFor, setWhoFor] = useState<GameInfo | null>(null)
   const classes = (data?.classes ?? []).filter((c) => !c.archived)
   const selected = classes.find((c) => c.name === lastClass) ?? null
 
@@ -38,6 +41,7 @@ export function Home() {
       useLibrary.getState().played(g.slug)
       return navigate(`/tool/${g.slug}`)
     }
+    if (g.mixed) return setWhoFor(g)
     if (!selected) {
       setNudge(true)
       setTimeout(() => setNudge(false), 1500)
@@ -57,6 +61,20 @@ export function Home() {
       })
       return
     }
+    navigate(`/setup/${g.slug}`)
+  }
+
+  function playMixed(g: GameInfo) {
+    setWhoFor(null)
+    useLibrary.getState().played(g.slug)
+    // an unfinished mixed setup goes straight back to its teams; otherwise pick the students first
+    const open = Object.values(sessions).some((s) => s.status === 'setup' && s.game === g.slug && !!s.mix)
+    navigate(open ? `/setup/${g.slug}?mix=1` : `/mix/${g.slug}`)
+  }
+
+  function playClass(g: GameInfo) {
+    setWhoFor(null)
+    useLibrary.getState().played(g.slug)
     navigate(`/setup/${g.slug}`)
   }
 
@@ -139,6 +157,22 @@ export function Home() {
         librarySections().map((sec) => (
           <GameRow key={sec.id} id={sec.id} title={sec.title} color={sec.color} games={sec.games} favorites={favorites} onPick={pickGame} onTry={tryGame} />
         ))}
+      {whoFor && (
+        <Sheet title={`Who is playing ${whoFor.title}?`} onClose={() => setWhoFor(null)}>
+          <div className="who-for">
+            <button className="btn primary" onClick={() => playMixed(whoFor)}>
+              🎄 Mixed group (pick from every class)
+            </button>
+            {selected ? (
+              <button className="btn" onClick={() => playClass(whoFor)}>
+                Just {selected.name}
+              </button>
+            ) : (
+              <p className="muted">To play with one class, close this and choose the class first.</p>
+            )}
+          </div>
+        </Sheet>
+      )}
     </main>
   )
 }

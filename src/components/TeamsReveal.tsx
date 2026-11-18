@@ -1,4 +1,5 @@
-import { useCallback, useLayoutEffect, useRef } from 'react'
+import { useCallback, useLayoutEffect, useMemo, useRef } from 'react'
+import { displayTeams } from '../lib/mix'
 import type { Session } from '../lib/session'
 import './TeamsReveal.css'
 
@@ -10,7 +11,8 @@ const COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0'
  */
 export function TeamsReveal({ session, title, onStart, onChange }: { session: Session; title: string; onStart: () => void; onChange: () => void }) {
   const grid = useRef<HTMLDivElement>(null)
-  const teams = session.teams
+  // mixed groups: "Nok (2/3)" when two students share a nickname
+  const teams = useMemo(() => displayTeams(session.teams), [session.teams])
   const n = teams.length
 
   // Biggest text that fits: try a few column counts, shrink the font until nothing overflows.

@@ -225,3 +225,15 @@
 .sec-favorites .section-head {
   color: var(--sec);
 }
+
+/* "Who is playing?" for games a mixed group can play (Christmas Race Board) */
+.who-for {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.who-for .btn {
+  min-height: 52px;
+  font-size: 17px;
+  white-space: normal;
+}
