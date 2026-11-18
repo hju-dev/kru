@@ -427,3 +427,19 @@ button:focus-visible {
 /* lesson packs: after the reveal only the right answer stays, and the read-aloud sentence shows big */
 .choices.said .choice.wrong { display: none; }
 .choices.said { grid-template-columns: minmax(0, 1fr); }
+
+/* "Write your answer first": a line under the question; Reveal opens when the time is up */
+.write {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.2;
+  padding: 0 4px;
+  text-align: center;
+}
+.write.up {
+  color: var(--gold);
+  font-weight: 800;
+}
+.write[hidden] {
+  display: none;
+}
