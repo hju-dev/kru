@@ -71,3 +71,11 @@
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
+
+/* A rebus puzzle: emoji and words on lines, big and centered */
+.kq-rebus {
+  margin: 4px 0 8px;
+  text-align: center;
+  font: 800 56px/1.15 var(--display);
+  letter-spacing: 0.02em;
+}

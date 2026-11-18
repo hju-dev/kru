@@ -53,6 +53,10 @@
 
   function html(q, shown) {
     var h = '<div class="kq-q" data-kq="q">' + esc(q.q) + '</div>';
+    // a rebus puzzle (Christmas Race Board): picture lines of emoji and words, shown big under the question
+    if (Array.isArray(q.rebus) && q.rebus.length) {
+      h += '<div class="kq-rebus" data-kq="rebus">' + q.rebus.map(function (l) { return '<div>' + esc(l) + '</div>'; }).join('') + '</div>';
+    }
     if (Array.isArray(q.choices)) {
       var said = shown && q.read_aloud;
       h += '<div class="kq-choices' + (said ? ' kq-said' : '') + '" data-kq="ch">' + q.choices.map(function (c, i) {
@@ -68,12 +72,14 @@
 
   function fit(stage) {
     if (!stage) return;
-    var q = stage.querySelector('[data-kq=q]'), ch = stage.querySelector('[data-kq=ch]'), sy = stage.querySelector('[data-kq=say]'), qs = 32, cs = 24, ss = 34;
+    var q = stage.querySelector('[data-kq=q]'), ch = stage.querySelector('[data-kq=ch]'), sy = stage.querySelector('[data-kq=say]'), rb = stage.querySelector('[data-kq=rebus]'), qs = 32, cs = 24, ss = 34, rs = 56;
     if (!q) return;
     var over = function () { return stage.scrollHeight > stage.clientHeight + 1; };
     q.style.fontSize = qs + 'px';
     if (ch) ch.style.setProperty('--ch', cs + 'px');
     if (sy) sy.style.fontSize = ss + 'px';
+    if (rb) rb.style.fontSize = rs + 'px';
+    while (rb && rs > 30 && over()) rb.style.fontSize = (rs -= 4) + 'px';
     while (qs > 22 && over()) q.style.fontSize = (qs -= 2) + 'px';
     while (ch && cs > 18 && over()) ch.style.setProperty('--ch', (cs -= 2) + 'px');
     while (qs > 18 && over()) q.style.fontSize = (qs -= 2) + 'px';

@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import games from '../games.json'
 
-// Christmas Race Board (Henry, Nov 2026): Race Board's rules with a 100-question Christmas bank, 🎄 Challenge squares
+// Christmas Race Board (Henry, Nov 2026): Race Board's rules with a 200-question Christmas bank, 🎄 Challenge squares
 // and Forfeit cards. It runs games/race-board/app.js, so the normal game's tests (raceBoardNov9) still apply.
 const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
 const dir = 'public/games/christmas-race-board'
@@ -11,67 +11,98 @@ const content = JSON.parse(read(`${dir}/content.json`))
 const qs = content.questions.all as Q[]
 const js = read('public/games/race-board/app.js')
 
-// Henry's answer key, question 1 to 100 (the text of the right option, or the spoken answer)
+type Q2 = Q & { id: string; set: string; rebus?: string[] }
+const bank = qs as Q2[]
+
+// The answer key printed for Henry (Nov 18), question 1 to 200: the text of the right option, or the spoken answer
 const KEY = [
-  'Mars', '3', 'Honey', 'Pacific Ocean', 'Paris', 'Puppy', 'Giraffe', 'Ice', 'Badminton', '7',
-  'Square', 'Egypt', 'Pine tree', 'December 25', 'Apple', 'Pilot', 'Fish', '12', 'Rudolph', 'The Sun',
-  'Asia', 'Igloo', 'Piano', 'Earth', 'Stockings', 'Lion', 'Dolphin', 'Sleigh', 'Japan', '8',
-  'Saturn', 'Blue whale', 'Paris', 'Carbon dioxide', 'Yen', '11', 'Australia', 'Diamond', 'Eggnog', 'Tinker Bell',
-  'Indian Ocean', 'Bangkok', '88', 'Hummingbird', 'Avocado', 'Mercury', 'Boxing Day', 'Mount Everest', 'Heart', '7',
-  'France', 'Woody', 'Poinsettia', 'Africa', 'Chameleon', '120', 'An atom', 'Octagon', 'North Pole', 'China',
-  'Venus', 'Equator', 'Ebenezer', 'Bat', 'Au', 'Canada', 'Stapes', 'Titanic', 'Gold, frankincense and myrrh', 'Liver',
-  'Isaac Newton', 'New York City', 'Hydrogen', 'Metamorphosis', 'The Nutcracker', 'Antarctica', 'Jordan', 'Wellington', 'O negative', 'Palindrome',
-  'Santa Claus Is Coming to Town', 'Milky Way', 'Forint', 'Sahara Desert', 'Pacific Ocean',
-  'Q', '9 sheep', 'Octopus', 'A towel', '78', '9 zeros', 'Koala', 'Second place', 'Olaf', '2 apples',
-  '64', '23', 'Türkiye (Turkey)', '11 seconds', 'Saint Nicholas',
+  "Red", "December 25", "Reindeer", "Rudolph", "The North Pole",
+  "Stockings", "Ho, ho, ho!", "Elves", "A star", "A carrot",
+  "Down the chimney", "Milk and cookies", "Nice", "Snowman", "Mistletoe",
+  "J", "Red and white", "Snow", "Wrapping paper", "Olaf",
+  "A carol", "A sleigh", "A cookie", "Lights", "December",
+  "December 24", "A big sack", "A pine tree", "Cards", "Mrs. Claus",
+  "A gingerbread house", "A letter", "Snowman (snow + man)", "Snowball (snow + ball)", "Snow angel (snow + angel)",
+  "Snow globe (snow + globe)", "Candy cane (candy + cane)", "Hot chocolate (hot + chocolate)", "Snowstorm (snow + storm)", "Christmas tree (X-mas = Christmas)",
+  "A puddle (it melted!)", "Neither: they both weigh 1 kilogram", "Snow", "A cold", "Wrapping paper",
+  "An umbrella", "A candle", "Friday", "7", "12",
+  "9", "7", "12", "6", "Water",
+  "It melts", "0 °C", "Your nose", "Electricity", "The Arctic (near the North Pole)",
+  "Rover", "1 (a one-horse open sleigh)", "Max", "Green", "A partridge in a pear tree",
+  "Father Christmas", "A circle", "Advent", "A little door", "Paris",
+  "New York City", "Poinsettia", "Holly", "Milk and eggs", "Germany",
+  "A magic hat", "It was foggy", "9", "Turkey", "A piece of wood",
+  "The North Pole", "Scrooge", "Ginger", "Coal", "Carolers",
+  "Jingle Bells", "Games", "Christmas", "Reindeer (rain + deer)", "Santa Claus (Santa + claws)",
+  "Silent Night (silent + night)", "Ho, ho, ho! (ho three times)", "Gift wrap (gift + wrap)", "Pine cone (pine + cone)", "Fireplace (fire + place)",
+  "Candlelight (candle + light)", "Gingerbread man (ginger + bread + man)", "Christmas card (X-mas + card)", "Rudolph", "2 (the two you took)",
+  "It doesn’t: roosters don’t lay eggs", "There is no smoke: it’s an electric train", "A Christmas tree (a pine tree)", "A piano", "He was bald",
+  "Second place", "The match", "A stamp", "36", "80",
+  "6", "24", "450 baht", "Herbivores", "6",
+  "Carbon dioxide", "Oxygen", "Ice is lighter than the same amount of water", "North", "H₂O",
+  "Five gold rings", "Ebenezer Scrooge", "Jacob Marley", "Cratchit", "Norway",
+  "December 26", "Australia", "Charles Dickens", "Gold, frankincense and myrrh", "Whoville",
+  "Two sizes too small", "Tchaikovsky", "Dasher", "Spanish", "French",
+  "Türkiye (Turkey)", "Fried chicken", "Coal", "A button", "A Christmas cracker",
+  "Maple syrup", "3 (Past, Present and Yet to Come)", "Mistletoe (mist + toe)", "Snowfall (snow + fall)", "Icicle (ice + cycle)",
+  "Mitten (mit + ten)", "Wise men (wise + men)", "The Twelve Days of Christmas", "Deck the Halls (deck the halls)", "Elf (self without the S)",
+  "Sleigh (sleight without the T)", "North Pole (north + fishing pole)", "One: after that, it isn’t empty", "December 28", "Monday (7 days later)",
+  "3", "They are a grandfather, a father and a son", "She lives in the south, for example in Australia", "White: the house is at the North Pole, so it’s a polar bear", "T",
+  "3 reindeer (12 legs, the elves have 10)", "A secret", "189", "30 km", "30",
+  "The blue part", "Water in your breath turns into tiny drops", "CO₂", "Au", "NaCl",
+  "Eight maids a-milking", "Eleven pipers piping", "1843", "Montgomery Ward", "McCallister",
+  "Donner and Blitzen", "A bishop", "Mexico", "8", "Bedford Falls",
+  "Peppermint (pepper + mint, a coin is made at a mint)", "Stocking (stock + ing)", "Santa Claus Is Coming to Town", "Rockin’ Around the Christmas Tree", "I’m Dreaming of a White Christmas",
+  "5 minutes", "2 kilograms", "December 31 (and today is January 1)", "Push the cork into the bottle", "D (for December: they are the months)",
+  "364", "55 km", "8 reindeer (and 12 elves)", "Carbon", "Ag",
+  "Fe", "About 300,000 km per second", "32 °F", "Blue", "The leaves",
 ]
 const text = (q: Q) => (q.choices ? q.choices[q.answer as number] : String(q.answer))
 
-describe('Christmas bank', () => {
-  it('100 questions: 30 easy, 30 regular, 25 hard, 15 impossible, in your order', () => {
-    expect(qs).toHaveLength(100)
-    const n = (t: string) => qs.filter((q) => q.tier === t).length
-    expect([n('easy'), n('regular'), n('hard'), n('impossible')]).toEqual([30, 30, 25, 15])
-    expect(qs.map((q) => q.tier).join()).toBe([...Array(30).fill('easy'), ...Array(30).fill('regular'), ...Array(25).fill('hard'), ...Array(15).fill('impossible')].join())
+describe('Christmas bank (Nov 18: 200 Christmas questions)', () => {
+  it('200 questions: 60 easy, 60 regular, 50 hard, 30 impossible, each with its own id', () => {
+    expect(bank).toHaveLength(200)
+    const n = (t: string) => bank.filter((q) => q.tier === t).length
+    expect([n('easy'), n('regular'), n('hard'), n('impossible')]).toEqual([60, 60, 50, 30])
+    expect(new Set(bank.map((q) => q.id)).size).toBe(200)
+    expect(new Set(bank.map((q) => q.q + (q.rebus ?? []).join('|'))).size).toBe(200)
   })
-  it("every right answer is the one in Henry's key (even after the options were reshuffled)", () => {
-    qs.forEach((q, i) => {
-      const t = text(q)
-      // spoken answers may carry a short hint after the answer, e.g. "23 (add 1, then 2…)"
-      expect(t === KEY[i] || (!q.choices && t.startsWith(KEY[i] + ' ')), `#${i + 1} ${q.q}`).toBe(true)
-    })
+  it("your mix: 92 trivia, 33 rebus, 33 brain teasers, 17 reindeer math, 25 Christmas science", () => {
+    const n = (s: string) => bank.filter((q) => q.set === s).length
+    expect([n('Christmas trivia'), n('Rebus'), n('Brain teaser'), n('Reindeer math'), n('Christmas science')]).toEqual([92, 33, 33, 17, 25])
   })
-  it('51 multiple choice (4 options, no repeats) and 49 spoken; no question or answer twice', () => {
-    const mc = qs.filter((q) => q.choices)
-    expect(mc).toHaveLength(51)
+  it('every right answer matches the printed answer key', () => {
+    expect(KEY).toHaveLength(200)
+    bank.forEach((q, i) => expect(text(q), `#${i + 1} ${q.q}`).toBe(KEY[i]))
+  })
+  it('A-D questions have 4 different options; the right answer is spread over A-D', () => {
+    const mc = bank.filter((q) => q.choices)
     for (const q of mc) {
       expect(q.choices, q.q).toHaveLength(4)
       expect(new Set(q.choices).size, q.q).toBe(4)
-      expect(typeof q.answer).toBe('number')
     }
-    for (const q of qs.filter((x) => !x.choices)) expect(String(q.answer).length, q.q).toBeGreaterThan(0)
-    expect(new Set(qs.map((q) => q.q)).size).toBe(100)
+    for (const i of [0, 1, 2, 3]) expect(mc.filter((q) => q.answer === i).length).toBeGreaterThan(mc.length / 6)
   })
-  it('the right answer is spread over A-D (not nearly always B or C), in every tier too', () => {
-    const at = (list: Q[]) => [0, 1, 2, 3].map((i) => list.filter((q) => q.choices && q.answer === i).length)
-    const all = at(qs)
-    for (const n of all) expect(n).toBeGreaterThan(51 / 6)
-    for (const t of ['easy', 'regular', 'hard', 'impossible']) for (const n of at(qs.filter((q) => q.tier === t))) expect(n, t).toBeGreaterThan(0)
-  })
-  it('numbered options stay in order (piano keys, twelve days, perfect cubes)', () => {
-    for (const i of [42, 89, 95]) {
-      const nums = qs[i].choices!.map(Number)
-      expect([...nums].sort((a, b) => a - b), qs[i].q).toEqual(nums)
+  it('rebus puzzles have picture lines and a spoken answer', () => {
+    for (const q of bank.filter((x) => x.set === 'Rebus')) {
+      expect(q.rebus!.length, q.q).toBeGreaterThan(0)
+      expect(q.choices).toBeUndefined()
     }
+    expect(read('public/games/shared/kru-quiz.js')).toContain('data-kq="rebus"')
   })
-  it('math and science questions are tagged for the math-or-science chance card', () => {
-    expect(qs.filter((q) => q.cat === 'math' || q.cat === 'science').length).toBeGreaterThanOrEqual(30)
+  it('math and science are tagged for the math-or-science chance card', () => {
+    expect(bank.filter((q) => q.cat === 'math')).toHaveLength(17)
+    expect(bank.filter((q) => q.cat === 'science')).toHaveLength(25)
   })
-  it('American words, as Henry asked (airplane, color, soccer, movie)', () => {
+  it('Christmas only, American words', () => {
     const all = JSON.stringify(content)
-    expect(all).not.toMatch(/aeroplane|colour|football|\bfilm\b|travelling|Mexican/i)
-    expect(qs[15].q).toContain('airplane')
-    expect(qs[35].q).toContain('soccer')
+    expect(all).not.toMatch(/aeroplane|colour|favourite|football|\bfilm\b|travelling/i)
+    for (const q of bank.filter((x) => x.set === 'Christmas trivia')) expect(q.q.length, q.q).toBeLessThanOrEqual(120)
+  })
+  it('remembers asked questions across games (new ones first, repeats only when all are used)', () => {
+    expect(js).toContain('MEMORY = !!XMAS && !QZ.unit')
+    expect(js).toContain("Kru.saveKeep({ used: Object.keys(USED) })")
+    expect(js).toContain('if (!BANK.some(function (q) { return !USED[q.id]; })) USED = {};')
   })
 })
 
