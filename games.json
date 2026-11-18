@@ -219,6 +219,26 @@
     "section": "quizzes"
   },
   {
+    "slug": "quiz-island",
+    "title": "Quiz Island",
+    "file": "public/games/quiz-island/index.html",
+    "description": "One team at a time answers a quiz question and claims an island: harder questions are worth more. Hidden volcanoes, pirates and treasure chests, steals, power-ups, an optional random-student spinner and an all-in Final Wager. Use Race Board's questions, Quiz Battle's sets or a unit.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "team quiz",
+    "minutes": 35,
+    "phoneLandscape": true,
+    "modes": [
+      "group"
+    ],
+    "status": "ready",
+    "section": "quizzes",
+    "units": true
+  },
+  {
     "slug": "board-race",
     "title": "Board Race",
     "file": "public/games/board-race/index.html",

@@ -1,0 +1,79 @@
+{
+ "about": "Quiz Island (Henry, Nov 18): Race Board's quiz on Reading Island's map. Questions come from Race Board's bank (games/race-board/content.json), Quiz Battle's sets (via kru-quiz.js) or the unit picked on the setup screen. Intro slides only; no questions live here.",
+ "intro": [
+  {
+   "title": "Quiz Island",
+   "text": [
+    "One team at a time answers a question.",
+    "Get it right and claim an island!"
+   ],
+   "example": {
+    "label": "Example",
+    "result": "Right answer: tap an island on the map"
+   }
+  },
+  {
+   "title": "Harder = more points",
+   "text": [
+    "Each question is worth points:",
+    "the island you win is worth the same."
+   ],
+   "example": {
+    "rows": [
+     ["Easy", "1"],
+     ["Regular", "2"],
+     ["Hard", "3"],
+     ["Impossible", "4"]
+    ]
+   }
+  },
+  {
+   "title": "Secret islands",
+   "text": [
+    "Some islands hide a secret. You find out when you claim one!",
+    "Careful: not every secret is good."
+   ],
+   "example": {
+    "rows": [
+     ["🌋 Volcano", "lose your newest island"],
+     ["☠ Pirates", "miss your next turn"],
+     ["🧰 Chest and 💎", "+3 bonus"]
+    ]
+   }
+  },
+  {
+   "title": "⚔ Steal an island",
+   "text": [
+    "Hard and Impossible answers can steal an island.",
+    "When the map is full, every right answer steals!"
+   ],
+   "example": {
+    "rows": [
+     ["Steal", "take its points"],
+     ["The owner", "loses them"]
+    ]
+   }
+  },
+  {
+   "title": "Power-ups",
+   "text": [
+    "Use each power-up once per game.",
+    "Risk it: win double, or lose points!"
+   ],
+   "example": {
+    "chips": ["50/50", "+20 s", "Free answer", "Risk it"]
+   }
+  },
+  {
+   "title": "Final Wager",
+   "text": [
+    "Near the end: one question for every team. Bet any points!",
+    "Biggest group of islands: +5 points."
+   ],
+   "example": {
+    "big": "ALL IN",
+    "tag": "bet everything"
+   }
+  }
+ ]
+}

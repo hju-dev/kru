@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>Quiz Island</title>
+    <link rel="stylesheet" href="/games/shared/kru-game.css" />
+    <link rel="stylesheet" href="/games/shared/kru-intro.css" />
+    <link rel="stylesheet" href="/games/shared/kru-end.css" />
+    <link rel="stylesheet" href="/games/shared/kru-cards.css" />
+    <link rel="stylesheet" href="/games/shared/kru-quiz.css" />
+    <link rel="stylesheet" href="/games/shared/kru-picker.css" />
+    <link rel="stylesheet" href="/games/race-board/style.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game kc rb qi">
+      <header class="bar">
+        <span class="logo">Quiz <b>Island</b></span>
+        <span class="turn" id="turn" aria-live="polite"></span>
+        <span class="grow"></span>
+        <button class="btn" id="skipClaim" hidden>No island</button>
+        <button class="btn gold" id="ask">Question ▶</button>
+        <button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button>
+      </header>
+      <div class="map" id="map" aria-label="Islands: tap one to claim it"></div>
+      <div class="legend" id="legend"></div>
+      <div class="toast" id="toast" role="status" hidden><span id="toastText"></span><button class="small" id="toastUndo" hidden>Undo</button></div>
+    </main>
+
+    <!-- The question -->
+    <div class="backdrop rb-q" id="qBack" hidden>
+      <div class="panel qpanel" role="dialog" aria-labelledby="qWho">
+        <section class="stage" id="stage" aria-live="polite">
+          <div class="qhead"><b id="qWho"></b> <span class="tier" id="qTier"></span> <span id="qTopic"></span></div>
+          <div id="qBody"></div>
+        </section>
+        <div class="powers" id="powers" role="group" aria-label="Power-ups: one of each per team per game"></div>
+        <div class="controls">
+          <span class="digits" id="digits">0:20</span>
+          <button class="btn" id="go">Start timer</button>
+          <button class="btn teal" id="reveal">Reveal</button>
+          <span class="grow"></span>
+          <button class="btn ghost" id="wrong">✗ Wrong</button>
+          <button class="btn gold" id="right">✓ Right: claim!</button>
+          <button class="btn gold" id="finalMark" hidden>Mark the answers ▶</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Choose the question deck -->
+    <div class="backdrop" id="deckBack" hidden>
+      <div class="menu" role="dialog" aria-labelledby="deckTitle">
+        <h2 class="round" id="deckTitle">Choose a question deck</h2>
+        <div class="decks" id="decks"></div>
+        <button class="btn ghost" id="deckClose" hidden>Cancel</button>
+      </div>
+    </div>
+
+    <!-- Final Wager: every team's bet -->
+    <div class="backdrop" id="betsBack" hidden>
+      <div class="panel wpanel" role="dialog" aria-labelledby="betsTitle">
+        <div class="panel-head"><b id="betsTitle">Final Wager: bet any of your points, or ALL IN</b><button class="btn gold" id="betsDone">Done</button></div>
+        <div class="wlist" id="betList"></div>
+      </div>
+    </div>
+
+    <!-- Final Wager: right or wrong for every team -->
+    <div class="backdrop" id="marksBack" hidden>
+      <div class="panel wpanel" role="dialog" aria-labelledby="marksTitle">
+        <div class="panel-head"><b id="marksTitle">Who got it right?</b><button class="small" id="markClose" aria-label="Close">✕</button></div>
+        <div class="wlist" id="markList"></div>
+        <button class="btn gold wapply" id="markApply">Add up the scores ✓</button>
+      </div>
+    </div>
+
+    <div class="backdrop" id="menuBack" hidden>
+      <div class="menu" role="dialog" aria-label="More options">
+        <div class="menu-row" id="secsRow"></div>
+        <div class="menu-row">
+          <button class="btn" id="whoOn" aria-pressed="false">🎯 Who answers: off</button>
+          <button class="btn" id="deckBtn">Question deck</button>
+        </div>
+        <div class="menu-row">
+          <button class="btn" id="skip">Skip this team's turn</button>
+          <button class="btn" id="undoMove">Undo last turn</button>
+        </div>
+        <div class="menu-row">
+          <button class="btn gold" id="finalBtn">⚡ Final Wager</button>
+          <button class="btn" id="howTo">How to play</button>
+        </div>
+        <div class="menu-row">
+          <button class="btn ghost danger" id="newGame">New game (empty map, 0 points)</button>
+        </div>
+        <button class="btn ghost" id="menuClose">Close</button>
+      </div>
+    </div>
+
+    <script src="/sdk/kru.js"></script>
+    <script src="/games/shared/kru-intro.js"></script>
+    <script src="/games/shared/kru-end.js"></script>
+    <script src="/games/shared/kru-picker.js"></script>
+    <script src="/games/shared/kru-quiz.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
