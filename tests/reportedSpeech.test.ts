@@ -131,3 +131,28 @@ describe('KruPicker.member (Who answers?)', () => {
     }
   })
 })
+
+// Reading Island (Henry, Nov 18): renamed from Reading Think Tank, with pirates and chests on the map.
+describe('Reading Island', () => {
+  const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
+  const js = read('public/games/reading-island/app.js')
+  it('old Reading Think Tank ids resolve to Reading Island', async () => {
+    const g = await import('../src/lib/games')
+    expect(g.findGame('reading-think-tank')?.title).toBe('Reading Island')
+    expect(g.gameUrl('reading-think-tank')).toBe('/games/reading-island/index.html')
+  })
+  it('the map has 4 volcanoes, 4 pirates and 4 chests, none on the same island', () => {
+    expect(js).toContain('VOLCANOES = 4, PIRATES = 4, CHESTS = 4')
+    expect(js).toContain('m.volcano = cells.slice(at, at += VOLCANOES)')
+    expect(js).toContain('m.pirate = cells.slice(at, at += PIRATES)')
+    expect(js).toContain('m.chest = cells.slice(at, at += CHESTS)')
+  })
+  it('pirates make a team miss its next claim; chests give +3 bonus on top of the island', () => {
+    expect(js).toContain('S.skip[id] = 1;')
+    expect(js).toContain("var missed = S.queue.filter(function (id) { return S.skip[id]; });")
+    expect(js).toContain("addPts(id, 4, 'treasure chest');")
+  })
+  it('older saved maps without pirates still load', () => {
+    expect(js).toContain('S.map.pirate = S.map.pirate || []')
+  })
+})

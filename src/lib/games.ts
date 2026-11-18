@@ -43,8 +43,8 @@ export function librarySections(games: GameInfo[] = GAMES) {
   })).filter((s) => s.games.length > 0)
 }
 
-/** Games whose id changed: old saved sessions, favorites and recents use the old id (Quiz Board became Jeopardy, Nov 2026). */
-export const RENAMED_GAMES: Record<string, string> = { 'quiz-board': 'jeopardy' }
+/** Games whose id changed: old saved sessions, favorites and recents use the old id (Quiz Board became Jeopardy, Reading Think Tank became Reading Island, Nov 2026). */
+export const RENAMED_GAMES: Record<string, string> = { 'quiz-board': 'jeopardy', 'reading-think-tank': 'reading-island' }
 export const currentSlug = (slug: string) => RENAMED_GAMES[slug] ?? slug
 
 export const findGame = (slug: string) => GAMES.find((g) => g.slug === currentSlug(slug))
@@ -52,7 +52,7 @@ export const findGame = (slug: string) => GAMES.find((g) => g.slug === currentSl
 /** Games taken out of the library (Henry). Their old sessions can still be reviewed and saved under this title. */
 export const RETIRED_GAMES: Record<string, string> = {
   'just-a-minute': 'Just a Second', // merged into Tag-Team Talk (Nov 2026)
-  // merged into Reading Think Tank (Nov 2026)
+  // merged into Reading Island (Nov 2026)
   'read-remember': 'Read & Remember',
   'scan-it': 'Scan It!',
   'spot-the-mistakes': 'Spot the Mistakes',

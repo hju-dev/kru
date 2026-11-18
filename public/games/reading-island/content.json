@@ -1,8 +1,8 @@
 {
- "about": "Reading Think Tank (Henry, Nov 10): the five reading games in one game with an island map. Stories come from games/shared/stories.json (one level up). scan = the Scan It! texts (moved here from games/scan-it when that game was removed).",
+ "about": "Reading Island (Henry, Nov 10): the five reading games in one game with an island map. Stories come from games/shared/stories.json (one level up). scan = the Scan It! texts (moved here from games/scan-it when that game was removed).",
  "intro": [
   {
-   "title": "Reading Think Tank",
+   "title": "Reading Island",
    "text": [
     "A reading game show with an island map!",
     "5 rounds, then the Final Wager."
@@ -43,6 +43,29 @@
      [
       "🌋 Secret volcano",
       "lose one"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Secret islands",
+   "text": [
+    "Some islands hide a secret. You find out when you claim one!",
+    "Careful: not every secret is good."
+   ],
+   "example": {
+    "rows": [
+     [
+      "🌋 Volcano",
+      "lose one"
+     ],
+     [
+      "☠ Pirates",
+      "miss a turn"
+     ],
+     [
+      "🧰 Chest",
+      "+3 bonus"
      ]
     ]
    }
