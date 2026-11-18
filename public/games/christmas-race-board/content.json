@@ -1,5 +1,5 @@
 {
- "about": "Christmas Race Board (Henry, Nov 2026): Race Board's rules and code (games/race-board/app.js) with a Christmas question bank, Challenge squares and Forfeit cards. 200 Christmas questions (Nov 18) for every level, each with an id: 92 trivia, 33 rebus puzzles (rebus = lines shown big), 33 brain teasers, 17 reindeer math, 25 Christmas science; 60 easy, 60 regular, 50 hard, 30 impossible, drawn in those proportions (shares). The answer is an index for A-D questions, text for spoken ones. Asked questions are remembered on the phone (Kru.saveKeep) so later groups get new ones until every question has been asked. Math and science questions have a cat for the math-or-science chance card. christmas.squares = the Challenge squares; challenge and forfeit = the two card decks (20 each).",
+ "about": "Christmas Race Board (Henry, Nov 2026): Race Board's rules and code (games/race-board/app.js) with a Christmas question bank, Challenge squares and Forfeit cards. 189 Christmas questions (Nov 18; 11 rebus cut in Henry's audit) for every level, each with an id: 92 trivia, 22 rebus puzzles (rebus = lines shown big), 33 brain teasers, 17 reindeer math, 25 Christmas science; 59 easy, 56 regular, 45 hard, 29 impossible, drawn in those proportions (shares). The answer is an index for A-D questions, text for spoken ones. Asked questions are remembered on the phone (Kru.saveKeep) so later groups get new ones until every question has been asked. Math and science questions have a cat for the math-or-science chance card. christmas.squares = the Challenge squares; challenge and forfeit = the two card decks (20 each).",
  "title": "Christmas Race Board",
  "shares": {
   "easy": 30,
@@ -823,17 +823,6 @@
     "answer": "Snowstorm (snow + storm)"
    },
    {
-    "id": "x040",
-    "tier": "easy",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "X-MAS + 🌲"
-    ],
-    "answer": "Christmas tree (X-mas = Christmas)"
-   },
-   {
     "id": "x041",
     "tier": "easy",
     "cat": "teaser",
@@ -1421,17 +1410,6 @@
     "answer": "Reindeer (rain + deer)"
    },
    {
-    "id": "x090",
-    "tier": "regular",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "SANTA + 🦞"
-    ],
-    "answer": "Santa Claus (Santa + claws)"
-   },
-   {
     "id": "x091",
     "tier": "regular",
     "cat": "rebus",
@@ -1441,17 +1419,6 @@
      "🤫 + 🌙"
     ],
     "answer": "Silent Night (silent + night)"
-   },
-   {
-    "id": "x092",
-    "tier": "regular",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What does Santa say?",
-    "rebus": [
-     "HO × 3"
-    ],
-    "answer": "Ho, ho, ho! (ho three times)"
    },
    {
     "id": "x093",
@@ -1496,28 +1463,6 @@
      "🕯️ + 💡"
     ],
     "answer": "Candlelight (candle + light)"
-   },
-   {
-    "id": "x097",
-    "tier": "regular",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "GINGER + 🍞 + 👨"
-    ],
-    "answer": "Gingerbread man (ginger + bread + man)"
-   },
-   {
-    "id": "x098",
-    "tier": "regular",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "X-MAS + 🃏"
-    ],
-    "answer": "Christmas card (X-mas + card)"
    },
    {
     "id": "x099",
@@ -2046,7 +1991,7 @@
     "set": "Rebus",
     "q": "What Christmas word is this?",
     "rebus": [
-     "MIST + 🦶"
+     "☁️ + 🦶"
     ],
     "answer": "Mistletoe (mist + toe)"
    },
@@ -2084,70 +2029,13 @@
     "answer": "Mitten (mit + ten)"
    },
    {
-    "id": "x147",
-    "tier": "hard",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "🦉 + 👨👨👨"
-    ],
-    "answer": "Wise men (wise + men)"
-   },
-   {
-    "id": "x148",
-    "tier": "hard",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas song is this?",
-    "rebus": [
-     "12 × ☀️",
-     "of X-MAS"
-    ],
-    "answer": "The Twelve Days of Christmas"
-   },
-   {
-    "id": "x149",
-    "tier": "hard",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas song is this?",
-    "rebus": [
-     "🛳️ DECK",
-     "the HALL HALL"
-    ],
-    "answer": "Deck the Halls (deck the halls)"
-   },
-   {
-    "id": "x150",
-    "tier": "hard",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "SELF − S"
-    ],
-    "answer": "Elf (self without the S)"
-   },
-   {
-    "id": "x151",
-    "tier": "hard",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "SLEIGHT − T"
-    ],
-    "answer": "Sleigh (sleight without the T)"
-   },
-   {
     "id": "x152",
     "tier": "hard",
     "cat": "rebus",
     "set": "Rebus",
     "q": "What Christmas word is this?",
     "rebus": [
-     "NORTH + 🎣"
+     "⬆️ + 🎣"
     ],
     "answer": "North Pole (north + fishing pole)"
    },
@@ -2471,26 +2359,13 @@
     "answer": "Peppermint (pepper + mint, a coin is made at a mint)"
    },
    {
-    "id": "x182",
-    "tier": "impossible",
-    "cat": "rebus",
-    "set": "Rebus",
-    "q": "What Christmas word is this?",
-    "rebus": [
-     "STOCK",
-     "+ 💍 RING − R"
-    ],
-    "answer": "Stocking (stock + ing)"
-   },
-   {
     "id": "x183",
     "tier": "impossible",
     "cat": "rebus",
     "set": "Rebus",
     "q": "What Christmas song is this?",
     "rebus": [
-     "SANTA 🦞",
-     "is ➡️ to 🏙️"
+     "🎅 🦞 ➡️ 🏙️"
     ],
     "answer": "Santa Claus Is Coming to Town"
    },
@@ -2501,10 +2376,9 @@
     "set": "Rebus",
     "q": "What Christmas song is this?",
     "rebus": [
-     "🪨 + IN",
-     "around the X-MAS 🌲"
+     "🪨 🔄 🌲"
     ],
-    "answer": "Rockin’ Around the Christmas Tree"
+    "answer": "Rockin’ Around the Christmas Tree (rock + around + tree)"
    },
    {
     "id": "x185",
@@ -2513,8 +2387,7 @@
     "set": "Rebus",
     "q": "What Christmas song is this?",
     "rebus": [
-     "💤💭 of a",
-     "⬜ X-MAS"
+     "💤💭 ⬜ 🎄 🎁 🎅"
     ],
     "answer": "I’m Dreaming of a White Christmas"
    },
