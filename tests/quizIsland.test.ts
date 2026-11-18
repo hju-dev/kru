@@ -60,3 +60,33 @@ describe('Quiz Island', () => {
     for (const s of c.intro) { expect(s.title.length).toBeLessThanOrEqual(30); for (const l of s.text) expect(l.length, l).toBeLessThanOrEqual(90) }
   })
 })
+
+// Hot Seat (Henry, Nov 18): no bonus cards, a team pop-up, and a Battle Round after every full cycle.
+describe('Hot Seat Vocab update', () => {
+  const hs = read('public/games/hot-seat-vocab/app.js')
+  const hsHtml = read('public/games/hot-seat-vocab/index.html')
+  it('has no bonus cards any more', () => {
+    expect(hs).not.toContain('KruBonus')
+    expect(hsHtml).not.toContain('kru-bonus')
+    expect(JSON.parse(read('public/games/hot-seat-vocab/content.json')).bonus).toBeUndefined()
+  })
+  it('tapping a team shows its members, +1 / -1 points and a hot seat button', () => {
+    for (const id of ['teamMembers', 'ptsPlus', 'ptsMinus', 'teamSeat']) expect(hsHtml).toContain(`id="${id}"`)
+    expect(hs).toContain("S.log.push({ t: id, d: d, m: 1 });")
+    expect(hs).toContain("Kru.score(id, d, 'manual')")
+  })
+  it('after every team has had a turn: Battle Round, student teams in pairs, 2 points a word, random student', () => {
+    expect(hs).toContain('if (cycleDone() && startBattles()) return;')
+    expect(hs).toContain('var BATTLE_PTS = 2;')
+    expect(hs).toContain("pairs.push([studs[i].id, (studs[i + 1] || studs[0]).id])")
+    expect(hs).toContain('KruPicker.next(S.bpicked[id] || [], ids)')
+    expect(hs).toContain("Kru.score(id, BATTLE_PTS, 'battle word')")
+    expect(hsHtml).toContain('id="skipBattle"')
+  })
+  it('the Battle slide is in How to play', () => {
+    const c = JSON.parse(read('public/games/hot-seat-vocab/content.json')) as { intro: { title: string; text: string[] }[] }
+    expect(c.intro.map((s) => s.title)).toContain('Battle Round!')
+    expect(c.intro.length).toBeLessThanOrEqual(6)
+    for (const s of c.intro) for (const l of s.text) expect(l.length).toBeLessThanOrEqual(90)
+  })
+})
