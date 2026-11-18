@@ -73,3 +73,29 @@ describe('Quiz Battle write first', () => {
     expect(readFileSync(new URL('../public/games/quiz-battle/index.html', import.meta.url), 'utf8')).toContain('id="showNow"')
   })
 })
+
+// "Who answers?" spinner (Henry, Nov 18): one random student per question, no repeats until the whole team has answered.
+describe('KruPicker.member (Who answers?)', () => {
+  const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
+  const win: { KruPicker?: { next: (p: string[], all: string[], r?: () => number) => { id: string; picked: string[] }; member: unknown } } = {}
+  new Function('window', read('public/games/shared/kru-picker.js'))(win)
+  it('nobody twice until everyone has had a turn, then a new round', () => {
+    const all = ['a', 'b', 'c', 'd']
+    let picked: string[] = []
+    const seen: string[] = []
+    for (let i = 0; i < 4; i++) { const r = win.KruPicker!.next(picked, all); seen.push(r.id); picked = r.picked }
+    expect(new Set(seen).size).toBe(4)
+    expect(win.KruPicker!.next(picked, all).picked).toHaveLength(1) // everyone has gone: starts over
+  })
+  it('is exported and Race Board offers it as an optional switch (off by default)', () => {
+    expect(typeof win.KruPicker!.member).toBe('function')
+    const js = read('public/games/race-board/app.js')
+    expect(js).toContain('if (S.who && window.KruPicker')
+    for (const slug of ['race-board', 'christmas-race-board']) {
+      const html = read(`public/games/${slug}/index.html`)
+      expect(html).toContain('id="whoOn"')
+      expect(html).toContain('/games/shared/kru-picker.js')
+      expect(html).toContain('/games/shared/kru-picker.css')
+    }
+  })
+})

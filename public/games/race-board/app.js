@@ -420,7 +420,7 @@
   var shown = false;
   function renderQuestion() {
     var t = current(), tier = TIERS[Q.tier] || TIERS.regular;
-    $('qWho').textContent = t.name;
+    $('qWho').textContent = t.name + (who ? ' · 🎯 ' + who : '');
     $('qTier').textContent = tier.label + ' · ' + tier.note;
     $('qTier').className = 'tier ' + Q.tier;
     $('qTopic').textContent = Q.set ? '· ' + Q.set : '';
@@ -477,8 +477,26 @@
       risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers();
     }
   });
+  /** "Who answers" (optional): the team's random student is picked first (no repeats until the whole team has answered), then the question opens. */
+  var who = '';
   function ask() {
     if (busy || !current()) return;
+    var t = current();
+    who = '';
+    if (S.who && window.KruPicker && t.members && t.members.length) {
+      busy = true; // no second tap while the spinner runs
+      S.mpicked = S.mpicked || {};
+      KruPicker.member({
+        team: t,
+        get: function () { return S.mpicked[t.id] || []; },
+        set: function (ids) { S.mpicked[t.id] = ids; save(); },
+        onDone: function (m) { busy = false; who = m ? m.nick : ''; openQuestion(); },
+      });
+      return;
+    }
+    openQuestion();
+  }
+  function openQuestion() {
     unlockAudio();
     shown = false; risk = false;
     Q = pickQuestion(current().id);
@@ -524,10 +542,12 @@
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('restart').classList.remove('armed'); $('restart').textContent = 'Start the race again'; }
   function renderSecs() { $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join(''); }
-  $('more').addEventListener('click', function () { renderSecs(); disarm(); $('undoMove').disabled = !S.last || busy; $('skip').disabled = busy; $('menuBack').hidden = false; });
+  $('more').addEventListener('click', function () { renderSecs(); renderWho(); disarm(); $('undoMove').disabled = !S.last || busy; $('skip').disabled = busy; $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('secsRow').addEventListener('click', function (e) { var b = e.target.closest('[data-secs]'); if (!b) return; S.secs = +b.dataset.secs; save(); renderSecs(); });
+  function renderWho() { $('whoOn').textContent = '🎯 Who answers: ' + (S.who ? 'on' : 'off'); $('whoOn').setAttribute('aria-pressed', String(!!S.who)); }
+  $('whoOn').addEventListener('click', function () { S.who = !S.who; save(); renderWho(); });
   $('skip').addEventListener('click', function () { closeMenu(); nextTurn(); });
   $('undoMove').addEventListener('click', function () {
     var L = S.last;
@@ -600,6 +620,7 @@
         ORDER.forEach(function (t) { S.order[t] = shuffle(range(POOL[t].length)); S.qi[t] = 0; });
       }
       S.powers = S.powers || {};
+      S.mpicked = S.mpicked || {};
       S.xdeck = S.xdeck || {};
       if (XMAS) ['challenge', 'forfeit'].forEach(function (k) {
         var d = S.xdeck[k];

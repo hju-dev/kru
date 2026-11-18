@@ -12,6 +12,7 @@
  *   })
  *   KruPicker.pick()                           // open it from code
  *   KruPicker.next(ids, allIds, random)        // pure: -> { id, picked } (for tests)
+ *   KruPicker.member({ team, get, set, onDone }) // "Who answers?": one student of a team at random (see below)
  */
 (function () {
   'use strict';
@@ -107,6 +108,73 @@
     })();
   }
 
+  // ---------- "Who answers?": one student of a team, at random ----------
+  // KruPicker.member({ team, get: function () { return ids; }, set: function (ids) {}, onDone: function (student) {} })
+  // Spins through the team's students and lands on one; nobody twice until the whole team has answered (the team's list
+  // of picked ids is kept by the game). OK, go! calls onDone(student). A team with no students calls onDone(null).
+  function mid(m) { return String(m.id != null ? m.id : m.no); }
+  var mbox = null, mcur = null, mspin = false;
+  function member(o) {
+    var list = (o.team && o.team.members) || [];
+    if (!list.length) { if (o.onDone) o.onDone(null); return; }
+    mcur = o;
+    unlock();
+    if (!mbox) {
+      mbox = document.createElement('div');
+      mbox.className = 'kpk';
+      mbox.hidden = true;
+      mbox.setAttribute('role', 'dialog');
+      mbox.setAttribute('aria-label', 'Who answers?');
+      mbox.innerHTML = '<div class="kpk-card"><div class="kpk-label"></div><div class="kpk-name" aria-live="polite"></div><div class="kpk-members"></div>' +
+        '<div class="kpk-left"></div><div class="kpk-btns"><button class="kpk-btn ghost" data-k="again">Pick again</button><button class="kpk-btn go" data-k="ok">OK, go!</button></div></div>';
+      document.body.appendChild(mbox);
+      mbox.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-k]');
+        if (!b || mspin) return;
+        if (b.dataset.k === 'again') memberSpin();
+        else { mbox.hidden = true; var o2 = mcur, st = mbox._who; if (o2 && o2.onDone) o2.onDone(st); }
+      });
+    }
+    memberSpin();
+  }
+  function memberSpin() {
+    var o = mcur, list = o.team.members, ids = list.map(mid);
+    var r = next(o.get ? o.get() : [], ids);
+    if (o.set) o.set(r.picked);
+    var who = list.filter(function (m) { return mid(m) === r.id; })[0];
+    mbox._who = who;
+    var name = mbox.querySelector('.kpk-name'), card = mbox.querySelector('.kpk-card');
+    mbox.hidden = false;
+    mspin = true;
+    card.classList.remove('landed');
+    mbox.querySelector('.kpk-label').textContent = o.team.name + ': who answers?';
+    mbox.querySelector('.kpk-members').textContent = '';
+    mbox.querySelector('.kpk-left').textContent = '';
+    mbox.querySelector('.kpk-btns').style.visibility = 'hidden';
+    var calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var k = 0, steps = calm ? 0 : 14 + Math.floor(Math.random() * 6);
+    (function step() {
+      if (mbox.hidden) return;
+      if (k < steps) {
+        var m = list[(k + Math.floor(Math.random() * list.length)) % list.length];
+        name.textContent = m.nick;
+        name.style.color = COLORS[list.indexOf(m) % COLORS.length];
+        tone(420 + (k % 4) * 70);
+        k++;
+        setTimeout(step, 40 + k * k * 0.6);
+        return;
+      }
+      mspin = false;
+      name.textContent = who.nick;
+      name.style.color = COLORS[list.indexOf(who) % COLORS.length];
+      card.classList.add('landed');
+      var left = ids.length - r.picked.length;
+      mbox.querySelector('.kpk-left').textContent = left ? left + ' still to go in this team' : 'Everyone in this team has answered';
+      mbox.querySelector('.kpk-btns').style.visibility = '';
+      tone(784, 0.18, 0.3); setTimeout(function () { tone(1047, 0.3, 0.3); }, 120);
+    })();
+  }
+
   function setup(c) {
     cfg = c;
     if (!c.bar || document.getElementById('kpkOpen')) return;
@@ -119,5 +187,5 @@
     b.addEventListener('click', pick);
   }
 
-  window.KruPicker = { setup: setup, pick: pick, next: next, esc: esc };
+  window.KruPicker = { setup: setup, pick: pick, member: member, next: next, esc: esc };
 })();
