@@ -61,6 +61,38 @@
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
 
+  // ---------- big event banners (shared kru-fx.js, Henry Nov 19): race theme, or Christmas for Christmas Dash ----------
+  var FX = {
+    race: {
+      right: ['checkflag', 'CORRECT!', '{t} hits the gas!', 'good'], wrong: ['cone', 'SPIN OUT!', '{t} skids backwards…', 'bad'],
+      riskWin: ['flame', 'RISK PAID OFF!', '{t} gets 2 BIG dice!', 'magic'], riskLose: ['oil', 'RISK BACKFIRED!', '{t}: 2 big dice backwards!', 'bad'],
+      shield: ['shield', 'SHIELD UP!', '{t} does not move back!', 'good'], go: ['rocket', 'TURBO BOOST!', '{t}: forward {n}!', 'good'],
+      back: ['oil', 'OIL SLICK!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
+      finish: ['trophy', 'FINISH LINE!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['ticket', 'FREE PLAY!', '{t} rolls for free!', 'magic'],
+      fifty: ['fifty', '50/50!'], time: ['stopwatch', '+20 SECONDS!'], riskOn: ['flame', 'RISK IT!'], skip: ['pit', 'PIT STOP!'],
+    },
+    xmas: {
+      right: ['gift', 'HO HO HO!', '{t} got it right!', 'good'], wrong: ['coal', 'LUMP OF COAL!', '{t} slides backwards…', 'bad'],
+      riskWin: ['star', 'CHRISTMAS MIRACLE!', '{t} gets 2 BIG dice!', 'magic'], riskLose: ['coal', 'SNOWED UNDER!', '{t}: 2 big dice backwards!', 'bad'],
+      shield: ['shield', 'SNOW SHIELD!', '{t} does not move back!', 'good'], go: ['sleigh', 'SLEIGH RIDE!', '{t}: forward {n}!', 'good'],
+      back: ['snowflake', 'SLIPPED ON THE ICE!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
+      finish: ['tree', 'HOME FOR CHRISTMAS!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['gift', 'FREE GIFT!', '{t} rolls for free!', 'magic'],
+      fifty: ['fifty', '50/50!'], time: ['stopwatch', 'EXTRA TIME!'], riskOn: ['flame', 'RISK IT!'], skip: ['snowflake', 'FROZEN!'],
+    },
+  };
+  function fill(text, v) { return String(text || '').replace(/\{(\w+)\}/g, function (m, k) { return v[k] != null ? v[k] : m; }); }
+  /** A big banner for an event, then `then` (straight away if the banners aren't loaded). */
+  function fx(key, v, then) {
+    var e = (FX[XMAS ? 'xmas' : 'race'] || {})[key];
+    if (!e || !window.KruFx) { if (then) then(); return; }
+    KruFx.show({ art: e[0], title: e[1], sub: fill(e[2], v || {}), mood: e[3], sound: e[4], wait: 1700, then: then });
+  }
+  /** A quick banner at the top (power-ups inside the question), never in the way. */
+  function fxFlash(key, sub) {
+    var e = (FX[XMAS ? 'xmas' : 'race'] || {})[key];
+    if (e && window.KruFx) KruFx.flash({ art: e[0], title: e[1], sub: sub, mood: key === 'skip' ? 'bad' : 'good' });
+  }
+
   var POOL = {}, MATHSCI = [], teams = [], racers = [], INTRO = [];
   // Christmas Race Board: questions already asked to any group, kept on the phone across games (Kru.saveKeep).
   // A question comes back only after every question in the bank has been asked once (Henry, Nov 18).
@@ -163,7 +195,7 @@
       S.turn = (S.turn + 1) % racers.length;
       var id = current().id;
       if (S.finished.indexOf(id) >= 0) continue;
-      if (S.skip[id]) { S.skip[id]--; toast('⏸ ' + current().name + ' skips this turn.'); continue; }
+      if (S.skip[id]) { S.skip[id]--; toast('⏸ ' + current().name + ' skips this turn.'); fxFlash('skip', current().name + ' skips this turn'); continue; }
       break;
     }
     save();
@@ -206,8 +238,9 @@
       tone([523, 659, 784, 1047], 0.12, 0.4);
       toast(t.name + ' finished ' + (['1st', '2nd', '3rd'][place] || '') + (place < 3 ? '! +' + BONUS[place] + ' bonus' : '!'));
       busy = false; nextTurn();
+      fx('finish', { t: t.name, place: ['1st', '2nd', '3rd'][place] || 'the race' });
       // 1st, 2nd and 3rd are decided (or everyone is home): the podium. Keep playing to race on.
-      if (S.finished.length === Math.min(3, racers.length)) setTimeout(function () { KruEnd.show(); }, 1600);
+      if (S.finished.length === Math.min(3, racers.length)) { if (window.KruFx) KruFx.after(function () { KruEnd.show(); }); else setTimeout(function () { KruEnd.show(); }, 1600); }
       return;
     }
     // the secret squares: only the first team to land there
@@ -219,9 +252,9 @@
       sec.slideUsed = true; save();
       return card('🛝 Secret slide!', t.name + ' slides forward ' + SLIDE + ' squares!', function () { move(id, SLIDE, function () { landed(id); }); }, 'good');
     }
-    if (sp && sp.t === 'go') { toast('★ ' + t.name + ': forward ' + sp.n + '!'); tone([784, 988], 0.1); setTimeout(function () { move(id, sp.n, function () { landed(id); }); }, 500); return; }
-    if (sp && sp.t === 'back') { toast('⚠ ' + t.name + ': back ' + sp.n + '!'); tone([330, 262], 0.15); setTimeout(function () { move(id, -sp.n, function () { landedBack(id); }); }, 500); return; }
-    if (sp && sp.t === 'again') { toast('🎲 ' + t.name + ': roll again!'); setTimeout(function () { roll(id, { n: 1 }); }, 700); return; }
+    if (sp && sp.t === 'go') { fx('go', { t: t.name, n: sp.n }, function () { move(id, sp.n, function () { landed(id); }); }); return; }
+    if (sp && sp.t === 'back') { fx('back', { t: t.name, n: sp.n }, function () { move(id, -sp.n, function () { landedBack(id); }); }); return; }
+    if (sp && sp.t === 'again') { fx('again', { t: t.name }, function () { roll(id, { n: 1 }); }); return; }
     if (sp && sp.t === 'chance') return chance(id);
     if (sp && sp.t === 'xmas') return challenge(id);
     busy = false; nextTurn();
@@ -483,21 +516,21 @@
     if (p === 'fifty') {
       var wrong = Q.choices.map(function (_, i) { return i; }).filter(function (i) { return i !== Q.answer; });
       Q._gone = shuffle(wrong).slice(0, 2);
-      use(id, 'fifty'); tone([523, 392], 0.1); renderQuestion();
+      use(id, 'fifty'); tone([523, 392], 0.1); renderQuestion(); fxFlash('fifty', 'Two wrong answers are gone');
     } else if (p === 'time') {
       // +20 s, even after the clock has hit zero
       left = Math.max(0, left) + 20; total = Math.max(total, left);
-      use(id, 'time'); tone([660, 880, 1047], 0.08);
+      use(id, 'time'); tone([660, 880, 1047], 0.08); fxFlash('time', current().name);
       if (!running) startTimer(); else { endAt = Date.now() + left * 1000; renderClock(); }
       renderPowers();
     } else if (p === 'free') {
       use(id, 'free');
       if (risk) use(id, 'risk');
-      toast('🎟 ' + current().name + ' used Free Play!');
-      var spec = diceFor(Q.tier || 'regular', true, risk);
-      closeQuestion(); roll(id, spec);
+      var spec = diceFor(Q.tier || 'regular', true, risk), tn = current().name;
+      closeQuestion(); fx('free', { t: tn }, function () { roll(id, spec); });
     } else if (p === 'risk') {
       risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers();
+      if (risk) fxFlash('riskOn', 'Right: 2 BIG dice. Wrong: 2 big dice back!');
     }
   });
   /** "Who answers" (optional): the team's random student is picked first (no repeats until the whole team has answered), then the question opens. */
@@ -546,19 +579,23 @@
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
   $('reveal').addEventListener('click', function () { unlockAudio(); stopTimer(); renderClock(); shown = true; tone([523, 659]); renderQuestion(); });
   $('right').addEventListener('click', function () {
-    var id = current().id, spec = diceFor(Q.tier || 'regular', true, risk);
+    var id = current().id, spec = diceFor(Q.tier || 'regular', true, risk), rk = risk, tn = current().name;
     if (risk) use(id, 'risk');
-    closeQuestion(); roll(id, spec);
+    closeQuestion(); busy = true;
+    fx(rk ? 'riskWin' : 'right', { t: tn }, function () { roll(id, spec); });
   });
   $('wrong').addEventListener('click', function () {
     unlockAudio();
     var t = current(), spec = diceFor(Q.tier || 'regular', false, risk), rk = risk;
     if (risk) use(t.id, 'risk');
     closeQuestion();
-    if (S.shield[t.id]) { S.shield[t.id] = false; save(); toast('🛡 ' + t.name + "'s shield: no move back!"); tone([660, 880], 0.1); nextTurn(); return; }
+    if (S.shield[t.id]) { S.shield[t.id] = false; save(); fx('shield', { t: t.name }); nextTurn(); return; }
     if (pos(t.id) === 0) { toast(t.name + ' is on START: no move back.'); nextTurn(); return; }
-    if (XMAS && !rk) return forfeitOffer(t.id, spec); // Risk it: no forfeit
-    roll(t.id, spec);
+    busy = true;
+    fx(rk ? 'riskLose' : 'wrong', { t: t.name }, function () {
+      if (XMAS && !rk) return forfeitOffer(t.id, spec); // Risk it: no forfeit
+      roll(t.id, spec);
+    });
   });
 
   // ---------- ⋯ menu ----------
@@ -618,6 +655,7 @@
       var c = both[0], QZ = both[1], lv = c.questions && c.questions[QZ.level] ? QZ.level : 'M.2';
       var own = (c.questions && (c.questions.all || c.questions[lv])) || []; // Christmas: one bank for every level
       GAME_TITLE = c.title || GAME_TITLE;
+      if (window.KruFx) KruFx.theme(c.christmas ? 'xmas' : 'race');
       if (c.shares) ORDER.forEach(function (t) { if (c.shares[t]) TIERS[t].share = c.shares[t]; });
       if (c.christmas && c.christmas.challenge && c.christmas.challenge.length && c.christmas.forfeit && c.christmas.forfeit.length) {
         XMAS = c.christmas;

@@ -8,6 +8,7 @@
   'use strict';
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   KruBattle.start({
+    theme: 'arena',
     title: 'Battle of Wits',
     logo: 'Battle of <b>Wits</b>',
     load: function (session) {

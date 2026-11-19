@@ -39,6 +39,7 @@
   }
 
   KruBattle.start({
+    theme: 'library',
     title: 'Battle of Readers',
     logo: 'Battle of <b>Readers</b>',
     reading: true,

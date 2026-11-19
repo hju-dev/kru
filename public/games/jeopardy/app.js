@@ -22,6 +22,9 @@
   function team(id) { return teams.find(function (t) { return t.id === id; }); }
   function students() { return teams.filter(function (t) { return !t.teacher; }); }
   function key(c, r) { return c + '-' + r; }
+  // big game-show banners (shared kru-fx.js, Henry Nov 19)
+  function fx(o) { if (window.KruFx) KruFx.show(o); else if (o.then) o.then(); }
+  function fxFlash(o) { if (window.KruFx) KruFx.flash(o); }
   function shuffle(a) {
     for (var j = a.length - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var x = a[j]; a[j] = a[k]; a[k] = x; }
     return a;
@@ -166,7 +169,8 @@
     save();
     resetTimer();
     show();
-    if (S.dd === k) { tone([523, 659, 784, 1047], 0.1); toast('DOUBLE! This square is worth twice the points.', false); } else tone([660, 880], 0.12);
+    if (S.dd === k) fx({ art: 'double', title: 'DOUBLE!', sub: 'This square is worth twice the points!', mood: 'magic', sound: 'fanfare' });
+    else tone([660, 880], 0.12);
   }
   function closeSquare() {
     stopTimer();
@@ -176,8 +180,8 @@
     show();
     var left = ROWS * S.cols.length - Object.keys(S.used).length;
     if (!left) {
-      tone([784, 988, 1175], 0.15);
-      KruEnd.show({ keepPlaying: function () { toast('Another round? ⚙ Settings → New board.', false); } });
+      fx({ art: 'trophy', title: "THAT'S THE BOARD!", sub: 'Every square has been played. Who won?', mood: 'good', sound: 'fanfare', wait: 2400,
+        then: function () { KruEnd.show({ keepPlaying: function () { toast('Another round? ⚙ Settings → New board.', false); } }); } });
     }
   }
   function toggleRight(id) {
@@ -187,7 +191,7 @@
     S.log.push({ t: id, d: d, k: k });
     save();
     Kru.score(id, d, 'jeopardy');
-    if (d > 0) tone([784, 988], 0.1);
+    if (d > 0) { tone([784, 988], 0.1); fxFlash({ art: 'spotlight', title: '+' + d, sub: team(id).name, mood: 'good' }); }
     renderQuestion();
   }
 
@@ -220,8 +224,10 @@
     // Undo gives back the points AND the power-ups used on this question (a mis-tap shouldn't cost a power-up)
     S.last = { k: k, t: t.id, d: d, turn: S.turn, powers: S.lastPowers || powersBefore };
     S.lastPowers = null;
-    tone(right ? [784, 988] : [330, 262], 0.12);
+    var rk = d < 0 || (right && d > v);
     closeSquare();
+    fx(right ? { art: rk ? 'flame' : 'spotlight', title: rk ? 'RISK PAID OFF!' : 'CORRECT!', sub: t.name + (rk ? ' doubled the points!' : ' got it right!'), delta: d, mood: rk ? 'magic' : 'good' }
+      : { art: 'buzzer', title: rk ? 'RISK BACKFIRED!' : 'BZZZT! WRONG!', sub: t.name + (d ? ' loses the points!' : ': no points this time.'), delta: d, mood: 'bad' });
     toast(t.name + (d > 0 ? ' +' + d : d < 0 ? ' −' + Math.abs(d) : ': no points') + (S.last && right ? ' ✓' : ' ✗'), true);
   }
   $('right').addEventListener('click', function () { markOne(true); });
@@ -262,14 +268,17 @@
       var wrong = qq.choices.map(function (_, i) { return i; }).filter(function (i) { return i !== qq.answer; });
       for (var j = wrong.length - 1; j > 0; j--) { var x = Math.floor(Math.random() * (j + 1)); var y = wrong[j]; wrong[j] = wrong[x]; wrong[x] = y; }
       S.gone = wrong.slice(0, 2); use(id, 'fifty'); tone([523, 392], 0.1); renderQuestion();
+      fxFlash({ art: 'fifty', title: '50/50!', sub: 'Two wrong answers are gone' });
     } else if (p === 'time') {
       left = Math.max(0, left) + 20; total = Math.max(total, left); use(id, 'time'); tone([660, 880, 1047], 0.08);
+      fxFlash({ art: 'stopwatch', title: '+20 SECONDS!', sub: picker().name });
       if (!running) startTimer(); else { endAt = Date.now() + left * 1000; renderClock(); }
       renderQuestion();
     } else if (p === 'free') {
-      use(id, 'free'); toast('🎟 Free Play!', false); markOne(true);
+      use(id, 'free'); fx({ art: 'ticket', title: 'FREE PLAY!', sub: picker().name + ' gets the points for free!', mood: 'magic' }); markOne(true);
     } else if (p === 'risk') {
       S.risk = !S.risk; save(); tone(S.risk ? [392, 523, 659] : [440], 0.08); renderQuestion();
+      if (S.risk) fxFlash({ art: 'flame', title: 'RISK IT!', sub: 'Right: double points. Wrong: lose them!' });
     }
   });
   $('oneTeamOpt').addEventListener('click', function () {
@@ -316,6 +325,7 @@
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
+    if (window.KruFx) KruFx.theme('show');
     Promise.all([contentReady, KruQuiz.load(session.level, session)]).then(function (both) {
       var c = both[0], Q = both[1];
       // a unit from Henry's lessons (5 topics of 5, or a small lesson pack cut into columns); otherwise the built-in topics

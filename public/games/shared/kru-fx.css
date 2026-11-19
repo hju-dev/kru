@@ -1,0 +1,121 @@
+/* Kru big event banners (kru-fx.js): one look per game theme, a color per mood. Phone landscape. */
+.kfx {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, rgb(10 10 20 / 0.55) 0%, rgb(10 10 20 / 0.9) 70%);
+  --glow: #ffc94a;
+  --deep: #3a2a00;
+  --trim: none;
+}
+/* themes: the main color and a trim along the top of the card */
+.kfx.t-race { --glow: #ffd23f; --deep: #2b2b33; --trim: repeating-conic-gradient(#fff 0 25%, #111 0 50%) 0 0 / 16px 16px; }
+.kfx.t-xmas { --glow: #ffc94a; --deep: #0f3a24; --trim: repeating-linear-gradient(-45deg, #d7263d 0 9px, #fbf7ef 9px 18px); }
+.kfx.t-show { --glow: #ffd23f; --deep: #1b1f6b; --trim: radial-gradient(circle, #ffe9a8 3px, transparent 4px) 0 0 / 16px 12px; }
+.kfx.t-lab { --glow: #4ef0c8; --deep: #0b2f3a; --trim: repeating-linear-gradient(90deg, #4ef0c8 0 2px, transparent 2px 14px); }
+.kfx.t-arena { --glow: #ff9a3d; --deep: #3a1f12; --trim: repeating-linear-gradient(90deg, #8a8f99 0 22px, #6b707a 22px 24px); }
+.kfx.t-library { --glow: #f2c27b; --deep: #3a2414; --trim: repeating-linear-gradient(90deg, #a0442c 0 10px, #2f5d45 10px 20px, #1f4e8a 20px 30px); }
+.kfx.t-quill { --glow: #9ad0ff; --deep: #142a4a; --trim: repeating-linear-gradient(-30deg, #9ad0ff 0 3px, transparent 3px 12px); }
+/* moods */
+.kfx.bad { --glow: #ff5a5f; --deep: #4a0d12; }
+.kfx.boom { --glow: #ff8a1f; --deep: #4a1d00; }
+.kfx.magic { --glow: #c79bff; --deep: #2a1450; }
+
+.kfx-rays {
+  position: absolute;
+  width: 170vmax;
+  height: 170vmax;
+  background: repeating-conic-gradient(from 0deg, color-mix(in srgb, var(--glow) 26%, transparent) 0 10deg, transparent 10deg 20deg);
+  -webkit-mask: radial-gradient(circle, #000 0%, transparent 60%);
+  mask: radial-gradient(circle, #000 0%, transparent 60%);
+}
+.kfx.go .kfx-rays { animation: kfx-spin 9s linear infinite; }
+.kfx-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(640px, 92vw);
+  padding: 18px 22px 16px;
+  border-radius: 26px;
+  border: 4px solid var(--glow);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--deep) 80%, #000) 0%, #100d18 100%);
+  box-shadow: 0 0 0 6px rgb(0 0 0 / 0.4), 0 18px 40px rgb(0 0 0 / 0.5);
+  overflow: hidden;
+}
+.kfx-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 8px;
+  background: var(--trim);
+}
+.kfx.go .kfx-card { animation: kfx-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+.kfx.go.bad .kfx-card,
+.kfx.go.boom .kfx-card { animation: kfx-pop 0.5s cubic-bezier(0.2, 1.6, 0.4, 1) both, kfx-shake 0.45s 0.5s ease-in-out; }
+.kfx-art { width: 140px; height: 140px; flex-shrink: 0; filter: drop-shadow(0 6px 0 rgb(0 0 0 / 0.35)); }
+.kfx-art:empty { display: none; }
+.kfx-art svg { width: 100%; height: 100%; }
+.kfx.go .kfx-art { animation: kfx-bob 1.5s 0.5s ease-in-out infinite alternate; }
+.kfx-text { min-width: 0; }
+.kfx-title {
+  font: 900 44px/1 var(--display);
+  color: var(--glow);
+  -webkit-text-stroke: 1.5px rgb(0 0 0 / 0.5);
+  text-shadow: 0 4px 0 rgb(0 0 0 / 0.55);
+}
+.kfx.go .kfx-title { animation: kfx-slam 0.45s 0.1s cubic-bezier(0.2, 1.8, 0.4, 1) both; }
+.kfx-sub { margin-top: 8px; font-weight: 700; font-size: 20px; line-height: 1.25; color: #fbf7ef; }
+.kfx-delta { margin-top: 8px; font: 800 36px/1 var(--mono); }
+.kfx-delta.up { color: #ffe27a; }
+.kfx-delta.down { color: #ff7a7a; }
+.kfx.go .kfx-delta { animation: kfx-slam 0.4s 0.3s cubic-bezier(0.2, 1.8, 0.4, 1) both; }
+.kfx-tap { position: absolute; bottom: max(env(safe-area-inset-bottom), 10px); color: rgb(255 255 255 / 0.55); font-size: 14px; font-weight: 700; }
+.kfx-bits { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.kfx-bits i { position: absolute; font-style: normal; font-size: 22px; color: var(--glow); opacity: 0; }
+.kfx.go .kfx-bits i { animation: kfx-burst 1.1s var(--t) ease-out both; }
+
+/* the quick banner: top center, never in the way of a tap */
+.kfx-flash {
+  position: fixed;
+  top: max(env(safe-area-inset-top), 8px);
+  left: 50%;
+  z-index: 41;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 18px 6px 8px;
+  border-radius: 999px;
+  border: 3px solid var(--glow, #ffc94a);
+  background: color-mix(in srgb, var(--deep, #3a2a00) 85%, #000);
+  pointer-events: none;
+  --glow: #ffc94a;
+  --deep: #3a2a00;
+}
+.kfx-flash.t-race { --glow: #ffd23f; --deep: #2b2b33; }
+.kfx-flash.t-xmas { --glow: #ffc94a; --deep: #0f3a24; }
+.kfx-flash.t-show { --glow: #ffd23f; --deep: #1b1f6b; }
+.kfx-flash.t-lab { --glow: #4ef0c8; --deep: #0b2f3a; }
+.kfx-flash.bad { --glow: #ff5a5f; --deep: #4a0d12; }
+.kfx-flash b { font: 900 28px var(--display); color: var(--glow); }
+.kfx-flash span { font-weight: 700; font-size: 18px; color: #fbf7ef; }
+.kfx-fart { width: 40px; height: 40px; }
+.kfx-fart svg { width: 100%; height: 100%; }
+.kfx-flash.go { animation: kfx-drop 0.4s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+
+@keyframes kfx-spin { to { transform: rotate(360deg); } }
+@keyframes kfx-pop { 0% { transform: scale(0.2) rotate(-8deg); opacity: 0; } 70% { transform: scale(1.06) rotate(1deg); opacity: 1; } 100% { transform: scale(1); } }
+@keyframes kfx-slam { 0% { transform: scale(2.3); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes kfx-shake { 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
+@keyframes kfx-bob { to { transform: translateY(-6px) rotate(2deg); } }
+@keyframes kfx-burst { 0% { transform: rotate(var(--a)) translateY(0) scale(0.4); opacity: 0; } 20% { opacity: 1; } 100% { transform: rotate(var(--a)) translateY(calc(var(--d) * -1)) scale(1.1); opacity: 0; } }
+@keyframes kfx-drop { from { transform: translate(-50%, -30px) scale(0.8); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .kfx.go .kfx-rays, .kfx.go .kfx-card, .kfx.go .kfx-art, .kfx.go .kfx-title, .kfx.go .kfx-delta, .kfx.go .kfx-bits i, .kfx-flash.go { animation: none; }
+}

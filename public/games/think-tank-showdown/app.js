@@ -19,6 +19,9 @@
   function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
   function save() { Kru.saveState(S); }
   function round() { return ROUNDS[S.r]; }
+  // big brain-lab banners (shared kru-fx.js, Henry Nov 19)
+  var ROUND_ART = { answer: ['bulb', 'Riddles: think fast!'], rebus: ['brain', 'Pictures and words hide the answer!'], logic: ['flask', 'Use the clues like a scientist!'], wager: ['chips', 'Bet your points: ALL IN?'] };
+  function fx(o) { if (window.KruFx) KruFx.show(o); else if (o.then) o.then(); }
   function question() { return round().qs[S.qi]; }
   function pts(id) { return S.pts[id] || 0; }
 
@@ -155,12 +158,17 @@
     fitQuestion();
   }
   function goTo(r, qi) {
+    var newRound = r !== S.r && qi === 0 && r > 0; // not the very first question (the slides are showing then)
     S.r = r; S.qi = qi;
     S.shown = round().kind !== 'wager'; // wager: question hidden until bets are made
     S.revealed = false;
     S.wager = {}; S.marks = {}; S.settled = false; // a new question: new bets
     save();
     load();
+    if (newRound) {
+      var ra = ROUND_ART[round().kind] || ['brain', ''];
+      fx({ art: ra[0], title: 'ROUND ' + (r + 1) + ': ' + String(round().name || '').toUpperCase() + '!', sub: ra[1], mood: round().kind === 'wager' ? 'magic' : 'good', sound: 'fanfare' });
+    }
   }
   function showQuestion() { S.shown = true; save(); load(true); }
 
@@ -187,6 +195,7 @@
     renderTeams();
     var team = teams.find(function (t) { return t.id === id; });
     toast(team.name + ' ' + (d > 0 ? '+' : '−') + Math.abs(d));
+    if (window.KruFx && round().kind !== 'wager') KruFx.flash({ art: d > 0 ? 'bulb' : 'flask', title: (d > 0 ? '+' : '−') + Math.abs(d), sub: team.name, mood: d > 0 ? 'good' : 'bad' });
   }
   function undo() {
     var last = S.log.pop();
@@ -275,10 +284,18 @@
     save(); openMarks();
   });
   $('markApply').addEventListener('click', function () {
+    var allIn = [];
     players().forEach(function (t) {
       var bet = S.wager[t.id] || 0;
+      if (bet && bet === pts(t.id)) allIn.push({ t: t, won: S.marks[t.id] === 'right', bet: bet });
       if (bet) addPoints(t.id, S.marks[t.id] === 'right' ? bet : -bet, S.marks[t.id] === 'right' ? 'won the wager' : 'lost the wager');
     });
+    // the ALL IN teams get their own moment; otherwise one banner for the wagers
+    allIn.forEach(function (a) {
+      fx(a.won ? { art: 'chips', title: 'ALL IN… AND WON!', sub: a.t.name + ' doubled their points!', delta: a.bet, mood: 'magic', sound: 'fanfare' }
+        : { art: 'flask', title: 'ALL IN… AND LOST!', sub: a.t.name + ' loses everything!', delta: -a.bet, mood: 'boom', sound: 'boom' });
+    });
+    if (!allIn.length) fx({ art: 'chips', title: 'THE WAGERS ARE IN!', sub: 'Bets won and lost. Check the scores!', mood: 'magic' });
     S.settled = true;
     save();
     $('marksBack').hidden = true;
@@ -415,6 +432,7 @@
 
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
+    if (window.KruFx) KruFx.theme('lab');
     contentReady.then(function (content) {
       var level = content[session.level] ? session.level : 'M.2';
       var pools = content[level].rounds;
