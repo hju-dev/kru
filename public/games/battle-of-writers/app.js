@@ -48,6 +48,7 @@
   var NAMES = { scramble: '🔀 Put the words in order', build: '✏️ Build a sentence', fix: '🔧 Fix the mistake', punctuate: '❗ Punctuate it', combine: '🔗 Join two sentences', describe: '🎨 Describe it' };
 
   KruBattle.start({
+    theme: 'quill',
     title: 'Battle of Writers',
     logo: 'Battle of <b>Writers</b>',
     load: function (session) {

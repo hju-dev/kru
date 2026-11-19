@@ -32,9 +32,15 @@
   function shuffle(a) { for (var j = a.length - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var x = a[j]; a[j] = a[k]; a[k] = x; } return a; }
   function range(n) { var a = []; for (var i = 0; i < n; i++) a.push(i); return a; }
 
+  // big event banners per theme (shared kru-fx.js, Henry Nov 19): arena = Wits, library = Readers, quill = Writers
+  var THEME_ART = { arena: 'swords', library: 'book', quill: 'quill' };
+  var THEME_WORDS = { arena: 'Let the battle begin!', library: 'Open your minds… and your books!', quill: 'Pens ready? Write like a champion!' };
   function start(cfg) {
     var SETS = [], HIDDEN = [], INTRO = [], PROBLEMS = [], teams = [];
     var S = null, timer = 0, audio = null;
+    var theme = cfg.theme || 'arena';
+    function fx(o) { if (window.KruFx) KruFx.show(o); else if (o.then) o.then(); }
+    if (window.KruFx) KruFx.theme(theme);
 
     // ---------- the screen ----------
     var main = document.createElement('main');
@@ -130,8 +136,10 @@
     // ---------- the flow ----------
     function beginRound() {
       S.qi = 0; S.rev = 0; S.flipped = []; S.tally = {}; S.bonus = pickBonuses(); S.peek = false;
-      if (reading()) { S.phase = 'read'; startClock(S.readSecs || 60); render(); tone([523, 659], 0.1); return; }
-      askFirst();
+      fx({ art: THEME_ART[theme], title: 'ROUND ' + (S.round + 1) + '!', sub: THEME_WORDS[theme], mood: 'good', sound: 'fanfare', wait: 1800, then: function () {
+        if (reading()) { S.phase = 'read'; startClock(S.readSecs || 60); render(); tone([523, 659], 0.1); return; }
+        askFirst();
+      } });
     }
     function askFirst() {
       S.phase = 'ask'; S.qi = 0; S.peek = false; lastBeep = -1;
@@ -139,7 +147,11 @@
     }
     function timeUp() {
       tone([880, 660], 0.18);
-      if (S.qi + 1 >= roundQs().length) { S.phase = 'pens'; save(); render(); tone([784, 659, 523], 0.15, 0.4); return; }
+      if (S.qi + 1 >= roundQs().length) {
+        S.phase = 'pens'; save(); render();
+        fx({ art: 'hourglass', title: 'PENS DOWN!', sub: 'Time to check the answers together.', mood: 'boom', sound: 'boom', wait: 1800 });
+        return;
+      }
       S.phase = 'gap'; startClock(GAP); render();
     }
     function nextQuestion() {
@@ -291,7 +303,11 @@
       unlockAudio();
       if (b.dataset.flip != null) {
         var i = +b.dataset.flip;
-        if (S.flipped.indexOf(i) < 0) { S.flipped.push(i); save(); render(); tone([523, 784, 1047, 1319], 0.08, 0.35); }
+        if (S.flipped.indexOf(i) < 0) {
+          S.flipped.push(i); save(); render(); tone([523, 784, 1047, 1319], 0.08, 0.35);
+          var bn = S.bonus[i];
+          if (bn && window.KruFx) KruFx.flash({ art: 'star', title: bn.icon + ' ' + bn.name, sub: '+' + bn.points, mood: 'good' });
+        }
         return;
       }
       if (b.dataset.d != null) {
@@ -325,7 +341,12 @@
       });
       S.roundPts[S.round] = Object.assign({}, S.tally);
       S.phase = 'result'; save(); render();
-      tone([523, 659, 784, 1047], 0.1, 0.35);
+      // the round's best team(s) get their moment
+      var best = Math.max.apply(null, players().map(function (t) { return S.tally[t.id] || 0; }).concat([0]));
+      var top = players().filter(function (t) { return best > 0 && (S.tally[t.id] || 0) === best; });
+      if (top.length) fx({ art: top.length > 1 ? 'trophy' : 'crown', title: top.length > 1 ? 'ROUND ' + (S.round + 1) + ': A TIE AT THE TOP!' : 'ROUND ' + (S.round + 1) + ' CHAMPION!',
+        sub: top.map(function (t) { return t.name; }).join(' & ') + ' scored the most this round!', delta: best, mood: 'good', sound: 'fanfare', wait: 2400 });
+      else tone([523, 659, 784, 1047], 0.1, 0.35);
     }
 
     // ---------- sets ----------
