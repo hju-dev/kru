@@ -65,7 +65,7 @@
     if (adjust) main.classList.add('has-adj');
     main.innerHTML =
       '<header class="bar"><span class="logo">' + (cfg.logo || esc(cfg.title)) + '</span><span class="grow"></span>' +
-      '<button class="small" id="more" aria-haspopup="dialog" aria-label="More options">⋯</button></header>' +
+      '<button class="small" id="more" aria-haspopup="dialog" aria-label="Settings"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6c0 .2.3.4.5.4h4c.2 0 .5-.2.5-.4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button></header>' +
       '<section class="stage" id="stage" aria-live="polite"><div class="card" id="card">Loading…</div></section>' +
       '<div class="controls' + (adjust || cfg.tag ? ' tight' : '') + '">' +
       (hasTimer ? (stepSecs ? '<span class="tlabel" id="tlabel"></span>' : '') +
@@ -88,7 +88,7 @@
         '<div class="panel-head"><div><b id="chalTitle">Challenge!</b><div class="panel-members">Which team made the mistake? They lose ' + cfg.challenge.penalty + '.</div></div>' +
         '<button class="small" id="chalClose" aria-label="Close">✕</button></div><div class="panel-btns" id="chalBtns"></div>' +
         '<button class="btn ghost chal-none" id="chalNone">No point: carry on</button></div></div>' : '') +
-      '<div class="backdrop" id="menuBack" hidden><div class="menu" role="dialog" aria-label="More options">' +
+      '<div class="backdrop" id="menuBack" hidden><div class="menu" role="dialog" aria-label="Settings">' +
       (hasTimer ? '<div class="menu-row" id="secsRow"></div>' : '') +
       '<div class="menu-row"><button class="btn" id="prev">◀ Previous card</button><button class="btn" id="undo">Undo last points</button></div>' +
       '<div class="menu-row"><button class="btn" id="howTo">How to play</button><button class="btn ghost danger" id="resetScores">Reset all scores</button></div>' +
@@ -215,7 +215,7 @@
       var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
       $('strip').innerHTML = teams.map(function (t, i) {
         return '<button class="tile' + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points. Tap to give points">' +
-          '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
+          '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
       }).join('');
     }
     function addPoints(id, d, why) {

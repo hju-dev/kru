@@ -1,6 +1,6 @@
 {
  "about": "Christmas Race Board (Henry, Nov 2026): Race Board's rules and code (games/race-board/app.js) with a Christmas question bank, Challenge squares and Forfeit cards. 189 Christmas questions (Nov 18; 11 rebus cut in Henry's audit) for every level, each with an id: 92 trivia, 22 rebus puzzles (rebus = lines shown big), 33 brain teasers, 17 reindeer math, 25 Christmas science; 59 easy, 56 regular, 45 hard, 29 impossible, drawn in those proportions (shares). The answer is an index for A-D questions, text for spoken ones. Asked questions are remembered on the phone (Kru.saveKeep) so later groups get new ones until every question has been asked. Math and science questions have a cat for the math-or-science chance card. christmas.squares = the Challenge squares; challenge and forfeit = the two card decks (20 each).",
- "title": "Christmas Race Board",
+ "title": "Christmas Dash",
  "shares": {
   "easy": 30,
   "regular": 30,
@@ -183,7 +183,7 @@
  },
  "intro": [
   {
-   "title": "Christmas Race!",
+   "title": "Christmas Dash!",
    "text": [
     "Every team has a piece on START.",
     "First team to land exactly on FINISH wins!"
@@ -228,7 +228,7 @@
    "title": "Power-ups",
    "text": [
     "Each team can use each power-up ONCE per game.",
-    "50/50, +20 seconds, Free answer, or Risk it!"
+    "50/50, +20 seconds, Free Play, or Risk it!"
    ],
    "example": {
     "rows": [
@@ -237,7 +237,7 @@
       "2 wrong answers go"
      ],
      [
-      "Free answer",
+      "Free Play",
       "counts as right"
      ],
      [
@@ -754,7 +754,8 @@
     "rebus": [
      "❄️ + 👨"
     ],
-    "answer": "Snowman (snow + man)"
+    "answer": "Snowman (snow + man)",
+    "pic": "snowman"
    },
    {
     "id": "x034",
@@ -765,7 +766,8 @@
     "rebus": [
      "❄️ + ⚽"
     ],
-    "answer": "Snowball (snow + ball)"
+    "answer": "Snowball (snow + ball)",
+    "pic": "snowball"
    },
    {
     "id": "x035",
@@ -776,7 +778,8 @@
     "rebus": [
      "❄️ + 👼"
     ],
-    "answer": "Snow angel (snow + angel)"
+    "answer": "Snow angel (snow + angel)",
+    "pic": "angel"
    },
    {
     "id": "x036",
@@ -787,7 +790,8 @@
     "rebus": [
      "❄️ + 🌍"
     ],
-    "answer": "Snow globe (snow + globe)"
+    "answer": "Snow globe (snow + globe)",
+    "pic": "globe"
    },
    {
     "id": "x037",
@@ -798,7 +802,8 @@
     "rebus": [
      "🍬 + 🦯"
     ],
-    "answer": "Candy cane (candy + cane)"
+    "answer": "Candy cane (candy + cane)",
+    "pic": "candycane"
    },
    {
     "id": "x038",
@@ -809,7 +814,8 @@
     "rebus": [
      "🔥 + 🍫"
     ],
-    "answer": "Hot chocolate (hot + chocolate)"
+    "answer": "Hot chocolate (hot + chocolate)",
+    "pic": "cocoa"
    },
    {
     "id": "x039",
@@ -820,7 +826,8 @@
     "rebus": [
      "❄️ + ⛈️"
     ],
-    "answer": "Snowstorm (snow + storm)"
+    "answer": "Snowstorm (snow + storm)",
+    "pic": "snowstorm"
    },
    {
     "id": "x041",
@@ -1407,7 +1414,8 @@
     "rebus": [
      "🌧️ + 🦌"
     ],
-    "answer": "Reindeer (rain + deer)"
+    "answer": "Reindeer (rain + deer)",
+    "pic": "reindeer"
    },
    {
     "id": "x091",
@@ -1418,7 +1426,8 @@
     "rebus": [
      "🤫 + 🌙"
     ],
-    "answer": "Silent Night (silent + night)"
+    "answer": "Silent Night (silent + night)",
+    "pic": "silentnight"
    },
    {
     "id": "x093",
@@ -1429,7 +1438,8 @@
     "rebus": [
      "🎁 + 🌯"
     ],
-    "answer": "Gift wrap (gift + wrap)"
+    "answer": "Gift wrap (gift + wrap)",
+    "pic": "giftwrap"
    },
    {
     "id": "x094",
@@ -1440,7 +1450,8 @@
     "rebus": [
      "🌲 + 🍦"
     ],
-    "answer": "Pine cone (pine + cone)"
+    "answer": "Pine cone (pine + cone)",
+    "pic": "pinecone"
    },
    {
     "id": "x095",
@@ -1451,7 +1462,8 @@
     "rebus": [
      "🔥 + 📍"
     ],
-    "answer": "Fireplace (fire + place)"
+    "answer": "Fireplace (fire + place)",
+    "pic": "fireplace"
    },
    {
     "id": "x096",
@@ -1462,7 +1474,8 @@
     "rebus": [
      "🕯️ + 💡"
     ],
-    "answer": "Candlelight (candle + light)"
+    "answer": "Candlelight (candle + light)",
+    "pic": "candlelight"
    },
    {
     "id": "x099",
@@ -1993,7 +2006,8 @@
     "rebus": [
      "☁️ + 🦶"
     ],
-    "answer": "Mistletoe (mist + toe)"
+    "answer": "Mistletoe (mist + toe)",
+    "pic": "mistletoe"
    },
    {
     "id": "x144",
@@ -2004,7 +2018,8 @@
     "rebus": [
      "❄️ + 🍂"
     ],
-    "answer": "Snowfall (snow + fall)"
+    "answer": "Snowfall (snow + fall)",
+    "pic": "snowfall"
    },
    {
     "id": "x145",
@@ -2015,7 +2030,8 @@
     "rebus": [
      "🧊 + 🚲"
     ],
-    "answer": "Icicle (ice + cycle)"
+    "answer": "Icicle (ice + cycle)",
+    "pic": "icicle"
    },
    {
     "id": "x146",
@@ -2026,7 +2042,8 @@
     "rebus": [
      "MIT + 🔟"
     ],
-    "answer": "Mitten (mit + ten)"
+    "answer": "Mitten (mit + ten)",
+    "pic": "mitten"
    },
    {
     "id": "x152",
@@ -2037,7 +2054,8 @@
     "rebus": [
      "⬆️ + 🎣"
     ],
-    "answer": "North Pole (north + fishing pole)"
+    "answer": "North Pole (north + fishing pole)",
+    "pic": "northpole"
    },
    {
     "id": "x153",
@@ -2356,7 +2374,8 @@
     "rebus": [
      "🌶️ + 🪙"
     ],
-    "answer": "Peppermint (pepper + mint, a coin is made at a mint)"
+    "answer": "Peppermint (pepper + mint, a coin is made at a mint)",
+    "pic": "peppermint"
    },
    {
     "id": "x183",
@@ -2365,9 +2384,10 @@
     "set": "Rebus",
     "q": "What Christmas song is this?",
     "rebus": [
-     "🎅 🦞 ➡️ 🏙️"
+     "[[santa]] 🦞 ➡️ 🏙️"
     ],
-    "answer": "Santa Claus Is Coming to Town"
+    "answer": "Santa Claus Is Coming to Town",
+    "pic": "santacoming"
    },
    {
     "id": "x184",
@@ -2378,7 +2398,8 @@
     "rebus": [
      "🪨 🔄 🌲"
     ],
-    "answer": "Rockin’ Around the Christmas Tree (rock + around + tree)"
+    "answer": "Rockin’ Around the Christmas Tree (rock + around + tree)",
+    "pic": "rockin"
    },
    {
     "id": "x185",
@@ -2387,9 +2408,10 @@
     "set": "Rebus",
     "q": "What Christmas song is this?",
     "rebus": [
-     "💤💭 ⬜ 🎄 🎁 🎅"
+     "💤💭 ⬜ 🎄 🎁 [[santa]]"
     ],
-    "answer": "I’m Dreaming of a White Christmas"
+    "answer": "I’m Dreaming of a White Christmas",
+    "pic": "whitechristmas"
    },
    {
     "id": "x186",

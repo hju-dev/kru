@@ -80,7 +80,7 @@ describe('Quiz Island', () => {
     expect(js).toContain("fetch('content.json')")
     expect(js).toContain('INTRO = KruIntro.forLevel(mine, QZ.level);')
     const c = JSON.parse(read(`${dir}/content.json`)) as { intro: { title: string }[] }
-    expect(c.intro.map((s) => s.title)).toEqual(['Quiz Island', 'Big answers, big rewards', 'Secret islands', '🏰 Fortresses', 'Power-ups', 'Always guess!'])
+    expect(c.intro.map((s) => s.title)).toEqual(['Quiz Island', 'Big answers, big rewards', 'Secret islands', '🏰 Fortresses', '🏴‍☠️ Pirate Raid', 'Always guess!'])
   })
   it('the optional Who answers spinner is still wired in', () => {
     expect(js).toContain('KruPicker.member({')

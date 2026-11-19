@@ -170,7 +170,7 @@
     $('strip').innerHTML = teams.map(function (t, i) {
       var ok = r.indexOf(t.id) >= 0;
       return '<button class="tile' + (ok ? ' right' : '') + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-pressed="' + ok + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points. Tap if they were right">' +
-        '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + pts(t.id) + '</span>' + (ok ? '<span class="tick">✓ +' + worth() + '</span>' : '') + '</button>';
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span>' + (ok ? '<span class="tick">✓ +' + worth() + '</span>' : '') + '</button>';
     }).join('');
   }
   function toggleRight(id) {
@@ -284,7 +284,7 @@
 
   // How to play slides: before the game starts, and from the ⋯ menu
   var INTRO = [];
-  function showIntro() { return KruIntro.show(INTRO, { title: 'Quiz Battle' }); }
+  function showIntro() { return KruIntro.show(INTRO, { title: 'Battle of Wits' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
   // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------

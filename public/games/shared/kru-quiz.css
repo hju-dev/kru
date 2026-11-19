@@ -79,3 +79,34 @@
   font: 800 56px/1.15 var(--display);
   letter-spacing: 0.02em;
 }
+
+/* pictures: inside rebus lines ([[santa]]) and the answer's picture on Reveal */
+.kq-ri {
+  display: inline-block;
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.15em;
+}
+.kq-ri svg,
+.kq-pic svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.kq-reveal {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.kq-pic {
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+  animation: kq-pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+@keyframes kq-pop {
+  from { transform: scale(0.3) rotate(-10deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kq-pic { animation: none; }
+}

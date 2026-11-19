@@ -111,6 +111,18 @@
       return list;
     },
 
+    /** A team's short label: its number ("Team 3" -> "3"), "T" for the teacher's team. */
+    teamNo: function (t) {
+      if (!t) return '';
+      if (t.teacher) return 'T';
+      var m = /(\d+)\s*$/.exec(t.name || '');
+      return m ? m[1] : String(t.name || '?').charAt(0).toUpperCase();
+    },
+    /** Scoreboards (Henry, Nov 19): a team is a number in a circle of its color, not its name. */
+    badge: function (t, color) {
+      return '<i class="kteam" style="--kt:' + (color || '#ffb703') + '">' + Kru.teamNo(t) + '</i>';
+    },
+
     saveState: function (state) {
       if (mock) {
         try { sessionStorage.setItem(mockKey, JSON.stringify(state)); } catch (e) {}

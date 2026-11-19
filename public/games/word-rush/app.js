@@ -160,7 +160,7 @@
     $('teams').innerHTML = teams.map(function (t, i) {
       var e = entry(t.id), pts = roundPoints(t.id);
       return '<div class="team' + (max > 0 && total_(t.id) === max ? ' lead' : '') + (S.added ? ' done-entry' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '">' +
-        '<span class="name">' + esc(t.name) + '</span><span class="total">' + total_(t.id) + '</span>' +
+        '<span class="name">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="total">' + total_(t.id) + '</span>' +
         '<div class="row"><span class="lab">Words</span>' +
           '<button class="step" data-k="w" data-d="-1" aria-label="' + esc(t.name) + ' one word less">−</button>' +
           '<output>' + e.w + '</output>' +

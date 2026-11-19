@@ -126,8 +126,7 @@
     var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
     var p = picker();
     $('scores').innerHTML = teams.map(function (t, i) {
-      return '<li class="' + (p && t.id === p.id ? 'now' : '') + (max > 0 && pts(t.id) === max ? ' lead' : '') + '"><span class="dot" style="background:' + COLORS[i % COLORS.length] + '"></span>' +
-        '<span class="n">' + esc(t.name) + '</span><b>' + pts(t.id) + '</b></li>';
+      return '<li class="' + (p && t.id === p.id ? 'now' : '') + (max > 0 && pts(t.id) === max ? ' lead' : '') + '">' + Kru.badge(t, COLORS[i % COLORS.length]) + '<b>' + pts(t.id) + '</b></li>';
     }).join('');
     renderTurn();
   }
@@ -149,7 +148,7 @@
     $('strip').innerHTML = teams.map(function (t, i) {
       var on = right.indexOf(t.id) >= 0;
       return '<button class="tile' + (on ? ' right' : '') + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-pressed="' + on + '">' +
-        '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + pts(t.id) + (on ? ' ✓' : '') + '</span></button>';
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + (on ? ' ✓' : '') + '</span></button>';
     }).join('');
     KruQuiz.fit($('stage'));
   }
@@ -178,7 +177,7 @@
     var left = ROWS * S.cols.length - Object.keys(S.used).length;
     if (!left) {
       tone([784, 988, 1175], 0.15);
-      KruEnd.show({ keepPlaying: function () { toast('Another round? ⋯ → New board.', false); } });
+      KruEnd.show({ keepPlaying: function () { toast('Another round? ⚙ Settings → New board.', false); } });
     }
   }
   function toggleRight(id) {
@@ -240,7 +239,7 @@
   var POWERS = [
     { id: 'fifty', label: '50/50' },
     { id: 'time', label: '+20 s' },
-    { id: 'free', label: 'Free answer' },
+    { id: 'free', label: 'Free Play' },
     { id: 'risk', label: 'Risk it' },
   ];
   function used(id, p) { return !!(S.powers[id] && S.powers[id][p]); }
@@ -268,7 +267,7 @@
       if (!running) startTimer(); else { endAt = Date.now() + left * 1000; renderClock(); }
       renderQuestion();
     } else if (p === 'free') {
-      use(id, 'free'); toast('🎟 Free answer!', false); markOne(true);
+      use(id, 'free'); toast('🎟 Free Play!', false); markOne(true);
     } else if (p === 'risk') {
       S.risk = !S.risk; save(); tone(S.risk ? [392, 523, 659] : [440], 0.08); renderQuestion();
     }

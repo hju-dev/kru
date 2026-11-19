@@ -115,7 +115,7 @@
       var place = p.indexOf(t.id);
       return '<button class="tile' + (place >= 0 ? ' placed' : '') + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points">' +
         (place >= 0 ? '<span class="badge">' + PLACE_NAMES[place] + '</span>' : '') +
-        '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
     }).join('');
   }
 

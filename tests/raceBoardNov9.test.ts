@@ -35,7 +35,7 @@ describe('Race Board dice (Henry, Nov 11)', () => {
 
 describe('Race Board power-ups (Henry, Nov 11)', () => {
   it('50/50, +20 s, Free answer, Risk it: one of each per team per game', () => {
-    for (const p of ["{ id: 'fifty', label: '50/50' }", "{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free answer' }", "{ id: 'risk', label: 'Risk it' }"]) expect(js).toContain(p)
+    for (const p of ["{ id: 'fifty', label: '50/50' }", "{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free Play' }", "{ id: 'risk', label: 'Risk it' }"]) expect(js).toContain(p)
     expect(js).toContain('function used(id, p) { return !!(S.powers[id] && S.powers[id][p]); }')
     expect(html).toContain('id="powers"')
   })
@@ -117,7 +117,7 @@ describe('Jeopardy: choosing team only + power-ups (Henry, Nov 11)', () => {
     expect(qb).toContain('var d = right ? v * (S.risk ? 2 : 1) : (S.risk ? -v : 0);')
   })
   it('power-ups once each per team per game: 50/50, +20 s, Free answer, Risk it', () => {
-    for (const p of ["{ id: 'fifty', label: '50/50' }", "{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free answer' }", "{ id: 'risk', label: 'Risk it' }"]) expect(qb).toContain(p)
+    for (const p of ["{ id: 'fifty', label: '50/50' }", "{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free Play' }", "{ id: 'risk', label: 'Risk it' }"]) expect(qb).toContain(p)
     expect(qb).toContain('left = Math.max(0, left) + 20;')
   })
 })

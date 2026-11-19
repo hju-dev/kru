@@ -4,26 +4,26 @@
   {
    "title": "Quiz Island",
    "text": [
-    "One team at a time answers a question.",
+    "One team at a time answers a question out loud.",
     "Right answer: claim an island and its gold!"
    ],
    "example": {
     "rows": [
      [
       "Easy",
-      "2 🪙"
+      "2 [[coin]]"
      ],
      [
       "Regular",
-      "3 🪙"
+      "3 [[coin]]"
      ],
      [
       "Hard",
-      "5 🪙 + reward"
+      "5 [[coin]] + reward"
      ],
      [
       "Impossible",
-      "7 🪙 + reward"
+      "7 [[coin]] + reward"
      ]
     ]
    }
@@ -40,11 +40,11 @@
       "+5 extra gold"
      ],
      [
-      "💣 Cannon Fire",
+      "[[boom]] Cannon Fire",
       "claim 1, sink an enemy island"
      ],
      [
-      "🏝🏝 Double Claim",
+      "[[double]] Double Claim",
       "claim 2 islands"
      ]
     ]
@@ -59,11 +59,11 @@
    "example": {
     "rows": [
      [
-      "🧰 Chest",
+      "[[chest]] Treasure",
       "+10"
      ],
      [
-      "💀 Blackbeard",
+      "[[pirate]] Blackbeard",
       "+15"
      ],
      [
@@ -101,18 +101,34 @@
    }
   },
   {
-   "title": "Power-ups",
+   "title": "🏴‍☠️ Pirate Raid",
    "text": [
-    "Each one once per game.",
-    "Pirate Raid: right = sink, steal or 2 islands. Wrong = lose 2!"
+    "Once per game. Right answer: pick one!",
+    "Wrong answer: you lose your 2 newest islands."
    ],
    "example": {
-    "chips": [
-     "50/50",
-     "+20 s",
-     "Free answer",
-     "🏴‍☠️ Pirate Raid"
-    ]
+    "rows": [
+     [
+      "[[boom]] Sink",
+      "blast an enemy island"
+     ],
+     [
+      "[[steal]] Steal",
+      "take an enemy island"
+     ],
+     [
+      "[[double]] +2 Islands",
+      "claim 2 new islands"
+     ]
+    ],
+    "aside": {
+     "title": "Additional power-ups:",
+     "items": [
+      "50/50",
+      "+20 s",
+      "Free Play"
+     ]
+    }
    }
   },
   {
@@ -122,7 +138,7 @@
     "At the end, the biggest group of islands gets +10."
    ],
    "example": {
-    "big": "−3 🪙",
+    "big": "−3 [[coin]]",
     "tag": "for silence"
    }
   }

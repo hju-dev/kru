@@ -7,6 +7,7 @@
    after the huddle (Start talking when ready), speaking time ±5 s in the ⋯ menu, "Crazy topics only", no bonus cards. */
 (function () {
   'use strict';
+  var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
   var $ = function (id) { return document.getElementById(id); };
   var HOLD_MS = 280, SLOP = 8;
 
@@ -268,10 +269,10 @@
   }
   function renderTeams() {
     var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
-    $('strip').innerHTML = teams.map(function (t) {
+    $('strip').innerHTML = teams.map(function (t, i) {
       var role = debate() ? (t.id === S.forT ? ' is-for' : t.id === S.againstT ? ' is-against' : '') : t.id === S.front ? ' is-front' : '';
       return '<button class="tile' + role + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points. Tap to give points">' +
-        '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
     }).join('');
   }
   function renderAll() {

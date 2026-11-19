@@ -2,7 +2,7 @@
  "about": "Race Board (Henry, Nov 9): a 60-square race. questions = its own bank per level, 165 each (Henry, Nov 10: the old M.1 set was removed, old M.2 became M.1, old M.3 became M.2, and M.3 is a new harder set). A wrong answer rolls the back die. With a unit picked on the setup screen, the unit's questions are used instead (tiers guessed: A-D = regular, short answer or double = hard). Exact roll to finish (extra steps bounce back). The How to play slides live here too.",
  "intro": [
   {
-   "title": "Race Board",
+   "title": "Quiz Dash",
    "text": [
     "Every team has a piece on START.",
     "First team to land exactly on FINISH wins!"
@@ -47,7 +47,7 @@
    "title": "Power-ups",
    "text": [
     "Each team can use each power-up ONCE per game.",
-    "50/50, +20 seconds, Free answer, or Risk it!"
+    "50/50, +20 seconds, Free Play, or Risk it!"
    ],
    "example": {
     "rows": [
@@ -56,7 +56,7 @@
       "2 wrong answers go"
      ],
      [
-      "Free answer",
+      "Free Play",
       "counts as right"
      ],
      [

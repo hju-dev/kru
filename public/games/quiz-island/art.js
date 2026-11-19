@@ -34,13 +34,22 @@
         '<path d="M22 72h76" stroke="#ffc94a" stroke-width="5"/><rect x="54" y="66" width="12" height="14" rx="2" fill="#ffd970" stroke="#4d2a0d" stroke-width="2"/>' +
         '<path d="M30 30l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff4b0"/><path d="M92 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#fff4b0"/>');
     },
+    coin: function () {
+      return svg('<circle cx="60" cy="64" r="46" fill="#b07a00"/><circle cx="60" cy="58" r="46" fill="#ffc94a" stroke="#b07a00" stroke-width="4"/>' +
+        '<circle cx="60" cy="58" r="33" fill="none" stroke="#e0a800" stroke-width="5"/><path d="M48 44h24l-6 28H54z" fill="#e0a800"/>' +
+        '<path d="M36 34c8-8 18-11 28-11" stroke="#fff4b0" stroke-width="6" stroke-linecap="round" fill="none"/>');
+    },
+    /** Blackbeard: a pirate captain (good news!) with his gold. */
+    pirate: function () {
+      return svg('<path d="M30 70c0 26 60 26 60 0V58H30z" fill="#1c1c22"/>' +
+        '<circle cx="60" cy="60" r="26" fill="#f2c79c" stroke="#7a4b1f" stroke-width="2"/>' +
+        '<path d="M34 68c4 22 48 22 52 0-8 8-44 8-52 0z" fill="#1c1c22"/><path d="M50 74c6 3 14 3 20 0" stroke="#d7263d" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+        '<circle cx="70" cy="56" r="3.5" fill="#1c1c22"/><path d="M42 50l18 10M44 50h10v8h-8z" stroke="#1c1c22" stroke-width="3" fill="#1c1c22"/>' +
+        '<path d="M22 44c14-6 24-22 38-22s24 16 38 22c-12 6-26 6-38 6s-26 0-38-6z" fill="#1c1c22" stroke="#ffc94a" stroke-width="2.5"/>' +
+        '<circle cx="60" cy="34" r="5" fill="#f4efe2"/><path d="M54 30l12 8M66 30l-12 8" stroke="#f4efe2" stroke-width="2"/>');
+    },
     beard: function () {
-      return svg(coins(26, 94) + coins(74, 96) +
-        '<path d="M60 30c-20 0-30 14-30 30 0 10 6 16 10 18v12h40V78c4-2 10-8 10-18 0-16-10-30-30-30z" fill="#f4efe2" stroke="#222" stroke-width="3"/>' +
-        '<circle cx="48" cy="60" r="8" fill="#222"/><circle cx="72" cy="60" r="8" fill="#222"/><path d="M57 72l3-6 3 6z" fill="#222"/>' +
-        '<path d="M48 84v6M56 84v6M64 84v6M72 84v6" stroke="#222" stroke-width="2.5"/>' +
-        '<path d="M18 36c14-4 26-16 42-16s28 12 42 16c-14 6-28 4-42 4s-28 2-42-4z" fill="#1c1c22" stroke="#ffc94a" stroke-width="2"/>' +
-        '<circle cx="60" cy="28" r="5" fill="#f4efe2"/><path d="M54 24l12 8M66 24l-12 8" stroke="#f4efe2" stroke-width="2"/>');
+      return svg(coins(22, 98) + coins(78, 100) + A.pirate().replace(W, '<g transform="translate(10 0) scale(0.84)">').replace('</svg>', '</g>'));
     },
     gem: function () {
       return svg('<path d="M30 46l14-18h32l14 18-30 50z" fill="#4cc9f0" stroke="#0a5f80" stroke-width="3"/><path d="M30 46h60M44 28l16 18 16-18M60 46v50M44 46l16 50 16-50" stroke="#0a5f80" stroke-width="2" fill="none"/>' +
@@ -117,4 +126,6 @@
     },
   };
   window.QIArt = A;
+  // pictures for the How to play slides ("[[coin]]" etc.)
+  window.KruIntroIcons = { coin: A.coin(), chest: A.chest(), pirate: A.pirate(), boom: A.boom(), steal: A.steal(), double: A.double('#ffc94a'), fort: A.fort(), gem: A.gem(), volcano: A.volcano(), pirates: A.pirates(), monster: A.monster() };
 })();

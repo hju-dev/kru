@@ -143,7 +143,7 @@
   },
   {
     "slug": "quiz-battle",
-    "title": "Quiz Battle",
+    "title": "Battle of Wits",
     "file": "public/games/quiz-battle/index.html",
     "levels": [
       "M.1",
@@ -184,7 +184,7 @@
   },
   {
     "slug": "race-board",
-    "title": "Race Board",
+    "title": "Quiz Dash",
     "file": "public/games/race-board/index.html",
     "description": "A 60-square board-game race. Easy, regular, hard and impossible questions: harder ones roll 2 dice; a wrong answer rolls the back die. Chance cards, secret squares, exact roll to finish. Its own questions for M.1, M.2 and M.3 (plus your Questions tab or a unit).",
     "levels": [
@@ -205,9 +205,9 @@
   },
   {
     "slug": "christmas-race-board",
-    "title": "Christmas Race Board",
+    "title": "Christmas Dash",
     "file": "public/games/christmas-race-board/index.html",
-    "description": "Race Board with a Christmas question bank: 100 general-knowledge questions (multiple choice and spoken) for every level. 🎄 squares draw a Challenge card; after a wrong answer a team can do a Forfeit and stay put instead of rolling back.",
+    "description": "Quiz Dash with a Christmas question bank: 100 general-knowledge questions (multiple choice and spoken) for every level. 🎄 squares draw a Challenge card; after a wrong answer a team can do a Forfeit and stay put instead of rolling back.",
     "levels": [],
     "type": "team quiz",
     "minutes": 40,
@@ -400,7 +400,7 @@
   },
   {
     "slug": "category-grid",
-    "title": "Category Grid",
+    "title": "Scattergories",
     "file": "public/games/category-grid/index.html",
     "description": "A letter and five categories (Animals, Food, Jobs...). Teams write a word for each before the timer ends. Words no other team has score extra.",
     "levels": [

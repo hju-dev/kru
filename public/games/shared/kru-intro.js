@@ -12,6 +12,9 @@
  *   big:    "firefighter"  (+ tag: "PERSON")     -> one big card
  *   rows:   [["1st", "+3"], ["2nd", "+2"]]        -> two-column list
  *   note:   "small grey line"
+ *   aside:  { title: "Additional power-ups:", items: ["50/50", "+20 s"] } -> a small list on the right
+ *
+ * Pictures: "[[coin]]" in any text is replaced by window.KruIntroIcons.coin (an SVG string a game provides).
  *
  * Use:  KruIntro.show(slides).then(start)      KruIntro.forLevel(content, level) -> slides
  */
@@ -19,12 +22,14 @@
   'use strict';
 
   function esc(s) {
-    return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+    var icons = window.KruIntroIcons || {};
+    return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; })
+      .replace(/\[\[([a-z0-9-]+)\]\]/g, function (m, k) { return icons[k] ? '<span class="ki-icon">' + icons[k] + '</span>' : m; });
   }
 
   function exampleHtml(ex) {
     if (!ex) return '';
-    var h = '<div class="ki-ex">';
+    var h = '';
     if (ex.label) h += '<div class="ki-label">' + esc(ex.label) + '</div>';
     if (ex.big) h += '<div class="ki-big">' + (ex.tag ? '<span class="ki-tag">' + esc(ex.tag) + '</span>' : '') + '<span>' + esc(ex.big) + '</span></div>';
     if (ex.chips) h += '<div class="ki-chips">' + ex.chips.map(function (c) { return '<span class="ki-chip">' + esc(c) + '</span>'; }).join('') + '</div>';
@@ -35,7 +40,11 @@
     }
     if (ex.result) h += '<div class="ki-result"><span aria-hidden="true">→</span> ' + esc(ex.result) + '</div>';
     if (ex.note) h += '<div class="ki-note">' + esc(ex.note) + '</div>';
-    return h + '</div>';
+    if (ex.aside) {
+      return '<div class="ki-ex ki-has-aside"><div class="ki-split">' + h + '</div><div class="ki-aside"><div class="ki-aside-t">' + esc(ex.aside.title || '') + '</div>' +
+        (ex.aside.items || []).map(function (x) { return '<div>' + esc(x) + '</div>'; }).join('') + '</div></div>';
+    }
+    return '<div class="ki-ex">' + h + '</div>';
   }
 
   var box = null;
