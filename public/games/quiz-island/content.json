@@ -1,78 +1,129 @@
 {
- "about": "Quiz Island (Henry, Nov 18): Race Board's quiz on Reading Island's map. Questions come from Race Board's bank (games/race-board/content.json), Quiz Battle's sets (via kru-quiz.js) or the unit picked on the setup screen. Intro slides only; no questions live here.",
+ "about": "Quiz Island (Henry, Nov 18; new rules Nov 19): Race Board's quiz on an island map; points are gold. Questions come from Race Board's bank (games/race-board/content.json), Quiz Battle's sets (via kru-quiz.js) or the unit picked on the setup screen. Only the How to play slides live here.",
  "intro": [
   {
    "title": "Quiz Island",
    "text": [
     "One team at a time answers a question.",
-    "Get it right and claim an island!"
-   ],
-   "example": {
-    "label": "Example",
-    "result": "Right answer: tap an island on the map"
-   }
-  },
-  {
-   "title": "Harder = more points",
-   "text": [
-    "Each question is worth points:",
-    "the island you win is worth the same."
+    "Right answer: claim an island and its gold!"
    ],
    "example": {
     "rows": [
-     ["Easy", "1"],
-     ["Regular", "2"],
-     ["Hard", "3"],
-     ["Impossible", "4"]
+     [
+      "Easy",
+      "2 🪙"
+     ],
+     [
+      "Regular",
+      "3 🪙"
+     ],
+     [
+      "Hard",
+      "5 🪙 + reward"
+     ],
+     [
+      "Impossible",
+      "7 🪙 + reward"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Big answers, big rewards",
+   "text": [
+    "Hard or Impossible right? Your team picks one reward:"
+   ],
+   "example": {
+    "rows": [
+     [
+      "💰 Gold Dig",
+      "+5 extra gold"
+     ],
+     [
+      "💣 Cannon Fire",
+      "claim 1, sink an enemy island"
+     ],
+     [
+      "🏝🏝 Double Claim",
+      "claim 2 islands"
+     ]
     ]
    }
   },
   {
    "title": "Secret islands",
    "text": [
-    "Some islands hide a secret. You find out when you claim one!",
-    "Careful: not every secret is good."
+    "Some islands hide a secret. Good or bad?",
+    "You find out when you land on one!"
    ],
    "example": {
     "rows": [
-     ["🌋 Volcano", "lose your newest island"],
-     ["☠ Pirates", "miss your next turn"],
-     ["🧰 Chest and 💎", "+3 bonus"]
+     [
+      "🧰 Chest",
+      "+10"
+     ],
+     [
+      "💀 Blackbeard",
+      "+15"
+     ],
+     [
+      "🌋 Volcano",
+      "lose your newest island"
+     ],
+     [
+      "☠ Pirates",
+      "miss a turn"
+     ],
+     [
+      "🐙 Sea Monster",
+      "lose half your gold"
+     ]
     ]
    }
   },
   {
-   "title": "⚔ Steal an island",
+   "title": "🏰 Fortresses",
    "text": [
-    "Hard and Impossible answers can steal an island.",
-    "When the map is full, every right answer steals!"
+    "One fortress per team. Nobody can sink or steal it,",
+    "or your islands next to it!"
    ],
    "example": {
     "rows": [
-     ["Steal", "take its points"],
-     ["The owner", "loses them"]
+     [
+      "💎 Treasure island",
+      "+5"
+     ],
+     [
+      "🔒 Stolen island",
+      "safe for one round"
+     ]
     ]
    }
   },
   {
    "title": "Power-ups",
    "text": [
-    "Use each power-up once per game.",
-    "Risk it: win double, or lose points!"
+    "Each one once per game.",
+    "Pirate Raid: right = sink, steal or 2 islands. Wrong = lose 2!"
    ],
    "example": {
-    "chips": ["50/50", "+20 s", "Free answer", "Risk it"]
+    "chips": [
+     "50/50",
+     "+20 s",
+     "Free answer",
+     "🏴‍☠️ Pirate Raid"
+    ]
    }
   },
   {
-   "title": "Final Wager",
+   "title": "Always guess!",
    "text": [
-    "Near the end: one question for every team. Bet any points!",
-    "Biggest group of islands: +5 points."
+    "Wrong answer: no gold lost. No answer: −3 gold!",
+    "At the end, the biggest group of islands gets +10."
    ],
    "example": {
-    "big": "ALL IN",
-    "tag": "bet everything"
+    "big": "−3 🪙",
+    "tag": "for silence"
    }
   }
  ]

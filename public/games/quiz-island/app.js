@@ -1,37 +1,48 @@
-/* Quiz Island (Henry, Nov 18): Race Board's quiz (one team at a time, four tiers, power-ups, optional "Who answers?"
-   spinner) played on Reading Island's island map instead of a race track.
-   A right answer lets the team claim an island worth the tier: easy 1, regular 2, hard 3, impossible 4 (Risk it doubles it).
-   Hidden under the map: 4 volcanoes (lose your newest island), 4 pirates (you miss your next turn), 4 chests (+3 bonus);
-   4 visible treasure islands (+3 bonus). A right answer on a hard or impossible question may STEAL an island (the stealer
-   gets its value, the owner loses it); once the map is full every right answer steals. Henry taps "Final Wager" in the ⋯
-   menu when time is nearly up: one question for every team, bet any points or ALL IN. The biggest connected group of
-   islands gets +5 at the end. Decks: Race Board's bank for the level, a Quiz Battle set (or all), or the unit picked
-   on the setup screen. The teacher's team doesn't play. */
+/* Quiz Island (Henry, Nov 18; new rules Nov 19): Race Board's quiz (one team at a time, four tiers, power-ups,
+   optional "Who answers?" spinner) on an 8 x 5 island map. Points are 🪙 gold.
+   - Right answer: claim an island worth the tier (easy 2, regular 3, hard 5, impossible 7).
+   - Hard / impossible right: the team picks a reward: 💰 Gold Dig (the island has +5 hidden gold), 💣 Cannon Fire
+     (claim one, then sink an enemy island) or 🏝🏝 Double Claim (two islands).
+   - 🏴‍☠️ Pirate Raid (power-up, once per game; not with Free answer): right = sink an enemy island, steal one, or
+     claim two; wrong (or no answer) = lose your two newest islands. It replaces the hard-question reward.
+   - Wrong answer: nothing. No answer at all: -3 gold.
+   - Visible: 4 💎 treasure islands (+5) and one 🏰 fortress per team (one each at most). A fortress can't be sunk or
+     stolen, and neither can its owner's islands next to it. A stolen island is 🔒 safe for one round.
+   - Hidden: 3 🌋 volcanoes (lose your newest island), 3 ☠ pirates (miss your next turn), 4 🧰 chests (+10),
+     1 🐙 Sea Monster (eats half your gold), 1 💀 Blackbeard's Treasure (+15).
+   - Sunk islands go back to empty. A full map: a normal claim steals instead.
+   - Each new round the last-place team finds a Message in a Bottle (+3). ⋯ Last round: every team gets the same
+     number of turns, then the treasure map is revealed and the biggest island group gets +10.
+   Every event shows a big banner with a picture (art.js). Gold never goes below 0. */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
   var TIMES = [10, 20, 30, 45, 60];
-  var COLS = 8, ROWS = 5, CELLS = COLS * ROWS, TREASURES = 4, VOLCANOES = 4, PIRATES = 4, CHESTS = 4, EMPIRE = 5, BONUS = 3;
+  var COLS = 8, ROWS = 5, CELLS = COLS * ROWS;
+  var TREASURES = 4, VOLCANOES = 3, PIRATES = 3, CHESTS = 4;
+  var GEM = 5, CHEST = 10, BEARD = 15, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
-    easy: { label: 'Easy', share: 30, pts: 1 },
-    regular: { label: 'Regular', share: 45, pts: 2 },
-    hard: { label: 'Hard', share: 17, pts: 3, steal: true },
-    impossible: { label: 'Impossible', share: 8, pts: 4, steal: true },
+    easy: { label: 'Easy', share: 30, pts: 2 },
+    regular: { label: 'Regular', share: 45, pts: 3 },
+    hard: { label: 'Hard', share: 17, pts: 5, reward: true },
+    impossible: { label: 'Impossible', share: 8, pts: 7, reward: true },
   };
   var POWERS = [
     { id: 'fifty', label: '50/50' },
     { id: 'time', label: '+20 s' },
     { id: 'free', label: 'Free answer' },
-    { id: 'risk', label: 'Risk it' },
+    { id: 'raid', label: '🏴‍☠️ Pirate Raid' },
   ];
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
+  var ART = window.QIArt;
 
   var DECKS = [], POOL = {}, teams = [], players = [], INTRO = [];
   var S = null;
   var busy = false, left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
-  var Q = null, shown = false, risk = false, who = '', finalMode = false;
+  var Q = null, shown = false, raid = false, who = '';
+  var shownGold = {};
 
   function save() { Kru.saveState(S); }
   function shuffle(a) {
@@ -39,29 +50,51 @@
     return a;
   }
   function range(n) { var a = []; for (var i = 0; i < n; i++) a.push(i); return a; }
+  function has(list, c) { return (list || []).indexOf(c) >= 0; }
+  function drop(list, c) { var i = list.indexOf(c); if (i >= 0) list.splice(i, 1); }
   function weighted(w) { var sum = 0, i; for (i = 0; i < w.length; i++) sum += w[i]; var r = Math.random() * sum; for (i = 0; i < w.length; i++) { r -= w[i]; if (r < 0) return i; } return w.length - 1; }
-  function pts(id) { return S.pts[id] || 0; }
+  function gold(id) { return S.pts[id] || 0; }
   function team(id) { return players.filter(function (t) { return t.id === id; })[0]; }
+  function tname(id) { var t = team(id); return t ? t.name : ''; }
   function color(id) { var i = players.map(function (t) { return t.id; }).indexOf(id); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }
   function current() { return players[S.turn % Math.max(1, players.length)]; }
   function tierOf(q) { return TIERS[q.tier] ? q.tier : 'regular'; }
+  function round() { return Math.floor(S.turn / Math.max(1, players.length)); }
 
   // ---------- sound (after a tap) ----------
   function unlockAudio() {
     try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
     try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); if (audio.state === 'suspended') audio.resume(); } catch (e) {}
   }
-  function tone(freqs, gap, dur) {
+  function tone(freqs, gap, dur, type) {
     if (!audio) return;
     try {
       freqs.forEach(function (f, i) {
         var t = audio.currentTime + i * (gap || 0.15), o = audio.createOscillator(), g = audio.createGain();
-        o.type = 'triangle'; o.frequency.value = f;
+        o.type = type || 'triangle'; o.frequency.value = f;
         g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.33, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + (dur || 0.25));
         o.connect(g).connect(audio.destination); o.start(t); o.stop(t + (dur || 0.25) + 0.05);
       });
     } catch (e) {}
   }
+  /** A cannon boom: a falling low note. */
+  function boom() {
+    if (!audio) return;
+    try {
+      var t = audio.currentTime, o = audio.createOscillator(), g = audio.createGain();
+      o.type = 'sawtooth'; o.frequency.setValueAtTime(160, t); o.frequency.exponentialRampToValueAtTime(30, t + 0.6);
+      g.gain.setValueAtTime(0.5, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.7);
+      o.connect(g).connect(audio.destination); o.start(t); o.stop(t + 0.75);
+    } catch (e) {}
+  }
+  var SOUNDS = {
+    good: function () { tone([523, 659, 784, 1047], 0.09, 0.3); },
+    gold: function () { tone([988, 1319, 988, 1568], 0.07, 0.18, 'square'); },
+    bad: function () { tone([330, 262, 196], 0.18, 0.45); },
+    boom: function () { boom(); },
+    sea: function () { tone([196, 147, 110], 0.22, 0.6, 'sawtooth'); },
+    fanfare: function () { tone([523, 523, 659, 784, 1047], 0.12, 0.35); },
+  };
   var toastTimer = 0;
   function toast(text) {
     $('toastText').textContent = text;
@@ -70,18 +103,94 @@
     toastTimer = setTimeout(function () { $('toast').hidden = true; }, 3500);
   }
 
+  // ---------- big event banners (one at a time, tap or wait to go on) ----------
+  var fxQueue = [], fxOn = false, fxTimer = 0, fxDone = null;
+  /** o: { art, title, sub, gold (+/-), mood: good | bad | boom | sea | magic, sound, then } */
+  function banner(o) {
+    fxQueue.push(o);
+    if (!fxOn) nextBanner();
+  }
+  function nextBanner() {
+    var o = fxQueue.shift();
+    if (!o) { fxOn = false; $('fx').hidden = true; var d = fxDone; fxDone = null; render(); if (d) d(); return; }
+    fxOn = true;
+    var fx = $('fx');
+    fx.className = 'fx ' + (o.mood || 'good');
+    $('fxArt').innerHTML = o.art || '';
+    $('fxTitle').textContent = o.title;
+    $('fxSub').textContent = o.sub || '';
+    var g = $('fxGold');
+    g.hidden = !o.gold;
+    if (o.gold) countUp(g, o.gold);
+    $('fxBits').innerHTML = o.mood === 'good' || o.mood === 'magic' ? range(14).map(function (i) {
+      var a = (i / 14) * 360, d = 140 + (i % 3) * 40;
+      return '<i style="--a:' + a + 'deg;--d:' + d + 'px;--t:' + (i % 4) * 0.05 + 's">' + (o.mood === 'magic' ? '✦' : '🪙') + '</i>';
+    }).join('') : '';
+    fx.hidden = false;
+    void fx.offsetWidth; // restart the animations
+    fx.classList.add('go');
+    if (SOUNDS[o.sound || o.mood]) SOUNDS[o.sound || o.mood]();
+    clearTimeout(fxTimer);
+    fxTimer = setTimeout(nextBanner, o.wait || 2600);
+    if (o.then) fxDone = chain(fxDone, o.then);
+  }
+  function chain(a, b) { return a ? function () { a(); b(); } : b; }
+  function countUp(el, v) {
+    var sign = v > 0 ? '+' : '−', n = Math.abs(v), t0 = performance.now();
+    el.className = 'fx-gold ' + (v > 0 ? 'up' : 'down');
+    function step(t) {
+      var k = Math.min(1, (t - t0) / 600);
+      el.textContent = sign + Math.round(n * k) + ' 🪙';
+      if (k < 1 && !$('fx').hidden) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  /** Run something once the banners on screen have finished. */
+  function afterBanners(f) { if (fxOn) fxDone = chain(fxDone, f); else f(); }
+  $('fx').addEventListener('click', function () { clearTimeout(fxTimer); nextBanner(); });
+
   // ---------- the island map ----------
   function newMap() {
-    var cells = shuffle(range(CELLS)), at = TREASURES;
-    var m = { own: new Array(CELLS).fill(null), worth: new Array(CELLS).fill(0), ash: [], pirated: [], order: {}, treasure: cells.slice(0, at) };
-    m.volcano = cells.slice(at, at += VOLCANOES); // hidden: the island turns to ash and the team loses its newest island
-    m.pirate = cells.slice(at, at += PIRATES);    // hidden: pirates keep the island; the team misses its next turn
-    m.chest = cells.slice(at, at += CHESTS);      // hidden: the island and +3 bonus
+    var nf = Math.min(players.length, 8), cells = shuffle(range(CELLS)), at = 0;
+    var take = function (n) { var a = cells.slice(at, at + n); at += n; return a; };
+    var m = { own: new Array(CELLS).fill(null), worth: new Array(CELLS).fill(0), ash: [], pirated: [], monster: [], order: {}, lock: {} };
+    m.fort = take(nf);              // visible: 🏰 one per team (each team may own one)
+    m.treasure = take(TREASURES);   // visible: 💎 +5
+    m.volcano = take(VOLCANOES);    // hidden: ash, lose your newest island
+    m.pirate = take(PIRATES);       // hidden: miss your next turn
+    m.chest = take(CHESTS);         // hidden: +10
+    m.seaMonster = take(1);         // hidden: eats half your gold
+    m.beard = take(1);              // hidden: +15
     return m;
   }
-  function blocked(c) { return S.map.ash.indexOf(c) >= 0 || S.map.pirated.indexOf(c) >= 0; }
+  function blocked(c) { return has(S.map.ash, c) || has(S.map.pirated, c) || has(S.map.monster, c); }
   function owned(id) { var a = []; S.map.own.forEach(function (o, c) { if (o === id) a.push(c); }); return a; }
   function emptyCells() { var a = []; S.map.own.forEach(function (o, c) { if (!o && !blocked(c)) a.push(c); }); return a; }
+  function near(c) {
+    var r = Math.floor(c / COLS), col = c % COLS, out = [];
+    [[r - 1, col], [r + 1, col], [r, col - 1], [r, col + 1]].forEach(function (p) {
+      if (p[0] >= 0 && p[0] < ROWS && p[1] >= 0 && p[1] < COLS) out.push(p[0] * COLS + p[1]);
+    });
+    return out;
+  }
+  function ownsFort(id) { return S.map.fort.some(function (c) { return S.map.own[c] === id; }); }
+  /** A fortress, and its owner's islands next to it, can't be sunk or stolen. */
+  function guarded(c) {
+    var o = S.map.own[c];
+    if (!o) return false;
+    if (has(S.map.fort, c)) return true;
+    return near(c).some(function (n) { return has(S.map.fort, n) && S.map.own[n] === o; });
+  }
+  function locked(c) { return (S.map.lock[c] || 0) > S.turn; }
+  /** Enemy islands this team can sink or steal. */
+  function targets(id) {
+    return range(CELLS).filter(function (c) { var o = S.map.own[c]; return o && o !== id && !guarded(c) && !locked(c); });
+  }
+  /** Empty islands this team can claim (one fortress per team). */
+  function claimCells(id) {
+    var fort = ownsFort(id);
+    return emptyCells().filter(function (c) { return !(fort && has(S.map.fort, c)); });
+  }
   function biggestGroup(id) {
     var seen = {}, best = 0;
     owned(id).forEach(function (c) {
@@ -89,135 +198,278 @@
       var stack = [c], size = 0; seen[c] = true;
       while (stack.length) {
         var x = stack.pop(); size++;
-        var r = Math.floor(x / COLS), col = x % COLS;
-        [[r - 1, col], [r + 1, col], [r, col - 1], [r, col + 1]].forEach(function (p) {
-          if (p[0] < 0 || p[0] >= ROWS || p[1] < 0 || p[1] >= COLS) return;
-          var y = p[0] * COLS + p[1];
-          if (!seen[y] && S.map.own[y] === id) { seen[y] = true; stack.push(y); }
-        });
+        near(x).forEach(function (y) { if (!seen[y] && S.map.own[y] === id) { seen[y] = true; stack.push(y); } });
       }
       best = Math.max(best, size);
     });
     return best;
   }
-  /** The team(s) with the biggest connected group of islands (+5 at the end). */
+  /** The team(s) with the biggest connected group of islands (+10 at the end). */
   function empireLeaders() {
     var sizes = players.map(function (t) { return biggestGroup(t.id); }), max = Math.max.apply(null, sizes.concat([0]));
     if (max < 2) return [];
     return players.filter(function (t, i) { return sizes[i] === max; }).map(function (t) { return t.id; });
   }
-  function finalPts(id) { return pts(id) + (empireLeaders().indexOf(id) >= 0 ? EMPIRE : 0); }
+  function finalPts(id) { return gold(id) + (empireLeaders().indexOf(id) >= 0 ? EMPIRE : 0); }
   function addPts(id, d, why) {
-    var now = pts(id), next = Math.max(0, now + d), real = next - now; // points never go below 0
+    var now = gold(id), next = Math.max(0, now + d), real = next - now; // gold never goes below 0
     if (!real) return 0;
     S.pts[id] = next;
     Kru.score(id, real, why);
     return real;
   }
-  function claimable() {
-    var cl = S.claim;
-    return range(CELLS).filter(function (c) {
-      if (blocked(c)) return false;
-      var o = S.map.own[c];
-      return !o || (cl.steal && o !== cl.id);
-    });
+  /** The team's newest islands (not fortresses), newest first. */
+  function newest(id) {
+    var mine = (S.map.order[id] || []).filter(function (x) { return S.map.own[x] === id && !has(S.map.fort, x); });
+    var rest = owned(id).filter(function (x) { return mine.indexOf(x) < 0 && !has(S.map.fort, x); });
+    return mine.reverse().concat(rest.reverse());
+  }
+  function loseIsland(id, c, why) {
+    var w = S.map.worth[c];
+    S.map.own[c] = null; S.map.worth[c] = 0; delete S.map.lock[c];
+    return addPts(id, -w, why);
   }
 
+  // ---------- drawing ----------
+  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '🧰', seaMonster: '🐙', beard: '💀' };
   function renderMap() {
-    var cl = S.claim, can = cl ? claimable() : [], leaders = empireLeaders();
+    var cl = S.claim, step = cl && cl.steps[0], can = step ? stepCells(cl.id, step) : [], leaders = empireLeaders();
+    $('map').className = 'map' + (step ? ' aim ' + step.m : '') + (S.reveal ? ' reveal' : '');
     $('map').innerHTML = range(CELLS).map(function (c) {
-      var o = S.map.own[c], pir = S.map.pirated.indexOf(c) >= 0, ash = S.map.ash.indexOf(c) >= 0, tr = S.map.treasure.indexOf(c) >= 0;
-      var cls = 'isle' + (o ? ' owned' : '') + (pir || ash ? ' ash' : '') + (tr && !o ? ' treasure' : '') +
-        (can.indexOf(c) >= 0 ? ' can' : '') + (o && leaders.indexOf(o) >= 0 ? ' empire' : '');
-      var label = pir ? '☠' : ash ? '🌋' : o ? '<span class="n">' + (players.indexOf(team(o)) + 1) + '</span><span class="w">' + S.map.worth[c] + '</span>' : tr ? '💎' : '';
-      var name = o ? ', ' + esc(team(o).name) + ', worth ' + S.map.worth[c] : pir ? ', pirates' : ash ? ', volcano' : tr ? ', treasure' : ', empty';
+      var o = S.map.own[c], pir = has(S.map.pirated, c), ash = has(S.map.ash, c), mon = has(S.map.monster, c);
+      var fort = has(S.map.fort, c), tr = has(S.map.treasure, c);
+      var hid = null;
+      if (S.reveal && !o && !blocked(c)) Object.keys(HIDDEN_ICON).forEach(function (k) { if (has(S.map[k], c)) hid = k; });
+      var cls = 'isle' + (o ? ' owned' : '') + (pir || ash || mon ? ' ash' : '') + (tr && !o ? ' treasure' : '') + (fort ? ' fort' : '') +
+        (o && guarded(c) && !fort ? ' guard' : '') + (can.indexOf(c) >= 0 ? ' can' : '') + (o && leaders.indexOf(o) >= 0 ? ' empire' : '') + (hid ? ' hidden-reveal' : '');
+      var label = pir ? '☠' : ash ? '🌋' : mon ? '🐙' :
+        o ? '<span class="n">' + (players.indexOf(team(o)) + 1) + '</span><span class="w">' + S.map.worth[c] + '</span>' + (fort ? '<span class="tag">🏰</span>' : locked(c) ? '<span class="tag">🔒</span>' : '') :
+        fort ? '🏰' : tr ? '💎' : hid ? HIDDEN_ICON[hid] : '';
+      var name = o ? ', ' + esc(tname(o)) + ', ' + S.map.worth[c] + ' gold' + (fort ? ', fortress' : '') : pir ? ', pirates' : ash ? ', volcano' : mon ? ', sea monster' : fort ? ', fortress' : tr ? ', treasure' : ', empty';
       return '<button class="' + cls + '" data-c="' + c + '"' + (o ? ' style="--c:' + color(o) + '"' : '') + ' aria-label="Island ' + (c + 1) + name + '">' + label + '</button>';
     }).join('');
   }
   function renderLegend() {
     var cur = current(), leaders = empireLeaders();
-    $('legend').className = 'legend' + (players.length > 5 ? ' many' : ''); // 6+ teams: numbers and points only
+    $('legend').className = 'legend' + (players.length > 5 ? ' many' : ''); // 6+ teams: numbers and gold only
     $('legend').innerHTML = players.map(function (t, i) {
-      var flags = (S.skip[t.id] ? ' ⏸' : '') + (leaders.indexOf(t.id) >= 0 ? ' 🏝' : '');
-      return '<span class="lg' + (cur && t.id === cur.id ? ' now' : '') + '"><i style="background:' + color(t.id) + '">' + (i + 1) + '</i>' +
-        '<span class="nm">' + esc(t.name) + '</span> <b>' + pts(t.id) + '</b> · ' + owned(t.id).length + '🏝' + flags + '</span>';
+      var g = gold(t.id), bump = shownGold[t.id] !== undefined && shownGold[t.id] !== g ? (g > shownGold[t.id] ? ' up' : ' down') : '';
+      shownGold[t.id] = g;
+      var flags = (S.skip[t.id] ? ' ⏸' : '') + (ownsFort(t.id) ? ' 🏰' : '') + (leaders.indexOf(t.id) >= 0 ? ' 👑' : '');
+      return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '"><i style="background:' + color(t.id) + '">' + (i + 1) + '</i>' +
+        '<span class="nm">' + esc(t.name) + '</span> <b class="g' + bump + '">' + g + '🪙</b> · ' + owned(t.id).length + '🏝' + flags + '</span>';
     }).join('');
   }
+  var HINT = { claim: 'tap an empty island', sink: '💣 tap an enemy island to sink it', steal: '⚔ tap an enemy island to steal it' };
   function render() {
-    var cur = current(), cl = S.claim;
-    $('turn').innerHTML = !cur ? 'Add students to play' : cl ? '<i class="dot" style="background:' + color(cl.id) + '"></i>' + esc(team(cl.id).name) + ': tap an island (+' + cl.v + (cl.steal ? ', ⚔ steal OK' : '') + ')' :
-      S.phase === 'final' ? '⚡ Final Wager' : '<i class="dot" style="background:' + color(cur.id) + '"></i>' + esc(cur.name) + "'s turn";
+    if (!S) return;
+    var cur = current(), cl = S.claim, step = cl && cl.steps[0];
+    $('turn').innerHTML = !cur ? 'Add students to play' : S.phase === 'done' ? '🏁 Game over' :
+      step ? '<i class="dot" style="background:' + color(cl.id) + '"></i>' + esc(tname(cl.id)) + ': ' + HINT[step.m] + (step.m === 'claim' ? ' (+' + (step.v + (step.dig ? DIG : 0)) + '🪙)' : '') :
+      '<i class="dot" style="background:' + color(cur.id) + '"></i>' + esc(cur.name) + "'s turn" + (S.lastEnd ? ' · 🏁 Last round' : '');
     $('ask').hidden = !!cl;
-    $('ask').disabled = busy || S.phase === 'final';
+    $('ask').disabled = busy || S.phase !== 'play';
     $('skipClaim').hidden = !cl;
     renderMap(); renderLegend();
   }
 
   // ---------- undo: the state before the last question ----------
   function snapshot() {
-    S.hist.push(JSON.parse(JSON.stringify({ map: S.map, pts: S.pts, turn: S.turn, skip: S.skip, powers: S.powers })));
+    S.hist.push(JSON.parse(JSON.stringify({ map: S.map, pts: S.pts, turn: S.turn, skip: S.skip, powers: S.powers, lastEnd: S.lastEnd })));
     if (S.hist.length > 20) S.hist.shift();
   }
   function undo() {
     var h = S.hist.pop();
     if (!h) return false;
-    players.forEach(function (t) { var d = (h.pts[t.id] || 0) - pts(t.id); if (d) Kru.score(t.id, d, 'undo'); });
-    S.map = h.map; S.pts = h.pts; S.turn = h.turn; S.skip = h.skip; S.powers = h.powers; S.claim = null;
+    players.forEach(function (t) { var d = (h.pts[t.id] || 0) - gold(t.id); if (d) Kru.score(t.id, d, 'undo'); });
+    S.map = h.map; S.pts = h.pts; S.turn = h.turn; S.skip = h.skip; S.powers = h.powers; S.lastEnd = h.lastEnd || 0;
+    S.claim = null; S.choice = null; S.phase = 'play'; S.reveal = false;
+    $('choiceBack').hidden = true;
     save(); render();
     return true;
   }
 
-  // ---------- claiming ----------
-  function startClaim(id, v, stealOK) {
-    S.claim = { id: id, v: v, steal: stealOK || !emptyCells().length };
-    if (!claimable().length) { S.claim = null; toast('No island to claim.'); nextTurn(); return; }
-    save(); render(); tone([523, 659, 784], 0.1);
+  // ---------- claiming, sinking and stealing (a list of steps for one team) ----------
+  function stepCells(id, step) {
+    if (step.m === 'claim') return claimCells(id);
+    return targets(id);
   }
-  function endClaim() { S.claim = null; nextTurn(); }
-  function claim(c) {
+  /** Start the steps; a step with nothing to tap is skipped (a claim on a full map becomes a steal). */
+  function startSteps(id, steps) {
+    S.claim = { id: id, steps: steps };
+    prepStep();
+  }
+  function prepStep() {
     var cl = S.claim;
-    if (!cl || blocked(c) || S.map.own[c] === cl.id) return;
-    var id = cl.id, o = S.map.own[c], v = cl.v, t = team(id);
-    if (o && !cl.steal) { toast('Only a hard or impossible answer (or a full map) can steal.'); return; }
-    unlockAudio();
-    if (o) {
-      var w = S.map.worth[c];
-      S.map.own[c] = id; (S.map.order[id] = S.map.order[id] || []).push(c);
-      addPts(id, w, 'stole an island'); addPts(o, -w, 'island stolen');
-      toast('⚔ ' + t.name + ' stole an island (' + w + ') from ' + team(o).name + '!'); tone([392, 523, 659], 0.1);
-    } else if (S.map.volcano.indexOf(c) >= 0) {
-      S.map.ash.push(c);
-      var mine = (S.map.order[id] || []).filter(function (x) { return S.map.own[x] === id; }), lost = mine.length ? mine[mine.length - 1] : null;
-      if (lost == null) { var any = owned(id); lost = any.length ? any[any.length - 1] : null; }
-      if (lost != null) { var lw = S.map.worth[lost]; S.map.own[lost] = null; S.map.worth[lost] = 0; addPts(id, -lw, 'volcano'); }
-      toast('🌋 A volcano! ' + t.name + (lost != null ? ' loses its newest island.' : ' had nothing to lose.')); tone([196, 165, 131], 0.16, 0.4);
-    } else if (S.map.pirate.indexOf(c) >= 0) {
-      S.map.pirated.push(c);
-      S.skip[id] = 1;
-      toast('☠ Pirates! ' + t.name + ' misses its next turn.'); tone([220, 185, 147], 0.16, 0.4);
-    } else {
-      var chest = S.map.chest.indexOf(c) >= 0, tr = S.map.treasure.indexOf(c) >= 0, worth = v + (chest || tr ? BONUS : 0);
-      S.map.own[c] = id; S.map.worth[c] = worth; (S.map.order[id] = S.map.order[id] || []).push(c);
-      addPts(id, worth, chest ? 'treasure chest' : tr ? 'treasure island' : 'island');
-      toast((chest ? '🧰 A treasure chest! ' : tr ? '💎 Treasure! ' : '🏝 ') + '+' + worth + ' ' + t.name + (chest || tr ? ' (island ' + v + ', bonus ' + BONUS + ')' : ''));
-      tone(chest || tr ? [523, 659, 784, 1047] : [660, 880], 0.1);
+    while (cl && cl.steps.length) {
+      var s = cl.steps[0];
+      if (s.m === 'claim' && !claimCells(cl.id).length && targets(cl.id).length) { s.m = 'steal'; toast('The map is full: steal an island instead!'); }
+      if (stepCells(cl.id, s).length) break;
+      toast(s.m === 'claim' ? 'No island to claim.' : 'No enemy island can be hit right now.');
+      cl.steps.shift();
     }
-    endClaim();
+    if (!cl || !cl.steps.length) { S.claim = null; nextTurn(); return; }
+    var step = cl.steps[0];
+    if (step.m === 'sink' && step.announce) {
+      step.announce = false;
+      banner({ art: ART.cannon(), title: 'CANNON FIRE!', sub: tname(cl.id) + ': aim at an enemy island!', mood: 'boom', sound: 'boom', wait: 1800 });
+    }
+    save(); render();
   }
-  $('map').addEventListener('click', function (e) { var b = e.target.closest('[data-c]'); if (b) claim(+b.dataset.c); });
-  $('skipClaim').addEventListener('click', function () { if (S.claim) endClaim(); });
+  function stepDone() {
+    if (!S.claim) return;
+    S.claim.steps.shift();
+    afterBanners(prepStep);
+    save(); render();
+  }
+  function tapIsland(c) {
+    var cl = S.claim, step = cl && cl.steps[0];
+    if (!step || fxOn) return;
+    if (stepCells(cl.id, step).indexOf(c) < 0) {
+      if (S.map.own[c] && S.map.own[c] !== cl.id && guarded(c)) toast('🏰 That island is protected by a fortress.');
+      else if (locked(c)) toast('🔒 That island was just stolen: it is safe for one round.');
+      return;
+    }
+    unlockAudio();
+    if (step.m === 'claim') claimEmpty(cl.id, c, step);
+    else if (step.m === 'sink') sink(cl.id, c);
+    else steal(cl.id, c);
+    stepDone();
+  }
+  function claimEmpty(id, c, step) {
+    var t = tname(id), m = S.map;
+    if (has(m.volcano, c)) {
+      drop(m.volcano, c); m.ash.push(c);
+      var lost = newest(id)[0];
+      var g = lost != null ? loseIsland(id, lost, 'volcano') : 0;
+      banner({ art: ART.volcano(), title: 'VOLCANO!', sub: lost != null ? t + "'s newest island is buried in ash!" : t + ' had no island to lose. Phew!', gold: g, mood: 'bad', sound: 'boom' });
+      return;
+    }
+    if (has(m.pirate, c)) {
+      drop(m.pirate, c); m.pirated.push(c);
+      S.skip[id] = 1;
+      banner({ art: ART.pirates(), title: 'PIRATE AMBUSH!', sub: t + ' is captured and misses the next turn!', mood: 'bad' });
+      return;
+    }
+    if (has(m.seaMonster, c)) {
+      drop(m.seaMonster, c); m.monster.push(c);
+      var half = Math.floor(gold(id) / 2), eaten = half ? addPts(id, -half, 'sea monster') : 0;
+      banner({ art: ART.monster(), title: 'SEA MONSTER!', sub: eaten ? 'It gobbled up half of ' + t + "'s gold!" : t + ' had no gold to eat. Lucky!', gold: eaten, mood: 'sea', sound: 'sea' });
+      return;
+    }
+    var beard = has(m.beard, c), chest = has(m.chest, c), gem = has(m.treasure, c), fort = has(m.fort, c);
+    var worth = step.v + (step.dig ? DIG : 0) + (beard ? BEARD : 0) + (chest ? CHEST : 0) + (gem ? GEM : 0);
+    if (beard) drop(m.beard, c);
+    if (chest) drop(m.chest, c);
+    if (gem) drop(m.treasure, c);
+    m.own[c] = id; m.worth[c] = worth; (m.order[id] = m.order[id] || []).push(c);
+    addPts(id, worth, beard ? "Blackbeard's treasure" : chest ? 'treasure chest' : gem ? 'treasure island' : fort ? 'fortress' : 'island');
+    var col = color(id);
+    if (beard) banner({ art: ART.beard(), title: "BLACKBEARD'S TREASURE!", sub: t + ' found the legendary pirate gold!', gold: worth, mood: 'magic', sound: 'fanfare', wait: 3000 });
+    else if (chest) banner({ art: ART.chest(), title: 'TREASURE CHEST!', sub: t + ' digs up a chest full of gold!', gold: worth, mood: 'good', sound: 'gold' });
+    else if (gem) banner({ art: ART.gem(), title: 'SPARKLING TREASURE!', sub: t + ' grabs the treasure island!', gold: worth, mood: 'good', sound: 'gold' });
+    else if (fort) banner({ art: ART.fort(col), title: 'FORTRESS CAPTURED!', sub: 'Nobody can sink or steal it, or ' + t + "'s islands next to it!", gold: worth, mood: 'good' });
+    else if (step.dig) banner({ art: ART.dig(), title: 'STRUCK GOLD!', sub: t + ' digs deep and finds extra gold!', gold: worth, mood: 'good', sound: 'gold' });
+    else if (step.second) banner({ art: ART.double(col), title: 'DOUBLE CLAIM!', sub: t + ' plants a second flag!', gold: worth, mood: 'good', wait: 1800 });
+    else banner({ art: ART.island(col), title: 'LAND HO!', sub: t + ' claims a new island!', gold: worth, mood: 'good', wait: 1800 });
+  }
+  function sink(id, c) {
+    var o = S.map.own[c], g = loseIsland(o, c, 'island sunk');
+    banner({ art: ART.boom(), title: 'KABOOM!', sub: tname(id) + ' sinks ' + tname(o) + "'s island!", gold: g, mood: 'boom', sound: 'boom' });
+  }
+  function steal(id, c) {
+    var o = S.map.own[c], w = S.map.worth[c];
+    S.map.own[c] = id; (S.map.order[id] = S.map.order[id] || []).push(c);
+    S.map.lock[c] = S.turn + players.length; // safe for one round, so it can't be stolen straight back
+    addPts(id, w, 'stole an island'); addPts(o, -w, 'island stolen');
+    banner({ art: ART.steal(), title: 'STOLEN!', sub: tname(id) + ' takes an island from ' + tname(o) + '! 🔒 Safe for one round.', gold: w, mood: 'good', sound: 'gold' });
+  }
+  $('map').addEventListener('click', function (e) { var b = e.target.closest('[data-c]'); if (b) tapIsland(+b.dataset.c); });
+  $('skipClaim').addEventListener('click', function () { if (S.claim) stepDone(); });
 
-  /** The next team's turn. A team the pirates caught misses its turn (once). */
+  // ---------- reward choices: hard / impossible answers and Pirate Raid ----------
+  function openChoice() {
+    var ch = S.choice, id = ch.id, enemy = targets(id).length > 0, art = $('choiceArt');
+    var opts = ch.kind === 'raid' ? [
+      { k: 'sink', art: ART.boom(), title: '💣 Sink', sub: 'Blast an enemy island', off: !enemy },
+      { k: 'steal', art: ART.steal(), title: '⚔ Steal', sub: 'Take an enemy island', off: !enemy },
+      { k: 'two', art: ART.double(color(id)), title: '🏝🏝 Claim 2', sub: '2 new islands (+' + ch.v + ' each)' },
+    ] : [
+      { k: 'dig', art: ART.dig(), title: '💰 Gold Dig', sub: 'Island + ' + DIG + ' extra gold' },
+      { k: 'cannon', art: ART.cannon(), title: '💣 Cannon Fire', sub: 'Claim 1, then sink an enemy island', off: !enemy },
+      { k: 'two', art: ART.double(color(id)), title: '🏝🏝 Double Claim', sub: '2 islands (+' + ch.v + ' each)' },
+    ];
+    art.innerHTML = ch.kind === 'raid' ? ART.raid() : ART.chest();
+    $('choiceTitle').textContent = ch.kind === 'raid' ? '🏴‍☠️ PIRATE RAID! ' + tname(id) + ', choose your attack' : '⭐ BIG ANSWER! ' + tname(id) + ', choose your reward';
+    $('choices').innerHTML = opts.map(function (o) {
+      return '<button class="btn ch" data-ch="' + o.k + '"' + (o.off ? ' disabled' : '') + '><span class="ch-art">' + o.art + '</span><b>' + o.title + '</b><small>' + (o.off ? 'No enemy island to hit yet' : o.sub) + '</small></button>';
+    }).join('');
+    $('choiceBack').hidden = false;
+  }
+  $('choices').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-ch]');
+    if (!b || b.disabled || !S.choice) return;
+    unlockAudio();
+    var ch = S.choice, k = b.dataset.ch, v = ch.v, steps;
+    if (k === 'dig') steps = [{ m: 'claim', v: v, dig: true }];
+    else if (k === 'cannon') steps = [{ m: 'claim', v: v }, { m: 'sink', announce: true }];
+    else if (k === 'two') steps = [{ m: 'claim', v: v }, { m: 'claim', v: v, second: true }];
+    else if (k === 'sink') steps = [{ m: 'sink' }];
+    else steps = [{ m: 'steal' }];
+    S.choice = null;
+    $('choiceBack').hidden = true;
+    tone([660, 880, 1175], 0.08);
+    startSteps(ch.id, steps);
+  });
+
+  /** The next team's turn: a new round brings a Message in a Bottle; the Last round ends the game; pirates skip a turn. */
   function nextTurn() {
-    S.turn++;
+    if (advance()) return;
     for (var i = 0; i < players.length; i++) {
       var cur = current();
       if (!S.skip[cur.id]) break;
       S.skip[cur.id] = 0;
-      toast('☠ ' + cur.name + ' misses its turn (pirates).');
-      S.turn++;
+      banner({ art: ART.pirates(), title: 'STILL CAPTURED!', sub: cur.name + ' is still a prisoner of the pirates. Next team!', mood: 'bad', wait: 2000 });
+      if (advance()) return;
     }
     save(); render();
+  }
+  /** One step forward. Returns true when the game ended. */
+  function advance() {
+    S.turn++;
+    if (players.length && S.turn % players.length === 0) {
+      if (S.lastEnd && S.turn >= S.lastEnd) { endGame(); return true; }
+      bottle();
+    }
+    return false;
+  }
+  function bottle() {
+    var gs = players.map(function (t) { return gold(t.id); }), min = Math.min.apply(null, gs), max = Math.max.apply(null, gs);
+    if (players.length < 2 || min === max) return;
+    var last = players.filter(function (t) { return gold(t.id) === min; });
+    last.forEach(function (t) { addPts(t.id, BOTTLE, 'message in a bottle'); });
+    banner({ art: ART.bottle(), title: 'MESSAGE IN A BOTTLE!', sub: last.map(function (t) { return t.name; }).join(' & ') + ' (last place) finds a map to hidden gold!', gold: BOTTLE, mood: 'magic' });
+  }
+
+  // ---------- the end: Last round, the treasure map and the empire ----------
+  function endGame() {
+    S.phase = 'done'; S.reveal = true; S.claim = null; S.choice = null; S.lastEnd = 0;
+    save(); render();
+    banner({ art: ART.map(), title: 'THE TREASURE MAP!', sub: 'Look where all the secret islands were hiding!', mood: 'magic', wait: 3200 });
+    var lead = empireLeaders();
+    if (lead.length) banner({ art: ART.crown(), title: 'ISLAND EMPIRE!', sub: 'Biggest group of islands: ' + lead.map(tname).join(' & '), gold: EMPIRE, mood: 'good', sound: 'fanfare', wait: 3000 });
+    afterBanners(function () {
+      KruEnd.show({ keepPlaying: function () { S.phase = 'play'; S.reveal = false; save(); render(); } });
+    });
+  }
+  function lastRound() {
+    var n = Math.max(1, players.length);
+    if (S.lastEnd) { S.lastEnd = 0; save(); render(); toast('Last round cancelled.'); return; }
+    // the round in progress is the last one; at the start of a round, that whole round
+    S.lastEnd = S.turn % n === 0 ? S.turn + n : Math.ceil(S.turn / n) * n;
+    var turnsLeft = S.lastEnd - S.turn;
+    save(); render();
+    banner({ art: ART.flag(), title: 'LAST ROUND!', sub: turnsLeft === n ? 'Every team gets one more turn. Make it count!' : turnsLeft + ' more turn' + (turnsLeft === 1 ? '' : 's') + ' so every team gets the same number!', mood: 'magic', sound: 'fanfare' });
   }
 
   // ---------- decks and questions ----------
@@ -251,12 +503,10 @@
     S.order = {}; S.qi = {};
     ORDER.forEach(function (t) { S.order[t] = shuffle(range(POOL[t].length)); S.qi[t] = 0; });
   }
-  /** The next question: a tier at random (hard and impossible are rarer); preferred = tiers to take if there are any. */
-  function pickQuestion(preferred) {
+  /** The next question: a tier at random (hard and impossible are rarer). */
+  function pickQuestion() {
     var avail = ORDER.filter(function (t) { return POOL[t].length; });
     if (!avail.length) return null;
-    var pref = preferred ? avail.filter(function (t) { return preferred.indexOf(t) >= 0; }) : [];
-    if (pref.length) avail = pref;
     var tier = avail[weighted(avail.map(function (t) { return TIERS[t].share; }))];
     var list = POOL[tier], order = S.order[tier], q = list[order[S.qi[tier] % order.length]];
     S.qi[tier]++;
@@ -303,17 +553,14 @@
   }
   function renderQuestion() {
     var t = current(), tier = TIERS[tierOf(Q)];
-    $('qWho').textContent = finalMode ? '⚡ Final Wager: every team' : t.name + (who ? ' · 🎯 ' + who : '');
-    $('qTier').textContent = finalMode ? tier.label : tier.label + ' · worth ' + tier.pts + (tier.steal ? ' · ⚔' : '');
+    $('qWho').textContent = t.name + (who ? ' · 🎯 ' + who : '');
+    $('qTier').textContent = tier.label + ' · ' + tier.pts + ' 🪙' + (tier.reward ? ' · ⭐ reward' : '');
     $('qTier').className = 'tier ' + tierOf(Q);
     $('qTopic').textContent = Q.set ? '· ' + Q.set : '';
     $('qBody').innerHTML = KruQuiz.html(Q, shown);
     (Q._gone || []).forEach(function (i) { var c = $('qBody').querySelectorAll('.kq-choice')[i]; if (c) c.classList.add('gone'); });
     $('reveal').disabled = shown;
-    $('powers').hidden = finalMode;
-    $('wrong').hidden = $('right').hidden = finalMode;
-    $('finalMark').hidden = !finalMode;
-    if (!finalMode) renderPowers();
+    renderPowers();
     KruQuiz.fit($('stage'));
   }
   function used(id, p) { return !!(S.powers[id] && S.powers[id][p]); }
@@ -321,10 +568,11 @@
   function renderPowers() {
     var id = current().id;
     $('powers').innerHTML = '<span class="pw-lab">Power-ups:</span>' + POWERS.map(function (p) {
-      var off = used(id, p.id) || (p.id === 'fifty' && (!Array.isArray(Q.choices) || Q.choices.length < 4 || !!Q._gone)) || (shown && p.id !== 'time');
-      var on = p.id === 'risk' && risk;
+      var on = p.id === 'raid' && raid;
+      var off = used(id, p.id) || (p.id === 'fifty' && (!Array.isArray(Q.choices) || Q.choices.length < 4 || !!Q._gone)) ||
+        (shown && p.id !== 'time') || (p.id === 'free' && raid); // no Free answer with a Pirate Raid
       return '<button class="btn pw' + (on ? ' on' : '') + (used(id, p.id) ? ' used' : '') + '" data-pw="' + p.id + '"' + (off && !on ? ' disabled' : '') +
-        ' aria-pressed="' + on + '">' + (on ? '🎲 Risk it: ON' : p.label) + '</button>';
+        ' aria-pressed="' + on + '">' + (on ? '🏴‍☠️ RAID: ON' : p.label) + '</button>';
     }).join('');
   }
   $('powers').addEventListener('click', function (e) {
@@ -343,15 +591,14 @@
       renderPowers();
     } else if (p === 'free') {
       use(id, 'free');
-      if (risk) use(id, 'risk');
       toast('🎟 ' + current().name + ' used a free answer!');
       rightAnswer();
-    } else if (p === 'risk') {
-      risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers();
+    } else if (p === 'raid') {
+      raid = !raid; tone(raid ? [392, 523, 659] : [440], 0.08); renderPowers();
     }
   });
   function ask() {
-    if (busy || !current() || S.claim || S.phase === 'final') return;
+    if (busy || !current() || S.claim || S.choice || S.phase !== 'play' || fxOn) return;
     var t = current();
     who = '';
     if (!S.deck) { openDecks(); return; }
@@ -373,7 +620,7 @@
     var q = pickQuestion();
     render();
     if (!q) { toast('This deck has no questions. Choose another deck.'); openDecks(); return; }
-    Q = Object.assign({}, q); shown = false; risk = false; finalMode = false;
+    Q = Object.assign({}, q); shown = false; raid = false;
     snapshot(); save();
     stopTimer(); total = left = S.secs; renderClock();
     $('qBack').hidden = false;
@@ -381,89 +628,46 @@
     tone([660, 880], 0.12);
     startTimer();
   }
-  function closeQuestion() { stopTimer(); $('qBack').hidden = true; risk = false; }
+  function closeQuestion() { stopTimer(); $('qBack').hidden = true; }
   function rightAnswer() {
-    var t = current(), v = TIERS[tierOf(Q)].pts * (risk ? 2 : 1);
-    if (risk) use(t.id, 'risk');
+    var t = current(), tier = TIERS[tierOf(Q)], v = tier.pts, rd = raid;
+    raid = false;
+    if (rd) use(t.id, 'raid');
     closeQuestion();
-    startClaim(t.id, v, !!TIERS[tierOf(Q)].steal);
+    if (rd || tier.reward) {
+      S.choice = { id: t.id, kind: rd ? 'raid' : 'reward', v: v };
+      save(); render();
+      if (rd) banner({ art: ART.raid(), title: 'RAID SUCCESS!', sub: t.name + "'s pirates storm the islands!", mood: 'magic', sound: 'fanfare', wait: 1800 });
+      afterBanners(openChoice);
+      return;
+    }
+    startSteps(t.id, [{ m: 'claim', v: v }]);
+  }
+  /** Wrong answer (no gold lost) or no answer (-3 gold); a failed Pirate Raid also loses the 2 newest islands. */
+  function missed(silent) {
+    unlockAudio();
+    var t = current(), rd = raid;
+    raid = false;
+    if (rd) use(t.id, 'raid');
+    closeQuestion();
+    if (silent) {
+      var g = addPts(t.id, -NO_ANSWER, 'no answer');
+      banner({ art: ART.silence(), title: 'SILENCE ON DECK!', sub: 'No answer from ' + t.name + '. Always have a guess!', gold: g, mood: 'bad' });
+    }
+    if (rd) {
+      var lost = newest(t.id).slice(0, 2), g2 = 0;
+      lost.forEach(function (c) { g2 += loseIsland(t.id, c, 'raid failed'); });
+      banner({ art: ART.sinking(), title: 'RAID FAILED!', sub: lost.length ? t.name + ' loses ' + (lost.length === 2 ? 'its 2 newest islands' : 'its newest island') + '!' : t.name + ' had no islands to lose. Phew!', gold: g2, mood: 'bad', sound: 'sea' });
+    }
+    if (!silent && !rd) tone([330, 262], 0.15);
+    afterBanners(nextTurn);
   }
   $('ask').addEventListener('click', ask);
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
   $('reveal').addEventListener('click', function () { unlockAudio(); stopTimer(); renderClock(); shown = true; tone([523, 659]); renderQuestion(); });
   $('right').addEventListener('click', rightAnswer);
-  $('wrong').addEventListener('click', function () {
-    unlockAudio();
-    var t = current(), tp = TIERS[tierOf(Q)].pts, rk = risk;
-    if (rk) use(t.id, 'risk');
-    closeQuestion();
-    if (rk) { var lost = addPts(t.id, -tp, 'risk it'); toast('🎲 Risk it! ' + t.name + ' loses ' + (-lost) + ' point' + (lost === -1 ? '' : 's') + '.'); tone([262, 196], 0.15); }
-    nextTurn();
-  });
-
-  // ---------- Final Wager: one question for every team ----------
-  function maxBet(id) { return Math.max(0, pts(id)); }
-  function openBets() {
-    $('betList').innerHTML = players.map(function (t) {
-      var b = S.wager[t.id] || 0, max = maxBet(t.id);
-      return '<div class="wrow" data-w="' + esc(t.id) + '"><span class="wn">' + esc(t.name) + '<small>' + pts(t.id) + ' pts</small></span>' +
-        '<button class="btn" data-bet="-1" aria-label="Bet 1 less"' + (b <= 0 ? ' disabled' : '') + '>−</button>' +
-        '<output class="wb' + (b && b === max ? ' allin' : '') + '">' + b + '</output>' +
-        '<button class="btn" data-bet="1" aria-label="Bet 1 more"' + (b >= max ? ' disabled' : '') + '>+</button>' +
-        '<button class="btn gold allin-btn" data-bet="all"' + (!max ? ' disabled' : '') + ' aria-pressed="' + (b > 0 && b === max) + '">ALL IN</button></div>';
-    }).join('');
-    $('betsBack').hidden = false;
-  }
-  $('betList').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-bet]'), row = e.target.closest('[data-w]');
-    if (!b || !row) return;
-    var id = row.dataset.w, max = maxBet(id), cur = S.wager[id] || 0;
-    S.wager[id] = b.dataset.bet === 'all' ? (cur === max ? 0 : max) : Math.max(0, Math.min(max, cur + Number(b.dataset.bet)));
-    save(); openBets();
-  });
-  $('betsDone').addEventListener('click', function () {
-    $('betsBack').hidden = true;
-    var q = pickQuestion(['hard', 'impossible']);
-    if (!q) { toast('This deck has no questions. Choose another deck.'); openDecks(); return; }
-    unlockAudio();
-    Q = Object.assign({}, q); shown = false; risk = false; finalMode = true;
-    stopTimer(); total = left = Math.max(S.secs, 30); renderClock();
-    $('qBack').hidden = false;
-    renderQuestion();
-    tone([523, 659, 784], 0.12);
-    startTimer();
-  });
-  $('finalMark').addEventListener('click', function () { closeQuestion(); finalMode = false; openMarks(); });
-  function openMarks() {
-    $('markList').innerHTML = players.map(function (t) {
-      var m = S.marks[t.id], b = S.wager[t.id] || 0;
-      return '<div class="wrow" data-m="' + esc(t.id) + '"><span class="wn">' + esc(t.name) + '<small>' + (b && b === pts(t.id) ? 'ALL IN ' : 'bet ') + b + '</small></span>' +
-        '<button class="btn mk-right" data-mark="right" aria-pressed="' + (m === 'right') + '">✓ Right</button>' +
-        '<button class="btn mk-wrong" data-mark="wrong" aria-pressed="' + (m === 'wrong') + '">✗ Wrong</button></div>';
-    }).join('');
-    var all = players.every(function (t) { return S.marks[t.id]; });
-    $('markApply').disabled = !all;
-    $('markApply').textContent = all ? 'Add up the scores ✓' : 'Mark every team first';
-    $('marksBack').hidden = false;
-  }
-  $('markList').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-mark]'), row = e.target.closest('[data-m]');
-    if (!b || !row) return;
-    S.marks[row.dataset.m] = S.marks[row.dataset.m] === b.dataset.mark ? undefined : b.dataset.mark;
-    save(); openMarks();
-  });
-  $('markApply').addEventListener('click', function () {
-    players.forEach(function (t) {
-      var bet = S.wager[t.id] || 0;
-      if (bet) addPts(t.id, S.marks[t.id] === 'right' ? bet : -bet, S.marks[t.id] === 'right' ? 'won the wager' : 'lost the wager');
-    });
-    S.phase = 'done'; S.hist = [];
-    save(); $('marksBack').hidden = true; render();
-    var lead = empireLeaders();
-    toast(lead.length ? '🏝 Biggest island group: ' + lead.map(function (id) { return team(id).name; }).join(' & ') + ' +' + EMPIRE + '!' : 'The scores are in!');
-    tone([523, 659, 784, 1047], 0.12, 0.35);
-  });
-  $('markClose').addEventListener('click', function () { $('marksBack').hidden = true; });
+  $('wrong').addEventListener('click', function () { missed(false); });
+  $('noAnswer').addEventListener('click', function () { missed(true); });
 
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
@@ -471,9 +675,10 @@
   function renderWho() { $('whoOn').textContent = '🎯 Who answers: ' + (S.who ? 'on' : 'off'); $('whoOn').setAttribute('aria-pressed', String(!!S.who)); }
   $('more').addEventListener('click', function () {
     renderSecs(); renderWho(); disarm();
-    $('undoMove').disabled = !S.hist.length || busy || S.phase !== 'play';
-    $('skip').disabled = busy || !!S.claim || S.phase !== 'play';
-    $('finalBtn').disabled = busy || !!S.claim || S.phase !== 'play';
+    $('undoMove').disabled = !S.hist.length || busy;
+    $('skip').disabled = busy || !!S.claim || !!S.choice || S.phase !== 'play';
+    $('lastRound').disabled = busy || S.phase !== 'play';
+    $('lastRound').textContent = S.lastEnd ? 'Cancel the last round' : '🏁 Last round';
     $('menuBack').hidden = false;
   });
   $('menuClose').addEventListener('click', closeMenu);
@@ -483,23 +688,21 @@
   $('deckBtn').addEventListener('click', function () { closeMenu(); openDecks(); });
   $('skip').addEventListener('click', function () { closeMenu(); nextTurn(); });
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back to before the last question.'); });
-  $('finalBtn').addEventListener('click', function () {
-    closeMenu();
-    S.phase = 'final'; S.wager = {}; S.marks = {};
-    save(); render(); openBets();
-  });
+  $('lastRound').addEventListener('click', function () { closeMenu(); unlockAudio(); lastRound(); });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Quiz Island' }); });
-  function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New game (empty map, 0 points)'; }
+  function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New game (empty map, 0 gold)'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
-    if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: erase the map and the points'; setTimeout(disarm, 3500); return; }
-    players.forEach(function (t) { var p = pts(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
+    if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: erase the map and the gold'; setTimeout(disarm, 3500); return; }
+    players.forEach(function (t) { var p = gold(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
     fresh(S.deck);
+    $('choiceBack').hidden = true;
     save(); closeMenu(); render();
   });
 
   document.addEventListener('keydown', function (e) {
-    if (!$('menuBack').hidden || !$('deckBack').hidden || !$('betsBack').hidden || !$('marksBack').hidden) return;
+    if (!$('menuBack').hidden || !$('deckBack').hidden || !$('choiceBack').hidden) return;
+    if (!$('fx').hidden) { if (e.code === 'Space') { e.preventDefault(); $('fx').click(); } return; }
     if (!$('qBack').hidden) {
       if (e.code === 'Space') { e.preventDefault(); $('go').click(); }
       else if (e.key === 'a' || e.key === 'A') $('reveal').click();
@@ -512,32 +715,36 @@
 
   // ---------- start ----------
   function fresh(deck) {
-    S = { v: 1, level: S ? S.level : '', deck: deck || '', map: newMap(), pts: {}, turn: 0, skip: {}, powers: {}, mpicked: {}, who: S ? !!S.who : false,
-      secs: S ? S.secs : 20, hist: [], claim: null, phase: 'play', wager: {}, marks: {}, introDone: S ? S.introDone : false, order: {}, qi: {} };
+    S = { v: 2, level: S ? S.level : '', deck: deck || '', map: newMap(), pts: {}, turn: 0, skip: {}, powers: {}, mpicked: {}, who: S ? !!S.who : false,
+      secs: S ? S.secs : 20, hist: [], claim: null, choice: null, phase: 'play', lastEnd: 0, reveal: false, introDone: S ? S.introDone : false, order: {}, qi: {} };
+    shownGold = {};
     buildPool();
   }
   var contentReady = fetch('/games/race-board/content.json').then(function (r) { return r.json(); });
+  var ownReady = fetch('content.json').then(function (r) { return r.json(); }); // Quiz Island's own How to play slides
   Kru.ready(function (session) {
-    Promise.all([contentReady, KruQuiz.load(session.level, session)]).then(function (both) {
-      var c = both[0], QZ = both[1], lv = c.questions && c.questions[QZ.level] ? QZ.level : 'M.2';
+    Promise.all([contentReady, KruQuiz.load(session.level, session), ownReady]).then(function (all) {
+      var c = all[0], QZ = all[1], mine = all[2], lv = c.questions && c.questions[QZ.level] ? QZ.level : 'M.2';
       DECKS = buildDecks(c, QZ, lv);
       teams = Kru.allTeams();
       players = teams.filter(function (t) { return !t.teacher; });
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id) }; }); } });
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === QZ.level && saved.map && saved.map.own && saved.map.own.length === CELLS && (!saved.deck || deckByKey(saved.deck))) {
+      if (saved && saved.v === 2 && saved.level === QZ.level && saved.map && saved.map.own && saved.map.own.length === CELLS && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; buildPoolKeep();
       } else {
         S = null; fresh(QZ.unit ? 'unit' : '');
         S.level = QZ.level;
       }
-      S.hist = S.hist || []; S.skip = S.skip || {}; S.powers = S.powers || {}; S.mpicked = S.mpicked || {}; S.wager = S.wager || {}; S.marks = S.marks || {}; S.phase = S.phase || 'play';
-      INTRO = KruIntro.forLevel(c, QZ.level);
+      S.hist = S.hist || []; S.skip = S.skip || {}; S.powers = S.powers || {}; S.mpicked = S.mpicked || {}; S.phase = S.phase || 'play';
+      players.forEach(function (t) { shownGold[t.id] = gold(t.id); });
+      INTRO = KruIntro.forLevel(mine, QZ.level);
       render();
       var afterIntro = function () {
         S.introDone = true; save();
         if (!S.deck) openDecks();
-        else if (S.phase === 'final') openBets();
+        else if (S.choice) openChoice();
+        else if (S.claim) prepStep();
       };
       if (!S.introDone) KruIntro.show(INTRO, { title: 'Quiz Island' }).then(afterIntro); else afterIntro();
     }).catch(function (err) {
