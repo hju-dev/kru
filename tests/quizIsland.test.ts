@@ -20,38 +20,77 @@ describe('Quiz Island', () => {
     expect(html).toContain('/games/race-board/style.css')
     expect(html).not.toMatch(/<script(?![^>]*src=)/)
   })
-  it('tiers are worth 1 to 4 and only hard / impossible answers can steal', () => {
-    expect(js).toContain("easy: { label: 'Easy', share: 30, pts: 1 }")
-    expect(js).toContain("impossible: { label: 'Impossible', share: 8, pts: 4, steal: true }")
-    expect(js).toContain("hard: { label: 'Hard', share: 17, pts: 3, steal: true }")
-    expect(js).toContain('S.claim = { id: id, v: v, steal: stealOK || !emptyCells().length };') // a full map: everything steals
+  it('gold: easy 2, regular 3, hard 5, impossible 7; hard and impossible give a reward', () => {
+    expect(js).toContain("easy: { label: 'Easy', share: 30, pts: 2 }")
+    expect(js).toContain("regular: { label: 'Regular', share: 45, pts: 3 }")
+    expect(js).toContain("hard: { label: 'Hard', share: 17, pts: 5, reward: true }")
+    expect(js).toContain("impossible: { label: 'Impossible', share: 8, pts: 7, reward: true }")
   })
-  it('the map has 4 treasures, 4 volcanoes, 4 pirates and 4 chests; the empire gets +5', () => {
-    expect(js).toContain('TREASURES = 4, VOLCANOES = 4, PIRATES = 4, CHESTS = 4, EMPIRE = 5, BONUS = 3')
-    expect(js).toContain('function finalPts(id) { return pts(id) + (empireLeaders().indexOf(id) >= 0 ? EMPIRE : 0); }')
+  it('the map: one fortress per team, 4 treasures (+5), 3 volcanoes, 3 pirates, 4 chests (+10), a Sea Monster and Blackbeard (+15)', () => {
+    expect(js).toContain('var TREASURES = 4, VOLCANOES = 3, PIRATES = 3, CHESTS = 4;')
+    expect(js).toContain('var GEM = 5, CHEST = 10, BEARD = 15, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;')
+    expect(js).toContain('var nf = Math.min(players.length, 8)')
+    expect(js).toContain('m.seaMonster = take(1);')
+    expect(js).toContain('m.beard = take(1);')
+    expect(js).toContain("var half = Math.floor(gold(id) / 2)")
+  })
+  it("fortresses guard themselves and their owner's neighbors; one fortress per team; a stolen island is locked for a round", () => {
+    expect(js).toContain('if (has(S.map.fort, c)) return true;')
+    expect(js).toContain('return near(c).some(function (n) { return has(S.map.fort, n) && S.map.own[n] === o; });')
+    expect(js).toContain('return emptyCells().filter(function (c) { return !(fort && has(S.map.fort, c)); });')
+    expect(js).toContain('S.map.lock[c] = S.turn + players.length;')
+    expect(js).toContain('return o && o !== id && !guarded(c) && !locked(c);')
+  })
+  it('rewards: Gold Dig, Cannon Fire, Double Claim; Pirate Raid: sink, steal or claim 2, and wrong loses 2 islands', () => {
+    expect(js).toContain("steps = [{ m: 'claim', v: v, dig: true }]")
+    expect(js).toContain("steps = [{ m: 'claim', v: v }, { m: 'sink', announce: true }]")
+    expect(js).toContain("steps = [{ m: 'claim', v: v }, { m: 'claim', v: v, second: true }]")
+    expect(js).toContain("var lost = newest(t.id).slice(0, 2)")
+    expect(js).toContain("(p.id === 'free' && raid)") // no Free answer with a Pirate Raid
+    expect(js).toContain("{ id: 'raid', label: '🏴‍☠️ Pirate Raid' }")
+    expect(js).not.toContain('Risk it')
+  })
+  it('no answer = -3 gold; gold never below 0; a full map turns a claim into a steal', () => {
+    expect(html).toContain('id="noAnswer"')
+    expect(js).toContain("addPts(t.id, -NO_ANSWER, 'no answer')")
+    expect(js).toContain('Math.max(0, now + d)')
+    expect(js).toContain("if (s.m === 'claim' && !claimCells(cl.id).length && targets(cl.id).length) { s.m = 'steal';")
+  })
+  it('Final Wager is gone; Last round evens out the turns, then the treasure map and the empire (+10)', () => {
+    expect(js).not.toContain('Final Wager')
+    expect(html).not.toContain('finalBtn')
+    expect(html).toContain('id="lastRound"')
+    expect(js).toContain('S.lastEnd = S.turn % n === 0 ? S.turn + n : Math.ceil(S.turn / n) * n;')
+    expect(js).toContain('if (S.lastEnd && S.turn >= S.lastEnd) { endGame(); return true; }')
+    expect(js).toContain("S.phase = 'done'; S.reveal = true;")
     expect(js).toContain('Kru.finish(teams.map(function (t) { return { teamId: t.id, points: t.teacher ? 0 : finalPts(t.id) }; }))')
   })
-  it("points never go below 0, a steal moves the island's own value, pirates skip the next turn", () => {
-    expect(js).toContain('Math.max(0, now + d)')
-    expect(js).toContain("addPts(id, w, 'stole an island'); addPts(o, -w, 'island stolen');")
-    expect(js).toContain('S.skip[id] = 1;')
-    expect(js).toContain('if (!S.skip[cur.id]) break;')
+  it('Message in a Bottle: the last-place team gets +3 at the start of each round', () => {
+    expect(js).toContain("addPts(t.id, BOTTLE, 'message in a bottle')")
+    expect(js).toContain('if (players.length < 2 || min === max) return;')
   })
-  it('Risk it doubles the island and loses the tier points when wrong; Free answer counts as right', () => {
-    expect(js).toContain('TIERS[tierOf(Q)].pts * (risk ? 2 : 1)')
-    expect(js).toContain("addPts(t.id, -tp, 'risk it')")
-    expect(js).toContain('rightAnswer();')
+  it('every event shows a big banner with a picture; Reduce Motion stops the animation', () => {
+    const art = read(`${dir}/art.js`)
+    for (const k of ['island', 'double', 'dig', 'chest', 'beard', 'gem', 'fort', 'volcano', 'pirates', 'monster', 'cannon', 'boom', 'steal', 'raid', 'sinking', 'silence', 'bottle', 'crown', 'map', 'flag']) expect(art, k).toContain(`${k}: function`)
+    expect(html).toContain('<script src="art.js"></script>')
+    for (const t of ['LAND HO!', 'TREASURE CHEST!', "BLACKBEARD'S TREASURE!", 'SEA MONSTER!', 'KABOOM!', 'STOLEN!', 'VOLCANO!', 'PIRATE AMBUSH!', 'RAID FAILED!', 'SILENCE ON DECK!', 'MESSAGE IN A BOTTLE!', 'LAST ROUND!', 'ISLAND EMPIRE!']) expect(js, t).toContain(t)
+    expect(read(`${dir}/style.css`)).toMatch(/prefers-reduced-motion: reduce\)[\s\S]*\.fx\.go \.fx-rays/)
   })
-  it('the optional Who answers spinner and the Final Wager are wired in', () => {
+  it('How to play comes from Quiz Island itself, not Race Board', () => {
+    expect(js).toContain("fetch('content.json')")
+    expect(js).toContain('INTRO = KruIntro.forLevel(mine, QZ.level);')
+    const c = JSON.parse(read(`${dir}/content.json`)) as { intro: { title: string }[] }
+    expect(c.intro.map((s) => s.title)).toEqual(['Quiz Island', 'Big answers, big rewards', 'Secret islands', '🏰 Fortresses', 'Power-ups', 'Always guess!'])
+  })
+  it('the optional Who answers spinner is still wired in', () => {
     expect(js).toContain('KruPicker.member({')
-    expect(js).toContain("pickQuestion(['hard', 'impossible'])")
-    expect(html).toContain('id="finalBtn"')
   })
   it('decks: Race Board bank, Quiz Battle sets, units; a saved claim survives a reload', () => {
     for (const k of ["key: 'bank'", "key: 'qb-all'", "key: 'unit'"]) expect(js).toContain(k)
     expect(js).toContain("fetch('/games/race-board/content.json')")
     expect(js).toContain('saved.map.own.length === CELLS')
-    expect(js).toContain('S.claim = { id')
+    expect(js).toContain('S.claim = { id: id, steps: steps };')
+    expect(js).toContain('saved.v === 2')
   })
   it('How to play: 2 to 6 short slides', () => {
     const c = JSON.parse(read(`${dir}/content.json`)) as { intro: { title: string; text: string[] }[] }
