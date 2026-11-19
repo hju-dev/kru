@@ -1,0 +1,371 @@
+/**
+ * Kru "Battle" engine (Henry, Nov 19): Battle of Wits, and later Battle of Readers / Battle of Writers.
+ * Teams WRITE their answers on one board per team. A round = 5 questions:
+ *   ask    each question has a timer (30 / 45 / 60 s); when it ends the next question comes by itself
+ *          (3-second "Next question" countdown; Pause stops everything)
+ *   pens   "Pens down!"
+ *   review the 5 questions again, one at a time (Henry taps Next): the right answer + a short explanation;
+ *          teams mark their own answers right or wrong
+ *   bonus  2 hidden bonuses are revealed (tap a card to flip it)
+ *   tally  each team says its points; Henry sets them with − / + and adds them to the scores
+ *   result the round's points and the totals; Next round, or the final scores when the set is used up
+ *
+ * KruBattle.start({
+ *   title: 'Battle of Wits', logo: 'Battle of <b>Wits</b>',
+ *   load(session) -> Promise<{ sets: [{ key, name, questions }], hidden: [bonus], intro: [slides], problems?: [] }>,
+ *   question?(q, { esc }) -> html   // optional custom drawing (ask screen); default: question + A-D / "write it"
+ *   answer?(q, { esc }) -> html     // optional custom right answer (review screen)
+ * })
+ * A hidden bonus: { id, icon, name, text, points, needs?: 'short' | 'choice' } (text may use {n} = a question
+ * number and {letter} = a letter that starts one of the round's right answers).
+ */
+(function () {
+  'use strict';
+  var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
+  var TIMES = [30, 45, 60], ROUND = 5, GAP = 3;
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function shuffle(a) { for (var j = a.length - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var x = a[j]; a[j] = a[k]; a[k] = x; } return a; }
+  function range(n) { var a = []; for (var i = 0; i < n; i++) a.push(i); return a; }
+
+  function start(cfg) {
+    var SETS = [], HIDDEN = [], INTRO = [], PROBLEMS = [], teams = [];
+    var S = null, timer = 0, audio = null;
+
+    // ---------- the screen ----------
+    var main = document.createElement('main');
+    main.className = 'game kbt';
+    main.innerHTML =
+      '<header class="bar"><span class="round">' + cfg.logo + '</span><span class="kbt-where" id="kbtWhere"></span><span class="grow"></span>' +
+      '<button class="small" id="more" aria-haspopup="dialog" aria-label="Settings"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6c0 .2.3.4.5.4h4c.2 0 .5-.2.5-.4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button></header>' +
+      '<section class="stage kbt-stage" id="kbtStage" aria-live="polite"></section>' +
+      '<div class="controls kbt-controls" id="kbtControls"></div>' +
+      '<div class="strip" id="kbtStrip" aria-label="Team scores"></div>' +
+      '<div class="toast" id="toast" role="status" hidden><span id="toastText"></span><button class="small" id="toastUndo" hidden>Undo</button></div>';
+    document.body.insertBefore(main, document.body.firstChild);
+    var menu = document.createElement('div');
+    menu.className = 'backdrop'; menu.id = 'menuBack'; menu.hidden = true;
+    menu.innerHTML = '<div class="menu" role="dialog" aria-label="Settings">' +
+      '<div class="menu-label">Time per question</div><div class="menu-rounds" id="secsRow"></div>' +
+      '<button class="btn" id="kbtSet">Choose another question set</button>' +
+      '<button class="btn" id="kbtRestartRound">Start this round again</button>' +
+      '<button class="btn ghost danger" id="kbtReset">Reset all scores</button>' +
+      '<button class="btn" id="howTo">How to play</button>' +
+      '<button class="btn ghost" id="menuClose">Close</button></div>';
+    document.body.appendChild(menu);
+    var setsBack = document.createElement('div');
+    setsBack.className = 'backdrop'; setsBack.id = 'setsBack'; setsBack.hidden = true;
+    setsBack.innerHTML = '<div class="menu" role="dialog" aria-labelledby="setsTitle"><h2 class="round" id="setsTitle">Choose a question set</h2>' +
+      '<div class="sets" id="sets"></div><p class="problems" id="problems" hidden></p><button class="btn ghost" id="setsClose" hidden>Cancel</button></div>';
+    document.body.appendChild(setsBack);
+
+    function save() { Kru.saveState(S); }
+    function pts(id) { return S.pts[id] || 0; }
+    function set() { return SETS.filter(function (s) { return s.key === S.setKey; })[0] || null; }
+    function rounds() { var s = set(); return s ? Math.ceil(s.questions.length / ROUND) : 0; }
+    /** The questions of the current round, in the shuffled order. */
+    function roundQs() {
+      var s = set();
+      if (!s) return [];
+      return S.order.slice(S.round * ROUND, S.round * ROUND + ROUND).map(function (i) { return s.questions[i]; }).filter(Boolean);
+    }
+    function q() { return roundQs()[S.qi]; }
+
+    // ---------- sound (after a tap) ----------
+    function unlockAudio() {
+      try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
+      try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); if (audio.state === 'suspended') audio.resume(); } catch (e) {}
+    }
+    function tone(freqs, gap, dur) {
+      if (!audio) return;
+      try {
+        freqs.forEach(function (f, i) {
+          var t = audio.currentTime + i * (gap || 0.15), o = audio.createOscillator(), g = audio.createGain();
+          o.type = 'triangle'; o.frequency.value = f;
+          g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.35, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + (dur || 0.3));
+          o.connect(g).connect(audio.destination); o.start(t); o.stop(t + (dur || 0.3) + 0.05);
+        });
+      } catch (e) {}
+    }
+    var toastTimer = 0;
+    function toast(text) {
+      $('toastText').textContent = text; $('toast').hidden = false;
+      clearTimeout(toastTimer); toastTimer = setTimeout(function () { $('toast').hidden = true; }, 3000);
+    }
+
+    // ---------- timer: clock based, survives a short sleep ----------
+    function leftNow() { return S.running ? Math.max(0, (S.endAt - Date.now()) / 1000) : S.left; }
+    function startClock(secs) { S.left = secs; S.total = secs; S.running = true; S.endAt = Date.now() + secs * 1000; save(); runTick(); }
+    function pause() { if (!S.running) return; S.left = leftNow(); S.running = false; save(); render(); }
+    function resume() { if (S.running) return; S.running = true; S.endAt = Date.now() + S.left * 1000; save(); runTick(); render(); }
+    function runTick() { clearInterval(timer); timer = setInterval(tick, 200); tick(); }
+    var lastBeep = -1;
+    function tick() {
+      if (!S || !S.running) return;
+      var l = leftNow();
+      if (S.phase === 'ask') {
+        var s = Math.ceil(l);
+        if (s <= 3 && s > 0 && s !== lastBeep) { lastBeep = s; tone([660], 0, 0.12); }
+        if (l <= 0) { S.running = false; timeUp(); return; }
+      } else if (S.phase === 'gap' && l <= 0) { S.running = false; nextQuestion(); return; }
+      drawClock();
+    }
+    function drawClock() {
+      var l = leftNow(), d = $('kbtDigits'), f = $('kbtFill'), g = $('kbtGap');
+      if (d) { d.textContent = fmt(l); d.className = 'digits' + (l <= 5 && S.running ? ' warn' : ''); }
+      if (f) f.style.transform = 'scaleX(' + (S.total ? l / S.total : 0) + ')';
+      if (g) g.textContent = Math.max(1, Math.ceil(l));
+    }
+
+    // ---------- the flow ----------
+    function beginRound() {
+      S.phase = 'ask'; S.qi = 0; S.rev = 0; S.flipped = []; S.tally = {}; S.bonus = pickBonuses();
+      lastBeep = -1;
+      startClock(S.secs); render(); tone([523, 659, 784], 0.1);
+    }
+    function timeUp() {
+      tone([880, 660], 0.18);
+      if (S.qi + 1 >= roundQs().length) { S.phase = 'pens'; save(); render(); tone([784, 659, 523], 0.15, 0.4); return; }
+      S.phase = 'gap'; startClock(GAP); render();
+    }
+    function nextQuestion() {
+      S.qi++; S.phase = 'ask'; lastBeep = -1;
+      startClock(S.secs); render(); tone([660, 880], 0.1);
+    }
+    /** Two hidden bonuses that fit this round's questions (not the same ones as last round). */
+    function pickBonuses() {
+      var qs = roundQs(), hasShort = qs.some(function (x) { return !Array.isArray(x.choices); }), hasChoice = qs.some(function (x) { return Array.isArray(x.choices); });
+      var ok = HIDDEN.filter(function (b) { return (!b.needs || (b.needs === 'short' && hasShort) || (b.needs === 'choice' && hasChoice)) && (S.lastBonus || []).indexOf(b.id) < 0; });
+      if (ok.length < 2) ok = HIDDEN.slice();
+      var pick = shuffle(ok.slice()).slice(0, 2);
+      S.lastBonus = pick.map(function (b) { return b.id; });
+      var letters = qs.map(rightText).map(function (t) { return (t.match(/[A-Za-z]/) || [''])[0].toUpperCase(); }).filter(Boolean);
+      return pick.map(function (b) {
+        return { id: b.id, icon: b.icon, name: b.name, points: b.points,
+          text: b.text.replace('{n}', String(1 + Math.floor(Math.random() * qs.length))).replace('{letter}', letters.length ? letters[Math.floor(Math.random() * letters.length)] : 'S') };
+      });
+    }
+    function rightText(x) { return Array.isArray(x.choices) ? String(x.choices[x.answer]) : String(x.answer); }
+
+    // ---------- drawing ----------
+    function defaultQuestion(x) {
+      var h = '<div class="kbt-q">' + esc(x.q) + '</div>';
+      if (Array.isArray(x.choices)) {
+        h += '<div class="kbt-choices">' + x.choices.map(function (c, i) { return '<div class="kbt-choice"><b>' + 'ABCD'.charAt(i) + '</b><span>' + esc(c) + '</span></div>'; }).join('') + '</div>' +
+          '<div class="kbt-hint">✍ Write the letter: A, B, C or D</div>';
+      } else h += '<div class="kbt-hint">✍ Write your answer in words</div>';
+      return h;
+    }
+    function defaultAnswer(x) {
+      if (Array.isArray(x.choices)) return '<span class="kbt-letter">' + 'ABCD'.charAt(x.answer) + '</span> ' + esc(x.choices[x.answer]);
+      return esc(x.answer);
+    }
+    function render() {
+      var s = set(), ph = S.phase, st = $('kbtStage'), ct = $('kbtControls'), where = $('kbtWhere');
+      main.className = 'game kbt ph-' + ph;
+      renderStrip();
+      if (!s) { st.innerHTML = '<div class="kbt-big">Choose a question set to start.</div>'; ct.innerHTML = '<button class="btn gold" data-do="sets">Choose a set ▶</button>'; where.textContent = ''; return; }
+      var nr = rounds(), qs = roundQs(), roundLabel = 'Round ' + (S.round + 1) + '/' + nr;
+      if (ph === 'start') {
+        where.textContent = roundLabel;
+        st.innerHTML = '<div class="kbt-big">' + esc(s.name) + '</div><div class="kbt-sub">Round ' + (S.round + 1) + ': 5 questions, ' + S.secs + ' seconds each.<br />Get your board and pen ready!</div>';
+        ct.innerHTML = '<span class="grow"></span><button class="btn gold big" data-do="go">Start round ' + (S.round + 1) + ' ▶</button>';
+      } else if (ph === 'ask' || ph === 'gap') {
+        var x = q();
+        where.textContent = roundLabel + ' · Question ' + (S.qi + 1) + '/' + qs.length;
+        st.innerHTML = (cfg.question ? cfg.question(x, { esc: esc }) : defaultQuestion(x)) +
+          (ph === 'gap' ? '<div class="kbt-gapbox"><span>⏱ Time’s up! Next question in</span><b id="kbtGap">3</b></div>' : '');
+        ct.innerHTML = '<span class="digits" id="kbtDigits"></span><div class="progress"><i id="kbtFill"></i></div>' +
+          '<button class="btn" data-do="pause">' + (S.running ? 'Pause' : 'Resume') + '</button>' +
+          '<button class="btn gold" data-do="skip">' + (S.qi + 1 >= qs.length ? 'Pens down ▶' : 'Next ▶') + '</button>';
+        drawClock(); fit();
+      } else if (ph === 'pens') {
+        where.textContent = roundLabel;
+        st.innerHTML = '<div class="kbt-big">✏️ Pens down!</div><div class="kbt-sub">Now let’s check the answers together.<br />Mark each answer ✓ or ✗ on your board.</div>';
+        ct.innerHTML = '<span class="grow"></span><button class="btn gold big" data-do="review">Check the answers ▶</button>';
+      } else if (ph === 'review') {
+        var r = qs[S.rev];
+        where.textContent = roundLabel + ' · Answer ' + (S.rev + 1) + '/' + qs.length;
+        st.innerHTML = '<div class="kbt-rq"><span class="kbt-n">' + (S.rev + 1) + '</span>' + esc(r.q) + '</div>' +
+          '<div class="kbt-ans">✓ ' + (cfg.answer ? cfg.answer(r, { esc: esc }) : defaultAnswer(r)) + '</div>' +
+          (r.why ? '<div class="kbt-why">💡 ' + esc(r.why) + '</div>' : '') +
+          (r.read_aloud ? '<div class="kbt-why">🔊 ' + esc(r.read_aloud) + '</div>' : '') + // a lesson pack's read-aloud sentence
+          '<div class="kbt-mark">Mark your answer: ✓ or ✗</div>';
+        ct.innerHTML = '<button class="btn" data-do="back"' + (S.rev ? '' : ' disabled') + '>◀ Back</button><span class="grow"></span>' +
+          (S.rev + 1 < qs.length ? '<button class="btn gold big" data-do="fwd">Next answer ▶</button>' : '<button class="btn gold big" data-do="bonus">Hidden bonuses! ▶</button>');
+        fit();
+      } else if (ph === 'bonus') {
+        where.textContent = roundLabel;
+        var all = S.flipped.length >= S.bonus.length;
+        st.innerHTML = '<div class="kbt-btitle">🤫 Before you count… HIDDEN BONUSES!</div><div class="kbt-cards">' + S.bonus.map(function (b, i) {
+          var on = S.flipped.indexOf(i) >= 0;
+          return '<button class="kbt-card' + (on ? ' on' : '') + '" data-flip="' + i + '" aria-label="' + (on ? esc(b.name + ': ' + b.text) : 'Hidden bonus ' + (i + 1) + ': tap to reveal') + '">' +
+            '<span class="back">?</span><span class="front"><i>' + esc(b.icon) + '</i><b>' + esc(b.name) + '</b><span>' + esc(b.text) + '</span><em>+' + b.points + '</em></span></button>';
+        }).join('') + '</div>';
+        ct.innerHTML = '<span class="kbt-tip">' + (all ? 'Add the bonuses to your right answers!' : 'Tap a card to reveal it') + '</span><span class="grow"></span>' +
+          '<button class="btn gold big" data-do="tally"' + (all ? '' : ' disabled') + '>Count your points ▶</button>';
+      } else if (ph === 'tally') {
+        where.textContent = roundLabel + ' · Scores';
+        st.innerHTML = '<div class="kbt-ttitle">How many points did each team get? <small>1 per right answer + bonuses</small></div><div class="kbt-tally">' + players().map(function (t) {
+          var v = S.tally[t.id] || 0;
+          return '<div class="kbt-trow" data-t="' + esc(t.id) + '">' + Kru.badge(t, color(t)) +
+            '<button class="btn" data-d="-1" aria-label="One less"' + (v ? '' : ' disabled') + '>−</button><output>' + v + '</output><button class="btn" data-d="1" aria-label="One more">+</button></div>';
+        }).join('') + '</div>';
+        ct.innerHTML = '<button class="btn" data-do="bonusback">◀ Bonuses</button><span class="grow"></span><button class="btn gold big" data-do="add">Add to the scores ✓</button>';
+      } else if (ph === 'result') {
+        var last = S.round + 1 >= nr, got = S.roundPts[S.round] || {};
+        where.textContent = roundLabel + ' · Results';
+        var order = players().slice().sort(function (a, b) { return pts(b.id) - pts(a.id); });
+        st.innerHTML = '<div class="kbt-ttitle">' + (last ? '🏁 That was the last round of this set!' : '⭐ Round ' + (S.round + 1) + ' results') + '</div><div class="kbt-board">' + order.map(function (t, i) {
+          return '<div class="kbt-brow"><span class="kbt-rank">' + (1 + order.filter(function (o) { return pts(o.id) > pts(t.id); }).length) + '</span>' + Kru.badge(t, color(t)) + '<span class="kbt-plus">+' + (got[t.id] || 0) + '</span><b>' + pts(t.id) + '</b></div>';
+        }).join('') + '</div>';
+        ct.innerHTML = '<button class="btn" data-do="edit">Change scores</button><span class="grow"></span>' +
+          (last ? '<button class="btn" data-do="sets">Another set</button><button class="btn gold big" data-do="final">🏆 Final scores</button>' : '<button class="btn gold big" data-do="nextround">Next round ▶</button>');
+      }
+    }
+    function players() { return teams.filter(function (t) { return !t.teacher; }); }
+    function color(t) { return COLORS[Math.max(0, teams.indexOf(t)) % COLORS.length]; }
+    function renderStrip() {
+      var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }).concat([0]));
+      $('kbtStrip').innerHTML = teams.map(function (t, i) {
+        return '<div class="tile' + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points">' +
+          '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span></div>';
+      }).join('');
+    }
+    /** Long questions shrink so everything fits the phone screen. */
+    function fit() {
+      var st = $('kbtStage'), el = st.querySelector('.kbt-q, .kbt-rq');
+      if (!el) return;
+      var over = function () { return st.scrollHeight > st.clientHeight + 1; };
+      // [element, start size, smallest]: the question shrinks to 26 first, then the rest, then the question again
+      var parts = [[el, 34, 26], [st.querySelector('.kbt-choices'), 26, 18], [st.querySelector('.kbt-ans'), 34, 22], [st.querySelector('.kbt-why'), 20, 16], [st.querySelector('.kbt-hint'), 20, 16], [el, 26, 18]];
+      parts.forEach(function (p) { if (p[0]) p[0].style.fontSize = p[1] + 'px'; });
+      parts.forEach(function (p) {
+        if (!p[0]) return;
+        var size = Math.min(p[1], parseFloat(p[0].style.fontSize) || p[1]); // the question's second pass goes on from where it is
+        p[0].style.fontSize = size + 'px';
+        while (size > p[2] && over()) p[0].style.fontSize = (size -= 2) + 'px';
+      });
+    }
+
+    // ---------- taps ----------
+    main.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-do],[data-flip],[data-d]');
+      if (!b || b.disabled) return;
+      unlockAudio();
+      if (b.dataset.flip != null) {
+        var i = +b.dataset.flip;
+        if (S.flipped.indexOf(i) < 0) { S.flipped.push(i); save(); render(); tone([523, 784, 1047, 1319], 0.08, 0.35); }
+        return;
+      }
+      if (b.dataset.d != null) {
+        var row = b.closest('[data-t]'), id = row.dataset.t;
+        S.tally[id] = Math.max(0, (S.tally[id] || 0) + Number(b.dataset.d)); save(); render(); return;
+      }
+      var d = b.dataset.do;
+      if (d === 'sets') openSets();
+      else if (d === 'go') beginRound();
+      else if (d === 'pause') { if (S.running) pause(); else resume(); }
+      else if (d === 'skip') { S.running = false; if (S.phase === 'gap') nextQuestion(); else timeUp(); }
+      else if (d === 'review') { S.phase = 'review'; S.rev = 0; save(); render(); tone([523, 659], 0.1); }
+      else if (d === 'fwd') { S.rev++; save(); render(); }
+      else if (d === 'back') { S.rev = Math.max(0, S.rev - 1); save(); render(); }
+      else if (d === 'bonus') { S.phase = 'bonus'; save(); render(); tone([392, 523, 659, 784], 0.1); }
+      else if (d === 'tally') { S.phase = 'tally'; if (!S.roundPts[S.round]) S.tally = {}; save(); render(); }
+      else if (d === 'bonusback') { S.phase = 'bonus'; save(); render(); }
+      else if (d === 'add') addScores();
+      else if (d === 'edit') { S.tally = Object.assign({}, S.roundPts[S.round] || {}); S.phase = 'tally'; save(); render(); }
+      else if (d === 'nextround') { S.round++; S.phase = 'start'; save(); render(); }
+      else if (d === 'final') KruEnd.show({ keepPlaying: function () { render(); } });
+    });
+    /** The tally becomes this round's points (changing them later only adds the difference). */
+    function addScores() {
+      var before = S.roundPts[S.round] || {};
+      players().forEach(function (t) {
+        var now = S.tally[t.id] || 0, d = now - (before[t.id] || 0);
+        if (d) { S.pts[t.id] = pts(t.id) + d; Kru.score(t.id, d, 'round ' + (S.round + 1)); }
+      });
+      S.roundPts[S.round] = Object.assign({}, S.tally);
+      S.phase = 'result'; save(); render();
+      tone([523, 659, 784, 1047], 0.1, 0.35);
+    }
+
+    // ---------- sets ----------
+    function openSets() {
+      var groups = {};
+      SETS.forEach(function (s) { (groups[s.group || ''] = groups[s.group || ''] || []).push(s); });
+      $('sets').innerHTML = Object.keys(groups).map(function (g) {
+        return (g ? '<h3>' + esc(g) + '</h3>' : '') + groups[g].map(function (s) {
+          return '<button class="btn" data-set="' + esc(s.key) + '"><b>' + esc(s.name) + '</b><br /><small>' + s.questions.length + ' questions · ' + Math.ceil(s.questions.length / ROUND) + ' round' + (s.questions.length > ROUND ? 's' : '') + '</small></button>';
+        }).join('');
+      }).join('') + (cfg.noSheetNote ? '' : '');
+      if (PROBLEMS.length) {
+        $('problems').textContent = PROBLEMS.length + ' row' + (PROBLEMS.length === 1 ? '' : 's') + ' in your Questions tab couldn\'t be used: ' +
+          PROBLEMS.slice(0, 5).map(function (p) { return 'row ' + p.row + ' (' + p.problem + ')'; }).join('; ') + (PROBLEMS.length > 5 ? '…' : '');
+        $('problems').hidden = false;
+      }
+      $('setsClose').hidden = !set();
+      $('setsBack').hidden = false;
+    }
+    $('sets').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-set]');
+      if (!b) return;
+      S.setKey = b.dataset.set; S.setName = set().name;
+      S.order = shuffle(range(set().questions.length)); S.round = 0; S.phase = 'start'; S.running = false; S.roundPts = {};
+      save(); $('setsBack').hidden = true; render();
+    });
+    $('setsClose').addEventListener('click', function () { $('setsBack').hidden = true; });
+
+    // ---------- ⚙ menu ----------
+    function closeMenu() { $('menuBack').hidden = true; }
+    function renderSecs() { $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join(''); }
+    function disarm() { $('kbtReset').classList.remove('armed'); $('kbtReset').textContent = 'Reset all scores'; }
+    $('more').addEventListener('click', function () { renderSecs(); disarm(); $('kbtRestartRound').disabled = !set(); $('menuBack').hidden = false; if (S.running && S.phase === 'ask') pause(); });
+    $('menuClose').addEventListener('click', closeMenu);
+    $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
+    $('secsRow').addEventListener('click', function (e) { var b = e.target.closest('[data-secs]'); if (!b) return; S.secs = +b.dataset.secs; save(); renderSecs(); });
+    $('kbtSet').addEventListener('click', function () { closeMenu(); openSets(); });
+    $('kbtRestartRound').addEventListener('click', function () {
+      closeMenu();
+      var got = S.roundPts[S.round];
+      if (got) players().forEach(function (t) { if (got[t.id]) { S.pts[t.id] = pts(t.id) - got[t.id]; Kru.score(t.id, -got[t.id], 'round restarted'); } });
+      delete S.roundPts[S.round];
+      S.phase = 'start'; S.running = false; save(); render();
+    });
+    $('kbtReset').addEventListener('click', function () {
+      var btn = this;
+      if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: all scores back to 0'; setTimeout(disarm, 3500); return; }
+      teams.forEach(function (t) { if (pts(t.id)) Kru.score(t.id, -pts(t.id), 'reset'); });
+      S.pts = {}; S.roundPts = {}; save(); closeMenu(); render();
+    });
+    $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: cfg.title }); });
+
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
+    window.addEventListener('resize', fit);
+    Kru.onFinishRequest(function () { Kru.finish(teams.map(function (t) { return { teamId: t.id, points: pts(t.id) }; })); });
+
+    // ---------- start ----------
+    Kru.ready(function (session) {
+      cfg.load(session).then(function (got) {
+        SETS = got.sets.filter(function (s) { return s.questions && s.questions.length; });
+        HIDDEN = got.hidden || []; INTRO = got.intro || []; PROBLEMS = got.problems || [];
+        teams = Kru.allTeams();
+        KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
+        var saved = session.resume;
+        if (saved && saved.v === 2 && saved.level === session.level && (!saved.setKey || SETS.some(function (s) { return s.key === saved.setKey && s.name === saved.setName && s.questions.length === saved.order.length; }))) S = saved;
+        else S = { v: 2, level: session.level, setKey: null, order: [], round: 0, phase: 'start', qi: 0, rev: 0, flipped: [], bonus: [], tally: {}, roundPts: {}, pts: {}, secs: 30, running: false, left: 0, total: 0, endAt: 0 };
+        if (TIMES.indexOf(S.secs) < 0) S.secs = 30;
+        render();
+        if (S.running) runTick();
+        var after = function () { S.introDone = true; save(); if (!set()) openSets(); };
+        if (!S.introDone) KruIntro.show(INTRO, { title: cfg.title }).then(after); else after();
+      }).catch(function (err) {
+        $('kbtStage').textContent = 'Could not load the questions. Close the game and open it again.';
+        if (window.console) console.error(err);
+      });
+    });
+  }
+
+  window.KruBattle = { start: start, ROUND: ROUND, TIMES: TIMES };
+})();

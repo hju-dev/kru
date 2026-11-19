@@ -155,7 +155,7 @@
     ],
     "minutes": 20,
     "status": "ready",
-    "description": "One question at a time with a timer (multiple choice or short answer). Teams hold up answers; tap the teams that were right. Built-in sets, or your own from the Questions tab of your Sheet.",
+    "description": "Rounds of 5 questions: teams write each answer on one board while the timer runs (the next question comes by itself). Then the class checks the answers together, hidden bonuses are revealed, and each team adds up its points.",
     "type": "team quiz",
     "phoneLandscape": true,
     "sheetQuestions": true,
