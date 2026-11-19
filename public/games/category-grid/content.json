@@ -2,7 +2,7 @@
  "about": "Category Grid: a letter and five categories. Teams write one word for each category that starts with the letter. Reveal shows example answers. Built from word lists per level; at least 50 rounds per level, shuffled every game. Scoring (Henry, Nov 9): +1 per word, every extra word with the letter adds 1 (huge heavy horse = 3); no word twice in a round; the teacher adds up +1 / +3 / +5 / −1 for each team and taps Done. No bonus cards.",
  "intro": [
   {
-   "title": "Category Grid",
+   "title": "Scattergories",
    "text": [
     "You get a letter and five categories.",
     "Write one word for each category."

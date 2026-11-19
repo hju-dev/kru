@@ -146,7 +146,7 @@
   });
   function renderTotals() {
     $('totals').innerHTML = players.map(function (t) {
-      return '<span class="tot" style="--c:' + color(t.id) + '">' + esc(t.name) + ' <b>' + pts(t.id) + '</b></span>';
+      return '<span class="tot" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + pts(t.id) + '</b></span>';
     }).join('');
   }
 

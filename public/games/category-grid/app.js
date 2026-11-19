@@ -4,8 +4,8 @@
 (function () {
   'use strict';
   KruCards.start({
-    title: 'Category Grid',
-    logo: 'Category <b>Grid</b>',
+    title: 'Scattergories',
+    logo: 'Scatter<b>gories</b>',
     items: function (c, level) { return c[level].items; },
     reveal: true,
     timer: { secs: 120, options: [60, 90, 120, 180] },

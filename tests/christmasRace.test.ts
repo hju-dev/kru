@@ -142,8 +142,8 @@ describe('Christmas Race Board game', () => {
     const html = read(`${dir}/index.html`)
     expect(html).toContain('<script src="/games/race-board/app.js"></script>')
     expect(html).toContain('href="/games/race-board/style.css"')
-    expect(html).toContain('<title>Christmas Race Board</title>')
-    expect(read('public/games/race-board/index.html')).toContain('<title>Race Board</title>') // the normal game is untouched
+    expect(html).toContain('<title>Christmas Dash</title>')
+    expect(read('public/games/race-board/index.html')).toContain('<title>Quiz Dash</title>') // the normal game is untouched
   })
   it('uses your 30 / 30 / 25 / 15 mix, one bank for every level, and a Forfeit instead of the back dice', () => {
     expect(content.shares).toEqual({ easy: 30, regular: 30, hard: 25, impossible: 15 })
@@ -166,7 +166,7 @@ describe('Christmas look (Nov 18)', () => {
     expect(html).toContain('<link rel="stylesheet" href="christmas.css" />')
     expect(html).toContain('<div class="lights" aria-hidden="true"></div>')
     expect(html).toContain('<div class="snow" aria-hidden="true"></div>')
-    expect(html).toContain('🎄 Christmas <b>Race</b>')
+    expect(html).toContain('🎄 Christmas <b>Dash</b>')
   })
   it('snow never blocks a tap and stops for Reduce Motion', () => {
     expect(css).toMatch(/\.snow \{[^}]*pointer-events: none/)

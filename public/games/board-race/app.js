@@ -130,7 +130,7 @@
     var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
     $('strip').innerHTML = teams.map(function (t, i) {
       return '<button class="tile' + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points. Tap to give points">' +
-        '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
     }).join('');
   }
   function addPoints(id, d) {

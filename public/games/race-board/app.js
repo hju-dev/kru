@@ -41,7 +41,7 @@
     return { n: t.dice, big: t.big, back: !right };
   }
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
-  var GAME_TITLE = 'Race Board';
+  var GAME_TITLE = 'Quiz Dash';
   var XMAS = null; // Christmas Race Board (content.json "christmas"): { squares: [n], challenge: [{ title, text }], forfeit: [{ title, text }] }
   // chance cards (Henry's list + a few more); each is equally likely
   var CHANCE = [
@@ -133,7 +133,7 @@
     $('legend').innerHTML = racers.map(function (t, i) {
       var f = S.finished.indexOf(t.id), flags = (S.skip[t.id] ? ' ⏸' : '') + (S.shield[t.id] ? ' 🛡' : '') + (S.dbl[t.id] ? ' 🎲🎲' : '');
       return '<button class="lg' + (current() && t.id === current().id ? ' now' : '') + '" data-team="' + esc(t.id) + '" aria-label="' + esc(t.name) + ': who is on this team?">' +
-        '<i style="background:' + color(t) + '">' + (i + 1) + '</i>' + esc(t.name) + flags +
+        '<i style="background:' + color(t) + '">' + Kru.teamNo(t) + '</i>' + flags +
         (f >= 0 && f < 3 ? ' <b>' + ['1st', '2nd', '3rd'][f] + '</b>' : f >= 3 ? ' <b>done</b>' : '') + '</button>';
     }).join('');
     var t = current(), done = S.finished.length >= racers.length;
@@ -459,7 +459,7 @@
   var POWERS = [
     { id: 'fifty', label: '50/50' },
     { id: 'time', label: '+20 s' },
-    { id: 'free', label: 'Free answer' },
+    { id: 'free', label: 'Free Play' },
     { id: 'risk', label: 'Risk it' },
   ];
   var risk = false; // Risk It is on for the question on screen
@@ -493,7 +493,7 @@
     } else if (p === 'free') {
       use(id, 'free');
       if (risk) use(id, 'risk');
-      toast('🎟 ' + current().name + ' used a free answer!');
+      toast('🎟 ' + current().name + ' used Free Play!');
       var spec = diceFor(Q.tier || 'regular', true, risk);
       closeQuestion(); roll(id, spec);
     } else if (p === 'risk') {

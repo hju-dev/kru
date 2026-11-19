@@ -178,7 +178,7 @@
       var n = Math.max(0, left(t.id));
       var cls = (S.done && S.winner === t.id ? ' won' : '') + (n <= 0 ? ' out' : n <= 3 ? ' low' : '');
       return '<button class="tile' + cls + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ': ' + n + ' questions left. Tap when they ask one">' +
-        '<span class="tn">' + esc(t.name) + '</span><span class="left">' + (n <= 0 ? 'Out' : n) + '</span><span class="tp">' + pts(t.id) + ' pts</span></button>';
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="left">' + (n <= 0 ? 'Out' : n) + '</span><span class="tp">' + pts(t.id) + ' pts</span></button>';
     }).join('');
   }
 

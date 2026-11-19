@@ -31,12 +31,14 @@
   var POWERS = [
     { id: 'fifty', label: '50/50' },
     { id: 'time', label: '+20 s' },
-    { id: 'free', label: 'Free answer' },
+    { id: 'free', label: 'Free Play' },
     { id: 'raid', label: '🏴‍☠️ Pirate Raid' },
   ];
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
   var ART = window.QIArt;
+  var COIN = '<span class="coin">' + ART.coin() + '</span>'; // a drawn gold coin (the 🪙 emoji isn't gold everywhere)
+  KruQuiz.shortHint = 'Short answer: say it out loud'; // Henry: every answer in Quiz Island is spoken
 
   var DECKS = [], POOL = {}, teams = [], players = [], INTRO = [];
   var S = null;
@@ -124,7 +126,7 @@
     if (o.gold) countUp(g, o.gold);
     $('fxBits').innerHTML = o.mood === 'good' || o.mood === 'magic' ? range(14).map(function (i) {
       var a = (i / 14) * 360, d = 140 + (i % 3) * 40;
-      return '<i style="--a:' + a + 'deg;--d:' + d + 'px;--t:' + (i % 4) * 0.05 + 's">' + (o.mood === 'magic' ? '✦' : '🪙') + '</i>';
+      return '<i style="--a:' + a + 'deg;--d:' + d + 'px;--t:' + (i % 4) * 0.05 + 's">' + (o.mood === 'magic' ? '✦' : COIN) + '</i>';
     }).join('') : '';
     fx.hidden = false;
     void fx.offsetWidth; // restart the animations
@@ -140,7 +142,7 @@
     el.className = 'fx-gold ' + (v > 0 ? 'up' : 'down');
     function step(t) {
       var k = Math.min(1, (t - t0) / 600);
-      el.textContent = sign + Math.round(n * k) + ' 🪙';
+      el.innerHTML = sign + Math.round(n * k) + ' ' + COIN;
       if (k < 1 && !$('fx').hidden) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -154,7 +156,8 @@
     var nf = Math.min(players.length, 8), cells = shuffle(range(CELLS)), at = 0;
     var take = function (n) { var a = cells.slice(at, at + n); at += n; return a; };
     var m = { own: new Array(CELLS).fill(null), worth: new Array(CELLS).fill(0), ash: [], pirated: [], monster: [], order: {}, lock: {} };
-    m.fort = take(nf);              // visible: 🏰 one per team (each team may own one)
+    m.fort = spreadForts(nf, cells); // visible: 🏰 one per team (each team may own one), far apart
+    cells = cells.filter(function (c) { return m.fort.indexOf(c) < 0; });
     m.treasure = take(TREASURES);   // visible: 💎 +5
     m.volcano = take(VOLCANOES);    // hidden: ash, lose your newest island
     m.pirate = take(PIRATES);       // hidden: miss your next turn
@@ -162,6 +165,22 @@
     m.seaMonster = take(1);         // hidden: eats half your gold
     m.beard = take(1);              // hidden: +15
     return m;
+  }
+  /** Fortresses at least 2 islands apart in every direction (3 steps); with many teams the map is too small,
+      so the gap shrinks to 1 island. */
+  function spreadForts(n, cells) {
+    for (var gap = 3; gap >= 1; gap--) {
+      for (var tries = 0; tries < 60; tries++) {
+        var picked = [];
+        shuffle(cells.slice()).forEach(function (c) {
+          if (picked.length >= n) return;
+          var ok = picked.every(function (p) { return Math.max(Math.abs(Math.floor(p / COLS) - Math.floor(c / COLS)), Math.abs(p % COLS - c % COLS)) >= gap; });
+          if (ok) picked.push(c);
+        });
+        if (picked.length === n) return picked;
+      }
+    }
+    return cells.slice(0, n);
   }
   function blocked(c) { return has(S.map.ash, c) || has(S.map.pirated, c) || has(S.map.monster, c); }
   function owned(id) { var a = []; S.map.own.forEach(function (o, c) { if (o === id) a.push(c); }); return a; }
@@ -231,7 +250,7 @@
   }
 
   // ---------- drawing ----------
-  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '🧰', seaMonster: '🐙', beard: '💀' };
+  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '<span class="pic">' + ART.chest() + '</span>', seaMonster: '🐙', beard: '<span class="pic">' + ART.pirate() + '</span>' };
   function renderMap() {
     var cl = S.claim, step = cl && cl.steps[0], can = step ? stepCells(cl.id, step) : [], leaders = empireLeaders();
     $('map').className = 'map' + (step ? ' aim ' + step.m : '') + (S.reveal ? ' reveal' : '');
@@ -256,8 +275,8 @@
       var g = gold(t.id), bump = shownGold[t.id] !== undefined && shownGold[t.id] !== g ? (g > shownGold[t.id] ? ' up' : ' down') : '';
       shownGold[t.id] = g;
       var flags = (S.skip[t.id] ? ' ⏸' : '') + (ownsFort(t.id) ? ' 🏰' : '') + (leaders.indexOf(t.id) >= 0 ? ' 👑' : '');
-      return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '"><i style="background:' + color(t.id) + '">' + (i + 1) + '</i>' +
-        '<span class="nm">' + esc(t.name) + '</span> <b class="g' + bump + '">' + g + '🪙</b> · ' + owned(t.id).length + '🏝' + flags + '</span>';
+      return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '"><i style="background:' + color(t.id) + '">' + Kru.teamNo(t) + '</i>' +
+        ' <b class="g' + bump + '">' + g + COIN + '</b> · ' + owned(t.id).length + '🏝' + flags + '</span>';
     }).join('');
   }
   var HINT = { claim: 'tap an empty island', sink: '💣 tap an enemy island to sink it', steal: '⚔ tap an enemy island to steal it' };
@@ -265,7 +284,7 @@
     if (!S) return;
     var cur = current(), cl = S.claim, step = cl && cl.steps[0];
     $('turn').innerHTML = !cur ? 'Add students to play' : S.phase === 'done' ? '🏁 Game over' :
-      step ? '<i class="dot" style="background:' + color(cl.id) + '"></i>' + esc(tname(cl.id)) + ': ' + HINT[step.m] + (step.m === 'claim' ? ' (+' + (step.v + (step.dig ? DIG : 0)) + '🪙)' : '') :
+      step ? '<i class="dot" style="background:' + color(cl.id) + '"></i>' + esc(tname(cl.id)) + ': ' + HINT[step.m] + (step.m === 'claim' ? ' (+' + (step.v + (step.dig ? DIG : 0)) + ' ' + COIN + ')' : '') :
       '<i class="dot" style="background:' + color(cur.id) + '"></i>' + esc(cur.name) + "'s turn" + (S.lastEnd ? ' · 🏁 Last round' : '');
     $('ask').hidden = !!cl;
     $('ask').disabled = busy || S.phase !== 'play';
@@ -487,11 +506,11 @@
         decks.push({ key: 'unit:' + s.name, label: 'Unit set: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) });
       });
     }
-    if (own.length) decks.push({ key: 'bank', label: 'Race Board questions', sub: own.length + ' questions, easy to impossible', qs: deckQs(own, '', true) });
+    if (own.length) decks.push({ key: 'bank', label: 'Quiz Dash questions', sub: own.length + ' questions, easy to impossible', qs: deckQs(own, '', true) });
     var every = [];
     QZ.builtIn.forEach(function (s) { every = every.concat(deckQs(s.questions, s.name)); });
-    if (every.length) decks.push({ key: 'qb-all', label: 'Quiz Battle: all topics', sub: every.length + ' questions', qs: every });
-    QZ.builtIn.forEach(function (s) { decks.push({ key: 'qb:' + s.name, label: 'Quiz Battle: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) }); });
+    if (every.length) decks.push({ key: 'qb-all', label: 'Battle of Wits: all topics', sub: every.length + ' questions', qs: every });
+    QZ.builtIn.forEach(function (s) { decks.push({ key: 'qb:' + s.name, label: 'Battle of Wits: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) }); });
     QZ.fromSheet.forEach(function (s) { decks.push({ key: 'sheet:' + s.name, label: 'Your Sheet: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) }); });
     return decks;
   }
@@ -554,7 +573,7 @@
   function renderQuestion() {
     var t = current(), tier = TIERS[tierOf(Q)];
     $('qWho').textContent = t.name + (who ? ' · 🎯 ' + who : '');
-    $('qTier').textContent = tier.label + ' · ' + tier.pts + ' 🪙' + (tier.reward ? ' · ⭐ reward' : '');
+    $('qTier').innerHTML = tier.label + ' · ' + tier.pts + ' ' + COIN + (tier.reward ? ' · ⭐ reward' : '');
     $('qTier').className = 'tier ' + tierOf(Q);
     $('qTopic').textContent = Q.set ? '· ' + Q.set : '';
     $('qBody').innerHTML = KruQuiz.html(Q, shown);
@@ -591,7 +610,7 @@
       renderPowers();
     } else if (p === 'free') {
       use(id, 'free');
-      toast('🎟 ' + current().name + ' used a free answer!');
+      toast('🎟 ' + current().name + ' used Free Play!');
       rightAnswer();
     } else if (p === 'raid') {
       raid = !raid; tone(raid ? [392, 523, 659] : [440], 0.08); renderPowers();

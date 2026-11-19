@@ -132,7 +132,6 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   const [selected, setSelected] = useState<number[]>([])
   const [several, setSeveral] = useState(false)
   const [absentMode, setAbsentMode] = useState(false)
-  const [renaming, setRenaming] = useState<string | null>(null)
   const [sheet, setSheet] = useState<'load' | 'save' | null>(null)
 
   // Everything on this screen works with student ids (not numbers), so two students who share a number stay separate
@@ -207,12 +206,6 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
 
   function removeBin(id: string) {
     setBins(s.bins.filter((b) => b.id !== id))
-  }
-
-  function rename(id: string, name: string) {
-    setRenaming(null)
-    const clean = name.trim()
-    if (clean) setBins(s.bins.map((b) => (b.id === id ? { ...b, name: clean.slice(0, 30) } : b)))
   }
 
   function start() {
@@ -417,28 +410,8 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
                 onClick={() => tapBin(b.id)}
               >
                 <div className="bin-head">
-                  {renaming === b.id ? (
-                    <input
-                      className="rename"
-                      defaultValue={b.name}
-                      autoFocus
-                      maxLength={30}
-                      onClick={(e) => e.stopPropagation()}
-                      onBlur={(e) => rename(b.id, e.target.value)}
-                      onKeyDown={(e) => e.key === 'Enter' && (e.target as HTMLInputElement).blur()}
-                    />
-                  ) : (
-                    <button
-                      className="bin-name"
-                      onClick={(e) => {
-                        if (selected.length) return // tapping a team while placing drops the student
-                        e.stopPropagation()
-                        setRenaming(b.id)
-                      }}
-                    >
-                      {b.name} <span className="pencil" aria-hidden>✎</span>
-                    </button>
-                  )}
+                  {/* Henry, Nov 19: no custom team names; games show the number in a colored circle */}
+                  <span className="bin-name">{b.name}</span>
                   <span className="count">{b.members.length || 'Empty'}</span>
                   {s.bins.length > 1 && (
                     <button

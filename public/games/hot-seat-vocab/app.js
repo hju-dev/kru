@@ -281,7 +281,7 @@
     var inBattle = (phase === 'bready' || phase === 'blive' || phase === 'bover') && S.battle ? S.battle.pairs[S.battle.i] : null;
     $('strip').innerHTML = teams.map(function (t, i) {
       return '<button class="tile' + ((inBattle ? inBattle.indexOf(t.id) >= 0 : t.id === S.seat) ? ' on' : '') + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points">' +
-        '<span class="tn">' + esc(t.name) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span></button>';
     }).join('');
   }
 

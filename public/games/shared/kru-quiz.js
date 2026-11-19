@@ -51,11 +51,19 @@
     return '<div class="kq-say" data-kq="say"><span class="kq-say-lab">🗣 Read aloud</span><span class="kq-say-t">' + esc(text) + '</span></div>';
   }
 
+  /** A drawn picture a game provides (window.KruQuizPics, e.g. Christmas Dash), or '' */
+  function pic(name) {
+    var P = window.KruQuizPics || {}, f = P[name];
+    return f ? (typeof f === 'function' ? f() : f) : '';
+  }
+  function picText(s) {
+    return esc(s).replace(/\[\[([a-z0-9-]+)\]\]/g, function (m, k) { var p = pic(k); return p ? '<span class="kq-ri">' + p + '</span>' : m; });
+  }
   function html(q, shown) {
     var h = '<div class="kq-q" data-kq="q">' + esc(q.q) + '</div>';
     // a rebus puzzle (Christmas Race Board): picture lines of emoji and words, shown big under the question
     if (Array.isArray(q.rebus) && q.rebus.length) {
-      h += '<div class="kq-rebus" data-kq="rebus">' + q.rebus.map(function (l) { return '<div>' + esc(l) + '</div>'; }).join('') + '</div>';
+      h += '<div class="kq-rebus" data-kq="rebus">' + q.rebus.map(function (l) { return '<div>' + picText(l) + '</div>'; }).join('') + '</div>';
     }
     if (Array.isArray(q.choices)) {
       var said = shown && q.read_aloud;
@@ -64,7 +72,8 @@
         return '<div class="kq-choice' + cls + '"><span class="kq-letter">' + 'ABCD'.charAt(i) + '</span><span>' + esc(c) + '</span></div>';
       }).join('') + '</div>';
     } else {
-      h += shown ? '<div class="kq-ans">' + esc(q.answer) + '</div>' : '<div class="kq-short">Short answer: write or say it</div>';
+      var ap = shown && q.pic ? pic(q.pic) : ''; // the answer's picture on Reveal (rebus puzzles)
+      h += shown ? (ap ? '<div class="kq-reveal"><span class="kq-pic">' + ap + '</span><div class="kq-ans">' + esc(q.answer) + '</div></div>' : '<div class="kq-ans">' + esc(q.answer) + '</div>') : '<div class="kq-short">' + esc(window.KruQuiz.shortHint) + '</div>';
     }
     if (shown && q.read_aloud) h += say(q.read_aloud);
     return h;
@@ -89,5 +98,6 @@
     if (sy && right && over() && norm(sy.textContent).indexOf(norm(right.textContent)) >= 0) ch.style.display = 'none';
   }
 
-  window.KruQuiz = { load: load, unit: unit, html: html, say: say, fit: fit, valid: valid, esc: esc };
+  // the line under a question with no A-D choices; a game can change it (Quiz Island: say it out loud)
+  window.KruQuiz = { shortHint: 'Short answer: write or say it', load: load, unit: unit, html: html, say: say, fit: fit, valid: valid, esc: esc };
 })();

@@ -373,3 +373,12 @@
 .track .xmas .num {
   font-size: 16px;
 }
+/* Nov 19: no team names, so the number circle is bigger */
+.legend .lg {
+  font-size: 18px;
+}
+.legend .lg i {
+  width: 30px;
+  height: 30px;
+  font-size: 17px;
+}

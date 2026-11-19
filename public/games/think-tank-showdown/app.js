@@ -171,7 +171,7 @@
     $('strip').innerHTML = teams.map(function (t, i) {
       var p = pts(t.id), bet = S.wager[t.id] || 0;
       return '<button class="tile' + (max > 0 && p === max ? ' lead' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + p + ' points. Tap to give points">' +
-        '<span class="tn">' + esc(t.name) + '</span>' +
+        '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span>' +
         (wager && !S.settled ? '<span class="tb' + (bet && bet === p ? ' allin' : '') + '">' + (bet && bet === p ? 'ALL IN ' + bet : 'bet ' + bet) + '</span>' : '') +
         '<span class="tp">' + p + '</span></button>';
     }).join('');

@@ -156,3 +156,8 @@
 .btn.opt[aria-pressed='true'] { border-color: var(--teal); color: var(--teal); }
 /* one team answers: no team strip under the question (the board shows the scores), so the question has room */
 .one-team .strip { display: none; }
+
+/* Nov 19: number circles instead of names; the scores are bigger */
+.scores li b {
+  font-size: 22px;
+}

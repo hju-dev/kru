@@ -156,7 +156,13 @@ body {
   content: '🧊 ';
 }
 .qhead b::before {
-  content: '🎅 ';
+  content: '';
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: 4px;
+  vertical-align: -0.3em;
+  background: var(--santa) center / contain no-repeat;
 }
 
 /* the dice: snow-white with berry-red pips (the big dice stay purple) */
@@ -204,4 +210,76 @@ body {
   .lights {
     animation: none;
   }
+}
+
+/* ---------- the podium: wrapped presents under the lights, snow, a Santa hat for the winner ---------- */
+.kp {
+  background:
+    radial-gradient(ellipse at 50% 115%, #2a6e47 0%, #0b2a1b 45%, #06140d 75%);
+}
+.kp::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20px 40px, rgb(255 255 255 / 0.8) 1.6px, transparent 2.4px),
+    radial-gradient(circle at 110px 150px, rgb(255 255 255 / 0.6) 1.2px, transparent 2px),
+    radial-gradient(circle at 190px 70px, rgb(255 255 255 / 0.75) 2px, transparent 2.8px);
+  background-size: 240px 240px;
+  animation: xm-podium-snow 12s linear infinite;
+}
+@keyframes xm-podium-snow {
+  to { background-position: 0 240px, 0 240px, 0 240px; }
+}
+.kp-lights {
+  background:
+    radial-gradient(circle at 12px 8px, #ff5a5f 4px, transparent 5px) 0 0 / 96px 16px repeat-x,
+    radial-gradient(circle at 36px 8px, #ffc94a 4px, transparent 5px) 0 0 / 96px 16px repeat-x,
+    radial-gradient(circle at 60px 8px, #4fd18b 4px, transparent 5px) 0 0 / 96px 16px repeat-x,
+    radial-gradient(circle at 84px 8px, #7cc8ff 4px, transparent 5px) 0 0 / 96px 16px repeat-x !important;
+}
+.kp-title {
+  color: #ffc94a;
+}
+/* the steps are presents: a ribbon down the middle and across */
+.kp-step {
+  position: relative;
+  border-radius: 6px 6px 0 0;
+}
+.kp-step::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 43%, var(--ribbon) 43% 57%, transparent 57%),
+    linear-gradient(180deg, transparent 18%, var(--ribbon) 18% 30%, transparent 30%);
+}
+.kp-step span {
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+  border-radius: 10px;
+  background: rgb(10 30 20 / 0.7);
+}
+.p1 .kp-step { background: linear-gradient(#e63946, #a4161a) !important; --ribbon: #ffc94a; color: #fff; }
+.p2 .kp-step { background: linear-gradient(#3fbf7f, #1d6b3c) !important; --ribbon: #fbf7ef; color: #fff; }
+.p3 .kp-step { background: linear-gradient(#4c9fe0, #1f5a96) !important; --ribbon: #ffc94a; color: #fff; }
+.p1 .kp-who {
+  position: relative;
+}
+.p1 .kp-who::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -40px;
+  width: 52px;
+  height: 52px;
+  transform: translateX(-60%) rotate(-12deg);
+  background: var(--hat) center / contain no-repeat;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kp::after { animation: none; }
 }
