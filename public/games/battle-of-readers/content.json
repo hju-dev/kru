@@ -1,0 +1,158 @@
+{
+ "about": "Battle of Readers (Henry, Nov 19; replaces Reading Island): the shared Battle engine with a story per round (games/shared/stories.json). hidden = the hidden bonuses (2 per round). Only slides and bonuses live here.",
+ "intro": [
+  {
+   "title": "Battle of Readers",
+   "text": [
+    "Each round: read a short story together.",
+    "Then answer 5 questions. Your team writes each answer on ONE board."
+   ],
+   "example": {
+    "rows": [
+     [
+      "📖 Read",
+      "60 seconds"
+     ],
+     [
+      "✍ Answer",
+      "5 questions"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Read carefully!",
+   "text": [
+    "When the questions start, the story goes away.",
+    "Your teacher can show it again with 📖 Story."
+   ],
+   "example": {
+    "big": "📖",
+    "tag": "remember the details"
+   }
+  },
+  {
+   "title": "3 kinds of questions",
+   "text": [
+    "Write T or F, a short answer, or the correct word."
+   ],
+   "example": {
+    "rows": [
+     [
+      "True or false?",
+      "write T or F"
+     ],
+     [
+      "A question",
+      "write a short answer"
+     ],
+     [
+      "Find the mistake",
+      "write the correct word"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Check together",
+   "text": [
+    "After 5 questions, we check every answer together.",
+    "Then 2 hidden bonuses are revealed!"
+   ],
+   "example": {
+    "chips": [
+     "✓",
+     "✗",
+     "✓",
+     "✓",
+     "✗"
+    ]
+   }
+  },
+  {
+   "title": "Count your points",
+   "text": [
+    "1 point for each right answer, plus your bonuses.",
+    "Tell your teacher your team’s total."
+   ],
+   "example": {
+    "big": "4 + 1 = 5",
+    "tag": "right + bonus"
+   }
+  }
+ ],
+ "hidden": [
+  {
+   "id": "golden",
+   "icon": "🌟",
+   "name": "Golden Question",
+   "text": "Question {n} was secretly worth double! Right? +1 more.",
+   "points": 1
+  },
+  {
+   "id": "perfect",
+   "icon": "💯",
+   "name": "Perfect Round",
+   "text": "All 5 answers right? +3!",
+   "points": 3
+  },
+  {
+   "id": "streak",
+   "icon": "🔥",
+   "name": "Hot Streak",
+   "text": "3 right answers in a row? +2!",
+   "points": 2
+  },
+  {
+   "id": "comeback",
+   "icon": "🐢",
+   "name": "Comeback",
+   "text": "The team in last place gets +2!",
+   "points": 2
+  },
+  {
+   "id": "neat",
+   "icon": "🖊",
+   "name": "Neatest Board",
+   "text": "Your teacher picks the neatest board: +2!",
+   "points": 2
+  },
+  {
+   "id": "spelling",
+   "icon": "✏️",
+   "name": "Spelling Star",
+   "text": "Every word on your board spelled right? +2!",
+   "points": 2,
+   "needs": "short"
+  },
+  {
+   "id": "sentence",
+   "icon": "🧩",
+   "name": "Full Sentence",
+   "text": "One answer written as a full sentence? +1!",
+   "points": 1,
+   "needs": "short"
+  },
+  {
+   "id": "detective",
+   "icon": "🔍",
+   "name": "Story Detective",
+   "text": "Tell the class one more detail from the story: +1!",
+   "points": 1
+  },
+  {
+   "id": "title",
+   "icon": "📚",
+   "name": "Remember the Title",
+   "text": "Write the story’s title from memory: +1!",
+   "points": 1
+  },
+  {
+   "id": "lucky",
+   "icon": "🍀",
+   "name": "Lucky Letter",
+   "text": "+1 for each right answer that starts with the letter {letter}!",
+   "points": 1
+  }
+ ]
+}

@@ -101,7 +101,7 @@ describe('library sections', () => {
 
 describe('bonus cards', () => {
   const withBonus = [
-    'board-race', 'sentence-builder', 'sentence-scramble',
+    'board-race',
     'tag-team-debate', 'think-tank-showdown', 'word-rush',
   ]
   type Card = { id: string; name: string; text: string; points?: number }

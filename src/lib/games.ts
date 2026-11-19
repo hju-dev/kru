@@ -62,6 +62,11 @@ export const RETIRED_GAMES: Record<string, string> = {
   'spot-the-mistakes': 'Spot the Mistakes',
   'story-order': 'Story Order',
   'true-false-race': 'True or False Race',
+  // Nov 19: replaced by Battle of Readers and Battle of Writers
+  'reading-island': 'Reading Island',
+  'reading-think-tank': 'Reading Think Tank',
+  'sentence-builder': 'Sentence Builder',
+  'sentence-scramble': 'Sentence Scramble Race',
 }
 
 /** A game's title for screens and the Sheet, also for retired games. */

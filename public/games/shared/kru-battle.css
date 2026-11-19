@@ -147,10 +147,38 @@
 .kbt .strip .tile .tp { font: 700 26px var(--mono); }
 .kbt .strip .tile.lead { box-shadow: inset 0 4px 0 var(--c, var(--gold)), 0 0 0 3px var(--gold); }
 .kbt.ph-tally .strip,
-.kbt.ph-result .strip { display: none; }
+.kbt.ph-result .strip,
+.kbt.ph-read .strip { display: none; } /* reading: the story gets the whole height */
+.kbt.ph-read .kbt-stitle { font-size: 20px; }
 .menu-label { color: var(--muted); font-weight: 700; font-size: 14px; }
 
 @media (prefers-reduced-motion: reduce) {
   .kbt-card .back, .kbt-card .front { transition: none; }
   .kbt-gapbox b, .kbt-ans { animation: none; }
 }
+
+/* Battle of Readers: the story (read step, and 📖 Story during the questions) */
+.kbt-story { display: flex; flex-direction: column; gap: 4px; }
+.kbt-stitle { font: 900 24px var(--display); color: var(--gold); }
+.kbt-story p { margin: 0; font-weight: 600; line-height: 1.4; font-size: 24px; }
+.kbt-peek {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 10px 16px;
+  border-radius: inherit;
+  background: var(--stage);
+  display: flex;
+  align-items: center;
+  overflow: auto;
+}
+.kbt-peek .kbt-story p { font-size: 20px; }
+/* a sentence to work on (Writers: fix it, punctuate it, combine) */
+.kbt-quote {
+  font: 800 28px/1.25 var(--display);
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 6px 14px;
+}
+.kbt-rquote { font-style: normal; color: var(--muted); }
+.kbt [data-do='peek'][aria-pressed='true'] { background: var(--gold); color: #111; border-color: var(--gold); }

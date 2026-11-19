@@ -1,0 +1,34 @@
+/* Battle of Readers / Writers: the screen comes from shared/kru-battle.css; only the set chooser lives here. */
+.sets {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sets h3 {
+  margin: 6px 0 0;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.sets .btn {
+  text-align: left;
+  white-space: normal;
+  line-height: 1.2;
+  padding: 6px 14px;
+}
+.sets .btn small {
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 13px;
+}
+.problems {
+  color: var(--gold);
+  font-size: 14px;
+  margin: 4px 0 0;
+}
+.menu-rounds .btn {
+  padding: 0 6px;
+}
+
+/* lesson packs: after the reveal only the right answer stays, and the read-aloud sentence shows big */

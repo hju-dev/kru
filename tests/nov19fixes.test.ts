@@ -21,7 +21,7 @@ describe('settings gear and team circles', () => {
     const sdk = read('public/sdk/kru.js')
     expect(sdk).toContain("if (t.teacher) return 'T';")
     expect(sdk).toContain('<i class="kteam" style="--kt:')
-    for (const f of ['shared/kru-cards.js', 'shared/kru-battle.js', 'think-tank-showdown/app.js', 'hot-seat-vocab/app.js', 'board-race/app.js', 'twenty-questions/app.js', 'sentence-scramble/app.js', 'jeopardy/app.js', 'tag-team/app.js', 'word-rush/app.js', 'one-word-story/app.js']) {
+    for (const f of ['shared/kru-cards.js', 'shared/kru-battle.js', 'think-tank-showdown/app.js', 'hot-seat-vocab/app.js', 'board-race/app.js', 'twenty-questions/app.js', 'jeopardy/app.js', 'tag-team/app.js', 'word-rush/app.js', 'one-word-story/app.js']) {
       expect(read(`public/games/${f}`), f).toContain('Kru.badge(t, ')
     }
   })

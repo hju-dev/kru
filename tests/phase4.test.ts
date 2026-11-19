@@ -32,13 +32,13 @@ describe('games that only save students with points ("results": "scored")', () =
   })
 })
 
-describe('Sentence Scramble sentences match HANDOFF word counts', () => {
+describe('scramble sentences (now in Battle of Writers) match HANDOFF word counts', () => {
   const read = (p: string) => JSON.parse(readFileSync(new URL(`../${p}`, import.meta.url), 'utf8'))
-  const c = read('public/games/sentence-scramble/content.json') as Record<string, { sentences: { text: string }[] }>
+  const c = read('public/games/battle-of-writers/content.json') as Record<string, { scramble: { text: string }[] }>
   const range: Record<string, [number, number]> = { 'M.1': [5, 7], 'M.2': [8, 10], 'M.3': [11, 14] }
   for (const [level, [min, max]] of Object.entries(range)) {
     it(`${level}: ${min}-${max} words, at least 50 sentences, no repeats, each ends with . or ?`, () => {
-      const list = c[level].sentences
+      const list = c[level].scramble
       expect(list.length).toBeGreaterThanOrEqual(50)
       expect(new Set(list.map((s) => s.text)).size).toBe(list.length)
       for (const s of list) {
@@ -281,10 +281,6 @@ describe('speaking + writing card games (shared card engine)', () => {
   const read = (slug: string) => JSON.parse(readFileSync(new URL(`../public/games/${slug}/content.json`, import.meta.url), 'utf8'))
   const check: Record<string, (it: Record<string, unknown>) => void> = {
     'would-you-rather': (it) => expect(it.a && it.b).toBeTruthy(),
-    'sentence-builder': (it) => {
-      expect(it.words).toHaveLength(3)
-      expect(String(it.example)).toMatch(/^[A-Z].*[.?!]$/)
-    },
     'category-grid': (it) => {
       expect(String(it.letter)).toMatch(/^[A-Z]$/)
       const cats = it.cats as { name: string; examples: string[] }[]
@@ -341,32 +337,11 @@ describe('reading games: shared story bank', () => {
       }
     })
   }
-  it('Reading Island loads the shared bank', () => {
-    expect(readFileSync(new URL('../public/games/reading-island/app.js', import.meta.url), 'utf8')).toContain("'/games/shared/stories.json'")
+  it('Battle of Readers and Battle of Writers load the shared bank', () => {
+    for (const g of ['battle-of-readers', 'battle-of-writers']) {
+      expect(readFileSync(new URL(`../public/games/${g}/app.js`, import.meta.url), 'utf8'), g).toContain("'/games/shared/stories.json'")
+    }
   })
-})
-
-describe('Scan It! texts (now in Reading Island)', () => {
-  const c = JSON.parse(readFileSync(new URL('../public/games/reading-island/content.json', import.meta.url), 'utf8')) as Record<
-    string,
-    { scan: { kind: string; head: string; cols: string[]; rows: string[][]; qs: { q: string; a: string }[] }[] }
-  >
-  for (const level of ['M.1', 'M.2', 'M.3']) {
-    it(`${level}: at least 50 texts, 3 questions each, tidy tables`, () => {
-      const items = c[level].scan
-      expect(items.length).toBeGreaterThanOrEqual(50)
-      expect(new Set(items.map((x) => x.kind)).size).toBeGreaterThanOrEqual(6)
-      for (const it of items) {
-        expect(it.qs, it.head).toHaveLength(3)
-        for (const q of it.qs) {
-          expect(q.a, q.q).toBeTruthy()
-          expect(q.q, q.q).not.toMatch(/\.\.|\s\s/)
-        }
-        for (const r of it.rows) if (it.cols.length) expect(r, it.head).toHaveLength(it.cols.length)
-        expect(it.rows.length, it.head).toBeLessThanOrEqual(7) // fits the phone at 18 px
-      }
-    })
-  }
 })
 
 describe('Tag-Team Talk (Henry, Nov 9)', () => {
@@ -474,46 +449,6 @@ describe('Think Tank Showdown (Henry, Nov 9)', () => {
     expect(html).toContain('id="marksBack"')
     expect(js).toContain("$('markApply').disabled = !all;")
     expect(js).toContain("if (bet) addPoints(t.id, S.marks[t.id] === 'right' ? bet : -bet")
-  })
-})
-
-describe('Reading Island (Henry, Nov 10): the five reading games in one', () => {
-  const bank = JSON.parse(readFileSync(new URL('../public/games/shared/stories.json', import.meta.url), 'utf8'))
-  const js = readFileSync(new URL('../public/games/reading-island/app.js', import.meta.url), 'utf8')
-  const content = JSON.parse(readFileSync(new URL('../public/games/reading-island/content.json', import.meta.url), 'utf8'))
-  const games = JSON.parse(readFileSync(new URL('../games.json', import.meta.url), 'utf8')) as { slug: string; section: string }[]
-  it('replaces Read & Remember, Scan It!, Spot the Mistakes, Story Order and True or False Race', async () => {
-    const { findGame, gameTitle } = await import('../src/lib/games')
-    for (const slug of ['read-remember', 'scan-it', 'spot-the-mistakes', 'story-order', 'true-false-race']) {
-      expect(findGame(slug), slug).toBeUndefined()
-      expect(gameTitle(slug), slug).not.toBe(slug) // old results keep their title
-    }
-    expect(games.find((g) => g.slug === 'reading-island')).toMatchObject({ section: 'reading' })
-  })
-  it('five round types from the five games, then a Final Wager', () => {
-    for (const id of ['order', 'tf', 'spot', 'remember', 'scan', 'wager']) expect(js).toContain(`{ id: '${id}',`)
-  })
-  it('stories are one level up (M.1 reads the M.2 stories, … M.3 the harder M.4 set)', () => {
-    expect(js).toContain("var UP = { 'M.1': 'M.2', 'M.2': 'M.3', 'M.3': 'M.4' };")
-    for (const L of ['M.2', 'M.3', 'M.4']) for (const st of bank[L]) expect(st.questions, st.title).toHaveLength(3)
-    expect(JSON.stringify(bank)).not.toContain('Chiang Ruby')
-  })
-  it('island map: 40 islands, 4 treasures (+3 more), 4 hidden volcanoes, 4 pirates, 4 chests, steal questions, +5 for the biggest group', () => {
-    expect(js).toContain('var COLS = 8, ROWS = 5, CELLS = COLS * ROWS, TREASURES = 4, VOLCANOES = 4, PIRATES = 4, CHESTS = 4, EMPIRE = 5;')
-    expect(js).toContain("addPts(id, tr ? 4 : 1, tr ? 'treasure island' : 'island');")
-    expect(js).toContain('function canSteal() { return (Q() && Q().steal) || !emptyCells().length; }')
-    expect(js).toContain('function finalPts(id) { return pts(id) + (empireLeaders().indexOf(id) >= 0 ? EMPIRE : 0); }')
-  })
-  it('a 30-minute plan: 7 different stories and 1 Scan It text, the last question of each round steals', () => {
-    expect(js).toContain("plan.push({ r: 0, s: o1 }, { r: 0, s: o2, steal: true });")
-  })
-  it('How to play slides explain the islands', () => {
-    const titles = content.intro.map((x: { title: string }) => x.title)
-    for (const t of ['Win islands', 'Secret islands', '⚔ Steal questions', 'Build an empire', 'Final Wager']) expect(titles).toContain(t)
-  })
-  it('the card engine keeps its challenge-round option', () => {
-    const engine = readFileSync(new URL('../public/games/shared/kru-cards.js', import.meta.url), 'utf8')
-    expect(engine).toContain('function isChal(pos)')
   })
 })
 
