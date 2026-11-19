@@ -16,13 +16,16 @@
  *   question?(q, { esc }) -> html   // optional custom drawing (ask screen); default: question + A-D / "write it"
  *   answer?(q, { esc }) -> html     // optional custom right answer (review screen)
  * })
+ * A set can also bring its own rounds: { key, name, rounds: [{ read?: { title, sentences }, questions: [5] }] }
+ * (Battle of Readers: a story to read first, then its 5 questions; the 📖 Story button shows it again).
+ * A question may carry `hint` (the line under it, e.g. "Write T or F") and `quote` (a sentence shown big).
  * A hidden bonus: { id, icon, name, text, points, needs?: 'short' | 'choice' } (text may use {n} = a question
  * number and {letter} = a letter that starts one of the round's right answers).
  */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
-  var TIMES = [30, 45, 60], ROUND = 5, GAP = 3;
+  var TIMES = [30, 45, 60], READ_TIMES = [45, 60, 90, 120], ROUND = 5, GAP = 3;
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
@@ -48,6 +51,7 @@
     menu.className = 'backdrop'; menu.id = 'menuBack'; menu.hidden = true;
     menu.innerHTML = '<div class="menu" role="dialog" aria-label="Settings">' +
       '<div class="menu-label">Time per question</div><div class="menu-rounds" id="secsRow"></div>' +
+      (cfg.reading ? '<div class="menu-label">Time to read the story</div><div class="menu-rounds" id="readRow"></div>' : '') +
       '<button class="btn" id="kbtSet">Choose another question set</button>' +
       '<button class="btn" id="kbtRestartRound">Start this round again</button>' +
       '<button class="btn ghost danger" id="kbtReset">Reset all scores</button>' +
@@ -63,11 +67,15 @@
     function save() { Kru.saveState(S); }
     function pts(id) { return S.pts[id] || 0; }
     function set() { return SETS.filter(function (s) { return s.key === S.setKey; })[0] || null; }
-    function rounds() { var s = set(); return s ? Math.ceil(s.questions.length / ROUND) : 0; }
+    function count(s) { return s.rounds ? s.rounds.length : s.questions.length; }
+    function rounds() { var s = set(); return !s ? 0 : s.rounds ? s.rounds.length : Math.ceil(s.questions.length / ROUND); }
+    /** This round's story (sets with their own rounds), or null. */
+    function reading() { var s = set(); return s && s.rounds ? (s.rounds[S.order[S.round]] || {}).read || null : null; }
     /** The questions of the current round, in the shuffled order. */
     function roundQs() {
       var s = set();
       if (!s) return [];
+      if (s.rounds) return ((s.rounds[S.order[S.round]] || {}).questions || []).slice(0, ROUND);
       return S.order.slice(S.round * ROUND, S.round * ROUND + ROUND).map(function (i) { return s.questions[i]; }).filter(Boolean);
     }
     function q() { return roundQs()[S.qi]; }
@@ -109,6 +117,7 @@
         if (s <= 3 && s > 0 && s !== lastBeep) { lastBeep = s; tone([660], 0, 0.12); }
         if (l <= 0) { S.running = false; timeUp(); return; }
       } else if (S.phase === 'gap' && l <= 0) { S.running = false; nextQuestion(); return; }
+      else if (S.phase === 'read' && l <= 0) { S.running = false; tone([880, 660], 0.18); askFirst(); return; }
       drawClock();
     }
     function drawClock() {
@@ -120,8 +129,12 @@
 
     // ---------- the flow ----------
     function beginRound() {
-      S.phase = 'ask'; S.qi = 0; S.rev = 0; S.flipped = []; S.tally = {}; S.bonus = pickBonuses();
-      lastBeep = -1;
+      S.qi = 0; S.rev = 0; S.flipped = []; S.tally = {}; S.bonus = pickBonuses(); S.peek = false;
+      if (reading()) { S.phase = 'read'; startClock(S.readSecs || 60); render(); tone([523, 659], 0.1); return; }
+      askFirst();
+    }
+    function askFirst() {
+      S.phase = 'ask'; S.qi = 0; S.peek = false; lastBeep = -1;
       startClock(S.secs); render(); tone([523, 659, 784], 0.1);
     }
     function timeUp() {
@@ -150,8 +163,9 @@
 
     // ---------- drawing ----------
     function defaultQuestion(x) {
-      var h = '<div class="kbt-q">' + esc(x.q) + '</div>';
-      if (Array.isArray(x.choices)) {
+      var h = '<div class="kbt-q">' + esc(x.q) + '</div>' + (x.quote ? '<div class="kbt-quote">' + esc(x.quote) + '</div>' : '');
+      if (x.hint) h += '<div class="kbt-hint">✍ ' + esc(x.hint) + '</div>';
+      else if (Array.isArray(x.choices)) {
         h += '<div class="kbt-choices">' + x.choices.map(function (c, i) { return '<div class="kbt-choice"><b>' + 'ABCD'.charAt(i) + '</b><span>' + esc(c) + '</span></div>'; }).join('') + '</div>' +
           '<div class="kbt-hint">✍ Write the letter: A, B, C or D</div>';
       } else h += '<div class="kbt-hint">✍ Write your answer in words</div>';
@@ -169,14 +183,24 @@
       var nr = rounds(), qs = roundQs(), roundLabel = 'Round ' + (S.round + 1) + '/' + nr;
       if (ph === 'start') {
         where.textContent = roundLabel;
-        st.innerHTML = '<div class="kbt-big">' + esc(s.name) + '</div><div class="kbt-sub">Round ' + (S.round + 1) + ': 5 questions, ' + S.secs + ' seconds each.<br />Get your board and pen ready!</div>';
+        st.innerHTML = '<div class="kbt-big">' + esc(s.name) + '</div><div class="kbt-sub">Round ' + (S.round + 1) + ': ' + (reading() ? 'read a story, then ' : '') + qs.length + ' questions, ' + S.secs + ' seconds each.<br />Get your board and pen ready!</div>';
         ct.innerHTML = '<span class="grow"></span><button class="btn gold big" data-do="go">Start round ' + (S.round + 1) + ' ▶</button>';
+      } else if (ph === 'read') {
+        var rd = reading();
+        where.textContent = roundLabel + ' · Read the story';
+        st.innerHTML = storyHtml(rd);
+        ct.innerHTML = '<span class="digits" id="kbtDigits"></span><div class="progress"><i id="kbtFill"></i></div>' +
+          '<button class="btn" data-do="pause">' + (S.running ? 'Pause' : 'Resume') + '</button>' +
+          '<button class="btn gold" data-do="readdone">Questions ▶</button>';
+        drawClock(); fitStory();
       } else if (ph === 'ask' || ph === 'gap') {
         var x = q();
         where.textContent = roundLabel + ' · Question ' + (S.qi + 1) + '/' + qs.length;
         st.innerHTML = (cfg.question ? cfg.question(x, { esc: esc }) : defaultQuestion(x)) +
-          (ph === 'gap' ? '<div class="kbt-gapbox"><span>⏱ Time’s up! Next question in</span><b id="kbtGap">3</b></div>' : '');
+          (ph === 'gap' ? '<div class="kbt-gapbox"><span>⏱ Time’s up! Next question in</span><b id="kbtGap">3</b></div>' : '') +
+          (S.peek && reading() ? '<div class="kbt-peek">' + storyHtml(reading()) + '</div>' : '');
         ct.innerHTML = '<span class="digits" id="kbtDigits"></span><div class="progress"><i id="kbtFill"></i></div>' +
+          (reading() ? '<button class="btn" data-do="peek" aria-pressed="' + !!S.peek + '">📖 Story</button>' : '') +
           '<button class="btn" data-do="pause">' + (S.running ? 'Pause' : 'Resume') + '</button>' +
           '<button class="btn gold" data-do="skip">' + (S.qi + 1 >= qs.length ? 'Pens down ▶' : 'Next ▶') + '</button>';
         drawClock(); fit();
@@ -187,7 +211,7 @@
       } else if (ph === 'review') {
         var r = qs[S.rev];
         where.textContent = roundLabel + ' · Answer ' + (S.rev + 1) + '/' + qs.length;
-        st.innerHTML = '<div class="kbt-rq"><span class="kbt-n">' + (S.rev + 1) + '</span>' + esc(r.q) + '</div>' +
+        st.innerHTML = '<div class="kbt-rq"><span class="kbt-n">' + (S.rev + 1) + '</span>' + esc(r.q) + (r.quote ? ' <i class="kbt-rquote">' + esc(r.quote) + '</i>' : '') + '</div>' +
           '<div class="kbt-ans">✓ ' + (cfg.answer ? cfg.answer(r, { esc: esc }) : defaultAnswer(r)) + '</div>' +
           (r.why ? '<div class="kbt-why">💡 ' + esc(r.why) + '</div>' : '') +
           (r.read_aloud ? '<div class="kbt-why">🔊 ' + esc(r.read_aloud) + '</div>' : '') + // a lesson pack's read-aloud sentence
@@ -224,6 +248,17 @@
           (last ? '<button class="btn" data-do="sets">Another set</button><button class="btn gold big" data-do="final">🏆 Final scores</button>' : '<button class="btn gold big" data-do="nextround">Next round ▶</button>');
       }
     }
+    function storyHtml(rd) {
+      return '<div class="kbt-story"><div class="kbt-stitle">📖 ' + esc(rd.title) + '</div><p>' + rd.sentences.map(esc).join(' ') + '</p></div>';
+    }
+    /** The story fills the stage: the biggest text that fits (at least 18 px). */
+    function fitStory() {
+      var st = $('kbtStage'), p = st.querySelector('.kbt-story p'), size = 30;
+      if (!p) return;
+      var over = function () { return st.scrollHeight > st.clientHeight + 1; };
+      p.style.fontSize = size + 'px';
+      while (size > 18 && over()) p.style.fontSize = (size -= 1) + 'px';
+    }
     function players() { return teams.filter(function (t) { return !t.teacher; }); }
     function color(t) { return COLORS[Math.max(0, teams.indexOf(t)) % COLORS.length]; }
     function renderStrip() {
@@ -239,7 +274,7 @@
       if (!el) return;
       var over = function () { return st.scrollHeight > st.clientHeight + 1; };
       // [element, start size, smallest]: the question shrinks to 26 first, then the rest, then the question again
-      var parts = [[el, 34, 26], [st.querySelector('.kbt-choices'), 26, 18], [st.querySelector('.kbt-ans'), 34, 22], [st.querySelector('.kbt-why'), 20, 16], [st.querySelector('.kbt-hint'), 20, 16], [el, 26, 18]];
+      var parts = [[el, 34, 26], [st.querySelector('.kbt-choices'), 26, 18], [st.querySelector('.kbt-quote'), 28, 18], [st.querySelector('.kbt-ans'), 34, 22], [st.querySelector('.kbt-why'), 20, 16], [st.querySelector('.kbt-hint'), 20, 16], [el, 26, 18]];
       parts.forEach(function (p) { if (p[0]) p[0].style.fontSize = p[1] + 'px'; });
       parts.forEach(function (p) {
         if (!p[0]) return;
@@ -267,6 +302,8 @@
       if (d === 'sets') openSets();
       else if (d === 'go') beginRound();
       else if (d === 'pause') { if (S.running) pause(); else resume(); }
+      else if (d === 'readdone') { S.running = false; askFirst(); }
+      else if (d === 'peek') { S.peek = !S.peek; save(); render(); }
       else if (d === 'skip') { S.running = false; if (S.phase === 'gap') nextQuestion(); else timeUp(); }
       else if (d === 'review') { S.phase = 'review'; S.rev = 0; save(); render(); tone([523, 659], 0.1); }
       else if (d === 'fwd') { S.rev++; save(); render(); }
@@ -297,7 +334,8 @@
       SETS.forEach(function (s) { (groups[s.group || ''] = groups[s.group || ''] || []).push(s); });
       $('sets').innerHTML = Object.keys(groups).map(function (g) {
         return (g ? '<h3>' + esc(g) + '</h3>' : '') + groups[g].map(function (s) {
-          return '<button class="btn" data-set="' + esc(s.key) + '"><b>' + esc(s.name) + '</b><br /><small>' + s.questions.length + ' questions · ' + Math.ceil(s.questions.length / ROUND) + ' round' + (s.questions.length > ROUND ? 's' : '') + '</small></button>';
+          var n = s.rounds ? s.rounds.length : Math.ceil(s.questions.length / ROUND);
+          return '<button class="btn" data-set="' + esc(s.key) + '"><b>' + esc(s.name) + '</b><br /><small>' + (s.rounds ? n + ' stories · ' : s.questions.length + ' questions · ') + n + ' round' + (n > 1 ? 's' : '') + '</small></button>';
         }).join('');
       }).join('') + (cfg.noSheetNote ? '' : '');
       if (PROBLEMS.length) {
@@ -312,19 +350,23 @@
       var b = e.target.closest('[data-set]');
       if (!b) return;
       S.setKey = b.dataset.set; S.setName = set().name;
-      S.order = shuffle(range(set().questions.length)); S.round = 0; S.phase = 'start'; S.running = false; S.roundPts = {};
+      S.order = shuffle(range(count(set()))); S.round = 0; S.phase = 'start'; S.running = false; S.roundPts = {};
       save(); $('setsBack').hidden = true; render();
     });
     $('setsClose').addEventListener('click', function () { $('setsBack').hidden = true; });
 
     // ---------- ⚙ menu ----------
     function closeMenu() { $('menuBack').hidden = true; }
-    function renderSecs() { $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join(''); }
+    function renderSecs() {
+      $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join('');
+      if ($('readRow')) $('readRow').innerHTML = READ_TIMES.map(function (s) { return '<button class="btn" data-read="' + s + '" aria-pressed="' + (s === (S.readSecs || 60)) + '">' + s + ' s</button>'; }).join('');
+    }
     function disarm() { $('kbtReset').classList.remove('armed'); $('kbtReset').textContent = 'Reset all scores'; }
-    $('more').addEventListener('click', function () { renderSecs(); disarm(); $('kbtRestartRound').disabled = !set(); $('menuBack').hidden = false; if (S.running && S.phase === 'ask') pause(); });
+    $('more').addEventListener('click', function () { renderSecs(); disarm(); $('kbtRestartRound').disabled = !set(); $('menuBack').hidden = false; if (S.running && (S.phase === 'ask' || S.phase === 'read')) pause(); });
     $('menuClose').addEventListener('click', closeMenu);
     $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
     $('secsRow').addEventListener('click', function (e) { var b = e.target.closest('[data-secs]'); if (!b) return; S.secs = +b.dataset.secs; save(); renderSecs(); });
+    if ($('readRow')) $('readRow').addEventListener('click', function (e) { var b = e.target.closest('[data-read]'); if (!b) return; S.readSecs = +b.dataset.read; save(); renderSecs(); });
     $('kbtSet').addEventListener('click', function () { closeMenu(); openSets(); });
     $('kbtRestartRound').addEventListener('click', function () {
       closeMenu();
@@ -348,12 +390,12 @@
     // ---------- start ----------
     Kru.ready(function (session) {
       cfg.load(session).then(function (got) {
-        SETS = got.sets.filter(function (s) { return s.questions && s.questions.length; });
+        SETS = got.sets.filter(function (s) { return (s.questions && s.questions.length) || (s.rounds && s.rounds.length); });
         HIDDEN = got.hidden || []; INTRO = got.intro || []; PROBLEMS = got.problems || [];
         teams = Kru.allTeams();
         KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
         var saved = session.resume;
-        if (saved && saved.v === 2 && saved.level === session.level && (!saved.setKey || SETS.some(function (s) { return s.key === saved.setKey && s.name === saved.setName && s.questions.length === saved.order.length; }))) S = saved;
+        if (saved && saved.v === 2 && saved.level === session.level && (!saved.setKey || SETS.some(function (s) { return s.key === saved.setKey && s.name === saved.setName && count(s) === saved.order.length; }))) S = saved;
         else S = { v: 2, level: session.level, setKey: null, order: [], round: 0, phase: 'start', qi: 0, rev: 0, flipped: [], bonus: [], tally: {}, roundPts: {}, pts: {}, secs: 30, running: false, left: 0, total: 0, endAt: 0 };
         if (TIMES.indexOf(S.secs) < 0) S.secs = 30;
         render();
@@ -367,5 +409,5 @@
     });
   }
 
-  window.KruBattle = { start: start, ROUND: ROUND, TIMES: TIMES };
+  window.KruBattle = { start: start, ROUND: ROUND, TIMES: TIMES, READ_TIMES: READ_TIMES };
 })();

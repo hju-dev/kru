@@ -62,12 +62,12 @@ describe('Unit 8 L3: Hot Seat Vocab', () => {
   })
 })
 
-describe('Unit 8 L1: Sentence Scramble', () => {
+describe('Unit 8 L1: scramble sentences (Battle of Writers)', () => {
   it('12 sentences, American spelling, used when the pack is picked', () => {
     const s = pack('m3-u8-l1').scramble as { text: string }[]
     expect(s).toHaveLength(12)
     expect(s.map((x) => x.text)).toContain('I apologize for calling him a name.')
-    expect(read('public/games/sentence-scramble/app.js')).toContain('SENTENCES = mine.length >= 5 ? mine : content[level].sentences;')
+    expect(read('public/games/battle-of-writers/app.js')).toContain("var mine = unit && Array.isArray(unit.scramble) ? unit.scramble.filter(function (x) { return x && x.text; }) : [];")
   })
 })
 
@@ -83,11 +83,11 @@ describe('who sees the Unit 8 packs', () => {
   it('only in their games', () => {
     expect(ids('quiz-battle', 'M.3/2')).toEqual(['m3-u8-l1', 'm3-u8-l2', 'm3-u8-review'])
     expect(ids('hot-seat-vocab', 'M.3/2')).toEqual(['m3-u8-l3-vocab'])
-    expect(ids('sentence-scramble', 'M.3/2')).toEqual(['m3-u8-l1'])
+    expect(ids('battle-of-writers', 'M.3/2')).toEqual(['m3-u8-l1'])
     expect(ids('race-board', 'M.3/2')).toEqual([])
     expect(ids('tag-team-debate', 'M.3/2')).toEqual([])
-    // the old full units stay out of Sentence Scramble (they have no sentences)
-    expect(unitsFor('M.3', 'sentence-scramble', 'M.3/2').map((u) => u.id)).toEqual(['m3-u8-l1'])
+    // the old full units stay out of Battle of Writers (they have no sentences)
+    expect(unitsFor('M.3', 'battle-of-writers', 'M.3/2').map((u) => u.id)).toEqual(['m3-u8-l1'])
   })
   it('practice mode (?) can run every pack, whatever the class', () => {
     expect(ids('jeopardy')).toHaveLength(3)

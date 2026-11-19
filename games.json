@@ -122,26 +122,6 @@
     "classTool": true
   },
   {
-    "slug": "sentence-scramble",
-    "title": "Sentence Scramble Race",
-    "file": "public/games/sentence-scramble/index.html",
-    "levels": [
-      "M.1",
-      "M.2",
-      "M.3"
-    ],
-    "modes": [
-      "group"
-    ],
-    "minutes": 15,
-    "status": "ready",
-    "description": "A sentence appears as shuffled word tiles. Teams write it correctly on paper. First three correct teams get 3 / 2 / 1 points, then Reveal.",
-    "type": "grammar race",
-    "phoneLandscape": true,
-    "units": true,
-    "section": "writing"
-  },
-  {
     "slug": "quiz-battle",
     "title": "Battle of Wits",
     "file": "public/games/quiz-battle/index.html",
@@ -161,6 +141,45 @@
     "sheetQuestions": true,
     "section": "quizzes",
     "units": true
+  },
+  {
+    "slug": "battle-of-readers",
+    "title": "Battle of Readers",
+    "file": "public/games/battle-of-readers/index.html",
+    "description": "Each round: read a short story together, then 5 questions (true or false, short answers, find the mistake) written on one board per team. Then the class checks the answers, hidden bonuses are revealed, and each team adds up its points.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "team reading quiz",
+    "minutes": 30,
+    "phoneLandscape": true,
+    "modes": [
+      "group"
+    ],
+    "status": "ready",
+    "section": "reading"
+  },
+  {
+    "slug": "battle-of-writers",
+    "title": "Battle of Writers",
+    "file": "public/games/battle-of-writers/index.html",
+    "description": "Rounds of 5 writing tasks on one board per team: put the words in order, build a sentence, fix the mistake, punctuate it, join two sentences, describe it. Then the class checks the answers, hidden bonuses are revealed, and each team adds up its points.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "team writing quiz",
+    "minutes": 30,
+    "phoneLandscape": true,
+    "modes": [
+      "group"
+    ],
+    "units": true,
+    "status": "ready",
+    "section": "writing"
   },
   {
     "slug": "jeopardy",
@@ -380,25 +399,6 @@
     "section": "writing"
   },
   {
-    "slug": "sentence-builder",
-    "title": "Sentence Builder",
-    "file": "public/games/sentence-builder/index.html",
-    "description": "Three word cards. Teams write one correct sentence that uses all three words. Reveal shows an example sentence.",
-    "levels": [
-      "M.1",
-      "M.2",
-      "M.3"
-    ],
-    "type": "writing game",
-    "minutes": 15,
-    "modes": [
-      "group"
-    ],
-    "phoneLandscape": true,
-    "status": "ready",
-    "section": "writing"
-  },
-  {
     "slug": "category-grid",
     "title": "Scattergories",
     "file": "public/games/category-grid/index.html",
@@ -416,24 +416,5 @@
     "phoneLandscape": true,
     "status": "ready",
     "section": "writing"
-  },
-  {
-    "slug": "reading-island",
-    "title": "Reading Island",
-    "file": "public/games/reading-island/index.html",
-    "description": "A reading game show with an island map. Five rounds (Order It, True or False, Spot It, Remember It, Scan It) and a Final Wager. Right answers claim islands: treasure islands, hidden volcanoes, steal questions, and +5 for the biggest group. M.1, M.2 and M.3.",
-    "levels": [
-      "M.1",
-      "M.2",
-      "M.3"
-    ],
-    "type": "reading game",
-    "minutes": 30,
-    "modes": [
-      "group"
-    ],
-    "phoneLandscape": true,
-    "status": "ready",
-    "section": "reading"
   }
 ]
