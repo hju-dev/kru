@@ -1,5 +1,5 @@
 {
- "about": "Quiz Battle built-in question sets per level (general review, written for Kru). 5 sets of 10 per level; questions are shuffled every game; \"All topics\" mixes all 50. choices + answer index = multiple choice; answer text only = short answer (shown on Reveal). double = x2 points. Henry adds his own sets in the Questions tab of his Sheet (Code.gs v6).",
+ "about": "Battle of Wits (was Quiz Battle; Henry, Nov 19) built-in question sets per level (written for Kru). 5 sets of 10 per level; shuffled every game; \"All topics\" mixes all 50. choices + answer index = multiple choice; answer text = short answer. why = the short explanation shown when the class checks the answers. hidden = the hidden bonuses (2 per round, revealed before the tally; needs = only for rounds with short / choice questions; {n} = a question number, {letter} = a first letter of a right answer). Rounds of 5, played by the shared Battle engine.",
  "M.1": {
   "sets": [
    {
@@ -14,7 +14,8 @@
        "going"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"Yesterday\" means the past. The past of \"go\" is \"went\"."
      },
      {
       "q": "She ___ a sandwich for lunch yesterday.",
@@ -25,7 +26,8 @@
        "eating"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "The past of \"eat\" is \"ate\" (an irregular verb)."
      },
      {
       "q": "What is the past of \"buy\"?",
@@ -36,7 +38,8 @@
        "bought"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"Buy\" is irregular: buy → bought. (\"Brought\" is the past of \"bring\".)"
      },
      {
       "q": "We didn't ___ TV last night.",
@@ -47,7 +50,8 @@
        "watches"
       ],
       "answer": 1,
-      "double": true
+      "double": true,
+      "why": "After \"didn't\" we use the base verb: didn't watch."
      },
      {
       "q": "___ you see the movie last weekend?",
@@ -58,12 +62,14 @@
        "Was"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "Questions in the past simple start with \"Did\"."
      },
      {
       "q": "Write the past simple of \"swim\".",
       "answer": "swam",
-      "double": false
+      "double": false,
+      "why": "\"Swim\" is irregular: swim → swam."
      },
      {
       "q": "They ___ soccer yesterday after school.",
@@ -74,7 +80,8 @@
        "plays"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"Yesterday\" = past. Regular verbs add -ed: play → played."
      },
      {
       "q": "My mom ___ happy yesterday.",
@@ -85,7 +92,8 @@
        "be"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Mom\" is one person (she), so the past of \"be\" is \"was\"."
      },
      {
       "q": "The children ___ tired after the trip.",
@@ -96,12 +104,14 @@
        "were"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"The children\" are many people (they), so we use \"were\"."
      },
      {
       "q": "Make it negative: \"I ate breakfast.\"",
       "answer": "I didn't eat breakfast.",
-      "double": true
+      "double": true,
+      "why": "Negative past simple: didn't + base verb. \"Ate\" becomes \"didn't eat\"."
      }
     ]
    },
@@ -117,7 +127,8 @@
        "mango"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "A mango is a fruit. A carrot is a vegetable."
      },
      {
       "q": "Where do you sleep?",
@@ -128,7 +139,8 @@
        "garage"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "You sleep in a bedroom."
      },
      {
       "q": "What do you wear on your feet?",
@@ -139,7 +151,8 @@
        "a scarf"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "Shoes go on your feet. A hat goes on your head."
      },
      {
       "q": "Which animal says \"moo\"?",
@@ -150,7 +163,8 @@
        "a cat"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "A cow says \"moo\"."
      },
      {
       "q": "A doctor works in a ___.",
@@ -161,12 +175,14 @@
        "store"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "Doctors work in hospitals."
      },
      {
       "q": "What color is the sky on a sunny day?",
       "answer": "blue",
-      "double": false
+      "double": false,
+      "why": "On a sunny day the sky is blue."
      },
      {
       "q": "Which is the opposite of \"big\"?",
@@ -177,7 +193,8 @@
        "small"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "The opposite of \"big\" is \"small\"."
      },
      {
       "q": "How many days are there in a week?",
@@ -188,7 +205,8 @@
        "eight"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "Monday to Sunday: 7 days in a week."
      },
      {
       "q": "Which word is a verb?",
@@ -199,12 +217,14 @@
        "blue"
       ],
       "answer": 0,
-      "double": true
+      "double": true,
+      "why": "A verb is an action word. \"Run\" is an action."
      },
      {
       "q": "Spell the number 12.",
       "answer": "twelve",
-      "double": false
+      "double": false,
+      "why": "12 is spelled t-w-e-l-v-e."
      }
     ]
    },
@@ -220,7 +240,8 @@
        "walked"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"She\" + present simple: add -s. walk → walks."
      },
      {
       "q": "I ___ like spicy food.",
@@ -231,7 +252,8 @@
        "aren't"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"I\" uses \"don't\" for negatives: I don't like…"
      },
      {
       "q": "___ your brother play soccer?",
@@ -242,7 +264,8 @@
        "Does"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"Your brother\" = he, so the question starts with \"Does\"."
      },
      {
       "q": "My cat ___ fish.",
@@ -253,7 +276,8 @@
        "is eat"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"My cat\" = it: add -s. eat → eats."
      },
      {
       "q": "We ___ English on Monday.",
@@ -264,12 +288,14 @@
        "is study"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"We\" uses the base verb: we study."
      },
      {
       "q": "Write it for \"he\": I watch TV.",
       "answer": "He watches TV.",
-      "double": false
+      "double": false,
+      "why": "He/she/it: add -es after -ch. watch → watches."
      },
      {
       "q": "He ___ a bike.",
@@ -280,7 +306,8 @@
        "having"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "With he/she/it, \"have\" becomes \"has\"."
      },
      {
       "q": "Which sentence is correct?",
@@ -291,7 +318,8 @@
        "She gos to bed at 9."
       ],
       "answer": 1,
-      "double": true
+      "double": true,
+      "why": "\"She\" needs -es: go → goes."
      },
      {
       "q": "They ___ in Bangkok.",
@@ -302,12 +330,14 @@
        "live"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"They\" uses the base verb: they live."
      },
      {
       "q": "Make it negative: \"He likes milk.\"",
       "answer": "He doesn't like milk.",
-      "double": false
+      "double": false,
+      "why": "He + doesn't + base verb: \"likes\" becomes \"doesn't like\"."
      }
     ]
    },
@@ -323,7 +353,8 @@
        "carrot"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "A carrot is a vegetable. The others are fruits."
      },
      {
       "q": "Which animal can fly?",
@@ -334,7 +365,8 @@
        "a snake"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "Birds have wings, so they can fly."
      },
      {
       "q": "Which animal lives in water?",
@@ -345,7 +377,8 @@
        "a chicken"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "Fish live in water."
      },
      {
       "q": "We get milk from a ___.",
@@ -356,7 +389,8 @@
        "frog"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "Milk comes from cows."
      },
      {
       "q": "Which one is a drink?",
@@ -367,12 +401,14 @@
        "egg"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "Juice is something you drink."
      },
      {
       "q": "What animal is very big and gray with a long nose?",
       "answer": "an elephant",
-      "double": false
+      "double": false,
+      "why": "Elephants are big and gray with a long nose (a trunk)."
      },
      {
       "q": "Which food is sweet?",
@@ -383,7 +419,8 @@
        "chocolate"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "Chocolate is sweet. Lemons are sour and chili is hot."
      },
      {
       "q": "A baby dog is a ___.",
@@ -394,7 +431,8 @@
        "chick"
       ],
       "answer": 2,
-      "double": true
+      "double": true,
+      "why": "A baby dog is a puppy. A baby cat is a kitten."
      },
      {
       "q": "Which animal says \"quack\"?",
@@ -405,12 +443,14 @@
        "a dog"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "A duck says \"quack\"."
      },
      {
       "q": "What is the yellow fruit that monkeys love?",
       "answer": "a banana",
-      "double": false
+      "double": false,
+      "why": "Monkeys love bananas, and they are yellow."
      }
     ]
    },
@@ -426,7 +466,8 @@
        "under"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "Inside a box = in the box."
      },
      {
       "q": "My birthday is ___ May.",
@@ -437,7 +478,8 @@
        "to"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "We use \"in\" with months: in May."
      },
      {
       "q": "School starts ___ 8 o'clock.",
@@ -448,7 +490,8 @@
        "at"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "We use \"at\" with clock times: at 8 o'clock."
      },
      {
       "q": "___ is your name?",
@@ -459,7 +502,8 @@
        "Who"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"What\" asks about a thing, like your name."
      },
      {
       "q": "___ do you live?",
@@ -470,12 +514,14 @@
        "How"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Where\" asks about a place."
      },
      {
       "q": "Write the question word: \"___ old are you?\"",
       "answer": "How",
-      "double": false
+      "double": false,
+      "why": "\"How old\" asks about age."
      },
      {
       "q": "The book is ___ the table. (on top)",
@@ -486,7 +532,8 @@
        "from"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "On top of something = on."
      },
      {
       "q": "___ is your favorite teacher?",
@@ -497,7 +544,8 @@
        "How"
       ],
       "answer": 1,
-      "double": true
+      "double": true,
+      "why": "\"Who\" asks about a person."
      },
      {
       "q": "We play soccer ___ Saturday.",
@@ -508,12 +556,14 @@
        "on"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "We use \"on\" with days: on Saturday."
      },
      {
       "q": "Write the question word: \"___ is your birthday?\" (a date)",
       "answer": "When",
-      "double": false
+      "double": false,
+      "why": "\"When\" asks about a time or a date."
      }
     ]
    }
@@ -533,7 +583,8 @@
        "watching"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "An action in progress at a time in the past: was/were + -ing."
      },
      {
       "q": "They ___ when the phone rang.",
@@ -544,7 +595,8 @@
        "are sleeping"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"They\" uses \"were\": were sleeping."
      },
      {
       "q": "While she ___ home, it started to rain.",
@@ -555,7 +607,8 @@
        "was walking"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"She\" uses \"was\": was walking (in progress when the rain started)."
      },
      {
       "q": "What ___ you doing at 9 o'clock last night?",
@@ -566,7 +619,8 @@
        "are"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"You\" uses \"were\": What were you doing?"
      },
      {
       "q": "We were playing soccer ___ the teacher arrived.",
@@ -577,12 +631,14 @@
        "but"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "A long action, then a short one: \"when\" + the short action."
      },
      {
       "q": "Make it negative: \"He was running.\"",
       "answer": "He wasn't running.",
-      "double": false
+      "double": false,
+      "why": "Negative past continuous: wasn't + -ing."
      },
      {
       "q": "Choose the correct sentence.",
@@ -593,7 +649,8 @@
        "I eating dinner."
       ],
       "answer": 0,
-      "double": true
+      "double": true,
+      "why": "\"I\" uses \"was\" + -ing: I was eating."
      },
      {
       "q": "___ I was cooking, my brother was cleaning.",
@@ -604,7 +661,8 @@
        "Or"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"While\" joins two long actions happening at the same time."
      },
      {
       "q": "It was raining, ___ we stayed at home.",
@@ -615,12 +673,14 @@
        "so"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"So\" gives the result: it was raining, so we stayed home."
      },
      {
       "q": "Write the past continuous: they / swim",
       "answer": "they were swimming",
-      "double": false
+      "double": false,
+      "why": "\"They\" + were + verb-ing: they were swimming."
      }
     ]
    },
@@ -636,7 +696,8 @@
        "a passport"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "A passport has your photo and lets you travel to other countries."
      },
      {
       "q": "You put your clothes in a ___ for a trip.",
@@ -647,7 +708,8 @@
        "tent"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "A suitcase holds your clothes for a trip."
      },
      {
       "q": "Something you buy to remember a trip is a ___.",
@@ -658,7 +720,8 @@
        "map"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "A souvenir is something you buy to remember a place."
      },
      {
       "q": "Where do planes take off?",
@@ -669,7 +732,8 @@
        "a garage"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "Planes take off and land at an airport."
      },
      {
       "q": "You use ___ to protect your skin from the sun.",
@@ -680,12 +744,14 @@
        "a towel"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "Sunscreen protects your skin from the sun."
      },
      {
       "q": "Name an island in Thailand.",
       "answer": "Any island: Phuket, Koh Samui, Koh Chang, Koh Lanta…",
-      "double": false
+      "double": false,
+      "why": "Phuket, Koh Samui, Koh Chang and Koh Lanta are all Thai islands."
      },
      {
       "q": "A person who visits a place on vacation is a ___.",
@@ -696,7 +762,8 @@
        "tourist"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "A tourist visits a place on vacation."
      },
      {
       "q": "Which sentence is correct?",
@@ -707,7 +774,8 @@
        "I going to Krabi last year."
       ],
       "answer": 2,
-      "double": true
+      "double": true,
+      "why": "\"Last year\" = past. The past of \"go\" is \"went\"."
      },
      {
       "q": "You sleep in a ___ when you go camping.",
@@ -718,12 +786,14 @@
        "car"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "When you go camping, you sleep in a tent."
      },
      {
       "q": "Write the past simple of \"fly\".",
       "answer": "flew",
-      "double": false
+      "double": false,
+      "why": "\"Fly\" is irregular: fly → flew."
      }
     ]
    },
@@ -739,7 +809,8 @@
        "more big"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "Comparing two things: big → bigger (double the g) + than."
      },
      {
       "q": "This is the ___ day of the year!",
@@ -750,7 +821,8 @@
        "most hot"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"The ___ of the year\" = superlative: hot → hottest."
      },
      {
       "q": "Bangkok is ___ than my village.",
@@ -761,7 +833,8 @@
        "busier"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "Words ending in -y: change y to i and add -er: busier."
      },
      {
       "q": "English is ___ than math for me.",
@@ -772,7 +845,8 @@
        "more easy"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "easy → easier (y becomes i, add -er)."
      },
      {
       "q": "That was the ___ movie I have ever seen.",
@@ -783,12 +857,14 @@
        "baddest"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Bad\" is irregular: bad, worse, worst."
      },
      {
       "q": "Write the comparative of \"good\".",
       "answer": "better",
-      "double": false
+      "double": false,
+      "why": "\"Good\" is irregular: good, better, best."
      },
      {
       "q": "Which sentence is correct?",
@@ -799,7 +875,8 @@
        "She is tall than me."
       ],
       "answer": 0,
-      "double": true
+      "double": true,
+      "why": "Short adjectives add -er: tall → taller than."
      },
      {
       "q": "My little sister is ___ than me. (young)",
@@ -810,7 +887,8 @@
        "young"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "young → younger (comparing two people)."
      },
      {
       "q": "This hotel is the ___ in town.",
@@ -821,12 +899,14 @@
        "most expensive"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "Long adjectives use \"the most\": the most expensive."
      },
      {
       "q": "Write the superlative of \"beautiful\".",
       "answer": "the most beautiful",
-      "double": false
+      "double": false,
+      "why": "Long adjectives: the most + adjective. the most beautiful."
      }
     ]
    },
@@ -842,7 +922,8 @@
        "so"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"So\" shows the result: tired, so I went to bed."
      },
      {
       "q": "I stayed at home ___ it was raining.",
@@ -853,7 +934,8 @@
        "or"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Because\" gives the reason: it was raining."
      },
      {
       "q": "___ it was cold, we went swimming.",
@@ -864,7 +946,8 @@
        "And"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"Although\" shows a surprise: cold, but we still swam."
      },
      {
       "q": "I like tea, ___ I don't like coffee.",
@@ -875,7 +958,8 @@
        "because"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"But\" joins two different ideas: like tea / don't like coffee."
      },
      {
       "q": "First we had lunch, ___ we went to the beach.",
@@ -886,12 +970,14 @@
        "although"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Then\" shows what happened next."
      },
      {
       "q": "Finish with \"because\": \"I was happy ___\"",
       "answer": "Any good ending, e.g. because I passed the test.",
-      "double": false
+      "double": false,
+      "why": "\"Because\" gives a reason. Any reason that makes sense is right."
      },
      {
       "q": "Do you want tea ___ coffee?",
@@ -902,7 +988,8 @@
        "or"
       ],
       "answer": 3,
-      "double": true
+      "double": true,
+      "why": "\"Or\" gives a choice: tea or coffee?"
      },
      {
       "q": "___ I was sleeping, someone knocked on the door.",
@@ -913,7 +1000,8 @@
        "Or"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"While\" = during a long action."
      },
      {
       "q": "She studied hard, ___ she passed the exam.",
@@ -924,12 +1012,14 @@
        "or"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"So\" shows the result: studied hard, so she passed."
      },
      {
       "q": "Join with \"but\": \"The hotel was nice. The food was bad.\"",
       "answer": "The hotel was nice, but the food was bad.",
-      "double": false
+      "double": false,
+      "why": "Put a comma before \"but\": …nice, but the food was bad."
      }
     ]
    },
@@ -945,7 +1035,8 @@
        "museum"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "Trains stop at a station."
      },
      {
       "q": "You borrow books from a ___.",
@@ -956,7 +1047,8 @@
        "temple"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "A library lends books."
      },
      {
       "q": "Which one goes on water?",
@@ -967,7 +1059,8 @@
        "a boat"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "A boat travels on water."
      },
      {
       "q": "You can see old things from history in a ___.",
@@ -978,7 +1071,8 @@
        "hotel"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "Museums show old things from history."
      },
      {
       "q": "We went to Chiang Mai ___ train.",
@@ -989,12 +1083,14 @@
        "at"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "We say \"by\" + transport: by train, by bus."
      },
      {
       "q": "Where do you go when you are very ill?",
       "answer": "a hospital",
-      "double": false
+      "double": false,
+      "why": "When you are very ill, you go to a hospital."
      },
      {
       "q": "You buy medicine at a ___.",
@@ -1005,7 +1101,8 @@
        "movie theater"
       ],
       "answer": 0,
-      "double": true
+      "double": true,
+      "why": "A pharmacy sells medicine."
      },
      {
       "q": "A tuk-tuk has ___ wheels.",
@@ -1016,7 +1113,8 @@
        "six"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "A tuk-tuk has three wheels."
      },
      {
       "q": "You change money at a ___.",
@@ -1027,12 +1125,14 @@
        "bank"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "Banks change money."
      },
      {
       "q": "Name a place where you can watch a movie.",
       "answer": "a movie theater",
-      "double": false
+      "double": false,
+      "why": "You watch movies at a movie theater."
      }
     ]
    }
@@ -1052,7 +1152,8 @@
        "stayed"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "First conditional: if + present, will + verb."
      },
      {
       "q": "If I ___ rich, I would buy a big house.",
@@ -1063,7 +1164,8 @@
        "be"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "Second conditional (not real): if + were, would + verb."
      },
      {
       "q": "If you heat water to 100°C, it ___.",
@@ -1074,7 +1176,8 @@
        "boils"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "Zero conditional (always true): if + present, present."
      },
      {
       "q": "If she had studied, she ___ the exam.",
@@ -1085,7 +1188,8 @@
        "passed"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "Third conditional (past): if + had + past participle, would have + past participle."
      },
      {
       "q": "What would you do if you ___ a million baht?",
@@ -1096,12 +1200,14 @@
        "winning"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "Second conditional: if + past simple (won), would + verb."
      },
      {
       "q": "Finish: \"If I were you, I ___ (go) to the doctor.\"",
       "answer": "would go",
-      "double": false
+      "double": false,
+      "why": "Advice: \"If I were you, I would…\""
      },
      {
       "q": "Which sentence is correct?",
@@ -1112,7 +1218,8 @@
        "If I see him, I would told him."
       ],
       "answer": 0,
-      "double": true
+      "double": true,
+      "why": "First conditional: if + present (see), will + verb (will tell)."
      },
      {
       "q": "Unless you hurry, you ___ the bus.",
@@ -1123,7 +1230,8 @@
        "would missed"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Unless\" = if not. Result: will miss."
      },
      {
       "q": "I wouldn't do that if I ___ you.",
@@ -1134,12 +1242,14 @@
        "were"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "Second conditional with \"I\": if I were you."
      },
      {
       "q": "Finish: \"If I had more time, I ___ (learn) Korean.\"",
       "answer": "would learn",
-      "double": false
+      "double": false,
+      "why": "Second conditional: if + past (had), would + verb (would learn)."
      }
     ]
    },
@@ -1155,7 +1265,8 @@
        "very easy"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"A piece of cake\" = very easy."
      },
      {
       "q": "\"I'm feeling under the weather\" means I feel ___.",
@@ -1166,7 +1277,8 @@
        "wet"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Under the weather\" = a little ill."
      },
      {
       "q": "We ___ a mistake.",
@@ -1177,7 +1289,8 @@
        "had"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "We \"make\" a mistake (not \"do\")."
      },
      {
       "q": "Can you ___ me a favor?",
@@ -1188,7 +1301,8 @@
        "take"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "We \"do\" someone a favor."
      },
      {
       "q": "\"Once in a blue moon\" means ___.",
@@ -1199,12 +1313,14 @@
        "every month"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Once in a blue moon\" = very rarely."
      },
      {
       "q": "Finish the idiom: \"Break the ___\" (start a friendly conversation).",
       "answer": "ice",
-      "double": false
+      "double": false,
+      "why": "\"Break the ice\" = start a friendly conversation."
      },
      {
       "q": "Which is correct?",
@@ -1215,7 +1331,8 @@
        "heavy rain"
       ],
       "answer": 3,
-      "double": true
+      "double": true,
+      "why": "We say \"heavy rain\", not \"strong rain\"."
      },
      {
       "q": "\"Hit the books\" means ___.",
@@ -1226,7 +1343,8 @@
        "buy books"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Hit the books\" = study hard."
      },
      {
       "q": "I need to ___ a decision.",
@@ -1237,12 +1355,14 @@
        "give"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "We \"make\" a decision."
      },
      {
       "q": "Finish: \"Actions speak louder than ___.\"",
       "answer": "words",
-      "double": false
+      "double": false,
+      "why": "\"Actions speak louder than words\" = what you do matters more than what you say."
      }
     ]
    },
@@ -1258,7 +1378,8 @@
        "whose"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"Who\" is for people."
      },
      {
       "q": "This is the house ___ I was born.",
@@ -1269,7 +1390,8 @@
        "whose"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Where\" is for places."
      },
      {
       "q": "The phone ___ I bought is broken.",
@@ -1280,7 +1402,8 @@
        "that"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"That\" can be used for things."
      },
      {
       "q": "She's the girl ___ brother is famous.",
@@ -1291,7 +1414,8 @@
        "where"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Whose\" shows something belongs to someone: her brother."
      },
      {
       "q": "The movie ___ we watched was boring.",
@@ -1302,12 +1426,14 @@
        "whose"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Which\" is for things, like a movie."
      },
      {
       "q": "Join with \"who\": \"I have a friend. She speaks French.\"",
       "answer": "I have a friend who speaks French.",
-      "double": false
+      "double": false,
+      "why": "\"Who\" replaces \"she\": I have a friend who speaks French."
      },
      {
       "q": "Which sentence is correct?",
@@ -1318,7 +1444,8 @@
        "The book whose I read was great."
       ],
       "answer": 0,
-      "double": true
+      "double": true,
+      "why": "\"Which\" is for things. \"Who\" is only for people."
      },
      {
       "q": "Bangkok, ___ is the capital of Thailand, is very busy.",
@@ -1329,7 +1456,8 @@
        "where"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "After a comma (extra information) we use \"which\", not \"that\"."
      },
      {
       "q": "Do you know anyone ___ can fix computers?",
@@ -1340,12 +1468,14 @@
        "who"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"Who\" is for people: anyone who can fix…"
      },
      {
       "q": "Join with \"where\": \"This is the café. We met there.\"",
       "answer": "This is the café where we met.",
-      "double": false
+      "double": false,
+      "why": "\"Where\" replaces \"there\": the café where we met."
      }
     ]
    },
@@ -1361,7 +1491,8 @@
        "stop trying"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"Give up\" = stop trying."
      },
      {
       "q": "Please ___ the lights when you leave. (switch off)",
@@ -1372,7 +1503,8 @@
        "turn in"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Turn off\" = switch off."
      },
      {
       "q": "Can you ___ my cat while I'm away?",
@@ -1383,7 +1515,8 @@
        "look at"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"Look after\" = take care of."
      },
      {
       "q": "I need to ___ this word in the dictionary.",
@@ -1394,7 +1527,8 @@
        "look back"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Look up\" = find a word in a dictionary."
      },
      {
       "q": "We've ___ milk. Can you buy some?",
@@ -1405,12 +1539,14 @@
        "run up"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "\"Run out of\" = have none left."
      },
      {
       "q": "What phrasal verb means \"discover information\"? (find ___)",
       "answer": "find out",
-      "double": false
+      "double": false,
+      "why": "\"Find out\" = discover information."
      },
      {
       "q": "The plane ___ at 6 a.m.",
@@ -1421,7 +1557,8 @@
        "took off"
       ],
       "answer": 3,
-      "double": true
+      "double": true,
+      "why": "A plane \"takes off\" when it leaves the ground."
      },
      {
       "q": "She ___ her mother: they look the same.",
@@ -1432,7 +1569,8 @@
        "takes in"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Take after\" = look or act like a parent."
      },
      {
       "q": "Our car ___ on the way to Hua Hin.",
@@ -1443,12 +1581,14 @@
        "broke out"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "\"Break down\" = stop working (a car or machine)."
      },
      {
       "q": "What phrasal verb means \"continue\"? (carry ___)",
       "answer": "carry on",
-      "double": false
+      "double": false,
+      "why": "\"Carry on\" = continue."
      }
     ]
    },
@@ -1464,7 +1604,8 @@
        "unhappy"
       ],
       "answer": 0,
-      "double": false
+      "double": false,
+      "why": "happy → happiness: the y changes to i, then add -ness."
      },
      {
       "q": "The adjective from \"danger\" is ___.",
@@ -1475,7 +1616,8 @@
        "endanger"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "danger + -ous = dangerous."
      },
      {
       "q": "The opposite of \"possible\" is ___.",
@@ -1486,7 +1628,8 @@
        "impossible"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "\"Possible\" takes \"im-\": impossible."
      },
      {
       "q": "The noun from \"decide\" is ___.",
@@ -1497,7 +1640,8 @@
        "decisive"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "decide → decision (the noun ends in -sion)."
      },
      {
       "q": "The opposite of \"honest\" is ___.",
@@ -1508,12 +1652,14 @@
        "imhonest"
       ],
       "answer": 2,
-      "double": false
+      "double": false,
+      "why": "\"Honest\" takes \"dis-\": dishonest."
      },
      {
       "q": "Write the adjective from \"beauty\".",
       "answer": "beautiful",
-      "double": false
+      "double": false,
+      "why": "beauty → beautiful: y changes to i, then add -ful."
      },
      {
       "q": "The adverb from \"careful\" is ___.",
@@ -1524,7 +1670,8 @@
        "careless"
       ],
       "answer": 0,
-      "double": true
+      "double": true,
+      "why": "careful + -ly = carefully (keep both l's)."
      },
      {
       "q": "A person who teaches is a ___.",
@@ -1535,7 +1682,8 @@
        "teachian"
       ],
       "answer": 1,
-      "double": false
+      "double": false,
+      "why": "teach + -er = teacher (a person who does the job)."
      },
      {
       "q": "The noun from \"free\" is ___.",
@@ -1546,12 +1694,14 @@
        "freedom"
       ],
       "answer": 3,
-      "double": false
+      "double": false,
+      "why": "free + -dom = freedom."
      },
      {
       "q": "Write the opposite of \"legal\".",
       "answer": "illegal",
-      "double": false
+      "double": false,
+      "why": "\"Legal\" takes \"il-\": illegal."
      }
     ]
    }
@@ -1561,104 +1711,166 @@
   {
    "title": "Battle of Wits",
    "text": [
-    "One question at a time.",
-    "Talk with your team and choose an answer."
+    "5 questions per round. Your team writes each answer on ONE board.",
+    "No shouting answers: keep them secret!"
    ],
    "example": {
-    "label": "Example",
-    "big": "Yesterday I ___ to the park.",
     "rows": [
      [
-      "A",
-      "go"
+      "A-D question",
+      "write the letter"
      ],
      [
-      "B",
-      "went"
-     ],
-     [
-      "C",
-      "gone"
+      "Other questions",
+      "write the answer in words"
      ]
     ]
    }
   },
   {
-   "title": "Show your answer",
+   "title": "Be quick!",
    "text": [
-    "Write the letter or the answer on your board.",
-    "Keep it hidden until the timer ends, then hold it up!"
+    "Each question has a timer.",
+    "When it ends, the next question comes by itself."
    ],
    "example": {
-    "rows": [
-     [
-      "Choices",
-      "write A, B, C or D"
-     ],
-     [
-      "Short answer",
-      "write the word"
-     ]
+    "big": "30 s",
+    "tag": "per question"
+   }
+  },
+  {
+   "title": "Check together",
+   "text": [
+    "After 5 questions, we check every answer together.",
+    "Mark each answer on your board: ✓ or ✗."
+   ],
+   "example": {
+    "chips": [
+     "✓",
+     "✗",
+     "✓",
+     "✓",
+     "✗"
     ]
    }
   },
   {
-   "title": "Win points",
+   "title": "Hidden bonuses!",
    "text": [
-    "Every right team gets a point.",
-    "DOUBLE questions are worth 2!"
+    "Before you count, 2 secret bonuses are revealed.",
+    "A long word? A full sentence? Extra points!"
    ],
    "example": {
     "rows": [
      [
-      "Right",
+      "🌟 Golden Question",
       "+1"
      ],
      [
-      "DOUBLE ×2",
-      "+2"
+      "📏 Long Word",
+      "+1"
+     ],
+     [
+      "💯 Perfect Round",
+      "+3"
      ]
     ]
    }
+  },
+  {
+   "title": "Count your points",
+   "text": [
+    "1 point for each right answer, plus your bonuses.",
+    "Tell your teacher your team’s total."
+   ],
+   "example": {
+    "big": "3 + 2 = 5",
+    "tag": "right + bonus"
+   }
   }
  ],
- "bonus": {
-  "before": [
-   {
-    "id": "spelling",
-    "name": "Spelling counts",
-    "text": "Short answers spelled perfectly: +1 extra.",
-    "points": 1,
-    "only": [
-     "short"
-    ]
-   },
-   {
-    "id": "fast",
-    "name": "Fast hands",
-    "text": "First team to show the right answer: +1.",
-    "points": 1
-   }
-  ],
-  "secret": [
-   {
-    "id": "why",
-    "name": "Explain it",
-    "text": "+1 if your team can explain WHY it is right.",
-    "points": 1
-   },
-   {
-    "id": "trying",
-    "name": "Good try",
-    "text": "Every team that was wrong gets +1 for trying!",
-    "points": 1
-   },
-   {
-    "id": "sentence",
-    "name": "Use it",
-    "text": "Use the answer in a correct sentence: +2.",
-    "points": 2
-   }
-  ]
- }
+ "hidden": [
+  {
+   "id": "golden",
+   "icon": "🌟",
+   "name": "Golden Question",
+   "text": "Question {n} was secretly worth double! Right? +1 more.",
+   "points": 1
+  },
+  {
+   "id": "perfect",
+   "icon": "💯",
+   "name": "Perfect Round",
+   "text": "All 5 answers right? +3!",
+   "points": 3
+  },
+  {
+   "id": "streak",
+   "icon": "🔥",
+   "name": "Hot Streak",
+   "text": "3 right answers in a row? +2!",
+   "points": 2
+  },
+  {
+   "id": "comeback",
+   "icon": "🐢",
+   "name": "Comeback",
+   "text": "The team in last place gets +2!",
+   "points": 2
+  },
+  {
+   "id": "neat",
+   "icon": "🖊",
+   "name": "Neatest Board",
+   "text": "Your teacher picks the neatest board: +2!",
+   "points": 2
+  },
+  {
+   "id": "spelling",
+   "icon": "✏️",
+   "name": "Spelling Star",
+   "text": "Every word on your board spelled right? +2!",
+   "points": 2,
+   "needs": "short"
+  },
+  {
+   "id": "longword",
+   "icon": "📏",
+   "name": "Long Word",
+   "text": "An answer with a word of 10+ letters? +1!",
+   "points": 1,
+   "needs": "short"
+  },
+  {
+   "id": "syllables",
+   "icon": "🎵",
+   "name": "Syllable Hunter",
+   "text": "An answer with a word of 3+ syllables? +1!",
+   "points": 1,
+   "needs": "short"
+  },
+  {
+   "id": "sentence",
+   "icon": "🧩",
+   "name": "Full Sentence",
+   "text": "One answer written as a full sentence? +1!",
+   "points": 1,
+   "needs": "short"
+  },
+  {
+   "id": "lucky",
+   "icon": "🍀",
+   "name": "Lucky Letter",
+   "text": "+1 for each right answer that starts with the letter {letter}!",
+   "points": 1
+  },
+  {
+   "id": "bletter",
+   "icon": "🔤",
+   "name": "Letter B Luck",
+   "text": "+1 for each right answer that was B!",
+   "points": 1,
+   "needs": "choice"
+  }
+ ]
 }

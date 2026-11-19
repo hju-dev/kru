@@ -1,0 +1,156 @@
+/* Kru "Battle" engine (kru-battle.js): Battle of Wits / Readers / Writers. Phone landscape, 712 x 354 usable. */
+.kbt {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.kbt .bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--tap);
+}
+.kbt .round {
+  font: 800 20px/1.1 var(--display);
+  white-space: nowrap;
+}
+.kbt .round b { color: var(--gold); }
+.kbt-where {
+  color: var(--muted);
+  font: 600 16px var(--mono);
+  white-space: nowrap;
+}
+.kbt .grow { flex: 1; }
+.kbt-stage {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 18px;
+  background: var(--stage);
+  position: relative;
+}
+.kbt-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+}
+.kbt-controls .btn { min-height: 48px; font-size: 18px; }
+.kbt-controls .btn.big { padding: 0 22px; font-size: 20px; }
+.kbt-controls .digits { font: 700 32px var(--mono); min-width: 3.2ch; }
+.kbt-controls .digits.warn { color: var(--coral); }
+.kbt-controls .progress { flex: 1; height: 12px; border-radius: 6px; background: var(--panel); overflow: hidden; }
+.kbt-controls .progress i { display: block; height: 100%; background: var(--teal); transform-origin: left; transition: transform 0.2s linear; }
+.kbt-tip { color: var(--muted); font-weight: 700; }
+
+/* the question */
+.kbt-q { font: 800 34px/1.15 var(--display); text-wrap: balance; }
+.kbt-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; font-size: 26px; }
+.kbt-choice { display: flex; align-items: center; gap: 10px; padding: 4px 12px; border-radius: 12px; background: var(--panel); font-weight: 700; line-height: 1.15; }
+.kbt-choice b { flex-shrink: 0; display: grid; place-items: center; width: 1.4em; height: 1.4em; border-radius: 50%; background: var(--gold); color: #111; font-size: 0.85em; }
+.kbt-hint { color: var(--gold); font-weight: 800; font-size: 20px; }
+.kbt-gapbox {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 4px;
+  background: rgb(10 10 20 / 0.82);
+  border-radius: inherit;
+  font: 800 26px var(--display);
+}
+.kbt-gapbox b { font: 900 90px/1 var(--display); color: var(--gold); animation: kbt-pulse 1s ease-in-out infinite; }
+@keyframes kbt-pulse { 50% { transform: scale(1.15); } }
+
+/* start, pens down */
+.kbt-big { font: 900 40px/1.1 var(--display); text-align: center; color: var(--gold); }
+.kbt-sub { text-align: center; font-size: 22px; font-weight: 700; line-height: 1.35; }
+
+/* review */
+.kbt-rq { font: 800 28px/1.2 var(--display); display: flex; gap: 10px; align-items: baseline; }
+.kbt-n { flex-shrink: 0; display: inline-grid; place-items: center; width: 1.4em; height: 1.4em; border-radius: 50%; background: var(--panel); font-size: 0.8em; }
+.kbt-ans { font: 900 34px/1.15 var(--display); color: var(--teal); animation: kbt-in 0.4s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+.kbt-letter { display: inline-grid; place-items: center; width: 1.3em; height: 1.3em; border-radius: 50%; background: var(--teal); color: #111; font-size: 0.8em; }
+.kbt-why { font-size: 20px; font-weight: 700; line-height: 1.3; color: var(--fg); background: var(--panel); padding: 6px 12px; border-radius: 12px; }
+.kbt-mark { color: var(--muted); font-weight: 700; font-size: 16px; }
+@keyframes kbt-in { from { transform: scale(0.6); opacity: 0; } }
+
+/* hidden bonuses: cards that flip */
+.kbt-btitle { text-align: center; font: 900 26px var(--display); color: var(--gold); }
+.kbt-cards { display: flex; gap: 14px; justify-content: center; flex: 1; min-height: 0; }
+.kbt-card {
+  position: relative;
+  width: min(300px, 46%);
+  border: 0;
+  padding: 0;
+  background: none;
+  perspective: 900px;
+  cursor: pointer;
+}
+.kbt-card .back,
+.kbt-card .front {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.6s cubic-bezier(0.3, 1.4, 0.5, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.kbt-card .back {
+  background: repeating-linear-gradient(45deg, #2a2050 0 12px, #33285e 12px 24px);
+  border: 3px solid var(--gold);
+  font: 900 72px var(--display);
+  color: var(--gold);
+}
+.kbt-card .front {
+  transform: rotateY(180deg);
+  background: linear-gradient(160deg, #3a2a10, var(--panel));
+  border: 3px solid var(--gold);
+  padding: 8px 12px;
+  gap: 2px;
+  text-align: center;
+}
+.kbt-card.on .back { transform: rotateY(-180deg); }
+.kbt-card.on .front { transform: rotateY(0); }
+.kbt-card .front i { font-style: normal; font-size: 36px; line-height: 1; }
+.kbt-card .front b { font: 900 22px/1.1 var(--display); color: var(--gold); }
+.kbt-card .front span { font-size: 17px; font-weight: 700; line-height: 1.2; }
+.kbt-card .front em { font: 900 28px var(--mono); color: var(--teal); font-style: normal; }
+
+/* tally and results */
+.kbt-ttitle { font: 800 22px var(--display); text-align: center; }
+.kbt-ttitle small { display: block; color: var(--muted); font: 700 15px var(--body); }
+.kbt-tally,
+.kbt-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 6px 14px; }
+.kbt-trow, .kbt-brow { display: flex; align-items: center; gap: 8px; justify-content: center; }
+.kbt-trow .btn { min-width: 48px; min-height: 48px; padding: 0; font-size: 24px; }
+.kbt-trow output { min-width: 2ch; text-align: center; font: 800 30px var(--mono); }
+.kbt-brow { font-size: 22px; justify-content: flex-start; padding: 2px 10px; border-radius: 12px; background: var(--panel); }
+.kbt-rank { color: var(--muted); font-weight: 800; min-width: 1.2ch; }
+.kbt-plus { color: var(--teal); font: 800 20px var(--mono); }
+.kbt-brow b { margin-left: auto; font: 800 28px var(--mono); color: var(--gold); }
+
+.kbt .strip { display: flex; gap: 4px; }
+.kbt .strip .tile { flex: 1 1 0; min-width: 0; min-height: 44px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border-radius: 12px; border: 2px solid var(--line); border-top: 4px solid var(--c, var(--gold)); background: var(--panel); }
+.kbt .strip .tile .tp { font: 700 26px var(--mono); }
+.kbt .strip .tile.lead { box-shadow: 0 0 0 3px var(--gold); }
+.kbt.ph-tally .strip,
+.kbt.ph-result .strip { display: none; }
+.menu-label { color: var(--muted); font-weight: 700; font-size: 14px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kbt-card .back, .kbt-card .front { transition: none; }
+  .kbt-gapbox b, .kbt-ans { animation: none; }
+}

@@ -98,7 +98,7 @@ describe('who sees the Unit 8 packs', () => {
 describe('reveal + small packs', () => {
   it('the read-aloud sentence shows after the reveal (shared quiz + Quiz Battle)', () => {
     expect(read('public/games/shared/kru-quiz.js')).toContain('if (shown && q.read_aloud) h += say(q.read_aloud);')
-    expect(read('public/games/quiz-battle/app.js')).toContain("$('say').innerHTML = shown && q.read_aloud ? KruQuiz.say(q.read_aloud) : '';")
+    expect(read('public/games/shared/kru-battle.js')).toContain("(r.read_aloud ? '<div class=\"kbt-why\">🔊 ' + esc(r.read_aloud) + '</div>' : '')")
   })
   it('Jeopardy puts every question of a small pack on the board (10 = 2 × 5, 12 = 3 × 4)', () => {
     const js = read('public/games/jeopardy/app.js')

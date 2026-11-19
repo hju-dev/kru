@@ -18,21 +18,17 @@ describe('Quiz Battle', () => {
       for (const n of counts) expect(n / total).toBeGreaterThanOrEqual(0.2)
     })
   }
-  it('starts with a 10-second timer', () => {
-    expect(read('public/games/quiz-battle/app.js')).toContain('secs: 10,')
+  // Nov 19: Battle of Wits (the shared Battle engine) replaced the old one-question game
+  it('starts with a 30-second timer (30 / 45 / 60)', () => {
+    expect(read('public/games/shared/kru-battle.js')).toContain('var TIMES = [30, 45, 60], ROUND = 5, GAP = 3;')
+    expect(read('public/games/shared/kru-battle.js')).toContain('secs: 30,')
   })
-  it('the end of a set opens the podium (Keep playing = another set)', () => {
-    expect(read('public/games/quiz-battle/app.js')).toContain('KruEnd.show({ keepPlaying: openSets })')
+  it('the last round of a set offers the podium (Final scores)', () => {
+    expect(read('public/games/shared/kru-battle.js')).toContain("else if (d === 'final') KruEnd.show(")
   })
-  it('"Spelling counts" only comes up before a short-answer question', () => {
-    const spelling = c.bonus.before.find((b: { id: string }) => b.id === 'spelling')
-    expect(spelling.only).toEqual(['short'])
-    const win: Record<string, { draw: (...a: unknown[]) => { before: { id: string } | null } }> = {}
-    runInNewContext(read('public/games/shared/kru-bonus.js'), { window: win, document: {}, setTimeout })
-    const draw = win.KruBonus.draw
-    const cards = { before: [spelling] }
-    expect(draw(cards, null, 'k', () => 0, ['choice']).before).toBeNull()
-    expect(draw(cards, null, 'k', () => 0, ['short']).before).toMatchObject({ id: 'spelling' })
+  it('no bonus cards any more: only hidden bonuses', () => {
+    expect(c.bonus).toBeUndefined()
+    expect(c.hidden.length).toBeGreaterThanOrEqual(6)
   })
 })
 
@@ -62,8 +58,11 @@ describe('podium first, then the scores are sent (every scored game)', () => {
     expect(end).toContain('data-k="save">Save scores &amp; finish ✓')
   })
   it('games with a natural end open the podium themselves', () => {
-    for (const slug of ['quiz-battle', 'jeopardy', 'race-board', 'think-tank-showdown', 'word-rush']) {
+    for (const slug of ['jeopardy', 'race-board', 'think-tank-showdown', 'word-rush']) {
       expect(read(`public/games/${slug}/app.js`), slug).toMatch(/KruEnd\.show\(/)
+    }
+    for (const f of ['shared/kru-battle.js']) { // Battle of Wits
+      expect(read(`public/games/${f}`), f).toMatch(/KruEnd\.show\(/)
     }
   })
   it('Kru waits (no 2-second timeout) when the game is showing its podium', () => {
