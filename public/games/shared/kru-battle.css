@@ -143,9 +143,9 @@
 .kbt-brow b { margin-left: auto; font: 800 28px var(--mono); color: var(--gold); }
 
 .kbt .strip { display: flex; gap: 4px; }
-.kbt .strip .tile { flex: 1 1 0; min-width: 0; min-height: 44px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border-radius: 12px; border: 2px solid var(--line); border-top: 4px solid var(--c, var(--gold)); background: var(--panel); }
+.kbt .strip .tile { flex: 1 1 0; min-width: 0; min-height: 44px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 8px; border-radius: 12px; border: 2px solid var(--line); box-shadow: inset 0 4px 0 var(--c, var(--gold)); background: var(--panel); }
 .kbt .strip .tile .tp { font: 700 26px var(--mono); }
-.kbt .strip .tile.lead { box-shadow: 0 0 0 3px var(--gold); }
+.kbt .strip .tile.lead { box-shadow: inset 0 4px 0 var(--c, var(--gold)), 0 0 0 3px var(--gold); }
 .kbt.ph-tally .strip,
 .kbt.ph-result .strip { display: none; }
 .menu-label { color: var(--muted); font-weight: 700; font-size: 14px; }
