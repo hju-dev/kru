@@ -53,7 +53,7 @@ describe('Quiz Island fixes', () => {
   it('slides use drawn coins, a treasure chest and a pirate for Blackbeard; Pirate Raid has pictures and a side list', () => {
     expect(JSON.stringify(c.intro[0])).toContain('[[coin]]')
     expect(c.intro[2].example.rows![0][0]).toBe('[[chest]] Treasure')
-    expect(c.intro[2].example.rows![1][0]).toBe('[[pirate]] Blackbeard')
+    expect(c.intro[2].example.rows![1][0]).toBe('[[pirate]] Blackbeard & Kidd')
     expect(c.intro[4].example.rows!.map((r) => r[0])).toEqual(['[[boom]] Sink', '[[steal]] Steal', '[[double]] +2 Islands'])
     expect(c.intro[4].example.aside).toEqual({ title: 'Additional power-ups:', items: ['50/50', '+20 s', 'Free Play'] })
     expect(read('public/games/quiz-island/art.js')).toContain('window.KruIntroIcons = { coin: A.coin(), chest: A.chest(), pirate: A.pirate()')

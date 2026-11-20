@@ -63,8 +63,8 @@
       "+10"
      ],
      [
-      "[[pirate]] Blackbeard",
-      "+15"
+      "[[pirate]] Blackbeard & Kidd",
+      "+30"
      ],
      [
       "🌋 Volcano",
@@ -75,8 +75,12 @@
       "miss a turn"
      ],
      [
-      "🐙 Sea Monster",
+      "🦑🐉 Sea Monsters",
       "lose half your gold"
+     ],
+     [
+      "🏴‍☠️ Raid island",
+      "free Pirate Raid"
      ]
     ]
    }
