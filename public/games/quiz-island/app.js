@@ -9,7 +9,9 @@
    - Visible: 4 💎 treasure islands (+5) and one 🏰 fortress per team (one each at most). A fortress can't be sunk or
      stolen, and neither can its owner's islands next to it. A stolen island is 🔒 safe for one round.
    - Hidden: 3 🌋 volcanoes (lose your newest island), 3 ☠ pirates (miss your next turn), 4 🧰 chests (+10),
-     1 🐙 Sea Monster (eats half your gold), 1 💀 Blackbeard's Treasure (+15).
+     a 🦑 squid and a 🐉 dragon (each takes half your gold), Blackbeard and Captain Kidd (+30 each),
+     4 🏴‍☠️ raid islands (a free Pirate Raid on another team after you claim one).
+   - When the map is full, a prompt asks once whether to end the game (or keep playing).
    - Sunk islands go back to empty. A full map: a normal claim steals instead.
    - Each new round the last-place team finds a Message in a Bottle (+3). ⋯ Last round: every team gets the same
      number of turns, then the treasure map is revealed and the biggest island group gets +10.
@@ -20,7 +22,7 @@
   var TIMES = [10, 20, 30, 45, 60];
   var COLS = 8, ROWS = 5, CELLS = COLS * ROWS;
   var TREASURES = 4, VOLCANOES = 3, PIRATES = 3, CHESTS = 4;
-  var GEM = 5, CHEST = 10, BEARD = 15, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;
+  var GEM = 5, CHEST = 10, BEARD = 30, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
     easy: { label: 'Easy', share: 30, pts: 2 },
@@ -162,8 +164,12 @@
     m.volcano = take(VOLCANOES);    // hidden: ash, lose your newest island
     m.pirate = take(PIRATES);       // hidden: miss your next turn
     m.chest = take(CHESTS);         // hidden: +10
-    m.seaMonster = take(1);         // hidden: eats half your gold
-    m.beard = take(1);              // hidden: +15
+    m.seaMonster = take(1);         // hidden: the squid 🦑 eats half your gold
+    m.dragon = take(1);             // hidden: the dragon 🐉 eats half your gold
+    m.beard = take(1);              // hidden: Blackbeard +30
+    m.kidd = take(1);               // hidden: Captain Kidd +30
+    m.raid = take(4);               // hidden: a free Pirate Raid on another team
+    m.dragonUsed = [];
     return m;
   }
   /** Fortresses at least 2 islands apart in every direction (3 steps); with many teams the map is too small,
@@ -250,7 +256,7 @@
   }
 
   // ---------- drawing ----------
-  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '<span class="pic">' + ART.chest() + '</span>', seaMonster: '🐙', beard: '<span class="pic">' + ART.pirate() + '</span>' };
+  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '<span class="pic">' + ART.chest() + '</span>', seaMonster: '🦑', dragon: '🐉', beard: '<span class="pic">' + ART.pirate() + '</span>', kidd: '<span class="pic">' + ART.pirate() + '</span>', raid: '🏴‍☠️' };
   function renderMap() {
     var cl = S.claim, step = cl && cl.steps[0], can = step ? stepCells(cl.id, step) : [], leaders = empireLeaders();
     $('map').className = 'map' + (step ? ' aim ' + step.m : '') + (S.reveal ? ' reveal' : '');
@@ -261,7 +267,7 @@
       if (S.reveal && !o && !blocked(c)) Object.keys(HIDDEN_ICON).forEach(function (k) { if (has(S.map[k], c)) hid = k; });
       var cls = 'isle' + (o ? ' owned' : '') + (pir || ash || mon ? ' ash' : '') + (tr && !o ? ' treasure' : '') + (fort ? ' fort' : '') +
         (o && guarded(c) && !fort ? ' guard' : '') + (can.indexOf(c) >= 0 ? ' can' : '') + (o && leaders.indexOf(o) >= 0 ? ' empire' : '') + (hid ? ' hidden-reveal' : '');
-      var label = pir ? '☠' : ash ? '🌋' : mon ? '🐙' :
+      var label = pir ? '☠' : ash ? '🌋' : mon ? (has(S.map.dragonUsed, c) ? '🐉' : '🦑') :
         o ? '<span class="n">' + (players.indexOf(team(o)) + 1) + '</span><span class="w">' + S.map.worth[c] + '</span>' + (fort ? '<span class="tag">🏰</span>' : locked(c) ? '<span class="tag">🔒</span>' : '') :
         fort ? '🏰' : tr ? '💎' : hid ? HIDDEN_ICON[hid] : '';
       var name = o ? ', ' + esc(tname(o)) + ', ' + S.map.worth[c] + ' gold' + (fort ? ', fortress' : '') : pir ? ', pirates' : ash ? ', volcano' : mon ? ', sea monster' : fort ? ', fortress' : tr ? ', treasure' : ', empty';
@@ -327,7 +333,13 @@
       toast(s.m === 'claim' ? 'No island to claim.' : 'No enemy island can be hit right now.');
       cl.steps.shift();
     }
-    if (!cl || !cl.steps.length) { S.claim = null; nextTurn(); return; }
+    if (!cl || !cl.steps.length) {
+      var free = cl && cl.raidAfter ? cl.id : null; // a raid island was claimed: a free Pirate Raid before the turn ends
+      S.claim = null;
+      if (free && targets(free).length) { S.choice = { id: free, kind: 'raid', free: true, v: 0 }; save(); render(); afterBanners(openChoice); return; }
+      if (free) toast('No enemy island to attack yet.');
+      nextTurn(); return;
+    }
     var step = cl.steps[0];
     if (step.m === 'sink' && step.announce) {
       step.announce = false;
@@ -370,21 +382,27 @@
       banner({ art: ART.pirates(), title: 'PIRATE AMBUSH!', sub: t + ' is captured and misses the next turn!', mood: 'bad' });
       return;
     }
-    if (has(m.seaMonster, c)) {
-      drop(m.seaMonster, c); m.monster.push(c);
-      var half = Math.floor(gold(id) / 2), eaten = half ? addPts(id, -half, 'sea monster') : 0;
-      banner({ art: ART.monster(), title: 'SEA MONSTER!', sub: eaten ? 'It gobbled up half of ' + t + "'s gold!" : t + ' had no gold to eat. Lucky!', gold: eaten, mood: 'sea', sound: 'sea' });
+    var squid = has(m.seaMonster, c), dragon = has(m.dragon, c);
+    if (squid || dragon) {
+      drop(squid ? m.seaMonster : m.dragon, c); m.monster.push(c);
+      if (dragon) m.dragonUsed.push(c);
+      var half = Math.floor(gold(id) / 2), eaten = half ? addPts(id, -half, dragon ? 'dragon' : 'sea monster') : 0;
+      banner({ art: ART.monster(), title: dragon ? 'DRAGON! 🐉' : 'SEA MONSTER! 🦑', sub: eaten ? (dragon ? 'The dragon burned half of ' : 'It gobbled up half of ') + t + "'s gold!" : t + ' had no gold to take. Lucky!', gold: eaten, mood: 'sea', sound: 'sea' });
       return;
     }
-    var beard = has(m.beard, c), chest = has(m.chest, c), gem = has(m.treasure, c), fort = has(m.fort, c);
-    var worth = step.v + (step.dig ? DIG : 0) + (beard ? BEARD : 0) + (chest ? CHEST : 0) + (gem ? GEM : 0);
+    var beard = has(m.beard, c), kidd = has(m.kidd, c), raidIsle = has(m.raid, c), chest = has(m.chest, c), gem = has(m.treasure, c), fort = has(m.fort, c);
+    var worth = step.v + (step.dig ? DIG : 0) + (beard || kidd ? BEARD : 0) + (chest ? CHEST : 0) + (gem ? GEM : 0);
+    if (kidd) drop(m.kidd, c);
+    if (raidIsle) { drop(m.raid, c); if (S.claim) S.claim.raidAfter = true; } // a free Pirate Raid after this claim
     if (beard) drop(m.beard, c);
     if (chest) drop(m.chest, c);
     if (gem) drop(m.treasure, c);
     m.own[c] = id; m.worth[c] = worth; (m.order[id] = m.order[id] || []).push(c);
-    addPts(id, worth, beard ? "Blackbeard's treasure" : chest ? 'treasure chest' : gem ? 'treasure island' : fort ? 'fortress' : 'island');
+    addPts(id, worth, beard ? "Blackbeard's treasure" : kidd ? "Captain Kidd's treasure" : raidIsle ? 'raid island' : chest ? 'treasure chest' : gem ? 'treasure island' : fort ? 'fortress' : 'island');
     var col = color(id);
     if (beard) banner({ art: ART.beard(), title: "BLACKBEARD'S TREASURE!", sub: t + ' found the legendary pirate gold!', gold: worth, mood: 'magic', sound: 'fanfare', wait: 3000 });
+    else if (kidd) banner({ art: ART.beard(), title: "CAPTAIN KIDD'S TREASURE!", sub: t + ' found the hidden pirate gold!', gold: worth, mood: 'magic', sound: 'fanfare', wait: 3000 });
+    else if (raidIsle) banner({ art: ART.raid(), title: 'FREE PIRATE RAID!', sub: t + ' found a pirate crew! Attack another team!', gold: worth, mood: 'magic', sound: 'fanfare', wait: 2600 });
     else if (chest) banner({ art: ART.chest(), title: 'TREASURE CHEST!', sub: t + ' digs up a chest full of gold!', gold: worth, mood: 'good', sound: 'gold' });
     else if (gem) banner({ art: ART.gem(), title: 'SPARKLING TREASURE!', sub: t + ' grabs the treasure island!', gold: worth, mood: 'good', sound: 'gold' });
     else if (fort) banner({ art: ART.fort(col), title: 'FORTRESS CAPTURED!', sub: 'Nobody can sink or steal it, or ' + t + "'s islands next to it!", gold: worth, mood: 'good' });
@@ -408,18 +426,27 @@
 
   // ---------- reward choices: hard / impossible answers and Pirate Raid ----------
   function openChoice() {
-    var ch = S.choice, id = ch.id, enemy = targets(id).length > 0, art = $('choiceArt');
+    var ch = S.choice;
+    if (ch.kind === 'full') { // the map is full: end the game or go on
+      $('choiceArt').innerHTML = ART.map();
+      $('choiceTitle').textContent = '🗺 THE MAP IS FULL! End the game?';
+      $('choices').innerHTML = '<button class="btn ch" data-ch="end"><span class="ch-art">' + ART.crown() + '</span><b>🏁 End the game</b><small>Treasure map, empire bonus and final scores</small></button>' +
+        '<button class="btn ch" data-ch="go"><span class="ch-art">' + ART.steal() + '</span><b>⚔ Keep playing</b><small>Every right answer steals an island now</small></button>';
+      $('choiceBack').hidden = false;
+      return;
+    }
+    var id = ch.id, enemy = targets(id).length > 0, art = $('choiceArt');
     var opts = ch.kind === 'raid' ? [
       { k: 'sink', art: ART.boom(), title: '💣 Sink', sub: 'Blast an enemy island', off: !enemy },
       { k: 'steal', art: ART.steal(), title: '⚔ Steal', sub: 'Take an enemy island', off: !enemy },
       { k: 'two', art: ART.double(color(id)), title: '🏝🏝 Claim 2', sub: '2 new islands (+' + ch.v + ' each)' },
-    ] : [
+    ].filter(function (o) { return !(ch.free && o.k === 'two'); }) : [
       { k: 'dig', art: ART.dig(), title: '💰 Gold Dig', sub: 'Island + ' + DIG + ' extra gold' },
       { k: 'cannon', art: ART.cannon(), title: '💣 Cannon Fire', sub: 'Claim 1, then sink an enemy island', off: !enemy },
       { k: 'two', art: ART.double(color(id)), title: '🏝🏝 Double Claim', sub: '2 islands (+' + ch.v + ' each)' },
     ];
     art.innerHTML = ch.kind === 'raid' ? ART.raid() : ART.chest();
-    $('choiceTitle').textContent = ch.kind === 'raid' ? '🏴‍☠️ PIRATE RAID! ' + tname(id) + ', choose your attack' : '⭐ BIG ANSWER! ' + tname(id) + ', choose your reward';
+    $('choiceTitle').textContent = ch.kind === 'raid' ? '🏴‍☠️ ' + (ch.free ? 'FREE ' : '') + 'PIRATE RAID! ' + tname(id) + ', choose your attack' : '⭐ BIG ANSWER! ' + tname(id) + ', choose your reward';
     $('choices').innerHTML = opts.map(function (o) {
       return '<button class="btn ch" data-ch="' + o.k + '"' + (o.off ? ' disabled' : '') + '><span class="ch-art">' + o.art + '</span><b>' + o.title + '</b><small>' + (o.off ? 'No enemy island to hit yet' : o.sub) + '</small></button>';
     }).join('');
@@ -430,6 +457,11 @@
     if (!b || b.disabled || !S.choice) return;
     unlockAudio();
     var ch = S.choice, k = b.dataset.ch, v = ch.v, steps;
+    if (ch.kind === 'full') { // end the game, or keep playing (the next turn goes on)
+      S.choice = null; $('choiceBack').hidden = true; save();
+      if (k === 'end') endGame(); else nextTurn();
+      return;
+    }
     if (k === 'dig') steps = [{ m: 'claim', v: v, dig: true }];
     else if (k === 'cannon') steps = [{ m: 'claim', v: v }, { m: 'sink', announce: true }];
     else if (k === 'two') steps = [{ m: 'claim', v: v }, { m: 'claim', v: v, second: true }];
@@ -443,6 +475,11 @@
 
   /** The next team's turn: a new round brings a Message in a Bottle; the Last round ends the game; pirates skip a turn. */
   function nextTurn() {
+    // the map just got full: ask once whether to end the game (they can keep playing)
+    if (S.phase === 'play' && !S.fullAsked && !emptyCells().length) {
+      S.fullAsked = true; S.choice = { kind: 'full' }; save(); render(); afterBanners(openChoice);
+      return;
+    }
     if (advance()) return;
     for (var i = 0; i < players.length; i++) {
       var cur = current();

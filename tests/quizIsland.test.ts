@@ -26,12 +26,25 @@ describe('Quiz Island', () => {
     expect(js).toContain("hard: { label: 'Hard', share: 17, pts: 5, reward: true }")
     expect(js).toContain("impossible: { label: 'Impossible', share: 8, pts: 7, reward: true }")
   })
-  it('the map: one fortress per team, 4 treasures (+5), 3 volcanoes, 3 pirates, 4 chests (+10), a Sea Monster and Blackbeard (+15)', () => {
+  it('the map: one fortress per team, 4 treasures (+5), 3 volcanoes, 3 pirates, 4 chests (+10), a squid and a dragon, Blackbeard and Captain Kidd (+30), 4 free-raid islands', () => {
     expect(js).toContain('var TREASURES = 4, VOLCANOES = 3, PIRATES = 3, CHESTS = 4;')
-    expect(js).toContain('var GEM = 5, CHEST = 10, BEARD = 15, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;')
+    expect(js).toContain('var GEM = 5, CHEST = 10, BEARD = 30, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;')
     expect(js).toContain('var nf = Math.min(players.length, 8)')
     expect(js).toContain('m.seaMonster = take(1);')
+    expect(js).toContain('m.dragon = take(1);')
     expect(js).toContain('m.beard = take(1);')
+    expect(js).toContain('m.kidd = take(1);')
+    expect(js).toContain('m.raid = take(4);')
+    expect(js).toContain("title: \"CAPTAIN KIDD'S TREASURE!\"")
+    expect(js).toContain("title: 'FREE PIRATE RAID!'")
+    expect(js).toContain("seaMonster: '🦑', dragon: '🐉'")
+  })
+  it('the free raid comes after the claim (sink or steal only); a full map asks once whether to end the game', () => {
+    expect(js).toContain('if (S.claim) S.claim.raidAfter = true;')
+    expect(js).toContain("S.choice = { id: free, kind: 'raid', free: true, v: 0 };")
+    expect(js).toContain("return !(ch.free && o.k === 'two');")
+    expect(js).toContain('if (S.phase === \'play\' && !S.fullAsked && !emptyCells().length) {')
+    expect(js).toContain("if (k === 'end') endGame(); else nextTurn();")
     expect(js).toContain("var half = Math.floor(gold(id) / 2)")
   })
   it("fortresses guard themselves and their owner's neighbors; one fortress per team; a stolen island is locked for a round", () => {
