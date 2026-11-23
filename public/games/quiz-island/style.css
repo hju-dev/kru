@@ -149,7 +149,7 @@
 }
 .map.aim.sink .isle.can,
 .map.aim.steal .isle.can {
-  outline: 3px dashed #ff5a5f;
+  outline: 3px dashed #000;
   outline-offset: -3px;
 }
 /* the treasure map at the end: where the secrets were */
@@ -313,9 +313,13 @@
   height: 100%;
   display: block;
 }
+/* pictures on a tile sit in the middle of it (they used to hang off the bottom) */
 .isle .pic {
-  width: 70%;
-  height: 80%;
+  position: absolute;
+  inset: 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .fx-bits i .coin {
   width: 26px;

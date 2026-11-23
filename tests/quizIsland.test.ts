@@ -26,19 +26,19 @@ describe('Quiz Island', () => {
     expect(js).toContain("hard: { label: 'Hard', share: 17, pts: 5, reward: true }")
     expect(js).toContain("impossible: { label: 'Impossible', share: 8, pts: 7, reward: true }")
   })
-  it('the map: 30 islands; one fortress per team, 4 treasures (+5), 2 volcanoes, 2 pirates, 3 chests (+10), a Kraken and a dragon, Blackbeard and Captain Kidd (+30), 3 free-raid islands', () => {
+  it('the map: 30 islands; one fortress per team, 4 treasures (+5), a volcano, a hurricane, a tsunami, 3 pirates, 3 chests (+10), three Krakens, Blackbeard and Captain Kidd (+30), 3 free-raid islands', () => {
     expect(js).toContain('var COLS = 6, ROWS = 5, CELLS = COLS * ROWS;')
-    expect(js).toContain('VOLCANOES = 2, PIRATES = 2, CHESTS = 3, RAIDS = 3;')
+    expect(js).toContain('VOLCANOES = 1, HURRICANES = 1, TSUNAMIS = 1, PIRATES = 3, CHESTS = 3, RAIDS = 3, KRAKENS = 3;')
     expect(js).toContain('var GEM = 5, CHEST = 10, BEARD = 30, DIG = 10, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;')
     expect(js).toContain('var nf = Math.min(players.length, 8)')
-    expect(js).toContain('m.seaMonster = take(1);')
-    expect(js).toContain('m.dragon = take(1);')
+    expect(js).toContain('m.seaMonster = take(KRAKENS);')
+    expect(js).toContain('m.hurricane = take(HURRICANES);'); expect(js).toContain('m.tsunami = take(TSUNAMIS);')
     expect(js).toContain('m.beard = take(1);')
     expect(js).toContain('m.kidd = take(1);')
     expect(js).toContain('m.raid = take(RAIDS);')
     expect(js).toContain("title: \"CAPTAIN KIDD'S TREASURE!\"")
     expect(js).toContain("title: 'FREE PIRATE RAID!'")
-    expect(js).toContain('ART.kraken()'); expect(js).toContain('ART.dragon()')
+    expect(js).toContain('ART.kraken()'); expect(js).not.toContain('dragon')
   })
   it('the free raid comes after the claim (sink or steal only); a full map asks once whether to end the game', () => {
     expect(js).toContain('if (S.claim) S.claim.raidAfter = true;')
@@ -85,7 +85,7 @@ describe('Quiz Island', () => {
   })
   it('every event shows a big banner with a picture; Reduce Motion stops the animation', () => {
     const art = read(`${dir}/art.js`)
-    for (const k of ['island', 'double', 'dig', 'chest', 'beard', 'gem', 'fort', 'volcano', 'pirates', 'kraken', 'dragon', 'incorrect', 'cannon', 'boom', 'steal', 'raid', 'sinking', 'silence', 'bottle', 'crown', 'map', 'flag']) expect(art, k).toContain(`${k}: function`)
+    for (const k of ['island', 'double', 'dig', 'chest', 'beard', 'gem', 'fort', 'volcano', 'pirates', 'kraken', 'hurricane', 'tsunami', 'incorrect', 'cannon', 'boom', 'steal', 'raid', 'sinking', 'silence', 'bottle', 'crown', 'map', 'flag']) expect(art, k).toContain(`${k}: function`)
     expect(html).toContain('<script src="art.js"></script>')
     for (const t of ['LAND HO!', 'TREASURE CHEST!', "BLACKBEARD'S TREASURE!", 'KRAKEN!', 'INCORRECT', 'KABOOM!', 'STOLEN!', 'VOLCANO!', 'PIRATE AMBUSH!', 'RAID FAILED!', 'SILENCE ON DECK!', 'MESSAGE IN A BOTTLE!', 'LAST ROUND!', 'ISLAND EMPIRE!']) expect(js, t).toContain(t)
     expect(read(`${dir}/style.css`)).toMatch(/prefers-reduced-motion: reduce\)[\s\S]*\.fx\.go \.fx-rays/)
@@ -104,7 +104,7 @@ describe('Quiz Island', () => {
     expect(js).toContain("fetch('/games/race-board/content.json')")
     expect(js).toContain('saved.map.own.length === CELLS')
     expect(js).toContain('S.claim = { id: id, steps: steps };')
-    expect(js).toContain('saved.v === 2')
+    expect(js).toContain('saved.v === 3')
   })
   it('How to play: 2 to 6 short slides', () => {
     const c = JSON.parse(read(`${dir}/content.json`)) as { intro: { title: string; text: string[] }[] }
@@ -141,5 +141,17 @@ describe('Hot Seat Vocab update', () => {
     expect(c.intro.map((s) => s.title)).toContain('Battle Round!')
     expect(c.intro.length).toBeLessThanOrEqual(6)
     for (const s of c.intro) for (const l of s.text) expect(l.length).toBeLessThanOrEqual(90)
+  })
+  it('the Kraken is found three times with a different line each time; nature events have their own pop-ups (Henry, Nov 23)', () => {
+    expect(js).toContain('var KRAKEN_LINES = [')
+    for (const t of ['THE KRAKEN!', 'THE KRAKEN RETURNS!', 'THE KRAKEN IS FURIOUS!', 'HURRICANE!', 'TSUNAMI!', 'VOLCANO!']) expect(js, t).toContain(t)
+    const art = read(`${dir}/art.js`)
+    expect(art).not.toContain('dragon')
+    const kr = art.slice(art.indexOf('kraken: function'), art.indexOf('hurricane: function'))
+    expect(kr).not.toContain('waves') // it used to hang off the bottom of its tile
+  })
+  it('the target outlines when aiming are black, and the gear button is centered with a grid', () => {
+    expect(read(`${dir}/style.css`)).toMatch(/\.map\.aim\.steal \.isle\.can \{\s*outline: 3px dashed #000;/)
+    expect(read('public/games/shared/kru-game.css')).toContain('#more { display: inline-grid; place-items: center;')
   })
 })

@@ -8,8 +8,9 @@
    - Wrong answer: nothing. No answer at all: -3 gold.
    - Visible: 4 💎 treasure islands (+5) and one 🏰 fortress per team (one each at most). A fortress can't be sunk or
      stolen, and neither can its owner's islands next to it. A stolen island is 🔒 safe for one round.
-   - Hidden: 3 🌋 volcanoes (lose your newest island), 3 ☠ pirates (miss your next turn), 4 🧰 chests (+10),
-     a 🦑 squid and a 🐉 dragon (each takes half your gold), Blackbeard and Captain Kidd (+30 each),
+   - Hidden: a 🌋 volcano, a 🌀 hurricane and a 🌊 tsunami (each: lose your newest island), 3 ☠ pirates (miss your next turn),
+     3 🧰 chests (+10), the Kraken three times (it hunts the players: half your gold, and it talks differently each time),
+     Blackbeard and Captain Kidd (+30 each),
      4 🏴‍☠️ raid islands (a free Pirate Raid on another team after you claim one).
    - When the map is full, a prompt asks once whether to end the game (or keep playing).
    - Sunk islands go back to empty. A full map: a normal claim steals instead.
@@ -20,7 +21,7 @@
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
   var COLS = 6, ROWS = 5, CELLS = COLS * ROWS; // 30 islands (Henry, Nov 23)
-  var TREASURES = 4, VOLCANOES = 2, PIRATES = 2, CHESTS = 3, RAIDS = 3;
+  var TREASURES = 4, VOLCANOES = 1, HURRICANES = 1, TSUNAMIS = 1, PIRATES = 3, CHESTS = 3, RAIDS = 3, KRAKENS = 3;
   var GEM = 5, CHEST = 10, BEARD = 30, DIG = 10, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
@@ -160,15 +161,16 @@
     m.fort = spreadForts(nf, cells); // visible: 🏰 one per team (each team may own one), far apart
     cells = cells.filter(function (c) { return m.fort.indexOf(c) < 0; });
     m.treasure = take(TREASURES);   // visible: 💎 +5
-    m.volcano = take(VOLCANOES);    // hidden: ash, lose your newest island
+    m.volcano = take(VOLCANOES);    // hidden: lose your newest island
+    m.hurricane = take(HURRICANES); // hidden: the same, with a hurricane pop-up
+    m.tsunami = take(TSUNAMIS);     // hidden: the same, with a tsunami pop-up
     m.pirate = take(PIRATES);       // hidden: miss your next turn
     m.chest = take(CHESTS);         // hidden: +10
-    m.seaMonster = take(1);         // hidden: the red Kraken eats half your gold
-    m.dragon = take(1);             // hidden: the dragon 🐉 eats half your gold
+    m.seaMonster = take(KRAKENS);   // hidden: the red Kraken hunts you: half your gold (3 of them, a new line each time)
     m.beard = take(1);              // hidden: Blackbeard +30
     m.kidd = take(1);               // hidden: Captain Kidd +30
     m.raid = take(RAIDS);           // hidden: a free Pirate Raid on another team
-    m.dragonUsed = [];
+    m.krakenFound = 0; m.nature = {};   // how many Krakens were found; which event buried each ash island
     return m;
   }
   /** Fortresses at least 2 islands apart in every direction (3 steps); with many teams the map is too small,
@@ -255,7 +257,8 @@
   }
 
   // ---------- drawing ----------
-  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '<span class="pic">' + ART.chest() + '</span>', seaMonster: '<span class="pic">' + ART.kraken() + '</span>', dragon: '<span class="pic">' + ART.dragon() + '</span>', beard: '<span class="pic">' + ART.pirate() + '</span>', kidd: '<span class="pic">' + ART.pirate() + '</span>', raid: '🏴‍☠️' };
+  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '<span class="pic">' + ART.chest() + '</span>', seaMonster: '<span class="pic">' + ART.kraken() + '</span>', hurricane: '🌀', tsunami: '🌊', beard: '<span class="pic">' + ART.pirate() + '</span>', kidd: '<span class="pic">' + ART.pirate() + '</span>', raid: '🏴‍☠️' };
+  var NATURE = { volcano: '🌋', hurricane: '🌀', tsunami: '🌊' };
   function renderMap() {
     var cl = S.claim, step = cl && cl.steps[0], can = step ? stepCells(cl.id, step) : [], leaders = empireLeaders();
     $('map').className = 'map' + (step ? ' aim ' + step.m : '') + (S.reveal ? ' reveal' : '');
@@ -266,10 +269,10 @@
       if (S.reveal && !o && !blocked(c)) Object.keys(HIDDEN_ICON).forEach(function (k) { if (has(S.map[k], c)) hid = k; });
       var cls = 'isle' + (o ? ' owned' : '') + (pir || ash || mon ? ' ash' : '') + (tr && !o ? ' treasure' : '') + (fort ? ' fort' : '') +
         (o && guarded(c) && !fort ? ' guard' : '') + (can.indexOf(c) >= 0 ? ' can' : '') + (o && leaders.indexOf(o) >= 0 ? ' empire' : '') + (hid ? ' hidden-reveal' : '');
-      var label = pir ? '☠' : ash ? '🌋' : mon ? '<span class="pic">' + (has(S.map.dragonUsed, c) ? ART.dragon() : ART.kraken()) + '</span>' :
+      var label = pir ? '☠' : ash ? NATURE[(S.map.nature || {})[c]] || '🌋' : mon ? '<span class="pic">' + ART.kraken() + '</span>' :
         o ? '<span class="n">' + (players.indexOf(team(o)) + 1) + '</span><span class="w">' + S.map.worth[c] + '</span>' + (fort ? '<span class="tag">🏰</span>' : locked(c) ? '<span class="tag">🔒</span>' : '') :
         fort ? '🏰' : tr ? '💎' : hid ? HIDDEN_ICON[hid] : '';
-      var name = o ? ', ' + esc(tname(o)) + ', ' + S.map.worth[c] + ' gold' + (fort ? ', fortress' : '') : pir ? ', pirates' : ash ? ', volcano' : mon ? (has(S.map.dragonUsed, c) ? ', dragon' : ', kraken') : fort ? ', fortress' : tr ? ', treasure' : ', empty';
+      var name = o ? ', ' + esc(tname(o)) + ', ' + S.map.worth[c] + ' gold' + (fort ? ', fortress' : '') : pir ? ', pirates' : ash ? ', ' + ((S.map.nature || {})[c] || 'volcano') : mon ? ', kraken' : fort ? ', fortress' : tr ? ', treasure' : ', empty';
       return '<button class="' + cls + '" data-c="' + c + '"' + (o ? ' style="--c:' + color(o) + '"' : '') + ' aria-label="Island ' + (c + 1) + name + '">' + label + '</button>';
     }).join('');
   }
@@ -366,13 +369,25 @@
     else steal(cl.id, c);
     stepDone();
   }
+  // the Kraken is hunting the players: a different line every time one is found
+  var KRAKEN_LINES = [
+    { title: 'THE KRAKEN!', say: '"Fresh sailors on MY island? How delicious!"' },
+    { title: 'THE KRAKEN RETURNS!', say: '"You again?! I have been HUNTING you!"' },
+    { title: 'THE KRAKEN IS FURIOUS!', say: '"The last of the hunt! No more hiding, little sailors!"' },
+  ];
   function claimEmpty(id, c, step) {
     var t = tname(id), m = S.map;
-    if (has(m.volcano, c)) {
-      drop(m.volcano, c); m.ash.push(c);
+    var nat = ['volcano', 'hurricane', 'tsunami'].filter(function (n) { return has(m[n], c); })[0];
+    if (nat) {
+      drop(m[nat], c); m.ash.push(c); (m.nature = m.nature || {})[c] = nat;
       var lost = newest(id)[0];
-      var g = lost != null ? loseIsland(id, lost, 'volcano') : 0;
-      banner({ art: ART.volcano(), title: 'VOLCANO!', sub: lost != null ? t + "'s newest island is buried in ash!" : t + ' had no island to lose. Phew!', gold: g, mood: 'bad', sound: 'boom' });
+      var g = lost != null ? loseIsland(id, lost, nat) : 0;
+      var EV = {
+        volcano: { title: 'VOLCANO!', art: ART.volcano(), lost: "'s newest island is buried in ash!", sound: 'boom' },
+        hurricane: { title: 'HURRICANE!', art: ART.hurricane(), lost: "'s newest island is blown away by the storm!", sound: 'sea' },
+        tsunami: { title: 'TSUNAMI!', art: ART.tsunami(), lost: "'s newest island is swallowed by a giant wave!", sound: 'sea' },
+      }[nat];
+      banner({ art: EV.art, title: EV.title, sub: lost != null ? t + EV.lost : t + ' had no island to lose. Phew!', gold: g, mood: 'bad', sound: EV.sound });
       return;
     }
     if (has(m.pirate, c)) {
@@ -381,12 +396,11 @@
       banner({ art: ART.pirates(), title: 'PIRATE AMBUSH!', sub: t + ' is captured and misses the next turn!', mood: 'bad' });
       return;
     }
-    var squid = has(m.seaMonster, c), dragon = has(m.dragon, c);
-    if (squid || dragon) {
-      drop(squid ? m.seaMonster : m.dragon, c); m.monster.push(c);
-      if (dragon) m.dragonUsed.push(c);
-      var half = Math.floor(gold(id) / 2), eaten = half ? addPts(id, -half, dragon ? 'dragon' : 'sea monster') : 0;
-      banner({ art: dragon ? ART.dragon() : ART.kraken(), title: dragon ? 'DRAGON!' : 'KRAKEN!', sub: eaten ? (dragon ? 'The dragon burned half of ' : 'The Kraken grabbed half of ') + t + "'s gold!" : t + ' had no gold to take. Lucky!', gold: eaten, mood: dragon ? 'boom' : 'bad', sound: 'sea' });
+    if (has(m.seaMonster, c)) {
+      drop(m.seaMonster, c); m.monster.push(c);
+      var n = Math.min(KRAKEN_LINES.length, (m.krakenFound = (m.krakenFound || 0) + 1)) - 1, K = KRAKEN_LINES[n];
+      var half = Math.floor(gold(id) / 2), eaten = half ? addPts(id, -half, 'kraken') : 0;
+      banner({ art: ART.kraken(), title: K.title, sub: K.say + ' ' + (eaten ? 'It grabs half of ' + t + "'s gold!" : t + ' had no gold to take. Lucky!'), gold: eaten, mood: 'bad', sound: 'sea', wait: 2800 });
       return;
     }
     var beard = has(m.beard, c), kidd = has(m.kidd, c), raidIsle = has(m.raid, c), chest = has(m.chest, c), gem = has(m.treasure, c), fort = has(m.fort, c);
@@ -788,7 +802,7 @@
 
   // ---------- start ----------
   function fresh(deck) {
-    S = { v: 2, level: S ? S.level : '', deck: deck || '', map: newMap(), pts: {}, turn: 0, skip: {}, powers: {}, mpicked: {}, who: S ? !!S.who : false,
+    S = { v: 3, level: S ? S.level : '', deck: deck || '', map: newMap(), pts: {}, turn: 0, skip: {}, powers: {}, mpicked: {}, who: S ? !!S.who : false,
       secs: S ? S.secs : 30, hist: [], claim: null, choice: null, phase: 'play', lastEnd: 0, reveal: false, introDone: S ? S.introDone : false, order: {}, qi: {} };
     shownGold = {};
     buildPool();
@@ -804,7 +818,7 @@
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id) }; }); } });
       hookEnd();
       var saved = session.resume;
-      if (saved && saved.v === 2 && saved.level === QZ.level && saved.map && saved.map.own && saved.map.own.length === CELLS && (!saved.deck || deckByKey(saved.deck))) {
+      if (saved && saved.v === 3 && saved.level === QZ.level && saved.map && saved.map.own && saved.map.own.length === CELLS && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; buildPoolKeep();
       } else {
         S = null; fresh(QZ.unit ? 'unit' : '');

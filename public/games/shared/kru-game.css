@@ -30,11 +30,12 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 /* The settings button (Henry, Nov 19): a gear instead of ⋯ in every game */
+#more { display: inline-grid; place-items: center; width: 48px; min-width: 48px; padding: 0; }
 #more .gear {
   width: 24px;
   height: 24px;
   display: block;
-  margin: auto;
+  margin: 0;
 }
 
 /* A team on a scoreboard: its number in a circle of its color (Kru.badge) */
