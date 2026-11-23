@@ -48,4 +48,12 @@ describe('Fortress (Henry, Nov 23)', () => {
     expect(c.intro.length).toBeLessThanOrEqual(6)
     for (const s of c.intro) { expect(s.title.length).toBeLessThanOrEqual(30); for (const l of s.text) expect(l.length).toBeLessThanOrEqual(90) }
   })
+  it('the store is one screen in the buying team color with a shopping cart (Henry, Nov 23)', () => {
+    const h = read('public/games/fortress/index.html')
+    expect(h).toContain('id="shopGrid"')
+    expect(h).toContain('id="shopCart"')
+    expect(js).toContain("$('shop').style.setProperty('--c', color(id));")
+    expect(js).toContain('cart.items[key] = (cart.items[key] || 0) + 1;')
+    expect(read('public/games/fortress/style.css')).toContain('grid-template-columns: repeat(5, minmax(0, 1fr));')
+  })
 })
