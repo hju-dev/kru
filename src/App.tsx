@@ -2,11 +2,14 @@ import { useEffect } from 'react'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router'
 import { ErrorScreen } from './components/ErrorScreen'
 import { UpdateToast } from './components/UpdateToast'
+import { ChooseClass } from './routes/ChooseClass'
 import { Home } from './routes/Home'
+import { Library } from './routes/Library'
 import { MixPick } from './routes/MixPick'
 import { Play } from './routes/Play'
 import { Preview } from './routes/Preview'
 import { Results } from './routes/Results'
+import { Sets } from './routes/Sets'
 import { Setup } from './routes/Setup'
 import { SignIn } from './routes/SignIn'
 import { Tool } from './routes/Tool'
@@ -60,6 +63,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorScreen />,
     children: [
       { index: true, element: <Home /> },
+      { path: 'library/:section', element: <Library /> },
+      { path: 'class/:game', element: <ChooseClass /> },
+      { path: 'sets/:game', element: <Sets /> },
       { path: 'setup/:game', element: <Setup /> },
       { path: 'mix/:game', element: <MixPick /> },
       { path: 'play/:id', element: <Play /> },

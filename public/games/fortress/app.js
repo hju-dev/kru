@@ -375,7 +375,7 @@
   function baseHtml(t) {
     var id = t.id, d = T(id), cur = curId() === id && S.phase !== 'over';
     var ally = allyOf(id);
-    var aim = !!S.aim && curId() && alive(id) && id !== curId() && ally !== curId() && allyOf(curId()) !== id;
+    var aim = !!S.aim && curId() && alive(id) && id !== curId() && ally !== curId() && allyOf(curId()) !== id; // an enemy base the bomb can be aimed at
     var bombs = IORDER.map(function (key) {
       var n = d.bombs.filter(function (b) { return b.k === key; }).length;
       return n ? '<i class="bm" title="' + ITEMS[key].name + '">' + ART.bomb(ITEMS[key].icon) + '<b>' + n + '</b></i>' : '';
@@ -383,37 +383,78 @@
     var rows = KEYS.map(function (k) {
       var hp = d.hp[k], dead = hp <= 0, pct = Math.max(0, hp) / MAXHP[k] * 100;
       var ico = k === 'hq' ? ART.hq(color(id)) : k === 'depot' ? ART.depot() : ART.tower();
-      return '<button class="bld' + (dead ? ' dead' : '') + (aim && !dead && !(S.aim.picks || []).some(function (p) { return p.t === id && p.b === k; }) ? ' target' : '') + '" data-t="' + esc(id) + '" data-k="' + k + '"' + (aim && !dead ? '' : ' tabindex="-1"') +
+      return '<button class="bld' + (dead ? ' dead' : '') + '' + '" data-t="' + esc(id) + '" data-k="' + k + '"' + ' tabindex="-1"' +
         ' aria-label="' + esc(t.name) + ' ' + BNAME[k] + ', ' + Math.max(0, hp) + ' HP"><span class="ico">' + (dead ? ART.ruins() : ico) + '</span>' +
         '<span class="hp"><i class="' + (pct < 34 ? 'low' : pct < 67 ? 'mid' : '') + '" style="width:' + pct + '%"></i></span><span class="num">' + kfmt(hp) + '</span></button>';
     }).join('');
-    return '<section class="base' + (cur ? ' cur' : '') + (d.alive ? '' : ' out') + '" style="--c:' + color(id) + '">' +
+    return '<section class="base' + (cur ? ' cur' : '') + (d.alive ? '' : ' out') + (aim ? ' target' : '') + '" data-t="' + esc(id) + '" style="--c:' + color(id) + '">' +
       '<div class="b-head">' + Kru.badge(t, color(id)) + '<span class="gold">' + coinHtml() + kfmt(d.gold) + '</span>' + (ally ? '<span class="ally" title="Allied with ' + esc(tname(ally)) + '">🤝</span>' : '') + '</div>' +
       '<div class="b-bombs">' + (bombs || '<span class="none">no bombs</span>') + '</div>' + rows + '</section>';
   }
   function coinHtml() { return '<span class="coin">' + ART.coin() + '</span>'; }
+  // tap the team you want to hit; then a bigger menu shows its buildings
   $('board').addEventListener('click', function (e) {
-    var b = e.target.closest('.bld.target');
+    var b = e.target.closest('.base.target');
     if (!b || !S.aim) return;
     unlockAudio();
-    var a = S.aim, it = ITEMS[a.k], pick = { t: b.dataset.t, b: b.dataset.k };
-    if (it.mode === 'jam' && S.jam && S.jam[pick.t] === S.round) { toast(tname(pick.t) + ' was already jammed this round.'); return; }
-    a.picks.push(pick);
-    var need = it.mode === 'dual' ? 2 : 1;
-    if (a.picks.length < need) { render(); return; }
+    openTarget(b.dataset.t);
+  });
+  var DESC = {
+    hq: 'The headquarters. If it falls the team is out, unless it sacrifices another building to stay in.',
+    depot: 'Heals every building each round. Without it bombs hit 20% weaker and [Q]+ items cost more.',
+    t1: 'Shoots bombs down and gives all buildings 5% resistance.',
+    t2: 'Shoots bombs down and gives all buildings 5% resistance.',
+  };
+  function closeAim() { $('aimBack').hidden = true; }
+  function openTarget(tid) {
+    var a = S.aim, it = ITEMS[a.k], t = T(tid), from = curId();
+    if (it.mode === 'jam' && S.jam && S.jam[tid] === S.round) { toast(tname(tid) + ' was already jammed this round.'); return; }
+    $('aim').style.setProperty('--c', color(tid)); $('aim').dataset.t = tid;
+    $('aimWho').innerHTML = Kru.badge(team(tid), color(tid));
+    $('aimTitle').textContent = tname(tid) + ' · ' + it.name + (it.mode === 'dual' ? ' (target ' + (a.picks.length + 1) + ' of 2)' : '');
+    var n = towers(tid), chance = it.chance != null ? it.chance : SHOOT[it.cls];
+    $('aimNote').textContent = 'Towers standing: ' + n + (n ? ' · they shoot this ' + it.name + ' down ' + Math.round(chance * 100) + '% of the time' : ' · nothing can shoot it down') + ' · resistance ' + Math.round(Math.min(RES_CAP, RES * n) * 100) + '%' + (depotOk(from) ? '' : ' · your Depot is down: -20% damage');
+    var asText = { one: 'Tap the building to hit', scatter: 'Tap the building to SPARE: all the others are hit', dual: 'Tap the building to hit', all: 'Every building of this team is hit', jam: 'This team skips its next turn' }[it.mode];
+    var cards = KEYS.map(function (k) {
+      var hp = t.hp[k], dead = hp <= 0, taken = (a.picks || []).some(function (p) { return p.t === tid && p.b === k; });
+      var ico = k === 'hq' ? ART.hq(color(tid)) : k === 'depot' ? ART.depot() : ART.tower();
+      var pct = Math.max(0, hp) / MAXHP[k] * 100;
+      var hit = it.mode === 'all' || it.mode === 'jam' ? false : true;
+      return '<button class="acard' + (dead ? ' dead' : '') + '" data-k="' + k + '"' + (dead || taken || !hit ? ' disabled' : '') + '><span class="si-ico">' + (dead ? ART.ruins() : ico) + '</span>' +
+        '<b>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + '</b>' +
+        '<span class="hp"><i style="width:' + pct + '%"></i></span><span class="ahp">' + (dead ? 'destroyed' : money(hp) + ' / ' + money(MAXHP[k]) + ' HP') + '</span>' +
+        '<small>' + DESC[k] + '</small></button>';
+    }).join('');
+    $('aimGrid').innerHTML = cards + (it.mode === 'all' || it.mode === 'jam' ? '<button class="btn gold aim-go" data-go="1">' + (it.mode === 'jam' ? '📡 Jam ' + esc(tname(tid)) : '💥 Fire at the whole base') + '</button>' : '<div class="aim-hint">' + asText + '</div>');
+    $('aimBack').hidden = false;
+  }
+  function pickTarget(tid, key) {
+    var a = S.aim, it = ITEMS[a.k];
+    closeAim();
+    a.picks.push({ t: tid, b: key });
+    if (a.picks.length < (it.mode === 'dual' ? 2 : 1)) { render(); return; } // the second target of a Dual Headed Missile
     var bomb = T(curId()).bombs.filter(function (x) { return x.k === a.k; })[0];
     launch(curId(), bomb, a.picks);
+  }
+  $('aimGrid').addEventListener('click', function (e) {
+    if (S.aim == null) return;
+    var tid = $('aim').dataset.t;
+    var b = e.target.closest('[data-k],[data-go]');
+    if (!b || b.disabled) return;
+    unlockAudio();
+    pickTarget(tid, b.dataset.go ? 'hq' : b.dataset.k);
   });
+  $('aimCancel').addEventListener('click', closeAim);
 
   // ---------- fire tray ----------
-  var AIMTEXT = { one: 'tap an enemy building', scatter: 'tap the building to SPARE (all the others are hit)', dual: 'tap two buildings', all: 'tap an enemy team (every building is hit)', jam: 'tap the team to jam' };
+  var AIMTEXT = { one: 'tap the team to hit', scatter: 'tap the team to hit', dual: 'tap the team to hit', all: 'tap the team to hit', jam: 'tap the team to jam' };
   function renderTray() {
     var id = curId(), tray = $('tray');
     if (S.phase !== 'fire' || !id || !alive(id) || fxOn) { tray.hidden = true; return; }
     var d = T(id), counts = {};
     d.bombs.forEach(function (b) { counts[b.k] = (counts[b.k] || 0) + 1; });
     tray.hidden = false;
-    var a = S.aim, lab = a ? ITEMS[a.k].name + ': ' + AIMTEXT[ITEMS[a.k].mode] + (ITEMS[a.k].mode === 'dual' ? ' (' + (a.picks.length + 1) + '/2)' : '') : 'tap a bomb';
+    var a = S.aim, lab = a ? ITEMS[a.k].name + ': ' + AIMTEXT[ITEMS[a.k].mode] + (ITEMS[a.k].mode === 'dual' ? ' (' + (a.picks.length + 1) + ' of 2)' : '') : 'tap a bomb';
     tray.innerHTML = '<span class="tray-lab" style="color:' + color(id) + '">' + esc(tname(id)) + ': ' + lab + '</span>' +
       IORDER.filter(function (key) { return counts[key]; }).map(function (key) {
         return '<button class="btn bmb' + (a && a.k === key ? ' on' : '') + '" data-k="' + key + '"><span class="bi">' + ART.bomb(ITEMS[key].icon) + '</span>' + ITEMS[key].name + ' ×' + counts[key] + '</button>';
@@ -793,7 +834,7 @@
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('deckBtn').addEventListener('click', function () { closeMenu(); openDecks(); });
-  $('skip').addEventListener('click', function () { closeMenu(); snap(); closeChoice(); closeShop(); advance(); });
+  $('skip').addEventListener('click', function () { closeMenu(); snap(); closeChoice(); closeShop(); closeAim(); advance(); });
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back one step.'); });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Fortress' }); });
   function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
@@ -801,11 +842,11 @@
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     fresh(S.deck);
-    closeChoice(); closeShop(); closeQuestion();
+    closeChoice(); closeShop(); closeAim(); closeQuestion();
     save(); closeMenu(); render();
   });
   document.addEventListener('keydown', function (e) {
-    if (!$('menuBack').hidden || !$('deckBack').hidden || !$('choiceBack').hidden || !$('shopBack').hidden) return;
+    if (!$('menuBack').hidden || !$('deckBack').hidden || !$('choiceBack').hidden || !$('shopBack').hidden || !$('aimBack').hidden) return;
     if (!$('fx').hidden) { if (e.code === 'Space') { e.preventDefault(); $('fx').click(); } return; }
     if (!$('qBack').hidden) { if (e.code === 'Space') { e.preventDefault(); $('go').click(); } }
   });

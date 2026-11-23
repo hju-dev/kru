@@ -56,4 +56,10 @@ describe('Fortress (Henry, Nov 23)', () => {
     expect(js).toContain('cart.items[key] = (cart.items[key] || 0) + 1;')
     expect(read('public/games/fortress/style.css')).toContain('grid-template-columns: repeat(5, minmax(0, 1fr));')
   })
+  it('firing: tap the team first, then a menu with each building and what it does, then the target', () => {
+    expect(js).toContain('function openTarget(tid)')
+    expect(js).toContain("var b = e.target.closest('.base.target');")
+    expect(js).toContain('The headquarters. If it falls the team is out')
+    expect(read('public/games/fortress/index.html')).toContain('id="aimGrid"')
+  })
 })
