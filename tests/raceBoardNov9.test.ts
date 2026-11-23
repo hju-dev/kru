@@ -28,8 +28,11 @@ describe('Race Board dice (Henry, Nov 11)', () => {
     expect(share('hard')).toBeLessThan(share('regular'))
     expect(share('impossible')).toBeLessThan(share('hard'))
   })
-  it('the big dice are purple', () => {
-    expect(read('public/games/race-board/style.css')).toContain('.die.big { background: #9b7bff;')
+  it('the big dice are the Golden Dice (gold, with a shine)', () => {
+    const css = read('public/games/race-board/style.css')
+    expect(css).toContain('background: linear-gradient(145deg, #fff0a6 0%, #ffc94a 45%, #d99a00 100%);')
+    expect(css).toContain('.die.big::after {')
+    expect(css).not.toContain('#9b7bff; box-shadow: 0 6px 0 #5d43b8')
   })
 })
 

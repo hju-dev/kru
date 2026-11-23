@@ -1,7 +1,7 @@
 /* Christmas Race Board (Henry, Nov 18): its own Christmas look on top of Race Board's styles.
    Pine-green night, snow white, star gold, berry red; falling snow, a string of lights, snow-capped squares,
    a candy-cane FINISH and candy-cane trims on every pop-up. Meaning colors stay: green = forward / easy,
-   red = back / hard, purple = the big dice. */
+   red = back / hard, gold = the Golden Dice. */
 :root {
   --bg: #0b1d15;
   --stage: #12301f;
@@ -165,7 +165,7 @@ body {
   background: var(--santa) center / contain no-repeat;
 }
 
-/* the dice: snow-white with berry-red pips (the big dice stay purple) */
+/* the dice: snow-white with berry-red pips (the Golden Dice keep their gold) */
 .die {
   box-shadow: 0 6px 0 #c9d6cc;
 }
@@ -173,7 +173,7 @@ body {
   background: var(--berry);
 }
 .die.big .pip {
-  background: #fff;
+  background: #5a3a00;
 }
 
 /* How to play slides: a tree and a snowman */
@@ -274,10 +274,10 @@ body {
   content: '';
   position: absolute;
   left: 50%;
-  top: -40px;
-  width: 52px;
-  height: 52px;
-  transform: translateX(-60%) rotate(-12deg);
+  top: -58px;
+  width: 74px;
+  height: 74px;
+  transform: translateX(-50%) rotate(-8deg);
   background: var(--hat) center / contain no-repeat;
 }
 @media (prefers-reduced-motion: reduce) {

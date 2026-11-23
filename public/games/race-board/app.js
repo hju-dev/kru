@@ -13,7 +13,7 @@
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
-  // pips on a 3 x 3 grid; 7-9 are for the big purple dice (4 to 9)
+  // pips on a 3 x 3 grid; 7-9 are for the Golden Dice (4 to 9)
   var FACES = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8],
     7: [0, 2, 3, 4, 5, 6, 8], 8: [0, 1, 2, 3, 5, 6, 7, 8], 9: [0, 1, 2, 3, 4, 5, 6, 7, 8] };
   var BIG_MIN = 4; // a big die shows 4 to 9, so two big dice never total less than 8
@@ -30,9 +30,9 @@
     easy: { label: 'Easy', share: 30, dice: 1, big: false, note: '1 die' },
     regular: { label: 'Regular', share: 45, dice: 1, big: false, note: '1 die' },
     hard: { label: 'Hard', share: 17, dice: 2, big: false, note: '2 dice!' },
-    impossible: { label: 'Impossible', share: 8, dice: 2, big: true, note: '2 big dice (8+)!!' },
+    impossible: { label: 'Impossible', share: 8, dice: 2, big: true, note: '2 Golden Dice (8+)!!' },
   };
-  /** The dice for an answer: right = forward, wrong = the back dice. Risk It: 2 big dice (3 on an impossible
+  /** The dice for an answer: right = forward, wrong = the back dice. Risk It: 2 Golden Dice (3 on an impossible
       question) if right, 2 big back dice if wrong. */
   function diceFor(tier, right, risk) {
     var t = TIERS[tier] || TIERS.regular;
@@ -63,33 +63,59 @@
   // ---------- big event banners (shared kru-fx.js, Henry Nov 19): race theme, or Christmas for Christmas Dash ----------
   var FX = {
     race: {
-      right: ['checkflag', 'CORRECT!', '{t} hits the gas!', 'good'], wrong: ['cone', 'SPIN OUT!', '{t} skids backwards…', 'bad'],
-      riskWin: ['flame', 'RISK PAID OFF!', '{t} gets 2 BIG dice!', 'magic'], riskLose: ['oil', 'RISK BACKFIRED!', '{t}: 2 big dice backwards!', 'bad'],
+      right: ['checkflag', 'CORRECT!', '{t} hits the gas!', 'good'], wrong: ['cone', 'INCORRECT', '{e}', 'bad'],
+      riskWin: ['flame', 'RISK PAID OFF!', '{t} rolls 2 GOLDEN DICE!', 'magic'], riskLose: ['oil', 'INCORRECT', '{e}', 'bad'],
       shield: ['shield', 'SHIELD UP!', '{t} does not move back!', 'good'], go: ['rocket', 'TURBO BOOST!', '{t}: forward {n}!', 'good'],
       back: ['oil', 'OIL SLICK!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
       finish: ['trophy', 'FINISH LINE!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['ticket', 'FREE PLAY!', '{t} rolls for free!', 'magic'],
       fifty: ['fifty', '50/50!'], time: ['stopwatch', '+20 SECONDS!'], riskOn: ['flame', 'RISK IT!'], skip: ['pit', 'PIT STOP!'],
     },
     xmas: {
-      right: ['gift', 'HO HO HO!', '{t} got it right!', 'good'], wrong: ['coal', 'LUMP OF COAL!', '{t} slides backwards…', 'bad'],
-      riskWin: ['star', 'CHRISTMAS MIRACLE!', '{t} gets 2 BIG dice!', 'magic'], riskLose: ['coal', 'SNOWED UNDER!', '{t}: 2 big dice backwards!', 'bad'],
+      right: ['gift', 'HO HO HO!', '{t} got it right!', 'good'], wrong: ['coal', 'INCORRECT', '{e}', 'bad'],
+      riskWin: ['star', 'CHRISTMAS MIRACLE!', '{t} rolls 2 GOLDEN DICE!', 'magic'], riskLose: ['coal', 'INCORRECT', '{e}', 'bad'],
       shield: ['shield', 'SNOW SHIELD!', '{t} does not move back!', 'good'], go: ['sleigh', 'SLEIGH RIDE!', '{t}: forward {n}!', 'good'],
       back: ['snowflake', 'SLIPPED ON THE ICE!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
       finish: ['tree', 'HOME FOR CHRISTMAS!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['gift', 'FREE GIFT!', '{t} rolls for free!', 'magic'],
       fifty: ['fifty', '50/50!'], time: ['stopwatch', 'EXTRA TIME!'], riskOn: ['flame', 'RISK IT!'], skip: ['snowflake', 'FROZEN!'],
     },
   };
+  // Christmas Dash: correct answers rotate through different cheers (title + line), never the same one twice in a row
+  var XRIGHT = [
+    ['HO HO HO!', '{t} got it right!'], ['SANTA APPROVES!', '{t} is on the nice list!'], ['MERRY MAGIC!', 'Great answer, {t}!'],
+    ['JOLLY GOOD!', '{t} knows their stuff!'], ['SLEIGH-TASTIC!', '{t} zooms ahead!'], ['WONDERFUL!', 'The elves cheer for {t}!'],
+    ['GOLD STAR!', '{t} earns a Christmas star!'], ['FA LA LA LA!', 'Perfect, {t}!'], ['DING DING DING!', 'Bells ring for {t}!'], ['MERRY CORRECT!', 'Santa is proud of {t}!'],
+  ];
+  // wrong answers: INCORRECT plus a line of encouragement (also rotating)
+  var ENC = [
+    'Good try! You can get the next one!', 'So close! Keep going!', "Don't give up, team!", 'Every mistake helps you learn!',
+    'Shake it off and keep racing!', 'Nice effort, team!', 'You can do it! Try again next turn!', 'Learning in progress… keep it up!',
+  ];
+  var XENC = [
+    'Santa still believes in you!', 'Keep your Christmas spirit up!', 'Good try! The elves are cheering!', 'Even Rudolph gets lost sometimes!',
+    'Shake it off, team! Next time!', 'Keep going! The magic is coming!', "Great effort! Don't give up!", 'Santa says: try again next turn!',
+  ];
+  var lastPick = {};
+  function rot(key, list) {
+    var i = Math.floor(Math.random() * list.length);
+    if (list.length > 1 && i === lastPick[key]) i = (i + 1) % list.length;
+    lastPick[key] = i;
+    return list[i];
+  }
   function fill(text, v) { return String(text || '').replace(/\{(\w+)\}/g, function (m, k) { return v[k] != null ? v[k] : m; }); }
   /** A big banner for an event, then `then` (straight away if the banners aren't loaded). */
   function fx(key, v, then) {
     var e = (FX[XMAS ? 'xmas' : 'race'] || {})[key];
     if (!e || !window.KruFx) { if (then) then(); return; }
-    KruFx.show({ art: e[0], title: e[1], sub: fill(e[2], v || {}), mood: e[3], sound: e[4], wait: 1700, then: then });
+    v = v || {};
+    var title = e[1], sub = e[2];
+    if (XMAS && key === 'right') { var r = rot('xr', XRIGHT); title = r[0]; sub = r[1]; }
+    if (title === 'INCORRECT') v.e = rot(XMAS ? 'xe' : 're', XMAS ? XENC : ENC);
+    KruFx.show({ art: e[0], title: title, sub: fill(sub, v), mood: e[3], sound: e[4], wait: 2700, then: then }); // 1 s longer than before
   }
   /** A quick banner at the top (power-ups inside the question), never in the way. */
   function fxFlash(key, sub) {
     var e = (FX[XMAS ? 'xmas' : 'race'] || {})[key];
-    if (e && window.KruFx) KruFx.flash({ art: e[0], title: e[1], sub: sub, mood: key === 'skip' ? 'bad' : 'good' });
+    if (e && window.KruFx) KruFx.flash({ art: e[0], title: e[1], sub: sub, mood: key === 'skip' ? 'bad' : 'good', wait: 2400 });
   }
 
   var POOL = {}, MATHSCI = [], teams = [], racers = [], INTRO = [];
@@ -376,7 +402,7 @@
     for (var i = 0; i < 9; i++) h += '<span class="pip' + (FACES[n].indexOf(i) >= 0 ? ' on' : '') + '"></span>';
     return h;
   }
-  /** spec: { n: 1-3 dice, big: purple dice (4-9), back: move backwards }. */
+  /** spec: { n: 1-3 dice, big: Golden Dice (4-9), back: move backwards }. */
   function face(big) { return big ? BIG_MIN + Math.floor(Math.random() * 6) : 1 + Math.floor(Math.random() * 6); }
   function roll(id, spec) {
     unlockAudio();
@@ -390,7 +416,7 @@
     var t = racer(id), dice = [$('die'), $('die2'), $('die3')];
     dice.forEach(function (el, i) { el.hidden = i >= spec.n; el.classList.toggle('big', spec.big); el.classList.add('rolling'); });
     $('diceBox').className = 'dice-box' + (spec.back ? ' back' : '');
-    var what = spec.n + (spec.big ? ' big' : '') + (spec.back ? ' back' : '') + (spec.n > 1 ? ' dice' : ' die');
+    var what = spec.big ? spec.n + ' Golden ' + (spec.n > 1 ? 'Dice' : 'Die') + (spec.back ? ' backwards' : '') : spec.n + (spec.back ? ' back' : '') + (spec.n > 1 ? ' dice' : ' die');
     $('diceText').textContent = t.name + ' rolls ' + (spec.n === 1 && !spec.big ? 'the ' + (spec.back ? 'back ' : '') + 'die' : what) + '…';
     $('diceBack').hidden = false;
     S.last = snapshot();
@@ -417,11 +443,16 @@
   }
 
   // ---------- the question ----------
+  var PAUSE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1.5" fill="currentColor"/></svg>';
+  var PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
   function renderClock() {
     var s = Math.max(0, Math.ceil(left));
     $('digits').textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
     $('digits').className = 'digits' + (left <= 0 ? ' done' : left <= 5 && running ? ' warn' : '');
-    $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : 'Start timer';
+    // a || button while the clock runs (amber), a |> button when it is stopped (green)
+    $('go').className = 'btn pausebtn ' + (running ? 'is-running' : 'is-paused');
+    $('go').innerHTML = running ? PAUSE_ICON : PLAY_ICON;
+    $('go').setAttribute('aria-label', running ? 'Pause the timer' : left <= 0 ? 'Start the timer again' : 'Start the timer');
   }
   function tick() {
     if (!running) return;
@@ -482,7 +513,9 @@
     $('qBody').innerHTML = KruQuiz.html(Q, shown);
     // 50/50: the two wrong answers it took away
     (Q._gone || []).forEach(function (i) { var c = $('qBody').querySelectorAll('.kq-choice')[i]; if (c) c.classList.add('gone'); });
-    $('reveal').disabled = shown;
+    // Reveal first: then it goes away and ✗ Wrong and ✓ Right take its place
+    $('reveal').hidden = shown;
+    $('wrong').hidden = $('right').hidden = !shown;
     renderPowers();
     KruQuiz.fit($('stage'));
   }
@@ -529,7 +562,7 @@
       closeQuestion(); fx('free', { t: tn }, function () { roll(id, spec); });
     } else if (p === 'risk') {
       risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers();
-      if (risk) fxFlash('riskOn', 'Right: 2 BIG dice. Wrong: 2 big dice back!');
+      if (risk) fxFlash('riskOn', 'Right: 2 Golden Dice. Wrong: 2 Golden Dice back!');
     }
   });
   /** "Who answers" (optional): the team's random student is picked first (no repeats until the whole team has answered), then the question opens. */
@@ -588,8 +621,8 @@
     var t = current(), spec = diceFor(Q.tier || 'regular', false, risk), rk = risk;
     if (risk) use(t.id, 'risk');
     closeQuestion();
-    if (S.shield[t.id]) { S.shield[t.id] = false; save(); fx('shield', { t: t.name }); nextTurn(); return; }
-    if (pos(t.id) === 0) { toast(t.name + ' is on START: no move back.'); nextTurn(); return; }
+    if (S.shield[t.id]) { S.shield[t.id] = false; save(); fx('wrong', { t: t.name }); fx('shield', { t: t.name }); nextTurn(); return; }
+    if (pos(t.id) === 0) { toast(t.name + ' is on START: no move back.'); fx('wrong', { t: t.name }); nextTurn(); return; }
     busy = true;
     fx(rk ? 'riskLose' : 'wrong', { t: t.name }, function () {
       if (XMAS && !rk) return forfeitOffer(t.id, spec); // Risk it: no forfeit

@@ -256,7 +256,7 @@
 .tier.easy { background: var(--teal); }
 .tier.regular { background: var(--fg); }
 .tier.hard { background: var(--coral); }
-.tier.impossible { background: var(--violet); color: #fff; }
+.tier.impossible { background: linear-gradient(135deg, #ffe58a, #f4b400); color: #3a2600; } /* Golden Dice */
 /* two dice, and the back die */
 .dice-row {
   display: flex;
@@ -357,12 +357,34 @@
 .powers .pw { flex: 1; min-height: 44px; padding: 0 8px; font-size: 16px; white-space: nowrap; border-color: var(--violet); color: var(--fg); }
 .powers .pw.used { text-decoration: line-through; }
 .powers .pw:disabled { opacity: 0.3; }
-.powers .pw.on { background: var(--violet); color: #fff; }
+.powers .pw[data-pw='risk'] { border-color: var(--gold); }
+.powers .pw.on { background: linear-gradient(135deg, #ffe58a, #f4b400); border-color: #f4b400; color: #3a2600; }
 .kq-choice.gone { opacity: 0.18; text-decoration: line-through; }
-/* the big dice are purple (4 to 9) */
-.die.big { background: #9b7bff; box-shadow: 0 6px 0 #5d43b8; }
-.die.big .pip { background: #fff; }
-.dice-box.back .die.big { background: #9b7bff; box-shadow: 0 6px 0 #a33, 0 0 0 4px var(--coral); }
+/* the Golden Dice (4 to 9): shiny gold, a glow and a shine that sweeps across */
+.die.big {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, #fff0a6 0%, #ffc94a 45%, #d99a00 100%);
+  box-shadow: 0 6px 0 #9a6a00, 0 0 26px rgb(255 201 74 / 0.65);
+}
+.die.big .pip { background: #5a3a00; }
+.die.big::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  bottom: -40%;
+  left: -60%;
+  width: 40%;
+  transform: rotate(20deg);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.75), transparent);
+  animation: rb-shine 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes rb-shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+.die.big.rolling { animation: rb-wobble 0.12s linear infinite, rb-gold-pulse 0.5s ease-in-out infinite alternate; }
+@keyframes rb-gold-pulse { to { box-shadow: 0 6px 0 #9a6a00, 0 0 42px rgb(255 214 90 / 0.95); } }
+.dice-box.back .die.big { box-shadow: 0 6px 0 #a33, 0 0 0 4px var(--coral), 0 0 22px rgb(255 201 74 / 0.5); }
+@media (prefers-reduced-motion: reduce) { .die.big::after, .die.big.rolling { animation: none; } }
 .dice-row .die[hidden] { display: none; }
 
 /* Christmas Race Board: 🎄 Challenge squares */
@@ -382,3 +404,10 @@
   height: 30px;
   font-size: 17px;
 }
+
+/* the question buttons (Nov 23): a || / |> timer button that changes color, then ✗ and ✓ after Reveal */
+.controls .pausebtn { min-width: 64px; padding: 0; display: inline-grid; place-items: center; color: #111; }
+.pausebtn svg { width: 26px; height: 26px; }
+.pausebtn.is-running { background: #ff8a3d; border-color: #ff8a3d; }
+.pausebtn.is-paused { background: #a7d129; border-color: #a7d129; }
+.controls .iconbtn { min-width: 72px; padding: 0; font-size: 30px; font-weight: 900; line-height: 1; }

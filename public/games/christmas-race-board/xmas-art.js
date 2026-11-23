@@ -42,7 +42,12 @@
   var P = {
     santa: function () { return svg(santaFace(60, 46, 1.25)); },
     hat: function () {
-      return svg('<path d="M14 92c6-50 40-74 78-58l10 34-14 2-6-18c-18-8-40 10-46 40z" fill="#d7263d"/><circle cx="96" cy="74" r="10" fill="#fff"/><rect x="8" y="86" width="78" height="20" rx="10" fill="#fff"/>');
+      return svg('<path d="M20 86C22 54 40 26 70 19c19-4 33 6 35 23 1 9-3 17-9 22 3 7 5 14 5 22z" fill="#d7263d"/>' +
+        '<path d="M70 19c19-4 33 6 35 23 1 9-3 17-9 22-6-4-9-14-9-27 0-8-6-14-17-18z" fill="#a4161a" opacity="0.5"/>' +
+        '<path d="M34 80c2-22 12-40 28-50" stroke="#ff6b6b" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6"/>' +
+        '<circle cx="100" cy="52" r="12" fill="#fff" stroke="#e3e8ee" stroke-width="2"/>' +
+        '<rect x="8" y="76" width="104" height="26" rx="13" fill="#fff" stroke="#e3e8ee" stroke-width="2"/>' +
+        '<g fill="#e3e8ee"><circle cx="30" cy="89" r="2.4"/><circle cx="56" cy="92" r="2.4"/><circle cx="82" cy="89" r="2.4"/></g>');
     },
     snowman: function () { return svg(flakes + snowGround + snowman(60, 64, 1.15)); },
     snowball: function () { return svg(flakes + snowGround + '<circle cx="60" cy="62" r="30" fill="#fff" stroke="#bcd3e6" stroke-width="3"/><path d="M44 50c6-8 16-10 24-8" stroke="#dfeaf4" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M92 40l12-6M94 54l14 0M90 28l8-10" stroke="#bcd3e6" stroke-width="4" stroke-linecap="round"/>'); },
