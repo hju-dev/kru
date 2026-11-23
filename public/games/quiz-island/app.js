@@ -19,9 +19,9 @@
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
-  var COLS = 8, ROWS = 5, CELLS = COLS * ROWS;
-  var TREASURES = 4, VOLCANOES = 3, PIRATES = 3, CHESTS = 4;
-  var GEM = 5, CHEST = 10, BEARD = 30, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;
+  var COLS = 6, ROWS = 5, CELLS = COLS * ROWS; // 30 islands (Henry, Nov 23)
+  var TREASURES = 4, VOLCANOES = 2, PIRATES = 2, CHESTS = 3, RAIDS = 3;
+  var GEM = 5, CHEST = 10, BEARD = 30, DIG = 10, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
     easy: { label: 'Easy', share: 30, pts: 2 },
@@ -134,7 +134,7 @@
     fx.classList.add('go');
     if (SOUNDS[o.sound || o.mood]) SOUNDS[o.sound || o.mood]();
     clearTimeout(fxTimer);
-    fxTimer = setTimeout(nextBanner, o.wait || 2600);
+    fxTimer = setTimeout(nextBanner, (o.wait || 2600) + 1000); // every pop-up stays a second longer
     if (o.then) fxDone = chain(fxDone, o.then);
   }
   function chain(a, b) { return a ? function () { a(); b(); } : b; }
@@ -163,11 +163,11 @@
     m.volcano = take(VOLCANOES);    // hidden: ash, lose your newest island
     m.pirate = take(PIRATES);       // hidden: miss your next turn
     m.chest = take(CHESTS);         // hidden: +10
-    m.seaMonster = take(1);         // hidden: the squid 🦑 eats half your gold
+    m.seaMonster = take(1);         // hidden: the red Kraken eats half your gold
     m.dragon = take(1);             // hidden: the dragon 🐉 eats half your gold
     m.beard = take(1);              // hidden: Blackbeard +30
     m.kidd = take(1);               // hidden: Captain Kidd +30
-    m.raid = take(4);               // hidden: a free Pirate Raid on another team
+    m.raid = take(RAIDS);           // hidden: a free Pirate Raid on another team
     m.dragonUsed = [];
     return m;
   }
@@ -255,7 +255,7 @@
   }
 
   // ---------- drawing ----------
-  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '<span class="pic">' + ART.chest() + '</span>', seaMonster: '🦑', dragon: '🐉', beard: '<span class="pic">' + ART.pirate() + '</span>', kidd: '<span class="pic">' + ART.pirate() + '</span>', raid: '🏴‍☠️' };
+  var HIDDEN_ICON = { volcano: '🌋', pirate: '☠', chest: '<span class="pic">' + ART.chest() + '</span>', seaMonster: '<span class="pic">' + ART.kraken() + '</span>', dragon: '<span class="pic">' + ART.dragon() + '</span>', beard: '<span class="pic">' + ART.pirate() + '</span>', kidd: '<span class="pic">' + ART.pirate() + '</span>', raid: '🏴‍☠️' };
   function renderMap() {
     var cl = S.claim, step = cl && cl.steps[0], can = step ? stepCells(cl.id, step) : [], leaders = empireLeaders();
     $('map').className = 'map' + (step ? ' aim ' + step.m : '') + (S.reveal ? ' reveal' : '');
@@ -266,10 +266,10 @@
       if (S.reveal && !o && !blocked(c)) Object.keys(HIDDEN_ICON).forEach(function (k) { if (has(S.map[k], c)) hid = k; });
       var cls = 'isle' + (o ? ' owned' : '') + (pir || ash || mon ? ' ash' : '') + (tr && !o ? ' treasure' : '') + (fort ? ' fort' : '') +
         (o && guarded(c) && !fort ? ' guard' : '') + (can.indexOf(c) >= 0 ? ' can' : '') + (o && leaders.indexOf(o) >= 0 ? ' empire' : '') + (hid ? ' hidden-reveal' : '');
-      var label = pir ? '☠' : ash ? '🌋' : mon ? (has(S.map.dragonUsed, c) ? '🐉' : '🦑') :
+      var label = pir ? '☠' : ash ? '🌋' : mon ? '<span class="pic">' + (has(S.map.dragonUsed, c) ? ART.dragon() : ART.kraken()) + '</span>' :
         o ? '<span class="n">' + (players.indexOf(team(o)) + 1) + '</span><span class="w">' + S.map.worth[c] + '</span>' + (fort ? '<span class="tag">🏰</span>' : locked(c) ? '<span class="tag">🔒</span>' : '') :
         fort ? '🏰' : tr ? '💎' : hid ? HIDDEN_ICON[hid] : '';
-      var name = o ? ', ' + esc(tname(o)) + ', ' + S.map.worth[c] + ' gold' + (fort ? ', fortress' : '') : pir ? ', pirates' : ash ? ', volcano' : mon ? ', sea monster' : fort ? ', fortress' : tr ? ', treasure' : ', empty';
+      var name = o ? ', ' + esc(tname(o)) + ', ' + S.map.worth[c] + ' gold' + (fort ? ', fortress' : '') : pir ? ', pirates' : ash ? ', volcano' : mon ? (has(S.map.dragonUsed, c) ? ', dragon' : ', kraken') : fort ? ', fortress' : tr ? ', treasure' : ', empty';
       return '<button class="' + cls + '" data-c="' + c + '"' + (o ? ' style="--c:' + color(o) + '"' : '') + ' aria-label="Island ' + (c + 1) + name + '">' + label + '</button>';
     }).join('');
   }
@@ -288,12 +288,12 @@
   function render() {
     if (!S) return;
     var cur = current(), cl = S.claim, step = cl && cl.steps[0];
-    $('turn').innerHTML = !cur ? 'Add students to play' : S.phase === 'done' ? '🏁 Game over' :
+    $('turn').innerHTML = !cur ? 'Add students to play' : S.phase === 'done' ? '🗺 The secret islands are revealed!' :
       step ? '<i class="dot" style="background:' + color(cl.id) + '"></i>' + esc(tname(cl.id)) + ': ' + HINT[step.m] + (step.m === 'claim' ? ' (+' + (step.v + (step.dig ? DIG : 0)) + ' ' + COIN + ')' : '') :
       '<i class="dot" style="background:' + color(cur.id) + '"></i>' + esc(cur.name) + "'s turn" + (S.lastEnd ? ' · 🏁 Last round' : '');
-    $('ask').hidden = !!cl;
+    $('ask').hidden = !!cl || S.phase === 'done';
     $('ask').disabled = busy || S.phase !== 'play';
-    $('skipClaim').hidden = !cl;
+    $('toPodium').hidden = S.phase !== 'done';
     renderMap(); renderLegend();
   }
 
@@ -386,7 +386,7 @@
       drop(squid ? m.seaMonster : m.dragon, c); m.monster.push(c);
       if (dragon) m.dragonUsed.push(c);
       var half = Math.floor(gold(id) / 2), eaten = half ? addPts(id, -half, dragon ? 'dragon' : 'sea monster') : 0;
-      banner({ art: ART.monster(), title: dragon ? 'DRAGON! 🐉' : 'SEA MONSTER! 🦑', sub: eaten ? (dragon ? 'The dragon burned half of ' : 'It gobbled up half of ') + t + "'s gold!" : t + ' had no gold to take. Lucky!', gold: eaten, mood: 'sea', sound: 'sea' });
+      banner({ art: dragon ? ART.dragon() : ART.kraken(), title: dragon ? 'DRAGON!' : 'KRAKEN!', sub: eaten ? (dragon ? 'The dragon burned half of ' : 'The Kraken grabbed half of ') + t + "'s gold!" : t + ' had no gold to take. Lucky!', gold: eaten, mood: dragon ? 'boom' : 'bad', sound: 'sea' });
       return;
     }
     var beard = has(m.beard, c), kidd = has(m.kidd, c), raidIsle = has(m.raid, c), chest = has(m.chest, c), gem = has(m.treasure, c), fort = has(m.fort, c);
@@ -421,7 +421,6 @@
     banner({ art: ART.steal(), title: 'STOLEN!', sub: tname(id) + ' takes an island from ' + tname(o) + '! 🔒 Safe for one round.', gold: w, mood: 'good', sound: 'gold' });
   }
   $('map').addEventListener('click', function (e) { var b = e.target.closest('[data-c]'); if (b) tapIsland(+b.dataset.c); });
-  $('skipClaim').addEventListener('click', function () { if (S.claim) stepDone(); });
 
   // ---------- reward choices: hard / impossible answers and Pirate Raid ----------
   function openChoice() {
@@ -513,10 +512,11 @@
     banner({ art: ART.map(), title: 'THE TREASURE MAP!', sub: 'Look where all the secret islands were hiding!', mood: 'magic', wait: 3200 });
     var lead = empireLeaders();
     if (lead.length) banner({ art: ART.crown(), title: 'ISLAND EMPIRE!', sub: 'Biggest group of islands: ' + lead.map(tname).join(' & '), gold: EMPIRE, mood: 'good', sound: 'fanfare', wait: 3000 });
-    afterBanners(function () {
-      KruEnd.show({ keepPlaying: function () { S.phase = 'play'; S.reveal = false; save(); render(); } });
-    });
+    // the map stays on screen with its secrets; a button goes on to the podium (Henry, Nov 23)
+    afterBanners(render);
   }
+  function showPodium() { realShow({ keepPlaying: function () { S.phase = 'play'; S.reveal = false; save(); render(); } }); }
+  $('toPodium').addEventListener('click', showPodium);
   function lastRound() {
     var n = Math.max(1, players.length);
     if (S.lastEnd) { S.lastEnd = 0; save(); render(); toast('Last round cancelled.'); return; }
@@ -587,11 +587,16 @@
   $('deckClose').addEventListener('click', function () { $('deckBack').hidden = true; });
 
   // ---------- the question ----------
+  var PAUSE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1.5" fill="currentColor"/></svg>';
+  var PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
   function renderClock() {
     var s = Math.max(0, Math.ceil(left));
     $('digits').textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
     $('digits').className = 'digits' + (left <= 0 ? ' done' : left <= 5 && running ? ' warn' : '');
-    $('go').textContent = running ? 'Pause' : left <= 0 ? 'Again' : left < total ? 'Resume' : 'Start timer';
+    // a || button while the clock runs (orange), a |> button when stopped (green)
+    $('go').className = 'btn pausebtn ' + (running ? 'is-running' : 'is-paused');
+    $('go').innerHTML = running ? PAUSE_ICON : PLAY_ICON;
+    $('go').setAttribute('aria-label', running ? 'Pause the timer' : left <= 0 ? 'Start the timer again' : 'Start the timer');
   }
   function tick() {
     if (!running) return;
@@ -614,7 +619,9 @@
     $('qTopic').textContent = Q.set ? '· ' + Q.set : '';
     $('qBody').innerHTML = KruQuiz.html(Q, shown);
     (Q._gone || []).forEach(function (i) { var c = $('qBody').querySelectorAll('.kq-choice')[i]; if (c) c.classList.add('gone'); });
-    $('reveal').disabled = shown;
+    // Reveal first: then it goes away and ✗ Wrong, ✓ Right and No Answer take its place
+    $('reveal').hidden = shown;
+    $('wrong').hidden = $('right').hidden = $('noAnswer').hidden = !shown;
     renderPowers();
     KruQuiz.fit($('stage'));
   }
@@ -698,6 +705,11 @@
     }
     startSteps(t.id, [{ m: 'claim', v: v }]);
   }
+  // INCORRECT pop-up: a line of encouragement, rotating, never the same one twice in a row
+  var ENC = ["Good try, matey! The next one's yours!", "Don't give up, crew!", 'Even pirates miss sometimes!', 'Shake it off and sail on!',
+    'Every mistake teaches the crew!', 'Chin up, captain!', 'So close! Try again next turn!', 'The treasure is still out there!'];
+  var lastEnc = -1;
+  function encourage() { var i = Math.floor(Math.random() * ENC.length); if (i === lastEnc) i = (i + 1) % ENC.length; lastEnc = i; return ENC[i]; }
   /** Wrong answer (no gold lost) or no answer (-3 gold); a failed Pirate Raid also loses the 2 newest islands. */
   function missed(silent) {
     unlockAudio();
@@ -705,6 +717,7 @@
     raid = false;
     if (rd) use(t.id, 'raid');
     closeQuestion();
+    if (!silent) banner({ art: ART.incorrect(), title: 'INCORRECT', sub: encourage(), mood: 'bad', sound: 'bad' });
     if (silent) {
       var g = addPts(t.id, -NO_ANSWER, 'no answer');
       banner({ art: ART.silence(), title: 'SILENCE ON DECK!', sub: 'No answer from ' + t.name + '. Always have a guess!', gold: g, mood: 'bad' });
@@ -714,7 +727,6 @@
       lost.forEach(function (c) { g2 += loseIsland(t.id, c, 'raid failed'); });
       banner({ art: ART.sinking(), title: 'RAID FAILED!', sub: lost.length ? t.name + ' loses ' + (lost.length === 2 ? 'its 2 newest islands' : 'its newest island') + '!' : t.name + ' had no islands to lose. Phew!', gold: g2, mood: 'bad', sound: 'sea' });
     }
-    if (!silent && !rd) tone([330, 262], 0.15);
     afterBanners(nextTurn);
   }
   $('ask').addEventListener('click', ask);
@@ -765,6 +777,13 @@
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
   window.addEventListener('resize', function () { if (!$('qBack').hidden) KruQuiz.fit($('stage')); });
 
+  // End Game, 🏆 and Kru's Finish always show the treasure map first, then the podium button
+  var realShow = null;
+  function hookEnd() {
+    if (realShow) return;
+    realShow = KruEnd.show;
+    KruEnd.show = function (o) { if (S && S.phase === 'play') endGame(); else realShow(o); };
+  }
   Kru.onFinishRequest(function () { Kru.finish(teams.map(function (t) { return { teamId: t.id, points: t.teacher ? 0 : finalPts(t.id) }; })); });
 
   // ---------- start ----------
@@ -783,6 +802,7 @@
       teams = Kru.allTeams();
       players = teams.filter(function (t) { return !t.teacher; });
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id) }; }); } });
+      hookEnd();
       var saved = session.resume;
       if (saved && saved.v === 2 && saved.level === QZ.level && saved.map && saved.map.own && saved.map.own.length === CELLS && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; buildPoolKeep();

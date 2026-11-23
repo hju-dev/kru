@@ -68,7 +68,7 @@ describe('Quiz Island fixes', () => {
     expect(JSON.stringify(c)).not.toMatch(/\bwrite\b|written/i)
   })
   it('nautical colors of its own', () => {
-    expect(read('public/games/quiz-island/style.css')).toMatch(/nautical colors[\s\S]*--bg: #071a2c/)
+    expect(read('public/games/quiz-island/style.css')).toMatch(/nautical colors[\s\S]*--bg: #0a7fc4/)
   })
 })
 

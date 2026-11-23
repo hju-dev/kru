@@ -20,7 +20,7 @@
         <span class="logo">Quiz <b>Island</b></span>
         <span class="turn" id="turn" aria-live="polite"></span>
         <span class="grow"></span>
-        <button class="btn" id="skipClaim" hidden>Skip ▶</button>
+        <button class="btn gold" id="toPodium" hidden>🏆 Go to the podium ▶</button>
         <button class="btn gold" id="ask">Question ▶</button>
         <button class="small" id="more" aria-haspopup="dialog" aria-label="Settings"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.6 11a7.6 7.6 0 0 0 0 2l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5c.1.2.4.3.6.2l2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6c0 .2.3.4.5.4h4c.2 0 .5-.2.5-.4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1c.2.1.5 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg></button>
       </header>
@@ -38,13 +38,12 @@
         </section>
         <div class="powers" id="powers" role="group" aria-label="Power-ups: one of each per team per game"></div>
         <div class="controls">
-          <span class="digits" id="digits">0:20</span>
-          <button class="btn" id="go">Start timer</button>
+          <span class="digits" id="digits">0:30</span>
+          <button class="btn pausebtn is-paused" id="go" aria-label="Start the timer"></button>
           <button class="btn teal" id="reveal">Reveal</button>
-          <span class="grow"></span>
-          <button class="btn ghost" id="wrong">✗ Wrong</button>
-          <button class="btn ghost danger" id="noAnswer" title="No answer at all: minus 3 gold">⏱ No answer −3</button>
-          <button class="btn gold" id="right">✓ Right!</button>
+          <button class="btn ghost iconbtn" id="wrong" aria-label="Wrong" hidden>✗</button>
+          <button class="btn gold iconbtn" id="right" aria-label="Right" hidden>✓</button>
+          <button class="btn ghost danger" id="noAnswer" title="No Answer at all: minus 3 gold" hidden>⏱ No Answer −3</button>
         </div>
       </div>
     </div>

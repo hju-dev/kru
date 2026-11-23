@@ -72,12 +72,27 @@
         '<circle cx="46" cy="44" r="7" fill="#f4efe2"/><circle cx="43.5" cy="43" r="2" fill="#1c1c22"/><circle cx="48.5" cy="43" r="2" fill="#1c1c22"/>' +
         '<path d="M38 56l16-6M38 50l16 6" stroke="#f4efe2" stroke-width="3"/><path d="M60 16l16 5-16 5z" fill="#d7263d"/>');
     },
-    monster: function () {
-      return svg('<path d="M24 92c-4-16 4-26 10-30M96 92c4-16-4-26-10-30M40 96c-2-12-10-16-16-14M80 96c2-12 10-16 16-14" stroke="#8e44c9" stroke-width="9" fill="none" stroke-linecap="round"/>' +
-        '<ellipse cx="60" cy="54" rx="28" ry="30" fill="#a55be0" stroke="#5a2187" stroke-width="3"/>' +
-        '<circle cx="50" cy="50" r="8" fill="#fff"/><circle cx="70" cy="50" r="8" fill="#fff"/><circle cx="51" cy="52" r="4" fill="#111"/><circle cx="69" cy="52" r="4" fill="#111"/>' +
-        '<path d="M48 68c6 6 18 6 24 0" stroke="#3a1159" stroke-width="3" fill="#ff7aa8"/><path d="M52 69l3 5 3-5M62 69l3 5 3-5" fill="#fff"/>' +
-        '<circle cx="40" cy="36" r="3" fill="#c98ef0"/><circle cx="78" cy="34" r="4" fill="#c98ef0"/>' + waves);
+    /** The Kraken: a red sea monster (Henry, Nov 23) */
+    kraken: function () {
+      return svg('<g stroke="#b3122a" stroke-width="10" fill="none" stroke-linecap="round"><path d="M30 70C14 78 10 94 22 104"/><path d="M44 78C36 92 38 104 50 108"/><path d="M76 78C84 92 82 104 70 108"/><path d="M90 70C106 78 110 94 98 104"/></g>' +
+        '<g fill="#ff9aa8"><circle cx="19" cy="90" r="2.4"/><circle cx="24" cy="100" r="2.4"/><circle cx="42" cy="94" r="2.4"/><circle cx="48" cy="104" r="2.4"/><circle cx="78" cy="94" r="2.4"/><circle cx="72" cy="104" r="2.4"/><circle cx="101" cy="90" r="2.4"/><circle cx="96" cy="100" r="2.4"/></g>' +
+        '<path d="M60 8C34 8 24 34 28 56c3 14 14 22 32 22s29-8 32-22C96 34 86 8 60 8z" fill="#e63946" stroke="#8f1525" stroke-width="3"/>' +
+        '<path d="M60 12c-6 12-6 26 0 38M46 16c-6 10-6 22-2 32M74 16c6 10 6 22 2 32" stroke="#b3122a" stroke-width="3" fill="none" opacity="0.6"/>' +
+        '<circle cx="46" cy="58" r="10" fill="#fff"/><circle cx="74" cy="58" r="10" fill="#fff"/><circle cx="48" cy="60" r="5" fill="#111"/><circle cx="72" cy="60" r="5" fill="#111"/>' +
+        '<path d="M34 46l22 8M86 46l-22 8" stroke="#5a0a15" stroke-width="5" stroke-linecap="round"/>' +
+        '<path d="M48 72c8 6 16 6 24 0" stroke="#5a0a15" stroke-width="3" fill="#7a0f20"/><path d="M52 73l3 6 3-6M62 73l3 6 3-6" fill="#fff"/>' + waves);
+    },
+    dragon: function () {
+      return svg('<path d="M82 60c14-6 22-2 30 6-8 2-10 6-8 12-8-4-14-4-24-2z" fill="#ff8a1f"/><path d="M84 66c8-3 14 0 18 4-4 1-6 4-5 7-4-2-8-2-13-1z" fill="#ffd34d"/>' +
+        '<path d="M38 28L30 8l16 12zM62 24l8-18 6 20z" fill="#f2e4c8" stroke="#8a7a58" stroke-width="2"/>' +
+        '<path d="M24 62c0-22 16-38 38-38s32 14 30 36c-1 14-10 24-26 24H44c-12 0-20-8-20-22z" fill="#3fbf7f" stroke="#1d6b3c" stroke-width="3"/>' +
+        '<g fill="#2fa56b"><circle cx="48" cy="34" r="4"/><circle cx="60" cy="30" r="4"/><circle cx="72" cy="34" r="4"/></g>' +
+        '<circle cx="56" cy="52" r="9" fill="#ffd34d" stroke="#1d6b3c" stroke-width="2"/><rect x="54.3" y="45" width="3.6" height="14" rx="1.8" fill="#111"/>' +
+        '<circle cx="86" cy="62" r="2.5" fill="#1d6b3c"/><path d="M44 80h38" stroke="#1d6b3c" stroke-width="3"/><path d="M50 80l3 7 3-7M62 80l3 7 3-7M74 80l3 7 3-7" fill="#fff"/>' + waves);
+    },
+    incorrect: function () {
+      return svg('<circle cx="60" cy="56" r="44" fill="#e63946" stroke="#8f1525" stroke-width="5"/><path d="M40 36l40 40M80 36L40 76" stroke="#fff" stroke-width="12" stroke-linecap="round"/>' +
+        '<path d="M10 106c10-6 18-6 28 0s18 6 28 0 18-6 28 0 18 6 28 0" stroke="#7fd3ff" stroke-width="4" fill="none"/>');
     },
     cannon: function () {
       return svg('<path d="M18 74l52-26 8 16-52 26z" fill="#2b2b33" stroke="#0e0e12" stroke-width="3"/><circle cx="26" cy="86" r="14" fill="#8a5a2b" stroke="#4d2a0d" stroke-width="3"/><circle cx="26" cy="86" r="4" fill="#4d2a0d"/>' +
@@ -127,5 +142,5 @@
   };
   window.QIArt = A;
   // pictures for the How to play slides ("[[coin]]" etc.)
-  window.KruIntroIcons = { coin: A.coin(), chest: A.chest(), pirate: A.pirate(), boom: A.boom(), steal: A.steal(), double: A.double('#ffc94a'), fort: A.fort(), gem: A.gem(), volcano: A.volcano(), pirates: A.pirates(), monster: A.monster() };
+  window.KruIntroIcons = { coin: A.coin(), chest: A.chest(), pirate: A.pirate(), boom: A.boom(), steal: A.steal(), double: A.double('#ffc94a'), fort: A.fort(), gem: A.gem(), volcano: A.volcano(), pirates: A.pirates(), kraken: A.kraken(), dragon: A.dragon() };
 })();
