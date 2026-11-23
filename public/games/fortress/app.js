@@ -6,8 +6,9 @@
      random, better ones are likelier on harder questions), 🩹 a repair (+HP to one building) or 🪙 gold.
    - After every team had its turn: the STORE (gold buys bombs, missiles and repair kits), then FIRE (a team may fire
      as many bombs as it has, at any enemy buildings), then the next round starts.
-   - Defense towers shoot bombs down: [LQ] 100%, [Q] 32%, [HQ] 16%, the Sarmat 1%. Towers also give 5% resistance each (max 17%).
-   - Depot destroyed: your bombs deal 20% less damage, no more Depot healing, and [Q] bombs and better cost 1.6x.
+   - Defense towers shoot bombs down: [LQ] 100%, [Q] 32%, [HQ] 16%, the Sarmat 1% with both towers standing; with one tower
+     left every chance is halved. Towers also give 5% resistance each (max 17%).
+   - Depot destroyed: the gold earned from questions is halved, no more Depot healing, and [Q] bombs and better cost 1.6x.
    - HQ destroyed: the team sacrifices another building, the HQ takes over that building's HP. No building left = out.
    - Power-ups (once each): +20 s, Free answer, Risk It (a better item or 3x gold; wrong = every building except the HQ
      loses half of its starting HP) and Alliance (skip your turn; the other team must skip too): shared towers and depots,
@@ -21,12 +22,12 @@
   var BNAME = { hq: 'HQ', depot: 'Depot', t1: 'Tower', t2: 'Tower' };
   // the store: mode = one target | scatter (all but the chosen one) | dual (two targets) | all (every building of one team) | jam (skip a turn)
   var ITEMS = {
-    crude: { name: 'Crude Bomb', cls: 'LQ', dmg: 100, price: 200, icon: 0, mode: 'one', info: '100 DMG · one target' },
-    bomb: { name: 'Bomb', cls: 'LQ', dmg: 250, price: 350, icon: 1, mode: 'one', info: '250 DMG · one target' },
-    scatter: { name: 'Scatter Bomb', cls: 'LQ', dmg: 180, price: 500, icon: 1, mode: 'scatter', info: '180 DMG · all but the chosen target' },
+    crude: { name: 'Crude Bomb', cls: 'LQ', dmg: 200, price: 200, icon: 0, mode: 'one', info: '200 DMG · one target' },
+    bomb: { name: 'Bomb', cls: 'LQ', dmg: 500, price: 350, icon: 1, mode: 'one', info: '500 DMG · one target' },
+    scatter: { name: 'Scatter Bomb', cls: 'LQ', dmg: 360, price: 500, icon: 1, mode: 'scatter', info: '360 DMG · all but the chosen target' },
     missile: { name: 'High Speed Missile', cls: 'Q', dmg: 500, price: 1500, icon: 2, mode: 'one', info: '500 DMG · one target' },
     dual: { name: 'Dual Headed Missile', cls: 'Q', dmg: 350, price: 2400, icon: 2, mode: 'dual', info: '350 DMG · two targets' },
-    jammer: { name: 'Signal Jammer', cls: 'Q', dmg: 0, price: 4000, icon: 2, mode: 'jam', info: "skips a team's turn (once per round per team)" },
+    jammer: { name: 'Signal Jammer', cls: 'Q', dmg: 0, price: 4000, icon: 2, mode: 'jam', info: "skips an enemy team's turn (one per team per round)" },
     tos: { name: 'TOS-2M', cls: 'HQ', dmg: 2000, price: 10000, icon: 3, mode: 'all', curse: true, info: '2000 DMG · all targets · curses their next bomb' },
     avangard: { name: 'Avangard', cls: 'HQ', dmg: 4000, price: 15000, icon: 3, mode: 'one', info: '4000 DMG · one target' },
     sarmat: { name: 'RS-28 Sarmat', cls: 'HQ', dmg: 9000, price: 30000, icon: 3, mode: 'all', chance: 0.01, info: '9000 DMG · all targets · 1% shot down' },
@@ -40,10 +41,10 @@
     hard: [0, 10, 15, 30, 20, 15, 5, 5, 0],
     impossible: [0, 0, 0, 10, 15, 10, 25, 25, 15],
   };
-  var GOLD = { easy: 150, regular: 250, hard: 500, impossible: 900 };
+  var GOLD = { easy: 225, regular: 375, hard: 750, impossible: 1350 }; // x1.5 (Henry)
   var HEAL = { easy: 500, regular: 800, hard: 1200, impossible: 1800 };
   var KIT = 300, KIT_RISE = 200, KIT_HP = 1000;
-  var ROUND_HEAL = 450, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1, NO_DEPOT_DMG = 0.8, NO_DEPOT_PRICE = 1.6, CURSE_CHANCE = 0.4;
+  var ROUND_HEAL = 450, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1, NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6, CURSE_CHANCE = 0.4;
   var PLACE_PTS = [5, 3, 2, 1];
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
@@ -88,8 +89,10 @@
   }
   function depotOk(id) { return T(id).hp.depot > 0 || (allyOf(id) ? T(allyOf(id)).hp.depot > 0 : false); }
   function resist(id, key) { return Math.min(RES_CAP, RES * towers(id)) + (key === 'hq' && allyOf(id) ? ALLY_HQ : 0); }
-  /** your own Depot gone: bombs hit 20% weaker and [Q] items and better cost 1.6x */
-  function dmgMult(id) { return depotOk(id) ? 1 : NO_DEPOT_DMG; }
+  /** your own Depot gone: the gold from questions is halved and [Q] items and better cost 1.6x */
+  function goldMult(id) { return depotOk(id) ? 1 : NO_DEPOT_GOLD; }
+  /** the chance the towers shoot this item down: the full class chance with both towers, half with one, none with none */
+  function shootChance(it, id) { return (it.chance != null ? it.chance : SHOOT[it.cls]) * Math.min(1, towers(id) / 2); }
   function priceOf(id, key) { var it = ITEMS[key]; return Math.round(it.price * (it.cls !== 'LQ' && !depotOk(id) ? NO_DEPOT_PRICE : 1)); }
   function kitPrice() { return KIT + KIT_RISE * (S.round - 1); }
   function totalHp(id) { return KEYS.reduce(function (n, k) { return n + Math.max(0, T(id).hp[k]); }, 0); }
@@ -259,15 +262,15 @@
     boom();
     if (it.mode === 'jam') {
       var jt = picks[0].t;
-      S.skip[jt] = true; S.jam = S.jam || {}; S.jam[jt] = S.round; save();
+      S.skip[jt] = true; S.jamUsed = S.jamUsed || {}; S.jamUsed[from] = S.round; save();
       banner({ art: ART.risk(), title: 'SIGNAL JAMMED!', sub: tname(jt) + ' will skip its next turn.', mood: 'magic', wait: 1500 });
       afterBanners(continueFire);
       return;
     }
     var hits = expand(it, picks), hitTeams = [];
     hits.forEach(function (h) { if (hitTeams.indexOf(h.t) < 0) hitTeams.push(h.t); });
-    var chance = it.chance != null ? it.chance : SHOOT[it.cls], shot = [];
-    hitTeams.forEach(function (t) { if (towers(t) > 0 && Math.random() < chance) shot.push(t); });
+    var shot = [];
+    hitTeams.forEach(function (t) { if (Math.random() < shootChance(it, t)) shot.push(t); });
     var landed = hits.filter(function (h) { return shot.indexOf(h.t) < 0; });
     var landedTeams = hitTeams.filter(function (t) { return shot.indexOf(t) < 0; });
     if (!landed.length) {
@@ -276,7 +279,7 @@
     }
     var destroyed = 0, total = 0;
     landed.forEach(function (h) {
-      var dmg = Math.round(it.dmg * dmgMult(from) * (1 - resist(h.t, h.b)));
+      var dmg = Math.round(it.dmg * (1 - resist(h.t, h.b)));
       var was = T(h.t).hp[h.b];
       setHp(h.t, h.b, was - dmg); total += Math.min(was, dmg);
       if (T(h.t).hp[h.b] <= 0) destroyed++;
@@ -401,19 +404,18 @@
   });
   var DESC = {
     hq: 'The headquarters. If it falls the team is out, unless it sacrifices another building to stay in.',
-    depot: 'Heals every building each round. Without it bombs hit 20% weaker and [Q]+ items cost more.',
+    depot: 'Heals every building each round. Without it: no healing, question gold halved, [Q]+ items cost 1.6x.',
     t1: 'Shoots bombs down and gives all buildings 5% resistance.',
     t2: 'Shoots bombs down and gives all buildings 5% resistance.',
   };
   function closeAim() { $('aimBack').hidden = true; }
   function openTarget(tid) {
     var a = S.aim, it = ITEMS[a.k], t = T(tid), from = curId();
-    if (it.mode === 'jam' && S.jam && S.jam[tid] === S.round) { toast(tname(tid) + ' was already jammed this round.'); return; }
     $('aim').style.setProperty('--c', color(tid)); $('aim').dataset.t = tid;
     $('aimWho').innerHTML = Kru.badge(team(tid), color(tid));
     $('aimTitle').textContent = tname(tid) + ' · ' + it.name + (it.mode === 'dual' ? ' (target ' + (a.picks.length + 1) + ' of 2)' : '');
-    var n = towers(tid), chance = it.chance != null ? it.chance : SHOOT[it.cls];
-    $('aimNote').textContent = 'Towers standing: ' + n + (n ? ' · they shoot this ' + it.name + ' down ' + Math.round(chance * 100) + '% of the time' : ' · nothing can shoot it down') + ' · resistance ' + Math.round(Math.min(RES_CAP, RES * n) * 100) + '%' + (depotOk(from) ? '' : ' · your Depot is down: -20% damage');
+    var n = towers(tid), chance = shootChance(it, tid);
+    $('aimNote').textContent = 'Towers standing: ' + n + (n ? ' · they shoot this ' + it.name + ' down ' + (Math.round(chance * 1000) / 10) + '% of the time' + (n < 2 ? ' (halved: a tower is gone)' : '') : ' · nothing can shoot it down') + ' · resistance ' + Math.round(Math.min(RES_CAP, RES * n) * 100) + '%' + (depotOk(tid) ? '' : ' · their Depot is down: no healing');
     var asText = { one: 'Tap the building to hit', scatter: 'Tap the building to SPARE: all the others are hit', dual: 'Tap the building to hit', all: 'Every building of this team is hit', jam: 'This team skips its next turn' }[it.mode];
     var cards = KEYS.map(function (k) {
       var hp = t.hp[k], dead = hp <= 0, taken = (a.picks || []).some(function (p) { return p.t === tid && p.b === k; });
@@ -463,7 +465,10 @@
   $('tray').addEventListener('click', function (e) {
     unlockAudio();
     var b = e.target.closest('[data-k]');
-    if (b) { S.aim = S.aim && S.aim.k === b.dataset.k ? null : { k: b.dataset.k, picks: [] }; render(); return; }
+    if (b) {
+      if (b.dataset.k === 'jammer' && S.jamUsed && S.jamUsed[curId()] === S.round) { toast(tname(curId()) + ' already used a Signal Jammer this round.'); return; }
+      S.aim = S.aim && S.aim.k === b.dataset.k ? null : { k: b.dataset.k, picks: [] }; render(); return;
+    }
     if (e.target.closest('#fireDone')) { snap(); advance(); }
   });
 
@@ -729,7 +734,7 @@
   }
   /** The reward after a right answer: a bomb, a repair or gold. */
   function rewardPanel(id, tier, rk) {
-    var gold = GOLD[tier] * (rk ? 3 : 1);
+    var gold = Math.round(GOLD[tier] * (rk ? 3 : 1) * goldMult(id));
     reopen = function () { rewardPanel(id, tier, rk); };
     choose({ art: ART.bomb(2), title: tname(id) + ': choose your reward' + (rk ? ' (Risk It!)' : ''),
       options: [
