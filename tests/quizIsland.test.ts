@@ -26,18 +26,19 @@ describe('Quiz Island', () => {
     expect(js).toContain("hard: { label: 'Hard', share: 17, pts: 5, reward: true }")
     expect(js).toContain("impossible: { label: 'Impossible', share: 8, pts: 7, reward: true }")
   })
-  it('the map: one fortress per team, 4 treasures (+5), 3 volcanoes, 3 pirates, 4 chests (+10), a squid and a dragon, Blackbeard and Captain Kidd (+30), 4 free-raid islands', () => {
-    expect(js).toContain('var TREASURES = 4, VOLCANOES = 3, PIRATES = 3, CHESTS = 4;')
-    expect(js).toContain('var GEM = 5, CHEST = 10, BEARD = 30, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;')
+  it('the map: 30 islands; one fortress per team, 4 treasures (+5), 2 volcanoes, 2 pirates, 3 chests (+10), a Kraken and a dragon, Blackbeard and Captain Kidd (+30), 3 free-raid islands', () => {
+    expect(js).toContain('var COLS = 6, ROWS = 5, CELLS = COLS * ROWS;')
+    expect(js).toContain('VOLCANOES = 2, PIRATES = 2, CHESTS = 3, RAIDS = 3;')
+    expect(js).toContain('var GEM = 5, CHEST = 10, BEARD = 30, DIG = 10, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;')
     expect(js).toContain('var nf = Math.min(players.length, 8)')
     expect(js).toContain('m.seaMonster = take(1);')
     expect(js).toContain('m.dragon = take(1);')
     expect(js).toContain('m.beard = take(1);')
     expect(js).toContain('m.kidd = take(1);')
-    expect(js).toContain('m.raid = take(4);')
+    expect(js).toContain('m.raid = take(RAIDS);')
     expect(js).toContain("title: \"CAPTAIN KIDD'S TREASURE!\"")
     expect(js).toContain("title: 'FREE PIRATE RAID!'")
-    expect(js).toContain("seaMonster: '🦑', dragon: '🐉'")
+    expect(js).toContain('ART.kraken()'); expect(js).toContain('ART.dragon()')
   })
   it('the free raid comes after the claim (sink or steal only); a full map asks once whether to end the game', () => {
     expect(js).toContain('if (S.claim) S.claim.raidAfter = true;')
@@ -84,9 +85,9 @@ describe('Quiz Island', () => {
   })
   it('every event shows a big banner with a picture; Reduce Motion stops the animation', () => {
     const art = read(`${dir}/art.js`)
-    for (const k of ['island', 'double', 'dig', 'chest', 'beard', 'gem', 'fort', 'volcano', 'pirates', 'monster', 'cannon', 'boom', 'steal', 'raid', 'sinking', 'silence', 'bottle', 'crown', 'map', 'flag']) expect(art, k).toContain(`${k}: function`)
+    for (const k of ['island', 'double', 'dig', 'chest', 'beard', 'gem', 'fort', 'volcano', 'pirates', 'kraken', 'dragon', 'incorrect', 'cannon', 'boom', 'steal', 'raid', 'sinking', 'silence', 'bottle', 'crown', 'map', 'flag']) expect(art, k).toContain(`${k}: function`)
     expect(html).toContain('<script src="art.js"></script>')
-    for (const t of ['LAND HO!', 'TREASURE CHEST!', "BLACKBEARD'S TREASURE!", 'SEA MONSTER!', 'KABOOM!', 'STOLEN!', 'VOLCANO!', 'PIRATE AMBUSH!', 'RAID FAILED!', 'SILENCE ON DECK!', 'MESSAGE IN A BOTTLE!', 'LAST ROUND!', 'ISLAND EMPIRE!']) expect(js, t).toContain(t)
+    for (const t of ['LAND HO!', 'TREASURE CHEST!', "BLACKBEARD'S TREASURE!", 'KRAKEN!', 'INCORRECT', 'KABOOM!', 'STOLEN!', 'VOLCANO!', 'PIRATE AMBUSH!', 'RAID FAILED!', 'SILENCE ON DECK!', 'MESSAGE IN A BOTTLE!', 'LAST ROUND!', 'ISLAND EMPIRE!']) expect(js, t).toContain(t)
     expect(read(`${dir}/style.css`)).toMatch(/prefers-reduced-motion: reduce\)[\s\S]*\.fx\.go \.fx-rays/)
   })
   it('How to play comes from Quiz Island itself, not Race Board', () => {

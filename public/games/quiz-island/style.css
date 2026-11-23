@@ -19,12 +19,12 @@
   flex: 1;
   min-height: 0;
   display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-template-rows: repeat(5, minmax(0, 1fr));
   gap: 4px;
   padding: 6px;
   border-radius: 14px;
-  background: radial-gradient(circle at 30% 30%, #1d4e6b, #10283a);
+  background: radial-gradient(circle at 30% 25%, #2fd0e8, #0a8fd0 60%, #0873b8);
 }
 .isle {
   position: relative;
@@ -324,10 +324,10 @@
 
 /* nautical colors, Quiz Island's own: deep navy sea, brass gold, sail white, rope */
 :root {
-  --bg: #071a2c;
-  --stage: #0c2740;
-  --panel: #12365a;
-  --line: #2a5a80;
+  --bg: #0a7fc4;
+  --stage: #0b8fd6;
+  --panel: #0f6aa8;
+  --line: #5cc8ee;
   --fg: #f6f1e3;
   --muted: #9fc0d8;
   --gold: #f4c542;
@@ -337,7 +337,7 @@
 body {
   background:
     repeating-linear-gradient(0deg, transparent 0 22px, rgb(255 255 255 / 0.025) 22px 23px),
-    radial-gradient(ellipse at 50% 0%, #0f3557 0%, #071a2c 70%);
+    radial-gradient(ellipse at 50% 0%, #25c4e8 0%, #0a7fc4 75%);
 }
 .qi .bar .logo {
   font-family: var(--display);
@@ -345,3 +345,49 @@ body {
 .qi .bar .logo::before {
   content: '⚓ ';
 }
+
+/* Kraken and dragon pictures on the map */
+.isle.hidden-reveal .pic, .isle .pic { filter: drop-shadow(0 2px 0 rgb(0 0 0 / 0.25)); }
+
+/* Pirate podium: beach and waves, treasure chests for the steps (Henry, Nov 23) */
+.kp {
+  background:
+    radial-gradient(ellipse at 50% 0%, #bff0ff 0%, transparent 55%),
+    linear-gradient(180deg, #4fc3f0 0%, #1aa3dc 38%, #0f86c4 52%, #f3dfa2 52.5%, #e8c97c 100%) !important;
+}
+.kp-lights {
+  background:
+    repeating-radial-gradient(ellipse at 50% 52%, transparent 0 14px, rgb(255 255 255 / 0.28) 14px 17px) !important;
+  inset: 0 !important;
+  height: 52%;
+  animation: none !important;
+  opacity: 0.6;
+}
+.kp-title { color: #fff !important; text-shadow: 0 2px 0 #0a5f94, 0 0 14px rgb(0 0 0 / 0.35); }
+.kp-step { position: relative; border-radius: 10px 10px 4px 4px; border: 3px solid #4a2c0f; }
+.kp-step::before {
+  content: '';
+  position: absolute;
+  left: -3px; right: -3px; top: 28%;
+  height: 8px;
+  background: #4a2c0f;
+}
+.kp-step::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 22%;
+  width: 18px; height: 22px;
+  transform: translateX(-50%);
+  border-radius: 4px;
+  background: #ffe27a;
+  border: 3px solid #4a2c0f;
+}
+.kp-step span { position: relative; z-index: 1; margin-top: 30px; padding: 0 10px; border-radius: 10px; background: rgb(40 20 5 / 0.75); color: #fff; }
+.p1 .kp-step { background: linear-gradient(#ffd84a, #d99a00) !important; box-shadow: 0 0 30px rgb(255 214 74 / 0.8) !important; }
+.p2 .kp-step { background: linear-gradient(#f1f4f8, #aab2bf) !important; }
+.p3 .kp-step { background: linear-gradient(#e6a064, #a8602b) !important; }
+.kp-who { background: rgb(40 20 5 / 0.78); border-radius: 12px; padding: 3px 12px; color: #fff; }
+.kp-who .kp-name, .kp-who .kp-mem, .kp-who .kp-pts { color: #fff !important; text-shadow: none; }
+.p1 .kp-who .kp-name { color: #ffe27a !important; }
+.kp-step::after { top: 14%; }
+.kp-step span { margin-top: 24px; }
