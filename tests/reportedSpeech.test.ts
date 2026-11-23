@@ -78,18 +78,14 @@ describe('Team Builder & Scoreboard', () => {
   })
 })
 
-// Quiz Board became Jeopardy (Henry, Nov 17): new id and title; old saved ids still work; old Sheet rows keep "Quiz Board".
-describe('Jeopardy rename', () => {
-  it('old Quiz Board ids resolve to Jeopardy', async () => {
+// Jeopardy (the old Quiz Board) was removed on Nov 23; old saved sessions keep its names.
+describe('Jeopardy retired', () => {
+  it('old Quiz Board / Jeopardy sessions keep their titles and have no game', async () => {
     const g = await import('../src/lib/games')
-    expect(g.findGame('quiz-board')?.title).toBe('Jeopardy')
+    expect(g.findGame('quiz-board')).toBeUndefined()
+    expect(g.findGame('jeopardy')).toBeUndefined()
     expect(g.gameTitle('jeopardy')).toBe('Jeopardy')
-    expect(g.gameUrl('quiz-board')).toBe('/games/jeopardy/index.html')
-    expect(g.GAMES.some((x) => x.slug === 'quiz-board')).toBe(false)
-  })
-  it('the game lives in games/jeopardy and says Jeopardy', () => {
-    const html = readFileSync(new URL('../public/games/jeopardy/index.html', import.meta.url), 'utf8')
-    expect(html).toContain('<title>Jeopardy</title>')
+    expect(g.gameTitle('quiz-board')).toBe('Jeopardy')
   })
 })
 
@@ -135,7 +131,7 @@ describe('Reading Island retired', () => {
     const g = await import('../src/lib/games')
     expect(g.findGame('reading-island')).toBeUndefined()
     expect(g.gameTitle('reading-island')).toBe('Reading Island')
-    expect(g.gameTitle('reading-think-tank')).toBe('Reading Think Tank')
+    expect(g.gameTitle('reading-think-tank')).toBe('Reading Island')
   })
 })
 

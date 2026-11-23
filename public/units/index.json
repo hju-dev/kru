@@ -1,96 +1,93 @@
 {
- "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it. Kru's M.1 / M.2 / M.3 are Henry's R&W courses; titles start with the course (R&W or English). A lesson pack can list \"games\" (slugs) and \"classes\" (e.g. M.3/2); it then shows only for those games and classes.",
- "units": [
-  {
-   "id": "m1-rw-u5",
-   "level": "M.1",
-   "course": "M.1 R&W",
-   "title": "R&W Unit 5: What Are You Afraid Of?"
-  },
-  {
-   "id": "m2-rw-u5",
-   "level": "M.2",
-   "course": "M.2 R&W",
-   "title": "R&W Unit 5: Perception"
-  },
-  {
-   "id": "m3-english-u7",
-   "level": "M.3",
-   "course": "M.3 English",
-   "title": "English Unit 7: Capital Punishment"
-  },
-  {
-   "id": "m3-rw-u5",
-   "level": "M.3",
-   "course": "M.3 R&W",
-   "title": "R&W Unit 5: Careers of the Future"
-  },
-  {
-   "id": "m3-u8-l1",
-   "level": "M.3",
-   "course": "M.3 Communication",
-   "title": "Unit 8 L1: Regret & Forgiveness",
-   "games": [
-    "quiz-battle",
-    "jeopardy",
-    "battle-of-writers"
-   ],
-   "classes": [
-    "M.3/2",
-    "M.3/3"
-   ]
-  },
-  {
-   "id": "m3-u8-l2",
-   "level": "M.3",
-   "course": "M.3 Communication",
-   "title": "Unit 8 L2: I wish / If only",
-   "games": [
-    "quiz-battle",
-    "jeopardy"
-   ],
-   "classes": [
-    "M.3/2",
-    "M.3/3"
-   ]
-  },
-  {
-   "id": "m3-u8-l3-vocab",
-   "level": "M.3",
-   "course": "M.3 Communication",
-   "title": "Unit 8 L3: Relationship phrasal verbs",
-   "games": [
-    "hot-seat-vocab"
-   ],
-   "classes": [
-    "M.3/2",
-    "M.3/3"
-   ]
-  },
-  {
-   "id": "m3-u8-review",
-   "level": "M.3",
-   "course": "M.3 Communication",
-   "title": "Unit 8 Review: Lessons 1 to 4",
-   "games": [
-    "quiz-battle",
-    "jeopardy"
-   ],
-   "classes": [
-    "M.3/2",
-    "M.3/3"
-   ]
-  },
-  {
-   "id": "m3-english-reported-speech",
-   "level": "M.3",
-   "course": "M.3 English",
-   "title": "English: Reported Speech",
-   "games": [
-    "quiz-battle",
-    "race-board",
-    "quiz-island"
-   ]
-  }
- ]
+  "about": "Units: game content made from Henry's Gamma lessons. Pick one on the team setup screen; games marked \"units\" in games.json use it. Kru's M.1 / M.2 / M.3 are Henry's R&W courses; titles start with the course (R&W or English). A lesson pack can list \"games\" (slugs) and \"classes\" (e.g. M.3/2); it then shows only for those games and classes.",
+  "units": [
+    {
+      "id": "m1-rw-u5",
+      "level": "M.1",
+      "course": "M.1 R&W",
+      "title": "R&W Unit 5: What Are You Afraid Of?"
+    },
+    {
+      "id": "m2-rw-u5",
+      "level": "M.2",
+      "course": "M.2 R&W",
+      "title": "R&W Unit 5: Perception"
+    },
+    {
+      "id": "m3-english-u7",
+      "level": "M.3",
+      "course": "M.3 English",
+      "title": "English Unit 7: Capital Punishment"
+    },
+    {
+      "id": "m3-rw-u5",
+      "level": "M.3",
+      "course": "M.3 R&W",
+      "title": "R&W Unit 5: Careers of the Future"
+    },
+    {
+      "id": "m3-u8-l1",
+      "level": "M.3",
+      "course": "M.3 Communication",
+      "title": "Unit 8 L1: Regret & Forgiveness",
+      "games": [
+        "quiz-battle",
+        "battle-of-writers"
+      ],
+      "classes": [
+        "M.3/2",
+        "M.3/3"
+      ]
+    },
+    {
+      "id": "m3-u8-l2",
+      "level": "M.3",
+      "course": "M.3 Communication",
+      "title": "Unit 8 L2: I wish / If only",
+      "games": [
+        "quiz-battle"
+      ],
+      "classes": [
+        "M.3/2",
+        "M.3/3"
+      ]
+    },
+    {
+      "id": "m3-u8-l3-vocab",
+      "level": "M.3",
+      "course": "M.3 Communication",
+      "title": "Unit 8 L3: Relationship phrasal verbs",
+      "games": [
+        "hot-seat-vocab"
+      ],
+      "classes": [
+        "M.3/2",
+        "M.3/3"
+      ]
+    },
+    {
+      "id": "m3-u8-review",
+      "level": "M.3",
+      "course": "M.3 Communication",
+      "title": "Unit 8 Review: Lessons 1 to 4",
+      "games": [
+        "quiz-battle"
+      ],
+      "classes": [
+        "M.3/2",
+        "M.3/3"
+      ]
+    },
+    {
+      "id": "m3-english-reported-speech",
+      "level": "M.3",
+      "course": "M.3 English",
+      "title": "English: Reported Speech",
+      "games": [
+        "quiz-battle",
+        "race-board",
+        "quiz-island"
+      ]
+    }
+  ]
 }

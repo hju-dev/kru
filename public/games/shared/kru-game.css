@@ -65,3 +65,74 @@ button.tile .tn {
 button.tile .tp {
   font-size: 30px;
 }
+
+/* ---------- settings menus (shared/kru-menu.js): a floating ✕ instead of Close, New Game + End Game side by side ---------- */
+.kmenu-wrap {
+  position: relative;
+  align-self: center;
+  width: min(560px, 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 52px; /* room for the ✕ above the menu */
+}
+.kmenu-wrap > .menu {
+  width: 100%;
+  max-height: none;
+  min-height: 0;
+  align-self: stretch;
+}
+.kmenu-x {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  background: var(--fg);
+  color: var(--bg);
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+  cursor: pointer;
+}
+.kmenu-x svg { width: 24px; height: 24px; }
+.kmenu-foot {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  /* always in view: a tall menu scrolls above it */
+  position: sticky;
+  bottom: -12px;
+  margin-bottom: -12px;
+  padding: 8px 0 12px;
+  background: var(--stage);
+}
+.kmenu-foot:empty { display: none; }
+.kmenu-foot .btn { flex: 1 1 0; min-width: 0; padding: 0 6px; }
+
+/* the alarm-clock timer: clock, − [ 30s ] + */
+.menu .ktimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.ktimer .ktimer-ic { width: 30px; height: 30px; color: var(--gold); flex-shrink: 0; }
+.menu .ktimer .btn { flex: 0 0 72px; width: 72px; min-width: 72px; padding: 0; font-size: 26px; }
+.ktimer output {
+  min-width: 4.2ch;
+  padding: 6px 10px;
+  text-align: center;
+  font: 800 24px var(--mono);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+/* a label on the left, the timer control on the right (one row per timer) */
+.menu-trow { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.menu-trow .menu-label { color: var(--fg); font-weight: 700; font-size: 16px; }

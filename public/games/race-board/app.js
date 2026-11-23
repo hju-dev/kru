@@ -17,7 +17,6 @@
   var FACES = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8],
     7: [0, 2, 3, 4, 5, 6, 8], 8: [0, 1, 2, 3, 5, 6, 7, 8], 9: [0, 1, 2, 3, 4, 5, 6, 7, 8] };
   var BIG_MIN = 4; // a big die shows 4 to 9, so two big dice never total less than 8
-  var TIMES = [10, 20, 30, 45, 60];
   var COLS = 12, FINISH = 59; // squares 0 (START) to 59 (FINISH), a snake of 12 x 5
   var SPECIAL = {
     4: { t: 'chance' }, 8: { t: 'go', n: 2 }, 11: { t: 'chance' }, 15: { t: 'back', n: 2 }, 18: { t: 'chance' }, 22: { t: 'again' },
@@ -600,12 +599,11 @@
 
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
-  function disarm() { $('restart').classList.remove('armed'); $('restart').textContent = 'Start the race again'; }
-  function renderSecs() { $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join(''); }
+  function disarm() { $('restart').classList.remove('armed'); $('restart').textContent = 'New Game'; }
+  function renderSecs() { KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }); } // the alarm-clock timer (shared/kru-menu.js)
   $('more').addEventListener('click', function () { renderSecs(); renderWho(); disarm(); $('undoMove').disabled = !S.last || busy; $('skip').disabled = busy; $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-  $('secsRow').addEventListener('click', function (e) { var b = e.target.closest('[data-secs]'); if (!b) return; S.secs = +b.dataset.secs; save(); renderSecs(); });
   function renderWho() { $('whoOn').textContent = '🎯 Who answers: ' + (S.who ? 'on' : 'off'); $('whoOn').setAttribute('aria-pressed', String(!!S.who)); }
   $('whoOn').addEventListener('click', function () { S.who = !S.who; save(); renderWho(); });
   $('skip').addEventListener('click', function () { closeMenu(); nextTurn(); });
@@ -621,7 +619,7 @@
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: GAME_TITLE }); });
   $('restart').addEventListener('click', function () {
     var btn = this;
-    if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: everyone back to START'; setTimeout(disarm, 3500); return; }
+    if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     racers.forEach(function (t) { var p = points(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
     S.pos = {}; S.finished = []; S.turn = 0; S.last = null; S.skip = {}; S.shield = {}; S.dbl = {}; S.mathsci = {}; S.secret = newSecret(); S.powers = {};
     save(); closeMenu(); renderTrack();
@@ -685,9 +683,10 @@
       if (saved && saved.v === 2 && saved.level === QZ.level && saved.sizes === sizes) S = saved;
       else {
         S = { v: 2, level: QZ.level, sizes: sizes, pos: {}, finished: [], turn: 0, order: {}, qi: {}, msOrder: shuffle(range(MATHSCI.length)), msI: 0,
-          secs: 20, last: null, skip: {}, shield: {}, dbl: {}, mathsci: {}, secret: newSecret(), powers: {}, introDone: false };
+          secs: 30, last: null, skip: {}, shield: {}, dbl: {}, mathsci: {}, secret: newSecret(), powers: {}, introDone: false };
         ORDER.forEach(function (t) { S.order[t] = shuffle(range(POOL[t].length)); S.qi[t] = 0; });
       }
+      S.secs = KruMenu.snap(S.secs); // whole 10-second steps
       S.powers = S.powers || {};
       S.mpicked = S.mpicked || {};
       S.xdeck = S.xdeck || {};

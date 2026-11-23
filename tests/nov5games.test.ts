@@ -117,7 +117,7 @@ describe('Jeopardy and Race Board use Quiz Battle questions', () => {
       expect(sets.filter((s) => s.questions.length >= 5).length).toBeGreaterThanOrEqual(5)
     })
   }
-  for (const slug of ['jeopardy', 'race-board']) {
+  for (const slug of ['race-board']) {
     it(`${slug}: loads the shared quiz, podium and How to play`, () => {
       const html = read(`public/games/${slug}/index.html`)
       for (const f of ['kru-quiz.js', 'kru-quiz.css', 'kru-end.js', 'kru-intro.js']) expect(html, f).toContain('/games/shared/' + f)

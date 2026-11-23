@@ -310,11 +310,11 @@
     b.addEventListener('click', function () { S.secs = +b.dataset.secs; save(); renderMenu(); renderRound(); });
   });
   $('undoRound').addEventListener('click', function () { undoRound(); closeMenu(); showView('scores'); });
-  function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New game (scores back to 0)'; }
+  function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
     if (!btn.classList.contains('armed')) {
-      btn.classList.add('armed'); btn.textContent = 'Tap again: start again from round 1';
+      btn.classList.add('armed'); btn.textContent = 'Tap again to confirm';
       setTimeout(disarm, 3500);
       return;
     }

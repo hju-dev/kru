@@ -67,10 +67,12 @@ export const RETIRED_GAMES: Record<string, string> = {
   'reading-think-tank': 'Reading Think Tank',
   'sentence-builder': 'Sentence Builder',
   'sentence-scramble': 'Sentence Scramble Race',
+  // Nov 23: removed (Quiz Board was its old name; RENAMED_GAMES still maps it)
+  jeopardy: 'Jeopardy',
 }
 
 /** A game's title for screens and the Sheet, also for retired games. */
-export const gameTitle = (slug: string) => findGame(slug)?.title ?? RETIRED_GAMES[slug] ?? slug
+export const gameTitle = (slug: string) => findGame(slug)?.title ?? RETIRED_GAMES[currentSlug(slug)] ?? RETIRED_GAMES[slug] ?? slug
 
 /** Every game is its own page, loaded in a same-origin frame. */
 export const gameUrl = (slug: string) => `/games/${currentSlug(slug)}/index.html`

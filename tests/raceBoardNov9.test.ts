@@ -106,18 +106,3 @@ describe('Race Board levels moved up (Henry, Nov 10)', () => {
   })
 })
 
-describe('Jeopardy: choosing team only + power-ups (Henry, Nov 11)', () => {
-  const qb = read('public/games/jeopardy/app.js')
-  const qbHtml = read('public/games/jeopardy/index.html')
-  it('a ⋯ menu switch: all teams (default) or the choosing team only', () => {
-    expect(qbHtml).toContain('id="oneTeamOpt"')
-    expect(qb).toContain("'Who answers: ' + (S.oneTeam ? 'choosing team only' : 'all teams')")
-  })
-  it('✓ Right / ✗ Wrong for the choosing team; Risk it = double or lose the points', () => {
-    expect(qb).toContain('var d = right ? v * (S.risk ? 2 : 1) : (S.risk ? -v : 0);')
-  })
-  it('power-ups once each per team per game: 50/50, +20 s, Free answer, Risk it', () => {
-    for (const p of ["{ id: 'fifty', label: '50/50' }", "{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free Play' }", "{ id: 'risk', label: 'Risk it' }"]) expect(qb).toContain(p)
-    expect(qb).toContain('left = Math.max(0, left) + 20;')
-  })
-})

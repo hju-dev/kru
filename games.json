@@ -182,26 +182,6 @@
     "section": "writing"
   },
   {
-    "slug": "jeopardy",
-    "title": "Jeopardy",
-    "file": "public/games/jeopardy/index.html",
-    "description": "A board of 5 topics x 5 squares worth 1 to 5 points. Teams take turns choosing a square; every team answers; tap the teams that were right. One secret DOUBLE square. Questions from Quiz Battle for M.1, M.2 and M.3.",
-    "levels": [
-      "M.1",
-      "M.2",
-      "M.3"
-    ],
-    "type": "team quiz",
-    "minutes": 30,
-    "phoneLandscape": true,
-    "modes": [
-      "group"
-    ],
-    "status": "ready",
-    "section": "quizzes",
-    "units": true
-  },
-  {
     "slug": "race-board",
     "title": "Quiz Dash",
     "file": "public/games/race-board/index.html",

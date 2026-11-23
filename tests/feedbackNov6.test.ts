@@ -19,8 +19,8 @@ describe('Quiz Battle', () => {
     })
   }
   // Nov 19: Battle of Wits (the shared Battle engine) replaced the old one-question game
-  it('starts with a 30-second timer (30 / 45 / 60)', () => {
-    expect(read('public/games/shared/kru-battle.js')).toContain('var TIMES = [30, 45, 60], READ_TIMES = [45, 60, 90, 120], ROUND = 5, GAP = 3;')
+  it('starts with a 30-second timer (the alarm-clock control, 10-second steps)', () => {
+    expect(read('public/games/shared/kru-battle.js')).toContain('var ROUND = 5, GAP = 3;')
     expect(read('public/games/shared/kru-battle.js')).toContain('secs: 30,')
   })
   it('the last round of a set offers the podium (Final scores)', () => {
@@ -58,7 +58,7 @@ describe('podium first, then the scores are sent (every scored game)', () => {
     expect(end).toContain('data-k="save">Save scores &amp; finish ✓')
   })
   it('games with a natural end open the podium themselves', () => {
-    for (const slug of ['jeopardy', 'race-board', 'think-tank-showdown', 'word-rush']) {
+    for (const slug of ['race-board', 'think-tank-showdown', 'word-rush']) {
       expect(read(`public/games/${slug}/app.js`), slug).toMatch(/KruEnd\.show\(/)
     }
     for (const f of ['shared/kru-battle.js']) { // Battle of Wits

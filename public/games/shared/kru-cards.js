@@ -91,7 +91,7 @@
       '<div class="backdrop" id="menuBack" hidden><div class="menu" role="dialog" aria-label="Settings">' +
       (hasTimer ? '<div class="menu-row" id="secsRow"></div>' : '') +
       '<div class="menu-row"><button class="btn" id="prev">◀ Previous card</button><button class="btn" id="undo">Undo last points</button></div>' +
-      '<div class="menu-row"><button class="btn" id="howTo">How to play</button><button class="btn ghost danger" id="resetScores">Reset all scores</button></div>' +
+      '<div class="menu-row"><button class="btn" id="howTo">How to play</button><button class="btn ghost danger" id="resetScores">New Game</button></div>' +
       '<button class="btn ghost" id="menuClose">Close</button></div></div>');
 
     if (cfg.compact) {
@@ -367,7 +367,7 @@
       $('secsRow').innerHTML = cfg.timer.options.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + fmt(s) + '</button>'; }).join('');
     }
     function closeMenu() { $('menuBack').hidden = true; }
-    function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'Reset all scores'; }
+    function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
     $('more').addEventListener('click', function () { renderSecs(); $('undo').disabled = !S.log.length; $('prev').disabled = S.pos === 0; disarm(); $('menuBack').hidden = false; });
     $('menuClose').addEventListener('click', closeMenu);
     $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
@@ -381,7 +381,7 @@
     $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: cfg.title }); });
     $('resetScores').addEventListener('click', function () {
       var btn = this;
-      if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: all scores back to 0'; setTimeout(disarm, 3500); return; }
+      if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
       teams.forEach(function (t) { if (pts(t.id)) Kru.score(t.id, -pts(t.id), 'reset'); });
       S.pts = {}; S.log = [];
       save(); closeMenu(); renderTeams();

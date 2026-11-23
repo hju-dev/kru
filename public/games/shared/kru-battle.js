@@ -25,7 +25,7 @@
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
-  var TIMES = [30, 45, 60], READ_TIMES = [45, 60, 90, 120], ROUND = 5, GAP = 3;
+  var ROUND = 5, GAP = 3;
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function fmt(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
@@ -56,11 +56,10 @@
     var menu = document.createElement('div');
     menu.className = 'backdrop'; menu.id = 'menuBack'; menu.hidden = true;
     menu.innerHTML = '<div class="menu" role="dialog" aria-label="Settings">' +
-      '<div class="menu-label">Time per question</div><div class="menu-rounds" id="secsRow"></div>' +
-      (cfg.reading ? '<div class="menu-label">Time to read the story</div><div class="menu-rounds" id="readRow"></div>' : '') +
-      '<button class="btn" id="kbtSet">Choose another question set</button>' +
-      '<button class="btn" id="kbtRestartRound">Start this round again</button>' +
-      '<button class="btn ghost danger" id="kbtReset">Reset all scores</button>' +
+      '<div class="menu-trow"><span class="menu-label">Time per question</span><div class="menu-rounds" id="secsRow"></div></div>' +
+      (cfg.reading ? '<div class="menu-trow"><span class="menu-label">Time to read the story</span><div class="menu-rounds" id="readRow"></div></div>' : '') +
+      '<div class="menu-row"><button class="btn" id="kbtSet">Choose another set</button><button class="btn" id="kbtRestartRound">Start round again</button></div>' +
+      '<button class="btn ghost danger" id="kbtReset">New Game</button>' +
       '<button class="btn" id="howTo">How to play</button>' +
       '<button class="btn ghost" id="menuClose">Close</button></div>';
     document.body.appendChild(menu);
@@ -379,15 +378,13 @@
     // ---------- ⚙ menu ----------
     function closeMenu() { $('menuBack').hidden = true; }
     function renderSecs() {
-      $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join('');
-      if ($('readRow')) $('readRow').innerHTML = READ_TIMES.map(function (s) { return '<button class="btn" data-read="' + s + '" aria-pressed="' + (s === (S.readSecs || 60)) + '">' + s + ' s</button>'; }).join('');
+      KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }); // Time per question
+      if ($('readRow')) KruMenu.timer($('readRow'), S.readSecs || 60, function (v) { S.readSecs = v; save(); }); // Time to read the story
     }
-    function disarm() { $('kbtReset').classList.remove('armed'); $('kbtReset').textContent = 'Reset all scores'; }
+    function disarm() { $('kbtReset').classList.remove('armed'); $('kbtReset').textContent = 'New Game'; }
     $('more').addEventListener('click', function () { renderSecs(); disarm(); $('kbtRestartRound').disabled = !set(); $('menuBack').hidden = false; if (S.running && (S.phase === 'ask' || S.phase === 'read')) pause(); });
     $('menuClose').addEventListener('click', closeMenu);
     $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-    $('secsRow').addEventListener('click', function (e) { var b = e.target.closest('[data-secs]'); if (!b) return; S.secs = +b.dataset.secs; save(); renderSecs(); });
-    if ($('readRow')) $('readRow').addEventListener('click', function (e) { var b = e.target.closest('[data-read]'); if (!b) return; S.readSecs = +b.dataset.read; save(); renderSecs(); });
     $('kbtSet').addEventListener('click', function () { closeMenu(); openSets(); });
     $('kbtRestartRound').addEventListener('click', function () {
       closeMenu();
@@ -398,7 +395,7 @@
     });
     $('kbtReset').addEventListener('click', function () {
       var btn = this;
-      if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: all scores back to 0'; setTimeout(disarm, 3500); return; }
+      if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
       teams.forEach(function (t) { if (pts(t.id)) Kru.score(t.id, -pts(t.id), 'reset'); });
       S.pts = {}; S.roundPts = {}; save(); closeMenu(); render();
     });
@@ -418,7 +415,7 @@
         var saved = session.resume;
         if (saved && saved.v === 2 && saved.level === session.level && (!saved.setKey || SETS.some(function (s) { return s.key === saved.setKey && s.name === saved.setName && count(s) === saved.order.length; }))) S = saved;
         else S = { v: 2, level: session.level, setKey: null, order: [], round: 0, phase: 'start', qi: 0, rev: 0, flipped: [], bonus: [], tally: {}, roundPts: {}, pts: {}, secs: 30, running: false, left: 0, total: 0, endAt: 0 };
-        if (TIMES.indexOf(S.secs) < 0) S.secs = 30;
+        S.secs = KruMenu.snap(S.secs); if (S.readSecs) S.readSecs = KruMenu.snap(S.readSecs); // whole 10-second steps
         render();
         if (S.running) runTick();
         var after = function () { S.introDone = true; save(); if (!set()) openSets(); };
@@ -430,5 +427,5 @@
     });
   }
 
-  window.KruBattle = { start: start, ROUND: ROUND, TIMES: TIMES, READ_TIMES: READ_TIMES };
+  window.KruBattle = { start: start, ROUND: ROUND };
 })();
