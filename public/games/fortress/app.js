@@ -176,7 +176,7 @@
     var hist = S.hist;
     S = JSON.parse(h); S.hist = hist;
     S.aim = null; fxQueue = []; fxOn = false; $('fx').hidden = true; clearTimeout(fxTimer);
-    closeChoice(); closeQuestion(); save(); render();
+    closeChoice(); closeShop(); closeQuestion(); save(); render();
     return true;
   }
 
@@ -456,16 +456,20 @@
   }
   var reopen = function () {};
 
-  // ---------- the store ----------
+  // ---------- the store: one screen in the buying team's color; the cart fills up as you buy ----------
+  var cart = null, cartFor = '';
+  function closeShop() { $('shopBack').hidden = true; }
   /** buy a bomb; a team hit by the TOS-2M has a 40% chance that its next bomb explodes in its own Depot */
   function buyBomb(id, key) {
-    var d = T(id), it = ITEMS[key];
+    var d = T(id), it = ITEMS[key], price = priceOf(id, key);
     snap();
-    d.gold -= priceOf(id, key);
+    d.gold -= price;
+    cart.spent += price; cart.items[key] = (cart.items[key] || 0) + 1;
     if (d.curse) {
       d.curse = false;
       if (Math.random() < CURSE_CHANCE) {
-        closeChoice();
+        closeShop();
+        cart.items[key]--;
         setHp(id, 'depot', d.hp.depot - it.dmg);
         KEYS.forEach(function (b) { if (b !== 'depot' && d.hp[b] > 0) setHp(id, b, d.hp[b] - it.dmg / 2); });
         save();
@@ -475,24 +479,53 @@
       }
     }
     d.bombs.push({ k: key });
-    save(); tone([660, 880], 0.08); openShop(); render();
+    save(); tone([660, 880], 0.08); renderShop(id); render();
+  }
+  function buyKit(id) {
+    var d = T(id), kp = kitPrice();
+    closeShop();
+    pickBuilding(id, 'Repair which building?', function (b) {
+      snap(); d.gold -= kp; d.hp[b] = Math.min(MAXHP[b], d.hp[b] + KIT_HP);
+      cart.spent += kp; cart.items.kit = (cart.items.kit || 0) + 1;
+      save(); tone([523, 659, 784], 0.08); openShop(); render();
+    });
   }
   function openShop() {
     var id = curId();
     if (S.phase !== 'shop' || !id) return;
-    var d = T(id), ally = allyOf(id);
     reopen = openShop;
-    var opts = IORDER.map(function (key) {
-      var it = ITEMS[key], p = priceOf(id, key);
-      return { html: '<b>' + it.name + ' · ' + money(p) + ' 🪙</b><small>[' + it.cls + '] ' + it.info + '</small>', off: d.gold < p, fn: function () { buyBomb(id, key); } };
-    });
-    var kp = kitPrice();
-    opts.unshift({ html: '<b>Repair kit · ' + money(kp) + ' 🪙</b><small>+' + money(KIT_HP) + ' HP to one building</small>', off: d.gold < kp, fn: function () {
-      pickBuilding(id, 'Repair which building?', function (b) { snap(); d.gold -= kp; d.hp[b] = Math.min(MAXHP[b], d.hp[b] + KIT_HP); save(); tone([523, 659, 784], 0.08); openShop(); render(); }); } });
-    choose({ art: ART.coin(), title: tname(id) + ': ' + money(d.gold) + ' gold' + (depotOk(id) ? '' : ' · no Depot: [Q]+ cost 1.6x') + (d.curse ? ' · cursed!' : ''), options: opts,
-      foot: [{ label: 'Done ▶', cls: 'gold', fn: function () { closeChoice(); snap(); advance(); } }] });
-    if (ally) $('choiceTitle').textContent += ' · allied with ' + tname(ally);
+    if (cartFor !== id + ':' + S.round) { cart = { spent: 0, items: {} }; cartFor = id + ':' + S.round; }
+    renderShop(id);
   }
+  function renderShop(id) {
+    var d = T(id), ally = allyOf(id), kp = kitPrice();
+    $('shop').style.setProperty('--c', color(id));
+    $('shopWho').innerHTML = Kru.badge(team(id), color(id));
+    $('shopTitle').textContent = tname(id) + "'s store" + (ally ? ' · allied with ' + tname(ally) : '') + (depotOk(id) ? '' : ' · no Depot: [Q]+ cost 1.6x') + (d.curse ? ' · cursed!' : '');
+    $('shopGold').innerHTML = coinHtml() + ' ' + money(d.gold);
+    var cards = [{ key: 'kit', name: 'Repair kit', price: kp, cls: '', icon: ART.repair(), info: '+' + money(KIT_HP) + ' HP' }].concat(IORDER.map(function (key) {
+      var it = ITEMS[key];
+      return { key: key, name: it.name, price: priceOf(id, key), cls: it.cls, icon: ART.bomb(it.icon), info: it.mode === 'jam' ? 'skip a turn' : money(it.dmg) + ' · ' + { one: '1 target', scatter: 'all but 1', dual: '2 targets', all: 'whole base' }[it.mode] };
+    }));
+    $('shopGrid').innerHTML = cards.map(function (c) {
+      return '<button class="sitem" data-i="' + c.key + '"' + (d.gold < c.price ? ' disabled' : '') + '><span class="si-ico">' + c.icon + '</span><b>' + c.name + '</b>' +
+        '<span class="si-price">' + coinHtml() + ' ' + money(c.price) + '</span><small>' + (c.cls ? '[' + c.cls + '] ' : '') + c.info + '</small></button>';
+    }).join('');
+    var names = { kit: 'Repair kit' };
+    var chips = Object.keys(cart.items).filter(function (k2) { return cart.items[k2] > 0; }).map(function (k2) {
+      return '<span class="chip-c"><i>' + (k2 === 'kit' ? ART.repair() : ART.bomb(ITEMS[k2].icon)) + '</i>' + (names[k2] || ITEMS[k2].name) + ' ×' + cart.items[k2] + '</span>';
+    }).join('');
+    $('shopCart').innerHTML = '<span class="cart-lab">🛒 Cart' + (cart.spent ? ' · spent ' + money(cart.spent) : '') + ':</span>' + (chips || '<span class="cart-empty">empty: tap an item to buy it</span>');
+    $('shopBack').hidden = false;
+  }
+  $('shopGrid').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-i]');
+    var id = curId();
+    if (!b || b.disabled || !id || S.phase !== 'shop') return;
+    unlockAudio();
+    if (b.dataset.i === 'kit') buyKit(id); else buyBomb(id, b.dataset.i);
+  });
+  $('shopDone').addEventListener('click', function () { closeShop(); snap(); advance(); });
 
   // ---------- decks and questions ----------
   function guessTier(q) { return q.double || !Array.isArray(q.choices) ? 'hard' : 'regular'; }
@@ -760,7 +793,7 @@
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('deckBtn').addEventListener('click', function () { closeMenu(); openDecks(); });
-  $('skip').addEventListener('click', function () { closeMenu(); snap(); closeChoice(); advance(); });
+  $('skip').addEventListener('click', function () { closeMenu(); snap(); closeChoice(); closeShop(); advance(); });
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back one step.'); });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Fortress' }); });
   function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
@@ -768,11 +801,11 @@
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     fresh(S.deck);
-    closeChoice(); closeQuestion();
+    closeChoice(); closeShop(); closeQuestion();
     save(); closeMenu(); render();
   });
   document.addEventListener('keydown', function (e) {
-    if (!$('menuBack').hidden || !$('deckBack').hidden || !$('choiceBack').hidden) return;
+    if (!$('menuBack').hidden || !$('deckBack').hidden || !$('choiceBack').hidden || !$('shopBack').hidden) return;
     if (!$('fx').hidden) { if (e.code === 'Space') { e.preventDefault(); $('fx').click(); } return; }
     if (!$('qBack').hidden) { if (e.code === 'Space') { e.preventDefault(); $('go').click(); } }
   });
