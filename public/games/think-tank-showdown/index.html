@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/games/shared/kru-game.css" />
     <link rel="stylesheet" href="/games/shared/kru-fx.css" />
     <link rel="stylesheet" href="/games/shared/kru-intro.css" />
-    <link rel="stylesheet" href="/games/shared/kru-bonus.css" />
     <link rel="stylesheet" href="/games/shared/kru-end.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -23,10 +22,10 @@
       <section class="stage" id="stage" aria-live="polite">
         <p class="rule" id="rule"></p>
         <div class="q" id="q">Loading…</div>
-        <div class="ans" id="ans" hidden>
-          <div class="herring" id="herring" hidden>🐟 Red herring!</div>
-          <div class="a" id="a"></div>
-          <div class="why" id="why"></div>
+        <div class="key" id="key" hidden>
+          <div class="key-head" id="keyHead"></div>
+          <ol class="key-list" id="keyList"></ol>
+          <div class="key-bonus" id="keyBonus" hidden></div>
         </div>
       </section>
 
@@ -35,10 +34,10 @@
         <div class="progress"><i id="fill"></i></div>
         <button class="btn gold" id="bets" hidden>Set bets</button>
         <button class="btn gold" id="show" hidden>Show question</button>
-        <button class="btn" id="go">Start timer</button>
-        <button class="btn teal" id="reveal">Reveal</button>
+        <button class="btn pausebtn is-paused" id="go" aria-label="Start the timer"></button>
         <button class="btn gold" id="mark" hidden>Mark answers</button>
-        <button class="btn" id="next">Next ▶</button>
+        <button class="btn teal" id="bonus" hidden>🎁 Secret bonus</button>
+        <button class="btn" id="next">Skip ▶</button>
       </div>
 
       <div class="strip" id="strip" role="group" aria-label="Teams: tap one to give points"></div>
@@ -62,6 +61,9 @@
           <button class="btn" data-d="-1">−1</button>
           <button class="btn gold" data-d="1">+1</button>
           <button class="btn gold" data-d="2">+2</button>
+          <button class="btn gold" data-d="3">+3</button>
+          <button class="btn gold" data-d="5">+5</button>
+          <button class="btn gold" data-d="10">+10</button>
         </div>
       </div>
     </div>
@@ -86,7 +88,8 @@
     <!-- ⋯ menu -->
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="Settings">
-        <div class="menu-rounds" id="menuRounds"></div>
+        <div class="menu-rounds four" id="menuRounds"></div>
+        <div class="menu-trow"><span class="menu-label" id="timeLabel">Time per question</span><div class="menu-rounds" id="secsRow"></div></div>
         <button class="btn" id="prev">◀ Previous question</button>
         <button class="btn" id="spare">Use a spare question</button>
         <button class="btn" id="undo">Undo last points</button>
@@ -96,12 +99,14 @@
       </div>
     </div>
 
+    <!-- doors: close from the outside in with a ? in the middle, then open on the next question -->
+    <div class="doors" id="doors" aria-hidden="true"><i class="door l"></i><i class="door r"></i><b class="dq">?</b></div>
+
     <script src="/sdk/kru.js"></script>
     <script src="/games/shared/kru-menu.js"></script>
     <script src="/games/shared/kru-fx-art.js"></script>
     <script src="/games/shared/kru-fx.js"></script>
     <script src="/games/shared/kru-intro.js"></script>
-    <script src="/games/shared/kru-bonus.js"></script>
     <script src="/games/shared/kru-end.js"></script>
     <script src="app.js"></script>
   </body>

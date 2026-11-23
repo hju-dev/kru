@@ -1,4 +1,7 @@
-/* Think Tank Showdown: 4 rounds (Riddle Rush, Rebus Round, Logic Puzzles, Final Wager).
+/* Think Tank Showdown: 4 rounds (Riddles, Rebus, Puzzles, Wager).
+   Nov 23 rules: teams fill in a paper score card. Each question has a timer; when it runs out the doors close
+   (a ? in the middle) and open on the next question. After the last question of a round: the answer key
+   (Henry checks the cards), a secret bonus, and Henry types the points in by hand. No Reveal, no bonus cards between questions.
    Teams come from the Kru session; questions from content.json for the session's level.
    Final Wager (Henry, Nov 9): teams bet any of their points (ALL IN) before the question; the bet shows above each
    team's score; after Reveal, Henry marks every team right or wrong, then the bets are added or taken away. */
@@ -9,7 +12,8 @@
 
   var ROUNDS = [];
   var teams = [];
-  var S = null; // saved state: { v, level, r, qi, shown, revealed, pts, wager, marks, settled, log }
+  var S = null; // saved state: { v, level, r, qi, shown, key, secs, seen, rbonus, bused, pts, wager, marks, settled, log }
+  var BONUS = [];
   var left = 0, total = 0, running = false, endAt = 0, timer = 0, audio = null;
   var panelTeam = null;
 
@@ -48,16 +52,22 @@
   }
 
   // ---------- timer ----------
+  var PAUSE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1.5" fill="currentColor"/></svg>';
+  var PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+  function secsFor(R) { return (S && S.secs && S.secs[R.kind]) || R.secs || 30; }
   function renderClock() {
     $('digits').textContent = fmt(left);
     $('fill').style.transform = 'scaleX(' + (total ? Math.max(0, left) / total : 0) + ')';
     $('digits').className = 'digits' + (left <= 0 ? ' done' : left <= 10 ? ' warn' : '');
-    $('go').textContent = running ? 'Pause' : left <= 0 ? 'Restart timer' : left < total ? 'Resume' : 'Start timer';
+    // a || button while the clock runs (orange), a |> button when stopped (green)
+    $('go').className = 'btn pausebtn ' + (running ? 'is-running' : 'is-paused');
+    $('go').innerHTML = running ? PAUSE_ICON : PLAY_ICON;
+    $('go').setAttribute('aria-label', running ? 'Pause the timer' : 'Start the timer');
   }
   function tick() {
     if (!running) return;
     left = (endAt - Date.now()) / 1000;
-    if (left <= 0) { left = 0; running = false; clearInterval(timer); chime(); }
+    if (left <= 0) { left = 0; running = false; clearInterval(timer); chime(); renderClock(); advance(true); return; } // time's up: the doors close
     renderClock();
   }
   function stopTimer() {
@@ -89,6 +99,68 @@
     return -1;
   }
 
+  // ---------- doors: close from the outside in with a ? in the middle, then open on the next question ----------
+  var doorsBusy = false;
+  function thud() {
+    if (!audio) return;
+    try {
+      var t = audio.currentTime, o = audio.createOscillator(), g = audio.createGain();
+      o.type = 'sine'; o.frequency.setValueAtTime(140, t); o.frequency.exponentialRampToValueAtTime(50, t + 0.25);
+      g.gain.setValueAtTime(0.5, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.3);
+      o.connect(g).connect(audio.destination); o.start(t); o.stop(t + 0.35);
+    } catch (e) {}
+  }
+  /** mid() runs while the doors are shut; done() when they have opened again. */
+  function doors(mid, done) {
+    var el = $('doors');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (doorsBusy || reduce) { mid(); if (done) done(); return; }
+    doorsBusy = true;
+    el.className = 'doors closing';
+    setTimeout(function () {
+      el.className = 'doors closed';
+      thud();
+      mid();
+      setTimeout(function () {
+        el.className = 'doors opening';
+        setTimeout(function () { el.className = 'doors'; doorsBusy = false; if (done) done(); }, 700);
+      }, 500);
+    }, 700);
+  }
+  /** Next question (by itself at 0:00, or the Skip button); after the last one: the answer key. */
+  function advance(auto) {
+    var keep = auto || running;
+    stopTimer();
+    var j = nextMain();
+    doors(function () { if (j >= 0) goTo(S.r, j); else showKey(); }, function () { if (keep && j >= 0 && !S.key) startTimer(); });
+  }
+  function showKey() { stopTimer(); S.key = true; save(); load(true); }
+
+  function plain(t) { return String(t).replace(/\[line\]/g, ' / ').replace(/\[(?:big|small|up|down):([^\]]+)\]/g, '$1'); }
+  /** The answer key after a round: every question that was shown, its answer and the reason. */
+  function renderKey() {
+    var R = round(), seen = (S.seen && S.seen[S.r]) || [];
+    $('keyHead').textContent = 'Answer key · check the score cards, then tap a team to add its points';
+    $('keyList').innerHTML = seen.map(function (j, n) {
+      var Q = R.qs[j];
+      var qt = R.kind === 'logic' ? Q.q.split('\n').pop() : R.kind === 'rebus' ? plain((Q.show || [Q.q]).join(' · ')) : Q.q;
+      return '<li><span class="kn">' + (n + 1) + '</span><div class="kb"><b class="ka">' + esc(Q.a || '') +
+        (Q.herring ? ' <em class="fish">🐟 trick question</em>' : '') + '</b><span class="kq">' + esc(qt) + '</span>' +
+        (Q.why ? '<span class="kw">' + esc(Q.why) + '</span>' : '') + '</div></li>';
+    }).join('');
+    var b = BONUS.filter(function (c) { return c.id === (S.rbonus || {})[S.r]; })[0];
+    $('keyBonus').hidden = !b;
+    if (b) $('keyBonus').innerHTML = '🎁 <b>Secret bonus: ' + esc(b.name) + '</b> ' + esc(b.text);
+  }
+  function revealBonus() {
+    if (!BONUS.length || (S.rbonus && S.rbonus[S.r])) return;
+    var fresh = BONUS.filter(function (c) { return S.bused.indexOf(c.id) < 0; });
+    if (!fresh.length) { S.bused = []; fresh = BONUS; }
+    var card = fresh[Math.floor(Math.random() * fresh.length)];
+    S.bused.push(card.id); S.rbonus[S.r] = card.id; save();
+    fx({ art: 'brain', title: 'SECRET BONUS!', sub: card.name, mood: 'magic', sound: 'fanfare', then: function () { load(true); } });
+  }
+
   // ---------- rebus: rows of words / emoji; [big:X] [small:X] [up:X] [down:X] and a [line] row ----------
   function rebusHTML(Q) {
     return '<div class="rebus">' + (Q.show || [Q.q]).map(function (row) {
@@ -105,64 +177,60 @@
     }).join('') + '</div>';
   }
 
-  /** Shrink the question until the stage fits (long questions, or the answer is showing). */
+  /** Shrink the question until the stage fits (long questions, many clues); never below 18 px. */
   function fitQuestion() {
-    var stage = $('stage'), q = $('q'), why = $('why'), whySize = 17;
-    // rebuses start big, logic puzzles (many clues) start small; never below 18 px
+    var stage = $('stage'), q = $('q');
     var size = q.classList.contains('is-rebus') ? 60 : q.classList.contains('logic') ? 26 : 34;
     var over = function () { return stage.scrollHeight > stage.clientHeight + 1 || q.scrollWidth > q.clientWidth + 1; };
     q.style.fontSize = size + 'px';
-    why.style.fontSize = whySize + 'px';
-    while (size > 22 && over()) q.style.fontSize = (size -= 2) + 'px';
-    while (whySize > 14 && over()) why.style.fontSize = --whySize + 'px';
     while (size > 18 && over()) q.style.fontSize = (size -= 2) + 'px';
   }
 
   function load(keepTimer) {
-    if (!keepTimer) { stopTimer(); total = left = round().secs; }
-    var R = round(), Q = question();
-    // no bonus cards in the Final Wager (the bets are enough)
-    if (R.kind === 'wager') { S.kbonus = null; KruBonus.attach(null); } else bonusRound('r' + S.r + 'q' + S.qi);
+    if (!keepTimer) { stopTimer(); total = left = secsFor(round()); }
+    var R = round(), Q = question(), wager = R.kind === 'wager', key = !!S.key;
     $('round').innerHTML = esc(R.tag) + ': <b>' + esc(R.name) + '</b>';
-    $('qnum').innerHTML = Q.spare ? '<span class="spare">Spare question</span>' : '';
-    KruCorner.set($('stage'), Q.spare ? '' : mainIndex() + '/' + mainCount());
-    $('rule').textContent = R.rule;
-    // room for the answer; logic puzzles need the whole stage for their clues (the slides explain the rule)
-    $('rule').hidden = S.revealed || R.kind === 'logic';
+    $('qnum').innerHTML = !key && Q.spare ? '<span class="spare">Spare question</span>' : '';
+    KruCorner.set($('stage'), key || Q.spare ? '' : mainIndex() + '/' + mainCount());
+    $('rule').textContent = R.rule || '';
+    // logic puzzles need the whole stage for their clues
+    $('rule').hidden = key || R.kind === 'logic' || !R.rule;
     document.querySelector('main.tts').classList.toggle('logic-round', R.kind === 'logic');
-    var wager = R.kind === 'wager';
-    if (S.shown && R.kind === 'rebus') $('q').innerHTML = rebusHTML(Q);
-    // a revealed logic puzzle keeps only its question, so the answer and the reason fit
-    else if (S.shown && R.kind === 'logic' && S.revealed) $('q').textContent = Q.q.split('\n').pop();
-    else $('q').textContent = S.shown ? Q.q : 'Teams: decide your bet first. Any of your points, or ALL IN!';
-    $('q').classList.toggle('waiting', !S.shown);
-    $('q').classList.toggle('logic', S.shown && R.kind === 'logic');
-    $('q').classList.toggle('is-rebus', S.shown && R.kind === 'rebus');
-    $('show').hidden = S.shown;
-    $('go').hidden = !S.shown && wager;
-    $('bets').hidden = !wager || S.shown;
-    $('mark').hidden = !wager || !S.revealed || !!S.settled;
-    $('reveal').hidden = !$('mark').hidden; // Mark answers takes Reveal's place (already revealed)
-    $('herring').hidden = !(S.revealed && Q.herring && R.kind === 'answer');
-    $('a').textContent = Q.a || '';
-    $('why').textContent = Q.why || '';
-    $('ans').hidden = !S.revealed;
-    $('reveal').disabled = S.revealed;
-    var more = nextMain() >= 0;
-    $('next').textContent = more ? 'Next ▶' : S.r + 1 < ROUNDS.length ? 'Next round ▶' : '🏆 See the winners';
-    $('next').disabled = false;
+    $('q').hidden = key;
+    $('key').hidden = !key;
+    if (key) renderKey();
+    else {
+      if (S.shown && R.kind === 'rebus') $('q').innerHTML = rebusHTML(Q);
+      else $('q').textContent = S.shown ? Q.q : 'Teams: decide your bet first. Any of your points, or ALL IN!';
+      $('q').classList.toggle('waiting', !S.shown);
+      $('q').classList.toggle('logic', S.shown && R.kind === 'logic');
+      $('q').classList.toggle('is-rebus', S.shown && R.kind === 'rebus');
+    }
+    var timing = !key && !(wager && !S.shown);
+    $('show').hidden = key || S.shown;
+    $('bets').hidden = key || !wager || S.shown;
+    $('go').hidden = !timing;
+    $('digits').hidden = !timing;
+    document.querySelector('.controls .progress').hidden = !timing;
+    $('mark').hidden = !(wager && key && !S.settled);
+    $('bonus').hidden = !(key && BONUS.length && !(S.rbonus && S.rbonus[S.r]));
+    $('next').textContent = key ? (S.r + 1 < ROUNDS.length ? 'Next round ▶' : '🏆 See the winners') : 'Skip ▶';
+    $('next').hidden = !key && wager && !S.shown;
     $('spare').disabled = !R.qs.some(function (q) { return q.spare; });
-    $('prev').disabled = S.r === 0 && S.qi === 0;
+    $('prev').disabled = S.r === 0 && S.qi === 0 && !S.key;
     renderTeams();
     renderClock();
-    fitQuestion();
+    if (!key) fitQuestion();
   }
   function goTo(r, qi) {
     var newRound = r !== S.r && qi === 0 && r > 0; // not the very first question (the slides are showing then)
     S.r = r; S.qi = qi;
+    S.key = false;
     S.shown = round().kind !== 'wager'; // wager: question hidden until bets are made
-    S.revealed = false;
     S.wager = {}; S.marks = {}; S.settled = false; // a new question: new bets
+    S.seen = S.seen || {};
+    var seen = S.seen[r] = S.seen[r] || [];
+    if (seen.indexOf(qi) < 0) seen.push(qi);
     save();
     load();
     if (newRound) {
@@ -170,6 +238,8 @@
       fx({ art: ra[0], title: 'ROUND ' + (r + 1) + ': ' + String(round().name || '').toUpperCase() + '!', sub: ra[1], mood: round().kind === 'wager' ? 'magic' : 'good', sound: 'fanfare' });
     }
   }
+  /** A round's first question (fresh answer key). */
+  function enterRound(r) { S.seen = S.seen || {}; S.seen[r] = []; goTo(r, 0); }
   function showQuestion() { S.shown = true; save(); load(true); }
 
   // ---------- teams ----------
@@ -223,7 +293,7 @@
     if (!t) return;
     panelTeam = t;
     // Final Wager: the bets (before the question) or right / wrong (after Reveal) for every team at once
-    if (round().kind === 'wager' && !S.settled) { panelTeam = null; if (S.revealed) openMarks(); else openBets(); return; }
+    if (round().kind === 'wager' && !S.settled) { panelTeam = null; if (S.key) openMarks(); else openBets(); return; }
     $('panelName').textContent = t.name;
     $('panelPts').textContent = pts(id) + ' points';
     $('panelMembers').textContent = t.teacher ? 'Teacher' : t.members.map(function (m) { return m.nick; }).join(', ');
@@ -239,7 +309,8 @@
     var b = e.target.closest('[data-d]');
     if (!b || !panelTeam) return;
     addPoints(panelTeam.id, Number(b.dataset.d), round().name);
-    closePanel();
+    // in the answer key Henry adds several amounts in a row: the panel stays open
+    if (S.key) $('panelPts').textContent = pts(panelTeam.id) + ' points'; else closePanel();
   });
   // ---------- Final Wager: bets for every team (− / + / ALL IN), then right / wrong for every team ----------
   function players() { return teams.filter(function (t) { return !t.teacher || pts(t.id) > 0; }); }
@@ -312,29 +383,35 @@
   $('go').addEventListener('click', function () {
     if (running) { stopTimer(); renderClock(); } else startTimer();
   });
-  $('reveal').addEventListener('click', function () {
-    stopTimer();
-    S.shown = true;
-    S.revealed = true;
-    save();
-    load(true);
-    KruBonus.reveal();
-  });
+  $('bonus').addEventListener('click', revealBonus);
   $('next').addEventListener('click', function () {
-    var j = nextMain();
-    if (j >= 0) goTo(S.r, j);
-    else if (S.r + 1 < ROUNDS.length) goTo(S.r + 1, 0);
-    else KruEnd.show(); // the last question: the podium, then Save scores & finish
+    if (S.key) {
+      if (S.r + 1 < ROUNDS.length) enterRound(S.r + 1);
+      else KruEnd.show(); // the last round: the podium, then Save scores & finish
+      return;
+    }
+    unlockAudio();
+    advance(false);
   });
   $('toastUndo').addEventListener('click', undo);
 
   // ---------- ⋯ menu ----------
+  function renderSecs() {
+    var R = round();
+    $('timeLabel').textContent = 'Time: ' + (R.short || R.name);
+    KruMenu.timer($('secsRow'), secsFor(R), function (v) {
+      S.secs = S.secs || {}; S.secs[R.kind] = v; save();
+      if (!running && !S.key && (left === total || left <= 0)) { total = left = v; renderClock(); }
+    }, { min: 10, max: 300 });
+  }
   function openMenu() {
     $('menuRounds').innerHTML = ROUNDS.map(function (R, i) {
-      return '<button class="btn" data-r="' + i + '" aria-pressed="' + (i === S.r) + '">' + (i + 1) + '. ' + esc(R.name) + '</button>';
+      return '<button class="btn" data-r="' + i + '" aria-pressed="' + (i === S.r) + '">' + (i + 1) + '. ' + esc(R.short || R.name) + '</button>';
     }).join('');
     $('undo').disabled = !S.log.length;
+    renderSecs();
     disarm($('resetScores'));
+    if (running) { stopTimer(); renderClock(); }
     $('menuBack').hidden = false;
   }
   function closeMenu() { $('menuBack').hidden = true; }
@@ -343,10 +420,11 @@
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('menuRounds').addEventListener('click', function (e) {
     var b = e.target.closest('[data-r]');
-    if (b) { goTo(+b.dataset.r, 0); closeMenu(); }
+    if (b) { enterRound(+b.dataset.r); closeMenu(); }
   });
   $('prev').addEventListener('click', function () {
-    if (S.qi > 0) goTo(S.r, S.qi - 1);
+    if (S.key) goTo(S.r, S.qi);
+    else if (S.qi > 0) goTo(S.r, S.qi - 1);
     else if (S.r > 0) goTo(S.r - 1, ROUNDS[S.r - 1].qs.length - 1);
     closeMenu();
   });
@@ -378,9 +456,8 @@
   });
 
   document.addEventListener('keydown', function (e) {
-    if (!$('panelBack').hidden || !$('menuBack').hidden || !$('betsBack').hidden || !$('marksBack').hidden) return;
+    if (!$('panelBack').hidden || !$('menuBack').hidden || !$('betsBack').hidden || !$('marksBack').hidden || doorsBusy) return;
     if (e.code === 'Space') { e.preventDefault(); $('go').click(); }
-    else if (e.key === 'a' || e.key === 'A') $('reveal').click();
     else if (e.key === 'ArrowRight') $('next').click();
     else if (e.key === 'ArrowLeft') $('prev').click();
   });
@@ -426,10 +503,6 @@
   function showIntro() { return KruIntro.show(INTRO, { title: 'Think Tank Showdown' }); }
   $('howTo').addEventListener('click', function () { $('menuBack').hidden = true; showIntro(); });
 
-  // ---------- bonus cards (shared: games/shared/kru-bonus.js) ----------
-  // before cards pop up when a round starts; secret cards at the reveal. Points: tap the ★ chip, then teams.
-  function bonusRound(key) { var b = KruBonus.next(S.kbonus, key); if (b !== S.kbonus) { S.kbonus = b; save(); } }
-
   var contentReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
     if (window.KruFx) KruFx.theme('lab');
@@ -438,8 +511,8 @@
       var pools = content[level].rounds;
       teams = Kru.allTeams();
       KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
-      KruBonus.setup({ cards: content.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
-        award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); } });
+      BONUS = (content.bonus && content.bonus.secret) || [];
+      INTRO = KruIntro.forLevel(content, level);
       var saved = session.resume;
       if (saved && saved.v === 3 && saved.level === level && validDraw(pools, saved.draw)) {
         S = saved;
@@ -447,15 +520,15 @@
       }
       if (S && ROUNDS[S.r] && ROUNDS[S.r].qs[S.qi]) {
         S.pts = S.pts || {}; S.wager = S.wager || {}; S.marks = S.marks || {}; S.log = S.log || [];
+        S.secs = S.secs || {}; S.seen = S.seen || {}; S.rbonus = S.rbonus || {}; S.bused = S.bused || [];
         load();
       } else {
         // a new game: a fresh random mix of questions from each round's pool
-        S = { v: 3, level: level, draw: newDraw(pools), r: 0, qi: 0, shown: true, revealed: false, pts: {}, wager: {}, marks: {}, settled: false, log: [] };
+        S = { v: 3, level: level, draw: newDraw(pools), r: 0, qi: 0, shown: true, key: false, secs: {}, seen: {}, rbonus: {}, bused: [], pts: {}, wager: {}, marks: {}, settled: false, log: [] };
         ROUNDS = drawRounds(pools, S.draw);
-        goTo(0, 0);
-      INTRO = KruIntro.forLevel(content, level);
-      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
+        enterRound(0);
       }
+      if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });
     }).catch(function () {
       $('q').textContent = 'Could not load the questions. Close the game and open it again.';
     });
