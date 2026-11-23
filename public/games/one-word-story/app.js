@@ -104,8 +104,8 @@
     $('writers').hidden = judging;
     $('opener').hidden = judging; $('label').hidden = judging; // the review needs the room
     var playing = phase === 'pick' || phase === 'write';
-    $('cond').hidden = !playing;
-    if (playing) $('cond').textContent = condText(Math.min(S.n, S.words - 1));
+    $('cond').hidden = !(playing && S.conds);
+    if (playing && S.conds) $('cond').textContent = condText(Math.min(S.n, S.words - 1));
     $('count').textContent = phase === 'ready' ? S.words + ' words' : judging ? 'Story done' : 'Word ' + Math.min(S.n + 1, S.words) + '/' + S.words;
     $('secs').textContent = phase === 'ready' || judging ? '' : String(Math.max(0, Math.ceil(left)));
     $('secs').className = 'secs ' + phase + (phase === 'write' && left <= 2 ? ' hot' : '');
@@ -151,9 +151,22 @@
     }
     render();
   }
+  function startStory() {
+    S.n = 0; S.conds = S.useConds ? makeConds(S.words, HARD) : null; S.condPts = {};
+    writersNow = pickWriters(); save(); begin('pick', S.gap); tone([440, 660], 0.1, 0.2, 0.3);
+    render();
+  }
+  function setConds(on) { S.useConds = on; save(); renderCondToggle(); }
+  function renderCondToggle() { $('condToggle').textContent = 'Word rules: ' + (S.useConds === false ? 'off' : 'on') + (phase !== 'ready' ? ' (next story)' : ''); $('condToggle').setAttribute('aria-pressed', String(S.useConds !== false)); }
+  $('condYes').addEventListener('click', function () { unlockAudio(); $('condAsk').hidden = true; setConds(true); startStory(); });
+  $('condNo').addEventListener('click', function () { unlockAudio(); $('condAsk').hidden = true; setConds(false); startStory(); });
+  $('condToggle').addEventListener('click', function () { setConds(S.useConds === false); });
   $('go').addEventListener('click', function () {
     unlockAudio();
-    if (phase === 'ready') { S.n = 0; S.conds = makeConds(S.words, HARD); S.condPts = {}; writersNow = pickWriters(); save(); begin('pick', S.gap); tone([440, 660], 0.1, 0.2, 0.3); }
+    if (phase === 'ready') {
+      if (S.useConds === undefined) { $('condAsk').hidden = false; return; } // ask once, before the first story
+      startStory();
+    }
     else if (running) { left = Math.max(0, (endAt - Date.now()) / 1000); running = false; clearInterval(timer); }
     else { running = true; endAt = Date.now() + left * 1000; clearInterval(timer); timer = setInterval(tick, 100); }
     render();
@@ -162,6 +175,7 @@
   // ---------- points: the best story ----------
   function renderJudge() {
     if (phase !== 'judge') return;
+    $('judgeLeft').hidden = !S.conds; $('condBox').hidden = !S.conds; // no word rules this story
     $('condList').innerHTML = (S.conds || []).slice(0, S.words).map(function (c) { return '<li>' + esc(shortCond(c)) + '</li>'; }).join('');
     $('condPts').innerHTML = players.map(function (t) {
       var n = (S.condPts || {})[t.id] || 0;
@@ -229,7 +243,7 @@
     KruMenu.timer($('writeRow'), S.write, function (v) { S.write = v; save(); }, { min: 10, max: 60 }); // time to write
   }
   function closeMenu() { $('menuBack').hidden = true; }
-  $('more').addEventListener('click', function () { renderMenu(); $('menuBack').hidden = false; });
+  $('more').addEventListener('click', function () { renderCondToggle(); renderMenu(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('wordsRow').addEventListener('click', function (e) {

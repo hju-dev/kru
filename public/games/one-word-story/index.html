@@ -26,10 +26,12 @@
         <div class="writers" id="writers"></div>
         <div class="judge" id="judge" hidden>
           <div class="judge-cols">
-            <div class="judge-left"><div class="sub">The rules (match them to each team's words)</div><ol class="conds" id="condList"></ol></div>
+            <div class="judge-left" id="judgeLeft"><div class="sub">The rules (match them to each team's words)</div><ol class="conds" id="condList"></ol></div>
             <div class="judge-side">
-              <div class="sub">+1 for each word that followed its rule</div>
-              <div class="cond-pts" id="condPts"></div>
+              <div id="condBox">
+                <div class="sub">+1 for each word that followed its rule</div>
+                <div class="cond-pts" id="condPts"></div>
+              </div>
               <div class="sub">Best story (+3):</div>
               <div class="judge-btns" id="judgeBtns"></div>
             </div>
@@ -48,12 +50,25 @@
       <div class="totals" id="totals" aria-label="Points"></div>
     </main>
 
+    <!-- asked before the first story starts: word rules on or off -->
+    <div class="backdrop" id="condAsk" hidden>
+      <div class="menu" role="dialog" aria-labelledby="condAskTitle">
+        <h2 class="round" id="condAskTitle">Play with word rules?</h2>
+        <p class="menu-label">Every writer gets a rule for their word, like "start with the letter R". You can change this later in Settings.</p>
+        <div class="menu-row">
+          <button class="btn gold" id="condYes">Rules ON</button>
+          <button class="btn" id="condNo">Rules OFF</button>
+        </div>
+      </div>
+    </div>
+
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="Settings">
         <div class="menu-label">Words in the story</div>
         <div class="menu-row" id="wordsRow"></div>
         <div class="menu-trow"><span class="menu-label">Time to get to the board</span><div id="gapRow"></div></div>
         <div class="menu-trow"><span class="menu-label">Time to write</span><div id="writeRow"></div></div>
+        <div class="menu-row"><button class="btn" id="condToggle" aria-pressed="true">Word rules: on</button></div>
         <div class="menu-row">
           <button class="btn" id="howTo">How to play</button>
           <button class="btn" id="resetStory">Start this story again</button>

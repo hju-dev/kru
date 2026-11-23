@@ -48,4 +48,11 @@ describe('One-Word Story: timers and word conditions (Henry, Nov 23)', () => {
     expect(h).toContain('id="condPts"')
     expect(js).toContain("give(id, d, 'word followed its condition')")
   })
+  it('word rules are asked before the first story and can be switched in Settings', () => {
+    const h = read('public/games/one-word-story/index.html')
+    expect(h).toContain('id="condAsk"')
+    expect(h).toContain('id="condToggle"')
+    expect(js).toContain('if (S.useConds === undefined)')
+    expect(js).toContain('S.conds = S.useConds ? makeConds(S.words, HARD) : null')
+  })
 })
