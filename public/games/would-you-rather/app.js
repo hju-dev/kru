@@ -1,5 +1,5 @@
-/* Would You Rather? Two silly choices. A warm-up with no points: tap "Pick a team" and that team
-   says its choice and why. Built on the shared card engine. */
+/* Would You Rather? Two silly choices. A whole-class warm-up with no teams and no points (Henry, Nov 23): show the
+   prompt, tap "Pick a student" and that student says their choice and why. Built on the shared card engine. */
 (function () {
   'use strict';
   var frames = {};
@@ -11,6 +11,7 @@
     timer: { secs: 30, options: [15, 30, 45, 60] },
     noScores: true,
     picker: true,
+    pickerLabel: 'Pick a student',
     card: function (it, o) {
       return '<div class="sub">Would you rather…</div>' +
         '<div class="wyr"><div class="opt a" data-fit="40,22">' + o.esc(it.a) + '</div><div class="or">or</div><div class="opt b" data-fit="40,22">' + o.esc(it.b) + '</div></div>' +

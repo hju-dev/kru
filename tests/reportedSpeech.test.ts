@@ -144,13 +144,13 @@ describe('One-Word Story writing relay', () => {
     expect(read('public/games/one-word-story/index.html')).toContain('/games/shared/kru-picker.js')
   })
   it('the best story gets 3 points, a draw 1 each, and the award can be changed', () => {
-    expect(js).toContain('var WIN = 3, DRAW = 1;')
+    expect(js).toContain('var WIN = 3, DRAW = 1, MET = 1;')
     expect(js).toContain("data-j=\"undo\"")
   })
-  it('How to play slides: 4 short slides about writing one word in 5 seconds', () => {
+  it('How to play slides: 5 short slides about writing one word, the word rules and the points', () => {
     const c = JSON.parse(read('public/games/one-word-story/content.json')) as { intro: { title: string; text: string[] }[] }
-    expect(c.intro).toHaveLength(4)
+    expect(c.intro).toHaveLength(5)
     for (const s of c.intro) { expect(s.title.length).toBeLessThanOrEqual(30); for (const l of s.text) expect(l.length).toBeLessThanOrEqual(90) }
-    expect(JSON.stringify(c.intro)).toContain('5 seconds')
+    expect(JSON.stringify(c.intro)).toContain('Word rules')
   })
 })

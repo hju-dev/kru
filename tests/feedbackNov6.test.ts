@@ -87,9 +87,9 @@ describe('podium first, then the scores are sent (every scored game)', () => {
 })
 
 describe('One-Word Story', () => {
-  it('is a writing relay now (Henry, Nov 18): 5 seconds per word, no spoken circle or "Full stop!"', () => {
+  it('is a writing relay now (Henry, Nov 18; Nov 23: 10 s to the board + 20 s to write), no spoken circle or "Full stop!"', () => {
     const js = read('public/games/one-word-story/app.js')
-    expect(js).toContain('write: 5, gap: 3')
+    expect(js).toContain('write: 20, gap: 10')
     expect(read('public/games/one-word-story/index.html')).not.toContain('Full stop')
   })
 })

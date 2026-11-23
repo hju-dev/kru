@@ -182,7 +182,7 @@
     b.className = 'small kpk-open';
     b.id = 'kpkOpen';
     b.type = 'button';
-    b.innerHTML = '<span aria-hidden="true">🎯</span> Pick a team';
+    b.innerHTML = '<span aria-hidden="true">🎯</span> ' + (c.label || 'Pick a team');
     c.bar.insertBefore(b, c.beforeEl || null);
     b.addEventListener('click', pick);
   }

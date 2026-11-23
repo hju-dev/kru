@@ -1,5 +1,5 @@
 {
- "about": "Would You Rather? silly choices: a warm-up, no points. The teacher spins to pick a team; the team says its choice and why. M.1 simple words, M.2 a little longer, M.3 imaginative. Each choice is short so it fits the phone. Written for Kru. At least 50 per level, shuffled every game.",
+ "about": "Would You Rather? silly choices: a whole-class warm-up with no teams and no points. The teacher shows the prompt and spins to pick a student, who says their choice and why. M.1 simple words, M.2 a little longer, M.3 imaginative. Each choice is short so it fits the phone. Written for Kru. At least 50 per level, shuffled every game.",
  "M.1": {
   "items": [
    {
@@ -632,7 +632,7 @@
    "title": "Would You Rather?",
    "text": [
     "Read the two silly choices.",
-    "Your team picks ONE."
+    "Think: which one would YOU pick?"
    ],
    "example": {
     "chips": [
@@ -645,11 +645,11 @@
   {
    "title": "Who answers?",
    "text": [
-    "The teacher spins to pick a team.",
-    "That team says its choice and why."
+    "Your teacher spins to pick a student.",
+    "That student says their choice and why."
    ],
    "example": {
-    "big": "Team 3!",
+    "big": "S12!",
     "tag": "Picked"
    }
   },
@@ -657,7 +657,7 @@
    "title": "Give a reason",
    "text": [
     "Say: I'd rather ... because ...",
-    "The funnier the reason, the better!"
+    "The funnier the reason, the better! No points, just fun."
    ],
    "example": {
     "big": "I'd rather have ears like a rabbit because I could hear everything.",

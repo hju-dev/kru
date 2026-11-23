@@ -61,6 +61,7 @@
     var main = document.querySelector('main.game');
     main.classList.add('kc');
     if (cfg.noScores) main.classList.add('no-scores');
+    var noPts = !!cfg.noScores; // warm-ups: no Undo last points / New Game in the menu
     if (cfg.compact) main.classList.add('compact');
     if (adjust) main.classList.add('has-adj');
     main.innerHTML =
@@ -89,9 +90,9 @@
         '<button class="small" id="chalClose" aria-label="Close">✕</button></div><div class="panel-btns" id="chalBtns"></div>' +
         '<button class="btn ghost chal-none" id="chalNone">No point: carry on</button></div></div>' : '') +
       '<div class="backdrop" id="menuBack" hidden><div class="menu" role="dialog" aria-label="Settings">' +
-      (hasTimer ? '<div class="menu-row" id="secsRow"></div>' : '') +
-      '<div class="menu-row"><button class="btn" id="prev">◀ Previous card</button><button class="btn" id="undo">Undo last points</button></div>' +
-      '<div class="menu-row"><button class="btn" id="howTo">How to play</button><button class="btn ghost danger" id="resetScores">New Game</button></div>' +
+      (hasTimer ? '<div class="menu-trow" id="secsWrap"><span class="menu-label">Time</span><div id="secsRow"></div></div>' : '') +
+      '<div class="menu-row"><button class="btn" id="prev">◀ Previous card</button>' + (cfg.noScores ? '' : '<button class="btn" id="undo">Undo last points</button>') + '</div>' +
+      '<div class="menu-row"><button class="btn" id="howTo">How to play</button>' + (cfg.noScores ? '' : '<button class="btn ghost danger" id="resetScores">New Game</button>') + '</div>' +
       '<button class="btn ghost" id="menuClose">Close</button></div></div>');
 
     if (cfg.compact) {
@@ -363,23 +364,19 @@
     // ---------- ⋯ menu ----------
     function renderSecs() {
       if (!hasTimer) return;
-      if (stepSecs) { $('secsRow').hidden = true; return; } // the −/+ buttons set each step's time
-      $('secsRow').innerHTML = cfg.timer.options.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + fmt(s) + '</button>'; }).join('');
+      if (stepSecs || adjust) { $('secsWrap').hidden = true; return; } // the −/+ buttons beside the clock set the time
+      // the global alarm-clock timer control (10-second steps)
+      KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); resetTimer(); }, { min: 10, max: 300 });
     }
     function closeMenu() { $('menuBack').hidden = true; }
-    function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
-    $('more').addEventListener('click', function () { renderSecs(); $('undo').disabled = !S.log.length; $('prev').disabled = S.pos === 0; disarm(); $('menuBack').hidden = false; });
+    function disarm() { if (noPts) return; $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
+    $('more').addEventListener('click', function () { renderSecs(); if (!noPts) $('undo').disabled = !S.log.length; $('prev').disabled = S.pos === 0; disarm(); $('menuBack').hidden = false; });
     $('menuClose').addEventListener('click', closeMenu);
     $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-    if (hasTimer) $('secsRow').addEventListener('click', function (e) {
-      var b = e.target.closest('[data-secs]');
-      if (!b) return;
-      S.secs = +b.dataset.secs; save(); resetTimer(); renderSecs();
-    });
     $('prev').addEventListener('click', function () { goTo(S.pos - 1); closeMenu(); });
-    $('undo').addEventListener('click', function () { undo(); closeMenu(); });
+    if (!noPts) $('undo').addEventListener('click', function () { undo(); closeMenu(); });
     $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: cfg.title }); });
-    $('resetScores').addEventListener('click', function () {
+    if (!noPts) $('resetScores').addEventListener('click', function () {
       var btn = this;
       if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
       teams.forEach(function (t) { if (pts(t.id)) Kru.score(t.id, -pts(t.id), 'reset'); });
@@ -414,7 +411,7 @@
         KruBonus.setup({ cards: c.bonus, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; }, save: function () { save(); },
           award: function (id, d, card) { addPoints(id, d, 'bonus: ' + card.name); } });
         if (!cfg.noScores) KruEnd.setup({ standings: function () { return teams.map(function (t) { return { name: t.name, points: pts(t.id), teacher: !!t.teacher }; }); } });
-        if (cfg.picker) KruPicker.setup({ bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; },
+        if (cfg.picker) KruPicker.setup({ label: cfg.pickerLabel, bar: $('more').parentNode, beforeEl: $('more'), teams: function () { return teams; },
           get: function () { return S.picked || []; }, set: function (ids) { S.picked = ids; save(); } });
         var saved = session.resume;
         if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === ITEMS.length) S = saved;

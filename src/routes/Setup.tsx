@@ -70,9 +70,9 @@ export function Setup() {
         class: cls.name,
         game: game.slug,
         level: cls.level ?? 'M.2',
-        mode: game.modes.includes('group') ? 'group' : 'solo',
+        mode: game.startMode ?? (game.modes.includes('group') ? 'group' : 'solo'),
         size,
-        bins: resizeBins([], binCountFor(present, size)),
+        bins: resizeBins([], game.twoTeams ? 2 : binCountFor(present, size)),
         absent,
         teacher: false,
         leaveOut: false,
@@ -132,6 +132,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   const [selected, setSelected] = useState<number[]>([])
   const [several, setSeveral] = useState(false)
   const [absentMode, setAbsentMode] = useState(false)
+  const two = !!findGame(slug)?.twoTeams // 20 Questions: the whole class or exactly two teams
   const [sheet, setSheet] = useState<'load' | 'save' | null>(null)
 
   // Everything on this screen works with student ids (not numbers), so two students who share a number stay separate
@@ -197,7 +198,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   function setMode(mode: Mode) {
     setSelected([])
     setAbsentMode(false)
-    update({ mode })
+    update(two && mode === 'group' ? { mode, bins: resizeBins(s.bins, 2) } : { mode })
   }
 
   function addBin() {
@@ -303,15 +304,22 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
         )}
         {modes.length > 1 && (
           <div className="seg" role="group" aria-label="Mode">
+            {two && (
+              <button aria-pressed={!group} onClick={() => setMode('solo')}>
+                Whole class
+              </button>
+            )}
             <button aria-pressed={group} onClick={() => setMode('group')}>
-              Group
+              {two ? 'Two teams' : 'Group'}
             </button>
-            <button aria-pressed={!group} onClick={() => setMode('solo')}>
-              Solo
-            </button>
+            {!two && (
+              <button aria-pressed={!group} onClick={() => setMode('solo')}>
+                Solo
+              </button>
+            )}
           </div>
         )}
-        {group && (
+        {group && !two && (
           <div className="stepper" aria-label="Team size">
             <button onClick={() => setSize(s.size - 1)} disabled={s.size <= TEAM_SIZE_MIN} aria-label="Smaller teams">
               −
@@ -351,7 +359,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
           <button className={`tool${s.teacher ? ' on' : ''}`} onClick={() => update({ teacher: !s.teacher })} aria-pressed={s.teacher} title="Add a teacher team">
             {TEACHER_NAME}
           </button>
-          {!s.mix && (
+          {!s.mix && !two && (
             <>
               <button className="tool" onClick={() => setSheet('load')}>
                 Load teams
@@ -364,7 +372,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
         </div>
       ) : (
         <div className="setup-tools">
-          <span className="muted hint">Everyone plays as themselves. Tap a name to mark them absent.</span>
+          <span className="muted hint">{two ? 'The whole class plays together. Tap a name to mark them absent.' : 'Everyone plays as themselves. Tap a name to mark them absent.'}</span>
           <button className={`tool${s.teacher ? ' on' : ''}`} onClick={() => update({ teacher: !s.teacher })} aria-pressed={s.teacher}>
             {TEACHER_NAME} plays
           </button>
@@ -413,7 +421,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
                   {/* Henry, Nov 19: no custom team names; games show the number in a colored circle */}
                   <span className="bin-name">{b.name}</span>
                   <span className="count">{b.members.length || 'Empty'}</span>
-                  {s.bins.length > 1 && (
+                  {s.bins.length > 1 && !two && (
                     <button
                       className="remove"
                       aria-label={`Remove ${b.name}`}
@@ -429,9 +437,11 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
                 <div className="chips">{b.members.map((no) => chip(no, 'bin'))}</div>
               </div>
             ))}
-            <button className="bin add" onClick={addBin}>
-              + Team
-            </button>
+            {!two && (
+              <button className="bin add" onClick={addBin}>
+                + Team
+              </button>
+            )}
           </section>
         )}
       </div>
