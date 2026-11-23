@@ -11,15 +11,15 @@
     "rows": [
      [
       "[[hq]] HQ",
-      "lose it and you are out"
+      "10,000 HP: lose it and you are out"
      ],
      [
       "[[depot]] Depot",
-      "healing and bombs"
+      "7,000 HP: healing, cheaper bombs"
      ],
      [
       "[[tower]] 2 Towers",
-      "stop small bombs"
+      "8,000 HP each: shoot bombs down"
      ]
     ]
    }
@@ -28,34 +28,30 @@
    "title": "Bombs",
    "text": [
     "Right answer: choose a bomb, a repair or gold.",
-    "Harder question = bigger bombs!"
+    "Harder question = better bombs!"
    ],
    "example": {
     "rows": [
      [
-      "[[bomb1]] Small",
-      "20"
+      "[[bomb1]] [LQ] Crude Bomb",
+      "100 damage"
      ],
      [
-      "[[bomb2]] Medium",
-      "35"
+      "[[bomb3]] [Q] High Speed Missile",
+      "500 damage"
      ],
      [
-      "[[bomb3]] Large",
-      "55"
-     ],
-     [
-      "[[bomb4]] Mega",
-      "90"
+      "[[bomb4]] [HQ] Avangard",
+      "4,000 damage"
      ]
     ]
    }
   },
   {
-   "title": "Shop and fire",
+   "title": "Store and fire",
    "text": [
-    "After every team has had a turn: the shop opens.",
-    "Then fire your bombs at an enemy building!"
+    "After every team has had a turn: the store opens.",
+    "Then fire as many bombs as you like at any enemy!"
    ],
    "example": {
     "rows": [
@@ -64,8 +60,8 @@
       "buys bombs and repair kits"
      ],
      [
-      "Depots",
-      "heal your base each round"
+      "Every round",
+      "intact Depots heal 450 HP"
      ]
     ]
    }
@@ -73,14 +69,14 @@
   {
    "title": "Defend your base",
    "text": [
-    "Towers stop small bombs and shoot some down.",
+    "Towers shoot bombs down: [LQ] always, [Q] 32%, [HQ] 16%.",
     "HQ destroyed? Sacrifice a building to stay in!"
    ],
    "example": {
     "rows": [
      [
-      "[[tower]] Tower",
-      "blocks small bombs"
+      "[[tower]] Towers",
+      "shoot bombs down"
      ],
      [
       "[[hq]] HQ falls",
@@ -88,7 +84,7 @@
      ],
      [
       "No Depot",
-      "easy questions only"
+      "20% less damage, pricey [Q]+"
      ]
     ]
    }
@@ -97,7 +93,7 @@
    "title": "Power-ups",
    "text": [
     "One of each per team, once per game.",
-    "Alliance: skip your turn and join forces!"
+    "Alliance: skip your turn and join forces! It ends at two bases."
    ],
    "example": {
     "rows": [
@@ -111,7 +107,7 @@
      ],
      [
       "[[risk]] Risk It",
-      "bigger reward, big risk"
+      "better reward, big risk"
      ],
      [
       "[[alliance]] Alliance",
