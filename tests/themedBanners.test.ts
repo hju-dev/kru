@@ -25,7 +25,7 @@ describe('shared banner engine', () => {
 })
 
 describe('games with banners', () => {
-  const pages = ['race-board', 'christmas-race-board', 'jeopardy', 'think-tank-showdown', 'quiz-battle', 'battle-of-readers', 'battle-of-writers']
+  const pages = ['race-board', 'christmas-race-board', 'think-tank-showdown', 'quiz-battle', 'battle-of-readers', 'battle-of-writers']
   it('each page loads the banner engine and its pictures', () => {
     for (const g of pages) {
       const html = read(`public/games/${g}/index.html`)
@@ -41,11 +41,6 @@ describe('games with banners', () => {
     expect(js).toContain("['gift', 'HO HO HO!'")
     expect(js).toContain("['checkflag', 'CORRECT!'")
     expect(js).toContain("fx(rk ? 'riskWin' : 'right', { t: tn }, function () { roll(id, spec); });")
-  })
-  it('Jeopardy (game show): DOUBLE, right / wrong / Risk it, power-ups, the end of the board', () => {
-    const js = read('public/games/jeopardy/app.js')
-    expect(js).toContain("KruFx.theme('show')")
-    for (const t of ["title: 'DOUBLE!'", "'CORRECT!'", "'BZZZT! WRONG!'", "'RISK PAID OFF!'", "title: \"THAT'S THE BOARD!\"", "title: 'FREE PLAY!'"]) expect(js, t).toContain(t)
   })
   it('Think Tank Showdown (brain lab): each new round, points, ALL IN wins and losses', () => {
     const js = read('public/games/think-tank-showdown/app.js')

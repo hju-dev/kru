@@ -2,7 +2,7 @@
  * Shared bits for team games:
  *  - KruCorner.set(stageEl, '6/50')  the question counter in the top-right corner of the question area
  *  - KruEnd.setup({ standings })     the end of every scored game is the same, wherever Henry starts it:
- *        🏆 in the top bar, "End game & final scores" in the ⋯ menu, Kru's home → Finish, or the game
+ *        🏆 in the top bar, "End Game" in the ⋯ menu, Kru's home → Finish, or the game
  *        itself at its natural end (KruEnd.show()). First the podium (3rd, 2nd, then 1st, with a drumroll
  *        and confetti), then "Save scores & finish" (sends the scores) or the full list.
  *    standings() returns [{ name, points, teacher? }]
@@ -85,7 +85,7 @@
       var btn = document.createElement('button');
       btn.className = close.className.replace('ghost', '').trim() || 'btn';
       btn.id = 'endGame';
-      btn.textContent = 'End game & final scores';
+      btn.textContent = 'End Game';
       close.parentNode.insertBefore(btn, close);
       btn.addEventListener('click', function () {
         var back = document.getElementById('menuBack');

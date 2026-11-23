@@ -21,7 +21,7 @@ describe('settings gear and team circles', () => {
     const sdk = read('public/sdk/kru.js')
     expect(sdk).toContain("if (t.teacher) return 'T';")
     expect(sdk).toContain('<i class="kteam" style="--kt:')
-    for (const f of ['shared/kru-cards.js', 'shared/kru-battle.js', 'think-tank-showdown/app.js', 'hot-seat-vocab/app.js', 'board-race/app.js', 'twenty-questions/app.js', 'jeopardy/app.js', 'tag-team/app.js', 'word-rush/app.js', 'one-word-story/app.js']) {
+    for (const f of ['shared/kru-cards.js', 'shared/kru-battle.js', 'think-tank-showdown/app.js', 'hot-seat-vocab/app.js', 'board-race/app.js', 'twenty-questions/app.js', 'tag-team/app.js', 'word-rush/app.js', 'one-word-story/app.js']) {
       expect(read(`public/games/${f}`), f).toContain('Kru.badge(t, ')
     }
   })
@@ -42,8 +42,8 @@ describe('renames (title only, the ids stay)', () => {
     expect(read('public/games/category-grid/app.js')).toContain("logo: 'Scatter<b>gories</b>'")
   })
   it('Free answer is now Free Play everywhere', () => {
-    for (const f of ['race-board/app.js', 'jeopardy/app.js', 'quiz-island/app.js']) expect(read(`public/games/${f}`), f).toContain("{ id: 'free', label: 'Free Play' }")
-    for (const f of ['race-board', 'christmas-race-board', 'jeopardy', 'quiz-island']) expect(read(`public/games/${f}/content.json`), f).not.toContain('Free answer')
+    for (const f of ['race-board/app.js', 'quiz-island/app.js']) expect(read(`public/games/${f}`), f).toContain("{ id: 'free', label: 'Free Play' }")
+    for (const f of ['race-board', 'christmas-race-board', 'quiz-island']) expect(read(`public/games/${f}/content.json`), f).not.toContain('Free answer')
   })
 })
 

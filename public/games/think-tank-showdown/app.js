@@ -359,12 +359,12 @@
     closeMenu();
   });
   $('undo').addEventListener('click', function () { undo(); closeMenu(); });
-  function disarm(btn) { btn.classList.remove('armed'); btn.textContent = 'Reset all scores'; }
+  function disarm(btn) { btn.classList.remove('armed'); btn.textContent = 'New Game'; }
   $('resetScores').addEventListener('click', function () {
     var btn = this;
     if (!btn.classList.contains('armed')) {
       btn.classList.add('armed');
-      btn.textContent = 'Tap again: all scores back to 0';
+      btn.textContent = 'Tap again to confirm';
       setTimeout(function () { disarm(btn); }, 3500);
       return;
     }

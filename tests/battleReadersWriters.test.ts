@@ -29,7 +29,7 @@ describe('Battle of Readers', () => {
   const js = read('public/games/battle-of-readers/app.js')
   it('one story per round: read it first (45-120 s), then 5 questions; 📖 Story shows it again', () => {
     expect(engine).toContain("if (reading()) { S.phase = 'read'; startClock(S.readSecs || 60); render(); tone([523, 659], 0.1); return; }")
-    expect(engine).toContain('READ_TIMES = [45, 60, 90, 120]')
+    expect(engine).toContain("KruMenu.timer($('readRow'), S.readSecs || 60,") // Time to read the story
     expect(engine).toContain('data-do="peek"')
     expect(js).toContain('return { read: { title: st.title, sentences: st.sentences }, questions: pick(qs, qs.length, rand) };')
   })

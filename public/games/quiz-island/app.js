@@ -19,7 +19,6 @@
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
-  var TIMES = [10, 20, 30, 45, 60];
   var COLS = 8, ROWS = 5, CELLS = COLS * ROWS;
   var TREASURES = 4, VOLCANOES = 3, PIRATES = 3, CHESTS = 4;
   var GEM = 5, CHEST = 10, BEARD = 30, DIG = 5, EMPIRE = 10, NO_ANSWER = 3, BOTTLE = 3;
@@ -727,7 +726,7 @@
 
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
-  function renderSecs() { $('secsRow').innerHTML = TIMES.map(function (s) { return '<button class="btn" data-secs="' + s + '" aria-pressed="' + (s === S.secs) + '">' + s + ' s</button>'; }).join(''); }
+  function renderSecs() { KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }); } // the alarm-clock timer (shared/kru-menu.js)
   function renderWho() { $('whoOn').textContent = '🎯 Who answers: ' + (S.who ? 'on' : 'off'); $('whoOn').setAttribute('aria-pressed', String(!!S.who)); }
   $('more').addEventListener('click', function () {
     renderSecs(); renderWho(); disarm();
@@ -739,17 +738,16 @@
   });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-  $('secsRow').addEventListener('click', function (e) { var b = e.target.closest('[data-secs]'); if (!b) return; S.secs = +b.dataset.secs; save(); renderSecs(); });
   $('whoOn').addEventListener('click', function () { S.who = !S.who; save(); renderWho(); });
   $('deckBtn').addEventListener('click', function () { closeMenu(); openDecks(); });
   $('skip').addEventListener('click', function () { closeMenu(); nextTurn(); });
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back to before the last question.'); });
   $('lastRound').addEventListener('click', function () { closeMenu(); unlockAudio(); lastRound(); });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Quiz Island' }); });
-  function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New game (empty map, 0 gold)'; }
+  function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
-    if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again: erase the map and the gold'; setTimeout(disarm, 3500); return; }
+    if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     players.forEach(function (t) { var p = gold(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
     fresh(S.deck);
     $('choiceBack').hidden = true;
@@ -772,7 +770,7 @@
   // ---------- start ----------
   function fresh(deck) {
     S = { v: 2, level: S ? S.level : '', deck: deck || '', map: newMap(), pts: {}, turn: 0, skip: {}, powers: {}, mpicked: {}, who: S ? !!S.who : false,
-      secs: S ? S.secs : 20, hist: [], claim: null, choice: null, phase: 'play', lastEnd: 0, reveal: false, introDone: S ? S.introDone : false, order: {}, qi: {} };
+      secs: S ? S.secs : 30, hist: [], claim: null, choice: null, phase: 'play', lastEnd: 0, reveal: false, introDone: S ? S.introDone : false, order: {}, qi: {} };
     shownGold = {};
     buildPool();
   }
@@ -792,7 +790,7 @@
         S = null; fresh(QZ.unit ? 'unit' : '');
         S.level = QZ.level;
       }
-      S.hist = S.hist || []; S.skip = S.skip || {}; S.powers = S.powers || {}; S.mpicked = S.mpicked || {}; S.phase = S.phase || 'play';
+      S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.powers = S.powers || {}; S.mpicked = S.mpicked || {}; S.phase = S.phase || 'play';
       players.forEach(function (t) { shownGold[t.id] = gold(t.id); });
       INTRO = KruIntro.forLevel(mine, QZ.level);
       render();

@@ -444,7 +444,7 @@
 
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
-  function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'Reset all scores'; }
+  function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
   $('more').addEventListener('click', function () { $('undo').disabled = !S.log.length; disarm(); renderTalkMenu(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
@@ -482,7 +482,7 @@
   $('resetScores').addEventListener('click', function () {
     var btn = this;
     if (!btn.classList.contains('armed')) {
-      btn.classList.add('armed'); btn.textContent = 'Tap again: all scores back to 0';
+      btn.classList.add('armed'); btn.textContent = 'Tap again to confirm';
       setTimeout(disarm, 3500);
       return;
     }

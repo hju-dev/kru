@@ -57,7 +57,7 @@ describe('units', () => {
 describe('picking a unit', () => {
   it('only games that use a unit offer the choice', () => {
     const withUnits = games.filter((g) => (g as { units?: boolean }).units).map((g) => g.slug).sort()
-    expect(withUnits).toEqual(['battle-of-writers', 'hot-seat-vocab', 'jeopardy', 'quiz-battle', 'quiz-island', 'race-board', 'tag-team-debate'])
+    expect(withUnits).toEqual(['battle-of-writers', 'hot-seat-vocab', 'quiz-battle', 'quiz-island', 'race-board', 'tag-team-debate'])
     for (const slug of withUnits) {
       const html = read(`public/games/${slug}/index.html`)
       expect(html, slug).toContain('/games/shared/kru-quiz.js')

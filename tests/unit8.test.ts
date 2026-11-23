@@ -29,7 +29,7 @@ describe('Unit 8 quiz packs', () => {
         counts[q.answer]++
       }
       expect(counts).toEqual(SPREAD[id])
-      expect(pack(id).games).toEqual(expect.arrayContaining(['quiz-battle', 'jeopardy']))
+      expect(pack(id).games).toEqual(expect.arrayContaining(['quiz-battle']))
     })
   }
   it('spot checks: the right option is the one Henry marked', () => {
@@ -74,10 +74,10 @@ describe('Unit 8 L1: scramble sentences (Battle of Writers)', () => {
 describe('who sees the Unit 8 packs', () => {
   const ids = (game: string, cls?: string) => unitsFor('M.3', game, cls).map((u) => u.id).filter((id) => id.startsWith('m3-u8'))
   it('M.3/2 and M.3/3 only (also written "3/2", "m.3 / 3")', () => {
-    expect(ids('jeopardy', 'M.3/2')).toEqual(['m3-u8-l1', 'm3-u8-l2', 'm3-u8-review'])
-    expect(ids('jeopardy', '3/3')).toEqual(['m3-u8-l1', 'm3-u8-l2', 'm3-u8-review'])
-    expect(ids('jeopardy', 'm.3 / 2')).toHaveLength(3)
-    expect(ids('jeopardy', 'M.3/1')).toEqual([])
+    expect(ids('quiz-battle', 'M.3/2')).toEqual(['m3-u8-l1', 'm3-u8-l2', 'm3-u8-review'])
+    expect(ids('quiz-battle', '3/3')).toEqual(['m3-u8-l1', 'm3-u8-l2', 'm3-u8-review'])
+    expect(ids('quiz-battle', 'm.3 / 2')).toHaveLength(3)
+    expect(ids('quiz-battle', 'M.3/1')).toEqual([])
     expect(classKey('M.3/2')).toBe(classKey('3/2'))
   })
   it('only in their games', () => {
@@ -90,7 +90,7 @@ describe('who sees the Unit 8 packs', () => {
     expect(unitsFor('M.3', 'battle-of-writers', 'M.3/2').map((u) => u.id)).toEqual(['m3-u8-l1'])
   })
   it('practice mode (?) can run every pack, whatever the class', () => {
-    expect(ids('jeopardy')).toHaveLength(3)
+    expect(ids('quiz-battle')).toHaveLength(3)
     expect(read('src/routes/Preview.tsx')).toContain("unitsFor(level, slug)")
   })
 })
@@ -99,9 +99,5 @@ describe('reveal + small packs', () => {
   it('the read-aloud sentence shows after the reveal (shared quiz + Quiz Battle)', () => {
     expect(read('public/games/shared/kru-quiz.js')).toContain('if (shown && q.read_aloud) h += say(q.read_aloud);')
     expect(read('public/games/shared/kru-battle.js')).toContain("(r.read_aloud ? '<div class=\"kbt-why\">🔊 ' + esc(r.read_aloud) + '</div>' : '')")
-  })
-  it('Jeopardy puts every question of a small pack on the board (10 = 2 × 5, 12 = 3 × 4)', () => {
-    const js = read('public/games/jeopardy/app.js')
-    expect(js).toContain("var rows = n % 5 === 0 || n % 4 !== 0 ? 5 : 4, cols = Math.min(COLS, Math.floor(n / rows));")
   })
 })
