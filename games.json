@@ -398,5 +398,26 @@
     "phoneLandscape": true,
     "status": "ready",
     "section": "writing"
+  },
+  {
+    "slug": "fortress",
+    "title": "Fortress",
+    "file": "public/games/fortress/index.html",
+    "description": "Four teams defend a medieval base (HQ, Depot, two Towers) and bomb each other. Answer questions to win bombs, repairs or gold; shop, fire, form alliances. Last base standing wins. Made with Job.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "team game",
+    "minutes": 25,
+    "modes": [
+      "group"
+    ],
+    "fixedTeams": 4,
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "quizzes",
+    "units": true
   }
 ]
