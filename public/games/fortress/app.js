@@ -1,29 +1,49 @@
-/* Fortress (Henry, Nov 23): four teams defend a medieval base and attack each other. Made with Job, a student who
-   helped create the game.
-   - Every base: HQ (100 HP), Depot (60), two Towers (40 each).
-   - A turn = a question (Quiz Dash bank, Battle of Wits sets or a unit). Right: the team picks 💣 a bomb (the size is
-     random, bigger bombs are likelier on harder questions), 🩹 a repair (+HP to one building) or 🪙 gold.
-   - After every team had its turn: the SHOP (gold buys bombs and repair kits), then FIRE (every team may fire its bombs at
-     enemy buildings), then the Depots heal their base a little and the next round starts.
-   - Towers stop small bombs, add 5% resistance each (max 17%) and shoot down a bomb 16% of the time each.
-   - Depot destroyed: only easy and regular questions, no healing, no bombs (the shop sells only repair kits).
+/* Fortress (Henry, Nov 23; store and numbers from Henry's second list): four teams defend a medieval base and attack
+   each other. Made with Job, a student who helped create the game.
+   - Every base: HQ 10,000 HP, Depot 7,000, two Towers 8,000 each. Every round a base with an intact Depot heals 450 HP
+     per building.
+   - A turn = a question (Quiz Dash bank, Battle of Wits sets or a unit). Right: the team picks 💣 a bomb (the item is
+     random, better ones are likelier on harder questions), 🩹 a repair (+HP to one building) or 🪙 gold.
+   - After every team had its turn: the STORE (gold buys bombs, missiles and repair kits), then FIRE (a team may fire
+     as many bombs as it has, at any enemy buildings), then the next round starts.
+   - Defense towers shoot bombs down: [LQ] 100%, [Q] 32%, [HQ] 16%, the Sarmat 1%. Towers also give 5% resistance each (max 17%).
+   - Depot destroyed: your bombs deal 20% less damage, no more Depot healing, and [Q] bombs and better cost 1.6x.
    - HQ destroyed: the team sacrifices another building, the HQ takes over that building's HP. No building left = out.
-   - Power-ups (once each): +20 s, Free answer, Risk It (a bigger bomb or 3x gold; wrong = every building except the HQ loses
-     half of its starting HP) and Alliance (skip your turn; the other team must skip too): shared towers and depots, +10% HQ
-     resistance, and bombs can be shared (one size smaller for both) or kept.
-   - Last base standing wins (allies who are the last ones left share first place). Points: 5 / 3 / 2 / 1 by place. */
+   - Power-ups (once each): +20 s, Free answer, Risk It (a better item or 3x gold; wrong = every building except the HQ
+     loses half of its starting HP) and Alliance (skip your turn; the other team must skip too): shared towers and depots,
+     +10% HQ resistance, and bombs can be shared (one step weaker for both) or kept. When two bases are left, alliances end.
+   - Last base standing wins. Points: 5 / 3 / 2 / 1 by place. */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#9B7BFF'];
   var KEYS = ['hq', 'depot', 't1', 't2'];
-  var MAXHP = { hq: 100, depot: 60, t1: 40, t2: 40 };
+  var MAXHP = { hq: 10000, depot: 7000, t1: 8000, t2: 8000 };
   var BNAME = { hq: 'HQ', depot: 'Depot', t1: 'Tower', t2: 'Tower' };
-  var DMG = [20, 35, 55, 90], SIZES = ['Small', 'Medium', 'Large', 'Mega'];
-  var ODDS = { easy: [70, 30, 0, 0], regular: [40, 45, 15, 0], hard: [0, 40, 50, 10], impossible: [0, 20, 50, 30] };
-  var GOLD = { easy: 2, regular: 3, hard: 5, impossible: 7 };
-  var HEAL = { easy: 10, regular: 20, hard: 35, impossible: 50 };
-  var PRICE = [3, 5, 8, 14], KIT = 4, KIT_HP = 25;
-  var ROUND_HEAL = 5, SHOOT = 0.16, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1;
+  // the store: mode = one target | scatter (all but the chosen one) | dual (two targets) | all (every building of one team) | jam (skip a turn)
+  var ITEMS = {
+    crude: { name: 'Crude Bomb', cls: 'LQ', dmg: 100, price: 200, icon: 0, mode: 'one', info: '100 DMG · one target' },
+    bomb: { name: 'Bomb', cls: 'LQ', dmg: 250, price: 350, icon: 1, mode: 'one', info: '250 DMG · one target' },
+    scatter: { name: 'Scatter Bomb', cls: 'LQ', dmg: 180, price: 500, icon: 1, mode: 'scatter', info: '180 DMG · all but the chosen target' },
+    missile: { name: 'High Speed Missile', cls: 'Q', dmg: 500, price: 1500, icon: 2, mode: 'one', info: '500 DMG · one target' },
+    dual: { name: 'Dual Headed Missile', cls: 'Q', dmg: 350, price: 2400, icon: 2, mode: 'dual', info: '350 DMG · two targets' },
+    jammer: { name: 'Signal Jammer', cls: 'Q', dmg: 0, price: 4000, icon: 2, mode: 'jam', info: "skips a team's turn (once per round per team)" },
+    tos: { name: 'TOS-2M', cls: 'HQ', dmg: 2000, price: 10000, icon: 3, mode: 'all', curse: true, info: '2000 DMG · all targets · curses their next bomb' },
+    avangard: { name: 'Avangard', cls: 'HQ', dmg: 4000, price: 15000, icon: 3, mode: 'one', info: '4000 DMG · one target' },
+    sarmat: { name: 'RS-28 Sarmat', cls: 'HQ', dmg: 9000, price: 30000, icon: 3, mode: 'all', chance: 0.01, info: '9000 DMG · all targets · 1% shot down' },
+  };
+  var IORDER = ['crude', 'bomb', 'scatter', 'missile', 'dual', 'jammer', 'tos', 'avangard', 'sarmat'];
+  var SHOOT = { LQ: 1, Q: 0.32, HQ: 0.16 };
+  // the chance of each item (same order as IORDER) from a right answer, by question tier
+  var ODDS = {
+    easy: [60, 30, 10, 0, 0, 0, 0, 0, 0],
+    regular: [20, 35, 25, 15, 5, 0, 0, 0, 0],
+    hard: [0, 10, 15, 30, 20, 15, 5, 5, 0],
+    impossible: [0, 0, 0, 10, 15, 10, 25, 25, 15],
+  };
+  var GOLD = { easy: 150, regular: 250, hard: 500, impossible: 900 };
+  var HEAL = { easy: 500, regular: 800, hard: 1200, impossible: 1800 };
+  var KIT = 300, KIT_RISE = 200, KIT_HP = 1000;
+  var ROUND_HEAL = 450, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1, NO_DEPOT_DMG = 0.8, NO_DEPOT_PRICE = 1.6, CURSE_CHANCE = 0.4;
   var PLACE_PTS = [5, 3, 2, 1];
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
@@ -56,6 +76,9 @@
   function allyOf(id) { var a = S.t[id] && S.t[id].ally; return a && alive(a) ? a : null; }
   function curId() { return S.queue[S.cur] || null; }
   function tierOf(q) { return TIERS[q.tier] ? q.tier : 'regular'; }
+  /** 12000 -> "12k", 7500 -> "7.5k" (the board is small) */
+  function kfmt(n) { n = Math.max(0, Math.round(n)); return n >= 1000 ? (n / 1000).toFixed(1).replace('.0', '') + 'k' : String(n); }
+  function money(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
   // ---------- defense: towers and depots are shared with an ally ----------
   function towers(id) {
@@ -65,6 +88,10 @@
   }
   function depotOk(id) { return T(id).hp.depot > 0 || (allyOf(id) ? T(allyOf(id)).hp.depot > 0 : false); }
   function resist(id, key) { return Math.min(RES_CAP, RES * towers(id)) + (key === 'hq' && allyOf(id) ? ALLY_HQ : 0); }
+  /** your own Depot gone: bombs hit 20% weaker and [Q] items and better cost 1.6x */
+  function dmgMult(id) { return depotOk(id) ? 1 : NO_DEPOT_DMG; }
+  function priceOf(id, key) { var it = ITEMS[key]; return Math.round(it.price * (it.cls !== 'LQ' && !depotOk(id) ? NO_DEPOT_PRICE : 1)); }
+  function kitPrice() { return KIT + KIT_RISE * (S.round - 1); }
   function totalHp(id) { return KEYS.reduce(function (n, k) { return n + Math.max(0, T(id).hp[k]); }, 0); }
 
   // ---------- sound ----------
@@ -157,12 +184,12 @@
   function newTeams() {
     var t = {};
     players.forEach(function (p) {
-      t[p.id] = { hp: { hq: MAXHP.hq, depot: MAXHP.depot, t1: MAXHP.t1, t2: MAXHP.t2 }, gold: 0, bombs: [], alive: true, ally: null, powers: {} };
+      t[p.id] = { hp: { hq: MAXHP.hq, depot: MAXHP.depot, t1: MAXHP.t1, t2: MAXHP.t2 }, gold: 0, bombs: [], alive: true, ally: null, powers: {}, curse: false };
     });
     return t;
   }
   function fresh(deck) {
-    S = { v: 1, level: S ? S.level : '', deck: deck || '', t: newTeams(), phase: 'turn', round: 1, queue: [], cur: 0, skip: {}, elim: [], over: false,
+    S = { v: 2, level: S ? S.level : '', deck: deck || '', t: newTeams(), phase: 'turn', round: 1, queue: [], cur: 0, skip: {}, elim: [], over: false,
       aim: null, secs: S ? S.secs : 30, hist: [], introDone: S ? S.introDone : false, order: {}, qi: {} };
     S.queue = living();
     buildPool();
@@ -215,29 +242,59 @@
 
   // ---------- damage, destruction, elimination ----------
   function setHp(id, key, hp) { T(id).hp[key] = Math.max(0, hp); }
-  function fire(from, bi, to, key) {
+  function enemies(id) { return living().filter(function (o) { return o !== id && allyOf(id) !== o; }); }
+  function aliveKeys(id) { return KEYS.filter(function (b) { return T(id).hp[b] > 0; }); }
+  /** Which buildings a launch hits, from what the teacher tapped. */
+  function expand(it, picks) {
+    if (it.mode === 'scatter') return aliveKeys(picks[0].t).filter(function (b) { return b !== picks[0].b; }).map(function (b) { return { t: picks[0].t, b: b }; });
+    if (it.mode === 'all') return aliveKeys(picks[0].t).map(function (b) { return { t: picks[0].t, b: b }; });
+    return picks.slice();
+  }
+  function launch(from, bomb, picks) {
     snap();
-    var b = T(from).bombs.splice(bi, 1)[0];
+    var bi = T(from).bombs.indexOf(bomb), it = ITEMS[bomb.k];
+    if (bi < 0) bi = T(from).bombs.map(function (x) { return x.k; }).indexOf(bomb.k);
+    T(from).bombs.splice(bi, 1);
     S.aim = null;
-    var size = b.s, name = tname(to) + "'s " + BNAME[key];
     boom();
-    if (size === 0 && towers(to) > 0) {
-      banner({ art: ART.shield(), title: 'BLOCKED!', sub: 'The towers stop ' + tname(from) + "'s small bomb.", mood: 'good', sound: 'magic', wait: 1500 });
+    if (it.mode === 'jam') {
+      var jt = picks[0].t;
+      S.skip[jt] = true; S.jam = S.jam || {}; S.jam[jt] = S.round; save();
+      banner({ art: ART.risk(), title: 'SIGNAL JAMMED!', sub: tname(jt) + ' will skip its next turn.', mood: 'magic', wait: 1500 });
+      afterBanners(continueFire);
+      return;
+    }
+    var hits = expand(it, picks), hitTeams = [];
+    hits.forEach(function (h) { if (hitTeams.indexOf(h.t) < 0) hitTeams.push(h.t); });
+    var chance = it.chance != null ? it.chance : SHOOT[it.cls], shot = [];
+    hitTeams.forEach(function (t) { if (towers(t) > 0 && Math.random() < chance) shot.push(t); });
+    var landed = hits.filter(function (h) { return shot.indexOf(h.t) < 0; });
+    var landedTeams = hitTeams.filter(function (t) { return shot.indexOf(t) < 0; });
+    if (!landed.length) {
+      banner({ art: ART.shield(), title: 'SHOT DOWN!', sub: "A tower shot down " + tname(from) + "'s " + it.name + '!', mood: 'good', sound: 'magic', wait: 1500 });
       afterBanners(continueFire); save(); return;
     }
-    var n = towers(to), shot = n > 0 && Math.random() < 1 - Math.pow(1 - SHOOT, n);
-    if (shot) {
-      banner({ art: ART.shield(), title: 'SHOT DOWN!', sub: 'A tower shot down ' + tname(from) + "'s " + SIZES[size].toLowerCase() + ' bomb!', mood: 'good', sound: 'magic', wait: 1500 });
-      afterBanners(continueFire); save(); return;
-    }
-    var dmg = Math.round(DMG[size] * (1 - resist(to, key)));
-    var before = T(to).hp[key];
-    setHp(to, key, before - dmg);
-    var gone = T(to).hp[key] <= 0;
-    banner({ art: ART.bomb(size), title: SIZES[size].toUpperCase() + ' BOMB!', sub: tname(from) + ' hits ' + name + ' for ' + dmg + (gone ? ': DESTROYED!' : '.'), mood: 'boom', wait: 1500 });
-    if (gone && key === 'hq') afterBanners(function () { hqFell(to); });
-    else afterBanners(continueFire);
+    var destroyed = 0, total = 0;
+    landed.forEach(function (h) {
+      var dmg = Math.round(it.dmg * dmgMult(from) * (1 - resist(h.t, h.b)));
+      var was = T(h.t).hp[h.b];
+      setHp(h.t, h.b, was - dmg); total += Math.min(was, dmg);
+      if (T(h.t).hp[h.b] <= 0) destroyed++;
+    });
+    if (it.curse) landedTeams.forEach(function (t) { T(t).curse = true; });
+    var where = landedTeams.map(tname).join(' & ');
+    var sub = tname(from) + ' hits ' + where + (landed.length > 1 ? ' (' + landed.length + ' buildings)' : "'s " + BNAME[landed[0].b]) + ' for ' + money(total) + (destroyed ? ': ' + destroyed + ' DESTROYED!' : '.') +
+      (shot.length ? ' Shot down at ' + shot.map(tname).join(' & ') + '.' : '') + (it.curse ? ' Their next bomb is cursed!' : '');
+    banner({ art: ART.bomb(it.icon), title: it.name.toUpperCase() + '!', sub: sub, mood: 'boom', wait: 1800 });
     save();
+    afterBanners(function () { processFalls(landedTeams, continueFire); });
+  }
+  /** Teams whose HQ fell, one after the other. */
+  function processFalls(list, done) {
+    if (!list.length) { done(); return; }
+    var id = list[0], rest = list.slice(1);
+    if (alive(id) && T(id).hp.hq <= 0) hqFell(id, function () { processFalls(rest, done); });
+    else processFalls(rest, done);
   }
   function continueFire() {
     if (S.over) return;
@@ -245,35 +302,42 @@
     if (!id || !alive(id) || !T(id).bombs.length) advance(); else { save(); render(); }
   }
   /** The HQ is destroyed: sacrifice another building (the HQ takes its HP), or the base falls. */
-  function hqFell(id) {
-    var rest = KEYS.filter(function (k) { return k !== 'hq' && T(id).hp[k] > 0; });
-    if (!rest.length) { eliminate(id); return; }
+  function hqFell(id, next) {
+    var rest = KEYS.filter(function (b) { return b !== 'hq' && T(id).hp[b] > 0; });
+    if (!rest.length) { eliminate(id, next); return; }
     banner({ art: ART.ruins(), title: 'HQ DESTROYED!', sub: tname(id) + ' must sacrifice a building to stay in the game.', mood: 'bad', wait: 1500 });
     afterBanners(function () {
       choose({ art: ART.hq(color(id)), title: tname(id) + ': sacrifice a building',
-        options: rest.map(function (k) { return { html: '<b>' + BNAME[k] + '</b><small>HQ takes its ' + T(id).hp[k] + ' HP</small>', fn: function () {
-          T(id).hp.hq = T(id).hp[k]; T(id).hp[k] = 0; closeChoice(); save();
-          banner({ art: ART.hq(color(id)), title: 'HQ RESTORED!', sub: tname(id) + ' sacrificed its ' + BNAME[k] + '.', mood: 'magic', wait: 1500 });
-          afterBanners(continueFire);
+        options: rest.map(function (b) { return { html: '<b>' + BNAME[b] + '</b><small>HQ takes its ' + money(T(id).hp[b]) + ' HP</small>', fn: function () {
+          T(id).hp.hq = T(id).hp[b]; T(id).hp[b] = 0; closeChoice(); save();
+          banner({ art: ART.hq(color(id)), title: 'HQ RESTORED!', sub: tname(id) + ' sacrificed its ' + BNAME[b] + '.', mood: 'magic', wait: 1500 });
+          afterBanners(next);
         } }; }) });
     });
   }
-  function eliminate(id) {
+  function eliminate(id, next) {
     T(id).alive = false; T(id).hp.hq = 0;
     if (S.t[id].ally && S.t[S.t[id].ally]) S.t[S.t[id].ally].ally = null;
     S.elim.push(id);
     banner({ art: ART.ruins(), title: 'BASE FALLEN!', sub: tname(id) + ' is out of the game.', mood: 'bad', sound: 'bad' });
-    afterBanners(function () { if (!checkEnd()) continueFire(); });
+    dissolveAlliances();
+    afterBanners(function () { if (!checkEnd()) next(); });
     save();
   }
-  /** Over when one base is left, or every base left is allied with the others. */
+  /** Two bases left: every alliance ends. */
+  function dissolveAlliances() {
+    var l = living();
+    if (l.length !== 2 || allyOf(l[0]) !== l[1]) return;
+    T(l[0]).ally = null; T(l[1]).ally = null;
+    banner({ art: ART.alliance(), title: 'ALLIANCE BROKEN!', sub: 'Only two bases are left: ' + tname(l[0]) + ' and ' + tname(l[1]) + ' fight alone!', mood: 'bad', wait: 1800 });
+  }
+  /** Over when one base is left. */
   function checkEnd() {
     var l = living();
-    var allied = l.length > 1 && l.every(function (id) { return l.every(function (o) { return o === id || allyOf(id) === o; }); });
-    if (l.length > 1 && !allied) return false;
+    if (l.length > 1) return false;
     S.over = true; S.phase = 'over'; S.cur = 0; S.queue = [];
     save();
-    banner({ art: ART.trophy(), title: l.length > 1 ? 'THE ALLIES WIN!' : l.length ? tname(l[0]) + ' WINS!' : 'GAME OVER', sub: 'The last base standing!', mood: 'good', sound: 'fanfare' });
+    banner({ art: ART.trophy(), title: l.length ? tname(l[0]) + ' WINS!' : 'GAME OVER', sub: 'The last base standing!', mood: 'good', sound: 'fanfare' });
     afterBanners(render);
     return true;
   }
@@ -306,50 +370,59 @@
     act.textContent = phase === 'over' ? '🏆 Podium ▶' : phase === 'shop' ? 'Open the shop ▶' : 'Question ▶';
     $('board').innerHTML = players.map(function (t) { return baseHtml(t); }).join('');
     renderTray();
-    document.body.classList.toggle('aiming', S.aim != null);
+    document.body.classList.toggle('aiming', !!S.aim);
   }
   function baseHtml(t) {
     var id = t.id, d = T(id), cur = curId() === id && S.phase !== 'over';
     var ally = allyOf(id);
-    var aim = S.aim != null && curId() && alive(id) && id !== curId() && ally !== curId() && allyOf(curId()) !== id;
-    var bombs = [0, 1, 2, 3].map(function (s) {
-      var n = d.bombs.filter(function (b) { return b.s === s; }).length;
-      return n ? '<i class="bm" title="' + SIZES[s] + ' bomb">' + ART.bomb(s) + '<b>' + n + '</b></i>' : '';
+    var aim = !!S.aim && curId() && alive(id) && id !== curId() && ally !== curId() && allyOf(curId()) !== id;
+    var bombs = IORDER.map(function (key) {
+      var n = d.bombs.filter(function (b) { return b.k === key; }).length;
+      return n ? '<i class="bm" title="' + ITEMS[key].name + '">' + ART.bomb(ITEMS[key].icon) + '<b>' + n + '</b></i>' : '';
     }).join('');
     var rows = KEYS.map(function (k) {
       var hp = d.hp[k], dead = hp <= 0, pct = Math.max(0, hp) / MAXHP[k] * 100;
       var ico = k === 'hq' ? ART.hq(color(id)) : k === 'depot' ? ART.depot() : ART.tower();
-      return '<button class="bld' + (dead ? ' dead' : '') + (aim && !dead ? ' target' : '') + '" data-t="' + esc(id) + '" data-k="' + k + '"' + (aim && !dead ? '' : ' tabindex="-1"') +
+      return '<button class="bld' + (dead ? ' dead' : '') + (aim && !dead && !(S.aim.picks || []).some(function (p) { return p.t === id && p.b === k; }) ? ' target' : '') + '" data-t="' + esc(id) + '" data-k="' + k + '"' + (aim && !dead ? '' : ' tabindex="-1"') +
         ' aria-label="' + esc(t.name) + ' ' + BNAME[k] + ', ' + Math.max(0, hp) + ' HP"><span class="ico">' + (dead ? ART.ruins() : ico) + '</span>' +
-        '<span class="hp"><i class="' + (pct < 34 ? 'low' : pct < 67 ? 'mid' : '') + '" style="width:' + pct + '%"></i></span><span class="num">' + Math.max(0, hp) + '</span></button>';
+        '<span class="hp"><i class="' + (pct < 34 ? 'low' : pct < 67 ? 'mid' : '') + '" style="width:' + pct + '%"></i></span><span class="num">' + kfmt(hp) + '</span></button>';
     }).join('');
     return '<section class="base' + (cur ? ' cur' : '') + (d.alive ? '' : ' out') + '" style="--c:' + color(id) + '">' +
-      '<div class="b-head">' + Kru.badge(t, color(id)) + '<span class="gold">' + coinHtml() + d.gold + '</span>' + (ally ? '<span class="ally" title="Allied with ' + esc(tname(ally)) + '">🤝</span>' : '') + '</div>' +
+      '<div class="b-head">' + Kru.badge(t, color(id)) + '<span class="gold">' + coinHtml() + kfmt(d.gold) + '</span>' + (ally ? '<span class="ally" title="Allied with ' + esc(tname(ally)) + '">🤝</span>' : '') + '</div>' +
       '<div class="b-bombs">' + (bombs || '<span class="none">no bombs</span>') + '</div>' + rows + '</section>';
   }
   function coinHtml() { return '<span class="coin">' + ART.coin() + '</span>'; }
   $('board').addEventListener('click', function (e) {
     var b = e.target.closest('.bld.target');
-    if (!b || S.aim == null) return;
+    if (!b || !S.aim) return;
     unlockAudio();
-    fire(curId(), S.aim, b.dataset.t, b.dataset.k);
+    var a = S.aim, it = ITEMS[a.k], pick = { t: b.dataset.t, b: b.dataset.k };
+    if (it.mode === 'jam' && S.jam && S.jam[pick.t] === S.round) { toast(tname(pick.t) + ' was already jammed this round.'); return; }
+    a.picks.push(pick);
+    var need = it.mode === 'dual' ? 2 : 1;
+    if (a.picks.length < need) { render(); return; }
+    var bomb = T(curId()).bombs.filter(function (x) { return x.k === a.k; })[0];
+    launch(curId(), bomb, a.picks);
   });
 
   // ---------- fire tray ----------
+  var AIMTEXT = { one: 'tap an enemy building', scatter: 'tap the building to SPARE (all the others are hit)', dual: 'tap two buildings', all: 'tap an enemy team (every building is hit)', jam: 'tap the team to jam' };
   function renderTray() {
     var id = curId(), tray = $('tray');
     if (S.phase !== 'fire' || !id || !alive(id) || fxOn) { tray.hidden = true; return; }
-    var d = T(id);
+    var d = T(id), counts = {};
+    d.bombs.forEach(function (b) { counts[b.k] = (counts[b.k] || 0) + 1; });
     tray.hidden = false;
-    tray.innerHTML = '<span class="tray-lab" style="color:' + color(id) + '">' + esc(tname(id)) + ': ' + (S.aim == null ? 'tap a bomb' : 'tap an enemy building') + '</span>' +
-      d.bombs.map(function (b, i) {
-        return '<button class="btn bmb' + (S.aim === i ? ' on' : '') + '" data-b="' + i + '"><span class="bi">' + ART.bomb(b.s) + '</span>' + SIZES[b.s] + ' ' + DMG[b.s] + '</button>';
+    var a = S.aim, lab = a ? ITEMS[a.k].name + ': ' + AIMTEXT[ITEMS[a.k].mode] + (ITEMS[a.k].mode === 'dual' ? ' (' + (a.picks.length + 1) + '/2)' : '') : 'tap a bomb';
+    tray.innerHTML = '<span class="tray-lab" style="color:' + color(id) + '">' + esc(tname(id)) + ': ' + lab + '</span>' +
+      IORDER.filter(function (key) { return counts[key]; }).map(function (key) {
+        return '<button class="btn bmb' + (a && a.k === key ? ' on' : '') + '" data-k="' + key + '"><span class="bi">' + ART.bomb(ITEMS[key].icon) + '</span>' + ITEMS[key].name + ' ×' + counts[key] + '</button>';
       }).join('') + '<button class="btn" id="fireDone">Done ▶</button>';
   }
   $('tray').addEventListener('click', function (e) {
     unlockAudio();
-    var b = e.target.closest('[data-b]');
-    if (b) { S.aim = S.aim === +b.dataset.b ? null : +b.dataset.b; render(); return; }
+    var b = e.target.closest('[data-k]');
+    if (b) { S.aim = S.aim && S.aim.k === b.dataset.k ? null : { k: b.dataset.k, picks: [] }; render(); return; }
     if (e.target.closest('#fireDone')) { snap(); advance(); }
   });
 
@@ -377,25 +450,46 @@
   function pickBuilding(id, title, fn) {
     var list = KEYS.filter(function (k) { return T(id).hp[k] > 0 && T(id).hp[k] < MAXHP[k]; });
     if (!list.length) { toast(tname(id) + ' has nothing to repair.'); return false; }
-    choose({ art: ART.repair(), title: title, options: list.map(function (k) { return { html: '<b>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + '</b><small>' + T(id).hp[k] + ' / ' + MAXHP[k] + ' HP</small>', fn: function () { closeChoice(); fn(k); } }; }),
+    choose({ art: ART.repair(), title: title, options: list.map(function (k) { return { html: '<b>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + '</b><small>' + money(T(id).hp[k]) + ' / ' + money(MAXHP[k]) + ' HP</small>', fn: function () { closeChoice(); fn(k); } }; }),
       foot: [{ label: 'Cancel', cls: 'ghost', fn: function () { closeChoice(); reopen(); } }] });
     return true;
   }
   var reopen = function () {};
 
-  // ---------- the shop ----------
+  // ---------- the store ----------
+  /** buy a bomb; a team hit by the TOS-2M has a 40% chance that its next bomb explodes in its own Depot */
+  function buyBomb(id, key) {
+    var d = T(id), it = ITEMS[key];
+    snap();
+    d.gold -= priceOf(id, key);
+    if (d.curse) {
+      d.curse = false;
+      if (Math.random() < CURSE_CHANCE) {
+        closeChoice();
+        setHp(id, 'depot', d.hp.depot - it.dmg);
+        KEYS.forEach(function (b) { if (b !== 'depot' && d.hp[b] > 0) setHp(id, b, d.hp[b] - it.dmg / 2); });
+        save();
+        banner({ art: ART.boom(), title: 'CURSED BOMB!', sub: tname(id) + "'s new " + it.name + ' exploded in the Depot!', mood: 'boom', wait: 1800 });
+        afterBanners(function () { processFalls([id], function () { if (S.over) return; if (alive(id)) openShop(); else advance(); }); });
+        return;
+      }
+    }
+    d.bombs.push({ k: key });
+    save(); tone([660, 880], 0.08); openShop(); render();
+  }
   function openShop() {
     var id = curId();
     if (S.phase !== 'shop' || !id) return;
-    var d = T(id), dep = depotOk(id), ally = allyOf(id);
+    var d = T(id), ally = allyOf(id);
     reopen = openShop;
-    var opts = PRICE.map(function (p, s) {
-      return { html: '<b>' + SIZES[s] + ' bomb · ' + p + ' 🪙</b><small>' + DMG[s] + ' damage</small>', off: !dep || d.gold < p, fn: function () {
-        snap(); d.gold -= p; d.bombs.push({ s: s }); save(); tone([660, 880], 0.08); openShop(); render(); } };
+    var opts = IORDER.map(function (key) {
+      var it = ITEMS[key], p = priceOf(id, key);
+      return { html: '<b>' + it.name + ' · ' + money(p) + ' 🪙</b><small>[' + it.cls + '] ' + it.info + '</small>', off: d.gold < p, fn: function () { buyBomb(id, key); } };
     });
-    opts.push({ html: '<b>Repair kit · ' + KIT + ' 🪙</b><small>+' + KIT_HP + ' HP to one building</small>', off: d.gold < KIT, fn: function () {
-      pickBuilding(id, 'Repair which building?', function (k) { snap(); d.gold -= KIT; d.hp[k] = Math.min(MAXHP[k], d.hp[k] + KIT_HP); save(); tone([523, 659, 784], 0.08); openShop(); render(); }); } });
-    choose({ art: ART.coin(), title: tname(id) + ': ' + d.gold + ' gold' + (dep ? '' : ' · no Depot: only repair kits'), options: opts,
+    var kp = kitPrice();
+    opts.unshift({ html: '<b>Repair kit · ' + money(kp) + ' 🪙</b><small>+' + money(KIT_HP) + ' HP to one building</small>', off: d.gold < kp, fn: function () {
+      pickBuilding(id, 'Repair which building?', function (b) { snap(); d.gold -= kp; d.hp[b] = Math.min(MAXHP[b], d.hp[b] + KIT_HP); save(); tone([523, 659, 784], 0.08); openShop(); render(); }); } });
+    choose({ art: ART.coin(), title: tname(id) + ': ' + money(d.gold) + ' gold' + (depotOk(id) ? '' : ' · no Depot: [Q]+ cost 1.6x') + (d.curse ? ' · cursed!' : ''), options: opts,
       foot: [{ label: 'Done ▶', cls: 'gold', fn: function () { closeChoice(); snap(); advance(); } }] });
     if (ally) $('choiceTitle').textContent += ' · allied with ' + tname(ally);
   }
@@ -434,9 +528,9 @@
     var ok = S.order && S.qi && ORDER.every(function (t) { return S.order[t] && S.order[t].length === POOL[t].length; });
     if (!ok) buildPool();
   }
-  /** The next question; without a Depot only easy and regular ones. */
+  /** The next question. */
   function pickQuestion(id) {
-    var tiers = depotOk(id) ? ORDER : ['easy', 'regular'];
+    var tiers = ORDER;
     var avail = tiers.filter(function (t) { return POOL[t].length; });
     if (!avail.length) avail = ORDER.filter(function (t) { return POOL[t].length; });
     if (!avail.length) return null;
@@ -542,15 +636,14 @@
   function closeQuestion() { stopTimer(); $('qBack').hidden = true; }
 
   // ---------- rewards ----------
-  function rollBomb(tier, rk) {
-    var s = weighted(ODDS[tier]);
-    return rk ? Math.min(3, s + 1) : s;
+  function rollItem(tier, rk) {
+    var i = weighted(ODDS[tier]);
+    return IORDER[rk ? Math.min(IORDER.length - 1, i + 1) : i];
   }
   function oddsText(tier, rk) {
-    var o = ODDS[tier], parts = [];
-    o.forEach(function (p, s) { if (p) parts.push(SIZES[Math.min(3, rk ? s + 1 : s)].toLowerCase()); });
-    var uniq = parts.filter(function (x, i) { return parts.indexOf(x) === i; });
-    return 'a ' + uniq.join(' or ') + ' bomb';
+    var by = { LQ: 0, Q: 0, HQ: 0 }, sum = 0;
+    ODDS[tier].forEach(function (p, i) { var j = rk ? Math.min(IORDER.length - 1, i + 1) : i; by[ITEMS[IORDER[j]].cls] += p; sum += p; });
+    return ['LQ', 'Q', 'HQ'].filter(function (c) { return by[c]; }).map(function (c) { return '[' + c + '] ' + Math.round(by[c] / sum * 100) + '%'; }).join(' · ');
   }
   function rightAnswer() {
     var id = curId(), tier = tierOf(Q), rk = risk;
@@ -562,33 +655,34 @@
   }
   /** The reward after a right answer: a bomb, a repair or gold. */
   function rewardPanel(id, tier, rk) {
-    var dep = depotOk(id), gold = GOLD[tier] * (rk ? 3 : 1);
+    var gold = GOLD[tier] * (rk ? 3 : 1);
     reopen = function () { rewardPanel(id, tier, rk); };
     choose({ art: ART.bomb(2), title: tname(id) + ': choose your reward' + (rk ? ' (Risk It!)' : ''),
       options: [
-        { html: '<b>💣 A bomb</b><small>' + (dep ? oddsText(tier, rk) : 'Depot destroyed: no bombs') + '</small>', off: !dep, fn: function () { closeChoice(); gotBomb(id, rollBomb(tier, rk)); } },
-        { html: '<b>🩹 Repair</b><small>+' + HEAL[tier] + ' HP to one building</small>', fn: function () {
-          pickBuilding(id, 'Repair which building?', function (k) {
-            T(id).hp[k] = Math.min(MAXHP[k], T(id).hp[k] + HEAL[tier]); save();
-            banner({ art: ART.repair(), title: 'REPAIRED!', sub: tname(id) + "'s " + BNAME[k] + ' is stronger.', mood: 'good', wait: 1200 });
+        { html: '<b>💣 A bomb</b><small>random: ' + oddsText(tier, rk) + '</small>', fn: function () { closeChoice(); gotBomb(id, rollItem(tier, rk)); } },
+        { html: '<b>🩹 Repair</b><small>+' + money(HEAL[tier]) + ' HP to one building</small>', fn: function () {
+          pickBuilding(id, 'Repair which building?', function (b) {
+            T(id).hp[b] = Math.min(MAXHP[b], T(id).hp[b] + HEAL[tier]); save();
+            banner({ art: ART.repair(), title: 'REPAIRED!', sub: tname(id) + "'s " + BNAME[b] + ' is stronger.', mood: 'good', wait: 1200 });
             afterBanners(advance);
           }); } },
-        { html: '<b>' + coinHtml() + ' Gold +' + gold + '</b><small>spend it in the shop</small>', fn: function () {
+        { html: '<b>' + coinHtml() + ' Gold +' + money(gold) + '</b><small>spend it in the store</small>', fn: function () {
           closeChoice(); T(id).gold += gold; save();
-          banner({ art: ART.coin(), title: '+' + gold + ' GOLD!', sub: tname(id) + ' fills its treasury.', mood: 'good', wait: 1200 });
+          banner({ art: ART.coin(), title: '+' + money(gold) + ' GOLD!', sub: tname(id) + ' fills its treasury.', mood: 'good', wait: 1200 });
           afterBanners(advance); } },
       ] });
   }
-  function gotBomb(id, size) {
-    var ally = allyOf(id);
-    banner({ art: ART.bomb(size), title: SIZES[size].toUpperCase() + ' BOMB!', sub: tname(id) + ' gets a ' + SIZES[size].toLowerCase() + ' bomb.', mood: 'good', sound: 'fanfare', wait: 1300 });
+  function gotBomb(id, key) {
+    var ally = allyOf(id), it = ITEMS[key];
+    banner({ art: ART.bomb(it.icon), title: it.name.toUpperCase() + '!', sub: tname(id) + ' gets a ' + it.name + ' [' + it.cls + '].', mood: 'good', sound: 'fanfare', wait: 1300 });
     afterBanners(function () {
-      if (!ally) { T(id).bombs.push({ s: size }); save(); advance(); return; }
+      if (!ally) { T(id).bombs.push({ k: key }); save(); advance(); return; }
+      var weaker = IORDER[Math.max(0, IORDER.indexOf(key) - 1)];
       choose({ art: ART.alliance(), title: 'Allies: keep it or share it?',
         options: [
-          { html: '<b>Keep it</b><small>Only ' + esc(tname(id)) + ' can fire it</small>', fn: function () { closeChoice(); T(id).bombs.push({ s: size }); save(); advance(); } },
-          { html: '<b>Share it</b><small>' + (size > 0 ? SIZES[size - 1] : SIZES[0]) + ' bomb for BOTH teams</small>', fn: function () {
-            closeChoice(); var s2 = Math.max(0, size - 1); T(id).bombs.push({ s: s2 }); T(ally).bombs.push({ s: s2 }); save(); advance(); } },
+          { html: '<b>Keep it</b><small>Only ' + esc(tname(id)) + ' can fire the ' + it.name + '</small>', fn: function () { closeChoice(); T(id).bombs.push({ k: key }); save(); advance(); } },
+          { html: '<b>Share it</b><small>a ' + ITEMS[weaker].name + ' for BOTH teams</small>', fn: function () {
+            closeChoice(); T(id).bombs.push({ k: weaker }); T(ally).bombs.push({ k: weaker }); save(); advance(); } },
         ] });
     });
   }
@@ -629,7 +723,7 @@
   // ---------- alliance (a power-up: skip your turn, the other team must skip too) ----------
   function canAlly() {
     var id = curId();
-    return S.phase === 'turn' && id && !used(id, 'ally') && !allyOf(id) && living().filter(function (o) { return o !== id && !allyOf(o); }).length > 0;
+    return S.phase === 'turn' && id && living().length > 2 && !used(id, 'ally') && !allyOf(id) && living().filter(function (o) { return o !== id && !allyOf(o); }).length > 0;
   }
   function openAlly() {
     if (!canAlly() || fxOn) return;
@@ -689,6 +783,7 @@
   Kru.onFinishRequest(function () { Kru.finish(teams.map(function (t) { return { teamId: t.id, points: t.teacher ? 0 : finalPts(t.id) }; })); });
 
   // ---------- start ----------
+  if (/[?&]mock=1/.test(location.search)) window.__ft = function () { return S; }; // for testing in mock mode only
   var contentReady = fetch('/games/race-board/content.json').then(function (r) { return r.json(); });
   var ownReady = fetch('content.json').then(function (r) { return r.json(); });
   Kru.ready(function (session) {
@@ -699,7 +794,7 @@
       players = teams.filter(function (t) { return !t.teacher; }).slice(0, 4);
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id) }; }); } });
       var saved = session.resume;
-      if (saved && saved.v === 1 && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
+      if (saved && saved.v === 2 && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; buildPoolKeep();
       } else { S = null; fresh(QZ.unit ? 'unit' : ''); S.level = QZ.level; }
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.aim = null;
