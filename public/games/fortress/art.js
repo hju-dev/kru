@@ -54,18 +54,24 @@
     trophy: function () {
       return svg('<path d="M34 16h52v30c0 18-12 30-26 30S34 64 34 46z" fill="#f4c542" stroke="#b07a00" stroke-width="4"/><path d="M34 24H16c0 18 8 28 20 30M86 24h18c0 18-8 28-20 30" stroke="#b07a00" stroke-width="5" fill="none"/><rect x="52" y="76" width="16" height="16" fill="#d99a00"/><rect x="38" y="92" width="44" height="12" rx="4" fill="#b07a00"/>');
     },
-    /** Job (15, slender, black hair, white short-sleeve shirt, khaki shorts, brown shoes) */
+    /** Job (15, tall and slender, black hair, white short-sleeve shirt, khaki shorts, brown shoes) */
     job: function () {
-      return svg('<ellipse cx="60" cy="112" rx="26" ry="5" fill="#000" opacity="0.18"/>' +
-        '<rect x="44" y="84" width="12" height="20" rx="3" fill="#e8b98a"/><rect x="64" y="84" width="12" height="20" rx="3" fill="#e8b98a"/>' +
-        '<path d="M40 84h20v-16H44zM60 84h20l-4-16H60z" fill="#c9b27c"/><rect x="40" y="68" width="40" height="18" rx="4" fill="#c9b27c"/>' +
-        '<ellipse cx="48" cy="106" rx="11" ry="5" fill="#6b3b1c"/><ellipse cx="72" cy="106" rx="11" ry="5" fill="#6b3b1c"/>' +
-        '<path d="M42 40h36l4 32H38z" fill="#fff" stroke="#d5d8e0" stroke-width="2"/><path d="M60 42v28" stroke="#d5d8e0" stroke-width="2"/><circle cx="60" cy="50" r="1.6" fill="#b9bdc9"/><circle cx="60" cy="58" r="1.6" fill="#b9bdc9"/><circle cx="60" cy="66" r="1.6" fill="#b9bdc9"/>' +
-        '<path d="M42 42L30 58l8 5 8-12z" fill="#fff" stroke="#d5d8e0" stroke-width="2"/><path d="M78 42l12 16-8 5-8-12z" fill="#fff" stroke="#d5d8e0" stroke-width="2"/>' +
-        '<rect x="26" y="56" width="10" height="16" rx="5" fill="#e8b98a" transform="rotate(8 31 64)"/><rect x="84" y="56" width="10" height="16" rx="5" fill="#e8b98a" transform="rotate(-8 89 64)"/>' +
-        '<rect x="54" y="32" width="12" height="10" rx="3" fill="#e8b98a"/><ellipse cx="60" cy="22" rx="17" ry="19" fill="#e8b98a"/>' +
-        '<path d="M42 20c0-14 10-20 20-20s18 6 18 18c-4-6-10-8-16-8-8 0-16 4-22 10z" fill="#111"/><path d="M42 20c-2 8 0 14 2 16-2-6 0-12 4-16z" fill="#111"/>' +
-        '<circle cx="53" cy="24" r="2.2" fill="#222"/><circle cx="67" cy="24" r="2.2" fill="#222"/><path d="M53 31q7 5 14 0" stroke="#7a3b2a" stroke-width="2" fill="none" stroke-linecap="round"/>');
+      return svg('<ellipse cx="60" cy="113" rx="20" ry="4" fill="#000" opacity="0.18"/>' +
+        // legs: thin
+        '<rect x="51" y="86" width="6" height="22" rx="3" fill="#e8b98a"/><rect x="63" y="86" width="6" height="22" rx="3" fill="#e8b98a"/>' +
+        '<ellipse cx="52" cy="109" rx="8" ry="3.6" fill="#6b3b1c"/><ellipse cx="68" cy="109" rx="8" ry="3.6" fill="#6b3b1c"/>' +
+        // khaki shorts: narrow
+        '<path d="M50.5 72h19l.8 16H60.6l-.6-5-.6 5H49.7z" fill="#c9b27c" stroke="#a8935a" stroke-width="1"/>' +
+        // slim torso and short sleeves
+        '<path d="M51.5 40h17l1.2 33H50.3z" fill="#fff" stroke="#d5d8e0" stroke-width="1.5"/><path d="M60 42v30" stroke="#d5d8e0" stroke-width="1.5"/>' +
+        '<circle cx="60" cy="50" r="1.2" fill="#b9bdc9"/><circle cx="60" cy="58" r="1.2" fill="#b9bdc9"/><circle cx="60" cy="66" r="1.2" fill="#b9bdc9"/>' +
+        '<path d="M51.5 41l-5.5 7 4 3.5 4-6z" fill="#fff" stroke="#d5d8e0" stroke-width="1.3"/><path d="M68.5 41l5.5 7-4 3.5-4-6z" fill="#fff" stroke="#d5d8e0" stroke-width="1.3"/>' +
+        // thin arms
+        '<rect x="43" y="48" width="4" height="23" rx="2" fill="#e8b98a" transform="rotate(5 45 48)"/><rect x="73" y="48" width="4" height="23" rx="2" fill="#e8b98a" transform="rotate(-5 75 48)"/>' +
+        // neck and a smaller head
+        '<rect x="56" y="33" width="8" height="9" rx="3" fill="#e8b98a"/><ellipse cx="60" cy="23" rx="12.5" ry="14.5" fill="#e8b98a"/>' +
+        '<path d="M47 22c-1-11 7-17 14-17s13 5 12 16c-3-5-7-7-12-7-6 0-10 3-14 8z" fill="#111"/><path d="M47.5 22c-1.5 6 0 10 1.5 12-1-5 0-9 3-12z" fill="#111"/>' +
+        '<circle cx="55" cy="26" r="1.7" fill="#222"/><circle cx="65" cy="26" r="1.7" fill="#222"/><path d="M55.5 32q4.5 3.5 9 0" stroke="#7a3b2a" stroke-width="1.6" fill="none" stroke-linecap="round"/>');
     },
   };
   window.FtArt = A;
