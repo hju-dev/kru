@@ -32,3 +32,25 @@
 }
 
 /* lesson packs: after the reveal only the right answer stays, and the read-aloud sentence shows big */
+
+/* Podium: three piles of books (Henry, Nov 23); taller pile = better place */
+.kp { background: linear-gradient(180deg, #2b1c10 0%, #4a2f1a 62%, #6b4524 62.5%, #3a2412 100%) !important; }
+.kp-lights { background: radial-gradient(ellipse at 50% 0%, rgb(255 214 130 / 0.35), transparent 60%) !important; animation: none !important; }
+.kp-title { color: #ffe9b3 !important; }
+.kp-step {
+  border-radius: 4px 4px 0 0 !important;
+  box-shadow: none !important;
+  align-items: center;
+  background:
+    repeating-linear-gradient(180deg,
+      #c0392b 0 15px, #4a1510 15px 18px,
+      #2f7dc1 18px 33px, #10304f 33px 36px,
+      #3fa066 36px 51px, #124a2a 51px 54px,
+      #e1a21a 54px 69px, #6b4800 69px 72px,
+      #7a4bb8 72px 87px, #2b1050 87px 90px) !important;
+}
+.p1 .kp-step { filter: saturate(1.15) brightness(1.05); }
+.p2 .kp-step { margin: 0 6px 0 0; }
+.p3 .kp-step { margin: 0 0 0 6px; }
+.kp-step span { padding: 0 12px; border-radius: 10px; background: rgb(20 10 4 / 0.8); color: #ffe9b3; }
+.kp-who { background: rgb(20 10 4 / 0.78); border-radius: 12px; padding: 3px 12px; }
