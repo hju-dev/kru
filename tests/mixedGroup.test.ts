@@ -102,7 +102,7 @@ describe('Mixed group (Christmas Race Board)', () => {
   })
 
   it('wires the screens: Home chooser, /mix route, setup ?mix=1 and played marks', () => {
-    const home = readFileSync('src/routes/Home.tsx', 'utf8')
+    const home = readFileSync('src/routes/ChooseClass.tsx', 'utf8')
     expect(home).toContain('Mixed group (pick from every class)')
     expect(readFileSync('src/App.tsx', 'utf8')).toContain("path: 'mix/:game'")
     const setup = readFileSync('src/routes/Setup.tsx', 'utf8')

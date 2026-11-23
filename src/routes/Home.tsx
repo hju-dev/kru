@@ -1,25 +1,30 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router'
-import { Sheet } from '../components/Sheet'
 import { SyncPill } from '../components/SyncPill'
 import { SectionIcon } from '../components/SectionIcon'
 import { findGame, gameTitle, librarySections, SECTIONS, type GameInfo, type SectionId } from '../lib/games'
 import { useLibrary } from '../store/library'
-import { quickSession, todayKey } from '../lib/session'
-import { storage } from '../lib/storage'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import './Home.css'
 
+/** What a game card does (Henry, Nov 23): tools open at once; every other game goes on to "Choose a class". */
+export function openGame(g: GameInfo, navigate: (to: string) => void) {
+  if (g.status !== 'ready') return
+  if (g.modes.length === 0) {
+    useLibrary.getState().played(g.slug)
+    navigate(`/tool/${g.slug}`)
+    return
+  }
+  navigate(`/class/${g.slug}`)
+}
+
 export function Home() {
-  const { data, lastClass, setLastClass, syncError, syncing, outbox } = useApp()
+  const { data, syncError, syncing, outbox } = useApp()
   const sessions = useSessions((s) => s.sessions)
   const navigate = useNavigate()
-  const [nudge, setNudge] = useState(false)
-  // a game that a mixed group can play (Christmas Race Board): ask "this class or a mixed group?"
-  const [whoFor, setWhoFor] = useState<GameInfo | null>(null)
+  const [showOpen, setShowOpen] = useState(false)
   const classes = (data?.classes ?? []).filter((c) => !c.archived)
-  const selected = classes.find((c) => c.name === lastClass) ?? null
 
   useEffect(() => void useSessions.getState().load(), [])
   useEffect(() => void useLibrary.getState().load(), [])
@@ -34,54 +39,11 @@ export function Home() {
     .filter((s) => s.status === 'playing' || s.status === 'review')
     .sort((a, b) => b.updatedAt - a.updatedAt)
 
-  function pickGame(g: GameInfo) {
-    if (g.status !== 'ready') return
-    // tools (no teams, no results) open straight away, no class needed
-    if (g.modes.length === 0) {
-      useLibrary.getState().played(g.slug)
-      return navigate(`/tool/${g.slug}`)
-    }
-    if (g.mixed) return setWhoFor(g)
-    if (!selected) {
-      setNudge(true)
-      setTimeout(() => setNudge(false), 1500)
-      return
-    }
-    useLibrary.getState().played(g.slug)
-    if (g.classTool) {
-      // already open for this class? go back to it (no pile of "game in progress" banners)
-      const open = Object.values(sessions).find((s) => s.status === 'playing' && s.game === g.slug && s.class === selected.name)
-      if (open) return navigate(`/play/${open.id}`)
-      // Name Picker / Class Order: no team setup; today's absent students (from team setup) are left out
-      const roster = data?.rosters[selected.name] ?? []
-      void storage.getAbsent(selected.name, todayKey()).then((absent = []) => {
-        const s = quickSession(selected, g.slug, roster, absent)
-        useSessions.getState().put(s)
-        navigate(`/play/${s.id}`)
-      })
-      return
-    }
-    navigate(`/setup/${g.slug}`)
-  }
-
-  function playMixed(g: GameInfo) {
-    setWhoFor(null)
-    useLibrary.getState().played(g.slug)
-    // an unfinished mixed setup goes straight back to its teams; otherwise pick the students first
-    const open = Object.values(sessions).some((s) => s.status === 'setup' && s.game === g.slug && !!s.mix)
-    navigate(open ? `/setup/${g.slug}?mix=1` : `/mix/${g.slug}`)
-  }
-
-  function playClass(g: GameInfo) {
-    setWhoFor(null)
-    useLibrary.getState().played(g.slug)
-    navigate(`/setup/${g.slug}`)
-  }
-
-  /** ? on a card: try the game (How to play slides, then practice with made-up teams) before setting up teams */
-  function tryGame(g: GameInfo) {
-    navigate(`/preview/${g.slug}${selected?.level ? `?level=${selected.level}` : ''}`)
-  }
+  const cats: { id: SectionId | 'favorites' | 'recent'; title: string; color: string; count: number }[] = [
+    ...librarySections().map((s) => ({ id: s.id as SectionId, title: s.title, color: s.color, count: s.games.length })),
+    ...(favGames.length ? [{ id: 'favorites' as const, title: 'Favorites', color: 'var(--gold)', count: favGames.length }] : []),
+    ...(recentGames.length ? [{ id: 'recent' as const, title: 'Recently played', color: 'var(--muted)', count: recentGames.length }] : []),
+  ]
 
   return (
     <main className="screen home">
@@ -98,14 +60,25 @@ export function Home() {
         </div>
       </header>
 
-      {open.map((s) => (
-        <Link key={s.id} className="resume" to={s.status === 'review' ? `/results/${s.id}` : `/play/${s.id}`}>
-          <span>
-            {s.status === 'review' ? 'Scores to review' : 'Game in progress'}: <b>{gameTitle(s.game)}</b> · {s.class}
-          </span>
-          <span className="resume-go">{s.status === 'review' ? 'Review ▶' : 'Continue ▶'}</span>
-        </Link>
-      ))}
+      {open.length > 0 && (
+        <section className="inprogress" aria-label="Games in progress">
+          <button className="inprogress-btn" aria-expanded={showOpen} onClick={() => setShowOpen((v) => !v)}>
+            <span>
+              Games in progress <b>({open.length})</b>
+            </span>
+            <span aria-hidden="true">{showOpen ? '▲' : '▼'}</span>
+          </button>
+          {showOpen &&
+            open.map((s) => (
+              <Link key={s.id} className="resume" to={s.status === 'review' ? `/results/${s.id}` : `/play/${s.id}`}>
+                <span>
+                  {s.status === 'review' ? 'Scores to review' : 'In progress'}: <b>{gameTitle(s.game)}</b> · {s.class}
+                </span>
+                <span className="resume-go">{s.status === 'review' ? 'Review ▶' : 'Continue ▶'}</span>
+              </Link>
+            ))}
+        </section>
+      )}
 
       {!data && (
         <div className="card">
@@ -127,74 +100,22 @@ export function Home() {
         </div>
       )}
 
-      {classes.length > 0 && (
-        <section aria-label="Choose class" className={nudge ? 'nudge' : ''}>
-          <div className="class-grid" role="list">
-            {classes.map((c) => (
-              <button
-                key={c.name}
-                role="listitem"
-                className={`class-btn${c.name === lastClass ? ' selected' : ''}`}
-                aria-pressed={c.name === lastClass}
-                onClick={() => setLastClass(c.name)}
-              >
-                <span className="class-name">{c.name}</span>
-                <span className="class-count">{(data?.rosters[c.name] ?? []).filter((s) => s.active).length}</span>
-              </button>
-            ))}
-          </div>
-          {nudge && <p className="nudge-text">Choose a class first.</p>}
-        </section>
-      )}
-
-      {classes.length > 0 && favGames.length > 0 && (
-        <GameRow id="favorites" title="Favorites" color="var(--gold)" games={favGames} favorites={favorites} onPick={pickGame} onTry={tryGame} />
-      )}
-      {classes.length > 0 && recentGames.length > 0 && (
-        <GameRow id="recent" title="Recently played" color="var(--muted)" games={recentGames} favorites={favorites} onPick={pickGame} onTry={tryGame} />
-      )}
-      {classes.length > 0 &&
-        librarySections().map((sec) => (
-          <GameRow key={sec.id} id={sec.id} title={sec.title} color={sec.color} games={sec.games} favorites={favorites} onPick={pickGame} onTry={tryGame} />
+      <nav className="cat-grid" aria-label="Game types">
+        {cats.map((c) => (
+          <button key={c.id} className="cat-btn" style={{ '--sec': c.color } as React.CSSProperties} onClick={() => navigate(`/library/${c.id}`)}>
+            <span className="cat-ico">
+              <SectionIcon id={c.id} />
+            </span>
+            <span className="cat-title">{c.title}</span>
+            <span className="cat-count">{c.count} {c.count === 1 ? 'game' : 'games'}</span>
+          </button>
         ))}
-      {whoFor && (
-        <Sheet title={`Who is playing ${whoFor.title}?`} onClose={() => setWhoFor(null)}>
-          <div className="who-for">
-            <button className="btn primary" onClick={() => playMixed(whoFor)}>
-              🎄 Mixed group (pick from every class)
-            </button>
-            {selected ? (
-              <button className="btn" onClick={() => playClass(whoFor)}>
-                Just {selected.name}
-              </button>
-            ) : (
-              <p className="muted">To play with one class, close this and choose the class first.</p>
-            )}
-          </div>
-        </Sheet>
-      )}
+      </nav>
     </main>
   )
 }
 
-function GameRow(props: { id: SectionId | 'favorites' | 'recent'; title: string; color: string; games: GameInfo[]; favorites: string[]; onPick: (g: GameInfo) => void; onTry: (g: GameInfo) => void }) {
-  const { id, title, color, games, favorites, onPick, onTry } = props
-  return (
-    <section aria-label={title} className={`library-section sec-${id}`}>
-      <h2 className="section-head" style={{ '--sec': color } as React.CSSProperties}>
-        <SectionIcon id={id} />
-        {title}
-      </h2>
-      <div className="library">
-        {games.map((g) => (
-          <GameCard key={g.slug} game={g} fav={favorites.includes(g.slug)} onPick={onPick} onTry={onTry} />
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function GameCard({ game: g, fav, onPick, onTry }: { game: GameInfo; fav: boolean; onPick: (g: GameInfo) => void; onTry: (g: GameInfo) => void }) {
+export function GameCard({ game: g, fav, onPick, onTry }: { game: GameInfo; fav: boolean; onPick: (g: GameInfo) => void; onTry: (g: GameInfo) => void }) {
   return (
     <div className="game-card-wrap" style={{ '--sec': SECTIONS.find((x) => x.id === g.section)?.color } as React.CSSProperties}>
       <button className={`game-card${g.status === 'ready' ? '' : ' soon'}`} onClick={() => onPick(g)} disabled={g.status !== 'ready'}>

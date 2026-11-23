@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router'
 import { Sheet } from '../components/Sheet'
 import { ApiError } from '../lib/api'
@@ -26,11 +26,8 @@ import { useChipDrag } from '../lib/useChipDrag'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
 import type { Level, Student, TeamSet } from '../types'
-import { unitsFor } from '../lib/units'
 import { markPlayed, MIXED_CLASS, mixRoster, shortClass } from '../lib/mix'
 import './Setup.css'
-
-const LEVELS: Level[] = ['M.1', 'M.2', 'M.3']
 
 export function Setup() {
   const { game: slug = '' } = useParams()
@@ -39,7 +36,11 @@ export function Setup() {
   const { data, lastClass } = useApp()
   const { sessions, loaded, put, patch } = useSessions()
   // ?mix=1: a mixed group picked from every class (/mix/<game>), not the class chosen on Home
-  const mixed = useSearchParams()[0].get('mix') === '1'
+  const [query] = useSearchParams()
+  const mixed = query.get('mix') === '1'
+  // the question sets chosen on the step before (/sets/<game>): ?level=M.2&unit=<id>
+  const levelQ = (query.get('level') as Level | null) ?? null
+  const unitQ = query.get('unit') || undefined
   const cls = mixed ? null : (data?.classes.find((c) => c.name === lastClass) ?? null)
 
   useEffect(() => void useSessions.getState().load(), [])
@@ -69,7 +70,8 @@ export function Setup() {
         status: 'setup',
         class: cls.name,
         game: game.slug,
-        level: cls.level ?? 'M.2',
+        level: levelQ ?? cls.level ?? 'M.2',
+        unit: unitQ,
         mode: game.startMode ?? (game.modes.includes('group') ? 'group' : 'solo'),
         size,
         bins: resizeBins([], game.fixedTeams ?? (game.twoTeams ? 2 : binCountFor(present, size))),
@@ -87,7 +89,15 @@ export function Setup() {
     return () => {
       cancelled = true
     }
-  }, [mixed, loaded, cls, game, session, roster, put])
+  }, [mixed, loaded, cls, game, session, roster, put, levelQ, unitQ])
+
+  // an unfinished setup that is picked up again after choosing question sets: use the new choice
+  const applied = useRef(false)
+  useEffect(() => {
+    if (applied.current || !session || mixed || !levelQ) return
+    applied.current = true
+    if (session.level !== levelQ || session.unit !== unitQ) patch(session.id, { level: levelQ, unit: unitQ })
+  }, [session, mixed, levelQ, unitQ, patch])
 
   if (!game || game.status !== 'ready') return <Problem text="That game isn’t available yet." />
   if (mixed) {
@@ -97,7 +107,7 @@ export function Setup() {
     if (!session || roster.length === 0) return <Navigate to={`/mix/${slug}`} replace />
     return <SetupBoard key={session.id} session={session} roster={roster} gameTitle={game.title} modes={game.modes} hasLevels={game.levels.length > 0} hasUnits={!!game.units} slug={slug} patch={patch} onStart={(id) => { setStarted(true); navigate(`/play/${id}`, { replace: true }) }} />
   }
-  if (!cls) return <Problem text="Choose a class on the home screen first." />
+  if (!cls) return <Navigate to={`/class/${slug}`} replace />
   if (roster.length === 0) return <Problem text={`${cls.name} has no active students yet. Add them in Dashboard → Rosters (or in the Rosters tab of your Sheet), then tap the sync button.`} />
   if (!session) return <main className="screen" />
   return <SetupBoard key={session.id} session={session} roster={roster} gameTitle={game.title} modes={game.modes} hasLevels={game.levels.length > 0} hasUnits={!!game.units} slug={slug} patch={patch} onStart={(id) => navigate(`/play/${id}`, { replace: true })} />
@@ -126,7 +136,7 @@ interface BoardProps {
   onStart: (id: string) => void
 }
 
-function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits, slug, patch, onStart }: BoardProps) {
+function SetupBoard({ session: s, roster, gameTitle, modes, slug, patch, onStart }: BoardProps) {
   const allSets = useApp((st) => st.data?.teamSets)
   const teamSets = allSets ?? []
   const [selected, setSelected] = useState<number[]>([])
@@ -263,8 +273,6 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
     )
   }
 
-  // units and lesson packs for this game, level and class
-  const units = hasUnits ? unitsFor(s.level, slug, s.class) : []
   return (
     <main className={`setup${selected.length ? ' placing' : ''}`}>
       <header className="setup-bar">
@@ -279,30 +287,6 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
           <Link className="btn small" to={`/mix/${slug}`}>
             Edit the group
           </Link>
-        )}
-        {hasLevels && (
-          <div className="seg" role="group" aria-label="Level">
-            {LEVELS.map((l) => (
-              <button key={l} aria-pressed={s.level === l} onClick={() => update({ level: l, unit: undefined })}>
-                {l}
-              </button>
-            ))}
-          </div>
-        )}
-        {units.length > 0 && (
-          <select
-            className="unit-pick"
-            aria-label="Content: built-in or a unit from your lessons"
-            value={s.unit ?? ''}
-            onChange={(e) => update({ unit: e.target.value || undefined })}
-          >
-            <option value="">Built-in content</option>
-            {units.map((u) => (
-              <option key={u.id} value={u.id}>
-                {u.title}
-              </option>
-            ))}
-          </select>
         )}
         {modes.length > 1 && (
           <div className="seg" role="group" aria-label="Mode">

@@ -248,3 +248,23 @@ body { background: linear-gradient(180deg, #2b3a55 0%, #3b4a3a 55%, #2a2018 100%
 .cart-empty { color: var(--muted); }
 .chip-c { display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; border-radius: 8px; background: color-mix(in srgb, var(--c) 45%, #000); font-weight: 700; }
 .chip-c i svg { width: 18px; height: 18px; display: block; }
+
+/* Aiming: the target team's buildings in a big menu in that team's color */
+.base.target { cursor: pointer; border-color: #ff8a1f; animation: ft-aim 0.9s ease-in-out infinite alternate; }
+.aim .aim-note { font-size: 14px; color: var(--muted); padding: 0 4px; }
+.aim-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.acard {
+  display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 5px; border-radius: 12px; text-align: center;
+  background: rgb(0 0 0 / 0.35); border: 3px solid color-mix(in srgb, var(--c) 70%, #000); color: var(--fg); min-height: 190px;
+}
+.acard:not(:disabled) { border-color: #ff8a1f; }
+.acard:not(:disabled):active { background: rgb(255 138 31 / 0.3); }
+.acard:disabled { opacity: 0.45; }
+.acard .si-ico svg { width: 46px; height: 46px; display: block; }
+.acard b { font: 800 18px var(--display); }
+.acard .hp { width: 100%; height: 10px; border-radius: 6px; background: rgb(0 0 0 / 0.5); overflow: hidden; }
+.acard .hp i { display: block; height: 100%; background: #5fd38d; }
+.acard .ahp { font: 700 13px var(--mono); }
+.acard small { font-size: 13px; line-height: 1.2; color: var(--muted); }
+.aim-go { grid-column: 1 / -1; min-height: 52px; font-size: 20px; }
+.aim-hint { grid-column: 1 / -1; text-align: center; font: 800 16px var(--display); color: #ff8a1f; }
