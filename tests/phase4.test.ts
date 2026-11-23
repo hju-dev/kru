@@ -414,14 +414,16 @@ describe('Think Tank Showdown (Henry, Nov 9)', () => {
   for (const level of ['M.1', 'M.2', 'M.3']) {
     it(`${level}: round 2 is rebuses, round 3 logic puzzles`, () => {
       const [, rebus, logic] = c[level].rounds as { name: string; qs: Q[] }[]
-      expect(rebus.name).toBe('Rebus Round')
-      expect(logic.name).toBe('Logic Puzzles')
+      expect(rebus.name).toBe('Rebus')
+      expect(logic.name).toBe('Puzzles')
       for (const q of rebus.qs) {
         expect(q.show?.length, q.q).toBeGreaterThan(0)
         for (const row of q.show!) expect(row === '[line]' || !/\[(?!big:|small:|up:|down:)/.test(row), row).toBe(true)
       }
       for (const q of logic.qs) {
-        expect(q.q.split('\n').filter((l) => l.startsWith('• ')).length, q.q).toBeGreaterThanOrEqual(2)
+        const clues = q.q.split('\n').filter((l) => l.startsWith('• ')).length
+        expect(clues, q.q).toBeGreaterThanOrEqual(3)
+        expect(clues, q.q).toBeLessThanOrEqual(5)
         expect(q.q.trim().endsWith('?'), q.q).toBe(true)
       }
     })
@@ -432,15 +434,35 @@ describe('Think Tank Showdown (Henry, Nov 9)', () => {
     expect(emoji.length).toBeGreaterThan(15)
     expect(all.length - emoji.length).toBeGreaterThan(15)
   })
-  it('red herrings only in M.3: trick questions and a useless clue in every logic puzzle', () => {
+  it('trick questions only in M.3 riddles; logic puzzles have no red herring clue (Henry, Nov 23)', () => {
     for (const level of ['M.1', 'M.2']) expect(JSON.stringify(c[level].rounds)).not.toContain('"herring"')
     const tricks = (c['M.3'].rounds[0].qs as Q[]).filter((q) => q.herring)
     expect(tricks.length).toBeGreaterThanOrEqual(10)
-    for (const q of c['M.3'].rounds[2].qs as Q[]) {
-      expect(q.herring, q.q).toBe(true)
-      expect(q.why, q.q).toMatch(/Red herring/)
+    for (const level of ['M.1', 'M.2', 'M.3']) for (const q of c[level].rounds[2].qs as Q[]) {
+      expect(q.herring, q.q).toBeUndefined()
+      expect(q.why, q.q).not.toMatch(/Red herring/)
     }
-    expect(html).toContain('id="herring"')
+  })
+  it('Nov 23 rules: no Reveal, doors between questions, answer key + secret bonus at the end of a round', () => {
+    expect(html).not.toContain('id="reveal"')
+    expect(html).toContain('id="doors"')
+    expect(html).toContain('id="keyList"')
+    expect(html).not.toContain('kru-bonus.js')
+    expect(js).toContain("time's up: the doors close")
+    expect(js).toContain('function advance(auto)')
+    expect(js).toContain('function revealBonus()')
+    expect(js).toContain('PAUSE_ICON')
+    expect(js).not.toContain('KruBonus')
+  })
+  it('timers per round (Riddles 30, Rebus 30, Puzzles 120, Wager 60) and short round names', () => {
+    for (const level of ['M.1', 'M.2', 'M.3']) {
+      const rs = c[level].rounds as { short: string; secs: number; rule: string }[]
+      expect(rs.map((r) => r.short)).toEqual(['Riddles', 'Rebus', 'Puzzles', 'Wager'])
+      expect(rs.map((r) => r.secs)).toEqual([30, 30, 120, 60])
+      for (const r of rs) expect(r.rule).not.toMatch(/second|1 point|hold it up/i)
+    }
+    expect(c.bonus.before).toBeUndefined()
+    expect(c.bonus.secret.length).toBeGreaterThanOrEqual(3)
   })
   it('Final Wager: any points / ALL IN, bets above the score, mark every team, then add up', () => {
     expect(js).toContain('function maxBet(id) { return Math.max(0, pts(id)); }')

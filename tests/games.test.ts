@@ -102,7 +102,7 @@ describe('library sections', () => {
 describe('bonus cards', () => {
   const withBonus = [
     'board-race',
-    'tag-team-debate', 'think-tank-showdown', 'word-rush',
+    'tag-team-debate', 'word-rush',
   ]
   type Card = { id: string; name: string; text: string; points?: number }
   for (const slug of withBonus) {

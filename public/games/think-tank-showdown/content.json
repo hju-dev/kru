@@ -1,13 +1,13 @@
 {
- "about": "Think Tank Showdown question pools per level. Rounds: Riddle Rush (answer), Rebus Round (rebus: show = rows; tokens [big:X] [small:X] [up:X] [down:X], row [line]), Logic Puzzles (logic: checked by a solver, exactly one answer; M.3 puzzles have one red herring clue), Final Wager (wager: bet any points, ALL IN). M.3 Riddle Rush includes trick questions (herring: true). Each round has a pool (qs); every new game draws \"play\" main and \"spares\" spare questions at random. todo = something for Henry to check.",
+ "about": "Think Tank Showdown question pools per level (Nov 23 rules: teams fill in a paper score card; questions move on by themselves when the time is up; Henry checks the cards against the answer key at the end of each round). Rounds: Riddles (answer), Rebus (rebus: show = rows; tokens [big:X] [small:X] [up:X] [down:X], row [line]), Puzzles (logic: checked by a solver, exactly one answer, 3-5 good clues), Wager (wager: bet any points, ALL IN). M.3 Riddles include trick questions (herring: true). Each round has a pool (qs); every new game draws \"play\" main and \"spares\" spare questions at random. \"short\" = the short button name; \"secs\" = the default time per question. todo = something for Henry to check.",
  "M.1": {
   "rounds": [
    {
-    "name": "Riddle Rush",
+    "name": "Riddles",
     "tag": "Round 1",
-    "secs": 45,
+    "secs": 30,
     "kind": "answer",
-    "rule": "45 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point",
+    "rule": "Solve the riddle.",
     "qs": [
      {
       "q": "What has a face and two hands, but no arms or legs?",
@@ -111,16 +111,17 @@
      }
     ],
     "play": 4,
-    "spares": 2
+    "spares": 2,
+    "short": "Riddles"
    },
    {
-    "name": "Rebus Round",
+    "name": "Rebus",
     "tag": "Round 2",
     "secs": 30,
     "kind": "rebus",
     "play": 4,
     "spares": 2,
-    "rule": "30 seconds. What word or phrase is hiding in the picture? Write it, hold it up · 1 point",
+    "rule": "What word or phrase is hiding in the picture?",
     "qs": [
      {
       "q": "🐝 + 4",
@@ -282,65 +283,67 @@
       "a": "Raincoat",
       "why": "rain + coat"
      }
-    ]
+    ],
+    "short": "Rebus"
    },
    {
-    "name": "Logic Puzzles",
+    "name": "Puzzles",
     "tag": "Round 3",
-    "secs": 60,
+    "secs": 120,
     "kind": "logic",
     "play": 2,
     "spares": 1,
-    "rule": "60 with your team. Read every clue. Write ONE answer · Right = 2 points",
+    "rule": "Use every clue to find the answer.",
     "qs": [
      {
-      "q": "Ann, Ben and Cat each have one pet: a dog, a cat or a fish.\n• Ann's pet lives in water.\n• Ben does not have a dog.\nWho has the dog?",
+      "q": "Ann, Ben and Cat each have one pet: a dog, a cat or a fish.\n• Ann's pet lives in water.\n• Ben does not have a dog.\n• Ann does not have the cat.\nWho has the dog?",
       "a": "Cat",
       "why": "Ann has the fish. Ben has no dog, so Ben has the cat and Cat has the dog."
      },
      {
-      "q": "Tom, Mia and Joe each like one color: red, blue or green.\n• Tom likes the color of the sky.\n• Mia does not like green.\nWhat color does Joe like?",
+      "q": "Tom, Mia and Joe each like one color: red, blue or green.\n• Tom likes the color of the sky.\n• Mia does not like green.\n• Joe does not like blue.\nWhat color does Joe like?",
       "a": "Green",
       "why": "Tom likes blue. Mia doesn't like green, so Mia likes red and Joe likes green."
      },
      {
-      "q": "Sam, Lily and Max each play one sport: soccer, swimming or tennis.\n• Lily's sport is in the water.\n• Max does not play soccer.\nWhat does Sam play?",
+      "q": "Sam, Lily and Max each play one sport: soccer, swimming or tennis.\n• Lily's sport is in the water.\n• Max does not play soccer.\n• Sam does not play tennis.\nWhat does Sam play?",
       "a": "Soccer",
       "why": "Lily swims. Max doesn't play soccer, so Max plays tennis and Sam plays soccer."
      },
      {
-      "q": "Nok, Ploy and Bank each eat one fruit: a mango, a banana or an apple.\n• Nok's fruit is long and yellow.\n• Bank does not eat the apple.\nWho eats the apple?",
+      "q": "Nok, Ploy and Bank each eat one fruit: a mango, a banana or an apple.\n• Nok's fruit is long and yellow.\n• Bank does not eat the apple.\n• Ploy does not eat the mango.\nWho eats the apple?",
       "a": "Ploy",
       "why": "Nok has the banana. Bank has no apple, so Bank has the mango and Ploy has the apple."
      },
      {
-      "q": "Amy, Ben and Kim each drink one thing: milk, juice or water.\n• Amy's drink is white.\n• Kim does not drink water.\nWhat does Ben drink?",
+      "q": "Amy, Ben and Kim each drink one thing: milk, juice or water.\n• Amy's drink is white.\n• Kim does not drink water.\n• Ben does not drink milk.\nWhat does Ben drink?",
       "a": "Water",
       "why": "Amy drinks milk. Kim doesn't drink water, so Kim drinks juice and Ben drinks water."
      },
      {
-      "q": "Leo, Ava and Zac go to school by bike, by bus or by car.\n• Leo goes with lots of other students.\n• Ava's way to school has two wheels.\nHow does Zac go to school?",
+      "q": "Leo, Ava and Zac go to school by bike, by bus or by car.\n• Leo goes with lots of other students.\n• Ava's way to school has two wheels.\n• Zac does not go by bus.\nHow does Zac go to school?",
       "a": "By car",
       "why": "Leo takes the bus and Ava rides a bike, so Zac goes by car."
      },
      {
-      "q": "Dan, Eve and Fay live on floors 1, 2 and 3 of the same building.\n• Dan lives on the top floor.\n• Eve lives above Fay.\nWho lives on floor 1?",
+      "q": "Dan, Eve and Fay live on floors 1, 2 and 3 of the same building.\n• Dan lives on the top floor.\n• Eve lives above Fay.\n• Fay does not live on floor 3.\nWho lives on floor 1?",
       "a": "Fay",
       "why": "Dan is on floor 3. Eve is above Fay, so Eve is on 2 and Fay is on 1."
      },
      {
-      "q": "Gus, Hana and Ivy are 10, 11 and 12 years old.\n• Gus is older than Hana.\n• Ivy is older than Gus.\nWho is the youngest?",
+      "q": "Gus, Hana and Ivy are 10, 11 and 12 years old.\n• Gus is older than Hana.\n• Ivy is older than Gus.\n• Hana is not 12 years old.\nWho is the youngest?",
       "a": "Hana",
       "why": "Ivy is older than Gus, and Gus is older than Hana. So Hana is the youngest (10)."
      }
-    ]
+    ],
+    "short": "Puzzles"
    },
    {
-    "name": "Final Wager",
+    "name": "Wager",
     "tag": "Round 4",
     "secs": 60,
     "kind": "wager",
-    "rule": "BEFORE you see it: bet any of your points (ALL IN = all of them). Right = win your bet · Wrong = lose it",
+    "rule": "Bet any of your points before you see the question.",
     "qs": [
      {
       "q": "A farmer has 5 cows. All but 2 run away. How many cows are left?",
@@ -385,18 +388,19 @@
      }
     ],
     "play": 1,
-    "spares": 1
+    "spares": 1,
+    "short": "Wager"
    }
   ]
  },
  "M.2": {
   "rounds": [
    {
-    "name": "Riddle Rush",
+    "name": "Riddles",
     "tag": "Round 1",
-    "secs": 40,
+    "secs": 30,
     "kind": "answer",
-    "rule": "40 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point",
+    "rule": "Solve the riddle.",
     "qs": [
      {
       "q": "What can travel around the world while staying in a corner?",
@@ -500,16 +504,17 @@
      }
     ],
     "play": 4,
-    "spares": 2
+    "spares": 2,
+    "short": "Riddles"
    },
    {
-    "name": "Rebus Round",
+    "name": "Rebus",
     "tag": "Round 2",
     "secs": 30,
     "kind": "rebus",
     "play": 4,
     "spares": 2,
-    "rule": "30 seconds. What word or phrase is hiding in the picture? Write it, hold it up · 1 point",
+    "rule": "What word or phrase is hiding in the picture?",
     "qs": [
      {
       "q": "☀️ + 👓",
@@ -693,16 +698,17 @@
       "a": "Big brother",
       "why": "a big BROTHER"
      }
-    ]
+    ],
+    "short": "Rebus"
    },
    {
-    "name": "Logic Puzzles",
+    "name": "Puzzles",
     "tag": "Round 3",
     "secs": 120,
     "kind": "logic",
     "play": 2,
     "spares": 1,
-    "rule": "2 minutes with your team. Read every clue. Write ONE answer · Right = 2 points",
+    "rule": "Use every clue to find the answer.",
     "qs": [
      {
       "q": "Alex, Beth and Chris each have a favorite pet (cat, dog or bird) and a favorite fruit (apple, banana or cherry).\n• Alex does not like apples and does not own a cat.\n• The person who likes apples owns a bird.\n• Beth owns a cat and loves bananas.\n• Chris does not like cherries.\nWho owns the dog, and what is their favorite fruit?",
@@ -744,14 +750,15 @@
       "a": "Wan",
       "why": "Xia lives in the white house with the turtle. Vic has the hamster, so Wan has the rabbit."
      }
-    ]
+    ],
+    "short": "Puzzles"
    },
    {
-    "name": "Final Wager",
+    "name": "Wager",
     "tag": "Round 4",
     "secs": 60,
     "kind": "wager",
-    "rule": "BEFORE you see it: bet any of your points (ALL IN = all of them). Right = win your bet · Wrong = lose it",
+    "rule": "Bet any of your points before you see the question.",
     "qs": [
      {
       "q": "You are running a race and you pass the person in second place. What place are you in now?",
@@ -795,18 +802,19 @@
      }
     ],
     "play": 1,
-    "spares": 1
+    "spares": 1,
+    "short": "Wager"
    }
   ]
  },
  "M.3": {
   "rounds": [
    {
-    "name": "Riddle Rush",
+    "name": "Riddles",
     "tag": "Round 1",
-    "secs": 40,
+    "secs": 30,
     "kind": "answer",
-    "rule": "40 seconds. Write ONE answer. Hold it up on \"Show me!\" · 1 point",
+    "rule": "Solve the riddle.",
     "qs": [
      {
       "q": "What has keys but can't open locks?",
@@ -976,16 +984,17 @@
      }
     ],
     "play": 4,
-    "spares": 2
+    "spares": 2,
+    "short": "Riddles"
    },
    {
-    "name": "Rebus Round",
+    "name": "Rebus",
     "tag": "Round 2",
     "secs": 30,
     "kind": "rebus",
     "play": 4,
     "spares": 2,
-    "rule": "30 seconds. What word or phrase is hiding in the picture? Write it, hold it up · 1 point",
+    "rule": "What word or phrase is hiding in the picture?",
     "qs": [
      {
       "q": "🐝 + 🍃",
@@ -1163,73 +1172,67 @@
       "a": "Just between you and me",
       "why": "JUST is between YOU and ME"
      }
-    ]
+    ],
+    "short": "Rebus"
    },
    {
-    "name": "Logic Puzzles",
+    "name": "Puzzles",
     "tag": "Round 3",
     "secs": 120,
     "kind": "logic",
     "play": 2,
     "spares": 1,
-    "rule": "2 minutes with your team. Read every clue. Write ONE answer · Right = 2 points · Careful: one clue is a red herring!",
+    "rule": "Use every clue to find the answer.",
     "qs": [
      {
-      "q": "Ana, Bo, Cy and Di sit in seats 1-4. They drink coffee, tea, juice or water.\n• Ana sits in seat 1.\n• The tea drinker sits next to Ana.\n• Di's favorite color is green.\n• Cy drinks water and sits in seat 4.\n• Bo does not drink tea.\n• The juice drinker sits next to the water drinker.\nWhat does Ana drink, and who sits in seat 2?",
+      "q": "Ana, Bo, Cy and Di sit in seats 1-4. They drink coffee, tea, juice or water.\n• Ana sits in seat 1.\n• The tea drinker sits next to Ana.\n• Cy drinks water and sits in seat 4.\n• Bo does not drink tea.\n• The juice drinker sits next to the water drinker.\nWhat does Ana drink, and who sits in seat 2?",
       "a": "Coffee, Di",
-      "why": "Tea is in seat 2, and Bo doesn't drink tea, so Di is in seat 2 and Bo in seat 3. Juice is next to water (seat 4), so Bo has juice and Ana has coffee. Red herring: Di's favorite color.",
-      "herring": true
+      "why": "Tea is in seat 2, and Bo doesn't drink tea, so Di is in seat 2 and Bo in seat 3. Juice is next to water (seat 4), so Bo has juice and Ana has coffee."
      },
      {
-      "q": "Ben, Cara and Dev are in the drama, robotics or music club. The clubs meet on Monday, Tuesday or Wednesday.\n• The robotics club meets the day after the drama club.\n• Cara is in the music club.\n• The music club has the most members.\n• Dev's club meets on Monday.\n• Ben is not in the drama club.\nOn which day does Cara's club meet?",
+      "q": "Ben, Cara and Dev are in the drama, robotics or music club. The clubs meet on Monday, Tuesday or Wednesday.\n• The robotics club meets the day after the drama club.\n• Cara is in the music club.\n• Dev's club meets on Monday.\n• Ben is not in the drama club.\nOn which day does Cara's club meet?",
       "a": "Wednesday",
-      "why": "Ben is in robotics, so Dev is in drama (Monday). Robotics is the next day (Tuesday), so music (Cara) is Wednesday. Red herring: the number of members.",
-      "herring": true
+      "why": "Ben is in robotics, so Dev is in drama (Monday). Robotics is the next day (Tuesday), so music (Cara) is Wednesday."
      },
      {
-      "q": "Eli, Fah, Gus and Hong live on floors 1-4. Pets: a cat, dog, bird and fish.\n• The dog lives on the floor right above the cat.\n• Fah lives on floor 1 and has a fish.\n• The building has a lift.\n• Gus lives on the top floor.\n• Eli has the bird.\n• Hong does not live on floor 2.\nWho has the dog, and on which floor?",
+      "q": "Eli, Fah, Gus and Hong live on floors 1-4. Pets: a cat, dog, bird and fish.\n• The dog lives on the floor right above the cat.\n• Fah lives on floor 1 and has a fish.\n• Gus lives on the top floor.\n• Eli has the bird.\n• Hong does not live on floor 2.\nWho has the dog, and on which floor?",
       "a": "Gus, floor 4",
-      "why": "Fah 1, Gus 4, Hong 3, Eli 2 (bird). The dog is right above the cat, so Hong (3) has the cat and Gus (4) has the dog. Red herring: the lift.",
-      "herring": true
+      "why": "Fah 1, Gus 4, Hong 3, Eli 2 (bird). The dog is right above the cat, so Hong (3) has the cat and Gus (4) has the dog."
      },
      {
-      "q": "Ivy, Jon and Kit ran a race and finished 1st, 2nd and 3rd. Their shirts were red, green and yellow.\n• The runner in red finished just before the runner in yellow.\n• Jon finished last.\n• It was raining during the race.\n• Kit's shirt was not red.\n• Ivy did not win.\nWhat color was the winner wearing?",
+      "q": "Ivy, Jon and Kit ran a race and finished 1st, 2nd and 3rd. Their shirts were red, green and yellow.\n• The runner in red finished just before the runner in yellow.\n• Jon finished last.\n• Kit's shirt was not red.\n• Ivy did not win.\nWhat color was the winner wearing?",
       "a": "Green",
-      "why": "Jon was 3rd and Ivy wasn't 1st, so Kit won and Ivy was 2nd. Red is just before yellow, and Kit isn't red: Ivy red, Jon yellow, Kit green. Red herring: the rain.",
-      "herring": true
+      "why": "Jon was 3rd and Ivy wasn't 1st, so Kit won and Ivy was 2nd. Red is just before yellow, and Kit isn't red: Ivy red, Jon yellow, Kit green."
      },
      {
-      "q": "Lek, May and Nut came at 6, 7 or 8 p.m. with cake, fruit or drinks.\n• Whoever brought drinks came first.\n• May arrived before Nut.\n• The party was on a Saturday.\n• Lek brought cake.\n• Nut did not bring drinks.\n• Lek arrived last.\nWhen did Nut arrive, and what did Nut bring?",
+      "q": "Lek, May and Nut came at 6, 7 or 8 p.m. with cake, fruit or drinks.\n• Whoever brought drinks came first.\n• May arrived before Nut.\n• Lek brought cake.\n• Nut did not bring drinks.\n• Lek arrived last.\nWhen did Nut arrive, and what did Nut bring?",
       "a": "7 p.m., fruit",
-      "why": "Lek brought cake and Nut didn't bring drinks, so May brought drinks and came first (6). Lek came last (8), so Nut came at 7 with fruit. Red herring: Saturday.",
-      "herring": true
+      "why": "Lek brought cake and Nut didn't bring drinks, so May brought drinks and came first (6). Lek came last (8), so Nut came at 7 with fruit."
      },
      {
-      "q": "Opal, Pete, Rin and Sai are 13, 14, 15 and 16. Each plays the piano, guitar, drums or violin.\n• The drummer is the oldest.\n• Rin is 13 and does not play the piano.\n• Two of them have birthdays in May.\n• Pete is older than Opal but younger than Sai.\n• Opal plays the violin.\nWho plays the piano, and how old are they?",
+      "q": "Opal, Pete, Rin and Sai are 13, 14, 15 and 16. Each plays the piano, guitar, drums or violin.\n• The drummer is the oldest.\n• Rin is 13 and does not play the piano.\n• Pete is older than Opal but younger than Sai.\n• Opal plays the violin.\nWho plays the piano, and how old are they?",
       "a": "Pete, 15",
-      "why": "Rin is 13, so Opal 14, Pete 15, Sai 16 (drums). Opal plays violin, Rin isn't piano (guitar), so Pete plays piano. Red herring: the birthdays.",
-      "herring": true
+      "why": "Rin is 13, so Opal 14, Pete 15, Sai 16 (drums). Opal plays violin, Rin isn't piano (guitar), so Pete plays piano."
      },
      {
-      "q": "Tan, Ung and Vee ordered pizza, pad thai or a burger. Each paid by cash, card or phone.\n• The burger was paid by card.\n• Tan paid with his phone.\n• The restaurant was very busy.\n• Ung did not order the burger.\n• The pizza was not paid with a phone.\nWhat did Tan order?",
+      "q": "Tan, Ung and Vee ordered pizza, pad thai or a burger. Each paid by cash, card or phone.\n• The burger was paid by card.\n• Tan paid with his phone.\n• Ung did not order the burger.\n• The pizza was not paid with a phone.\nWhat did Tan order?",
       "a": "Pad thai",
-      "why": "Tan paid by phone, so no burger (card) and no pizza. Tan ordered pad thai. Red herring: the busy restaurant.",
-      "herring": true
+      "why": "Tan paid by phone, so no burger (card) and no pizza. Tan ordered pad thai."
      },
      {
-      "q": "Wit, Xen and Yui each have a poster of Mars, Saturn or Jupiter on a blue, gray or white wall.\n• Yui's poster is Saturn.\n• The Mars poster is on a white wall.\n• Saturn has rings.\n• Wit's wall is gray.\n• Xen's poster is not Jupiter.\nWhose wall is blue, and which planet is on it?",
+      "q": "Wit, Xen and Yui each have a poster of Mars, Saturn or Jupiter on a blue, gray or white wall.\n• Yui's poster is Saturn.\n• The Mars poster is on a white wall.\n• Wit's wall is gray.\n• Xen's poster is not Jupiter.\nWhose wall is blue, and which planet is on it?",
       "a": "Yui, Saturn",
-      "why": "Xen has Mars (white wall). Wit (gray) has Jupiter, so Yui has Saturn on the blue wall. Red herring: Saturn's rings.",
-      "herring": true
+      "why": "Xen has Mars (white wall). Wit (gray) has Jupiter, so Yui has Saturn on the blue wall."
      }
-    ]
+    ],
+    "short": "Puzzles"
    },
    {
-    "name": "Final Wager",
+    "name": "Wager",
     "tag": "Round 4",
     "secs": 60,
     "kind": "wager",
-    "rule": "BEFORE you see it: bet any of your points (ALL IN = all of them). Right = win your bet · Wrong = lose it",
+    "rule": "Bet any of your points before you see the question.",
     "qs": [
      {
       "q": "A girl has as many brothers as sisters. Each brother has only half as many brothers as sisters. How many brothers and sisters are in the family?",
@@ -1273,7 +1276,8 @@
      }
     ],
     "play": 1,
-    "spares": 1
+    "spares": 1,
+    "short": "Wager"
    }
   ],
   "intro": [
@@ -1393,28 +1397,51 @@
     "rows": [
      [
       "Round 1",
-      "Riddle Rush"
+      "Riddles"
      ],
      [
       "Round 2",
-      "Rebus Round"
+      "Rebus"
      ],
      [
       "Round 3",
-      "Logic Puzzles"
+      "Puzzles"
      ],
      [
       "Round 4",
-      "Final Wager"
+      "Wager"
      ]
     ]
    }
   },
   {
-   "title": "Riddle Rush",
+   "title": "Score cards",
+   "text": [
+    "Write your answers on your score card.",
+    "Your teacher checks the cards. A secret bonus may wait!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "1",
+      "your answer"
+     ],
+     [
+      "2",
+      "your answer"
+     ],
+     [
+      "3",
+      "your answer"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Riddles",
    "text": [
     "Solve the riddle. Write ONE answer.",
-    "Hold it up when your teacher says \"Show me!\""
+    "When the doors close, the next question comes!"
    ],
    "example": {
     "big": "What has to be broken before you can use it?",
@@ -1422,7 +1449,7 @@
    }
   },
   {
-   "title": "Rebus Round",
+   "title": "Rebus",
    "text": [
     "Words and pictures hide a word or phrase.",
     "Look at WHERE the words are, too!"
@@ -1441,10 +1468,10 @@
    }
   },
   {
-   "title": "Logic Puzzles",
+   "title": "Puzzles",
    "text": [
     "Read every clue with your team.",
-    "Find the ONE right answer. Right = 2 points."
+    "Find the ONE right answer."
    ],
    "example": {
     "rows": [
@@ -1464,7 +1491,7 @@
    }
   },
   {
-   "title": "Final Wager",
+   "title": "Wager",
    "text": [
     "Bet any of your points BEFORE you see the question.",
     "Go ALL IN? Right: win your bet. Wrong: lose it!"
@@ -1488,20 +1515,6 @@
   }
  ],
  "bonus": {
-  "before": [
-   {
-    "id": "fast",
-    "name": "Show me fast",
-    "text": "First correct team to show: +1 extra.",
-    "points": 1
-   },
-   {
-    "id": "sentence",
-    "name": "Full sentence",
-    "text": "Answer in a full sentence: +1.",
-    "points": 1
-   }
-  ],
   "secret": [
    {
     "id": "funny",
