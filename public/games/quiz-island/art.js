@@ -80,15 +80,22 @@
         '<path d="M60 12c-6 12-6 26 0 38M46 16c-6 10-6 22-2 32M74 16c6 10 6 22 2 32" stroke="#b3122a" stroke-width="3" fill="none" opacity="0.6"/>' +
         '<circle cx="46" cy="58" r="10" fill="#fff"/><circle cx="74" cy="58" r="10" fill="#fff"/><circle cx="48" cy="60" r="5" fill="#111"/><circle cx="72" cy="60" r="5" fill="#111"/>' +
         '<path d="M34 46l22 8M86 46l-22 8" stroke="#5a0a15" stroke-width="5" stroke-linecap="round"/>' +
-        '<path d="M48 72c8 6 16 6 24 0" stroke="#5a0a15" stroke-width="3" fill="#7a0f20"/><path d="M52 73l3 6 3-6M62 73l3 6 3-6" fill="#fff"/>' + waves);
+        '<path d="M48 72c8 6 16 6 24 0" stroke="#5a0a15" stroke-width="3" fill="#7a0f20"/><path d="M52 73l3 6 3-6M62 73l3 6 3-6" fill="#fff"/>');
     },
-    dragon: function () {
-      return svg('<path d="M82 60c14-6 22-2 30 6-8 2-10 6-8 12-8-4-14-4-24-2z" fill="#ff8a1f"/><path d="M84 66c8-3 14 0 18 4-4 1-6 4-5 7-4-2-8-2-13-1z" fill="#ffd34d"/>' +
-        '<path d="M38 28L30 8l16 12zM62 24l8-18 6 20z" fill="#f2e4c8" stroke="#8a7a58" stroke-width="2"/>' +
-        '<path d="M24 62c0-22 16-38 38-38s32 14 30 36c-1 14-10 24-26 24H44c-12 0-20-8-20-22z" fill="#3fbf7f" stroke="#1d6b3c" stroke-width="3"/>' +
-        '<g fill="#2fa56b"><circle cx="48" cy="34" r="4"/><circle cx="60" cy="30" r="4"/><circle cx="72" cy="34" r="4"/></g>' +
-        '<circle cx="56" cy="52" r="9" fill="#ffd34d" stroke="#1d6b3c" stroke-width="2"/><rect x="54.3" y="45" width="3.6" height="14" rx="1.8" fill="#111"/>' +
-        '<circle cx="86" cy="62" r="2.5" fill="#1d6b3c"/><path d="M44 80h38" stroke="#1d6b3c" stroke-width="3"/><path d="M50 80l3 7 3-7M62 80l3 7 3-7M74 80l3 7 3-7" fill="#fff"/>' + waves);
+    /** Hurricane: a big spinning storm with a lightning bolt */
+    hurricane: function () {
+      return svg('<circle cx="60" cy="60" r="50" fill="#5f7ea8"/><path d="M60 14a46 46 0 0 1 46 46" stroke="#e8f1fb" stroke-width="9" fill="none" stroke-linecap="round"/>' +
+        '<path d="M106 60a46 46 0 0 1-46 46" stroke="#cfe0f2" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.85"/><path d="M60 106A46 46 0 0 1 14 60" stroke="#e8f1fb" stroke-width="9" fill="none" stroke-linecap="round"/>' +
+        '<path d="M14 60A46 46 0 0 1 60 14" stroke="#cfe0f2" stroke-width="9" fill="none" stroke-linecap="round" opacity="0.85"/>' +
+        '<path d="M60 26a34 34 0 0 1 34 34M60 94a34 34 0 0 1-34-34" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>' +
+        '<circle cx="60" cy="60" r="12" fill="#2b3d5c"/><path d="M66 34L48 64h12l-6 24 22-34H62z" fill="#ffd34d" stroke="#c98a00" stroke-width="2.5" stroke-linejoin="round"/>');
+    },
+    /** Tsunami: a huge curling wave over a little island */
+    tsunami: function () {
+      return svg('<path d="M4 110V70C4 40 30 14 62 14c22 0 40 14 44 34-8-8-18-10-26-6 14 6 20 18 20 30v38z" fill="#2d8fd5" stroke="#145a94" stroke-width="3"/>' +
+        '<path d="M62 14c22 0 40 14 44 34-8-8-18-10-26-6-4-14-10-22-18-28z" fill="#8fd6ff"/><path d="M14 84c12-6 24-6 36 0s24 6 36 0 20-4 28 0" stroke="#bfe9ff" stroke-width="4" fill="none" stroke-linecap="round"/>' +
+        '<circle cx="84" cy="42" r="3" fill="#fff"/><circle cx="94" cy="54" r="2.4" fill="#fff"/><circle cx="74" cy="34" r="2" fill="#fff"/>' +
+        '<ellipse cx="34" cy="104" rx="26" ry="8" fill="#f0d58c"/><path d="M34 100v-16" stroke="#8a5a2b" stroke-width="3"/><path d="M34 84c-8-2-14 0-18 5 8-2 12-2 18-5zM34 84c6-4 12-4 18-2-6 0-12 1-18 2z" fill="#2fbf71"/>');
     },
     incorrect: function () {
       return svg('<circle cx="60" cy="56" r="44" fill="#e63946" stroke="#8f1525" stroke-width="5"/><path d="M40 36l40 40M80 36L40 76" stroke="#fff" stroke-width="12" stroke-linecap="round"/>' +
@@ -142,5 +149,5 @@
   };
   window.QIArt = A;
   // pictures for the How to play slides ("[[coin]]" etc.)
-  window.KruIntroIcons = { coin: A.coin(), chest: A.chest(), pirate: A.pirate(), boom: A.boom(), steal: A.steal(), double: A.double('#ffc94a'), fort: A.fort(), gem: A.gem(), volcano: A.volcano(), pirates: A.pirates(), kraken: A.kraken(), dragon: A.dragon() };
+  window.KruIntroIcons = { coin: A.coin(), chest: A.chest(), pirate: A.pirate(), boom: A.boom(), steal: A.steal(), double: A.double('#ffc94a'), fort: A.fort(), gem: A.gem(), volcano: A.volcano(), pirates: A.pirates(), kraken: A.kraken(), hurricane: A.hurricane(), tsunami: A.tsunami() };
 })();
