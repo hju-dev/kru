@@ -32,3 +32,22 @@
 }
 
 /* lesson packs: after the reveal only the right answer stays, and the read-aloud sentence shows big */
+
+/* Podium: bundles of pencils and pens, pointed tips on top (Henry, Nov 23) */
+.kp { background: linear-gradient(180deg, #fdf6dc 0%, #f3e6b8 100%) !important; }
+.kp-lights { background: repeating-linear-gradient(0deg, transparent 0 30px, rgb(80 120 200 / 0.18) 30px 31px) !important; animation: none !important; inset: 0 !important; }
+.kp-title { color: #26406e !important; text-shadow: none !important; }
+.kp-who { background: rgb(38 64 110 / 0.88); border-radius: 12px; padding: 3px 12px; color: #fff; }
+.p1 .kp-who .kp-name { color: #ffe27a !important; }
+.kp-step {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  align-items: center;
+  clip-path: polygon(0 14%, 12.5% 0, 25% 14%, 37.5% 0, 50% 14%, 62.5% 0, 75% 14%, 87.5% 0, 100% 14%, 100% 100%, 0 100%);
+}
+/* four pencils side by side: wood body stripes with thin gaps */
+.p1 .kp-step { background: repeating-linear-gradient(90deg, #ffd84a 0 21%, #b98400 21% 23%, #ffe98a 23% 25%) !important; }
+.p2 .kp-step { background: repeating-linear-gradient(90deg, #dfe4ee 0 21%, #7d8798 21% 23%, #f4f6fa 23% 25%) !important; }
+.p3 .kp-step { background: repeating-linear-gradient(90deg, #e08a4a 0 21%, #8a4a1c 21% 23%, #f0b27a 23% 25%) !important; }
+.kp-step span { padding: 0 12px; border-radius: 10px; background: rgb(38 64 110 / 0.88); color: #fff; margin-top: 18px; }
+.kp .ke-btn { color: #26406e; border-color: #26406e; background: rgb(255 255 255 / 0.7); }
