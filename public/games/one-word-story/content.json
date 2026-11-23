@@ -184,11 +184,34 @@
    "title": "Writers, go!",
    "text": [
     "One student from each team runs to the board.",
-    "You have 5 seconds to write ONE word!"
+    "Write ONE word before the time runs out!"
    ],
    "example": {
-    "big": "5",
-    "tag": "seconds"
+    "big": "1",
+    "tag": "word"
+   }
+  },
+  {
+   "title": "Word rules",
+   "text": [
+    "Every word has a rule, the same for all teams.",
+    "Check the screen before you write!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Word 1",
+      "start with the letter B"
+     ],
+     [
+      "Word 2",
+      "have exactly 5 letters"
+     ],
+     [
+      "Word 3",
+      "end with the letter E"
+     ]
+    ]
    }
   },
   {
@@ -201,27 +224,31 @@
     "rows": [
      [
       "Writer 1",
-      "dragon"
+      "big"
      ],
      [
       "Writer 2",
-      "ate"
+      "dragon"
      ],
      [
       "Writer 3",
-      "my"
+      "ate"
      ]
     ]
    }
   },
   {
-   "title": "Best story wins",
+   "title": "Points",
    "text": [
-    "Read both stories out loud.",
-    "The best story gets 3 points!"
+    "Each word that follows its rule: +1 point.",
+    "The best story gets 3 more points!"
    ],
    "example": {
     "rows": [
+     [
+      "Word follows its rule",
+      "+1"
+     ],
      [
       "Best story",
       "+3"

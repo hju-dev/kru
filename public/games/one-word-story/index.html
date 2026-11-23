@@ -22,10 +22,18 @@
       <section class="stage" id="stage" aria-live="polite">
         <div class="sub" id="label">Story opener</div>
         <div class="opener" id="opener">Loading…</div>
+        <div class="cond" id="cond" hidden></div>
         <div class="writers" id="writers"></div>
         <div class="judge" id="judge" hidden>
-          <div class="sub">Read both stories out loud. Which story is best?</div>
-          <div class="judge-btns" id="judgeBtns"></div>
+          <div class="judge-cols">
+            <div class="judge-left"><div class="sub">The rules (match them to each team's words)</div><ol class="conds" id="condList"></ol></div>
+            <div class="judge-side">
+              <div class="sub">+1 for each word that followed its rule</div>
+              <div class="cond-pts" id="condPts"></div>
+              <div class="sub">Best story (+3):</div>
+              <div class="judge-btns" id="judgeBtns"></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -44,10 +52,8 @@
       <div class="menu" role="dialog" aria-label="Settings">
         <div class="menu-label">Words in the story</div>
         <div class="menu-row" id="wordsRow"></div>
-        <div class="menu-label">Time to write one word</div>
-        <div class="menu-row" id="writeRow"></div>
-        <div class="menu-label">Get-ready time between words</div>
-        <div class="menu-row" id="gapRow"></div>
+        <div class="menu-trow"><span class="menu-label">Time to get to the board</span><div id="gapRow"></div></div>
+        <div class="menu-trow"><span class="menu-label">Time to write</span><div id="writeRow"></div></div>
         <div class="menu-row">
           <button class="btn" id="howTo">How to play</button>
           <button class="btn" id="resetStory">Start this story again</button>

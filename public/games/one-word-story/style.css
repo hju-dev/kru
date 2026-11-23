@@ -35,7 +35,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 6px;
   width: 100%;
 }
 .writers[hidden],
@@ -47,11 +47,11 @@
   font-size: 18px;
 }
 .writer {
-  flex: 1 1 180px;
+  flex: 1 1 104px;
   max-width: 320px;
   border: 3px solid var(--c, var(--gold));
   border-radius: 16px;
-  padding: 4px 10px 6px;
+  padding: 2px 6px 4px;
   background: color-mix(in srgb, var(--c, var(--gold)) 14%, var(--stage));
 }
 .writer .wt {
@@ -61,10 +61,12 @@
 }
 .writer b {
   display: block;
-  font: 800 34px/1.1 var(--display);
+  font: 800 30px/1.1 var(--display);
   overflow-wrap: anywhere;
 }
 .judge {
+  overflow-y: auto;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,3 +123,31 @@
   font-family: var(--mono);
   margin-left: 4px;
 }
+
+/* Nov 23: a condition for every word, and the review with numbered conditions */
+.cond {
+  font: 800 26px/1.2 var(--display);
+  color: var(--gold);
+  text-align: center;
+  padding: 6px 10px;
+  border: 2px dashed var(--gold);
+  border-radius: 14px;
+  margin: 4px 0;
+}
+.cond[hidden] { display: none; }
+.judge-cols { display: grid; grid-template-columns: 1fr; gap: 4px; align-items: start; width: 100%; }
+.judge-left { display: flex; flex-direction: column; }
+.conds { margin: 0; padding: 0 0 0 24px; list-style-position: inside; padding-left: 0; font-size: 17px; line-height: 1.3; columns: 4; column-gap: 10px; text-align: left; }
+.conds li { padding: 1px 0; }
+.judge-side { display: flex; flex-direction: column; gap: 4px; min-height: 0; }
+.judge-btns .team-win { min-width: 0; padding: 0 8px; flex: 0 0 auto; }
+.judge-btns .btn:not(.team-win) { flex: 1 1 auto; min-height: 44px; }
+.cond-pts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 12px; }
+.cp { display: flex; align-items: center; gap: 8px; }
+.cp .cpn { flex: 1; }
+.cp output { font: 800 24px var(--mono); min-width: 1.6ch; text-align: center; }
+.cp .btn { min-width: 40px; min-height: 44px; padding: 0; }
+.cp { gap: 3px; }
+.cp .cpn .kteam { transform: scale(0.9); }
+.cp { justify-content: center; }
+.cp .cpn { flex: none; }

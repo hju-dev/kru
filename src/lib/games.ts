@@ -28,6 +28,10 @@ export interface GameInfo {
   sheetQuestions?: boolean
   /** true = the setup screen offers a unit (content from Henry's Gamma lessons) for the level */
   units?: boolean
+  /** true = Group mode is exactly two teams, and the modes read "Whole class" / "Two teams" (20 Questions) */
+  twoTeams?: boolean
+  /** the mode the setup screen opens in (default: group when the game has one) */
+  startMode?: Mode
   /** true = can be played by a mixed group picked from every class (Christmas Race Board) */
   mixed?: boolean
   /** a special look for the screens around the game (Find your team, Mixed group list) */

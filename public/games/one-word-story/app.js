@@ -2,15 +2,53 @@
    Every round one student from every team (picked at random, nobody twice until the whole team has gone) runs to the
    board and has 5 seconds to write ONE word. Then the next writers. When the story is long enough, the class reads the
    stories aloud and Henry taps the best one (+3), or a draw (+1 each). The phone is only the timer, the picker and the
-   scoreboard: the students write on the board or on paper. */
+   scoreboard: the students write on the board or on paper.
+   Nov 23: 10 s to get to the board + 20 s to write (the alarm-clock timer in the menu); every word has a CONDITION
+   (the same for all teams that round, e.g. "must start with the letter R"). In the review Henry matches each team's
+   words to the numbered conditions (+1 each), then picks the best story (+3). */
 (function () {
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A'];
-  var WORDS = [8, 12, 16, 20, 30], WRITE = [3, 5, 7, 10], GAP = [2, 3, 5, 8];
-  var WIN = 3, DRAW = 1;
+  var WORDS = [8, 12, 16, 20, 30];
+  var WIN = 3, DRAW = 1, MET = 1; // best story, a draw, each word that follows its condition
 
-  var OPENERS = [], S = null, INTRO = [], teams = [], players = [];
+  // ---------- conditions: true for ANY previous word (letters and length only, never a word type) ----------
+  var FIRST = 'BCDFGHLMNPRSTW'.split('');
+  function condPool(hard) {
+    var c = [];
+    FIRST.forEach(function (l) { c.push({ k: 'start', t: 'start with the letter ' + l }); });
+    [3, 4, 5].concat(hard ? [6, 7] : []).forEach(function (n) { c.push({ k: 'len', t: 'have exactly ' + n + ' letters' }); });
+    ['E', 'S', 'T', 'Y', 'D', 'N', 'R'].forEach(function (l) { c.push({ k: 'end', t: 'end with the letter ' + l }); });
+    ['A', 'E', 'O', 'I'].forEach(function (l) { c.push({ k: 'has', t: 'have the letter ' + l + ' in it' }); });
+    if (hard) { c.push({ k: 'min', t: 'have 5 or more letters' }, { k: 'min', t: 'have 6 or more letters' }, { k: 'dbl', t: 'have a double letter (like ee, ll or ss)' }); }
+    return c;
+  }
+  /** n conditions for one story: no repeats, and never two of the same kind in a row. */
+  function makeConds(n, hard) {
+    var pool = condPool(hard), out = [], used = {};
+    while (out.length < n) {
+      var prev = out.length ? out[out.length - 1].k : '';
+      var ok = pool.filter(function (c) { return !used[c.t] && c.k !== prev; });
+      if (!ok.length) { used = {}; continue; }
+      var c = ok[Math.floor(Math.random() * ok.length)];
+      used[c.t] = 1; out.push(c);
+    }
+    return out.map(function (c) { return c.t; });
+  }
+  /** The short form for the numbered review list ("Starts with R", "5 letters"). */
+  function shortCond(t) {
+    var m;
+    if ((m = t.match(/^start with the letter (.)$/))) return 'Starts with ' + m[1];
+    if ((m = t.match(/^end with the letter (.)$/))) return 'Ends with ' + m[1];
+    if ((m = t.match(/^have exactly (\d) letters$/))) return m[1] + ' letters';
+    if ((m = t.match(/^have the letter (.) in it$/))) return 'Has the letter ' + m[1];
+    if ((m = t.match(/^have (\d) or more letters$/))) return m[1] + ' or more letters';
+    return 'Double letter';
+  }
+  function condText(i) { return S.conds && S.conds[i] ? 'Your word must ' + S.conds[i] : ''; }
+
+  var OPENERS = [], S = null, INTRO = [], teams = [], players = [], HARD = true;
   var phase = 'ready', running = false, left = 0, total = 0, endAt = 0, timer = 0, audio = null, writersNow = [];
 
   function esc(s) {
@@ -64,7 +102,11 @@
     $('label').textContent = 'Story opener';
     $('judge').hidden = !judging;
     $('writers').hidden = judging;
-    $('count').textContent = phase === 'ready' ? S.words + ' words' : judging ? 'Story done' : 'Word ' + Math.min(S.n + (phase === 'write' ? 1 : 1), S.words) + '/' + S.words;
+    $('opener').hidden = judging; $('label').hidden = judging; // the review needs the room
+    var playing = phase === 'pick' || phase === 'write';
+    $('cond').hidden = !playing;
+    if (playing) $('cond').textContent = condText(Math.min(S.n, S.words - 1));
+    $('count').textContent = phase === 'ready' ? S.words + ' words' : judging ? 'Story done' : 'Word ' + Math.min(S.n + 1, S.words) + '/' + S.words;
     $('secs').textContent = phase === 'ready' || judging ? '' : String(Math.max(0, Math.ceil(left)));
     $('secs').className = 'secs ' + phase + (phase === 'write' && left <= 2 ? ' hot' : '');
     $('phase').textContent = { ready: 'Ready', pick: 'Get to the board!', write: 'Write ONE word!', judge: 'Read your stories' }[phase];
@@ -111,7 +153,7 @@
   }
   $('go').addEventListener('click', function () {
     unlockAudio();
-    if (phase === 'ready') { S.n = 0; writersNow = pickWriters(); save(); begin('pick', S.gap); tone([440, 660], 0.1, 0.2, 0.3); }
+    if (phase === 'ready') { S.n = 0; S.conds = makeConds(S.words, HARD); S.condPts = {}; writersNow = pickWriters(); save(); begin('pick', S.gap); tone([440, 660], 0.1, 0.2, 0.3); }
     else if (running) { left = Math.max(0, (endAt - Date.now()) / 1000); running = false; clearInterval(timer); }
     else { running = true; endAt = Date.now() + left * 1000; clearInterval(timer); timer = setInterval(tick, 100); }
     render();
@@ -120,12 +162,29 @@
   // ---------- points: the best story ----------
   function renderJudge() {
     if (phase !== 'judge') return;
+    $('condList').innerHTML = (S.conds || []).slice(0, S.words).map(function (c) { return '<li>' + esc(shortCond(c)) + '</li>'; }).join('');
+    $('condPts').innerHTML = players.map(function (t) {
+      var n = (S.condPts || {})[t.id] || 0;
+      return '<div class="cp" data-cp="' + esc(t.id) + '" style="--c:' + color(t.id) + '"><span class="cpn">' + Kru.badge(t, color(t.id)) + '</span>' +
+        '<button class="btn" data-d="-1" aria-label="One less"' + (n <= 0 ? ' disabled' : '') + '>−</button><output>' + n + '</output>' +
+        '<button class="btn gold" data-d="1" aria-label="One more"' + (n >= S.words ? ' disabled' : '') + '>+</button></div>';
+    }).join('');
     var done = S.award;
     $('judgeBtns').innerHTML = done ?
       '<div class="awarded">' + esc(done.label) + '</div><button class="btn" data-j="undo">Change</button>' :
-      players.map(function (t) { return '<button class="btn gold" data-j="' + esc(t.id) + '" style="--c:' + color(t.id) + '">' + esc(t.name) + ' +' + WIN + '</button>'; }).join('') +
+      players.map(function (t) { return '<button class="btn gold team-win" data-j="' + esc(t.id) + '" style="--c:' + color(t.id) + '" aria-label="' + esc(t.name) + ' wins the best story, plus ' + WIN + '">' + Kru.badge(t, color(t.id)) + ' +' + WIN + '</button>'; }).join('') +
       '<button class="btn" data-j="draw">Draw +' + DRAW + ' each</button><button class="btn ghost" data-j="none">No points</button>';
   }
+  $('condPts').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-d]'), row = e.target.closest('[data-cp]');
+    if (!b || !row || b.disabled) return;
+    var id = row.dataset.cp, d = Number(b.dataset.d) * MET;
+    S.condPts = S.condPts || {};
+    S.condPts[id] = Math.max(0, (S.condPts[id] || 0) + Number(b.dataset.d));
+    give(id, d, 'word followed its condition');
+    if (d > 0) tone([660], 0, 0.12, 0.25);
+    save(); render();
+  });
   function give(id, d, why) { if (!d) return; S.pts[id] = pts(id) + d; Kru.score(id, d, why); }
   $('judgeBtns').addEventListener('click', function (e) {
     var b = e.target.closest('[data-j]');
@@ -154,7 +213,7 @@
   function stop() { running = false; clearInterval(timer); }
   function newStory(keepPos) {
     stop();
-    phase = 'ready'; writersNow = []; S.n = 0; S.award = null;
+    phase = 'ready'; writersNow = []; S.n = 0; S.award = null; S.condPts = {}; S.conds = null;
     if (!keepPos) S.pos = (S.pos + 1) % OPENERS.length;
     save(); render();
   }
@@ -164,17 +223,19 @@
   function row(el, list, cur, attr, unit) {
     $(el).innerHTML = list.map(function (v) { return '<button class="btn" data-' + attr + '="' + v + '" aria-pressed="' + (v === cur) + '">' + v + unit + '</button>'; }).join('');
   }
-  function renderMenu() { row('wordsRow', WORDS, S.words, 'words', ''); row('writeRow', WRITE, S.write, 'write', ' s'); row('gapRow', GAP, S.gap, 'gap', ' s'); }
+  function renderMenu() {
+    row('wordsRow', WORDS, S.words, 'words', '');
+    KruMenu.timer($('gapRow'), S.gap, function (v) { S.gap = v; save(); }, { min: 10, max: 60 });   // time to get to the board
+    KruMenu.timer($('writeRow'), S.write, function (v) { S.write = v; save(); }, { min: 10, max: 60 }); // time to write
+  }
   function closeMenu() { $('menuBack').hidden = true; }
   $('more').addEventListener('click', function () { renderMenu(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-  [['wordsRow', 'words'], ['writeRow', 'write'], ['gapRow', 'gap']].forEach(function (p) {
-    $(p[0]).addEventListener('click', function (e) {
-      var b = e.target.closest('[data-' + p[1] + ']');
-      if (!b) return;
-      S[p[1]] = +b.dataset[p[1]]; save(); renderMenu(); render();
-    });
+  $('wordsRow').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-words]');
+    if (!b) return;
+    S.words = +b.dataset.words; save(); renderMenu(); render();
   });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'One-Word Story' }); });
   $('resetStory').addEventListener('click', function () { closeMenu(); newStory(true); });
@@ -200,10 +261,11 @@
       players = teams.filter(function (t) { return !t.teacher; });
       var saved = session.resume;
       if (saved && saved.v === 2 && saved.level === level && Array.isArray(saved.order) && saved.order.length === OPENERS.length) S = saved;
-      else S = { v: 2, level: level, order: shuffled(OPENERS.length), pos: 0, words: 12, write: 5, gap: 3, n: 0, pts: {}, picked: {}, award: null, introDone: false };
+      else S = { v: 2, level: level, order: shuffled(OPENERS.length), pos: 0, words: 12, write: 20, gap: 10, n: 0, pts: {}, picked: {}, award: null, conds: null, condPts: {}, introDone: false };
       if (WORDS.indexOf(S.words) < 0) S.words = 12;
-      if (WRITE.indexOf(S.write) < 0) S.write = 5;
-      if (GAP.indexOf(S.gap) < 0) S.gap = 3;
+      S.write = KruMenu.snap(S.write || 20, 10, 60); S.gap = KruMenu.snap(S.gap || 10, 10, 60); // old saves had 5 s / 3 s
+      S.condPts = S.condPts || {}; S.conds = null;
+      HARD = level !== 'M.1';
       S.n = 0; S.award = S.award || null; // a story that was running starts again after a reload
       render();
       INTRO = KruIntro.forLevel(c, level);

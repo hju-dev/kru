@@ -282,18 +282,20 @@
     "slug": "twenty-questions",
     "title": "20 Questions",
     "file": "public/games/twenty-questions/index.html",
-    "description": "You think of a person, place, thing or idea; the class shows only the category. Teams (or the whole class) ask yes/no questions, with a countdown of questions left. The winner gets a point for each question left.",
+    "description": "You think of a person, place, thing or idea; the class shows only the category. The whole class or two teams ask yes/no questions, with a countdown of questions left. The winner gets a point for each question left.",
     "levels": [],
     "type": "speaking game",
     "minutes": 15,
     "modes": [
-      "group",
-      "solo"
+      "solo",
+      "group"
     ],
     "phoneLandscape": true,
     "results": "scored-solo",
     "status": "ready",
-    "section": "speaking"
+    "section": "speaking",
+    "twoTeams": true,
+    "startMode": "solo"
   },
   {
     "slug": "class-order",
@@ -342,7 +344,7 @@
     "slug": "would-you-rather",
     "title": "Would You Rather?",
     "file": "public/games/would-you-rather/index.html",
-    "description": "Silly Would You Rather choices for a warm-up, no points. Spin to pick a team; the team says its choice and why. M.1, M.2 and M.3 sets.",
+    "description": "Silly Would You Rather choices for the whole class, no teams and no points. Show the prompt, spin to pick a student, and they say their choice and why. M.1, M.2 and M.3 sets.",
     "levels": [
       "M.1",
       "M.2",
@@ -351,7 +353,7 @@
     "type": "speaking game",
     "minutes": 10,
     "modes": [
-      "group"
+      "solo"
     ],
     "phoneLandscape": true,
     "status": "ready",
