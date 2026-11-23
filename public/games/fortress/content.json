@@ -69,14 +69,14 @@
   {
    "title": "Defend your base",
    "text": [
-    "Towers shoot bombs down: [LQ] always, [Q] 32%, [HQ] 16%.",
+    "Towers shoot bombs down. One tower gone = half the chance.",
     "HQ destroyed? Sacrifice a building to stay in!"
    ],
    "example": {
     "rows": [
      [
-      "[[tower]] Towers",
-      "shoot bombs down"
+      "[[tower]] 2 Towers",
+      "[LQ] always, [Q] 32%, [HQ] 16%"
      ],
      [
       "[[hq]] HQ falls",
@@ -84,7 +84,7 @@
      ],
      [
       "No Depot",
-      "20% less damage, pricey [Q]+"
+      "half gold, pricey [Q]+, no healing"
      ]
     ]
    }

@@ -14,7 +14,7 @@ describe('Fortress (Henry, Nov 23)', () => {
     expect(js).toContain('var ROUND_HEAL = 450,')
   })
   it("the store has Henry's nine items and prices", () => {
-    for (const p of ['dmg: 100, price: 200', 'dmg: 250, price: 350', 'dmg: 180, price: 500', 'dmg: 500, price: 1500', 'dmg: 350, price: 2400', 'price: 4000', 'dmg: 2000, price: 10000', 'dmg: 4000, price: 15000', 'dmg: 9000, price: 30000']) expect(js).toContain(p)
+    for (const p of ['dmg: 200, price: 200', 'dmg: 500, price: 350', 'dmg: 360, price: 500', 'dmg: 500, price: 1500', 'dmg: 350, price: 2400', 'price: 4000', 'dmg: 2000, price: 10000', 'dmg: 4000, price: 15000', 'dmg: 9000, price: 30000']) expect(js).toContain(p)
     expect(js).toContain('var KIT = 300, KIT_RISE = 200, KIT_HP = 1000;')
   })
   it('towers shoot down [LQ] 100%, [Q] 32%, [HQ] 16% (Sarmat 1%); 5% resistance (max 17%); allies +10% HQ', () => {
@@ -22,8 +22,9 @@ describe('Fortress (Henry, Nov 23)', () => {
     expect(js).toContain('chance: 0.01')
     expect(js).toContain('RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1')
   })
-  it('no Depot: bombs 20% weaker, [Q] and better 1.6x; a destroyed HQ asks for a sacrifice', () => {
-    expect(js).toContain('NO_DEPOT_DMG = 0.8, NO_DEPOT_PRICE = 1.6')
+  it('no Depot: question gold halved, [Q] and better 1.6x, no healing; a destroyed HQ asks for a sacrifice', () => {
+    expect(js).toContain('NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6')
+    expect(js).toContain('var GOLD = { easy: 225, regular: 375, hard: 750, impossible: 1350 };')
     expect(js).toContain('function hqFell(id, next)')
   })
   it('the TOS-2M curses the hit team: its next bomb may explode in its own Depot', () => {
@@ -61,5 +62,10 @@ describe('Fortress (Henry, Nov 23)', () => {
     expect(js).toContain("var b = e.target.closest('.base.target');")
     expect(js).toContain('The headquarters. If it falls the team is out')
     expect(read('public/games/fortress/index.html')).toContain('id="aimGrid"')
+  })
+  it('towers: both standing = the full chance, one left = half; a Signal Jammer is one per team per round on any enemy', () => {
+    expect(js).toContain('* Math.min(1, towers(id) / 2)')
+    expect(js).toContain('S.jamUsed[from] = S.round')
+    expect(js).not.toContain('S.jam[jt]')
   })
 })
