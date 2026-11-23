@@ -39,12 +39,11 @@
         </section>
         <div class="powers" id="powers" role="group" aria-label="Power-ups: one of each per team per game"></div>
         <div class="controls">
-          <span class="digits" id="digits">0:20</span>
-          <button class="btn" id="go">Start timer</button>
+          <span class="digits" id="digits">0:30</span>
+          <button class="btn pausebtn is-paused" id="go" aria-label="Start the timer"></button>
           <button class="btn teal" id="reveal">Reveal</button>
-          <span class="grow"></span>
-          <button class="btn ghost" id="wrong">✗ Wrong</button>
-          <button class="btn gold" id="right">✓ Right: roll!</button>
+          <button class="btn ghost iconbtn" id="wrong" aria-label="Wrong" hidden>✗</button>
+          <button class="btn gold iconbtn" id="right" aria-label="Right: roll the dice" hidden>✓</button>
         </div>
       </div>
     </div>
