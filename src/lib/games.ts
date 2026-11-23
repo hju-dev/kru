@@ -30,6 +30,8 @@ export interface GameInfo {
   units?: boolean
   /** true = Group mode is exactly two teams, and the modes read "Whole class" / "Two teams" (20 Questions) */
   twoTeams?: boolean
+  /** a fixed number of teams in Group mode (Fortress: 4); no team size, add or remove buttons */
+  fixedTeams?: number
   /** the mode the setup screen opens in (default: group when the game has one) */
   startMode?: Mode
   /** true = can be played by a mixed group picked from every class (Christmas Race Board) */

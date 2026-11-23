@@ -72,7 +72,7 @@ export function Setup() {
         level: cls.level ?? 'M.2',
         mode: game.startMode ?? (game.modes.includes('group') ? 'group' : 'solo'),
         size,
-        bins: resizeBins([], game.twoTeams ? 2 : binCountFor(present, size)),
+        bins: resizeBins([], game.fixedTeams ?? (game.twoTeams ? 2 : binCountFor(present, size))),
         absent,
         teacher: false,
         leaveOut: false,
@@ -132,7 +132,9 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   const [selected, setSelected] = useState<number[]>([])
   const [several, setSeveral] = useState(false)
   const [absentMode, setAbsentMode] = useState(false)
-  const two = !!findGame(slug)?.twoTeams // 20 Questions: the whole class or exactly two teams
+  const gameInfo = findGame(slug)
+  const fixedN = gameInfo?.fixedTeams ?? (gameInfo?.twoTeams ? 2 : 0) // 20 Questions: two teams; Fortress: four
+  const two = fixedN > 0
   const [sheet, setSheet] = useState<'load' | 'save' | null>(null)
 
   // Everything on this screen works with student ids (not numbers), so two students who share a number stay separate
@@ -198,7 +200,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
   function setMode(mode: Mode) {
     setSelected([])
     setAbsentMode(false)
-    update(two && mode === 'group' ? { mode, bins: resizeBins(s.bins, 2) } : { mode })
+    update(two && mode === 'group' ? { mode, bins: resizeBins(s.bins, fixedN) } : { mode })
   }
 
   function addBin() {
@@ -304,13 +306,13 @@ function SetupBoard({ session: s, roster, gameTitle, modes, hasLevels, hasUnits,
         )}
         {modes.length > 1 && (
           <div className="seg" role="group" aria-label="Mode">
-            {two && (
+            {gameInfo?.twoTeams && (
               <button aria-pressed={!group} onClick={() => setMode('solo')}>
                 Whole class
               </button>
             )}
             <button aria-pressed={group} onClick={() => setMode('group')}>
-              {two ? 'Two teams' : 'Group'}
+              {gameInfo?.twoTeams ? 'Two teams' : 'Group'}
             </button>
             {!two && (
               <button aria-pressed={!group} onClick={() => setMode('solo')}>

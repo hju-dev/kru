@@ -12,10 +12,10 @@ describe('20 Questions: the whole class or two teams (Henry, Nov 23)', () => {
   })
   it('Setup: fixed two teams, no team size, add, remove or load teams', () => {
     const s = read('src/routes/Setup.tsx')
-    expect(s).toContain("findGame(slug)?.twoTeams")
+    expect(s).toContain('gameInfo?.fixedTeams ?? (gameInfo?.twoTeams ? 2 : 0)')
     expect(s).toContain('Whole class')
     expect(s).toContain('Two teams')
-    expect(s).toContain('resizeBins(s.bins, 2)')
+    expect(s).toContain('resizeBins(s.bins, fixedN)')
     expect(s).toContain('{group && !two && (')
   })
 })

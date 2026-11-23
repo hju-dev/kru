@@ -1,0 +1,139 @@
+{
+ "about": "Fortress (Henry, Nov 23): four teams attack each other's bases. Created with Job, a student. Questions come from Quiz Dash's bank (games/race-board/content.json), Battle of Wits sets or a unit; this file only holds the How to play slides.",
+ "intro": [
+  {
+   "title": "Fortress",
+   "text": [
+    "Four teams defend a base and attack the others.",
+    "Answer questions to win bombs, repairs and gold!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "[[hq]] HQ",
+      "lose it and you are out"
+     ],
+     [
+      "[[depot]] Depot",
+      "healing and bombs"
+     ],
+     [
+      "[[tower]] 2 Towers",
+      "stop small bombs"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Bombs",
+   "text": [
+    "Right answer: choose a bomb, a repair or gold.",
+    "Harder question = bigger bombs!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "[[bomb1]] Small",
+      "20"
+     ],
+     [
+      "[[bomb2]] Medium",
+      "35"
+     ],
+     [
+      "[[bomb3]] Large",
+      "55"
+     ],
+     [
+      "[[bomb4]] Mega",
+      "90"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Shop and fire",
+   "text": [
+    "After every team has had a turn: the shop opens.",
+    "Then fire your bombs at an enemy building!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "[[coin]] Gold",
+      "buys bombs and repair kits"
+     ],
+     [
+      "Depots",
+      "heal your base each round"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Defend your base",
+   "text": [
+    "Towers stop small bombs and shoot some down.",
+    "HQ destroyed? Sacrifice a building to stay in!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "[[tower]] Tower",
+      "blocks small bombs"
+     ],
+     [
+      "[[hq]] HQ falls",
+      "sacrifice a building"
+     ],
+     [
+      "No Depot",
+      "easy questions only"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Power-ups",
+   "text": [
+    "One of each per team, once per game.",
+    "Alliance: skip your turn and join forces!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "+20 s",
+      "more time"
+     ],
+     [
+      "Free Answer",
+      "a correct answer"
+     ],
+     [
+      "[[risk]] Risk It",
+      "bigger reward, big risk"
+     ],
+     [
+      "[[alliance]] Alliance",
+      "share towers and bombs"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Made with Job",
+   "text": [
+    "Fortress was created with Job,",
+    "a student who helped design the game. Thank you, Job!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "[[job]] Job",
+      "game designer"
+     ]
+    ]
+   }
+  }
+ ]
+}
