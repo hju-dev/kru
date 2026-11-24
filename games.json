@@ -279,6 +279,27 @@
     "units": true
   },
   {
+    "slug": "secret-message",
+    "title": "Secret Message",
+    "file": "public/games/secret-message/index.html",
+    "description": "Whisper down the line for two teams. The first student of each line sees a secret sentence, whispers it along, and the last student says it the other way: direct becomes reported and the reverse, for statements and questions. +1 for each correct team. M.1, M.2 and M.3.",
+    "levels": [
+      "M.1",
+      "M.2",
+      "M.3"
+    ],
+    "type": "speaking game",
+    "minutes": 20,
+    "modes": [
+      "group"
+    ],
+    "phoneLandscape": true,
+    "results": "scored",
+    "status": "ready",
+    "section": "speaking",
+    "twoTeams": true
+  },
+  {
     "slug": "twenty-questions",
     "title": "20 Questions",
     "file": "public/games/twenty-questions/index.html",
