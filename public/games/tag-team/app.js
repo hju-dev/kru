@@ -26,7 +26,9 @@
   function team(id) { return teams.find(function (t) { return t.id === id; }); }
   function pts(id) { return S.pts[id] || 0; }
   /** Seconds per speaker: Talk can change it in the ⋯ menu (5 s steps). */
-  function turnSecs() { return (!debate() && S.turnSecs) || C.turn; }
+  // Nov 25: the huddle and the speaking time are set with the shared alarm-clock control (10 s steps) in BOTH games
+  function turnSecs() { return KruMenu.snap(S.turnSecs || C.turn, 10, 120); }
+  function huddleSecs() { return KruMenu.snap(S.huddleSecs || C.huddle, 10, 300); }
   var BONUS = false; // bonus cards: Debate only (Henry turned them off for Talk)
   function bonusReveal() { if (BONUS) KruBonus.reveal(); }
 
@@ -147,7 +149,7 @@
     }
     render();
   }
-  function startHuddle() { phase = 'huddle'; total = left = C.huddle; turn = 0; picked = null; run(); }
+  function startHuddle() { phase = 'huddle'; total = left = huddleSecs(); turn = 0; picked = null; run(); }
   function startTalk() { phase = 'talk'; turn = 0; total = left = turnSecs(); picked = null; tone([660, 880], 0.12); run(); }
   function nextSpeaker() {
     if (phase !== 'talk') return;
@@ -454,27 +456,19 @@
     picked = null; save(); renderLane(); closeMenu();
   });
   $('undo').addEventListener('click', function () { undo(); closeMenu(); });
-  // Talk: speaking time per student (5 s steps) and crazy topics only
+  // the huddle time and the speaking time (the shared "− [ 20s ] +" control), and in Talk: crazy topics only
   function renderTalkMenu() {
-    if (!$('turnSecs')) return;
-    $('talkOpts').hidden = debate();
-    $('turnSecs').textContent = turnSecs() + ' s';
-    $('turnLess').disabled = turnSecs() <= 5;
-    $('turnMore').disabled = turnSecs() >= 120;
-    $('crazy').setAttribute('aria-pressed', String(!!S.crazy));
-    $('crazy').textContent = 'Crazy topics only: ' + (S.crazy ? 'ON' : 'off');
+    KruMenu.timer($('huddleRow'), huddleSecs(), function (v) { S.huddleSecs = v; save(); }, { min: 10, max: 300 });
+    KruMenu.timer($('turnRow'), turnSecs(), function (v) {
+      S.turnSecs = v; save();
+      if (phase === 'ready' || phase === 'set') { total = left = turnSecs(); render(); }
+    }, { min: 10, max: 120 });
+    if ($('crazy')) {
+      $('crazy').setAttribute('aria-pressed', String(!!S.crazy));
+      $('crazy').textContent = 'Crazy topics only: ' + (S.crazy ? 'ON' : 'off');
+    }
   }
-  function setTurnSecs(d) {
-    S.turnSecs = Math.max(5, Math.min(120, turnSecs() + d));
-    save();
-    if (phase === 'ready' || phase === 'set') { total = left = turnSecs(); }
-    renderTalkMenu(); render();
-  }
-  if ($('turnSecs')) {
-    $('turnLess').addEventListener('click', function () { setTurnSecs(-5); });
-    $('turnMore').addEventListener('click', function () { setTurnSecs(5); });
-    $('crazy').addEventListener('click', function () { S.crazy = !S.crazy; save(); renderTalkMenu(); });
-  }
+  if ($('crazy')) $('crazy').addEventListener('click', function () { S.crazy = !S.crazy; save(); renderTalkMenu(); });
   // How to play slides: before the game starts, and from the ⋯ menu
   var INTRO = [];
   function showIntro() { return KruIntro.show(INTRO, { title: debate() ? 'Tag-Team Debate' : 'Tag-Team Talk' }); }

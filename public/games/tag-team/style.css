@@ -543,9 +543,20 @@ button:focus-visible {
 #menuBack .menu > .talk-opts {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
+#menuBack .menu > .menu-trow,
+#menuBack .menu > .menu-row,
+#menuBack .menu > .kmenu-foot { grid-column: 1 / -1; }
+.menu-row { display: flex; gap: 6px; }
+.menu-row .btn { flex: 1; padding: 0 6px; }
 #menuBack .menu > .talk-opts[hidden] {
   display: none;
 }
+
+/* the settings menu is tall (two timers + toggles): shorter timer controls so it fits 375 px without scrolling */
+#menuBack .menu .ktimer { gap: 6px; }
+#menuBack .menu .ktimer .btn { height: 44px; min-height: 44px; flex-basis: 64px; width: 64px; min-width: 64px; }
+#menuBack .menu .ktimer output { height: 44px; min-height: 44px; line-height: 44px; font-size: 22px; }
+#menuBack .menu .menu-trow { min-height: 44px; }

@@ -1,5 +1,5 @@
 {
- "about": "Secret Message (Nov 25), a speaking game for two teams: the first student of each line sees a secret sentence (direct or reported statement/question), whispers it down the line, and the last student says it the other way. 60 phrases per level (30 pairs, both directions). Each item: k = ds/dq/rs/rq (what the secret IS), say = the secret, answer = the model conversion (words in brackets are optional).",
+ "about": "Secret Message (Nov 25), a speaking game for two teams: the first student of each line sees a secret sentence (direct or reported statement/question), whispers it down the line, and the last student says it the other way. 60 phrases per level (30 pairs, both directions). Each item: k = ds/dq/rs/rq (what the secret IS), say = the secret, answer = the model conversion (words in brackets are optional). Nov 25: each level also has 50 `twisters` (25 short tongue twisters of at most 5 words, k = tt, and 25 hard words or phrases, k = hw) that are said exactly the same (answer = say); the menu picks Reported speech, Tongue twisters or Both.",
  "M.1": {
   "phrases": [
    {
@@ -301,6 +301,258 @@
     "k": "ds",
     "say": "Sam said, \"I eat rice every day.\"",
     "answer": "Sam said (that) he ate rice every day."
+   }
+  ],
+  "twisters": [
+   {
+    "k": "hw",
+    "say": "strength",
+    "answer": "strength"
+   },
+   {
+    "k": "tt",
+    "say": "Four fine fresh fish.",
+    "answer": "Four fine fresh fish."
+   },
+   {
+    "k": "tt",
+    "say": "Big black bugs bite.",
+    "answer": "Big black bugs bite."
+   },
+   {
+    "k": "tt",
+    "say": "Black bug's blood.",
+    "answer": "Black bug's blood."
+   },
+   {
+    "k": "tt",
+    "say": "Toy boat, toy boat.",
+    "answer": "Toy boat, toy boat."
+   },
+   {
+    "k": "tt",
+    "say": "Bake big batches.",
+    "answer": "Bake big batches."
+   },
+   {
+    "k": "hw",
+    "say": "sandwich",
+    "answer": "sandwich"
+   },
+   {
+    "k": "tt",
+    "say": "Lucky ducks lick lollipops.",
+    "answer": "Lucky ducks lick lollipops."
+   },
+   {
+    "k": "hw",
+    "say": "three thousand",
+    "answer": "three thousand"
+   },
+   {
+    "k": "hw",
+    "say": "restaurant",
+    "answer": "restaurant"
+   },
+   {
+    "k": "hw",
+    "say": "flowers and towers",
+    "answer": "flowers and towers"
+   },
+   {
+    "k": "tt",
+    "say": "Three thin thieves.",
+    "answer": "Three thin thieves."
+   },
+   {
+    "k": "hw",
+    "say": "schedule",
+    "answer": "schedule"
+   },
+   {
+    "k": "hw",
+    "say": "sixth",
+    "answer": "sixth"
+   },
+   {
+    "k": "tt",
+    "say": "Fresh fried fish.",
+    "answer": "Fresh fried fish."
+   },
+   {
+    "k": "tt",
+    "say": "Round rugs run rapidly.",
+    "answer": "Round rugs run rapidly."
+   },
+   {
+    "k": "hw",
+    "say": "months",
+    "answer": "months"
+   },
+   {
+    "k": "hw",
+    "say": "thirsty",
+    "answer": "thirsty"
+   },
+   {
+    "k": "tt",
+    "say": "Chester chews cheese.",
+    "answer": "Chester chews cheese."
+   },
+   {
+    "k": "tt",
+    "say": "Tiny tigers tie ties.",
+    "answer": "Tiny tigers tie ties."
+   },
+   {
+    "k": "tt",
+    "say": "She sells seashells.",
+    "answer": "She sells seashells."
+   },
+   {
+    "k": "hw",
+    "say": "eighth",
+    "answer": "eighth"
+   },
+   {
+    "k": "hw",
+    "say": "Christmas",
+    "answer": "Christmas"
+   },
+   {
+    "k": "hw",
+    "say": "chocolate",
+    "answer": "chocolate"
+   },
+   {
+    "k": "tt",
+    "say": "Three free throws.",
+    "answer": "Three free throws."
+   },
+   {
+    "k": "tt",
+    "say": "Fat frogs flap fast.",
+    "answer": "Fat frogs flap fast."
+   },
+   {
+    "k": "hw",
+    "say": "clothes",
+    "answer": "clothes"
+   },
+   {
+    "k": "tt",
+    "say": "Sheep sleep soundly.",
+    "answer": "Sheep sleep soundly."
+   },
+   {
+    "k": "tt",
+    "say": "Pink pigs paint pots.",
+    "answer": "Pink pigs paint pots."
+   },
+   {
+    "k": "tt",
+    "say": "Betty bought better butter.",
+    "answer": "Betty bought better butter."
+   },
+   {
+    "k": "hw",
+    "say": "Wednesday",
+    "answer": "Wednesday"
+   },
+   {
+    "k": "tt",
+    "say": "Silly Sally sells socks.",
+    "answer": "Silly Sally sells socks."
+   },
+   {
+    "k": "tt",
+    "say": "Red truck, yellow truck.",
+    "answer": "Red truck, yellow truck."
+   },
+   {
+    "k": "hw",
+    "say": "squirrel",
+    "answer": "squirrel"
+   },
+   {
+    "k": "tt",
+    "say": "Peter picked pink peppers.",
+    "answer": "Peter picked pink peppers."
+   },
+   {
+    "k": "hw",
+    "say": "the world's worst",
+    "answer": "the world's worst"
+   },
+   {
+    "k": "hw",
+    "say": "library",
+    "answer": "library"
+   },
+   {
+    "k": "hw",
+    "say": "photographer",
+    "answer": "photographer"
+   },
+   {
+    "k": "hw",
+    "say": "temperature",
+    "answer": "temperature"
+   },
+   {
+    "k": "hw",
+    "say": "walked and talked",
+    "answer": "walked and talked"
+   },
+   {
+    "k": "hw",
+    "say": "vegetable",
+    "answer": "vegetable"
+   },
+   {
+    "k": "hw",
+    "say": "refrigerator",
+    "answer": "refrigerator"
+   },
+   {
+    "k": "hw",
+    "say": "comfortable",
+    "answer": "comfortable"
+   },
+   {
+    "k": "hw",
+    "say": "February",
+    "answer": "February"
+   },
+   {
+    "k": "tt",
+    "say": "Six sticky skeletons.",
+    "answer": "Six sticky skeletons."
+   },
+   {
+    "k": "hw",
+    "say": "Thursday thirteenth",
+    "answer": "Thursday thirteenth"
+   },
+   {
+    "k": "tt",
+    "say": "Cooks cook cupcakes quickly.",
+    "answer": "Cooks cook cupcakes quickly."
+   },
+   {
+    "k": "tt",
+    "say": "Wise witches watch watches.",
+    "answer": "Wise witches watch watches."
+   },
+   {
+    "k": "tt",
+    "say": "Many men make money.",
+    "answer": "Many men make money."
+   },
+   {
+    "k": "tt",
+    "say": "Funny bunnies hop home.",
+    "answer": "Funny bunnies hop home."
    }
   ]
  },
@@ -606,6 +858,258 @@
     "say": "Sam said, \"I'm watching TV now.\"",
     "answer": "Sam said (that) he was watching TV then."
    }
+  ],
+  "twisters": [
+   {
+    "k": "tt",
+    "say": "Freshly fried flying fish.",
+    "answer": "Freshly fried flying fish."
+   },
+   {
+    "k": "hw",
+    "say": "Worcestershire sauce",
+    "answer": "Worcestershire sauce"
+   },
+   {
+    "k": "tt",
+    "say": "Stella's stuffed squid sizzles.",
+    "answer": "Stella's stuffed squid sizzles."
+   },
+   {
+    "k": "tt",
+    "say": "Eleven benevolent elephants.",
+    "answer": "Eleven benevolent elephants."
+   },
+   {
+    "k": "hw",
+    "say": "psychology",
+    "answer": "psychology"
+   },
+   {
+    "k": "hw",
+    "say": "the clothes in the closet",
+    "answer": "the clothes in the closet"
+   },
+   {
+    "k": "hw",
+    "say": "the thirty-third thief",
+    "answer": "the thirty-third thief"
+   },
+   {
+    "k": "tt",
+    "say": "How can a clam cram?",
+    "answer": "How can a clam cram?"
+   },
+   {
+    "k": "tt",
+    "say": "Which witch is which?",
+    "answer": "Which witch is which?"
+   },
+   {
+    "k": "tt",
+    "say": "Proper copper coffee pot.",
+    "answer": "Proper copper coffee pot."
+   },
+   {
+    "k": "tt",
+    "say": "Unique New York.",
+    "answer": "Unique New York."
+   },
+   {
+    "k": "hw",
+    "say": "receipt",
+    "answer": "receipt"
+   },
+   {
+    "k": "tt",
+    "say": "Truly rural.",
+    "answer": "Truly rural."
+   },
+   {
+    "k": "hw",
+    "say": "particularly",
+    "answer": "particularly"
+   },
+   {
+    "k": "tt",
+    "say": "Cheap cheese sandwiches.",
+    "answer": "Cheap cheese sandwiches."
+   },
+   {
+    "k": "tt",
+    "say": "Mixed biscuits, mixed biscuits.",
+    "answer": "Mixed biscuits, mixed biscuits."
+   },
+   {
+    "k": "tt",
+    "say": "Brisk breezes bring brightness.",
+    "answer": "Brisk breezes bring brightness."
+   },
+   {
+    "k": "tt",
+    "say": "Greek grapes, great grapes.",
+    "answer": "Greek grapes, great grapes."
+   },
+   {
+    "k": "hw",
+    "say": "choir",
+    "answer": "choir"
+   },
+   {
+    "k": "hw",
+    "say": "pronunciation",
+    "answer": "pronunciation"
+   },
+   {
+    "k": "tt",
+    "say": "Six slippery snails slid slowly.",
+    "answer": "Six slippery snails slid slowly."
+   },
+   {
+    "k": "hw",
+    "say": "especially",
+    "answer": "especially"
+   },
+   {
+    "k": "tt",
+    "say": "Irish wristwatch.",
+    "answer": "Irish wristwatch."
+   },
+   {
+    "k": "hw",
+    "say": "rhythm",
+    "answer": "rhythm"
+   },
+   {
+    "k": "tt",
+    "say": "Thirty thousand thin thumbs.",
+    "answer": "Thirty thousand thin thumbs."
+   },
+   {
+    "k": "hw",
+    "say": "a thousand thoughtful thanks",
+    "answer": "a thousand thoughtful thanks"
+   },
+   {
+    "k": "hw",
+    "say": "authentic",
+    "answer": "authentic"
+   },
+   {
+    "k": "hw",
+    "say": "thoroughly",
+    "answer": "thoroughly"
+   },
+   {
+    "k": "hw",
+    "say": "throughout",
+    "answer": "throughout"
+   },
+   {
+    "k": "hw",
+    "say": "necessary",
+    "answer": "necessary"
+   },
+   {
+    "k": "tt",
+    "say": "Knapsack straps.",
+    "answer": "Knapsack straps."
+   },
+   {
+    "k": "tt",
+    "say": "Rural juror.",
+    "answer": "Rural juror."
+   },
+   {
+    "k": "tt",
+    "say": "Betty Botter bought butter.",
+    "answer": "Betty Botter bought butter."
+   },
+   {
+    "k": "tt",
+    "say": "Crisp crusts crackle.",
+    "answer": "Crisp crusts crackle."
+   },
+   {
+    "k": "hw",
+    "say": "specific",
+    "answer": "specific"
+   },
+   {
+    "k": "hw",
+    "say": "miscellaneous",
+    "answer": "miscellaneous"
+   },
+   {
+    "k": "hw",
+    "say": "anemone",
+    "answer": "anemone"
+   },
+   {
+    "k": "tt",
+    "say": "Fred fed Ted bread.",
+    "answer": "Fred fed Ted bread."
+   },
+   {
+    "k": "hw",
+    "say": "island",
+    "answer": "island"
+   },
+   {
+    "k": "tt",
+    "say": "Slim slippers slide silently.",
+    "answer": "Slim slippers slide silently."
+   },
+   {
+    "k": "tt",
+    "say": "Peter Piper picked peppers.",
+    "answer": "Peter Piper picked peppers."
+   },
+   {
+    "k": "hw",
+    "say": "statistics",
+    "answer": "statistics"
+   },
+   {
+    "k": "tt",
+    "say": "Selfish shellfish.",
+    "answer": "Selfish shellfish."
+   },
+   {
+    "k": "tt",
+    "say": "Shy Shelly shares shoes.",
+    "answer": "Shy Shelly shares shoes."
+   },
+   {
+    "k": "hw",
+    "say": "Arctic",
+    "answer": "Arctic"
+   },
+   {
+    "k": "hw",
+    "say": "entrepreneur",
+    "answer": "entrepreneur"
+   },
+   {
+    "k": "hw",
+    "say": "Wednesday's weather",
+    "answer": "Wednesday's weather"
+   },
+   {
+    "k": "hw",
+    "say": "queue",
+    "answer": "queue"
+   },
+   {
+    "k": "hw",
+    "say": "sophisticated",
+    "answer": "sophisticated"
+   },
+   {
+    "k": "tt",
+    "say": "Quick kiss, quick quack.",
+    "answer": "Quick kiss, quick quack."
+   }
   ]
  },
  "M.3": {
@@ -910,6 +1414,258 @@
     "say": "Sam said, \"This is my favorite song.\"",
     "answer": "Sam said (that) that was his favorite song."
    }
+  ],
+  "twisters": [
+   {
+    "k": "tt",
+    "say": "Strange strategic statistics.",
+    "answer": "Strange strategic statistics."
+   },
+   {
+    "k": "tt",
+    "say": "Lemon liniment.",
+    "answer": "Lemon liniment."
+   },
+   {
+    "k": "tt",
+    "say": "Noisy noises annoy oysters.",
+    "answer": "Noisy noises annoy oysters."
+   },
+   {
+    "k": "hw",
+    "say": "pronunciation is particularly problematic",
+    "answer": "pronunciation is particularly problematic"
+   },
+   {
+    "k": "hw",
+    "say": "the sixth sick sheik's sixth sheep's sick",
+    "answer": "the sixth sick sheik's sixth sheep's sick"
+   },
+   {
+    "k": "tt",
+    "say": "Zebras zig, zebras zag.",
+    "answer": "Zebras zig, zebras zag."
+   },
+   {
+    "k": "tt",
+    "say": "Preshrunk silk shirts.",
+    "answer": "Preshrunk silk shirts."
+   },
+   {
+    "k": "hw",
+    "say": "miscellaneous mathematical mysteries",
+    "answer": "miscellaneous mathematical mysteries"
+   },
+   {
+    "k": "tt",
+    "say": "Rubber baby buggy bumpers.",
+    "answer": "Rubber baby buggy bumpers."
+   },
+   {
+    "k": "hw",
+    "say": "sophisticated entrepreneurs",
+    "answer": "sophisticated entrepreneurs"
+   },
+   {
+    "k": "tt",
+    "say": "Eleven elves leveled eleven levels.",
+    "answer": "Eleven elves leveled eleven levels."
+   },
+   {
+    "k": "hw",
+    "say": "Mediterranean",
+    "answer": "Mediterranean"
+   },
+   {
+    "k": "hw",
+    "say": "quinoa",
+    "answer": "quinoa"
+   },
+   {
+    "k": "hw",
+    "say": "Worcestershire and Gloucestershire",
+    "answer": "Worcestershire and Gloucestershire"
+   },
+   {
+    "k": "hw",
+    "say": "the extraordinarily ambiguous ambassador",
+    "answer": "the extraordinarily ambiguous ambassador"
+   },
+   {
+    "k": "hw",
+    "say": "colonel",
+    "answer": "colonel"
+   },
+   {
+    "k": "tt",
+    "say": "Truly plural.",
+    "answer": "Truly plural."
+   },
+   {
+    "k": "tt",
+    "say": "Black background, brown background.",
+    "answer": "Black background, brown background."
+   },
+   {
+    "k": "hw",
+    "say": "statistically significant",
+    "answer": "statistically significant"
+   },
+   {
+    "k": "tt",
+    "say": "Cinnamon aluminum linoleum.",
+    "answer": "Cinnamon aluminum linoleum."
+   },
+   {
+    "k": "hw",
+    "say": "anemone and asparagus",
+    "answer": "anemone and asparagus"
+   },
+   {
+    "k": "hw",
+    "say": "an unusual yellow Euro",
+    "answer": "an unusual yellow Euro"
+   },
+   {
+    "k": "tt",
+    "say": "Pirates' private pearls.",
+    "answer": "Pirates' private pearls."
+   },
+   {
+    "k": "hw",
+    "say": "specifically, the Pacific",
+    "answer": "specifically, the Pacific"
+   },
+   {
+    "k": "tt",
+    "say": "Tragic magic tragedies.",
+    "answer": "Tragic magic tragedies."
+   },
+   {
+    "k": "hw",
+    "say": "pharmaceutical",
+    "answer": "pharmaceutical"
+   },
+   {
+    "k": "hw",
+    "say": "Antarctica",
+    "answer": "Antarctica"
+   },
+   {
+    "k": "tt",
+    "say": "Imagine an imaginary menagerie.",
+    "answer": "Imagine an imaginary menagerie."
+   },
+   {
+    "k": "hw",
+    "say": "Massachusetts",
+    "answer": "Massachusetts"
+   },
+   {
+    "k": "tt",
+    "say": "Distinct instinct, distinct instinct.",
+    "answer": "Distinct instinct, distinct instinct."
+   },
+   {
+    "k": "tt",
+    "say": "Sheila shall shell shy shrimps.",
+    "answer": "Sheila shall shell shy shrimps."
+   },
+   {
+    "k": "hw",
+    "say": "Hawaiian Hawaiians",
+    "answer": "Hawaiian Hawaiians"
+   },
+   {
+    "k": "hw",
+    "say": "pneumonia",
+    "answer": "pneumonia"
+   },
+   {
+    "k": "hw",
+    "say": "Tchaikovsky",
+    "answer": "Tchaikovsky"
+   },
+   {
+    "k": "hw",
+    "say": "the thoroughly thoughtful thrush",
+    "answer": "the thoroughly thoughtful thrush"
+   },
+   {
+    "k": "tt",
+    "say": "Frivolous fox fur.",
+    "answer": "Frivolous fox fur."
+   },
+   {
+    "k": "tt",
+    "say": "Rory's lawn rake rarely rakes.",
+    "answer": "Rory's lawn rake rarely rakes."
+   },
+   {
+    "k": "hw",
+    "say": "otorhinolaryngologist",
+    "answer": "otorhinolaryngologist"
+   },
+   {
+    "k": "hw",
+    "say": "rural Arctic juries",
+    "answer": "rural Arctic juries"
+   },
+   {
+    "k": "hw",
+    "say": "onomatopoeia",
+    "answer": "onomatopoeia"
+   },
+   {
+    "k": "tt",
+    "say": "Proper coffee, proper copper.",
+    "answer": "Proper coffee, proper copper."
+   },
+   {
+    "k": "tt",
+    "say": "Thin sticks, thick bricks.",
+    "answer": "Thin sticks, thick bricks."
+   },
+   {
+    "k": "tt",
+    "say": "Flash message, flash message.",
+    "answer": "Flash message, flash message."
+   },
+   {
+    "k": "tt",
+    "say": "Willy's real rear wheel.",
+    "answer": "Willy's real rear wheel."
+   },
+   {
+    "k": "tt",
+    "say": "Gobbling gargoyles gobbled gobbling goblins.",
+    "answer": "Gobbling gargoyles gobbled gobbling goblins."
+   },
+   {
+    "k": "tt",
+    "say": "Pre-historic pterodactyls prowl.",
+    "answer": "Pre-historic pterodactyls prowl."
+   },
+   {
+    "k": "hw",
+    "say": "phenomenon",
+    "answer": "phenomenon"
+   },
+   {
+    "k": "tt",
+    "say": "Red leather, yellow leather.",
+    "answer": "Red leather, yellow leather."
+   },
+   {
+    "k": "hw",
+    "say": "juxtaposition",
+    "answer": "juxtaposition"
+   },
+   {
+    "k": "tt",
+    "say": "The sixth sheik's sixth sheep.",
+    "answer": "The sixth sheik's sixth sheep."
+   }
   ]
  },
  "intro": [
@@ -990,6 +1746,25 @@
    "example": {
     "big": "+1",
     "tag": "each correct team"
+   }
+  },
+  {
+   "title": "Tongue twisters",
+   "text": [
+    "Twister mode: whisper it down the line, then say it EXACTLY the same.",
+    "Hard words and short tongue twisters. Speak clearly!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Secret",
+      "Red truck, yellow truck."
+     ],
+     [
+      "Say it",
+      "Red truck, yellow truck."
+     ]
+    ]
    }
   }
  ]

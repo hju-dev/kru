@@ -80,10 +80,14 @@
     <!-- ⋯ menu -->
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="Settings">
-        <button class="btn" id="resetTimer">Reset the timer</button>
-        <button class="btn" id="resetOrder">Reset the speaking order</button>
-        <button class="btn" id="undo">Undo last points</button>
-        <button class="btn" id="howTo">How to play</button>
+        <div class="menu-trow"><span class="menu-label">Huddle time</span><div id="huddleRow"></div></div>
+        <div class="menu-trow"><span class="menu-label">Speaking time</span><div id="turnRow"></div></div>
+        <div class="menu-row">
+          <button class="btn" id="resetTimer">Reset timer</button>
+          <button class="btn" id="resetOrder">Reset order</button>
+          <button class="btn" id="undo">Undo points</button>
+          <button class="btn" id="howTo">How to play</button>
+        </div>
         <button class="btn ghost danger" id="resetScores">New Game</button>
         <button class="btn ghost" id="menuClose">Close</button>
       </div>

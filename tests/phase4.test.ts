@@ -356,10 +356,12 @@ describe('Tag-Team Talk (Henry, Nov 9)', () => {
     expect(js).toContain("if (!debate()) { running = false; clearInterval(timer); phase = 'set';")
     expect(js).toContain("else if (phase === 'huddle' || phase === 'set') startTalk();")
   })
-  it('speaking time in the ⋯ menu, 5 s steps, 5 to 120 s', () => {
-    expect(html).toContain('id="turnLess"')
-    expect(html).toContain('id="turnMore"')
-    expect(js).toContain('S.turnSecs = Math.max(5, Math.min(120, turnSecs() + d));')
+  it('speaking time and huddle time in the ⋯ menu use the shared alarm-clock control (10 s steps), in Talk and Debate', () => {
+    expect(html).toContain('id="turnRow"')
+    expect(html).toContain('id="huddleRow"')
+    expect(js).toContain("KruMenu.timer($('turnRow'), turnSecs()")
+    expect(js).toContain("KruMenu.timer($('huddleRow'), huddleSecs()")
+    expect(js).toContain('KruMenu.snap(S.turnSecs || C.turn, 10, 120)')
   })
   for (const l of ['M.1', 'M.2', 'M.3']) {
     it(`${l}: 50 crazy topics with 3 hints, not repeating the normal topics`, () => {
