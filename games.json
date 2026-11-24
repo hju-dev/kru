@@ -183,9 +183,9 @@
   },
   {
     "slug": "race-board",
-    "title": "Quiz Dash",
+    "title": "Quiz Grand Prix",
     "file": "public/games/race-board/index.html",
-    "description": "A 60-square board-game race. Easy, regular, hard and impossible questions: harder ones roll 2 dice; a wrong answer rolls the back die. Chance cards, secret squares, exact roll to finish. Its own questions for M.1, M.2 and M.3 (plus your Questions tab or a unit).",
+    "description": "A racing-themed quiz: every team drives its own vehicle round a 60-square track. Easy, regular, hard and impossible questions: harder ones roll 2 dice; a wrong answer rolls the back die. Chance cards, secret squares, exact roll to finish. Its own questions for M.1, M.2 and M.3 (plus your Questions tab or a unit).",
     "levels": [
       "M.1",
       "M.2",
@@ -204,9 +204,9 @@
   },
   {
     "slug": "christmas-race-board",
-    "title": "Christmas Dash",
+    "title": "North Pole Grand Prix",
     "file": "public/games/christmas-race-board/index.html",
-    "description": "Quiz Dash with a Christmas question bank: 100 general-knowledge questions (multiple choice and spoken) for every level. 🎄 squares draw a Challenge card; after a wrong answer a team can do a Forfeit and stay put instead of rolling back.",
+    "description": "The North Pole version of Quiz Grand Prix: every team rides its own sleigh, sled or snowmobile, with Christmas pop-ups and cards, and a Christmas question bank: 100 general-knowledge questions (multiple choice and spoken) for every level. 🎄 squares draw a Challenge card; after a wrong answer a team can do a Forfeit and stay put instead of rolling back.",
     "levels": [],
     "type": "team quiz",
     "minutes": 40,

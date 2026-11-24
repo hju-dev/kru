@@ -41,7 +41,7 @@
   }
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var GAME_TITLE = 'Quiz Grand Prix'; // was Quiz Dash (Nov 25: racing theme)
-  var RACING = false; // the racing theme (racing.js): vehicles, puns, racing cards, overtakes, podium. Off in Christmas Dash.
+  var RACING = false; // the racing theme (racing.js, or xmas-rides.js for North Pole Grand Prix): rides, puns, story cards, overtakes, podium
   var XMAS = null; // Christmas Race Board (content.json "christmas"): { squares: [n], challenge: [{ title, text }], forfeit: [{ title, text }] }
   // chance cards (Henry's list + a few more); each is equally likely
   var CHANCE = [
@@ -345,12 +345,12 @@
     };
     if (cd.id === 'swap') return swapCard(id);
     var rc = RACING ? KruRacing.CHANCE[cd.id] : null;
-    card(rc ? '🏁 ' + rc[0] : '? Chance card', rc ? rc[1] : cd.text, after[cd.id], cd.id === 'back2' || cd.id === 'skip' ? 'bad' : 'good');
+    card(rc ? KruRacing.PREFIX + rc[0] : '? Chance card', rc ? rc[1] : cd.text, after[cd.id], cd.id === 'back2' || cd.id === 'skip' ? 'bad' : 'good');
   }
   function swapCard(id) {
     var t = racer(id), others = racers.filter(function (o) { return o.id !== id && S.finished.indexOf(o.id) < 0; });
     // every team's square, including the team that drew the card
-    card(RACING ? '🏁 ' + KruRacing.CHANCE.swap[0] : '? Chance card', (RACING ? 'Time to overtake! ' : 'Switch places! ') + t.name + ' is on ' + (pos(id) ? 'square ' + pos(id) : 'START') + '. Pick a team to switch places with:', null, 'good');
+    card(RACING ? KruRacing.PREFIX + KruRacing.CHANCE.swap[0] : '? Chance card', (RACING ? 'Time to overtake! ' : 'Switch places! ') + t.name + ' is on ' + (pos(id) ? 'square ' + pos(id) : 'START') + '. Pick a team to switch places with:', null, 'good');
     if (!others.length) { $('cardText').textContent = 'No team to switch with.'; cardThen = function () { busy = false; nextTurn(); }; return; }
     $('cardOk').hidden = true;
     $('cardTeams').innerHTML = others.map(function (o) {
@@ -368,8 +368,8 @@
           // a big overtake pop-up: the team that moved forward blasts past the team that dropped back
           var fwd = z > a ? t : racer(o), bk = z > a ? racer(o) : t, sq = function (x) { return pos(x.id) ? 'square ' + pos(x.id) : 'START'; };
           save(); renderTrack();
-          KruFx.show({ art: KruRacing.overtake(racers.indexOf(fwd), color(fwd), fwd.name, racers.indexOf(bk), color(bk), bk.name), title: 'OVERTAKE!',
-            sub: fwd.name + ' blasts past ' + bk.name + '! ' + fwd.name + ' jumps to ' + sq(fwd) + ' and ' + bk.name + ' drops to ' + sq(bk) + '.', mood: 'good', sound: 'fanfare', wait: 3800,
+          KruFx.show({ art: KruRacing.overtake(racers.indexOf(fwd), color(fwd), fwd.name, racers.indexOf(bk), color(bk), bk.name), title: KruRacing.OVERTAKE.title,
+            sub: fwd.name + ' ' + KruRacing.OVERTAKE.verb + ' ' + bk.name + '! ' + fwd.name + ' jumps to ' + sq(fwd) + ' and ' + bk.name + ' drops to ' + sq(bk) + '.', mood: 'good', sound: 'fanfare', wait: 3800,
             then: function () { save(); busy = false; nextTurn(); } });
           return;
         }
@@ -713,8 +713,9 @@
       var own = (c.questions && (c.questions.all || c.questions[lv])) || []; // Christmas: one bank for every level
       GAME_TITLE = c.title || GAME_TITLE;
       if (window.KruFx) KruFx.theme(c.christmas ? 'xmas' : 'race');
-      RACING = !c.christmas && !!window.KruRacing;
+      RACING = !!window.KruRacing; // racing.js (Quiz Grand Prix) or xmas-rides.js (North Pole Grand Prix)
       document.body.classList.toggle('racing', RACING);
+      document.body.classList.toggle('gp', RACING && !c.christmas);
       if (c.shares) ORDER.forEach(function (t) { if (c.shares[t]) TIERS[t].share = c.shares[t]; });
       if (c.christmas && c.christmas.challenge && c.christmas.challenge.length && c.christmas.forfeit && c.christmas.forfeit.length) {
         XMAS = c.christmas;

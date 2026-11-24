@@ -1,6 +1,6 @@
 {
  "about": "Christmas Race Board (Henry, Nov 2026): Race Board's rules and code (games/race-board/app.js) with a Christmas question bank, Challenge squares and Forfeit cards. 189 Christmas questions (Nov 18; 11 rebus cut in Henry's audit) for every level, each with an id: 92 trivia, 22 rebus puzzles (rebus = lines shown big), 33 brain teasers, 17 reindeer math, 25 Christmas science; 59 easy, 56 regular, 45 hard, 29 impossible, drawn in those proportions (shares). The answer is an index for A-D questions, text for spoken ones. Asked questions are remembered on the phone (Kru.saveKeep) so later groups get new ones until every question has been asked. Math and science questions have a cat for the math-or-science chance card. christmas.squares = the Challenge squares; challenge and forfeit = the two card decks (20 each).",
- "title": "Christmas Dash",
+ "title": "North Pole Grand Prix",
  "shares": {
   "easy": 30,
   "regular": 30,
@@ -183,20 +183,20 @@
  },
  "intro": [
   {
-   "title": "Christmas Dash!",
+   "title": "North Pole Grand Prix",
    "text": [
-    "Every team has a piece on START.",
-    "First team to land exactly on FINISH wins!"
+    "Every team rides its own sleigh, sled or snowmobile!",
+    "First team to land exactly on FINISH reaches the North Pole!"
    ],
    "example": {
     "rows": [
      [
       "START",
-      "1 2 3 …"
+      "the workshop"
      ],
      [
       "FINISH",
-      "59"
+      "square 59: the North Pole"
      ]
     ]
    }
@@ -250,8 +250,8 @@
   {
    "title": "Special squares",
    "text": [
-    "★ forward · ⚠ back · 🎲 roll again · ? chance · 🎄 challenge.",
-    "Some squares are secret…"
+    "★ reindeer boost · ⚠ slip back · 🎲 roll again · ? chance · 🎄 challenge.",
+    "Some squares hide secret snow traps and ski slopes…"
    ],
    "example": {
     "rows": [
