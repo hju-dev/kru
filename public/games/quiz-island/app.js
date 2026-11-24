@@ -821,7 +821,7 @@
       if (saved && saved.v === 3 && saved.level === QZ.level && saved.map && saved.map.own && saved.map.own.length === CELLS && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; buildPoolKeep();
       } else {
-        S = null; fresh(QZ.unit ? 'unit' : '');
+        S = null; fresh(session.setKey && deckByKey(session.setKey) ? session.setKey : QZ.unit ? 'unit' : ''); // the deck picked before the team builder
         S.level = QZ.level;
       }
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.powers = S.powers || {}; S.mpicked = S.mpicked || {}; S.phase = S.phase || 'play';

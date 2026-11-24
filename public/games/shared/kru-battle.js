@@ -415,6 +415,9 @@
         var saved = session.resume;
         if (saved && saved.v === 2 && saved.level === session.level && (!saved.setKey || SETS.some(function (s) { return s.key === saved.setKey && s.name === saved.setName && count(s) === saved.order.length; }))) S = saved;
         else S = { v: 2, level: session.level, setKey: null, order: [], round: 0, phase: 'start', qi: 0, rev: 0, flipped: [], bonus: [], tally: {}, roundPts: {}, pts: {}, secs: 30, running: false, left: 0, total: 0, endAt: 0 };
+        // the set picked before the team builder: start with it (no set menu)
+        var pre = session.setKey ? SETS.filter(function (x) { return x.key === session.setKey; })[0] : null;
+        if (pre && S.setKey === null && S.order.length === 0) { S.setKey = pre.key; S.setName = pre.name; S.order = shuffle(range(count(pre))); }
         S.secs = KruMenu.snap(S.secs); if (S.readSecs) S.readSecs = KruMenu.snap(S.readSecs); // whole 10-second steps
         render();
         if (S.running) runTick();
