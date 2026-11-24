@@ -413,36 +413,36 @@
 .controls .iconbtn { min-width: 72px; padding: 0; font-size: 30px; font-weight: 900; line-height: 1; }
 
 /* =====================================================================================================
-   Quiz Grand Prix: the racing theme (body.racing is set by app.js; Christmas Dash never gets it)
+   Quiz Grand Prix: the racing theme (body.gp is set by app.js; Christmas Dash never gets it)
    ===================================================================================================== */
-.racing .bar { border-bottom: 3px solid #e63946; box-shadow: 0 4px 0 #f4f1ea; }
-.racing .logo { font-style: italic; letter-spacing: 0.02em; }
-.racing .logo b { color: #ff4d5a; }
-.racing .logo::before { content: '🏁 '; font-style: normal; }
+.gp .bar { border-bottom: 3px solid #e63946; box-shadow: 0 4px 0 #f4f1ea; }
+.gp .logo { font-style: italic; letter-spacing: 0.02em; }
+.gp .logo b { color: #ff4d5a; }
+.gp .logo::before { content: '🏁 '; font-style: normal; }
 /* the road: dark asphalt squares with kerb-coloured edges, a dashed centre line, a checkered START and FINISH */
-.racing .track { gap: 2px; padding: 3px; border-radius: 12px; background: #0d0f14; }
-.racing .track .sq {
+.gp .track { gap: 2px; padding: 3px; border-radius: 12px; background: #0d0f14; }
+.gp .track .sq {
   border-radius: 6px; border: 2px solid #2b2f3a; background: #262a33;
   background-image: linear-gradient(90deg, transparent 46%, rgb(255 255 255 / 0.09) 46% 54%, transparent 54%);
 }
-.racing .track .sq:nth-child(odd) { background-color: #2d313b; }
-.racing .track .sq::before, .racing .track .sq::after { content: none; }
-.racing .track .start, .racing .track .finish { border-color: #f4f1ea; background-image: none; }
-.racing .track .start { background: repeating-conic-gradient(#f4f1ea 0 25%, #1b1b1f 0 50%) 50% / 14px 14px; }
-.racing .track .finish { background: repeating-conic-gradient(#f4f1ea 0 25%, #1b1b1f 0 50%) 50% / 14px 14px; }
-.racing .track .start .num, .racing .track .finish .num { background: #1b1b1f; color: #f4f1ea; padding: 0 4px; border-radius: 4px; }
-.racing .track .go { border-color: #2ec4b6; background-color: #1f3b3d; }
-.racing .track .back { border-color: #ff6b6b; background-color: #3d2327; }
-.racing .track .again { border-color: #9b7bff; background-color: #2b2740; }
-.racing .track .chance { border-color: #ffb703; }
-.racing .track .sq.secret { border-color: #ffb703; background-color: #3a3220; }
-.racing .piece { border-radius: 4px 9px 9px 4px; width: 20px; height: 15px; border: 2px solid #14202b; }
-.racing .piece.now { outline-color: #f4f1ea; }
-.racing .legend .lg i { border-radius: 4px 9px 9px 4px; width: 22px; height: 16px; border: 2px solid #14202b; }
+.gp .track .sq:nth-child(odd) { background-color: #2d313b; }
+.gp .track .sq::before, .gp .track .sq::after { content: none; }
+.gp .track .start, .gp .track .finish { border-color: #f4f1ea; background-image: none; }
+.gp .track .start { background: repeating-conic-gradient(#f4f1ea 0 25%, #1b1b1f 0 50%) 50% / 14px 14px; }
+.gp .track .finish { background: repeating-conic-gradient(#f4f1ea 0 25%, #1b1b1f 0 50%) 50% / 14px 14px; }
+.gp .track .start .num, .gp .track .finish .num { background: #1b1b1f; color: #f4f1ea; padding: 0 4px; border-radius: 4px; }
+.gp .track .go { border-color: #2ec4b6; background-color: #1f3b3d; }
+.gp .track .back { border-color: #ff6b6b; background-color: #3d2327; }
+.gp .track .again { border-color: #9b7bff; background-color: #2b2740; }
+.gp .track .chance { border-color: #ffb703; }
+.gp .track .sq.secret { border-color: #ffb703; background-color: #3a3220; }
+.gp .piece { border-radius: 4px 9px 9px 4px; width: 20px; height: 15px; border: 2px solid #14202b; }
+.gp .piece.now { outline-color: #f4f1ea; }
+.gp .legend .lg i { border-radius: 4px 9px 9px 4px; width: 22px; height: 16px; border: 2px solid #14202b; }
 
 /* chance and secret cards: a racing "ticket" */
-.racing .chance-box { border-width: 4px; border-style: solid; background: #14171e; box-shadow: 0 0 0 4px #f4f1ea inset; }
-.racing .chance-title { letter-spacing: 0.03em; }
+.gp .chance-box { border-width: 4px; border-style: solid; background: #14171e; box-shadow: 0 0 0 4px #f4f1ea inset; }
+.gp .chance-title { letter-spacing: 0.03em; }
 
 /* the overtake pop-up: two vehicles on the road, the faster one blasts past */
 .kfx-art:has(.ovt) { width: min(440px, 78vw); height: 130px; filter: none; }
@@ -466,26 +466,35 @@
 }
 
 /* the podium: a victory stand on the tarmac, checkered flag across the top, each team's vehicle above its step */
-.racing .kp { background: #11141a; }
-.racing .kp-lights { background: repeating-conic-gradient(#f4f1ea 0 25%, #1b1b1f 0 50%) 0 0 / 16px 16px !important; height: 16px !important; inset: 0 0 auto 0 !important; opacity: 0.95 !important; animation: none !important; }
-.racing .kp-title { color: #ffe066 !important; font-style: italic; text-shadow: 0 2px 0 #e63946 !important; margin-top: 14px; font-size: 24px; }
-.racing .kp-stage { border-bottom: 6px solid #f4f1ea; background: linear-gradient(180deg, transparent 0 78%, #1d2028 78%); }
+.gp .kp { background: #11141a; }
+.gp .kp-lights { background: repeating-conic-gradient(#f4f1ea 0 25%, #1b1b1f 0 50%) 0 0 / 16px 16px !important; height: 16px !important; inset: 0 0 auto 0 !important; opacity: 0.95 !important; animation: none !important; }
+.gp .kp-title { color: #ffe066 !important; font-style: italic; text-shadow: 0 2px 0 #e63946 !important; margin-top: 14px; font-size: 24px; }
+.gp .kp-stage { border-bottom: 6px solid #f4f1ea; background: linear-gradient(180deg, transparent 0 78%, #1d2028 78%); }
 .racing .kp-art { display: block; width: min(66px, 100%); margin: 0 auto -2px; }
 .racing .kp-art svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.45)); }
 .racing .p1 .kp-art { width: min(80px, 100%); }
-.racing .kp-step {
+.gp .kp-step {
   border-radius: 8px 8px 0 0; border: 4px solid #f4f1ea; border-bottom: 0;
   background-image: repeating-conic-gradient(rgb(0 0 0 / 0.16) 0 25%, transparent 0 50%) !important; background-size: 22px 22px !important;
 }
-.racing .p1 .kp-step { background-color: #ffcf33 !important; box-shadow: 0 0 0 3px #e63946 !important; }
-.racing .p2 .kp-step { background-color: #cfd6e0 !important; }
-.racing .p3 .kp-step { background-color: #d98b4a !important; }
-.racing .kp-step { align-items: flex-start; padding-top: 6px; }
-.racing .kp-step span { background: #14171e; color: #f4f1ea !important; border-radius: 8px; padding: 0 12px; border: 2px solid #f4f1ea; }
-.racing .p1 .kp-name { color: #ffe066 !important; }
-.racing .kp-who { background: rgb(12 14 18 / 0.85); border-radius: 12px; padding: 0 8px; }
-.racing .kp-name { font-size: 22px; }
-.racing .p1 .kp-name { font-size: 26px; }
+.gp .p1 .kp-step { background-color: #ffcf33 !important; box-shadow: 0 0 0 3px #e63946 !important; }
+.gp .p2 .kp-step { background-color: #cfd6e0 !important; }
+.gp .p3 .kp-step { background-color: #d98b4a !important; }
+.gp .kp-step { align-items: flex-start; padding-top: 6px; }
+.gp .kp-step span { background: #14171e; color: #f4f1ea !important; border-radius: 8px; padding: 0 12px; border: 2px solid #f4f1ea; }
+.gp .p1 .kp-name { color: #ffe066 !important; }
+.gp .kp-who { background: rgb(12 14 18 / 0.85); border-radius: 12px; padding: 0 8px; }
+.gp .kp-name { font-size: 22px; }
+.gp .p1 .kp-name { font-size: 26px; }
 /* the overtake banner: the scene on top, the words under it */
 .kfx-card:has(.ovt) { flex-direction: column; text-align: center; gap: 6px; }
 .kfx-card:has(.ovt) .kfx-text { align-items: center; }
+
+/* the overtake scene on the snow (North Pole Grand Prix) */
+.ovt.xmas { background: #0e2236; border-color: #f7fbff; }
+.ovt.xmas .ovt-road { background: #e8f0f8; }
+.ovt.xmas .ovt-line { background: repeating-linear-gradient(90deg, #9fb8d1 0 18px, transparent 18px 36px); }
+.ovt.xmas .ovt-car em { text-shadow: 0 1px 0 #0e2236, 0 0 6px #0e2236; }
+/* North Pole Grand Prix podium: the winner's ride glows (the Santa hat would sit on top of the ride, so it is left off) */
+.racing:not(.gp) .p1 .kp-who::before { display: none; }
+.racing:not(.gp) .p1 .kp-art svg { filter: drop-shadow(0 0 10px #ffd25e); }
