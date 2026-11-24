@@ -1,0 +1,54 @@
+/* Battle of Writers: the team "board" handout (print on A4). One board per page, or two per page. */
+@font-face { font-family: 'Fredoka'; font-weight: 700; src: url('/fonts/fredoka-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Fredoka'; font-weight: 500; src: url('/fonts/fredoka-latin-500-normal.woff2') format('woff2'); }
+@page { size: A4 portrait; margin: 9mm; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: #fff; color: #111; font-family: 'Fredoka', 'Segoe UI', system-ui, sans-serif; font-weight: 500; }
+.sheet { width: 192mm; margin: 0 auto; }
+.board { height: 266mm; display: flex; flex-direction: column; gap: 4mm; border: 1.2mm solid #111; border-radius: 6mm; padding: 6mm 7mm; }
+.two .board { height: 134mm; gap: 2.2mm; padding: 3.5mm 5mm; border-width: 0.9mm; border-radius: 4mm; }
+.two .cut { text-align: center; font-size: 8pt; color: #666; border-top: 0.4mm dashed #666; margin: 3.5mm 0 2mm; padding-top: 1mm; }
+.head { display: flex; align-items: center; gap: 5mm; }
+.title { font-weight: 700; font-size: 22pt; line-height: 1; }
+.title small { display: block; font-size: 10pt; font-weight: 500; color: #444; margin-top: 1mm; }
+.two .title { font-size: 15pt; }
+.two .title small { font-size: 8pt; }
+.fields { margin-left: auto; display: flex; gap: 6mm; font-weight: 700; font-size: 16pt; }
+.two .fields { font-size: 11pt; gap: 4mm; }
+.fields span { display: inline-flex; align-items: flex-end; gap: 2mm; }
+.fields i { display: inline-block; width: 28mm; border-bottom: 0.6mm solid #111; height: 9mm; }
+.two .fields i { width: 18mm; height: 6mm; }
+.q { flex: 1; display: grid; grid-template-columns: 14mm 1fr 24mm; align-items: stretch; gap: 3mm; border: 0.7mm solid #111; border-radius: 4mm; padding: 2mm 3mm; min-height: 0; }
+.two .q { grid-template-columns: 9mm 1fr 17mm; gap: 2mm; padding: 1mm 2mm; border-width: 0.5mm; border-radius: 3mm; }
+.n { align-self: start; margin-top: 1mm; width: 11mm; height: 11mm; border-radius: 50%; background: #111; color: #fff; display: grid; place-items: center; font: 700 17pt/1 'Fredoka', sans-serif; }
+.two .n { width: 7.5mm; height: 7.5mm; font-size: 12pt; }
+.lines { background: repeating-linear-gradient(to bottom, transparent 0, transparent calc(50% - 0.3mm), #bbb calc(50% - 0.3mm), #bbb calc(50% + 0.3mm), transparent calc(50% + 0.3mm), transparent 100%); background-size: 100% 50%; }
+.mark { align-self: center; justify-self: end; display: flex; gap: 3mm; font-size: 20pt; font-weight: 700; color: #333; }
+.mark b { display: grid; place-items: center; width: 10mm; height: 10mm; border: 0.6mm solid #111; border-radius: 50%; font-size: 15pt; }
+.two .mark { gap: 1.5mm; }
+.two .mark b { width: 6.5mm; height: 6.5mm; font-size: 10pt; border-width: 0.4mm; }
+.tally { display: flex; flex-wrap: wrap; align-items: center; gap: 2mm 4mm; border: 0.9mm dashed #111; border-radius: 4mm; padding: 3mm 5mm; font-weight: 700; font-size: 13pt; background: #f4f4f4; }
+.two .tally { font-size: 10pt; gap: 1mm 2.5mm; padding: 1.5mm 3mm; border-width: 0.6mm; flex-wrap: nowrap; }
+.tally .lab { flex: 0 0 100%; font-size: 10pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.1; }
+.two .tally .lab { font-size: 7.5pt; flex: 0 0 auto; }
+.tally .box { display: inline-flex; align-items: flex-end; gap: 1.5mm; white-space: nowrap; }
+.tally .box i { display: inline-block; width: 15mm; height: 10mm; border: 0.6mm solid #111; border-radius: 2mm; background: #fff; }
+.two .tally .box i { width: 10mm; height: 7mm; border-width: 0.4mm; }
+.tally .op { font-size: 20pt; }
+.two .tally .op { font-size: 13pt; }
+.tally .total i { width: 20mm; background: #fff; border-width: 0.9mm; }
+.two .tally .total i { width: 13mm; }
+.ok { margin-left: auto; font-size: 11pt; display: flex; align-items: center; gap: 2mm; }
+.two .ok { font-size: 7.5pt; }
+.ok i { display: inline-block; width: 8mm; height: 8mm; border: 0.6mm solid #111; border-radius: 1.5mm; background: #fff; }
+.two .ok i { width: 5mm; height: 5mm; }
+.help { font-size: 9pt; color: #555; text-align: center; margin-top: 1mm; }
+.two .help { display: none; }
+@media screen { body { background: #e6e6ea; } .sheet { background: #fff; margin: 8px auto; box-shadow: 0 2px 10px rgb(0 0 0 / 0.2); padding: 9mm; width: 210mm; } }
+@media print { .sheet { width: auto; } }
+
+.tally .lab { flex: 1 1 auto; }
+.tally .expr { flex: 0 0 100%; display: flex; align-items: center; justify-content: space-between; gap: 3mm; white-space: nowrap; }
+.tally .ok { margin-left: 0; order: 1; }
+.two .tally { flex-wrap: wrap; }
+.two .tally .expr { gap: 2mm; }
