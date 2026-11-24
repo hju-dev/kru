@@ -105,6 +105,270 @@
      "q": "Spell the noun: \"something a person is entitled to have or do\". (Every person has a ___ to life.)",
      "answer": "right",
      "double": false
+    },
+    {
+     "q": "Which word means \"to say that you disagree with something\"?",
+     "choices": [
+      "support",
+      "respect",
+      "oppose",
+      "abolish"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to agree with something and help it\"?",
+     "choices": [
+      "support",
+      "oppose",
+      "abolish",
+      "revenge"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"very unkind; causing pain on purpose\"?",
+     "choices": [
+      "cruel",
+      "innocent",
+      "flexible",
+      "reliable"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the act of hurting someone because they hurt you\"?",
+     "choices": [
+      "revenge",
+      "justice",
+      "respect",
+      "forgiveness"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the idea that people are treated in a fair way\"?",
+     "choices": [
+      "revenge",
+      "justice",
+      "murder",
+      "crime"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"when you stop being angry with someone who did something wrong\"?",
+     "choices": [
+      "revenge",
+      "violence",
+      "evidence",
+      "forgiveness"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a feeling of admiration for someone\"?",
+     "choices": [
+      "respect",
+      "murder",
+      "crime",
+      "prison"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the crime of killing a person on purpose\"?",
+     "choices": [
+      "justice",
+      "murder",
+      "respect",
+      "opinion"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"using physical force to hurt people\"?",
+     "choices": [
+      "violent",
+      "innocent",
+      "reliable",
+      "cruel to"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a group of people in a court who decide if someone is guilty\"?",
+     "choices": [
+      "judge",
+      "jury",
+      "victim",
+      "editorial"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the person in charge of a trial\"?",
+     "choices": [
+      "jury",
+      "victim",
+      "judge",
+      "prisoner"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a building where criminals are kept\"?",
+     "choices": [
+      "court",
+      "office",
+      "prison",
+      "school"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"an act that is against the law\"?",
+     "choices": [
+      "opinion",
+      "fact",
+      "crime",
+      "editorial"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"information that helps show what is true\"?",
+     "choices": [
+      "opinion",
+      "revenge",
+      "evidence",
+      "respect"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"an article in a newspaper that gives an opinion\"?",
+     "choices": [
+      "evidence",
+      "jury",
+      "editorial",
+      "fact"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"what a person thinks or believes\"?",
+     "choices": [
+      "fact",
+      "opinion",
+      "evidence",
+      "law"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"something that is true and can be proved\"?",
+     "choices": [
+      "fact",
+      "opinion",
+      "editorial",
+      "revenge"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a rule made by the government\"?",
+     "choices": [
+      "crime",
+      "jury",
+      "opinion",
+      "law"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"what happens to someone who breaks the law\"?",
+     "choices": [
+      "punishment",
+      "justice",
+      "respect",
+      "evidence"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who is hurt or killed by a crime\"?",
+     "choices": [
+      "judge",
+      "jury",
+      "victim",
+      "editorial"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the place where trials happen\"?",
+     "choices": [
+      "prison",
+      "court",
+      "jury",
+      "crime"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the basic rights every person should have\"?",
+     "choices": [
+      "evidence",
+      "punishment",
+      "opinion",
+      "human rights"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"all the people who live together in a country or area\"?",
+     "choices": [
+      "crime",
+      "jury",
+      "society",
+      "court"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to treat someone or something with admiration\"?",
+     "choices": [
+      "respect",
+      "oppose",
+      "abolish",
+      "punish"
+     ],
+     "answer": 0,
+     "double": false
     }
    ]
   },
@@ -203,6 +467,248 @@
      "q": "Since 1973, more than 190 people on death row in the U.S. have been found ___ and released.",
      "answer": "innocent",
      "double": true
+    },
+    {
+     "q": "Some people ___ the death penalty. They think it is wrong.",
+     "choices": [
+      "support",
+      "oppose",
+      "respect",
+      "abolish"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Others ___ it. They think it keeps society safe.",
+     "choices": [
+      "oppose",
+      "abolish",
+      "support",
+      "forgive"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The judge asked the ___ to decide if the man was guilty.",
+     "choices": [
+      "jury",
+      "victim",
+      "prison",
+      "editorial"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "There was not enough ___ to prove he was guilty.",
+     "choices": [
+      "evidence",
+      "opinion",
+      "revenge",
+      "respect"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The ___ walked into the court and everyone stood up.",
+     "choices": [
+      "victim",
+      "crime",
+      "judge",
+      "law"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "A person who commits a crime may go to ___.",
+     "choices": [
+      "court",
+      "prison",
+      "jury",
+      "school"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The man was found ___, so he went free.",
+     "choices": [
+      "guilty",
+      "innocent",
+      "violent",
+      "cruel"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Murder is a very serious ___.",
+     "choices": [
+      "fact",
+      "opinion",
+      "editorial",
+      "crime"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Is it fair?\" is a question about ___.",
+     "choices": [
+      "evidence",
+      "revenge",
+      "prison",
+      "justice"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Many people want a better ___ for criminals, not only punishment.",
+     "choices": [
+      "crime",
+      "court",
+      "jury",
+      "society"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "She showed great ___ for her teacher.",
+     "choices": [
+      "revenge",
+      "crime",
+      "respect",
+      "murder"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "He did not seek ___. He chose to forgive.",
+     "choices": [
+      "forgiveness",
+      "revenge",
+      "respect",
+      "justice"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Every person has basic ___ rights.",
+     "choices": [
+      "jury",
+      "cruel",
+      "human",
+      "violent"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The newspaper ___ says that the law should change.",
+     "choices": [
+      "evidence",
+      "editorial",
+      "victim",
+      "prison"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "It is a ___ that the Earth goes around the Sun.",
+     "choices": [
+      "opinion",
+      "fact",
+      "editorial",
+      "crime"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"I think the law is unfair\" is an ___.",
+     "choices": [
+      "fact",
+      "evidence",
+      "opinion",
+      "crime"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The family of the ___ wanted justice.",
+     "choices": [
+      "judge",
+      "jury",
+      "victim",
+      "editorial"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The government wants to ___ the old law and make a new one.",
+     "choices": [
+      "support",
+      "respect",
+      "abolish",
+      "oppose"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The country is trying to reduce ___ crime on the streets.",
+     "choices": [
+      "innocent",
+      "guilty",
+      "reliable",
+      "violent"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "It is ___ to hurt animals for fun.",
+     "choices": [
+      "cruel",
+      "innocent",
+      "flexible",
+      "reliable"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The ___ in court asked many questions.",
+     "choices": [
+      "farmer",
+      "lawyer",
+      "driver",
+      "singer"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "He broke the ___ and had to pay a fine.",
+     "choices": [
+      "fact",
+      "law",
+      "opinion",
+      "editorial"
+     ],
+     "answer": 1,
+     "double": false
     }
    ]
   },
@@ -278,6 +784,259 @@
     {
      "q": "Write the opposite of \"innocent\".",
      "answer": "guilty",
+     "double": false
+    },
+    {
+     "q": "What is the opposite of cruel?",
+     "choices": [
+      "violent",
+      "guilty",
+      "strict",
+      "kind"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of abolish?",
+     "choices": [
+      "keep",
+      "oppose",
+      "forgive",
+      "punish"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of violent?",
+     "choices": [
+      "cruel",
+      "peaceful",
+      "guilty",
+      "angry"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of respect?",
+     "choices": [
+      "justice",
+      "disrespect",
+      "forgiveness",
+      "revenge"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of fact?",
+     "choices": [
+      "evidence",
+      "opinion",
+      "law",
+      "crime"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of victim?",
+     "choices": [
+      "judge",
+      "jury",
+      "lawyer",
+      "criminal"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of justice?",
+     "choices": [
+      "revenge",
+      "evidence",
+      "crime",
+      "injustice"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of fair?",
+     "choices": [
+      "kind",
+      "honest",
+      "legal",
+      "unfair"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of legal?",
+     "choices": [
+      "unlegal",
+      "dislegal",
+      "illegal",
+      "nonlegal"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of agree?",
+     "choices": [
+      "support",
+      "disagree",
+      "respect",
+      "oppose to"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of safe?",
+     "choices": [
+      "innocent",
+      "kind",
+      "calm",
+      "dangerous"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of honest?",
+     "choices": [
+      "cruel",
+      "violent",
+      "dishonest",
+      "guilty"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of right (moral)?",
+     "choices": [
+      "wrong",
+      "fair",
+      "innocent",
+      "legal"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of increase?",
+     "choices": [
+      "support",
+      "punish",
+      "abolish",
+      "decrease"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of allow?",
+     "choices": [
+      "support",
+      "respect",
+      "oppose to",
+      "forbid"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of public?",
+     "choices": [
+      "private",
+      "legal",
+      "cruel",
+      "violent"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of simple?",
+     "choices": [
+      "cruel",
+      "complex",
+      "violent",
+      "fair"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of \"for\" (a law)?",
+     "choices": [
+      "towards",
+      "against",
+      "about",
+      "with"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of generous?",
+     "choices": [
+      "selfish",
+      "kind",
+      "honest",
+      "cruel to"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of \"to prove\"?",
+     "choices": [
+      "to disprove",
+      "to support",
+      "to oppose",
+      "to respect"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of \"strict\"?",
+     "choices": [
+      "cruel",
+      "fair",
+      "violent",
+      "lenient"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of \"permanent\"?",
+     "choices": [
+      "cruel",
+      "legal",
+      "fair",
+      "temporary"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "What is the opposite of \"weak\"?",
+     "choices": [
+      "cruel",
+      "fair",
+      "strong",
+      "kind"
+     ],
+     "answer": 2,
      "double": false
     }
    ]
@@ -366,6 +1125,274 @@
      "q": "Combine with \"although\": Capital punishment may reduce crime. / There is little reliable evidence that it does.",
      "answer": "Although capital punishment may reduce crime, there is little reliable evidence that it does.",
      "double": true
+    },
+    {
+     "q": "___ he was tired, he kept working.",
+     "choices": [
+      "Because",
+      "So",
+      "Although",
+      "Unless"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "___ the rain, we went for a walk.",
+     "choices": [
+      "Despite",
+      "Although",
+      "Because",
+      "However"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "He passed the test ___ he didn't study much.",
+     "choices": [
+      "even though",
+      "because",
+      "so",
+      "unless"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "___ being young, she was very wise.",
+     "choices": [
+      "In spite of",
+      "Although",
+      "Even though",
+      "However"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The law is fair. ___, some people disagree.",
+     "choices": [
+      "Although",
+      "Despite",
+      "However",
+      "Because"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "He is rich; ___, he is not happy.",
+     "choices": [
+      "because",
+      "nevertheless",
+      "although",
+      "despite"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "___ the evidence was strong, the jury was not sure.",
+     "choices": [
+      "Despite",
+      "Although",
+      "In spite",
+      "Because of"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She smiled ___ she was very sad.",
+     "choices": [
+      "even though",
+      "because",
+      "so",
+      "despite"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "___ the fact that he apologized, she did not forgive him.",
+     "choices": [
+      "Although",
+      "Even though",
+      "However",
+      "Despite"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The punishment was harsh. ___, many people supported it.",
+     "choices": [
+      "Because",
+      "Although",
+      "Nevertheless",
+      "Despite"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "___ it was late, we kept talking.",
+     "choices": [
+      "Because",
+      "So",
+      "Despite of",
+      "Though"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "Despite the noise, he slept well.",
+      "Despite the noise was loud, he slept well.",
+      "Although the noise, he slept well.",
+      "Despite of the noise, he slept well."
+     ],
+     "answer": 0,
+     "double": false,
+     "why": "\"Despite\" is followed by a noun."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "Although the cold, we swam.",
+      "Although it was cold, we swam.",
+      "Despite it was cold, we swam.",
+      "In spite it was cold, we swam."
+     ],
+     "answer": 1,
+     "double": false,
+     "why": "\"Although\" + clause."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "In spite of his age, he runs fast.",
+      "In spite his age, he runs fast.",
+      "In spite of he is old, he runs fast.",
+      "In spite of old, he runs fast."
+     ],
+     "answer": 0,
+     "double": false,
+     "why": "\"In spite of\" + noun."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "Even she was sick, she came.",
+      "Even though she was sick, she came.",
+      "Even if she was sick, she came, but she was not.",
+      "Even though of sickness, she came."
+     ],
+     "answer": 1,
+     "double": false,
+     "why": "\"Even though\" + clause."
+    },
+    {
+     "q": "He likes sports, ___ his brother likes music.",
+     "choices": [
+      "because",
+      "whereas",
+      "despite",
+      "so"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "___ some people like the law, others hate it.",
+     "choices": [
+      "Despite",
+      "Because of",
+      "While",
+      "So"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "She is kind. ___, she can be strict.",
+     "choices": [
+      "Because",
+      "Although",
+      "Despite",
+      "Still"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "I enjoyed the trip ___ the bad weather.",
+     "choices": [
+      "although",
+      "even though",
+      "despite",
+      "however"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The movie was long, ___ I enjoyed it.",
+     "choices": [
+      "because",
+      "but",
+      "so",
+      "despite"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "___ my brother is younger, he is taller than me.",
+     "choices": [
+      "Despite",
+      "Because",
+      "Although",
+      "However"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Despite ___ tired, he finished the race.",
+     "choices": [
+      "he was",
+      "is",
+      "being",
+      "was"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "In spite of the ___, we won.",
+     "choices": [
+      "difficulties",
+      "difficult",
+      "difficultly",
+      "difficulty is"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "___ the law, some people break it.",
+     "choices": [
+      "Despite",
+      "Although",
+      "Even though",
+      "So"
+     ],
+     "answer": 0,
+     "double": false
     }
    ]
   },
@@ -443,6 +1470,240 @@
      ],
      "answer": 1,
      "double": false
+    },
+    {
+     "q": "An innocent person did not commit the crime.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A jury decides the law.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Abolish\" means to officially end a law.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Revenge and justice mean exactly the same thing.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A judge is in charge of a trial.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Evidence can help show if someone is guilty.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "An editorial gives the writer's opinion.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Violent\" means calm and quiet.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Murder is a crime.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Support\" is the opposite of \"oppose\".",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Everyone must have the same opinion.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A fact can be proved.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Even though\" introduces a contrast.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Despite\" is followed by a clause with a subject and a verb.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Although\" is followed by a clause.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Cruel\" means very kind.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Forgiveness means stopping being angry with someone.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A victim is a person who commits a crime.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Human rights are for everyone.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A prison is a place where some criminals are kept.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"However\" can start a new sentence to show contrast.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Nevertheless\" means \"because of this\".",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A rhetorical question does not need an answer.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Punishment is a result of breaking the law.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A court is a place where trials happen.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "An opinion is always a fact.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
     }
    ]
   },
@@ -502,6 +1763,303 @@
       "persuasive"
      ],
      "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"Who are we to decide who lives or dies?\" This is a ___.",
+     "choices": [
+      "fact",
+      "command",
+      "rhetorical question",
+      "list"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"Justice, respect, forgiveness: these matter.\" This is a ___.",
+     "choices": [
+      "question",
+      "command",
+      "list of three",
+      "quote"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"It is wrong. Plain and simple.\" The short sentence adds ___.",
+     "choices": [
+      "emphasis",
+      "length",
+      "a question",
+      "a list"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"The law is clear; the evidence is not.\" The semicolon ___.",
+     "choices": [
+      "starts a list",
+      "joins two related sentences",
+      "ends a question",
+      "adds a quote"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Think about it.\" This is a ___.",
+     "choices": [
+      "question",
+      "quote",
+      "command",
+      "list"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"Wouldn't you want justice?\" This is a ___.",
+     "choices": [
+      "command",
+      "fact",
+      "rhetorical question",
+      "statement"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "A very short sentence after long ones is used for ___.",
+     "choices": [
+      "length",
+      "effect",
+      "grammar",
+      "spelling"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Many people are afraid; many people are angry; many people are tired.\" This uses ___.",
+     "choices": [
+      "a question",
+      "a command",
+      "repetition",
+      "a fact"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"We must act, and we must act now.\" This uses ___.",
+     "choices": [
+      "a question",
+      "a list",
+      "a fact",
+      "repetition"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"The world is changing — and fast.\" The dash adds ___.",
+     "choices": [
+      "a question",
+      "a list",
+      "a quote",
+      "emphasis"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"According to experts, crime is falling.\" This starts with a ___.",
+     "choices": [
+      "command",
+      "question",
+      "joke",
+      "reference to experts"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Imagine a world without crime.\" This is a ___.",
+     "choices": [
+      "question",
+      "fact",
+      "command to imagine",
+      "quote"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"First, ... Second, ... Finally, ...\" These words show ___.",
+     "choices": [
+      "contrast",
+      "cause",
+      "opinion",
+      "order"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"In my opinion, the law is unfair.\" \"In my opinion\" shows ___.",
+     "choices": [
+      "a fact",
+      "a command",
+      "a personal view",
+      "a list"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"For example, many countries have changed their laws.\" \"For example\" gives ___.",
+     "choices": [
+      "an example",
+      "a contrast",
+      "an order",
+      "a result"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"On the other hand, some people disagree.\" \"On the other hand\" shows ___.",
+     "choices": [
+      "order",
+      "example",
+      "result",
+      "contrast"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"As a result, fewer people were afraid.\" \"As a result\" shows ___.",
+     "choices": [
+      "contrast",
+      "an example",
+      "order",
+      "a result"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Mixing short and long sentences makes writing more ___.",
+     "choices": [
+      "boring",
+      "confusing",
+      "interesting",
+      "wrong"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Starting every sentence the same way makes writing ___.",
+     "choices": [
+      "varied",
+      "repetitive",
+      "lively",
+      "clear and fresh"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which sentence starts with a participle?",
+     "choices": [
+      "I saw a dog while walking.",
+      "Walking home, I saw a dog.",
+      "A dog was seen.",
+      "The dog was seen walking."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which uses a \"who\" clause?",
+     "choices": [
+      "The man called my uncle.",
+      "My uncle called the man.",
+      "The man is my uncle.",
+      "The man who called is my uncle."
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which is a question?",
+     "choices": [
+      "You agree.",
+      "Do you agree?",
+      "Agree!",
+      "You agree, right."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which is a command?",
+     "choices": [
+      "Stop the violence!",
+      "They stopped the violence.",
+      "Do they stop violence?",
+      "Violence stopped."
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which sentence is the most formal?",
+     "choices": [
+      "The law's gotta change.",
+      "The law ought to be reconsidered.",
+      "The law is kinda wrong.",
+      "Let's change the law, guys."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which is a complex sentence?",
+     "choices": [
+      "We went out.",
+      "Although it rained, we went out.",
+      "It rained.",
+      "We went out and played."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which is a compound sentence?",
+     "choices": [
+      "It rained, so we stayed in.",
+      "Although it rained, we went out.",
+      "Because of rain, we stayed.",
+      "After the rain, we went out."
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which is a simple sentence?",
+     "choices": [
+      "The judge spoke, and the jury listened.",
+      "When the judge spoke, we listened.",
+      "Although he spoke, nobody heard.",
+      "The judge spoke."
+     ],
+     "answer": 3,
      "double": false
     }
    ]

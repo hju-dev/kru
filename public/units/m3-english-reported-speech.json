@@ -83,6 +83,126 @@
      "answer": "Nok said (that) she was going to study there that night.",
      "double": false,
      "tier": "impossible"
+    },
+    {
+     "q": "Change to reported speech: Ben said, \"I am hungry.\"",
+     "answer": "Ben said (that) he was hungry.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: Mai said, \"I like my new school.\"",
+     "answer": "Mai said (that) she liked her new school.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: Tom said, \"I live in Phuket.\"",
+     "answer": "Tom said (that) he lived in Phuket.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: She said, \"I am studying.\"",
+     "answer": "She said (that) she was studying.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: He said, \"I have finished.\"",
+     "answer": "He said (that) he had finished.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: They said, \"We will help you.\"",
+     "answer": "They said (that) they would help me.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: She said, \"I can swim.\"",
+     "answer": "She said (that) she could swim.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: He said, \"I went to the market.\"",
+     "answer": "He said (that) he had gone to the market.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Nok said, \"I don't know.\"",
+     "answer": "Nok said (that) she didn't (did not) know.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: My dad said, \"I'm leaving now.\"",
+     "answer": "My dad said (that) he was leaving then (at that moment).",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Pim said, \"I saw him yesterday.\"",
+     "answer": "Pim said (that) she had seen him the day before.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Max said, \"I will call you tomorrow.\"",
+     "answer": "Max said (that) he would call me the next day.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: The teacher said, \"You must study.\"",
+     "answer": "The teacher said (that) we had to study.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: She said, \"I may be late.\"",
+     "answer": "She said (that) she might be late.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: He said, \"We have been waiting for an hour.\"",
+     "answer": "He said (that) they had been waiting for an hour.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Mom said, \"I bought this here.\"",
+     "answer": "Mom said (that) she had bought that there.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Dan said, \"I'm going to quit.\"",
+     "answer": "Dan said (that) he was going to quit.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Lee said, \"I should apologize.\"",
+     "answer": "Lee said (that) he should apologize.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: They said, \"We were sleeping.\"",
+     "answer": "They said (that) they had been sleeping.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: She said, \"It is raining here.\"",
+     "answer": "She said (that) it was raining there.",
+     "double": false,
+     "tier": "regular"
     }
    ]
   },
@@ -148,6 +268,132 @@
      "answer": "Jim said, \"I saw the movie last week.\" (or \"I have seen the movie.\")",
      "double": false,
      "tier": "impossible"
+    },
+    {
+     "q": "Change to direct speech: Ben said (that) he was happy.",
+     "answer": "Ben said, \"I am happy.\"",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to direct speech: She said (that) she liked music.",
+     "answer": "She said, \"I like music.\"",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to direct speech: He said (that) he lived in Chiang Mai.",
+     "answer": "He said, \"I live in Chiang Mai.\"",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to direct speech: They said (that) they were tired.",
+     "answer": "They said, \"We are tired.\"",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to direct speech: Mom said (that) she was cooking.",
+     "answer": "Mom said, \"I am cooking.\"",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to direct speech: He said (that) he could help me.",
+     "answer": "He said, \"I can help you.\"",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to direct speech: She said (that) she would come later.",
+     "answer": "She said, \"I will come later.\"",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to direct speech: Tom said (that) he had finished his homework.",
+     "answer": "Tom said, \"I have finished my homework.\" (or \"I finished my homework.\")",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to direct speech: Mai said (that) she didn't know the answer.",
+     "answer": "Mai said, \"I don't know the answer.\"",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to direct speech: He said (that) he had seen the movie the day before.",
+     "answer": "He said, \"I saw the movie yesterday.\"",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to direct speech: She said (that) she would call him the next day.",
+     "answer": "She said, \"I will call you tomorrow.\"",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to direct speech: They said (that) they were leaving then.",
+     "answer": "They said, \"We are leaving now.\"",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to direct speech: He said (that) he might be late.",
+     "answer": "He said, \"I may be late.\"",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to direct speech: She said (that) she had to go.",
+     "answer": "She said, \"I must go.\" (or \"I have to go.\")",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to direct speech: The boy said (that) he was lost.",
+     "answer": "The boy said, \"I am lost.\"",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to direct speech: Dad said (that) he was working that day.",
+     "answer": "Dad said, \"I am working today.\"",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to direct speech: Nok said (that) she had been waiting for an hour.",
+     "answer": "Nok said, \"I have been waiting for an hour.\"",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to direct speech: He said (that) it was raining there.",
+     "answer": "He said, \"It is raining here.\"",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to direct speech: She said (that) she was going to quit.",
+     "answer": "She said, \"I am going to quit.\"",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to direct speech: They said (that) they could swim.",
+     "answer": "They said, \"We can swim.\"",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to direct speech: He said (that) he hated spiders.",
+     "answer": "He said, \"I hate spiders.\"",
+     "double": false,
+     "tier": "easy"
     }
    ]
   },
@@ -213,6 +459,126 @@
      "answer": "had been waiting",
      "double": false,
      "tier": "hard"
+    },
+    {
+     "q": "\"I am happy.\" She said she ___ happy.",
+     "answer": "was",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I like pizza.\" He said he ___ pizza.",
+     "answer": "liked",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"We play soccer.\" They said they ___ soccer.",
+     "answer": "played",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I will help you.\" She said she ___ help me.",
+     "answer": "would",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I can drive.\" He said he ___ drive.",
+     "answer": "could",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I went home.\" He said he ___ gone home.",
+     "answer": "had",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I am reading.\" She said she ___ reading.",
+     "answer": "was",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"We are leaving.\" They said they ___ leaving.",
+     "answer": "were",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I don't know.\" He said he ___ know.",
+     "answer": "didn't",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I must go.\" She said she ___ to go.",
+     "answer": "had",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I may come.\" He said he ___ come.",
+     "answer": "might",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"I have been waiting.\" She said she ___ been waiting.",
+     "answer": "had",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"I was sleeping.\" He said he ___ been sleeping.",
+     "answer": "had",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"It is cold.\" She said it ___ cold.",
+     "answer": "was",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I will call tomorrow.\" He said he would call ___.",
+     "answer": "the next day",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I saw her yesterday.\" He said he had seen her ___.",
+     "answer": "the day before",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I'm busy now.\" She said she was busy ___.",
+     "answer": "then",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I live here.\" He said he lived ___.",
+     "answer": "there",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"We are going to win.\" They said they ___ going to win.",
+     "answer": "were",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"We are tired.\" They said they ___ tired.",
+     "answer": "were",
+     "double": false,
+     "tier": "easy"
     }
    ]
   },
@@ -314,6 +680,282 @@
      "answer": 3,
      "double": false,
      "tier": "hard"
+    },
+    {
+     "q": "\"I am hungry,\" he said. Which is correct?",
+     "choices": [
+      "He said he is hungry.",
+      "He said he were hungry.",
+      "He said he has been hungry.",
+      "He said he was hungry."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "In reported speech, \"now\" usually becomes ___.",
+     "choices": [
+      "then",
+      "today",
+      "yesterday",
+      "before now"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "In reported speech, \"yesterday\" becomes ___.",
+     "choices": [
+      "the day before",
+      "tomorrow",
+      "today",
+      "the next day"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "In reported speech, \"next week\" becomes ___.",
+     "choices": [
+      "last week",
+      "this week",
+      "week after ago",
+      "the following week"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I will go,\" she said. Which is correct?",
+     "choices": [
+      "She said she will go.",
+      "She said she goes.",
+      "She said she would go.",
+      "She said she went."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I can swim,\" he said. Which is correct?",
+     "choices": [
+      "He said he can swim.",
+      "He said he cans swim.",
+      "He said he swam.",
+      "He said he could swim."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Which verb is used to report a question?",
+     "choices": [
+      "asked",
+      "said",
+      "told",
+      "spoke"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"Where do you live?\" Which is correct?",
+     "choices": [
+      "She asked me where I lived.",
+      "She asked me where did I live.",
+      "She asked me where I live did.",
+      "She asked me where do I live."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"Do you like tea?\" Which is correct?",
+     "choices": [
+      "He asked did I like tea.",
+      "He asked that I liked tea.",
+      "He asked do I like tea.",
+      "He asked if I liked tea."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"Don't talk!\" Which is correct?",
+     "choices": [
+      "She told us don't talk.",
+      "She said us not to talk.",
+      "She told us not to talk.",
+      "She told us not talking."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"Open the door,\" he said. Which is correct?",
+     "choices": [
+      "He told me to open the door.",
+      "He told me open the door.",
+      "He said me to open the door.",
+      "He told me opening the door."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which tense does \"have finished\" become?",
+     "choices": [
+      "has finished",
+      "finished",
+      "was finished",
+      "had finished"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which does \"I went\" become in reported speech?",
+     "choices": [
+      "I go",
+      "I had gone",
+      "I was going",
+      "I have gone"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "She told that she was tired.",
+      "She said me that she was tired.",
+      "She told to me she was tired.",
+      "She told me that she was tired."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "He said me that he was busy.",
+      "He told that he was busy.",
+      "He said that he was busy.",
+      "He said to that he was busy."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"Tomorrow\" in direct speech becomes ___ in reported speech.",
+     "choices": [
+      "the next day",
+      "yesterday",
+      "the day before",
+      "today"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"Last night\" becomes ___ in reported speech.",
+     "choices": [
+      "the night before",
+      "tomorrow night",
+      "tonight",
+      "next night"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"This\" often becomes ___ in reported speech.",
+     "choices": [
+      "these",
+      "here",
+      "that",
+      "then"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"These\" often becomes ___ in reported speech.",
+     "choices": [
+      "this",
+      "that",
+      "those",
+      "here"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "We don't have to backshift when the fact is still ___.",
+     "choices": [
+      "false",
+      "old",
+      "past",
+      "true"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Which verb stays the same in reported speech?",
+     "choices": [
+      "can",
+      "will",
+      "may",
+      "should"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "In a reported question, the word order is ___.",
+     "choices": [
+      "like a question",
+      "reversed",
+      "like a statement",
+      "random"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which word starts a reported yes/no question?",
+     "choices": [
+      "that",
+      "if",
+      "what",
+      "do"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular"
     }
    ]
   },
@@ -463,6 +1105,306 @@
      "answer": 2,
      "double": false,
      "tier": "hard"
+    },
+    {
+     "q": "We had a big argument and ___, but now we're friends again.",
+     "choices": [
+      "broke up",
+      "got over",
+      "made up",
+      "fell out"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Pim and Dan ___ after two years. They aren't a couple now.",
+     "choices": [
+      "broke up",
+      "made up",
+      "got on",
+      "went out"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "I ___ well with my cousins. We never fight.",
+     "choices": [
+      "get over",
+      "break up",
+      "get on",
+      "fall out"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "She ___ him last year, but they are no longer friends.",
+     "choices": [
+      "got on with",
+      "made up with",
+      "fell out with",
+      "went out with"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "They have been ___ for a year. They are boyfriend and girlfriend.",
+     "choices": [
+      "breaking up",
+      "going out",
+      "falling out",
+      "making up"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "It took her a long time to ___ the break-up.",
+     "choices": [
+      "get on",
+      "make up",
+      "fall out",
+      "get over"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "I ___ my grandmother. She is kind and gives good advice.",
+     "choices": [
+      "look up to",
+      "look down on",
+      "fall out with",
+      "break up with"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "He ___ his little brother. He thinks he's stupid.",
+     "choices": [
+      "looks down on",
+      "looks up to",
+      "gets on with",
+      "makes up with"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "We ___ in the same class and became close friends.",
+     "choices": [
+      "got to know each other",
+      "fell out",
+      "broke up",
+      "went off"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "She ___ her sister's help when she was sad.",
+     "choices": [
+      "fell out of",
+      "broke up with",
+      "got over",
+      "counted on"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "You can always ___ me. I'll help you.",
+     "choices": [
+      "fall out",
+      "count on",
+      "break up",
+      "get over"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "My parents ___ after a long argument. They're friends again.",
+     "choices": [
+      "broke up",
+      "made up",
+      "fell out",
+      "went out"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "They ___ on holiday and didn't speak for a week.",
+     "choices": [
+      "fell out",
+      "made up",
+      "got on",
+      "went out"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "I don't ___ my neighbor. We argue all the time.",
+     "choices": [
+      "get on with",
+      "get over",
+      "make up",
+      "go out"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "He ___ his girlfriend by text message.",
+     "choices": [
+      "made up with",
+      "got on with",
+      "broke up with",
+      "looked up to"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "My brother ___ his father. He wants to be like him.",
+     "choices": [
+      "looks up to",
+      "looks down on",
+      "breaks up with",
+      "falls out with"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "She ___ with her best friend after a silly argument.",
+     "choices": [
+      "made up",
+      "got on",
+      "fell out",
+      "went out"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Are you ___ anyone at the moment?",
+     "choices": [
+      "breaking up with",
+      "going out with",
+      "falling out",
+      "making up"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Don't be sad; you'll ___ it soon.",
+     "choices": [
+      "fall out",
+      "get over",
+      "go out",
+      "look up"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "We ___ each other when we were kids, and we're still best friends.",
+     "choices": [
+      "knew",
+      "have been knowing",
+      "had knew",
+      "have known"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which phrasal verb means \"to become friends again after a fight\"?",
+     "choices": [
+      "break up",
+      "make up",
+      "fall out",
+      "get over"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Which phrasal verb means \"to end a relationship\"?",
+     "choices": [
+      "make up",
+      "break up",
+      "get on",
+      "look up to"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Which phrasal verb means \"to have a good relationship with someone\"?",
+     "choices": [
+      "fall out with",
+      "get on with",
+      "break up with",
+      "look down on"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Which phrasal verb means \"to admire someone\"?",
+     "choices": [
+      "look down on",
+      "fall out with",
+      "break up with",
+      "look up to"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which phrasal verb means \"to think someone is not as good as you\"?",
+     "choices": [
+      "look up to",
+      "get on with",
+      "look down on",
+      "make up with"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular"
     }
    ]
   },
@@ -546,6 +1488,144 @@
      "answer": "He told me that he was hungry. (or: He said that he was hungry.)",
      "double": false,
      "tier": "hard"
+    },
+    {
+     "q": "He ___ me a secret.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "She ___ that she was ill.",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "They ___ us the truth.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "He ___ to me that he was late.",
+     "answer": "said",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "I ___ her that I was sorry.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "The teacher ___ the students to sit down.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "My mom ___, \"Dinner's ready.\"",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "She ___ him that she was busy.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "He ___ \"good morning\" to everyone.",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "The boy ___ his mother a lie.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Mai ___ she would come to the party.",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "They ___ a story to the children.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "She ___ goodbye and left.",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Did he ___ you what happened?",
+     "answer": "tell",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "What did she ___ to you?",
+     "answer": "say",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Please ___ me the time.",
+     "answer": "tell",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Can you ___ me how to get there?",
+     "answer": "tell",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "He ___ nothing about the plan.",
+     "answer": "said",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "You must ___ the truth.",
+     "answer": "tell",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "She ___ me she was leaving.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "I can't ___ the difference.",
+     "answer": "tell",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "He ___ that he would help.",
+     "answer": "said",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "She ___ him to wait outside.",
+     "answer": "told",
+     "double": false,
+     "tier": "easy"
     }
    ]
   },
@@ -635,6 +1715,114 @@
      "answer": "Tom asked me if (whether) I was going to ask her out the next day.",
      "double": false,
      "tier": "impossible"
+    },
+    {
+     "q": "Change to reported speech: Mark: \"I miss my friend.\"",
+     "answer": "Mark said (that) he missed his friend.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: Lin: \"I forgive you.\"",
+     "answer": "Lin said (that) she forgave me (him / her).",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Tom: \"I will never lie again.\"",
+     "answer": "Tom said (that) he would never lie again.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Mai: \"We made up yesterday.\"",
+     "answer": "Mai said (that) they had made up the day before.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Ben: \"I'm going out with Ann.\"",
+     "answer": "Ben said (that) he was going out with Ann.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Pim: \"I got over him.\"",
+     "answer": "Pim said (that) she had got(ten) over him.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Dan: \"My brother and I don't get on.\"",
+     "answer": "Dan said (that) his brother and he didn't get on.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Nok: \"I look up to my mother.\"",
+     "answer": "Nok said (that) she looked up to her mother.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Sam: \"We have fallen out.\"",
+     "answer": "Sam said (that) they had fallen out.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Kim: \"I can count on you.\"",
+     "answer": "Kim said (that) she could count on me (him / her).",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Change to reported speech: Lee: \"I broke up with her last week.\"",
+     "answer": "Lee said (that) he had broken up with her the week before.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Joy: \"I'm sorry I shouted.\"",
+     "answer": "Joy said (that) she was sorry she had shouted.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Mom: \"Make up with your sister.\"",
+     "answer": "Mom told me to make up with my sister.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Dad: \"Don't fall out with your friends.\"",
+     "answer": "Dad told me not to fall out with my friends.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Ann: \"Do you get on with your cousin?\"",
+     "answer": "Ann asked me if I got on with my cousin.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Tom: \"Where did you meet her?\"",
+     "answer": "Tom asked me where I had met her.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Change to reported speech: Mai: \"I love my best friend.\"",
+     "answer": "Mai said (that) she loved her best friend.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "Change to reported speech: Ben: \"I will help you.\"",
+     "answer": "Ben said (that) he would help me (you).",
+     "double": false,
+     "tier": "easy"
     }
    ]
   }

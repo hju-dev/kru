@@ -112,6 +112,246 @@
       "answer": "I didn't eat breakfast.",
       "double": true,
       "why": "Negative past simple: didn't + base verb. \"Ate\" becomes \"didn't eat\"."
+     },
+     {
+      "q": "Last week we ___ to the beach.",
+      "choices": [
+       "go",
+       "went",
+       "goes",
+       "going"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Last week\" is the past, so we use \"went\"."
+     },
+     {
+      "q": "She ___ her homework last night.",
+      "choices": [
+       "did",
+       "do",
+       "does",
+       "doing"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Past of \"do\" is \"did\"."
+     },
+     {
+      "q": "What is the past of \"see\"?",
+      "choices": [
+       "saw",
+       "seed",
+       "seen",
+       "sees"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"See\" is irregular: see → saw."
+     },
+     {
+      "q": "I ___ a cold drink at lunch.",
+      "choices": [
+       "had",
+       "have",
+       "has",
+       "having"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Past of \"have\" is \"had\"."
+     },
+     {
+      "q": "They ___ soccer on Sunday.",
+      "choices": [
+       "play",
+       "plays",
+       "played",
+       "playing"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Regular verb: play + -ed."
+     },
+     {
+      "q": "He ___ his keys yesterday.",
+      "choices": [
+       "lose",
+       "loses",
+       "lost",
+       "losing"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Past of \"lose\" is \"lost\"."
+     },
+     {
+      "q": "We ___ TV last night.",
+      "choices": [
+       "watch",
+       "watches",
+       "watching",
+       "watched"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Regular verb: watch + -ed."
+     },
+     {
+      "q": "Did you ___ breakfast this morning?",
+      "choices": [
+       "eat",
+       "ate",
+       "eaten",
+       "eats"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "After \"did\" we use the base form."
+     },
+     {
+      "q": "My mom ___ a new bag last week.",
+      "choices": [
+       "buy",
+       "buys",
+       "bought",
+       "buying"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Past of \"buy\" is \"bought\"."
+     },
+     {
+      "q": "What is the past of \"write\"?",
+      "choices": [
+       "writed",
+       "wrote",
+       "written",
+       "writes"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Write\" is irregular: write → wrote."
+     },
+     {
+      "q": "She didn't ___ to school yesterday.",
+      "choices": [
+       "went",
+       "goes",
+       "go",
+       "going"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "After \"didn't\" we use the base form."
+     },
+     {
+      "q": "I ___ him at the mall last Saturday.",
+      "choices": [
+       "meet",
+       "met",
+       "meets",
+       "meeting"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Past of \"meet\" is \"met\"."
+     },
+     {
+      "q": "The movie ___ at 8 o'clock last night.",
+      "choices": [
+       "start",
+       "started",
+       "starts",
+       "starting"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Regular verb: start + -ed."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "He studyed English.",
+       "He studys English.",
+       "He study English yesterday.",
+       "He studied English."
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Consonant + y: change y to -ied."
+     },
+     {
+      "q": "We ___ a lot of pictures on the trip.",
+      "choices": [
+       "take",
+       "takes",
+       "took",
+       "taking"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Past of \"take\" is \"took\"."
+     },
+     {
+      "q": "Where ___ you go last weekend?",
+      "choices": [
+       "do",
+       "does",
+       "did",
+       "are"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "We use \"did\" to ask questions in the past."
+     },
+     {
+      "q": "I ___ my phone on the bus.",
+      "choices": [
+       "forget",
+       "forgot",
+       "forgets",
+       "forgetting"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Past of \"forget\" is \"forgot\"."
+     },
+     {
+      "q": "He ___ a big fish at the lake.",
+      "choices": [
+       "catch",
+       "caught",
+       "catches",
+       "catching"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Past of \"catch\" is \"caught\"."
+     },
+     {
+      "q": "What is the past of \"run\"?",
+      "choices": [
+       "runned",
+       "runs",
+       "ran",
+       "running"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"Run\" is irregular: run → ran."
+     },
+     {
+      "q": "They ___ very happy yesterday.",
+      "choices": [
+       "was",
+       "are",
+       "were",
+       "is"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"They\" + past of \"be\" = \"were\"."
      }
     ]
    },
@@ -225,6 +465,246 @@
       "answer": "twelve",
       "double": false,
       "why": "12 is spelled t-w-e-l-v-e."
+     },
+     {
+      "q": "You use a ___ to write on paper.",
+      "choices": [
+       "plate",
+       "chair",
+       "pen",
+       "shoe"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A pen is used for writing."
+     },
+     {
+      "q": "We sit on a ___ in class.",
+      "choices": [
+       "chair",
+       "spoon",
+       "window",
+       "towel"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "A chair is for sitting."
+     },
+     {
+      "q": "You wear ___ on your feet.",
+      "choices": [
+       "shoes",
+       "gloves",
+       "hats",
+       "shirts"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Shoes go on your feet."
+     },
+     {
+      "q": "A ___ tells us the time.",
+      "choices": [
+       "ruler",
+       "clock",
+       "pencil",
+       "bottle"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "A clock shows the time."
+     },
+     {
+      "q": "You drink water from a ___.",
+      "choices": [
+       "knife",
+       "brush",
+       "bag",
+       "glass"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "A glass holds a drink."
+     },
+     {
+      "q": "We open the ___ to go into a room.",
+      "choices": [
+       "floor",
+       "door",
+       "wall",
+       "roof"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "A door lets us in and out."
+     },
+     {
+      "q": "The opposite of \"hot\" is ___.",
+      "choices": [
+       "warm",
+       "dry",
+       "cold",
+       "tall"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Hot and cold are opposites."
+     },
+     {
+      "q": "The opposite of \"big\" is ___.",
+      "choices": [
+       "long",
+       "heavy",
+       "fast",
+       "small"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Big and small are opposites."
+     },
+     {
+      "q": "Which one is a month?",
+      "choices": [
+       "March",
+       "Monday",
+       "Winter",
+       "Morning"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "March is a month of the year."
+     },
+     {
+      "q": "Which one is a day of the week?",
+      "choices": [
+       "Summer",
+       "April",
+       "Friday",
+       "Night"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Friday is a day of the week."
+     },
+     {
+      "q": "You brush your ___ every morning.",
+      "choices": [
+       "teeth",
+       "hair",
+       "hands",
+       "eyes"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "We brush our teeth."
+     },
+     {
+      "q": "A ___ has four wheels and carries people.",
+      "choices": [
+       "bike",
+       "car",
+       "boat",
+       "plane"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "A car has four wheels."
+     },
+     {
+      "q": "We use an ___ when it rains.",
+      "choices": [
+       "mirror",
+       "pillow",
+       "bottle",
+       "umbrella"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "An umbrella keeps us dry."
+     },
+     {
+      "q": "Your mother's sister is your ___.",
+      "choices": [
+       "uncle",
+       "aunt",
+       "cousin",
+       "niece"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Your mom's sister is your aunt."
+     },
+     {
+      "q": "Which word is a color?",
+      "choices": [
+       "green",
+       "round",
+       "happy",
+       "soft"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Green is a color."
+     },
+     {
+      "q": "The opposite of \"open\" is ___.",
+      "choices": [
+       "close",
+       "break",
+       "push",
+       "take"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Open and close are opposites."
+     },
+     {
+      "q": "We go to the ___ to buy medicine.",
+      "choices": [
+       "library",
+       "stadium",
+       "pharmacy",
+       "airport"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A pharmacy sells medicine."
+     },
+     {
+      "q": "It is 7:30. We say \"half ___ seven\".",
+      "choices": [
+       "past",
+       "to",
+       "on",
+       "at"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Half past seven = 7:30."
+     },
+     {
+      "q": "You read books in the ___.",
+      "choices": [
+       "kitchen",
+       "garage",
+       "garden",
+       "library"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "A library has many books."
+     },
+     {
+      "q": "A baby ___ cries when it is hungry.",
+      "choices": [
+       "never",
+       "rarely",
+       "ago",
+       "often"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Babies often cry when hungry."
      }
     ]
    },
@@ -338,6 +818,246 @@
       "answer": "He doesn't like milk.",
       "double": false,
       "why": "He + doesn't + base verb: \"likes\" becomes \"doesn't like\"."
+     },
+     {
+      "q": "She ___ English every day.",
+      "choices": [
+       "studies",
+       "study",
+       "studying",
+       "studied"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "He/she/it + verb + -s: \"studies\"."
+     },
+     {
+      "q": "I ___ breakfast at 7 a.m.",
+      "choices": [
+       "eat",
+       "eats",
+       "eating",
+       "ate"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"I\" uses the base form."
+     },
+     {
+      "q": "My brother ___ soccer on Saturdays.",
+      "choices": [
+       "play",
+       "playing",
+       "played",
+       "plays"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "He + plays."
+     },
+     {
+      "q": "They ___ to school by bus.",
+      "choices": [
+       "goes",
+       "going",
+       "went",
+       "go"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"They\" uses the base form."
+     },
+     {
+      "q": "Does she ___ coffee?",
+      "choices": [
+       "drinks",
+       "drinking",
+       "drink",
+       "drank"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "After \"does\" we use the base form."
+     },
+     {
+      "q": "He doesn't ___ spicy food.",
+      "choices": [
+       "likes",
+       "liking",
+       "liked",
+       "like"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "After \"doesn't\" we use the base form."
+     },
+     {
+      "q": "The sun ___ in the east.",
+      "choices": [
+       "rise",
+       "rising",
+       "rises",
+       "rose"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A fact: he/she/it + -s."
+     },
+     {
+      "q": "We ___ homework after school.",
+      "choices": [
+       "does",
+       "do",
+       "doing",
+       "did"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"We\" + do."
+     },
+     {
+      "q": "My dad ___ to work at 8.",
+      "choices": [
+       "go",
+       "going",
+       "goes",
+       "went"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "He + goes."
+     },
+     {
+      "q": "What time ___ the shop open?",
+      "choices": [
+       "do",
+       "is",
+       "does",
+       "are"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "The shop = it, so \"does\"."
+     },
+     {
+      "q": "Birds ___ in the sky.",
+      "choices": [
+       "flies",
+       "fly",
+       "flying",
+       "flew"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Birds\" is plural: fly."
+     },
+     {
+      "q": "She ___ not like fish.",
+      "choices": [
+       "does",
+       "do",
+       "is",
+       "has"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"She does not like\"."
+     },
+     {
+      "q": "How often ___ you play games?",
+      "choices": [
+       "does",
+       "are",
+       "do",
+       "have"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"You\" + do."
+     },
+     {
+      "q": "My teacher ___ a lot of books.",
+      "choices": [
+       "have",
+       "has",
+       "having",
+       "had"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "He/she/it + has."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "She watch TV at night.",
+       "She watchs TV at night.",
+       "She is watch TV at night.",
+       "She watches TV at night."
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Words ending in -ch add -es."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "He doesn't has a car.",
+       "He don't have a car.",
+       "He doesn't have a car.",
+       "He not have a car."
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "doesn't + base verb."
+     },
+     {
+      "q": "Cats ___ milk.",
+      "choices": [
+       "love",
+       "loves",
+       "loving",
+       "loved"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Plural subject: no -s."
+     },
+     {
+      "q": "I ___ up at 6 o'clock every day.",
+      "choices": [
+       "gets",
+       "getting",
+       "got",
+       "get"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"I\" + get."
+     },
+     {
+      "q": "Water ___ at 100 degrees.",
+      "choices": [
+       "boil",
+       "boiling",
+       "boiled",
+       "boils"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "A fact: boils."
+     },
+     {
+      "q": "Do your friends ___ near here?",
+      "choices": [
+       "lives",
+       "living",
+       "live",
+       "lived"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "After \"do\" we use the base form."
      }
     ]
    },
@@ -451,6 +1171,246 @@
       "answer": "a banana",
       "double": false,
       "why": "Monkeys love bananas, and they are yellow."
+     },
+     {
+      "q": "A cow gives us ___.",
+      "choices": [
+       "milk",
+       "eggs",
+       "rice",
+       "honey"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Cows give milk."
+     },
+     {
+      "q": "A hen gives us ___.",
+      "choices": [
+       "milk",
+       "eggs",
+       "wool",
+       "honey"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Hens lay eggs."
+     },
+     {
+      "q": "Which animal can fly?",
+      "choices": [
+       "fish",
+       "dog",
+       "bird",
+       "snake"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Birds can fly."
+     },
+     {
+      "q": "Which food is a fruit?",
+      "choices": [
+       "carrot",
+       "onion",
+       "mango",
+       "rice"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A mango is a fruit."
+     },
+     {
+      "q": "Which food is a vegetable?",
+      "choices": [
+       "banana",
+       "apple",
+       "cabbage",
+       "orange"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A cabbage is a vegetable."
+     },
+     {
+      "q": "A lion is a ___.",
+      "choices": [
+       "wild animal",
+       "pet",
+       "fruit",
+       "vegetable"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Lions live in the wild."
+     },
+     {
+      "q": "You can drink ___ for breakfast.",
+      "choices": [
+       "juice",
+       "soup",
+       "rice",
+       "bread"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Juice is a drink."
+     },
+     {
+      "q": "Which one is a drink?",
+      "choices": [
+       "egg",
+       "tea",
+       "pork",
+       "bean"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Tea is a drink."
+     },
+     {
+      "q": "An elephant has a long ___.",
+      "choices": [
+       "trunk",
+       "wing",
+       "shell",
+       "tail"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "An elephant's nose is a trunk."
+     },
+     {
+      "q": "A fish lives in ___.",
+      "choices": [
+       "a tree",
+       "water",
+       "a nest",
+       "a cave"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Fish live in water."
+     },
+     {
+      "q": "Bees make ___.",
+      "choices": [
+       "milk",
+       "bread",
+       "honey",
+       "cheese"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Bees make honey."
+     },
+     {
+      "q": "Which animal says \"meow\"?",
+      "choices": [
+       "cat",
+       "dog",
+       "cow",
+       "duck"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "A cat says \"meow\"."
+     },
+     {
+      "q": "Bread is made from ___.",
+      "choices": [
+       "sugar",
+       "salt",
+       "milk",
+       "flour"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Flour is the main ingredient."
+     },
+     {
+      "q": "Which food is sour?",
+      "choices": [
+       "honey",
+       "lemon",
+       "cake",
+       "ice cream"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "A lemon is sour."
+     },
+     {
+      "q": "A baby cat is a ___.",
+      "choices": [
+       "puppy",
+       "duckling",
+       "lamb",
+       "kitten"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "A baby cat is a kitten."
+     },
+     {
+      "q": "We get pork from a ___.",
+      "choices": [
+       "cow",
+       "hen",
+       "sheep",
+       "pig"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Pork comes from pigs."
+     },
+     {
+      "q": "Which animal lives in the sea?",
+      "choices": [
+       "shark",
+       "tiger",
+       "horse",
+       "rabbit"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Sharks live in the sea."
+     },
+     {
+      "q": "We eat ___ with chopsticks.",
+      "choices": [
+       "soup",
+       "noodles",
+       "juice",
+       "water"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Noodles are often eaten with chopsticks."
+     },
+     {
+      "q": "A baby chicken is a ___.",
+      "choices": [
+       "calf",
+       "cub",
+       "lamb",
+       "chick"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "A baby chicken is a chick."
+     },
+     {
+      "q": "We make juice from ___.",
+      "choices": [
+       "rice",
+       "fruit",
+       "meat",
+       "bread"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Juice is made from fruit."
      }
     ]
    },
@@ -564,6 +1524,246 @@
       "answer": "When",
       "double": false,
       "why": "\"When\" asks about a time or a date."
+     },
+     {
+      "q": "The book is ___ the table.",
+      "choices": [
+       "in",
+       "at",
+       "on",
+       "to"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"On\" the table = touching the top."
+     },
+     {
+      "q": "She is ___ the kitchen.",
+      "choices": [
+       "in",
+       "on",
+       "at",
+       "of"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"In\" the kitchen = inside."
+     },
+     {
+      "q": "We meet ___ 5 o'clock.",
+      "choices": [
+       "on",
+       "in",
+       "to",
+       "at"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"At\" is for clock times."
+     },
+     {
+      "q": "My birthday is ___ June.",
+      "choices": [
+       "on",
+       "in",
+       "at",
+       "to"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"In\" is for months."
+     },
+     {
+      "q": "I see my friends ___ Saturday.",
+      "choices": [
+       "on",
+       "in",
+       "at",
+       "of"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"On\" is for days."
+     },
+     {
+      "q": "___ is your teacher?",
+      "choices": [
+       "What",
+       "Where",
+       "How",
+       "Who"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Who\" asks about people."
+     },
+     {
+      "q": "___ do you go to bed?",
+      "choices": [
+       "What",
+       "Where",
+       "Who",
+       "When"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"When\" asks about time."
+     },
+     {
+      "q": "___ are you late?",
+      "choices": [
+       "What",
+       "Why",
+       "Where",
+       "Who"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Why\" asks for a reason."
+     },
+     {
+      "q": "___ old are you?",
+      "choices": [
+       "How",
+       "What",
+       "Who",
+       "Where"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"How old\" asks about age."
+     },
+     {
+      "q": "The cat is ___ the box.",
+      "choices": [
+       "between",
+       "at",
+       "under",
+       "of"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"Under\" = below."
+     },
+     {
+      "q": "I walk ___ school every day.",
+      "choices": [
+       "to",
+       "in",
+       "at",
+       "on"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"To\" shows direction."
+     },
+     {
+      "q": "She sits ___ Ben and Mai.",
+      "choices": [
+       "under",
+       "between",
+       "on",
+       "in"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Between\" = in the middle of two."
+     },
+     {
+      "q": "___ many students are in your class?",
+      "choices": [
+       "How",
+       "What",
+       "Who",
+       "Where"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"How many\" asks for a number."
+     },
+     {
+      "q": "He is good ___ math.",
+      "choices": [
+       "in",
+       "on",
+       "at",
+       "of"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "We say \"good at\"."
+     },
+     {
+      "q": "Which question is correct?",
+      "choices": [
+       "Where you live?",
+       "Where do you lives?",
+       "Where do you live?",
+       "Where lives you?"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Use do + subject + base verb."
+     },
+     {
+      "q": "We go to school ___ Monday ___ Friday.",
+      "choices": [
+       "at / in",
+       "on / of",
+       "in / on",
+       "from / to"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"From Monday to Friday\"."
+     },
+     {
+      "q": "The park is ___ the school. It is next to it.",
+      "choices": [
+       "at",
+       "in",
+       "on",
+       "near"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Near\" = close to."
+     },
+     {
+      "q": "___ is your birthday?",
+      "choices": [
+       "When",
+       "Who",
+       "Why",
+       "How many"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"When\" asks for a date."
+     },
+     {
+      "q": "___ do you like, cats or dogs?",
+      "choices": [
+       "Who",
+       "Which",
+       "Where",
+       "When"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Which\" is for choosing between things."
+     },
+     {
+      "q": "She lives ___ Bangkok.",
+      "choices": [
+       "in",
+       "on",
+       "at",
+       "to"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"In\" is for cities."
      }
     ]
    }
@@ -681,6 +1881,258 @@
       "answer": "they were swimming",
       "double": false,
       "why": "\"They\" + were + verb-ing: they were swimming."
+     },
+     {
+      "q": "I ___ TV when the phone rang.",
+      "choices": [
+       "was watching",
+       "watched",
+       "am watching",
+       "watching"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Past continuous for an action in progress: was + -ing."
+     },
+     {
+      "q": "They ___ soccer at 4 p.m. yesterday.",
+      "choices": [
+       "played",
+       "were playing",
+       "are playing",
+       "was playing"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"They\" + were + -ing."
+     },
+     {
+      "q": "While she ___, the lights went out.",
+      "choices": [
+       "cooked",
+       "was cooking",
+       "cooks",
+       "is cooking"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"While\" + past continuous."
+     },
+     {
+      "q": "What ___ you doing at 9 last night?",
+      "choices": [
+       "was",
+       "did",
+       "were",
+       "are"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"You\" + were."
+     },
+     {
+      "q": "He ___ when the teacher came in.",
+      "choices": [
+       "slept",
+       "sleeps",
+       "was sleeping",
+       "were sleeping"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "He + was + -ing."
+     },
+     {
+      "q": "We ___ in the park when it started to rain.",
+      "choices": [
+       "were walking",
+       "walked",
+       "walk",
+       "was walking"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"We\" + were + -ing."
+     },
+     {
+      "q": "She ___ a book at 8 o'clock.",
+      "choices": [
+       "read",
+       "was reading",
+       "reads",
+       "were reading"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "At a moment in the past: was reading."
+     },
+     {
+      "q": "I ___ my homework when you called.",
+      "choices": [
+       "did",
+       "do",
+       "were doing",
+       "was doing"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Interrupted action: was doing."
+     },
+     {
+      "q": "It ___ when we left the house.",
+      "choices": [
+       "rained",
+       "rains",
+       "was raining",
+       "were raining"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "It + was + -ing."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "They was singing loudly.",
+       "They singing loudly.",
+       "They were singing loudly.",
+       "They were sing loudly."
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "were + verb-ing."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "I were not listening.",
+       "I was not listening.",
+       "I not was listening.",
+       "I wasn't listen."
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "was + not + -ing."
+     },
+     {
+      "q": "___ he sleeping when you arrived?",
+      "choices": [
+       "Were",
+       "Did",
+       "Is",
+       "Was"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"He\" + was."
+     },
+     {
+      "q": "When the bell rang, the students ___ a test.",
+      "choices": [
+       "took",
+       "take",
+       "were taking",
+       "was taking"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Plural subject: were taking."
+     },
+     {
+      "q": "The kids ___ in the garden all afternoon.",
+      "choices": [
+       "played",
+       "play",
+       "were playing",
+       "was playing"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A long action in the past."
+     },
+     {
+      "q": "At noon yesterday, my mom ___ lunch.",
+      "choices": [
+       "made",
+       "makes",
+       "was making",
+       "were making"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Past continuous with a time."
+     },
+     {
+      "q": "I fell while I ___ down the stairs.",
+      "choices": [
+       "was running",
+       "ran",
+       "run",
+       "were running"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"While\" + was running."
+     },
+     {
+      "q": "We ___ not watching the game, so we missed the goal.",
+      "choices": [
+       "was",
+       "were",
+       "did",
+       "are"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"We\" + were + not."
+     },
+     {
+      "q": "What ___ she wearing at the party?",
+      "choices": [
+       "were",
+       "did",
+       "was",
+       "is"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"She\" + was."
+     },
+     {
+      "q": "Mai ___ a letter when her friend arrived.",
+      "choices": [
+       "was writing",
+       "wrote",
+       "writes",
+       "were writing"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Interrupted action: was writing."
+     },
+     {
+      "q": "He broke his arm while he ___ basketball.",
+      "choices": [
+       "played",
+       "plays",
+       "were playing",
+       "was playing"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"While\" + was playing."
+     },
+     {
+      "q": "The sun ___ when we woke up.",
+      "choices": [
+       "shone",
+       "shines",
+       "was shining",
+       "were shining"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Past continuous for a background scene."
      }
     ]
    },
@@ -794,6 +2246,246 @@
       "answer": "flew",
       "double": false,
       "why": "\"Fly\" is irregular: fly → flew."
+     },
+     {
+      "q": "You can see old buildings and museums on a ___ trip.",
+      "choices": [
+       "beach",
+       "camping",
+       "city",
+       "farm"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Cities have old buildings and museums."
+     },
+     {
+      "q": "A ___ is a person who is on vacation.",
+      "choices": [
+       "tourist",
+       "farmer",
+       "doctor",
+       "driver"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "A tourist travels for fun."
+     },
+     {
+      "q": "You need a ___ to travel to another country.",
+      "choices": [
+       "ticket to the movie theater",
+       "passport",
+       "umbrella",
+       "diary"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "A passport is needed for foreign travel."
+     },
+     {
+      "q": "You put your clothes in a ___ when you travel.",
+      "choices": [
+       "suitcase",
+       "wallet",
+       "basket",
+       "pocket"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "A suitcase holds clothes."
+     },
+     {
+      "q": "Where do you wait for a plane?",
+      "choices": [
+       "at the station",
+       "at the port",
+       "at the market",
+       "at the airport"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Planes leave from an airport."
+     },
+     {
+      "q": "A ___ shows you the way around a new city.",
+      "choices": [
+       "map",
+       "menu",
+       "ticket",
+       "postcard"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "A map shows directions."
+     },
+     {
+      "q": "What do you send to a friend from your vacation?",
+      "choices": [
+       "a postcard",
+       "a passport",
+       "a suitcase",
+       "a tent"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Postcards are sent from vacation."
+     },
+     {
+      "q": "We stayed at a ___ near the beach.",
+      "choices": [
+       "castle",
+       "library",
+       "school",
+       "resort"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "A resort is a vacation hotel."
+     },
+     {
+      "q": "We took lots of ___ of the mountains.",
+      "choices": [
+       "passports",
+       "photos",
+       "tickets",
+       "maps"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Photos are pictures."
+     },
+     {
+      "q": "I'm going to ___ my friends in Phuket next week.",
+      "choices": [
+       "visiting",
+       "visit",
+       "visits",
+       "visited"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Going to\" + base verb."
+     },
+     {
+      "q": "It is a good idea to ___ sunscreen at the beach.",
+      "choices": [
+       "wearing",
+       "wear",
+       "wears",
+       "wore"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Sunscreen protects your skin."
+     },
+     {
+      "q": "How long ___ you stay in Japan?",
+      "choices": [
+       "do",
+       "are",
+       "did",
+       "have"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Past question about a trip."
+     },
+     {
+      "q": "We ___ the Eiffel Tower last summer.",
+      "choices": [
+       "saw",
+       "see",
+       "sees",
+       "seen"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Past of \"see\" is \"saw\"."
+     },
+     {
+      "q": "I ___ a lot of delicious street food on my trip.",
+      "choices": [
+       "ate",
+       "eat",
+       "eats",
+       "eaten"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Past of \"eat\" is \"ate\"."
+     },
+     {
+      "q": "The opposite of \"arrive\" is ___.",
+      "choices": [
+       "leave",
+       "stay",
+       "visit",
+       "return"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Arrive and leave are opposites."
+     },
+     {
+      "q": "A boat trip is also called a ___.",
+      "choices": [
+       "journey",
+       "flight",
+       "hike",
+       "cruise"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "A cruise is a trip on a ship."
+     },
+     {
+      "q": "A long walk in the mountains is a ___.",
+      "choices": [
+       "hike",
+       "cruise",
+       "flight",
+       "market"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Hiking = walking in nature."
+     },
+     {
+      "q": "We ___ a hotel online before the trip.",
+      "choices": [
+       "book",
+       "books",
+       "booked",
+       "booking"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Past of \"book\" is \"booked\"."
+     },
+     {
+      "q": "The weather was awful, ___ we stayed inside.",
+      "choices": [
+       "but",
+       "or",
+       "because",
+       "so"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"So\" shows the result."
+     },
+     {
+      "q": "She ___ her camera at the hotel, so she took photos with her phone.",
+      "choices": [
+       "forgot",
+       "forget",
+       "forgets",
+       "forgetting"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Past of \"forget\" is \"forgot\"."
      }
     ]
    },
@@ -907,6 +2599,258 @@
       "answer": "the most beautiful",
       "double": false,
       "why": "Long adjectives: the most + adjective. the most beautiful."
+     },
+     {
+      "q": "Mt. Everest is the ___ mountain in the world.",
+      "choices": [
+       "higher",
+       "more high",
+       "highest",
+       "most high"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Superlative: the + -est."
+     },
+     {
+      "q": "My bag is ___ than yours.",
+      "choices": [
+       "heavy",
+       "heaviest",
+       "heavier",
+       "more heavy"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Short adjective ending in -y: heavier."
+     },
+     {
+      "q": "This exam is ___ than the last one.",
+      "choices": [
+       "difficulter",
+       "most difficult",
+       "more difficult",
+       "difficultest"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Long adjective: more + adjective."
+     },
+     {
+      "q": "She is the ___ student in our class.",
+      "choices": [
+       "smarter",
+       "smartest",
+       "more smart",
+       "most smart"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Superlative: the smartest."
+     },
+     {
+      "q": "A car is ___ than a bike.",
+      "choices": [
+       "fast",
+       "faster",
+       "fastest",
+       "more fast"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Comparative: faster."
+     },
+     {
+      "q": "Which is the opposite of \"cheaper\"?",
+      "choices": [
+       "less expensive",
+       "most expensive",
+       "more expensive",
+       "expensiver"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "More expensive is the opposite."
+     },
+     {
+      "q": "Bangkok is ___ than my hometown.",
+      "choices": [
+       "more big",
+       "biggest",
+       "big",
+       "bigger"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Double the g: big → bigger."
+     },
+     {
+      "q": "He is the ___ boy in the family.",
+      "choices": [
+       "younger",
+       "more young",
+       "most young",
+       "youngest"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Superlative: youngest."
+     },
+     {
+      "q": "Which is correct?",
+      "choices": [
+       "gooder",
+       "more good",
+       "most good",
+       "better"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Good\" is irregular: good → better → best."
+     },
+     {
+      "q": "Which is correct?",
+      "choices": [
+       "baddest",
+       "worst",
+       "most bad",
+       "worstest"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Bad\" is irregular: bad → worse → worst."
+     },
+     {
+      "q": "This is the ___ movie I've ever seen.",
+      "choices": [
+       "funnier",
+       "more funny",
+       "funniest",
+       "most funny"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Superlative: funny → funniest."
+     },
+     {
+      "q": "Gold is ___ than silver.",
+      "choices": [
+       "expensiver",
+       "most expensive",
+       "more expensive",
+       "expensive"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Long adjective: more expensive."
+     },
+     {
+      "q": "She runs ___ than me.",
+      "choices": [
+       "faster",
+       "fast",
+       "more fast",
+       "fastest"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Comparative: faster."
+     },
+     {
+      "q": "I am as tall ___ my brother.",
+      "choices": [
+       "than",
+       "as",
+       "that",
+       "like"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"As tall as\" shows they are equal."
+     },
+     {
+      "q": "Today is ___ than yesterday.",
+      "choices": [
+       "more hot",
+       "hottest",
+       "hot",
+       "hotter"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Double the t: hot → hotter."
+     },
+     {
+      "q": "This is the ___ restaurant in town.",
+      "choices": [
+       "better",
+       "goodest",
+       "best",
+       "most good"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Superlative of good: best."
+     },
+     {
+      "q": "A giraffe is ___ than an elephant.",
+      "choices": [
+       "tallest",
+       "taller",
+       "more tall",
+       "tall"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Comparative: taller."
+     },
+     {
+      "q": "Which is the biggest?",
+      "choices": [
+       "a dog",
+       "a cat",
+       "a whale",
+       "a mouse"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A whale is the biggest."
+     },
+     {
+      "q": "English is ___ for me than math.",
+      "choices": [
+       "easy",
+       "easiest",
+       "easier",
+       "more easy"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "y → ier: easier."
+     },
+     {
+      "q": "Of all the students, Tom is the ___ careful.",
+      "choices": [
+       "most",
+       "more",
+       "much",
+       "very"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Long adjective superlative: the most careful."
+     },
+     {
+      "q": "This phone is ___ expensive than that one.",
+      "choices": [
+       "least",
+       "fewer",
+       "little",
+       "less"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Less expensive\" = cheaper."
      }
     ]
    },
@@ -1020,6 +2964,258 @@
       "answer": "The hotel was nice, but the food was bad.",
       "double": false,
       "why": "Put a comma before \"but\": …nice, but the food was bad."
+     },
+     {
+      "q": "I was hungry, ___ I ate lunch.",
+      "choices": [
+       "but",
+       "because",
+       "although",
+       "so"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"So\" shows the result."
+     },
+     {
+      "q": "She stayed home ___ she was sick.",
+      "choices": [
+       "so",
+       "but",
+       "or",
+       "because"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Because\" gives the reason."
+     },
+     {
+      "q": "We can go to the park ___ stay home.",
+      "choices": [
+       "but",
+       "so",
+       "because",
+       "or"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Or\" gives a choice."
+     },
+     {
+      "q": "___ it was raining, we played outside.",
+      "choices": [
+       "Because",
+       "Although",
+       "So",
+       "And"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Although\" shows contrast."
+     },
+     {
+      "q": "He is tall ___ strong.",
+      "choices": [
+       "and",
+       "but",
+       "so",
+       "because"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"And\" adds information."
+     },
+     {
+      "q": "I'll call you ___ I get home.",
+      "choices": [
+       "when",
+       "because",
+       "but",
+       "although"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"When\" shows time."
+     },
+     {
+      "q": "Don't forget your keys ___ you can't get in.",
+      "choices": [
+       "and",
+       "so",
+       "or",
+       "but"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"Or\" = otherwise."
+     },
+     {
+      "q": "___ she is young, she is very clever.",
+      "choices": [
+       "Although",
+       "Because",
+       "So",
+       "Or"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Although\" = but."
+     },
+     {
+      "q": "We were late ___ the bus broke down.",
+      "choices": [
+       "because",
+       "so",
+       "but",
+       "and"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Because\" gives the reason."
+     },
+     {
+      "q": "First, wash your hands. ___, dry them.",
+      "choices": [
+       "Then",
+       "But",
+       "Because",
+       "Although"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Then\" shows order."
+     },
+     {
+      "q": "She is kind. ___, she is funny.",
+      "choices": [
+       "Also",
+       "But",
+       "Because",
+       "So"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Also\" adds a point."
+     },
+     {
+      "q": "I like dancing ___ singing.",
+      "choices": [
+       "but",
+       "so",
+       "and",
+       "because"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"And\" joins two likes."
+     },
+     {
+      "q": "He studied hard, ___ he failed the test.",
+      "choices": [
+       "so",
+       "but",
+       "because",
+       "and"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"But\" shows a surprise."
+     },
+     {
+      "q": "___ you study, you will pass.",
+      "choices": [
+       "Because",
+       "Although",
+       "If",
+       "But"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"If\" shows a condition."
+     },
+     {
+      "q": "I didn't go out ___ I had a lot of homework.",
+      "choices": [
+       "so",
+       "because",
+       "but",
+       "or"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Because\" gives the reason."
+     },
+     {
+      "q": "We went to bed ___ the movie finished.",
+      "choices": [
+       "because",
+       "although",
+       "but",
+       "after"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"After\" shows time."
+     },
+     {
+      "q": "You can have rice ___ noodles for lunch.",
+      "choices": [
+       "but",
+       "or",
+       "so",
+       "because"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Or\" gives a choice."
+     },
+     {
+      "q": "It was cold, ___ I wore a coat.",
+      "choices": [
+       "so",
+       "but",
+       "although",
+       "or"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"So\" shows the result."
+     },
+     {
+      "q": "I wanted to go out. ___, it was too late.",
+      "choices": [
+       "Because",
+       "So",
+       "However",
+       "And"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"However\" shows contrast."
+     },
+     {
+      "q": "The movie was long ___ interesting.",
+      "choices": [
+       "so",
+       "because",
+       "but",
+       "or"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"But\" can join two different ideas."
+     },
+     {
+      "q": "I'll wait here ___ you come back.",
+      "choices": [
+       "because",
+       "although",
+       "so",
+       "until"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Until\" shows how long."
      }
     ]
    },
@@ -1133,6 +3329,246 @@
       "answer": "a movie theater",
       "double": false,
       "why": "You watch movies at a movie theater."
+     },
+     {
+      "q": "You take a train at the ___.",
+      "choices": [
+       "airport",
+       "harbor",
+       "market",
+       "station"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Trains stop at a station."
+     },
+     {
+      "q": "A ___ is a place where you borrow books.",
+      "choices": [
+       "bank",
+       "hospital",
+       "movie theater",
+       "library"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Libraries lend books."
+     },
+     {
+      "q": "You buy popcorn and watch a big screen at the ___.",
+      "choices": [
+       "movie theater",
+       "bank",
+       "post office",
+       "market"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Movies are shown at a movie theater."
+     },
+     {
+      "q": "Which one is a kind of public transport?",
+      "choices": [
+       "bus",
+       "bicycle",
+       "scooter",
+       "skateboard"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Buses are public transport."
+     },
+     {
+      "q": "You keep your money in a ___.",
+      "choices": [
+       "museum",
+       "bank",
+       "stadium",
+       "theater"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "A bank keeps money."
+     },
+     {
+      "q": "You go to the ___ when you are very ill.",
+      "choices": [
+       "hospital",
+       "bakery",
+       "zoo",
+       "park"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Hospitals treat sick people."
+     },
+     {
+      "q": "Planes take off from an ___.",
+      "choices": [
+       "harbor",
+       "bus stop",
+       "airport",
+       "station"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Airports are for planes."
+     },
+     {
+      "q": "Boats stay at the ___.",
+      "choices": [
+       "garage",
+       "airport",
+       "harbor",
+       "stadium"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A harbor is for boats."
+     },
+     {
+      "q": "A ___ is a person who drives a taxi.",
+      "choices": [
+       "pilot",
+       "captain",
+       "driver",
+       "rider"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A taxi driver drives a taxi."
+     },
+     {
+      "q": "You buy stamps at the ___.",
+      "choices": [
+       "bank",
+       "bakery",
+       "school",
+       "post office"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Post offices sell stamps."
+     },
+     {
+      "q": "Where can you see old things and learn history?",
+      "choices": [
+       "a bakery",
+       "a gym",
+       "a museum",
+       "a mall"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Museums show old things."
+     },
+     {
+      "q": "How do you get to the other side of a river?",
+      "choices": [
+       "a tunnel",
+       "a corner",
+       "a bridge",
+       "a traffic light"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A bridge crosses a river."
+     },
+     {
+      "q": "The opposite of \"left\" is ___.",
+      "choices": [
+       "up",
+       "down",
+       "over",
+       "right"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Left and right are opposites."
+     },
+     {
+      "q": "Go ___ this road for two blocks.",
+      "choices": [
+       "along",
+       "between",
+       "under",
+       "across of"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Along\" = following."
+     },
+     {
+      "q": "The bank is ___ the supermarket and the school.",
+      "choices": [
+       "between",
+       "over",
+       "along",
+       "into"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Between two places."
+     },
+     {
+      "q": "The bus stop is ___ the street from the park.",
+      "choices": [
+       "through",
+       "between",
+       "along",
+       "across"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Across = on the other side."
+     },
+     {
+      "q": "Which one is the fastest?",
+      "choices": [
+       "a bus",
+       "a train",
+       "a plane",
+       "a bike"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Planes are the fastest."
+     },
+     {
+      "q": "I go to school ___ bus.",
+      "choices": [
+       "by",
+       "on the",
+       "in a",
+       "with"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"By bus\" for transport."
+     },
+     {
+      "q": "We can buy bread at the ___.",
+      "choices": [
+       "library",
+       "bank",
+       "bakery",
+       "stadium"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "A bakery sells bread."
+     },
+     {
+      "q": "A ___ is a road where cars can go very fast.",
+      "choices": [
+       "path",
+       "highway",
+       "alley",
+       "sidewalk"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Highways are for fast traffic."
      }
     ]
    }
@@ -1250,6 +3686,246 @@
       "answer": "would learn",
       "double": false,
       "why": "Second conditional: if + past (had), would + verb (would learn)."
+     },
+     {
+      "q": "If I ___ rich, I would buy an island.",
+      "choices": [
+       "am",
+       "will be",
+       "was being",
+       "were"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Second conditional: if + past (were)."
+     },
+     {
+      "q": "If she ___ harder, she would have passed.",
+      "choices": [
+       "studied",
+       "had studied",
+       "studies",
+       "would study"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Third conditional: if + past perfect."
+     },
+     {
+      "q": "Water ___ if you heat it to 100 degrees.",
+      "choices": [
+       "boils",
+       "will boil",
+       "boiled",
+       "would boil"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Zero conditional: a fact."
+     },
+     {
+      "q": "If I ___ you, I would say sorry.",
+      "choices": [
+       "am",
+       "was being",
+       "were",
+       "will be"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"If I were you\" gives advice."
+     },
+     {
+      "q": "What ___ you do if you won the lottery?",
+      "choices": [
+       "will",
+       "did",
+       "do",
+       "would"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Second conditional question: would."
+     },
+     {
+      "q": "If we hurry, we ___ catch the train.",
+      "choices": [
+       "would",
+       "would have",
+       "had",
+       "will"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "First conditional: will."
+     },
+     {
+      "q": "If he ___ the answer, he would tell us.",
+      "choices": [
+       "knew",
+       "knows",
+       "had known",
+       "will know"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Second conditional: if + past."
+     },
+     {
+      "q": "If I had left earlier, I ___ late.",
+      "choices": [
+       "won't be",
+       "wouldn't have been",
+       "wouldn't be",
+       "am not"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Third conditional: would have + past participle."
+     },
+     {
+      "q": "Unless you hurry, you ___ miss the bus.",
+      "choices": [
+       "would",
+       "will",
+       "did",
+       "have"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Unless\" = if not; first conditional."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "If I will see her, I tell her.",
+       "If I would see her, I will tell her.",
+       "If I saw her, I will tell her.",
+       "If I see her, I will tell her."
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "First conditional: if + present."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "If I have a car, I would drive to work.",
+       "If I had a car, I will drive to work.",
+       "If I had a car, I would drive to work.",
+       "If I would have a car, I drive."
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Second conditional."
+     },
+     {
+      "q": "If the ice melts, the sea level ___.",
+      "choices": [
+       "will rised",
+       "would rise",
+       "rises",
+       "rose"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Zero conditional: real fact."
+     },
+     {
+      "q": "She would be happier if she ___ more friends.",
+      "choices": [
+       "has",
+       "will have",
+       "would have",
+       "had"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Second conditional: if + past."
+     },
+     {
+      "q": "If you ___ me earlier, I would have helped.",
+      "choices": [
+       "told",
+       "tell",
+       "would tell",
+       "had told"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Third conditional."
+     },
+     {
+      "q": "I'll lend you my book ___ you give it back.",
+      "choices": [
+       "unless",
+       "as long as",
+       "although",
+       "because"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"As long as\" = if."
+     },
+     {
+      "q": "If I ___ about the test, I would have studied.",
+      "choices": [
+       "had known",
+       "knew",
+       "know",
+       "would know"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Third conditional."
+     },
+     {
+      "q": "What will happen if you ___ breakfast?",
+      "choices": [
+       "will skip",
+       "skipped",
+       "would skip",
+       "skip"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "First conditional: present after if."
+     },
+     {
+      "q": "If it ___ so cold, we would go swimming.",
+      "choices": [
+       "isn't",
+       "wasn't being",
+       "won't be",
+       "weren't"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Second conditional: if + were."
+     },
+     {
+      "q": "If he ___ the bus, he would have been on time.",
+      "choices": [
+       "had caught",
+       "caught",
+       "catches",
+       "would catch"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Third conditional."
+     },
+     {
+      "q": "If you mix red and blue, you ___ purple.",
+      "choices": [
+       "will got",
+       "get",
+       "would got",
+       "getting"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Zero conditional: a fact."
      }
     ]
    },
@@ -1363,6 +4039,246 @@
       "answer": "words",
       "double": false,
       "why": "\"Actions speak louder than words\" = what you do matters more than what you say."
+     },
+     {
+      "q": "\"It's raining cats and dogs\" means it's raining ___.",
+      "choices": [
+       "a little",
+       "softly",
+       "very hard",
+       "at night"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "An idiom for heavy rain."
+     },
+     {
+      "q": "\"Break a leg!\" means ___.",
+      "choices": [
+       "good luck",
+       "be careful",
+       "run fast",
+       "go away"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Said to wish luck before a show."
+     },
+     {
+      "q": "We ___ a decision after a long talk.",
+      "choices": [
+       "did",
+       "took out",
+       "had made",
+       "made"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "We \"make a decision\"."
+     },
+     {
+      "q": "Please ___ attention to the teacher.",
+      "choices": [
+       "pay",
+       "make",
+       "do",
+       "give out"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "We \"pay attention\"."
+     },
+     {
+      "q": "He ___ a mistake in the exam.",
+      "choices": [
+       "made",
+       "did",
+       "took",
+       "put"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "We \"make a mistake\"."
+     },
+     {
+      "q": "She ___ her homework before dinner.",
+      "choices": [
+       "made",
+       "took",
+       "did",
+       "gave"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "We \"do homework\"."
+     },
+     {
+      "q": "\"Piece of cake\" means ___.",
+      "choices": [
+       "very sweet",
+       "very easy",
+       "very hard",
+       "a small gift"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "An idiom for something easy."
+     },
+     {
+      "q": "\"Under the weather\" means ___.",
+      "choices": [
+       "out in the rain",
+       "very cold",
+       "very late",
+       "feeling ill"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "An idiom for feeling sick."
+     },
+     {
+      "q": "Let's ___ a break for ten minutes.",
+      "choices": [
+       "take",
+       "make",
+       "do",
+       "have made"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "We \"take a break\"."
+     },
+     {
+      "q": "I'm ___ a diet this month.",
+      "choices": [
+       "at",
+       "in",
+       "on",
+       "by"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "We say \"on a diet\"."
+     },
+     {
+      "q": "He ___ the bill, so I didn't pay.",
+      "choices": [
+       "paid",
+       "made",
+       "did",
+       "took"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "We \"pay the bill\"."
+     },
+     {
+      "q": "\"To cost an arm and a leg\" means ___.",
+      "choices": [
+       "to be dangerous",
+       "to be very cheap",
+       "to be very expensive",
+       "to hurt yourself"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "An idiom for very expensive."
+     },
+     {
+      "q": "Which collocation is correct?",
+      "choices": [
+       "strong traffic",
+       "heavy traffic",
+       "big traffic",
+       "hard traffic"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Heavy traffic\" is a collocation."
+     },
+     {
+      "q": "Which collocation is correct?",
+      "choices": [
+       "make a photo",
+       "do a photo",
+       "put a photo",
+       "take a photo"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "We \"take a photo\"."
+     },
+     {
+      "q": "Which collocation is correct?",
+      "choices": [
+       "make the housework",
+       "take the housework",
+       "get the housework",
+       "do the housework"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "We \"do the housework\"."
+     },
+     {
+      "q": "Which collocation is correct?",
+      "choices": [
+       "heavy coffee",
+       "hard coffee",
+       "big coffee",
+       "strong coffee"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Strong coffee\" is natural."
+     },
+     {
+      "q": "\"To be in the same boat\" means ___.",
+      "choices": [
+       "to travel together",
+       "to be lost",
+       "to be rich",
+       "to be in the same situation"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "An idiom for sharing a situation."
+     },
+     {
+      "q": "She ___ a good impression at the interview.",
+      "choices": [
+       "did",
+       "made",
+       "took",
+       "gave out"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "We \"make an impression\"."
+     },
+     {
+      "q": "\"Spill the beans\" means ___.",
+      "choices": [
+       "drop food",
+       "cook a meal",
+       "tell a secret",
+       "make a mess"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "An idiom for revealing a secret."
+     },
+     {
+      "q": "\"Cost a fortune\" means ___.",
+      "choices": [
+       "be free",
+       "be very expensive",
+       "be a gift",
+       "be a bargain"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "An idiom for very expensive."
      }
     ]
    },
@@ -1476,6 +4392,246 @@
       "answer": "This is the café where we met.",
       "double": false,
       "why": "\"Where\" replaces \"there\": the café where we met."
+     },
+     {
+      "q": "The girl ___ lives next door is a doctor.",
+      "choices": [
+       "which",
+       "whose",
+       "where",
+       "who"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Who\" is for people."
+     },
+     {
+      "q": "This is the book ___ I told you about.",
+      "choices": [
+       "who",
+       "where",
+       "that",
+       "whose"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"That\" can be used for things."
+     },
+     {
+      "q": "That is the man ___ car was stolen.",
+      "choices": [
+       "whose",
+       "who",
+       "which",
+       "that"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Whose\" shows possession."
+     },
+     {
+      "q": "The city ___ I was born is very big.",
+      "choices": [
+       "who",
+       "which",
+       "where",
+       "whose"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"Where\" is for places."
+     },
+     {
+      "q": "The phone ___ is on the table is mine.",
+      "choices": [
+       "who",
+       "whose",
+       "where",
+       "which"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "\"Which\" is for things."
+     },
+     {
+      "q": "My uncle, ___ lives in Chiang Mai, is a chef.",
+      "choices": [
+       "which",
+       "whose",
+       "who",
+       "where"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Add extra info about a person: who."
+     },
+     {
+      "q": "Bangkok, ___ is the capital, is very busy.",
+      "choices": [
+       "who",
+       "where",
+       "whose",
+       "which"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Extra info about a thing: which."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "The man who called me is my boss.",
+       "The man which called me is my boss.",
+       "The man whose called me is my boss.",
+       "The man where called me is my boss."
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Who\" for people."
+     },
+     {
+      "q": "Which sentence is correct?",
+      "choices": [
+       "I love the shoes that you bought.",
+       "I love the shoes who you bought.",
+       "I love the shoes whose you bought.",
+       "I love the shoes where you bought."
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"That\" for things."
+     },
+     {
+      "q": "The teacher ___ class I like is Mr. Brown.",
+      "choices": [
+       "who",
+       "whose",
+       "which",
+       "where"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Whose class\" = his class."
+     },
+     {
+      "q": "This is the restaurant ___ we had dinner.",
+      "choices": [
+       "where",
+       "who",
+       "whose",
+       "what"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Where\" for places."
+     },
+     {
+      "q": "The movie ___ we watched was boring.",
+      "choices": [
+       "who",
+       "whose",
+       "that",
+       "where"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"That\" for things."
+     },
+     {
+      "q": "A dictionary is a book ___ explains words.",
+      "choices": [
+       "who",
+       "whose",
+       "which",
+       "where"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"Which\" for things."
+     },
+     {
+      "q": "I know a boy ___ father is a pilot.",
+      "choices": [
+       "who",
+       "whose",
+       "which",
+       "where"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Whose father\" = his father."
+     },
+     {
+      "q": "The day ___ we met was sunny.",
+      "choices": [
+       "when",
+       "where",
+       "who",
+       "whose"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"When\" for times."
+     },
+     {
+      "q": "Everything ___ he said was true.",
+      "choices": [
+       "who",
+       "whose",
+       "where",
+       "that"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "After \"everything\": that."
+     },
+     {
+      "q": "The students ___ passed the test were happy.",
+      "choices": [
+       "who",
+       "which",
+       "whose",
+       "where"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "\"Who\" for people."
+     },
+     {
+      "q": "She lost the bag ___ she bought last week.",
+      "choices": [
+       "who",
+       "that",
+       "whose",
+       "where"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"That\" for things."
+     },
+     {
+      "q": "He is the actor ___ won the prize.",
+      "choices": [
+       "which",
+       "who",
+       "whose",
+       "where"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "\"Who\" for people."
+     },
+     {
+      "q": "The town ___ I grew up is small.",
+      "choices": [
+       "who",
+       "whose",
+       "where",
+       "which"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "\"Where\" for places."
      }
     ]
    },
@@ -1589,6 +4745,246 @@
       "answer": "carry on",
       "double": false,
       "why": "\"Carry on\" = continue."
+     },
+     {
+      "q": "\"Look after\" means ___.",
+      "choices": [
+       "look behind",
+       "search for",
+       "look at",
+       "take care of"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Look after = take care of."
+     },
+     {
+      "q": "\"Turn down\" means ___.",
+      "choices": [
+       "make louder",
+       "switch on",
+       "go left",
+       "refuse"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Turn down an offer = refuse it."
+     },
+     {
+      "q": "\"Find out\" means ___.",
+      "choices": [
+       "lose",
+       "look for",
+       "put out",
+       "discover"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Find out = learn something."
+     },
+     {
+      "q": "\"Run out of\" means ___.",
+      "choices": [
+       "have no more",
+       "run away from",
+       "run into",
+       "run for"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Run out of milk = no milk left."
+     },
+     {
+      "q": "\"Put off\" means ___.",
+      "choices": [
+       "wear",
+       "delay",
+       "take off",
+       "put out"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Put off = postpone."
+     },
+     {
+      "q": "\"Take off\" (a plane) means ___.",
+      "choices": [
+       "land",
+       "leave the ground",
+       "crash",
+       "stop"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "A plane takes off."
+     },
+     {
+      "q": "\"Get on with\" someone means ___.",
+      "choices": [
+       "dislike",
+       "meet",
+       "have a good relationship",
+       "marry"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Get on with = be friendly."
+     },
+     {
+      "q": "\"Look up\" a word means ___.",
+      "choices": [
+       "look at the sky",
+       "search for it in a dictionary",
+       "look down on it",
+       "write it"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Look up = search."
+     },
+     {
+      "q": "\"Carry on\" means ___.",
+      "choices": [
+       "continue",
+       "carry a bag",
+       "stop",
+       "move house"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Carry on = continue."
+     },
+     {
+      "q": "\"Break down\" (a car) means ___.",
+      "choices": [
+       "stop working",
+       "hit something",
+       "go fast",
+       "get washed"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "A car breaks down."
+     },
+     {
+      "q": "\"Come across\" means ___.",
+      "choices": [
+       "cross a road",
+       "find by chance",
+       "arrive",
+       "argue"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Come across = find by chance."
+     },
+     {
+      "q": "\"Set up\" a business means ___.",
+      "choices": [
+       "start",
+       "close",
+       "sell",
+       "buy"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Set up = start."
+     },
+     {
+      "q": "\"Cut down on\" sugar means ___.",
+      "choices": [
+       "buy more",
+       "stop completely",
+       "eat less",
+       "cook"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Cut down on = reduce."
+     },
+     {
+      "q": "\"Take after\" your mother means ___.",
+      "choices": [
+       "look or act like her",
+       "follow her",
+       "take her bag",
+       "ask her"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Take after = be similar."
+     },
+     {
+      "q": "\"Call off\" a match means ___.",
+      "choices": [
+       "cancel",
+       "start",
+       "watch",
+       "win"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "Call off = cancel."
+     },
+     {
+      "q": "\"Show off\" means ___.",
+      "choices": [
+       "turn on a light",
+       "go away",
+       "try to impress people",
+       "take a photo"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Show off = brag."
+     },
+     {
+      "q": "Please ___ your shoes before you come in.",
+      "choices": [
+       "put off",
+       "take off",
+       "get off",
+       "give off"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "Take off shoes."
+     },
+     {
+      "q": "I'll ___ you at the station at six.",
+      "choices": [
+       "pick out",
+       "pick on",
+       "pick up",
+       "pick off"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "Pick up = collect someone."
+     },
+     {
+      "q": "She ___ her friends after the argument.",
+      "choices": [
+       "made out",
+       "made of",
+       "made for",
+       "made up with"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Make up with = become friends again."
+     },
+     {
+      "q": "We need to ___ a solution to this problem.",
+      "choices": [
+       "come across",
+       "come off",
+       "come in",
+       "come up with"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "Come up with = think of an idea."
      }
     ]
    },
@@ -1702,6 +5098,246 @@
       "answer": "illegal",
       "double": false,
       "why": "\"Legal\" takes \"il-\": illegal."
+     },
+     {
+      "q": "The noun of \"decide\" is ___.",
+      "choices": [
+       "decision",
+       "decider",
+       "deciding",
+       "decisive"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "decide → decision."
+     },
+     {
+      "q": "The adjective of \"danger\" is ___.",
+      "choices": [
+       "dangerous",
+       "dangerful",
+       "dangery",
+       "endangering"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "danger → dangerous."
+     },
+     {
+      "q": "The opposite of \"happy\" is ___.",
+      "choices": [
+       "dishappy",
+       "inhappy",
+       "nonhappy",
+       "unhappy"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "un- + happy."
+     },
+     {
+      "q": "The noun of \"teach\" (a person) is ___.",
+      "choices": [
+       "teaching",
+       "teachment",
+       "teacher",
+       "teachful"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "teach → teacher."
+     },
+     {
+      "q": "The adverb of \"quick\" is ___.",
+      "choices": [
+       "quickful",
+       "quicker",
+       "quickness",
+       "quickly"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "adjective + -ly."
+     },
+     {
+      "q": "The noun of \"friendly\" is ___.",
+      "choices": [
+       "friendlyment",
+       "friendship",
+       "friendliness",
+       "friendlier"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "friendly → friendliness."
+     },
+     {
+      "q": "The adjective of \"beauty\" is ___.",
+      "choices": [
+       "beautied",
+       "beautiful",
+       "beautify",
+       "beautyful"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "beauty → beautiful."
+     },
+     {
+      "q": "The verb of \"strong\" is ___.",
+      "choices": [
+       "strongen",
+       "strongify",
+       "strengthen",
+       "strongly"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "strong → strengthen."
+     },
+     {
+      "q": "\"Re-\" in \"rewrite\" means ___.",
+      "choices": [
+       "before",
+       "not",
+       "again",
+       "under"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "re- = again."
+     },
+     {
+      "q": "The opposite of \"agree\" is ___.",
+      "choices": [
+       "unagree",
+       "disagree",
+       "inagree",
+       "misagree"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "dis- + agree."
+     },
+     {
+      "q": "The noun of \"move\" is ___.",
+      "choices": [
+       "movement",
+       "movation",
+       "movness",
+       "movely"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "move + -ment."
+     },
+     {
+      "q": "The noun of \"pollute\" is ___.",
+      "choices": [
+       "pollutement",
+       "pollutness",
+       "pollution",
+       "polluting person"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "pollute → pollution."
+     },
+     {
+      "q": "The adjective of \"care\" (without care) is ___.",
+      "choices": [
+       "careful",
+       "careless",
+       "caring",
+       "carely"
+      ],
+      "answer": 1,
+      "double": false,
+      "why": "care + -less = without."
+     },
+     {
+      "q": "The adjective of \"help\" (with help) is ___.",
+      "choices": [
+       "helpless",
+       "helping",
+       "helped",
+       "helpful"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "help + -ful = full of."
+     },
+     {
+      "q": "The noun of \"visit\" (a person) is ___.",
+      "choices": [
+       "visiter",
+       "visition",
+       "visitor",
+       "visiting"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "visit → visitor."
+     },
+     {
+      "q": "\"Mis-\" in \"misunderstand\" means ___.",
+      "choices": [
+       "wrongly",
+       "again",
+       "very",
+       "before"
+      ],
+      "answer": 0,
+      "double": false,
+      "why": "mis- = wrongly."
+     },
+     {
+      "q": "The opposite of \"legal\" is ___.",
+      "choices": [
+       "unlegal",
+       "dislegal",
+       "nonlegal",
+       "illegal"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "il- before l."
+     },
+     {
+      "q": "The noun of \"important\" is ___.",
+      "choices": [
+       "importancy",
+       "importantness",
+       "importation",
+       "importance"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "important → importance."
+     },
+     {
+      "q": "The verb of \"modern\" is ___.",
+      "choices": [
+       "modernen",
+       "modernly",
+       "modernize",
+       "modernity"
+      ],
+      "answer": 2,
+      "double": false,
+      "why": "modern → modernize."
+     },
+     {
+      "q": "The noun of \"friend\" (the state) is ___.",
+      "choices": [
+       "friendness",
+       "friendment",
+       "friendhood",
+       "friendship"
+      ],
+      "answer": 3,
+      "double": false,
+      "why": "friend + -ship."
      }
     ]
    }
@@ -1791,86 +5427,249 @@
  ],
  "hidden": [
   {
-   "id": "golden",
-   "icon": "🌟",
-   "name": "Golden Question",
-   "text": "Question {n} was secretly worth double! Right? +1 more.",
+   "id": "siblings",
+   "icon": "👨‍👩‍👧‍👦",
+   "name": "Big Families",
+   "text": "5+ brothers and sisters on your team combined? +1!",
    "points": 1
   },
   {
-   "id": "perfect",
-   "icon": "💯",
-   "name": "Perfect Round",
-   "text": "All 5 answers right? +3!",
-   "points": 3
+   "id": "only",
+   "icon": "🦄",
+   "name": "Only Child",
+   "text": "Someone on your team is an only child? +1!",
+   "points": 1
   },
   {
-   "id": "streak",
-   "icon": "🔥",
-   "name": "Hot Streak",
-   "text": "3 right answers in a row? +2!",
-   "points": 2
+   "id": "bday7",
+   "icon": "🎂",
+   "name": "Lucky Birthday",
+   "text": "Anyone born on the 7th, 14th, 21st or 28th? +1!",
+   "points": 1
   },
   {
-   "id": "comeback",
-   "icon": "🐢",
-   "name": "Comeback",
-   "text": "The team in last place gets +2!",
-   "points": 2
+   "id": "bdaysum",
+   "icon": "🎈",
+   "name": "Same Month",
+   "text": "Two people born in the same month? +1!",
+   "points": 1
   },
   {
-   "id": "neat",
-   "icon": "🖊",
-   "name": "Neatest Board",
-   "text": "Your teacher picks the neatest board: +2!",
-   "points": 2
+   "id": "summer",
+   "icon": "☀️",
+   "name": "Summer Baby",
+   "text": "Someone on your team was born in April, May or June? +1!",
+   "points": 1
   },
   {
-   "id": "spelling",
-   "icon": "✏️",
-   "name": "Spelling Star",
-   "text": "Every word on your board spelled right? +2!",
-   "points": 2,
-   "needs": "short"
+   "id": "pets",
+   "icon": "🐶",
+   "name": "Pet Power",
+   "text": "Your team has 3 or more pets at home combined? +1!",
+   "points": 1
   },
   {
-   "id": "longword",
+   "id": "cat",
+   "icon": "🐱",
+   "name": "Cat Lovers",
+   "text": "Someone on your team has a cat at home? +1!",
+   "points": 1
+  },
+  {
+   "id": "dog",
+   "icon": "🐕",
+   "name": "Dog Lovers",
+   "text": "Someone on your team has a dog at home? +1!",
+   "points": 1
+  },
+  {
+   "id": "tall",
    "icon": "📏",
-   "name": "Long Word",
-   "text": "An answer with a word of 10+ letters? +1!",
-   "points": 1,
-   "needs": "short"
-  },
-  {
-   "id": "syllables",
-   "icon": "🎵",
-   "name": "Syllable Hunter",
-   "text": "An answer with a word of 3+ syllables? +1!",
-   "points": 1,
-   "needs": "short"
-  },
-  {
-   "id": "sentence",
-   "icon": "🧩",
-   "name": "Full Sentence",
-   "text": "One answer written as a full sentence? +1!",
-   "points": 1,
-   "needs": "short"
-  },
-  {
-   "id": "lucky",
-   "icon": "🍀",
-   "name": "Lucky Letter",
-   "text": "+1 for each right answer that starts with the letter {letter}!",
+   "name": "Tall Team",
+   "text": "Someone on your team is taller than 170 cm? +1!",
    "points": 1
   },
   {
-   "id": "bletter",
-   "icon": "🔤",
-   "name": "Letter B Luck",
-   "text": "+1 for each right answer that was B!",
-   "points": 1,
-   "needs": "choice"
+   "id": "shoe",
+   "icon": "👟",
+   "name": "Big Feet",
+   "text": "Anyone with a shoe size over 42? +1!",
+   "points": 1
+  },
+  {
+   "id": "glasses",
+   "icon": "👓",
+   "name": "Glasses Gang",
+   "text": "Two or more people on your team wear glasses? +1!",
+   "points": 1
+  },
+  {
+   "id": "left",
+   "icon": "🖐",
+   "name": "Lefty",
+   "text": "Someone on your team writes with their left hand? +1!",
+   "points": 1
+  },
+  {
+   "id": "bro",
+   "icon": "🧒",
+   "name": "Big Brother",
+   "text": "Anyone the oldest child in their family? +1!",
+   "points": 1
+  },
+  {
+   "id": "young",
+   "icon": "👶",
+   "name": "Baby of the Family",
+   "text": "Anyone the youngest child in their family? +1!",
+   "points": 1
+  },
+  {
+   "id": "bus",
+   "icon": "🚌",
+   "name": "Bus Riders",
+   "text": "Someone on your team came to school by bus today? +1!",
+   "points": 1
+  },
+  {
+   "id": "walk",
+   "icon": "🚶",
+   "name": "Walkers",
+   "text": "Someone on your team walked to school today? +1!",
+   "points": 1
+  },
+  {
+   "id": "far",
+   "icon": "🛵",
+   "name": "Far Away",
+   "text": "Anyone who lives more than 5 km from school? +1!",
+   "points": 1
+  },
+  {
+   "id": "rice",
+   "icon": "🍚",
+   "name": "Rice Day",
+   "text": "Someone on your team ate rice today? +1!",
+   "points": 1
+  },
+  {
+   "id": "noodle",
+   "icon": "🍜",
+   "name": "Noodle Fans",
+   "text": "Someone on your team ate noodles in the last 2 days? +1!",
+   "points": 1
+  },
+  {
+   "id": "breakfast",
+   "icon": "🥞",
+   "name": "Breakfast Club",
+   "text": "Everyone on your team ate breakfast today? +2!",
+   "points": 2
+  },
+  {
+   "id": "black",
+   "icon": "🖤",
+   "name": "Black Shoes",
+   "text": "Everyone on your team is wearing black shoes? +2!",
+   "points": 2
+  },
+  {
+   "id": "sleep",
+   "icon": "😴",
+   "name": "Early Bird",
+   "text": "Anyone in bed before 10 p.m. last night? +1!",
+   "points": 1
+  },
+  {
+   "id": "phone",
+   "icon": "📱",
+   "name": "Phone Number",
+   "text": "Someone's phone number ends in 7, 8 or 9? +1!",
+   "points": 1
+  },
+  {
+   "id": "travel",
+   "icon": "✈️",
+   "name": "Plane Ride",
+   "text": "Someone on your team has been on an airplane? +1!",
+   "points": 1
+  },
+  {
+   "id": "sea",
+   "icon": "🏖",
+   "name": "Beach Day",
+   "text": "Anyone been to the beach this year? +1!",
+   "points": 1
+  },
+  {
+   "id": "twin",
+   "icon": "👯",
+   "name": "Twin Alert",
+   "text": "Anyone with a twin in the family? +1!",
+   "points": 1
+  },
+  {
+   "id": "long",
+   "icon": "🧵",
+   "name": "Long Hair",
+   "text": "Anyone with hair longer than their shoulders? +1!",
+   "points": 1
+  },
+  {
+   "id": "coin",
+   "icon": "🪙",
+   "name": "Pocket Money",
+   "text": "More than 100 baht in your pockets combined? +1!",
+   "points": 1
+  },
+  {
+   "id": "game",
+   "icon": "🎮",
+   "name": "Gamer",
+   "text": "Someone on your team played a video game yesterday? +1!",
+   "points": 1
+  },
+  {
+   "id": "music",
+   "icon": "🎵",
+   "name": "Music Lovers",
+   "text": "Someone on your team can play a musical instrument? +1!",
+   "points": 1
+  },
+  {
+   "id": "sport",
+   "icon": "⚽",
+   "name": "Sports Team",
+   "text": "Someone on your team played a sport this week? +1!",
+   "points": 1
+  },
+  {
+   "id": "pink",
+   "icon": "🎨",
+   "name": "Favorite Color",
+   "text": "Two people with the same favorite color? +1!",
+   "points": 1
+  },
+  {
+   "id": "dec",
+   "icon": "❄️",
+   "name": "Winter Baby",
+   "text": "Anyone born in December or January? +1!",
+   "points": 1
+  },
+  {
+   "id": "fiveplus",
+   "icon": "✋",
+   "name": "High Five",
+   "text": "Everyone on your team has a phone at home? +1!",
+   "points": 1
+  },
+  {
+   "id": "bigfam",
+   "icon": "🏠",
+   "name": "Full House",
+   "text": "Anyone lives with 6 or more people? +1!",
+   "points": 1
   }
  ],
  "final": {
@@ -1942,7 +5741,7 @@
    },
    {
     "q": "Put EVERY verb in brackets in the correct tense.",
-    "quote": "By the time we ___ (arrive), the film ___ (already start).",
+    "quote": "By the time we ___ (arrive), the movie ___ (already start).",
     "hint": "Write the two answers",
     "answer": "arrived / had already started",
     "why": "Past simple for the later action; past perfect for the earlier one."

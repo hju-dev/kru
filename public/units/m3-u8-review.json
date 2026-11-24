@@ -158,6 +158,246 @@
      "answer": 1,
      "double": false,
      "read_aloud": "Beam refused to help."
+    },
+    {
+     "q": "Which phrase is the most formal apology?",
+     "choices": [
+      "My bad!",
+      "Oops!",
+      "I apologize for my behavior.",
+      "Sorry, dude."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I apologize for my behavior."
+    },
+    {
+     "q": "\"I wish I ___ so shy.\"",
+     "choices": [
+      "weren't",
+      "am not",
+      "won't be",
+      "hadn't been"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish I weren't so shy."
+    },
+    {
+     "q": "\"If only I ___ your message earlier!\"",
+     "choices": [
+      "read",
+      "had read",
+      "read to",
+      "will read"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "If only I had read your message earlier!"
+    },
+    {
+     "q": "Which phrase gives forgiveness?",
+     "choices": [
+      "I feel terrible.",
+      "I regret it.",
+      "It won't happen again.",
+      "It's okay. Don't worry."
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "It's okay. Don't worry."
+    },
+    {
+     "q": "\"I regret ___ so rude.\"",
+     "choices": [
+      "to be",
+      "being",
+      "be",
+      "been"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I regret being so rude."
+    },
+    {
+     "q": "\"I'm sorry for ___ late.\"",
+     "choices": [
+      "being",
+      "to be",
+      "be",
+      "been"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I'm sorry for being late."
+    },
+    {
+     "q": "Which phrase promises to change?",
+     "choices": [
+      "It doesn't matter.",
+      "It's not your fault.",
+      "I forgive you.",
+      "It won't happen again."
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "It won't happen again."
+    },
+    {
+     "q": "\"I shouldn't ___ told her.\"",
+     "choices": [
+      "has",
+      "had",
+      "have",
+      "having"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I shouldn't have told her."
+    },
+    {
+     "q": "\"I wish it ___ stop raining.\"",
+     "choices": [
+      "would",
+      "will",
+      "did",
+      "has"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish it would stop raining."
+    },
+    {
+     "q": "Which sentence is about the present?",
+     "choices": [
+      "I wish I had been taller.",
+      "I wish I hadn't grown.",
+      "If only I had grown.",
+      "I wish I were taller."
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I wish I were taller."
+    },
+    {
+     "q": "Which sentence is about the past?",
+     "choices": [
+      "If only I studied.",
+      "If only I were studying.",
+      "If only I had studied.",
+      "If only I study."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "If only I had studied."
+    },
+    {
+     "q": "\"I really regret ___ you down.\"",
+     "choices": [
+      "to let",
+      "letting",
+      "let",
+      "lets"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I really regret letting you down."
+    },
+    {
+     "q": "Which means \"It's not your fault\"?",
+     "choices": [
+      "You're to blame.",
+      "You should be sorry.",
+      "You couldn't help it.",
+      "You did it on purpose."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "You couldn't help it."
+    },
+    {
+     "q": "Which is informal?",
+     "choices": [
+      "I sincerely apologize.",
+      "My bad.",
+      "Please accept my apology.",
+      "I deeply regret it."
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "My bad."
+    },
+    {
+     "q": "She says: \"Don't worry about it.\" She is ___.",
+     "choices": [
+      "blaming him",
+      "angry",
+      "regretting",
+      "forgiving him"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "Don't worry about it."
+    },
+    {
+     "q": "\"I feel ___ about hurting you.\"",
+     "choices": [
+      "awful",
+      "awfully",
+      "awe",
+      "awfulness"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I feel awful about hurting you."
+    },
+    {
+     "q": "\"I wish I ___ speak French.\"",
+     "choices": [
+      "can",
+      "will",
+      "must",
+      "could"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I wish I could speak French."
+    },
+    {
+     "q": "\"If only we ___ the bus!\"",
+     "choices": [
+      "didn't miss",
+      "hadn't missed",
+      "don't miss",
+      "won't miss"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "If only we hadn't missed the bus!"
+    },
+    {
+     "q": "Which phrase expresses regret?",
+     "choices": [
+      "I'm going to do that.",
+      "I can do that.",
+      "I wish I hadn't done that.",
+      "I will do that."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish I hadn't done that."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "I apologize for being late.",
+      "I apologize to being late.",
+      "I apologize of being late.",
+      "I apologize being late."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I apologize for being late."
     }
    ]
   }

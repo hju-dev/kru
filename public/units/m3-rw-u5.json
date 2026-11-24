@@ -100,6 +100,270 @@
      "q": "Spell the word: \"a long-term job or profession you develop over many years\".",
      "answer": "career",
      "double": false
+    },
+    {
+     "q": "Which word means \"a person who works for themselves, not for one company\"?",
+     "choices": [
+      "freelancer",
+      "employer",
+      "employee",
+      "boss"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the money you get for your job\"?",
+     "choices": [
+      "contract",
+      "salary",
+      "promotion",
+      "resume"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"able to change easily\"?",
+     "choices": [
+      "reliable",
+      "violent",
+      "rigid",
+      "flexible"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a written agreement about a job\"?",
+     "choices": [
+      "resume",
+      "salary",
+      "office",
+      "contract"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a skill or certificate you need for a job\"?",
+     "choices": [
+      "promotion",
+      "qualification",
+      "salary",
+      "workplace"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"someone you can trust to do what they say\"?",
+     "choices": [
+      "flexible",
+      "reliable",
+      "freelance",
+      "violent"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a duty; something you must take care of\"?",
+     "choices": [
+      "opportunity",
+      "responsibility",
+      "promotion",
+      "salary"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the place where you work\"?",
+     "choices": [
+      "workplace",
+      "university",
+      "gap year",
+      "contract"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a chance to do something good\"?",
+     "choices": [
+      "opportunity",
+      "contract",
+      "salary",
+      "boss"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a meeting where a company asks you questions before giving you a job\"?",
+     "choices": [
+      "promotion",
+      "job interview",
+      "contract",
+      "gap year"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a document that lists your education and work experience\"?",
+     "choices": [
+      "contract",
+      "resume",
+      "salary",
+      "boss"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a room or building where people work at desks\"?",
+     "choices": [
+      "nurse",
+      "office",
+      "engineer",
+      "university"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who helps doctors take care of patients\"?",
+     "choices": [
+      "engineer",
+      "nurse",
+      "teacher",
+      "boss"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who designs or builds machines, roads or bridges\"?",
+     "choices": [
+      "nurse",
+      "teacher",
+      "engineer",
+      "doctor"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who makes pictures and designs on a computer for work\"?",
+     "choices": [
+      "engineer",
+      "graphic designer",
+      "nurse",
+      "boss"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who helps sick people and gives medicine\"?",
+     "choices": [
+      "doctor",
+      "teacher",
+      "engineer",
+      "designer"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a place where you study after high school\"?",
+     "choices": [
+      "office",
+      "university",
+      "workplace",
+      "salary"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who has finished a university degree\"?",
+     "choices": [
+      "graduate",
+      "boss",
+      "nurse",
+      "employer"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a move to a higher, better job\"?",
+     "choices": [
+      "contract",
+      "resume",
+      "promotion",
+      "salary"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"your manager at work\"?",
+     "choices": [
+      "boss",
+      "graduate",
+      "nurse",
+      "employee"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a year off between school and university\"?",
+     "choices": [
+      "promotion",
+      "contract",
+      "career",
+      "gap year"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the work you do during most of your life\"?",
+     "choices": [
+      "salary",
+      "contract",
+      "career",
+      "office"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word is the opposite of \"employer\"?",
+     "choices": [
+      "boss",
+      "manager",
+      "employee",
+      "owner"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word is the opposite of \"reliable\"?",
+     "choices": [
+      "flexible",
+      "useful",
+      "honest",
+      "unreliable"
+     ],
+     "answer": 3,
+     "double": false
     }
    ]
   },
@@ -193,6 +457,270 @@
      ],
      "answer": 0,
      "double": false
+    },
+    {
+     "q": "She works from home and chooses her own hours. Her job is very ___.",
+     "choices": [
+      "boring",
+      "violent",
+      "rigid",
+      "flexible"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "A good ___ gives workers a fair salary.",
+     "choices": [
+      "employer",
+      "employee",
+      "resume",
+      "graduate"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "He signed a ___ for a one-year job.",
+     "choices": [
+      "contract",
+      "resume",
+      "salary",
+      "promotion"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "I sent my ___ to the company before the interview.",
+     "choices": [
+      "resume",
+      "salary",
+      "promotion",
+      "workplace"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "She got a ___ and now she is a manager.",
+     "choices": [
+      "promotion",
+      "contract",
+      "resume",
+      "gap year"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "After university, he became a ___ and found a job at a bank.",
+     "choices": [
+      "boss",
+      "nurse",
+      "salary",
+      "graduate"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "A ___ takes care of patients in a hospital.",
+     "choices": [
+      "engineer",
+      "nurse",
+      "designer",
+      "boss"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "An ___ designs bridges and machines.",
+     "choices": [
+      "nurse",
+      "teacher",
+      "employee",
+      "engineer"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Our ___ is friendly, and she listens to everyone.",
+     "choices": [
+      "resume",
+      "boss",
+      "salary",
+      "contract"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "My ___ is $2,000 a month.",
+     "choices": [
+      "resume",
+      "office",
+      "career",
+      "salary"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "It is important to be ___ and always come on time.",
+     "choices": [
+      "violent",
+      "reliable",
+      "cruel",
+      "late"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She took a ___ and traveled before university.",
+     "choices": [
+      "promotion",
+      "contract",
+      "gap year",
+      "salary"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "A job is what you do; a ___ is your path over many years.",
+     "choices": [
+      "salary",
+      "contract",
+      "career",
+      "office"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "He has a ___ in nursing, so he can work in a hospital.",
+     "choices": [
+      "contract",
+      "qualification",
+      "promotion",
+      "resume"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "They gave him the ___ to lead the team.",
+     "choices": [
+      "salary",
+      "contract",
+      "responsibility",
+      "promotion"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "She has a good ___ to study abroad.",
+     "choices": [
+      "contract",
+      "opportunity",
+      "resume",
+      "salary"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "He went to a job ___ in a nice suit.",
+     "choices": [
+      "interview",
+      "contract",
+      "promotion",
+      "salary"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Many people work in an ___ with computers and phones.",
+     "choices": [
+      "office",
+      "hospital",
+      "farm",
+      "university"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A ___ works for themselves and finds their own clients.",
+     "choices": [
+      "employee",
+      "boss",
+      "graduate",
+      "freelancer"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "She is a ___ at the bank. She works for a company.",
+     "choices": [
+      "employer",
+      "freelancer",
+      "boss",
+      "employee"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The ___ was tidy and quiet, so we could work well.",
+     "choices": [
+      "salary",
+      "workplace",
+      "contract",
+      "promotion"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "To study to be a doctor, you go to ___ first.",
+     "choices": [
+      "a farm",
+      "an airport",
+      "a mall",
+      "university"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "He is a ___ and makes logos for companies.",
+     "choices": [
+      "graphic designer",
+      "nurse",
+      "doctor",
+      "engineer"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Robots may take some jobs, but they also create new ___.",
+     "choices": [
+      "opportunities",
+      "contracts",
+      "salaries",
+      "bosses"
+     ],
+     "answer": 0,
+     "double": false
     }
    ]
   },
@@ -280,6 +808,264 @@
      "q": "Fix the mistake: \"When I will finish school, I will look for a job.\"",
      "answer": "When I finish school, I will look for a job.",
      "double": true
+    },
+    {
+     "q": "When she ___ university, she will look for a job.",
+     "choices": [
+      "will finish",
+      "finishes",
+      "finished",
+      "is finish"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "I will wait here until he ___.",
+     "choices": [
+      "will arrive",
+      "arrives",
+      "arrived",
+      "arriving"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Before I ___ a job, I will update my resume.",
+     "choices": [
+      "will apply for",
+      "applied for",
+      "apply for",
+      "am apply for"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "After he ___ the interview, he will feel better.",
+     "choices": [
+      "has finished",
+      "will finish",
+      "finished",
+      "finishing"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "She will work hard until she ___ a promotion.",
+     "choices": [
+      "gets",
+      "will get",
+      "got",
+      "getting"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "We'll have lunch when the meeting ___.",
+     "choices": [
+      "will end",
+      "ends",
+      "ended",
+      "ending"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "I'll send you the file as soon as I ___ it.",
+     "choices": [
+      "will finish",
+      "finished",
+      "finishing",
+      "finish"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "He will buy a car when he ___ enough money.",
+     "choices": [
+      "will save",
+      "saved",
+      "saving",
+      "saves"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "You'll feel better after you ___ some rest.",
+     "choices": [
+      "will get",
+      "got",
+      "get",
+      "getting"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "I will call you when I will arrive.",
+      "I will call you when I arrive.",
+      "I call you when I will arrive.",
+      "I will called you when I arrive."
+     ],
+     "answer": 1,
+     "double": false,
+     "why": "Present after \"when\" for future."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "She will leave before it will rain.",
+      "She leaves before it will rain.",
+      "She will leave before it rains.",
+      "She will leave before it rained."
+     ],
+     "answer": 2,
+     "double": false,
+     "why": "Present after \"before\"."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "As soon as he will graduate, he will move.",
+      "As soon as he graduated, he will move.",
+      "As soon as he graduating, he will move.",
+      "As soon as he graduates, he will move."
+     ],
+     "answer": 3,
+     "double": false,
+     "why": "Present after \"as soon as\"."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "I'll stay until you will come back.",
+      "I'll stay until you came back.",
+      "I stay until you will come back.",
+      "I'll stay until you come back."
+     ],
+     "answer": 3,
+     "double": false,
+     "why": "Present after \"until\"."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "After I finish, I will go home.",
+      "After I will finish, I will go home.",
+      "After I finished, I will go home.",
+      "After I finishing, I will go home."
+     ],
+     "answer": 0,
+     "double": false,
+     "why": "Present after \"after\"."
+    },
+    {
+     "q": "When I ___ older, I will be a doctor.",
+     "choices": [
+      "will be",
+      "was",
+      "am",
+      "be"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "By the time you ___ , I will have finished.",
+     "choices": [
+      "arrive",
+      "will arrive",
+      "arrived",
+      "arriving"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "I'm going to study hard until I ___ the exam.",
+     "choices": [
+      "will pass",
+      "passed",
+      "pass",
+      "passing"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "She'll be happy when she ___ the news.",
+     "choices": [
+      "will hear",
+      "heard",
+      "hears",
+      "hearing"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Don't leave before the boss ___.",
+     "choices": [
+      "will come",
+      "comes",
+      "came",
+      "coming"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "We will talk as soon as the class ___.",
+     "choices": [
+      "will end",
+      "ended",
+      "ending",
+      "ends"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "She will study abroad if she ___ a scholarship.",
+     "choices": [
+      "will get",
+      "got",
+      "getting",
+      "gets"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "He'll call you the moment he ___.",
+     "choices": [
+      "will land",
+      "landed",
+      "lands",
+      "landing"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "I will not go out until I ___ my homework.",
+     "choices": [
+      "will finish",
+      "finished",
+      "finish",
+      "finishing"
+     ],
+     "answer": 2,
+     "double": false
     }
    ]
   },
@@ -340,6 +1126,314 @@
      ],
      "answer": 2,
      "double": false
+    },
+    {
+     "q": "Employer or employee? \"He runs a company with 20 workers.\"",
+     "choices": [
+      "employee",
+      "employer",
+      "freelancer",
+      "graduate"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Employer or employee? \"She works for a hospital.\"",
+     "choices": [
+      "employer",
+      "boss",
+      "owner",
+      "employee"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Who looks after patients in a hospital?",
+     "choices": [
+      "nurse",
+      "engineer",
+      "designer",
+      "boss"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who designs bridges?",
+     "choices": [
+      "nurse",
+      "teacher",
+      "doctor",
+      "engineer"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Who teaches students at school?",
+     "choices": [
+      "teacher",
+      "nurse",
+      "engineer",
+      "boss"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who works for different clients and not for one company?",
+     "choices": [
+      "employee",
+      "employer",
+      "freelancer",
+      "graduate"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Who has just finished university?",
+     "choices": [
+      "boss",
+      "nurse",
+      "engineer",
+      "graduate"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Who tells employees what to do?",
+     "choices": [
+      "boss",
+      "nurse",
+      "teacher",
+      "graduate"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who makes logos and posters on a computer?",
+     "choices": [
+      "engineer",
+      "nurse",
+      "graphic designer",
+      "doctor"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Who helps sick people and writes prescriptions?",
+     "choices": [
+      "doctor",
+      "teacher",
+      "engineer",
+      "boss"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who works at a desk in an office?",
+     "choices": [
+      "an office worker",
+      "a farmer",
+      "a fisherman",
+      "a miner"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who works on a farm?",
+     "choices": [
+      "a nurse",
+      "a designer",
+      "an engineer",
+      "a farmer"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Who is a person who writes news articles?",
+     "choices": [
+      "a pilot",
+      "a chef",
+      "a journalist",
+      "a farmer"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Who is a person who cooks food in a restaurant?",
+     "choices": [
+      "a pilot",
+      "a chef",
+      "a nurse",
+      "a driver"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who flies an airplane?",
+     "choices": [
+      "a chef",
+      "a nurse",
+      "a pilot",
+      "a driver"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Who fixes cars?",
+     "choices": [
+      "a mechanic",
+      "a pilot",
+      "a chef",
+      "a teacher"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who protects people from crime?",
+     "choices": [
+      "a chef",
+      "a police officer",
+      "a designer",
+      "a farmer"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who helps put out fires?",
+     "choices": [
+      "a chef",
+      "a firefighter",
+      "a designer",
+      "a driver"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who writes software for computers?",
+     "choices": [
+      "a farmer",
+      "a programmer",
+      "a pilot",
+      "a chef"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who works with animals and treats them when they are sick?",
+     "choices": [
+      "a nurse",
+      "a pilot",
+      "a mechanic",
+      "a vet"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Who cuts hair?",
+     "choices": [
+      "a pilot",
+      "a hairdresser",
+      "a mechanic",
+      "a vet"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who defends people in a court?",
+     "choices": [
+      "a lawyer",
+      "a farmer",
+      "a chef",
+      "a pilot"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who works in a bank and helps with money?",
+     "choices": [
+      "a farmer",
+      "a bank clerk",
+      "a pilot",
+      "a mechanic"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who is a person who is learning a job from experienced workers?",
+     "choices": [
+      "a boss",
+      "an apprentice",
+      "an employer",
+      "a pilot"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who gets a salary every month?",
+     "choices": [
+      "a student only",
+      "an employee",
+      "a visitor",
+      "a customer"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Who decides who gets the job?",
+     "choices": [
+      "the applicant",
+      "the customer",
+      "the visitor",
+      "the employer"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Who is a person who asks for a job?",
+     "choices": [
+      "an applicant",
+      "an employer",
+      "a boss",
+      "a client"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Who pays a freelancer for their work?",
+     "choices": [
+      "an employee",
+      "a boss",
+      "a graduate",
+      "a client"
+     ],
+     "answer": 3,
+     "double": false
     }
    ]
   },
@@ -393,6 +1487,240 @@
     },
     {
      "q": "\"As soon as\" is a time word.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "An employer gives jobs to other people.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "An employee works for a company.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A salary is the money you get for your work.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A freelancer always works for one company only.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A resume lists your education and work experience.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A promotion means a worse job.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A reliable person is someone you can trust.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Flexible hours means you can sometimes choose when you work.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A gap year is a year between school and university.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A graduate has finished a university degree.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A career is the same thing as one day at work.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A contract is a written agreement about a job.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A boss is the same as an employee.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"As soon as I get home, I will call you\" is correct.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"As soon as I will get home, I call you\" is correct.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "After \"when\", we use the present for the future.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A nurse works in a hospital.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "An engineer can design bridges.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A graphic designer makes pictures on a computer.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A job interview is a meeting before you get a job.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A workplace is a school.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "An opportunity is a chance to do something good.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Qualifications are skills or certificates you need for a job.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Responsibility means duty.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Teachers work only in offices.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A university is a place to study after high school.",
      "choices": [
       "True",
       "False"

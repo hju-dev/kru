@@ -1,4 +1,4 @@
-/* Battle of Writers: the team "board" handout (print on A4). One board per page, or two per page. */
+/* Battle of Writers / Wits / Readers: the team "board" handout (print on A4). One board per page, or two per page. */
 @font-face { font-family: 'Fredoka'; font-weight: 700; src: url('/fonts/fredoka-latin-700-normal.woff2') format('woff2'); }
 @font-face { font-family: 'Fredoka'; font-weight: 500; src: url('/fonts/fredoka-latin-500-normal.woff2') format('woff2'); }
 @page { size: A4 portrait; margin: 9mm; }
@@ -7,7 +7,7 @@ html, body { margin: 0; background: #fff; color: #111; font-family: 'Fredoka', '
 .sheet { width: 192mm; margin: 0 auto; }
 .board { height: 266mm; display: flex; flex-direction: column; gap: 4mm; border: 1.2mm solid #111; border-radius: 6mm; padding: 6mm 7mm; }
 .two .board { height: 134mm; gap: 2.2mm; padding: 3.5mm 5mm; border-width: 0.9mm; border-radius: 4mm; }
-.two .cut { text-align: center; font-size: 8pt; color: #666; border-top: 0.4mm dashed #666; margin: 3.5mm 0 2mm; padding-top: 1mm; }
+.two .cut { border-top: 0.4mm dashed #666; margin: 3.5mm 0 3.5mm; }
 .head { display: flex; align-items: center; gap: 5mm; }
 .title { font-weight: 700; font-size: 22pt; line-height: 1; }
 .title small { display: block; font-size: 10pt; font-weight: 500; color: #444; margin-top: 1mm; }

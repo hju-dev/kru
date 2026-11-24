@@ -53,12 +53,15 @@ describe('Battle of Writers', () => {
   it('six kinds of writing task', () => {
     for (const k of ['scramble:', 'build:', 'fix:', 'punctuate:', 'combine:', 'describe:']) expect(js).toContain(k)
   })
-  it('content per level: 50 build, 50 scramble (from the old games), 12 join, 10 describe', () => {
+  it('content per level: 50 build, 50 scramble (from the old games), 30 join, 30 describe, 200+ tasks in all', () => {
     for (const lv of ['M.1', 'M.2', 'M.3']) {
       expect(c[lv].build.length, lv).toBeGreaterThanOrEqual(50)
       expect(c[lv].scramble.length, lv).toBeGreaterThanOrEqual(50)
-      expect(c[lv].combine).toHaveLength(12)
-      expect(c[lv].describe).toHaveLength(10)
+      expect(c[lv].combine.length).toBeGreaterThanOrEqual(30)
+      expect(c[lv].describe.length).toBeGreaterThanOrEqual(30)
+      // every task kind counts: put in order, build, fix (planted mistakes in the stories), punctuate (same sentences as put in order), join, describe
+      const fixes = JSON.parse(read('public/games/shared/stories.json'))[lv].reduce((n: number, s: { mistakes?: unknown[] }) => n + (s.mistakes?.length ?? 0), 0)
+      expect(c[lv].build.length + c[lv].scramble.length * 2 + fixes + c[lv].combine.length + c[lv].describe.length, lv).toBeGreaterThanOrEqual(200)
       for (const j of c[lv].combine) expect(j.answer, j.a).toMatch(/^[A-Z].*[.?]$/)
     }
   })

@@ -135,6 +135,258 @@
      "answer": 3,
      "double": false,
      "read_aloud": "I really regret letting you down."
+    },
+    {
+     "q": "Mia shouted at her friend by mistake. She says: \"I'm sorry I ___ at you.\"",
+     "choices": [
+      "shout",
+      "shouting",
+      "shouted",
+      "shouts"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I'm sorry I shouted at you."
+    },
+    {
+     "q": "Ben lied to his mother. He says: \"I regret ___ you a lie.\"",
+     "choices": [
+      "to tell",
+      "telling",
+      "tell",
+      "told"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I regret telling you a lie."
+    },
+    {
+     "q": "Nok broke her friend's phone. She says: \"I'm really sorry ___ your phone.\"",
+     "choices": [
+      "to break",
+      "for breaking",
+      "break",
+      "broke"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I'm really sorry for breaking your phone."
+    },
+    {
+     "q": "Tom forgot his friend's birthday. Which phrase says sorry?",
+     "choices": [
+      "I'm so sorry I forgot.",
+      "It doesn't matter.",
+      "Don't worry about it.",
+      "That's okay."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I'm so sorry I forgot."
+    },
+    {
+     "q": "Ann says, \"It doesn't matter.\" What does she mean?",
+     "choices": [
+      "She is angry.",
+      "She is sorry.",
+      "She forgives you.",
+      "She regrets it."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "It doesn't matter."
+    },
+    {
+     "q": "Which phrase gives forgiveness?",
+     "choices": [
+      "Don't worry about it.",
+      "I regret it.",
+      "I feel awful.",
+      "It won't happen again."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "Don't worry about it."
+    },
+    {
+     "q": "Which phrase promises to change?",
+     "choices": [
+      "It's not your fault.",
+      "Don't worry about it.",
+      "It doesn't matter.",
+      "It won't happen again."
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "It won't happen again."
+    },
+    {
+     "q": "Dan feels bad about breaking a rule. He says: \"I feel ___ about it.\"",
+     "choices": [
+      "terribly",
+      "terror",
+      "terrible",
+      "terrify"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I feel terrible about it."
+    },
+    {
+     "q": "Sara shouted. She says: \"I shouldn't ___ shouted.\"",
+     "choices": [
+      "has",
+      "have",
+      "had",
+      "having"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I shouldn't have shouted."
+    },
+    {
+     "q": "A student is talking to the principal. Which apology is the most formal?",
+     "choices": [
+      "I apologize for being late.",
+      "Sorry I'm late!",
+      "My bad!",
+      "Oops, sorry!"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I apologize for being late."
+    },
+    {
+     "q": "Lee says \"My bad!\" to a friend. This is ___.",
+     "choices": [
+      "formal",
+      "rude",
+      "informal",
+      "very polite"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "My bad!"
+    },
+    {
+     "q": "Pim says, \"I regret not studying.\" She wishes she ___.",
+     "choices": [
+      "studied",
+      "studies",
+      "will study",
+      "had studied"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I regret not studying."
+    },
+    {
+     "q": "Which sentence expresses regret?",
+     "choices": [
+      "I will say it again.",
+      "I wish I hadn't said that.",
+      "I'm going to say that.",
+      "I can say that."
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish I hadn't said that."
+    },
+    {
+     "q": "\"I'm sorry for ___ you wait.\" Which word fits?",
+     "choices": [
+      "to make",
+      "making",
+      "make",
+      "made"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I'm sorry for making you wait."
+    },
+    {
+     "q": "Which phrase is the best way to say sorry to a teacher?",
+     "choices": [
+      "My bad.",
+      "Sorry, dude.",
+      "I sincerely apologize.",
+      "Whatever."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I sincerely apologize."
+    },
+    {
+     "q": "Tom says: \"It wasn't your fault.\" He is ___.",
+     "choices": [
+      "forgiving her",
+      "blaming her",
+      "ignoring her",
+      "laughing at her"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "It wasn't your fault."
+    },
+    {
+     "q": "Mai says, \"I should have called you.\" She is expressing ___.",
+     "choices": [
+      "anger",
+      "surprise",
+      "pride",
+      "regret"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I should have called you."
+    },
+    {
+     "q": "Which phrase means \"I forgive you\"?",
+     "choices": [
+      "I'm still angry.",
+      "You're to blame.",
+      "That's unforgivable.",
+      "Let's forget about it."
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "Let's forget about it."
+    },
+    {
+     "q": "Which phrase means \"I made a mistake\"?",
+     "choices": [
+      "I got it right.",
+      "I got it wrong.",
+      "I got it done.",
+      "I got it back."
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I got it wrong."
+    },
+    {
+     "q": "Ana says, \"I'm really sorry about yesterday.\" Her friend says, \"Forget it!\" This means ___.",
+     "choices": [
+      "\"It's OK.\"",
+      "\"I'm still angry.\"",
+      "\"Say it again.\"",
+      "\"Tell me more.\""
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "Forget it!"
+    },
+    {
+     "q": "Luis says: \"I apologize ___ breaking the rule.\"",
+     "choices": [
+      "to",
+      "of",
+      "for",
+      "at"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I apologize for breaking the rule."
     }
    ]
   }
@@ -186,6 +438,78 @@
   },
   {
    "text": "It wasn't your fault.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I'm really sorry for what I said.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I should have called you earlier.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I wish I hadn't lost my temper.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "It was my fault, and I apologize.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "Please forgive me for being rude.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I regret not telling you the truth.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "Don't worry, I forgive you.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "We all make mistakes sometimes.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I feel terrible about the argument.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I promise I will be more careful.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "Thank you for forgiving me.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I didn't mean to hurt your feelings.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "It's okay, let's forget about it.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I wish we hadn't fought yesterday.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "He apologized to his teacher for being late.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "She regrets breaking her friend's phone.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "I'm sorry I forgot your birthday.",
+   "focus": "regret & forgiveness"
+  },
+  {
+   "text": "It wasn't your fault, so don't blame yourself.",
    "focus": "regret & forgiveness"
   }
  ]
