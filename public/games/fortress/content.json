@@ -77,7 +77,7 @@
   {
    "title": "Defend your base",
    "text": [
-    "Towers shoot weapons down: [LQ] 35%, [Q] 16%, [HQ] 8%.",
+    "Towers shoot weapons down: [LQ] always, [Q] 16%, [HQ] 8%.",
     "HQ destroyed? Use a repair kit or sacrifice a building!"
    ],
    "example": {

@@ -7,7 +7,7 @@
      starting HP) and Alliance. Free Answer and Question Change cannot be combined; Risk It still can.
    - After every team had its turn: the Haishi Trade Company store (weapons and repair kits, kits are kept in the
      inventory and can bring back even a destroyed building), then FIRE, then the next round.
-   - Towers shoot weapons down: [LQ] 35%, [Q] 16%, [HQ] 8%, the Sarmat 1% with both towers; one tower left = half.
+   - Towers shoot weapons down: [LQ] 100%, [Q] 16%, [HQ] 8%, the Sarmat 1% with both towers; one tower left = half.
    - Depot destroyed: question gold is halved, no healing, [Q] and [HQ] cost 1.6x.
    - HQ destroyed: use a repair kit (kept, or bought on the spot), or sacrifice another building; nothing left = out.
      An eliminated team joins one of the remaining teams (it shares that team's final points).
@@ -32,7 +32,7 @@
     sarmat: { name: 'RS-28 Sarmat', cls: 'HQ', dmg: 9000, price: 30000, mode: 'all', chance: 0.01, info: '9000 DMG · all targets · 1% shot down' },
   };
   var IORDER = ['crude', 'bomb', 'scatter', 'missile', 'dual', 'jammer', 'tos', 'avangard', 'sarmat'];
-  var SHOOT = { LQ: 0.35, Q: 0.16, HQ: 0.08 }; // per tower: Q 8%, HQ 4% (Nov 25 spec); [LQ] was 100%, so most rewards did nothing: kept at 35%
+  var SHOOT = { LQ: 1, Q: 0.16, HQ: 0.08 }; // per tower: Q 8%, HQ 4% (Nov 25 spec); [LQ] 100% = the student's design (Henry chose it, Nov 25): cheap bombs only land once the towers are down
   // the chance of each item (same order as IORDER) from a right answer, by question tier
   var ODDS = {
     easy: [60, 30, 10, 0, 0, 0, 0, 0, 0],
