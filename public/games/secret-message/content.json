@@ -1,0 +1,996 @@
+{
+ "about": "Secret Message (Nov 25), a speaking game for two teams: the first student of each line sees a secret sentence (direct or reported statement/question), whispers it down the line, and the last student says it the other way. 60 phrases per level (30 pairs, both directions). Each item: k = ds/dq/rs/rq (what the secret IS), say = the secret, answer = the model conversion (words in brackets are optional).",
+ "M.1": {
+  "phrases": [
+   {
+    "k": "dq",
+    "say": "Mom asked me, \"Do you want some water?\"",
+    "answer": "Mom asked me if (whether) I wanted some water."
+   },
+   {
+    "k": "rq",
+    "say": "Zoe asked Max what his name was.",
+    "answer": "Zoe asked Max, \"What is your name?\""
+   },
+   {
+    "k": "ds",
+    "say": "Kim said, \"I like music.\"",
+    "answer": "Kim said (that) she liked music."
+   },
+   {
+    "k": "dq",
+    "say": "Dan asked Joy, \"Where is your bag?\"",
+    "answer": "Dan asked Joy where her bag was."
+   },
+   {
+    "k": "dq",
+    "say": "Joy asked Jay, \"Why are you sad?\"",
+    "answer": "Joy asked Jay why he was sad."
+   },
+   {
+    "k": "rq",
+    "say": "Mom asked me if (whether) I wanted some water.",
+    "answer": "Mom asked me, \"Do you want some water?\""
+   },
+   {
+    "k": "dq",
+    "say": "Tom asked Mia, \"Do you like pizza?\"",
+    "answer": "Tom asked Mia if (whether) she liked pizza."
+   },
+   {
+    "k": "ds",
+    "say": "Max said, \"I walk to school.\"",
+    "answer": "Max said (that) he walked to school."
+   },
+   {
+    "k": "ds",
+    "say": "Tom said, \"I like pizza.\"",
+    "answer": "Tom said (that) he liked pizza."
+   },
+   {
+    "k": "rs",
+    "say": "Ann said (that) she loved dogs.",
+    "answer": "Ann said, \"I love dogs.\""
+   },
+   {
+    "k": "ds",
+    "say": "Jay said, \"My mom is a nurse.\"",
+    "answer": "Jay said (that) his mom was a nurse."
+   },
+   {
+    "k": "rs",
+    "say": "Kim said (that) she liked music.",
+    "answer": "Kim said, \"I like music.\""
+   },
+   {
+    "k": "ds",
+    "say": "Dan said, \"I live in Bangkok.\"",
+    "answer": "Dan said (that) he lived in Bangkok."
+   },
+   {
+    "k": "rs",
+    "say": "Tom said (that) he read books.",
+    "answer": "Tom said, \"I read books.\""
+   },
+   {
+    "k": "rq",
+    "say": "Mia asked me who my teacher was.",
+    "answer": "Mia asked me, \"Who is your teacher?\""
+   },
+   {
+    "k": "rq",
+    "say": "Joy asked Jay why he was sad.",
+    "answer": "Joy asked Jay, \"Why are you sad?\""
+   },
+   {
+    "k": "rs",
+    "say": "Sam said (that) he ate rice every day.",
+    "answer": "Sam said, \"I eat rice every day.\""
+   },
+   {
+    "k": "rq",
+    "say": "Amy asked Joe if (whether) he had a pen.",
+    "answer": "Amy asked Joe, \"Do you have a pen?\""
+   },
+   {
+    "k": "ds",
+    "say": "Joy said, \"I need a pen.\"",
+    "answer": "Joy said (that) she needed a pen."
+   },
+   {
+    "k": "rq",
+    "say": "Kim asked Sam if (whether) he played soccer.",
+    "answer": "Kim asked Sam, \"Do you play soccer?\""
+   },
+   {
+    "k": "ds",
+    "say": "Ann said, \"I love dogs.\"",
+    "answer": "Ann said (that) she loved dogs."
+   },
+   {
+    "k": "rq",
+    "say": "Tom asked Mia if (whether) she liked pizza.",
+    "answer": "Tom asked Mia, \"Do you like pizza?\""
+   },
+   {
+    "k": "ds",
+    "say": "Tom said, \"I read books.\"",
+    "answer": "Tom said (that) he read books."
+   },
+   {
+    "k": "dq",
+    "say": "Ben asked me, \"Are you OK?\"",
+    "answer": "Ben asked me if (whether) I was OK."
+   },
+   {
+    "k": "dq",
+    "say": "Kim asked Sam, \"Do you play soccer?\"",
+    "answer": "Kim asked Sam if (whether) he played soccer."
+   },
+   {
+    "k": "dq",
+    "say": "Mia asked me, \"Who is your teacher?\"",
+    "answer": "Mia asked me who my teacher was."
+   },
+   {
+    "k": "dq",
+    "say": "Sam asked Ann, \"Is this your phone?\"",
+    "answer": "Sam asked Ann if (whether) that was her phone."
+   },
+   {
+    "k": "rq",
+    "say": "Ms. Lee asked us if (whether) we were ready.",
+    "answer": "Ms. Lee asked us, \"Are you ready?\""
+   },
+   {
+    "k": "rs",
+    "say": "Max said (that) he walked to school.",
+    "answer": "Max said, \"I walk to school.\""
+   },
+   {
+    "k": "rs",
+    "say": "Tom said (that) he liked pizza.",
+    "answer": "Tom said, \"I like pizza.\""
+   },
+   {
+    "k": "dq",
+    "say": "Amy asked Joe, \"Do you have a pen?\"",
+    "answer": "Amy asked Joe if (whether) he had a pen."
+   },
+   {
+    "k": "rq",
+    "say": "Ann asked Ben where he lived.",
+    "answer": "Ann asked Ben, \"Where do you live?\""
+   },
+   {
+    "k": "rq",
+    "say": "Sam asked Ann if (whether) that was her phone.",
+    "answer": "Sam asked Ann, \"Is this your phone?\""
+   },
+   {
+    "k": "dq",
+    "say": "Dad asked me, \"What do you want?\"",
+    "answer": "Dad asked me what I wanted."
+   },
+   {
+    "k": "ds",
+    "say": "Zoe said, \"I want a snack.\"",
+    "answer": "Zoe said (that) she wanted a snack."
+   },
+   {
+    "k": "rs",
+    "say": "Amy said (that) she played soccer.",
+    "answer": "Amy said, \"I play soccer.\""
+   },
+   {
+    "k": "dq",
+    "say": "Ms. Lee asked us, \"Are you ready?\"",
+    "answer": "Ms. Lee asked us if (whether) we were ready."
+   },
+   {
+    "k": "rq",
+    "say": "Ben asked me if (whether) I was OK.",
+    "answer": "Ben asked me, \"Are you OK?\""
+   },
+   {
+    "k": "rq",
+    "say": "Mom asked me if (whether) I was hungry.",
+    "answer": "Mom asked me, \"Are you hungry?\""
+   },
+   {
+    "k": "dq",
+    "say": "Zoe asked Max, \"What is your name?\"",
+    "answer": "Zoe asked Max what his name was."
+   },
+   {
+    "k": "rs",
+    "say": "Zoe said (that) she wanted a snack.",
+    "answer": "Zoe said, \"I want a snack.\""
+   },
+   {
+    "k": "dq",
+    "say": "Eva asked Tom, \"Where do you eat lunch?\"",
+    "answer": "Eva asked Tom where he ate lunch."
+   },
+   {
+    "k": "ds",
+    "say": "Eva said, \"We play games.\"",
+    "answer": "Eva said (that) they played games."
+   },
+   {
+    "k": "rs",
+    "say": "Eva said (that) they played games.",
+    "answer": "Eva said, \"We play games.\""
+   },
+   {
+    "k": "rs",
+    "say": "Ben said (that) he was hungry.",
+    "answer": "Ben said, \"I am hungry.\""
+   },
+   {
+    "k": "ds",
+    "say": "Mia said, \"I have a cat.\"",
+    "answer": "Mia said (that) she had a cat."
+   },
+   {
+    "k": "rs",
+    "say": "Joe said (that) he was tired.",
+    "answer": "Joe said, \"I am tired.\""
+   },
+   {
+    "k": "dq",
+    "say": "Ann asked Ben, \"Where do you live?\"",
+    "answer": "Ann asked Ben where he lived."
+   },
+   {
+    "k": "rq",
+    "say": "Eva asked Tom where he ate lunch.",
+    "answer": "Eva asked Tom, \"Where do you eat lunch?\""
+   },
+   {
+    "k": "rq",
+    "say": "Dad asked me what I wanted.",
+    "answer": "Dad asked me, \"What do you want?\""
+   },
+   {
+    "k": "rs",
+    "say": "Joy said (that) she needed a pen.",
+    "answer": "Joy said, \"I need a pen.\""
+   },
+   {
+    "k": "ds",
+    "say": "Amy said, \"I play soccer.\"",
+    "answer": "Amy said (that) she played soccer."
+   },
+   {
+    "k": "dq",
+    "say": "Mom asked me, \"Are you hungry?\"",
+    "answer": "Mom asked me if (whether) I was hungry."
+   },
+   {
+    "k": "ds",
+    "say": "Joe said, \"I am tired.\"",
+    "answer": "Joe said (that) he was tired."
+   },
+   {
+    "k": "ds",
+    "say": "Ben said, \"I am hungry.\"",
+    "answer": "Ben said (that) he was hungry."
+   },
+   {
+    "k": "rs",
+    "say": "Mia said (that) she had a cat.",
+    "answer": "Mia said, \"I have a cat.\""
+   },
+   {
+    "k": "rq",
+    "say": "Dan asked Joy where her bag was.",
+    "answer": "Dan asked Joy, \"Where is your bag?\""
+   },
+   {
+    "k": "rs",
+    "say": "Jay said (that) his mom was a nurse.",
+    "answer": "Jay said, \"My mom is a nurse.\""
+   },
+   {
+    "k": "rs",
+    "say": "Dan said (that) he lived in Bangkok.",
+    "answer": "Dan said, \"I live in Bangkok.\""
+   },
+   {
+    "k": "ds",
+    "say": "Sam said, \"I eat rice every day.\"",
+    "answer": "Sam said (that) he ate rice every day."
+   }
+  ]
+ },
+ "M.2": {
+  "phrases": [
+   {
+    "k": "dq",
+    "say": "Mom asked me, \"Who is calling?\"",
+    "answer": "Mom asked me who was calling."
+   },
+   {
+    "k": "rq",
+    "say": "Ms. Lee asked us if (whether) we had finished.",
+    "answer": "Ms. Lee asked us, \"Have you finished?\""
+   },
+   {
+    "k": "ds",
+    "say": "Kim said, \"I have finished.\"",
+    "answer": "Kim said (that) she had finished."
+   },
+   {
+    "k": "dq",
+    "say": "Ben asked Kim, \"Will you come to the party?\"",
+    "answer": "Ben asked Kim if (whether) she would come to the party."
+   },
+   {
+    "k": "dq",
+    "say": "Joy asked Jay, \"Where are you going?\"",
+    "answer": "Joy asked Jay where he was going."
+   },
+   {
+    "k": "rq",
+    "say": "Mom asked me who was calling.",
+    "answer": "Mom asked me, \"Who is calling?\""
+   },
+   {
+    "k": "dq",
+    "say": "Tom asked Mia, \"Are you playing a game?\"",
+    "answer": "Tom asked Mia if (whether) she was playing a game."
+   },
+   {
+    "k": "ds",
+    "say": "Max said, \"We are going to the mall.\"",
+    "answer": "Max said (that) they were going to the mall."
+   },
+   {
+    "k": "ds",
+    "say": "Tom said, \"I am playing a game.\"",
+    "answer": "Tom said (that) he was playing a game."
+   },
+   {
+    "k": "rs",
+    "say": "Eva told me (that) she would help me the next day.",
+    "answer": "Eva told me, \"I will help you tomorrow.\""
+   },
+   {
+    "k": "ds",
+    "say": "Jay said, \"I can't find my keys.\"",
+    "answer": "Jay said (that) he couldn't (could not) find his keys."
+   },
+   {
+    "k": "rs",
+    "say": "Kim said (that) she had finished.",
+    "answer": "Kim said, \"I have finished.\""
+   },
+   {
+    "k": "ds",
+    "say": "Dan said, \"I am studying English.\"",
+    "answer": "Dan said (that) he was studying English."
+   },
+   {
+    "k": "rs",
+    "say": "Tom told me (that) he would meet me there.",
+    "answer": "Tom told me, \"I'll meet you here.\""
+   },
+   {
+    "k": "rq",
+    "say": "Dad asked me if (whether) I needed help.",
+    "answer": "Dad asked me, \"Do you need help?\""
+   },
+   {
+    "k": "rq",
+    "say": "Joy asked Jay where he was going.",
+    "answer": "Joy asked Jay, \"Where are you going?\""
+   },
+   {
+    "k": "rs",
+    "say": "Sam said (that) he was watching TV then.",
+    "answer": "Sam said, \"I'm watching TV now.\""
+   },
+   {
+    "k": "rq",
+    "say": "Amy asked Dan if (whether) he could swim.",
+    "answer": "Amy asked Dan, \"Can you swim?\""
+   },
+   {
+    "k": "ds",
+    "say": "Ann said, \"My brother is sick.\"",
+    "answer": "Ann said (that) her brother was sick."
+   },
+   {
+    "k": "rq",
+    "say": "Zoe asked Max what time the movie started.",
+    "answer": "Zoe asked Max, \"What time does the movie start?\""
+   },
+   {
+    "k": "ds",
+    "say": "Eva told me, \"I will help you tomorrow.\"",
+    "answer": "Eva told me (that) she would help me the next day."
+   },
+   {
+    "k": "rq",
+    "say": "Tom asked Mia if (whether) she was playing a game.",
+    "answer": "Tom asked Mia, \"Are you playing a game?\""
+   },
+   {
+    "k": "ds",
+    "say": "Tom told me, \"I'll meet you here.\"",
+    "answer": "Tom told me (that) he would meet me there."
+   },
+   {
+    "k": "dq",
+    "say": "Joe asked me, \"Why are you laughing?\"",
+    "answer": "Joe asked me why I was laughing."
+   },
+   {
+    "k": "dq",
+    "say": "Zoe asked Max, \"What time does the movie start?\"",
+    "answer": "Zoe asked Max what time the movie started."
+   },
+   {
+    "k": "dq",
+    "say": "Dad asked me, \"Do you need help?\"",
+    "answer": "Dad asked me if (whether) I needed help."
+   },
+   {
+    "k": "dq",
+    "say": "Kim asked Tom, \"Is it raining?\"",
+    "answer": "Kim asked Tom if (whether) it was raining."
+   },
+   {
+    "k": "rq",
+    "say": "Sam asked Eva if (whether) she liked spicy food.",
+    "answer": "Sam asked Eva, \"Do you like spicy food?\""
+   },
+   {
+    "k": "rs",
+    "say": "Max said (that) they were going to the mall.",
+    "answer": "Max said, \"We are going to the mall.\""
+   },
+   {
+    "k": "rs",
+    "say": "Tom said (that) he was playing a game.",
+    "answer": "Tom said, \"I am playing a game.\""
+   },
+   {
+    "k": "dq",
+    "say": "Amy asked Dan, \"Can you swim?\"",
+    "answer": "Amy asked Dan if (whether) he could swim."
+   },
+   {
+    "k": "rq",
+    "say": "Ann asked Ben where he had gone.",
+    "answer": "Ann asked Ben, \"Where did you go?\""
+   },
+   {
+    "k": "rq",
+    "say": "Kim asked Tom if (whether) it was raining.",
+    "answer": "Kim asked Tom, \"Is it raining?\""
+   },
+   {
+    "k": "dq",
+    "say": "Dad asked me, \"Did you do your homework?\"",
+    "answer": "Dad asked me if (whether) I had done my homework."
+   },
+   {
+    "k": "ds",
+    "say": "Zoe said, \"I visited my grandma.\"",
+    "answer": "Zoe said (that) she had visited her grandma."
+   },
+   {
+    "k": "rs",
+    "say": "Amy said (that) she could swim.",
+    "answer": "Amy said, \"I can swim.\""
+   },
+   {
+    "k": "dq",
+    "say": "Sam asked Eva, \"Do you like spicy food?\"",
+    "answer": "Sam asked Eva if (whether) she liked spicy food."
+   },
+   {
+    "k": "rq",
+    "say": "Joe asked me why I was laughing.",
+    "answer": "Joe asked me, \"Why are you laughing?\""
+   },
+   {
+    "k": "rq",
+    "say": "Mom asked me what I was doing.",
+    "answer": "Mom asked me, \"What are you doing?\""
+   },
+   {
+    "k": "dq",
+    "say": "Ms. Lee asked us, \"Have you finished?\"",
+    "answer": "Ms. Lee asked us if (whether) we had finished."
+   },
+   {
+    "k": "rs",
+    "say": "Zoe said (that) she had visited her grandma.",
+    "answer": "Zoe said, \"I visited my grandma.\""
+   },
+   {
+    "k": "dq",
+    "say": "Dan asked Ann, \"How are you getting home?\"",
+    "answer": "Dan asked Ann how she was getting home."
+   },
+   {
+    "k": "ds",
+    "say": "Joy said, \"I saw a movie last night.\"",
+    "answer": "Joy said (that) she had seen a movie the night before."
+   },
+   {
+    "k": "rs",
+    "say": "Joy said (that) she had seen a movie the night before.",
+    "answer": "Joy said, \"I saw a movie last night.\""
+   },
+   {
+    "k": "rs",
+    "say": "Ben told me (that) he would call me.",
+    "answer": "Ben told me, \"I will call you.\""
+   },
+   {
+    "k": "ds",
+    "say": "Mia said, \"I went to the beach.\"",
+    "answer": "Mia said (that) she had gone to the beach."
+   },
+   {
+    "k": "rs",
+    "say": "Joe said (that) he didn't (did not) like fish.",
+    "answer": "Joe said, \"I don't like fish.\""
+   },
+   {
+    "k": "dq",
+    "say": "Ann asked Ben, \"Where did you go?\"",
+    "answer": "Ann asked Ben where he had gone."
+   },
+   {
+    "k": "rq",
+    "say": "Dan asked Ann how she was getting home.",
+    "answer": "Dan asked Ann, \"How are you getting home?\""
+   },
+   {
+    "k": "rq",
+    "say": "Dad asked me if (whether) I had done my homework.",
+    "answer": "Dad asked me, \"Did you do your homework?\""
+   },
+   {
+    "k": "rs",
+    "say": "Ann said (that) her brother was sick.",
+    "answer": "Ann said, \"My brother is sick.\""
+   },
+   {
+    "k": "ds",
+    "say": "Amy said, \"I can swim.\"",
+    "answer": "Amy said (that) she could swim."
+   },
+   {
+    "k": "dq",
+    "say": "Mom asked me, \"What are you doing?\"",
+    "answer": "Mom asked me what I was doing."
+   },
+   {
+    "k": "ds",
+    "say": "Joe said, \"I don't like fish.\"",
+    "answer": "Joe said (that) he didn't (did not) like fish."
+   },
+   {
+    "k": "ds",
+    "say": "Ben told me, \"I will call you.\"",
+    "answer": "Ben told me (that) he would call me."
+   },
+   {
+    "k": "rs",
+    "say": "Mia said (that) she had gone to the beach.",
+    "answer": "Mia said, \"I went to the beach.\""
+   },
+   {
+    "k": "rq",
+    "say": "Ben asked Kim if (whether) she would come to the party.",
+    "answer": "Ben asked Kim, \"Will you come to the party?\""
+   },
+   {
+    "k": "rs",
+    "say": "Jay said (that) he couldn't (could not) find his keys.",
+    "answer": "Jay said, \"I can't find my keys.\""
+   },
+   {
+    "k": "rs",
+    "say": "Dan said (that) he was studying English.",
+    "answer": "Dan said, \"I am studying English.\""
+   },
+   {
+    "k": "ds",
+    "say": "Sam said, \"I'm watching TV now.\"",
+    "answer": "Sam said (that) he was watching TV then."
+   }
+  ]
+ },
+ "M.3": {
+  "phrases": [
+   {
+    "k": "ds",
+    "say": "Joe said, \"I didn't do it.\"",
+    "answer": "Joe said (that) he hadn't (had not) done it."
+   },
+   {
+    "k": "rq",
+    "say": "The officer asked him where he had been at 9 o'clock.",
+    "answer": "The officer asked him, \"Where were you at 9 o'clock?\""
+   },
+   {
+    "k": "ds",
+    "say": "Kim told us, \"I have to leave early.\"",
+    "answer": "Kim told us (that) she had to leave early."
+   },
+   {
+    "k": "dq",
+    "say": "Joe asked Kim, \"How long have you lived here?\"",
+    "answer": "Joe asked Kim how long she had lived there."
+   },
+   {
+    "k": "dq",
+    "say": "Joy asked Jay, \"Do you know what time it is?\"",
+    "answer": "Joy asked Jay if (whether) he knew what time it was."
+   },
+   {
+    "k": "rq",
+    "say": "Ben asked Ann if (whether) she was coming there the next day.",
+    "answer": "Ben asked Ann, \"Are you coming here tomorrow?\""
+   },
+   {
+    "k": "dq",
+    "say": "Tom asked Mia, \"Have you seen my phone?\"",
+    "answer": "Tom asked Mia if (whether) she had seen his phone."
+   },
+   {
+    "k": "ds",
+    "say": "Max told me, \"I'll see you next week.\"",
+    "answer": "Max told me (that) he would see me the following week."
+   },
+   {
+    "k": "ds",
+    "say": "Tom said, \"I have lost my phone.\"",
+    "answer": "Tom said (that) he had lost his phone."
+   },
+   {
+    "k": "rs",
+    "say": "Eva told me (that) she had been sleeping at 9 o'clock.",
+    "answer": "Eva told me, \"I was sleeping at 9 o'clock.\""
+   },
+   {
+    "k": "ds",
+    "say": "Jay said, \"I might go to the party.\"",
+    "answer": "Jay said (that) he might go to the party."
+   },
+   {
+    "k": "rs",
+    "say": "Kim told us (that) she had to leave early.",
+    "answer": "Kim told us, \"I have to leave early.\""
+   },
+   {
+    "k": "ds",
+    "say": "Dan said, \"I'm working on it now.\"",
+    "answer": "Dan said (that) he was working on it then."
+   },
+   {
+    "k": "rs",
+    "say": "Tom said (that) he wouldn't (would not) tell anyone.",
+    "answer": "Tom said, \"I won't tell anyone.\""
+   },
+   {
+    "k": "rq",
+    "say": "Kim asked Joe if (whether) she should call her.",
+    "answer": "Kim asked Joe, \"Should I call her?\""
+   },
+   {
+    "k": "rq",
+    "say": "Joy asked Jay if (whether) he knew what time it was.",
+    "answer": "Joy asked Jay, \"Do you know what time it is?\""
+   },
+   {
+    "k": "rs",
+    "say": "Sam said (that) that was his favorite song.",
+    "answer": "Sam said, \"This is my favorite song.\""
+   },
+   {
+    "k": "rq",
+    "say": "Mom asked me why I hadn't (had not) called her.",
+    "answer": "Mom asked me, \"Why didn't you call me?\""
+   },
+   {
+    "k": "ds",
+    "say": "Ann said, \"I must finish this report today.\"",
+    "answer": "Ann said (that) she had to finish that report that day."
+   },
+   {
+    "k": "rq",
+    "say": "Sam asked Eva if (whether) she could help him with that.",
+    "answer": "Sam asked Eva, \"Can you help me with this?\""
+   },
+   {
+    "k": "ds",
+    "say": "Eva told me, \"I was sleeping at 9 o'clock.\"",
+    "answer": "Eva told me (that) she had been sleeping at 9 o'clock."
+   },
+   {
+    "k": "rq",
+    "say": "Tom asked Mia if (whether) she had seen his phone.",
+    "answer": "Tom asked Mia, \"Have you seen my phone?\""
+   },
+   {
+    "k": "ds",
+    "say": "Tom said, \"I won't tell anyone.\"",
+    "answer": "Tom said (that) he wouldn't (would not) tell anyone."
+   },
+   {
+    "k": "dq",
+    "say": "Zoe asked Max, \"What are you doing now?\"",
+    "answer": "Zoe asked Max what he was doing then."
+   },
+   {
+    "k": "dq",
+    "say": "Sam asked Eva, \"Can you help me with this?\"",
+    "answer": "Sam asked Eva if (whether) she could help him with that."
+   },
+   {
+    "k": "dq",
+    "say": "Kim asked Joe, \"Should I call her?\"",
+    "answer": "Kim asked Joe if (whether) she should call her."
+   },
+   {
+    "k": "dq",
+    "say": "Ms. Lee asked us, \"What did you learn today?\"",
+    "answer": "Ms. Lee asked us what we had learned that day."
+   },
+   {
+    "k": "rq",
+    "say": "Dad asked me who had called me.",
+    "answer": "Dad asked me, \"Who called you?\""
+   },
+   {
+    "k": "rs",
+    "say": "Max told me (that) he would see me the following week.",
+    "answer": "Max told me, \"I'll see you next week.\""
+   },
+   {
+    "k": "rs",
+    "say": "Tom said (that) he had lost his phone.",
+    "answer": "Tom said, \"I have lost my phone.\""
+   },
+   {
+    "k": "dq",
+    "say": "Mom asked me, \"Why didn't you call me?\"",
+    "answer": "Mom asked me why I hadn't (had not) called her."
+   },
+   {
+    "k": "rq",
+    "say": "Ann asked Ben where he had been the night before.",
+    "answer": "Ann asked Ben, \"Where were you last night?\""
+   },
+   {
+    "k": "rq",
+    "say": "Ms. Lee asked us what we had learned that day.",
+    "answer": "Ms. Lee asked us, \"What did you learn today?\""
+   },
+   {
+    "k": "dq",
+    "say": "Amy asked Dan, \"Will you come to my party tomorrow?\"",
+    "answer": "Amy asked Dan if (whether) he would come to her party the next day."
+   },
+   {
+    "k": "ds",
+    "say": "Zoe said, \"We've never been to Japan.\"",
+    "answer": "Zoe said (that) they had never been to Japan."
+   },
+   {
+    "k": "rs",
+    "say": "Amy said (that) she couldn't (could not) come that night.",
+    "answer": "Amy said, \"I can't come tonight.\""
+   },
+   {
+    "k": "dq",
+    "say": "Dad asked me, \"Who called you?\"",
+    "answer": "Dad asked me who had called me."
+   },
+   {
+    "k": "rq",
+    "say": "Zoe asked Max what he was doing then.",
+    "answer": "Zoe asked Max, \"What are you doing now?\""
+   },
+   {
+    "k": "rq",
+    "say": "The teacher asked us if (whether) we had finished the homework.",
+    "answer": "The teacher asked us, \"Did you finish the homework?\""
+   },
+   {
+    "k": "dq",
+    "say": "The officer asked him, \"Where were you at 9 o'clock?\"",
+    "answer": "The officer asked him where he had been at 9 o'clock."
+   },
+   {
+    "k": "rs",
+    "say": "Zoe said (that) they had never been to Japan.",
+    "answer": "Zoe said, \"We've never been to Japan.\""
+   },
+   {
+    "k": "dq",
+    "say": "Eva asked Tom, \"Have you ever been abroad?\"",
+    "answer": "Eva asked Tom if (whether) he had ever been abroad."
+   },
+   {
+    "k": "ds",
+    "say": "Joy said, \"I've been waiting for an hour.\"",
+    "answer": "Joy said (that) she had been waiting for an hour."
+   },
+   {
+    "k": "rs",
+    "say": "Joy said (that) she had been waiting for an hour.",
+    "answer": "Joy said, \"I've been waiting for an hour.\""
+   },
+   {
+    "k": "rs",
+    "say": "Ben said (that) he had seen her there the day before.",
+    "answer": "Ben said, \"I saw her here yesterday.\""
+   },
+   {
+    "k": "ds",
+    "say": "Mia told me, \"I will call you tomorrow.\"",
+    "answer": "Mia told me (that) she would call me the next day."
+   },
+   {
+    "k": "rs",
+    "say": "Joe said (that) he hadn't (had not) done it.",
+    "answer": "Joe said, \"I didn't do it.\""
+   },
+   {
+    "k": "dq",
+    "say": "Ann asked Ben, \"Where were you last night?\"",
+    "answer": "Ann asked Ben where he had been the night before."
+   },
+   {
+    "k": "rq",
+    "say": "Eva asked Tom if (whether) he had ever been abroad.",
+    "answer": "Eva asked Tom, \"Have you ever been abroad?\""
+   },
+   {
+    "k": "rq",
+    "say": "Amy asked Dan if (whether) he would come to her party the next day.",
+    "answer": "Amy asked Dan, \"Will you come to my party tomorrow?\""
+   },
+   {
+    "k": "rs",
+    "say": "Ann said (that) she had to finish that report that day.",
+    "answer": "Ann said, \"I must finish this report today.\""
+   },
+   {
+    "k": "ds",
+    "say": "Amy said, \"I can't come tonight.\"",
+    "answer": "Amy said (that) she couldn't (could not) come that night."
+   },
+   {
+    "k": "dq",
+    "say": "The teacher asked us, \"Did you finish the homework?\"",
+    "answer": "The teacher asked us if (whether) we had finished the homework."
+   },
+   {
+    "k": "dq",
+    "say": "Ben asked Ann, \"Are you coming here tomorrow?\"",
+    "answer": "Ben asked Ann if (whether) she was coming there the next day."
+   },
+   {
+    "k": "ds",
+    "say": "Ben said, \"I saw her here yesterday.\"",
+    "answer": "Ben said (that) he had seen her there the day before."
+   },
+   {
+    "k": "rs",
+    "say": "Mia told me (that) she would call me the next day.",
+    "answer": "Mia told me, \"I will call you tomorrow.\""
+   },
+   {
+    "k": "rq",
+    "say": "Joe asked Kim how long she had lived there.",
+    "answer": "Joe asked Kim, \"How long have you lived here?\""
+   },
+   {
+    "k": "rs",
+    "say": "Jay said (that) he might go to the party.",
+    "answer": "Jay said, \"I might go to the party.\""
+   },
+   {
+    "k": "rs",
+    "say": "Dan said (that) he was working on it then.",
+    "answer": "Dan said, \"I'm working on it now.\""
+   },
+   {
+    "k": "ds",
+    "say": "Sam said, \"This is my favorite song.\"",
+    "answer": "Sam said (that) that was his favorite song."
+   }
+  ]
+ },
+ "intro": [
+  {
+   "title": "Secret Message",
+   "text": [
+    "Two teams whisper a secret sentence down the line.",
+    "The first student gets it. The last student must say it the other way!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "Secret",
+      "Tom said, \"I am tired.\""
+     ],
+     [
+      "Say it",
+      "Tom said he was tired."
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Get in line",
+   "text": [
+    "The screen shows each team's line.",
+    "A new first and last student every round!"
+   ],
+   "example": {
+    "rows": [
+     [
+      "1st",
+      "Messenger: sees the secret"
+     ],
+     [
+      "Last",
+      "Reporter: says it the other way"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Whisper it down",
+   "text": [
+    "The Messenger sees the secret for a few seconds.",
+    "Whisper it to the next student, and the next..."
+   ],
+   "example": {
+    "big": "shhh",
+    "tag": "whisper only!"
+   }
+  },
+  {
+   "title": "Say it the other way",
+   "text": [
+    "Direct becomes reported. Reported becomes direct.",
+    "Questions too! Watch the verbs and the word order."
+   ],
+   "example": {
+    "rows": [
+     [
+      "Direct",
+      "\"Where do you live?\""
+     ],
+     [
+      "Reported",
+      "asked where I lived"
+     ]
+    ]
+   }
+  },
+  {
+   "title": "Points",
+   "text": [
+    "The teacher checks the answer.",
+    "Right answer: +1 point for the team!"
+   ],
+   "example": {
+    "big": "+1",
+    "tag": "each correct team"
+   }
+  }
+ ]
+}
