@@ -1,50 +1,52 @@
 /* Point 1-4 (folder and id: fortress; Henry, Nov 23-24; modern military / future warfare theme): four teams defend a base
    and attack each other. Made with LM2, a student who helped create the game.
-   - Every base: HQ 1,200 HP, Depot 800, two Towers 900 each; an intact Depot heals every building 20 HP per round.
+   - Every base: HQ 10,000 HP, Depot 6,000, two Towers 4,000 each; an intact Depot heals every building 450 HP per round.
    - A turn = a question. Right: the team picks 💣 a weapon (random, better ones are likelier on harder questions), 🩹 a
      repair or 🪙 gold. Power-ups (once each): Question Change (swap the question for a Hard or Impossible one: more
-     gold), Free Answer, Risk It (a better weapon or 3x gold; wrong = every building except the HQ loses half its
+     gold), Free Answer, Risk It (a better weapon or 5x gold; wrong = every building except the HQ loses half its
      starting HP) and Alliance. Free Answer and Question Change cannot be combined; Risk It still can.
    - After every team had its turn: the Haishi Trade Company store (weapons and repair kits, kits are kept in the
      inventory and can bring back even a destroyed building), then FIRE, then the next round.
-   - Towers shoot weapons down: [LQ] 35%, [Q] 20%, [HQ] 10%, the Sarmat 1% with both towers; one tower left = half.
+   - Towers shoot weapons down: [LQ] 35%, [Q] 16%, [HQ] 8%, the Sarmat 1% with both towers; one tower left = half.
    - Depot destroyed: question gold is halved, no healing, [Q] and [HQ] cost 1.6x.
    - HQ destroyed: use a repair kit (kept, or bought on the spot), or sacrifice another building; nothing left = out.
      An eliminated team joins one of the remaining teams (it shares that team's final points).
-   - Games last 4 rounds by default (2-10): then the strongest base (most HP) wins. Otherwise the last base standing.
+   - Games last 6 rounds by default (2-15): then the strongest base (most HP) wins. Otherwise the last base standing.
    - Points: 5 / 3 / 2 / 1 by place. (A winner who beat an alliance gets bonus points in the grading, noted at the end.) */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#9B7BFF'];
   var KEYS = ['hq', 'depot', 't1', 't2'];
-  var MAXHP = { hq: 1200, depot: 800, t1: 900, t2: 900 };
+  var MAXHP = { hq: 10000, depot: 6000, t1: 4000, t2: 4000 };
   var BNAME = { hq: 'HQ', depot: 'Depot', t1: 'Tower', t2: 'Tower' };
   // the store (Haishi Trade Company): mode = one target | scatter (all but the chosen one) | dual (two targets) | all (every building of one team) | jam (skip a turn)
   var ITEMS = {
-    crude: { name: 'Crude Bomb', cls: 'LQ', dmg: 200, price: 30, mode: 'one', info: '200 DMG · one target' },
-    bomb: { name: 'Bomb', cls: 'LQ', dmg: 500, price: 60, mode: 'one', info: '500 DMG · one target' },
-    scatter: { name: 'Scatter Bomb', cls: 'LQ', dmg: 360, price: 90, mode: 'scatter', info: '360 DMG · all but the chosen target' },
-    missile: { name: 'High Speed Missile', cls: 'Q', dmg: 625, price: 180, mode: 'one', info: '625 DMG · one target' },
-    dual: { name: 'Dual Headed Missile', cls: 'Q', dmg: 350, price: 220, mode: 'dual', info: '350 DMG · two targets' },
-    jammer: { name: 'Signal Jammer', cls: 'Q', dmg: 0, price: 300, mode: 'jam', info: "skips an enemy team's turn (one per team per round)" },
-    tos: { name: 'TOS-2M', cls: 'HQ', dmg: 2000, price: 450, mode: 'all', curse: true, info: '2000 DMG · all targets · curses their next weapon' },
-    avangard: { name: 'Avangard', cls: 'HQ', dmg: 4000, price: 750, mode: 'one', info: '4000 DMG · one target' },
-    sarmat: { name: 'RS-28 Sarmat', cls: 'HQ', dmg: 9000, price: 1875, mode: 'all', chance: 0.01, info: '9000 DMG · all targets · 1% shot down' },
+    crude: { name: 'Crude Bomb', cls: 'LQ', dmg: 250, price: 200, mode: 'one', info: '250 DMG · one target' },
+    bomb: { name: 'Bomb', cls: 'LQ', dmg: 750, price: 350, mode: 'one', info: '750 DMG · one target' },
+    scatter: { name: 'Scatter Bomb', cls: 'LQ', dmg: 650, price: 500, mode: 'scatter', info: '650 DMG · all but the chosen target' },
+    missile: { name: 'High Speed Missile', cls: 'Q', dmg: 1750, price: 1500, mode: 'one', info: '1,750 DMG · one target' },
+    dual: { name: 'Dual Headed Missile', cls: 'Q', dmg: 1500, price: 2400, mode: 'dual', info: '1,500 DMG · two targets' },
+    jammer: { name: 'Signal Jammer', cls: 'Q', dmg: 0, price: 4000, mode: 'jam', info: "skips an enemy team's turn (one per team per round)" },
+    tos: { name: 'TOS-2M', cls: 'HQ', dmg: 2000, price: 10000, mode: 'all', curse: true, info: '2000 DMG · all targets · curses their next weapon' },
+    avangard: { name: 'Avangard', cls: 'HQ', dmg: 4000, price: 15000, mode: 'one', info: '4000 DMG · one target' },
+    sarmat: { name: 'RS-28 Sarmat', cls: 'HQ', dmg: 9000, price: 30000, mode: 'all', chance: 0.01, info: '9000 DMG · all targets · 1% shot down' },
   };
   var IORDER = ['crude', 'bomb', 'scatter', 'missile', 'dual', 'jammer', 'tos', 'avangard', 'sarmat'];
-  var SHOOT = { LQ: 0.35, Q: 0.2, HQ: 0.1 }; // Nov 25: [LQ] was 100%, so most rewards did nothing
+  var SHOOT = { LQ: 0.35, Q: 0.16, HQ: 0.08 }; // per tower: Q 8%, HQ 4% (Nov 25 spec); [LQ] was 100%, so most rewards did nothing: kept at 35%
   // the chance of each item (same order as IORDER) from a right answer, by question tier
   var ODDS = {
     easy: [60, 30, 10, 0, 0, 0, 0, 0, 0],
     regular: [20, 35, 25, 15, 5, 0, 0, 0, 0],
     hard: [0, 10, 15, 30, 20, 15, 5, 5, 0],
-    impossible: [0, 0, 0, 10, 15, 10, 25, 25, 15],
+    impossible: [0, 0, 0, 10, 15, 10, 25, 40, 0], // the RS-28 Sarmat can only be bought in the store
   };
-  var GOLD = { easy: 225, regular: 375, hard: 750, impossible: 1350 }; // x1.5 (Henry); prices were lowered instead
-  var HEAL = { easy: 150, regular: 250, hard: 350, impossible: 500 };
-  var KIT = 80, KIT_RISE = 10, KIT_HP = 400;
-  var ROUND_HEAL = 20, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1, NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6, CURSE_CHANCE = 0.4;
-  var DEFAULT_ROUNDS = 4; // a round takes about 6-8 minutes with four teams: 4 rounds is about 30 minutes
+  var GOLD = { easy: 150, regular: 250, hard: 500, impossible: 836 }; // base gold per question (Nov 25 spec; impossible is 836 on purpose)
+  var GOLD_EARLY = 4.5, GOLD_LATE = 7.5, LATE_FROM = 3, RISK_GOLD = 5; // x4.5 in rounds 1-2, x7.5 from round 3; Risk It pays 5x
+  function goldBoost() { return S.round >= LATE_FROM ? GOLD_LATE : GOLD_EARLY; }
+  var HEAL = { easy: 1500, regular: 2500, hard: 4000, impossible: 6000 };
+  var KIT = 400, KIT_RISE = 200, KIT_HP = 1350; // the price rises every round, so buy kits early
+  var ROUND_HEAL = 450, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1, NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6, CURSE_CHANCE = 0.4;
+  var DEFAULT_ROUNDS = 6; // a round takes about 6-8 minutes with four teams (⚙ changes it)
   var PLACE_PTS = [5, 3, 2, 1];
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
@@ -192,7 +194,7 @@
     return t;
   }
   function fresh(deck) {
-    S = { v: 3, level: S ? S.level : '', deck: deck || '', t: newTeams(), phase: 'turn', round: 1, queue: [], cur: 0, skip: {}, elim: [], over: false,
+    S = { v: 4, level: S ? S.level : '', deck: deck || '', t: newTeams(), phase: 'turn', round: 1, queue: [], cur: 0, skip: {}, elim: [], over: false,
       maxRounds: S ? S.maxRounds : DEFAULT_ROUNDS, joined: {}, hitBy: {}, allyLog: [], byHp: false, bonusNote: '',
       aim: null, secs: S ? S.secs : 30, hist: [], introDone: S ? S.introDone : false, order: {}, qi: {} };
     S.queue = living();
@@ -208,15 +210,17 @@
       if (S.phase === 'turn' && S.skip[id]) { S.skip[id] = false; toast(tname(id) + ' skips this turn.'); S.cur++; continue; }
       if (S.phase === 'shop' && !T(id).gold) { S.cur++; continue; }
       if (S.phase === 'fire' && !T(id).bombs.length) { S.cur++; continue; }
+      if (S.phase === 'repair' && !canRepair(id)) { S.cur++; continue; }
       break;
     }
   }
   function advance() {
     if (S.over) return;
     S.cur++; S.aim = null; skipDead();
-    if (S.cur < S.queue.length) { save(); render(); if (S.phase === 'shop') afterBanners(openShop); return; }
+    if (S.cur < S.queue.length) { save(); render(); if (S.phase === 'shop') afterBanners(openShop); else if (S.phase === 'repair') afterBanners(openRepair); return; }
     if (S.phase === 'turn') { startPhase('shop', 'HAISHI TRADE COMPANY IS OPEN!', 'Spend your gold on weapons and repair kits.', ART.coin()); }
     else if (S.phase === 'shop') { startPhase('fire', 'FIRE AT WILL!', 'Aim your bombs at an enemy building.', ART.boom()); }
+    else if (S.phase === 'fire') { startPhase('repair', 'END OF ROUND!', 'Use your repair kits as often as you like.', ART.repair()); }
     else endRound();
   }
   function startPhase(name, title, sub, art) {
@@ -226,9 +230,10 @@
     banner({ art: art, title: title, sub: sub, mood: 'magic', wait: 1500 });
     save(); render();
     if (name === 'shop') afterBanners(openShop);
+    else if (name === 'repair') afterBanners(openRepair);
   }
   /** a phase nobody can use (no gold / no bombs): go on to the next one */
-  function advance2(name) { S.cur = S.queue.length; if (name === 'shop') startPhase('fire', 'FIRE AT WILL!', 'Aim your bombs at an enemy building.', ART.boom()); else endRound(); }
+  function advance2(name) { S.cur = S.queue.length; if (name === 'shop') startPhase('fire', 'FIRE AT WILL!', 'Aim your bombs at an enemy building.', ART.boom()); else if (name === 'fire') startPhase('repair', 'END OF ROUND!', 'Use your repair kits as often as you like.', ART.repair()); else endRound(); }
   function endRound() {
     var healed = [];
     living().forEach(function (id) {
@@ -416,12 +421,12 @@
     if (!S) return;
     var id = curId(), phase = S.phase;
     var rl = 'R' + S.round + '/' + (S.maxRounds || DEFAULT_ROUNDS);
-    var label = phase === 'over' ? (S.bonusNote ? '🏆 ' + S.bonusNote : 'Game over') : phase === 'turn' ? rl + ' · ' + tname(id) + "'s question" : phase === 'shop' ? rl + ' · Store · ' + tname(id) : rl + ' · Fire · ' + tname(id);
+    var label = phase === 'over' ? (S.bonusNote ? '🏆 ' + S.bonusNote : 'Game over') : phase === 'turn' ? rl + ' · ' + tname(id) + "'s question" : phase === 'shop' ? rl + ' · Store · ' + tname(id) : phase === 'repair' ? rl + ' · Repairs · ' + tname(id) : rl + ' · Fire · ' + tname(id);
     $('turn').textContent = id || phase === 'over' ? label : '';
     $('turn').style.color = id ? color(id) : '';
     var act = $('act');
     act.hidden = phase === 'fire' || (!id && phase !== 'over');
-    act.textContent = phase === 'over' ? '🏆 Podium ▶' : phase === 'shop' ? 'Open the store ▶' : 'Question ▶';
+    act.textContent = phase === 'over' ? '🏆 Podium ▶' : phase === 'shop' ? 'Open the store ▶' : phase === 'repair' ? 'Repair ▶' : 'Question ▶';
     $('board').innerHTML = players.map(function (t) { return baseHtml(t); }).join('');
     renderTray();
     document.body.classList.toggle('aiming', !!S.aim);
@@ -597,6 +602,22 @@
     });
     if (!ok) openShop();
   }
+  // ---------- end of round: repair kits can be used as many times as the team has them ----------
+  function canRepair(id) { var d = T(id); return d.kits > 0 && KEYS.some(function (k) { return d.hp[k] < MAXHP[k]; }); }
+  function openRepair() {
+    var id = curId();
+    if (S.phase !== 'repair' || !id || fxOn) return;
+    if (!canRepair(id)) { closeChoice(); advance(); return; }
+    var d = T(id);
+    reopen = openRepair;
+    var list = KEYS.filter(function (k) { return d.hp[k] < MAXHP[k]; });
+    choose({ art: ART.repair(), title: tname(id) + ': repairs (' + d.kits + ' kit' + (d.kits === 1 ? '' : 's') + ' left)',
+      options: list.map(function (k) {
+        return { html: '<b>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + '</b><small>' + (d.hp[k] <= 0 ? 'destroyed · rebuild it' : money(d.hp[k]) + ' / ' + money(MAXHP[k]) + ' HP') + ' · +' + money(KIT_HP) + '</small>',
+          fn: function () { closeChoice(); snap(); d.kits--; d.hp[k] = Math.min(MAXHP[k], d.hp[k] + KIT_HP); save(); tone([523, 659, 784], 0.08); render(); openRepair(); } };
+      }),
+      foot: [{ label: 'Done', cls: 'gold', fn: function () { closeChoice(); snap(); advance(); } }] });
+  }
   function openShop() {
     var id = curId();
     if (S.phase !== 'shop' || !id) return;
@@ -657,12 +678,14 @@
     $('toolsBody').innerHTML = '<div class="tt-teams">' + ids.map(function (i) {
       return '<button class="btn tt-team' + (i === toolTeam ? ' on' : '') + '" data-tt="' + esc(i) + '" style="--c:' + color(i) + '">' + Kru.badge(team(i), color(i)) + '</button>';
     }).join('') + '</div>' +
-      '<div class="tt-row"><b>🪙 Gold: ' + money(d.gold) + '</b>' + [-500, -100, 100, 500, 1000].map(function (v) { return '<button class="btn" data-tg="' + v + '">' + (v > 0 ? '+' : '−') + money(Math.abs(v)) + '</button>'; }).join('') + '</div>' +
+      '<div class="tt-row"><b>🪙 Gold: ' + money(d.gold) + '</b>' + [-5000, -1000, 1000, 5000, 10000, 25000].map(function (v) { return '<button class="btn" data-tg="' + v + '">' + (v > 0 ? '+' : '−') + money(Math.abs(v)) + '</button>'; }).join('') + '</div>' +
+      '<div class="tt-row"><b>🏦 HTC Funding, every team:</b>' + [1000, 5000, 10000, 25000].map(function (v) { return '<button class="btn" data-ta="' + v + '">+' + money(v) + '</button>'; }).join('') + '</div>' +
+      '<div class="tt-row"><b>⚙ This team:</b><button class="btn" data-tx="fix">Fully repair all</button><button class="btn" data-tx="skip">' + (S.skip[toolTeam] ? 'Cancel skip' : 'Skip its next turn') + '</button><button class="btn" data-tx="round">Add a round (' + (S.maxRounds || DEFAULT_ROUNDS) + ')</button></div>' +
       '<div class="tt-row"><b>🧰 Repair kits: ' + d.kits + '</b><button class="btn" data-tk="-1">−1</button><button class="btn" data-tk="1">+1</button></div>' +
       '<div class="tt-row"><b>🚀 Give a weapon:</b>' + IORDER.map(function (k) { return '<button class="btn tt-w" data-ti="' + k + '" title="' + ITEMS[k].name + '"><span class="bi">' + ART.weapon(k) + '</span>' + ITEMS[k].name + '</button>'; }).join('') + '</div>' +
       '<div class="tt-row"><b>🏗 Buildings:</b>' + KEYS.map(function (k) {
         return '<span class="tt-b"><i>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + ': ' + money(d.hp[k]) + '/' + money(MAXHP[k]) + '</i>' +
-          '<button class="btn" data-tb="' + k + ':-500">−500</button><button class="btn" data-tb="' + k + ':500">+500</button><button class="btn" data-tb="' + k + ':full">full</button></span>';
+          '<button class="btn" data-tb="' + k + ':-1000">−1k</button><button class="btn" data-tb="' + k + ':1000">+1k</button><button class="btn" data-tb="' + k + ':full">full</button></span>';
       }).join('') + '</div>';
   }
   function openTools() { renderTools(); $('toolsBack').hidden = false; }
@@ -673,6 +696,10 @@
     if (b.dataset.tt) { toolTeam = b.dataset.tt; renderTools(); return; }
     snap();
     if (b.dataset.tg) d.gold = Math.max(0, d.gold + Number(b.dataset.tg));
+    else if (b.dataset.ta) living().forEach(function (i) { T(i).gold += Number(b.dataset.ta); });
+    else if (b.dataset.tx === 'fix') KEYS.forEach(function (k) { d.hp[k] = MAXHP[k]; });
+    else if (b.dataset.tx === 'skip') S.skip[toolTeam] = !S.skip[toolTeam];
+    else if (b.dataset.tx === 'round') S.maxRounds = Math.min(15, (S.maxRounds || DEFAULT_ROUNDS) + 1);
     else if (b.dataset.tk) d.kits = Math.max(0, d.kits + Number(b.dataset.tk));
     else if (b.dataset.ti) d.bombs.push({ k: b.dataset.ti });
     else if (b.dataset.tb) {
@@ -845,11 +872,11 @@
   // ---------- rewards ----------
   function rollItem(tier, rk) {
     var i = weighted(ODDS[tier]);
-    return IORDER[rk ? Math.min(IORDER.length - 1, i + 1) : i];
+    return IORDER[rk ? Math.min(IORDER.indexOf('avangard'), i + 1) : i]; // never the Sarmat from a reward
   }
   function oddsText(tier, rk) {
     var by = { LQ: 0, Q: 0, HQ: 0 }, sum = 0;
-    ODDS[tier].forEach(function (p, i) { var j = rk ? Math.min(IORDER.length - 1, i + 1) : i; by[ITEMS[IORDER[j]].cls] += p; sum += p; });
+    ODDS[tier].forEach(function (p, i) { var j = rk ? Math.min(IORDER.indexOf('avangard'), i + 1) : i; by[ITEMS[IORDER[j]].cls] += p; sum += p; });
     return ['LQ', 'Q', 'HQ'].filter(function (c) { return by[c]; }).map(function (c) { return '[' + c + '] ' + Math.round(by[c] / sum * 100) + '%'; }).join(' · ');
   }
   function rightAnswer() {
@@ -862,7 +889,7 @@
   }
   /** The reward after a right answer: a bomb, a repair or gold. */
   function rewardPanel(id, tier, rk) {
-    var gold = Math.round(GOLD[tier] * (rk ? 3 : 1) * goldMult(id));
+    var gold = Math.round(GOLD[tier] * goldBoost() * (rk ? RISK_GOLD : 1) * goldMult(id));
     reopen = function () { rewardPanel(id, tier, rk); };
     choose({ art: ART.weapon('missile'), title: tname(id) + ': choose your reward' + (rk ? ' (Risk It!)' : ''),
       options: [
@@ -920,6 +947,7 @@
     unlockAudio();
     if (S.phase === 'over') { KruEnd.show(); return; }
     if (S.phase === 'shop') { openShop(); return; }
+    if (S.phase === 'repair') { openRepair(); return; }
     ask();
   });
   $('go').addEventListener('click', function () { if (running) { stopTimer(); renderClock(); } else startTimer(); });
@@ -1012,7 +1040,7 @@
       players = teams.filter(function (t) { return !t.teacher; }).slice(0, 4);
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id) }; }); } });
       var saved = session.resume;
-      if (saved && saved.v === 3 && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
+      if (saved && saved.v === 4 && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; buildPoolKeep();
       } else { S = null; fresh(session.setKey && deckByKey(session.setKey) ? session.setKey : QZ.unit ? 'unit' : ''); S.level = QZ.level; } // the deck picked before the team builder
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.aim = null;
@@ -1026,7 +1054,7 @@
       var baseRender = render;
       render = function () { baseRender(); ally.hidden = !canAlly(); };
       render();
-      var afterIntro = function () { S.introDone = true; save(); if (!S.deck) openDecks(); else if (S.phase === 'shop') openShop(); };
+      var afterIntro = function () { S.introDone = true; save(); if (!S.deck) openDecks(); else if (S.phase === 'shop') openShop(); else if (S.phase === 'repair') openRepair(); };
       if (!S.introDone) KruIntro.show(INTRO, { title: 'Point 1-4' }).then(afterIntro); else afterIntro();
     }).catch(function (err) {
       $('board').textContent = 'Could not load the questions. Close the game and open it again.';
