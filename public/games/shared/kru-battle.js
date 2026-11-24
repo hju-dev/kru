@@ -174,7 +174,7 @@
 
     // ---------- drawing ----------
     function defaultQuestion(x) {
-      var h = '<div class="kbt-q">' + esc(x.q) + '</div>' + (x.quote ? '<div class="kbt-quote">' + esc(x.quote) + '</div>' : '');
+      var h = '<div class="kbt-q' + (x.quote ? '' : ' kbt-mat') + '">' + esc(x.q) + '</div>' + (x.quote ? '<div class="kbt-quote">' + esc(x.quote) + '</div>' : '');
       if (x.hint) h += '<div class="kbt-hint">✍ ' + esc(x.hint) + '</div>';
       else if (Array.isArray(x.choices)) {
         h += '<div class="kbt-choices">' + x.choices.map(function (c, i) { return '<div class="kbt-choice"><b>' + 'ABCD'.charAt(i) + '</b><span>' + esc(c) + '</span></div>'; }).join('') + '</div>' +
@@ -222,7 +222,7 @@
       } else if (ph === 'review') {
         var r = qs[S.rev];
         where.textContent = roundLabel + ' · Answer ' + (S.rev + 1) + '/' + qs.length;
-        st.innerHTML = '<div class="kbt-rq"><span class="kbt-n">' + (S.rev + 1) + '</span>' + esc(r.q) + (r.quote ? ' <i class="kbt-rquote">' + esc(r.quote) + '</i>' : '') + '</div>' +
+        st.innerHTML = '<div class="kbt-rq' + (r.quote ? '' : ' kbt-mat') + '"><span class="kbt-n">' + (S.rev + 1) + '</span>' + esc(r.q) + (r.quote ? ' <i class="kbt-rquote">' + esc(r.quote) + '</i>' : '') + '</div>' +
           '<div class="kbt-ans">✓ ' + (cfg.answer ? cfg.answer(r, { esc: esc }) : defaultAnswer(r)) + '</div>' +
           (r.why ? '<div class="kbt-why">💡 ' + esc(r.why) + '</div>' : '') +
           (r.read_aloud ? '<div class="kbt-why">🔊 ' + esc(r.read_aloud) + '</div>' : '') + // a lesson pack's read-aloud sentence
