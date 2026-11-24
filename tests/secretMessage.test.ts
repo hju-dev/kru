@@ -51,17 +51,46 @@ describe('Secret Message', () => {
   })
 })
 
-describe('Secret Message: the whole team plays (Nov 25)', () => {
+describe('Secret Message: whole team by default, a stepper, scores on top, twisters (Nov 25)', () => {
   const html = read('public/games/secret-message/index.html')
-  it('every student of both teams is in the line, and the names fit in 1-3 columns at 18 px or more', () => {
-    expect(js).toContain('n = all.length; // the WHOLE team plays every round')
-    expect(js).not.toContain('S.chain')
-    expect(html).not.toContain('chainRow')
-    expect(js).toContain('for (var cols = 1; cols <= 3; cols++)')
-    expect(js).toContain('for (var px = 28; px >= 18; px--)')
+  it('the line length is a stepper like the timer, default 15 (the whole team)', () => {
+    expect(js).toContain("KruMenu.stepper($('chainRow'), S.chain || 15")
+    expect(js).toContain('Math.min(S.chain || 15, all.length)')
+    expect(js).toContain('chain: 15')
+    expect(html).toContain('id="chainRow"')
+    expect(read('public/games/shared/kru-menu.js')).toContain('function stepper(el, value, onChange, o)')
   })
-  it('one bottom row: timer, points and buttons together; no "Get in line" text', () => {
-    expect(html).toMatch(/<div class="controls">[\s\S]*id="totals"[\s\S]*id="go"/)
+  it('names read left to right in 1-4 columns, the biggest size where nothing wraps or is cut; no legend text', () => {
+    expect(js).toContain('for (var cols = 1; cols <= 4; cols++)')
+    expect(js).toContain("li.scrollWidth <= li.clientWidth + 1")
+    expect(js).not.toContain('sees the secret · ')
     expect(js).not.toContain('Get in line')
+    expect(read('public/games/secret-message/style.css')).toContain('.line li .nm { font-weight: 800; white-space: nowrap; }')
+  })
+  it('the points sit at the top next to the round; the bottom row has only the timer and the buttons', () => {
+    const top = html.slice(html.indexOf('<header'), html.indexOf('</header>'))
+    expect(top).toContain('id="totals"')
+    expect(top.indexOf('id="count"')).toBeLessThan(top.indexOf('id="totals"'))
+    const bottom = html.slice(html.indexOf('<div class="controls">'), html.indexOf('</main>'))
+    expect(bottom).not.toContain('id="totals"')
+  })
+  for (const lv of ['M.1', 'M.2', 'M.3']) {
+    it(`${lv}: 50 twisters and hard words (tongue twisters are 5 words or fewer), said exactly the same`, () => {
+      const tw = (c[lv] as unknown as { twisters: P[] }).twisters
+      expect(tw).toHaveLength(50)
+      expect(new Set(tw.map((p) => p.say.toLowerCase())).size).toBe(50)
+      expect(tw.filter((p) => p.k === 'tt')).toHaveLength(25)
+      expect(tw.filter((p) => p.k === 'hw')).toHaveLength(25)
+      for (const p of tw) {
+        expect(p.answer).toBe(p.say)
+        if (p.k === 'tt') expect(p.say.split(/\s+/).length, p.say).toBeLessThanOrEqual(5)
+      }
+    })
+  }
+  it('the menu picks Reported speech, Twisters or Both; the judging screen says "EXACTLY the same"', () => {
+    expect(js).toContain("var SETS = [['reported', 'Reported speech'], ['twisters', 'Twisters'], ['both', 'Both']]")
+    expect(js).toContain('function poolFor(set)')
+    expect(js).toContain('EXACTLY the same')
+    expect(html).toContain('id="setRow"')
   })
 })

@@ -73,5 +73,28 @@
     });
   }
 
-  window.KruMenu = { timer: timer, snap: snap, arrange: arrange };
+  /** A number stepper laid out like the timer: icon, − [ 15 ] +. o = { min, max, step, unit, icon, label }. onChange(value) runs on every tap. */
+  function stepper(el, value, onChange, o) {
+    o = o || {};
+    var min = o.min != null ? o.min : 1, max = o.max != null ? o.max : 99, step = o.step || 1, unit = o.unit || '';
+    var v = Math.max(min, Math.min(max, Number(value) || min)), label = o.label || '';
+    el.classList.add('ktimer');
+    el.innerHTML = (o.icon || '') +
+      '<button type="button" class="btn" data-d="-1" aria-label="One less' + (label ? ' ' + label : '') + '"' + (v <= min ? ' disabled' : '') + '>−</button>' +
+      '<output aria-live="polite">' + v + unit + '</output>' +
+      '<button type="button" class="btn" data-d="1" aria-label="One more' + (label ? ' ' + label : '') + '"' + (v >= max ? ' disabled' : '') + '>+</button>';
+    el._ks = { v: v, min: min, max: max, step: step, on: onChange, o: o };
+    if (el._ksBound) return;
+    el._ksBound = true;
+    el.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-d]');
+      if (!b || b.disabled) return;
+      var t = el._ks, next = Math.max(t.min, Math.min(t.max, t.v + Number(b.dataset.d) * t.step));
+      if (next === t.v) return;
+      t.on(next);
+      stepper(el, next, t.on, t.o);
+    });
+  }
+
+  window.KruMenu = { timer: timer, stepper: stepper, snap: snap, arrange: arrange };
 })();

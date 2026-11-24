@@ -84,19 +84,17 @@
     <!-- ⋯ menu -->
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="Settings">
+        <div class="menu-trow"><span class="menu-label">Huddle time</span><div id="huddleRow"></div></div>
+        <div class="menu-trow"><span class="menu-label">Speaking time</span><div id="turnRow"></div></div>
         <div class="talk-opts" id="talkOpts">
-          <div class="opt-row">
-            <span>Speaking time</span>
-            <button class="btn" id="turnLess" aria-label="5 seconds less">−5</button>
-            <b id="turnSecs">20 s</b>
-            <button class="btn" id="turnMore" aria-label="5 seconds more">+5</button>
-          </div>
           <button class="btn" id="crazy" aria-pressed="false">Crazy topics only: off</button>
         </div>
-        <button class="btn" id="resetTimer">Reset the timer</button>
-        <button class="btn" id="resetOrder">Reset the speaking order</button>
-        <button class="btn" id="undo">Undo last points</button>
-        <button class="btn" id="howTo">How to play</button>
+        <div class="menu-row">
+          <button class="btn" id="resetTimer">Reset timer</button>
+          <button class="btn" id="resetOrder">Reset order</button>
+          <button class="btn" id="undo">Undo points</button>
+          <button class="btn" id="howTo">How to play</button>
+        </div>
         <button class="btn ghost danger" id="resetScores">New Game</button>
         <button class="btn ghost" id="menuClose">Close</button>
       </div>

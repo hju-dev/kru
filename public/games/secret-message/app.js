@@ -8,8 +8,10 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#9B7BFF'];
-  var KIND = { ds: 'Direct statement', dq: 'Direct question', rs: 'Reported statement', rq: 'Reported question' };
-  var TO = { ds: 'REPORTED speech', dq: 'REPORTED speech', rs: 'DIRECT speech (the exact words)', rq: 'DIRECT speech (the exact words)' };
+  var KIND = { ds: 'Direct statement', dq: 'Direct question', rs: 'Reported statement', rq: 'Reported question', tt: 'Tongue twister', hw: 'Hard to say' };
+  var TO = { ds: 'REPORTED speech', dq: 'REPORTED speech', rs: 'DIRECT speech (the exact words)', rq: 'DIRECT speech (the exact words)', tt: 'EXACTLY the same', hw: 'EXACTLY the same' };
+  var SETS = [['reported', 'Reported speech'], ['twisters', 'Twisters'], ['both', 'Both']];
+  var CONTENT = null; // the level's content: phrases + twisters
   var PT = 1;
 
   var PHRASES = [], S = null, INTRO = [], teams = [], players = [];
@@ -21,6 +23,12 @@
   function range(n) { var a = []; for (var i = 0; i < n; i++) a.push(i); return a; }
   function pts(id) { return S.pts[id] || 0; }
   function color(id) { var i = players.map(function (t) { return t.id; }).indexOf(id); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }
+
+  /** The phrases for a set: reported speech, tongue twisters / hard words (said exactly the same), or both. */
+  function poolFor(set) {
+    var rep = CONTENT.phrases || [], tw = CONTENT.twisters || [];
+    return set === 'twisters' ? tw : set === 'both' ? rep.concat(tw) : rep;
+  }
 
   // ---------- sound (after a tap) ----------
   function unlockAudio() {
@@ -46,7 +54,7 @@
   function lineFor(t) {
     var members = t.members || [];
     if (!members.length) return ['?'];
-    var all = members.map(mid), n = all.length; // the WHOLE team plays every round
+    var all = members.map(mid), n = Math.max(2, Math.min(S.chain || 15, all.length)); // default 15 = the whole team plays
     var q = (S.q[t.id] || []).filter(function (id) { return all.indexOf(id) >= 0; });
     while (q.length < n) q = q.concat(shuffle(all.filter(function (id) { return q.indexOf(id) < 0; })));
     var take = q.slice(0, n);
@@ -144,7 +152,7 @@
     $('count').textContent = 'Round ' + S.round;
     switch (phase) {
       case 'order':
-        html = linesHtml(); label = '👀 sees the secret · 🎤 says it'; go = 'Get the secret ▶';
+        html = linesHtml(); go = 'Get the secret ▶';
         break;
       case 'warn1':
         html = '<div class="cover warn"><div class="big">🕵️ TOP SECRET MISSION!</div>' +
@@ -153,7 +161,7 @@
         go = '🔒 TV is dark ▶'; alt = '◀ Back';
         break;
       case 'secret':
-        html = '<div class="secret"><div class="kind">' + esc(KIND[p.k]) + ' → say it as ' + esc(TO[p.k]) + '</div>' +
+        html = '<div class="secret"><div class="kind">' + esc(KIND[p.k]) + ' → ' + (p.answer === p.say ? 'say it ' + esc(TO[p.k]) : 'say it as ' + esc(TO[p.k])) + '</div>' +
           '<div class="phrase" id="phrase">' + esc(p.say) + '</div>' +
           '<div class="who">Show ONLY the first student of each team: <b>' + players.map(function (t) { return esc(nameOf(t, (S.lines[t.id] || [])[0])); }).join(' and ') + '</b></div></div>';
         go = 'Hide it ▶';
@@ -169,12 +177,12 @@
         break;
       case 'judge':
         if (!revealed) {
-          html = '<div class="cover judge"><div class="big">🎤 Reporters, speak!</div><p>The last student of each line says the secret the other way.</p>' +
+          html = '<div class="cover judge"><div class="big">🎤 Reporters, speak!</div><p>' + (p.answer === p.say ? 'The last student of each line says the secret EXACTLY the same.' : 'The last student of each line says the secret the other way.') + '</p>' +
             '<div class="reporters">' + players.map(function (t, i) { return '<span style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + reporterNames()[i] + '</b></span>'; }).join('') + '</div></div>';
           go = 'Reveal the answer ▶';
         } else {
           html = '<div class="answer"><div class="kind">' + esc(KIND[p.k]) + ' → ' + esc(TO[p.k]) + '</div>' +
-            '<div class="phrase small">Secret: ' + esc(p.say) + '</div>' +
+            (p.answer === p.say ? '' : '<div class="phrase small">Secret: ' + esc(p.say) + '</div>') +
             '<div class="phrase ans">' + esc(p.answer) + '</div>' +
             '<div class="marks">' + players.map(function (t) {
               var m = S.mark[t.id];
@@ -203,19 +211,23 @@
     var stage = $('stage');
     var lists = stage.querySelectorAll('.line ol');
     if (lists.length) {
-      // the whole team is in line: try 1, 2 and 3 columns and keep the one that gives the biggest names (never below 18 px)
+      // the whole team is in line (names read left to right, then down): try 1 to 4 columns and keep the one with the biggest
+      // names where NO name wraps or is cut and nothing scrolls. 18 px is the goal; a very long name may push it a little lower.
       var layout = function (cols, px) {
-        lists.forEach(function (o) { o.style.gridTemplateRows = 'repeat(' + Math.ceil(o.children.length / cols) + ', auto)'; o.style.fontSize = px + 'px'; });
+        lists.forEach(function (o) { o.style.gridTemplateColumns = 'repeat(' + cols + ', minmax(0, 1fr))'; o.style.fontSize = px + 'px'; });
       };
-      var fits = function () { return stage.scrollHeight <= stage.clientHeight + 1 && Array.prototype.every.call(lists, function (o) { return o.scrollWidth <= o.clientWidth + 1; }); };
-      var best = { cols: 3, px: 18 };
-      for (var cols = 1; cols <= 3; cols++) {
-        for (var px = 28; px >= 18; px--) {
+      var fits = function () {
+        if (stage.scrollHeight > stage.clientHeight + 1) return false;
+        return Array.prototype.every.call(stage.querySelectorAll('.line li'), function (li) { return li.scrollWidth <= li.clientWidth + 1; });
+      };
+      var best = null;
+      for (var cols = 1; cols <= 4; cols++) {
+        for (var px = 30; px >= 12; px--) {
           layout(cols, px);
-          if (fits()) { if (px > best.px) best = { cols: cols, px: px }; break; }
+          if (fits()) { if (!best || px > best.px) best = { cols: cols, px: px }; break; }
         }
       }
-      layout(best.cols, best.px);
+      layout((best || { cols: 4 }).cols, (best || { px: 12 }).px);
     }
     var ph = stage.querySelectorAll('.phrase');
     if (ph.length) {
@@ -251,12 +263,21 @@
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
   function renderMenu() {
+    KruMenu.stepper($('chainRow'), S.chain || 15, function (v) { S.chain = v; S.chainSet = true; save(); }, { min: 2, max: 15, label: 'student in each line', icon: '<svg class="ktimer-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3.2 19c0-3.2 2.6-5.4 5.8-5.4s5.8 2.2 5.8 5.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="17" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 14c3 0 5 1.8 5 4.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>' });
+    $('setRow').innerHTML = SETS.map(function (x) { return '<button class="btn" data-set="' + x[0] + '" aria-pressed="' + (x[0] === (S.set || 'reported')) + '">' + x[1] + '</button>'; }).join('');
     KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }, { min: 30, max: 300 });
     KruMenu.timer($('peekRow'), S.peek, function (v) { S.peek = v; save(); }, { min: 10, max: 60 });
   }
   $('more').addEventListener('click', function () { disarm(); renderMenu(); $('undo').disabled = !players.some(function (t) { return S.mark[t.id] === 1; }); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
+  $('setRow').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-set]');
+    if (!b || b.dataset.set === (S.set || 'reported')) return;
+    S.set = b.dataset.set; PHRASES = poolFor(S.set); S.order = shuffle(range(PHRASES.length)); S.pos = 0;
+    if (phase === 'order') { S.cur = S.order[S.pos++]; } // before the secret is shown: use it now; otherwise from the next round
+    save(); renderMenu(); render();
+  });
   $('undo').addEventListener('click', function () { undoLast(); closeMenu(); });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Secret Message' }); });
   $('resetScores').addEventListener('click', function () {
@@ -277,13 +298,16 @@
   Kru.ready(function (session) {
     contentReady.then(function (c) {
       var level = c[session.level] ? session.level : 'M.3';
-      PHRASES = c[level].phrases;
+      CONTENT = c[level];
       teams = Kru.allTeams();
       players = teams.filter(function (t) { return !t.teacher; }).slice(0, 2); // always two teams (the demo has more)
       var saved = session.resume;
+      var wantSet = saved && saved.v === 1 && saved.set ? saved.set : 'reported';
+      PHRASES = poolFor(wantSet);
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === PHRASES.length) S = saved;
-      else S = { v: 1, level: level, order: shuffle(range(PHRASES.length)), pos: 0, round: 1, chain: 6, secs: 120, peek: 10, pts: {}, q: {}, prev: {}, lines: {}, mark: {}, cur: 0, phase: 'order', introDone: false };
-      S.q = S.q || {}; S.prev = S.prev || {}; S.mark = S.mark || {};
+      else S = { v: 1, level: level, set: 'reported', order: shuffle(range(PHRASES.length)), pos: 0, round: 1, chain: 15, secs: 120, peek: 10, pts: {}, q: {}, prev: {}, lines: {}, mark: {}, cur: 0, phase: 'order', introDone: false };
+      S.q = S.q || {}; S.prev = S.prev || {}; S.mark = S.mark || {}; S.set = S.set || 'reported';
+      if (!S.chainSet) S.chain = 15; // the whole team by default (an older session had 6)
       S.secs = KruMenu.snap(S.secs || 120, 30, 300); S.peek = KruMenu.snap(S.peek || 10, 10, 60);
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: pts(t.id) }; }); } });
       INTRO = KruIntro.forLevel(c, level);
