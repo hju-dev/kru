@@ -1,67 +1,75 @@
 {
- "about": "Point 1-4 (id fortress; Henry, Nov 23): four teams attack each other's bases. Created with Job, a student. Questions come from Quiz Dash's bank (games/race-board/content.json), Battle of Wits sets or a unit; this file only holds the How to play slides.",
+ "about": "Point 1-4 (id fortress; Henry, Nov 23-24; modern military theme): four teams attack each other's bases. Created with LM2, a student. Questions come from Quiz Dash's bank, Battle of Wits sets or a unit; this file only holds the How to play slides.",
  "intro": [
   {
    "title": "Point 1-4",
    "text": [
     "One HQ and four buildings: defend your base, attack the others.",
-    "Answer questions to win bombs, repairs and gold!"
+    "Answer questions to win weapons, repairs and gold!"
    ],
    "example": {
     "rows": [
      [
       "[[hq]] HQ",
-      "10,000 HP: lose it and you are out"
+      "2,400 HP: lose it and you are out"
      ],
      [
       "[[depot]] Depot",
-      "7,000 HP: healing, cheaper bombs"
+      "1,600 HP: healing, cheaper weapons"
      ],
      [
       "[[tower]] 2 Towers",
-      "8,000 HP each: shoot bombs down"
+      "1,800 HP each: shoot weapons down"
      ]
     ]
    }
   },
   {
-   "title": "Bombs",
+   "title": "Weapons",
    "text": [
-    "Right answer: choose a bomb, a repair or gold.",
-    "Harder question = better bombs!"
+    "Right answer: choose a weapon, a repair or gold.",
+    "Harder question = better weapons!"
    ],
    "example": {
     "rows": [
      [
       "[[bomb1]] [LQ] Crude Bomb",
-      "100 damage"
+      "200 damage"
      ],
      [
-      "[[bomb3]] [Q] High Speed Missile",
-      "500 damage"
+      "[[bomb2]] [Q] High Speed Missile",
+      "625 damage"
      ],
      [
-      "[[bomb4]] [HQ] Avangard",
+      "[[bomb3]] [HQ] Avangard",
       "4,000 damage"
+     ],
+     [
+      "[[bomb4]] [HQ] RS-28 Sarmat",
+      "9,000 to every building"
      ]
     ]
    }
   },
   {
-   "title": "Store and fire",
+   "title": "The store",
    "text": [
-    "After every team has had a turn: the store opens.",
-    "Then fire as many bombs as you like at any enemy!"
+    "After every team has had a turn: Haishi Trade Company opens.",
+    "Then fire your weapons at any enemy base!"
    ],
    "example": {
     "rows": [
      [
       "[[coin]] Gold",
-      "buys bombs and repair kits"
+      "buys weapons and repair kits"
+     ],
+     [
+      "[[repair]] Repair kit",
+      "keep it: fixes or rebuilds a building"
      ],
      [
       "Every round",
-      "intact Depots heal 450 HP"
+      "intact Depots heal a little"
      ]
     ]
    }
@@ -69,18 +77,18 @@
   {
    "title": "Defend your base",
    "text": [
-    "Towers shoot bombs down. One tower gone = half the chance.",
-    "HQ destroyed? Sacrifice a building to stay in!"
+    "Towers shoot weapons down: [LQ] always, [Q] 16%, [HQ] 8%.",
+    "HQ destroyed? Use a repair kit or sacrifice a building!"
    ],
    "example": {
     "rows": [
      [
-      "[[tower]] 2 Towers",
-      "[LQ] always, [Q] 32%, [HQ] 16%"
+      "[[tower]] Towers",
+      "one tower gone = half the chance"
      ],
      [
       "[[hq]] HQ falls",
-      "sacrifice a building"
+      "kit or sacrifice, or you are out"
      ],
      [
       "No Depot",
@@ -93,13 +101,13 @@
    "title": "Power-ups",
    "text": [
     "One of each per team, once per game.",
-    "Alliance: skip your turn and join forces! It ends at two bases."
+    "Question Change: swap for a Hard or Impossible question!"
    ],
    "example": {
     "rows": [
      [
-      "+20 s",
-      "more time"
+      "Question Change",
+      "harder question = more gold"
      ],
      [
       "Free Answer",
@@ -111,22 +119,26 @@
      ],
      [
       "[[alliance]] Alliance",
-      "share towers and bombs"
+      "share towers and weapons"
      ]
     ]
    }
   },
   {
-   "title": "Made with Job",
+   "title": "Made with LM2",
    "text": [
-    "Point 1-4 was created with Job,",
-    "a student who helped design the game. Thank you, Job!"
+    "Point 1-4 was created with LM2,",
+    "a student who helped design the game. Thank you, LM2!"
    ],
    "example": {
     "rows": [
      [
-      "[[job]] Job",
+      "[[job]] LM2",
       "game designer"
+     ],
+     [
+      "Winning",
+      "last base, or the strongest after the rounds"
      ]
     ]
    }
