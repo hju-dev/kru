@@ -1,4 +1,4 @@
-/* Fortress: vector pictures (viewBox 0 0 120 120) for the bases, bombs, banners and Job, the student who helped
+/* Point 1-4: vector pictures (viewBox 0 0 120 120) for the bases, weapons, banners and LM2, the student who helped
    create the game. Every function returns an SVG string. */
 (function () {
   'use strict';
@@ -6,22 +6,27 @@
   function svg(body) { return W + body + '</svg>'; }
   var STONE = '#c9ccd6', STONE_D = '#8d92a3', ROOF = '#c0392b';
   var A = {
-    /** HQ: a castle keep with a flag */
+    /** HQ: a command bunker with a radar mast and a flag */
     hq: function (c) {
-      return svg('<path d="M60 8v26" stroke="#3a2a1a" stroke-width="4"/><path d="M62 9l28 9-28 9z" fill="' + (c || '#e63946') + '" stroke="#111" stroke-width="2"/>' +
-        '<path d="M22 100V44h12v-8h12v8h8V30h12v14h8v-8h12v8h12v56z" fill="' + STONE + '" stroke="' + STONE_D + '" stroke-width="3"/>' +
-        '<path d="M48 100V76a12 12 0 0 1 24 0v24z" fill="#5b3b1c"/><rect x="30" y="54" width="8" height="14" rx="3" fill="#2b3150"/><rect x="82" y="54" width="8" height="14" rx="3" fill="#2b3150"/>');
+      return svg('<path d="M60 6v24" stroke="#cfd8dc" stroke-width="3"/><path d="M62 7l24 7-24 7z" fill="' + (c || '#e63946') + '" stroke="#111" stroke-width="2"/>' +
+        '<path d="M44 30a16 16 0 0 1 32 0" stroke="#90a4ae" stroke-width="3" fill="none"/><circle cx="60" cy="30" r="3" fill="#ff5252"/>' +
+        '<path d="M12 104V62l18-14h60l18 14v42z" fill="#5f6b5a" stroke="#2f372c" stroke-width="3"/><path d="M12 62l18-14h60l18 14z" fill="#79866f" stroke="#2f372c" stroke-width="3"/>' +
+        '<rect x="46" y="74" width="28" height="30" rx="3" fill="#2b3128"/><path d="M46 84h28M46 94h28" stroke="#5f6b5a" stroke-width="2"/>' +
+        '<rect x="20" y="70" width="18" height="8" rx="2" fill="#ffd54f"/><rect x="82" y="70" width="18" height="8" rx="2" fill="#ffd54f"/><path d="M14 104h92" stroke="#2f372c" stroke-width="4"/>');
     },
-    /** Depot: a supply barn with crates */
+    /** Depot: a supply hangar with stacked crates */
     depot: function () {
-      return svg('<path d="M14 54L60 24l46 30v46H14z" fill="#b5651d" stroke="#6b3b0f" stroke-width="3"/><path d="M8 56L60 20l52 36" stroke="' + ROOF + '" stroke-width="8" fill="none" stroke-linejoin="round"/>' +
-        '<rect x="42" y="62" width="36" height="38" fill="#6b3b0f"/><path d="M42 62l36 38M78 62L42 100" stroke="#e0b070" stroke-width="3"/>' +
-        '<rect x="84" y="82" width="18" height="18" fill="#d9a05b" stroke="#6b3b0f" stroke-width="2"/><rect x="18" y="86" width="16" height="14" fill="#d9a05b" stroke="#6b3b0f" stroke-width="2"/>');
+      return svg('<path d="M10 104V60C10 38 34 26 60 26s50 12 50 34v44z" fill="#6d7b8a" stroke="#34404c" stroke-width="3"/>' +
+        '<path d="M10 60C10 38 34 26 60 26s50 12 50 34" fill="none" stroke="#a9b8c6" stroke-width="3"/><path d="M22 60h76M28 48h64" stroke="#566574" stroke-width="2"/>' +
+        '<rect x="38" y="66" width="44" height="38" fill="#2f3b47" stroke="#1c252e" stroke-width="2"/><path d="M60 66v38M38 85h44" stroke="#56677a" stroke-width="2"/>' +
+        '<rect x="86" y="86" width="20" height="18" fill="#a1887f" stroke="#4e342e" stroke-width="2"/><rect x="14" y="90" width="18" height="14" fill="#a1887f" stroke="#4e342e" stroke-width="2"/><path d="M14 97h18M86 95h20" stroke="#4e342e" stroke-width="2"/>');
     },
-    /** Defense tower */
+    /** Defense tower: a radar / anti-air tower */
     tower: function () {
-      return svg('<path d="M36 104V40h48v64z" fill="' + STONE + '" stroke="' + STONE_D + '" stroke-width="3"/><path d="M30 40V26h10v6h8v-6h8v6h8v-6h10v14z" fill="' + STONE + '" stroke="' + STONE_D + '" stroke-width="3"/>' +
-        '<rect x="54" y="56" width="12" height="22" rx="6" fill="#2b3150"/><path d="M52 104V92a8 8 0 0 1 16 0v12z" fill="#5b3b1c"/><path d="M60 26V8" stroke="#3a2a1a" stroke-width="3"/><path d="M60 8l16 5-16 5z" fill="#f4c542"/>');
+      return svg('<path d="M40 106V56h40v50z" fill="#78909c" stroke="#37474f" stroke-width="3"/><path d="M34 56h52v10H34z" fill="#546e7a" stroke="#37474f" stroke-width="3"/>' +
+        '<path d="M46 66v40M60 66v40M74 66v40" stroke="#607d8b" stroke-width="2"/>' +
+        '<path d="M60 56V34" stroke="#cfd8dc" stroke-width="4"/><path d="M36 30a24 24 0 0 1 48 0z" fill="#cfd8dc" stroke="#546e7a" stroke-width="3"/><path d="M60 30l16-14" stroke="#ef5350" stroke-width="4" stroke-linecap="round"/><circle cx="76" cy="16" r="3.5" fill="#ef5350"/>' +
+        '<rect x="52" y="84" width="16" height="22" rx="2" fill="#263238"/>');
     },
     /** Bombs: size 0 small, 1 medium, 2 large, 3 mega */
     bomb: function (size) {
@@ -29,6 +34,37 @@
       return svg('<circle cx="56" cy="70" r="' + r + '" fill="' + col + '" stroke="#111" stroke-width="3"/><ellipse cx="' + (56 - r * 0.35) + '" cy="' + (70 - r * 0.4) + '" rx="' + r * 0.22 + '" ry="' + r * 0.14 + '" fill="#fff" opacity="0.55"/>' +
         '<path d="M70 ' + (70 - r + 2) + 'q10-12 20-12" stroke="#c9a36a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M92 50l5-9 4 8 9 1-7 6 3 9-9-4-8 5 1-10-8-5z" fill="#ffb703" stroke="#ff6b1a" stroke-width="2"/>' +
         (size === 3 ? '<path d="M44 66l24 8M44 74l24-8" stroke="#ffd34d" stroke-width="4" stroke-linecap="round"/>' : ''));
+    },
+    /** The store's weapons, drawn as bombs and rockets (key = the item id) */
+    weapon: function (key) {
+      var body = function (x, y, w, h, c1, c2, tip) {
+        return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + w / 2.4 + '" fill="' + c1 + '" stroke="#1c252e" stroke-width="2.5"/>' +
+          '<path d="M' + x + ' ' + (y + 6) + 'q' + w / 2 + ' -' + (tip || 14) + ' ' + w + ' 0z" fill="' + c2 + '" stroke="#1c252e" stroke-width="2.5"/>';
+      };
+      var fins = function (x, y, w, c) { return '<path d="M' + x + ' ' + y + 'l-9 14h9zM' + (x + w) + ' ' + y + 'l9 14h-9z" fill="' + c + '" stroke="#1c252e" stroke-width="2"/>'; };
+      var flame = function (x, y) { return '<path d="M' + x + ' ' + y + 'q-6 10 0 22q6 -12 0 -22z" fill="#ffb300"/><path d="M' + x + ' ' + y + 'q-3 6 0 12q3 -6 0 -12z" fill="#fff59d"/>'; };
+      switch (key) {
+        case 'crude': // a plain aerial bomb
+          return svg('<ellipse cx="60" cy="64" rx="22" ry="34" fill="#546e7a" stroke="#1c252e" stroke-width="3"/><path d="M60 30v-8M52 22h16" stroke="#1c252e" stroke-width="4" stroke-linecap="round"/><path d="M42 40h36M40 64h40M42 88h36" stroke="#78909c" stroke-width="3"/><path d="M44 98l-10 12h12zM76 98l10 12H74z" fill="#546e7a" stroke="#1c252e" stroke-width="2"/>');
+        case 'bomb': // a bigger bomb with a red nose band
+          return svg('<ellipse cx="60" cy="62" rx="26" ry="38" fill="#37474f" stroke="#1c252e" stroke-width="3"/><path d="M36 38q24 -12 48 0" stroke="#ef5350" stroke-width="8" fill="none"/><path d="M60 24v-8" stroke="#1c252e" stroke-width="5"/><path d="M40 98l-12 12h14zM80 98l12 12H78z" fill="#37474f" stroke="#1c252e" stroke-width="2"/>');
+        case 'scatter': // a cluster bomb: a big shell and little bomblets
+          return svg('<ellipse cx="60" cy="44" rx="22" ry="30" fill="#607d8b" stroke="#1c252e" stroke-width="3"/><circle cx="34" cy="92" r="11" fill="#455a64" stroke="#1c252e" stroke-width="2.5"/><circle cx="60" cy="100" r="11" fill="#455a64" stroke="#1c252e" stroke-width="2.5"/><circle cx="86" cy="92" r="11" fill="#455a64" stroke="#1c252e" stroke-width="2.5"/><path d="M46 70l-10 10M60 74v14M74 70l10 10" stroke="#ffb300" stroke-width="3" stroke-dasharray="3 4"/>');
+        case 'missile': // a high speed missile
+          return svg('<g transform="rotate(35 60 60)">' + body(50, 14, 20, 68, '#eceff1', '#ef5350', 18) + fins(50, 72, 20, '#ef5350') + flame(60, 94) + '</g>');
+        case 'dual': // two missiles
+          return svg('<g transform="rotate(30 60 60)">' + body(38, 16, 16, 62, '#eceff1', '#ef5350', 16) + fins(38, 66, 16, '#ef5350') + flame(46, 86) + body(68, 22, 16, 62, '#eceff1', '#ef5350', 16) + fins(68, 72, 16, '#ef5350') + flame(76, 92) + '</g>');
+        case 'jammer': // a satellite dish
+          return svg('<path d="M24 64a40 40 0 0 0 60 -34z" fill="#b0bec5" stroke="#455a64" stroke-width="3"/><path d="M54 48l22 -22" stroke="#455a64" stroke-width="4"/><circle cx="80" cy="22" r="6" fill="#ef5350"/><path d="M92 38a24 24 0 0 1 4 22M100 30a36 36 0 0 1 6 34" stroke="#4fc3f7" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M40 64l-10 38h40l-10 -38" fill="#78909c" stroke="#37474f" stroke-width="3"/>');
+        case 'tos': // a rocket launcher truck with a rack of rockets
+          return svg('<rect x="14" y="78" width="90" height="16" rx="3" fill="#5f6b5a" stroke="#2f372c" stroke-width="3"/><rect x="82" y="64" width="24" height="16" rx="3" fill="#79866f" stroke="#2f372c" stroke-width="3"/><circle cx="32" cy="98" r="8" fill="#263238"/><circle cx="62" cy="98" r="8" fill="#263238"/><circle cx="90" cy="98" r="8" fill="#263238"/><g transform="rotate(-28 50 74)"><rect x="18" y="34" width="62" height="34" rx="3" fill="#455a64" stroke="#2f372c" stroke-width="3"/><circle cx="30" cy="44" r="5" fill="#ef5350"/><circle cx="46" cy="44" r="5" fill="#ef5350"/><circle cx="62" cy="44" r="5" fill="#ef5350"/><circle cx="30" cy="58" r="5" fill="#ef5350"/><circle cx="46" cy="58" r="5" fill="#ef5350"/><circle cx="62" cy="58" r="5" fill="#ef5350"/></g>');
+        case 'avangard': // a hypersonic glide vehicle: a sharp wedge with heat glow
+          return svg('<path d="M8 72L98 38l14 14L38 96z" fill="#cfd8dc" stroke="#1c252e" stroke-width="3"/><path d="M8 72l60 -16-20 30z" fill="#ef5350" stroke="#1c252e" stroke-width="2.5"/><path d="M98 38l14 14" stroke="#ffb300" stroke-width="6"/><path d="M14 90q-10 6 -8 18q16 -2 24 -14" fill="#ffb300"/><path d="M26 98q-6 4 -4 10q10 -2 14 -8" fill="#fff59d"/>');
+        case 'sarmat': // a big strategic missile
+          return svg('<g transform="rotate(20 60 60)">' + body(46, 6, 28, 84, '#eceff1', '#37474f', 22) + '<path d="M46 40h28M46 56h28" stroke="#ef5350" stroke-width="5"/>' + fins(46, 76, 28, '#37474f') + flame(60, 96) + '</g>');
+        default:
+          return A.bomb(1);
+      }
     },
     boom: function () {
       return svg('<path d="M60 6l9 22 22-12-8 24 26 4-22 14 16 18-26-4 2 26-17-18-17 18 2-26-26 4 16-18L8 44l26-4-8-24 22 12z" fill="#ff8a1f" stroke="#c43c00" stroke-width="3"/><path d="M60 30l6 14 14-2-10 11 8 12-14-3-4 14-4-14-14 3 8-12-10-11 14 2z" fill="#ffd34d"/>');
@@ -54,7 +90,7 @@
     trophy: function () {
       return svg('<path d="M34 16h52v30c0 18-12 30-26 30S34 64 34 46z" fill="#f4c542" stroke="#b07a00" stroke-width="4"/><path d="M34 24H16c0 18 8 28 20 30M86 24h18c0 18-8 28-20 30" stroke="#b07a00" stroke-width="5" fill="none"/><rect x="52" y="76" width="16" height="16" fill="#d99a00"/><rect x="38" y="92" width="44" height="12" rx="4" fill="#b07a00"/>');
     },
-    /** Job (15, tall and slender, black hair, white short-sleeve shirt, khaki shorts, brown shoes) */
+    /** LM2 (15, tall and slender, black hair, white short-sleeve shirt, khaki shorts, brown shoes) */
     job: function () {
       return svg('<ellipse cx="60" cy="113" rx="20" ry="4" fill="#000" opacity="0.18"/>' +
         // legs: thin
@@ -75,5 +111,5 @@
     },
   };
   window.FtArt = A;
-  window.KruIntroIcons = { hq: A.hq(), depot: A.depot(), tower: A.tower(), bomb1: A.bomb(0), bomb2: A.bomb(1), bomb3: A.bomb(2), bomb4: A.bomb(3), coin: A.coin(), repair: A.repair(), alliance: A.alliance(), risk: A.risk(), job: A.job(), shield: A.shield() };
+  window.KruIntroIcons = { hq: A.hq(), depot: A.depot(), tower: A.tower(), bomb1: A.weapon('crude'), bomb2: A.weapon('missile'), bomb3: A.weapon('avangard'), bomb4: A.weapon('sarmat'), coin: A.coin(), repair: A.repair(), alliance: A.alliance(), risk: A.risk(), job: A.job(), shield: A.shield() };
 })();

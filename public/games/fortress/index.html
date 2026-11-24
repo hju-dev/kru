@@ -63,15 +63,25 @@
       </div>
     </div>
 
-    <!-- The store: one screen in the buying team's color, with the shopping cart filling up -->
+    <!-- The store: Haishi Trade Company. One screen in the buying team's color; the team, its gold, its inventory and the cart. -->
     <div class="backdrop shop-back" id="shopBack" hidden>
       <div class="shop" id="shop" role="dialog" aria-labelledby="shopTitle">
-        <div class="shop-head"><span id="shopWho" class="shop-who"></span><b id="shopTitle"></b><span class="grow"></span><span id="shopGold" class="shop-gold"></span></div>
+        <div class="shop-head"><b id="shopTitle" class="company">HAISHI TRADE COMPANY</b><small>weapons · repairs · supplies</small></div>
+        <div class="shop-buyer" id="shopBuyer"></div>
         <div class="shop-grid" id="shopGrid"></div>
+        <div class="shop-inv" id="shopInv"></div>
         <div class="shop-foot">
           <div class="shop-cart" id="shopCart"></div>
           <button class="btn gold" id="shopDone">Done ▶</button>
         </div>
+      </div>
+    </div>
+
+    <!-- Teacher tools: give gold, kits, weapons or repairs at any time -->
+    <div class="backdrop shop-back" id="toolsBack" hidden>
+      <div class="shop tools" id="tools" role="dialog" aria-labelledby="toolsTitle">
+        <div class="shop-head"><b id="toolsTitle" class="company">🛠 Teacher tools</b><span class="grow"></span><button class="btn ghost" id="toolsClose">Close</button></div>
+        <div class="tools-body" id="toolsBody"></div>
       </div>
     </div>
 
@@ -102,7 +112,9 @@
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="Settings">
         <div class="menu-trow"><span class="menu-label">Answer time</span><div id="secsRow"></div></div>
+        <div class="menu-trow"><span class="menu-label">Rounds in the game</span><div id="roundsRow"></div></div>
         <div class="menu-row">
+          <button class="btn" id="toolsBtn">🛠 Teacher tools</button>
           <button class="btn" id="deckBtn">Question deck</button>
           <button class="btn" id="skip">Skip to the next step</button>
         </div>

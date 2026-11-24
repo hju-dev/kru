@@ -5,72 +5,109 @@ const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'u
 const js = read('public/games/fortress/app.js')
 const games = JSON.parse(read('games.json')) as { slug: string; [k: string]: unknown }[]
 
-describe('Point 1-4, id fortress (Henry, Nov 23-24)', () => {
+describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () => {
   it('is titled Point 1-4 everywhere the player sees it; the id stays fortress', () => {
-    expect(games.find((g) => g.slug === 'fortress')).toMatchObject({ title: 'Point 1-4' })
+    expect(games.find((g) => g.slug === 'fortress')).toMatchObject({ title: 'Point 1-4', status: 'ready', modes: ['group'], fixedTeams: 4, units: true, section: 'quizzes' })
     expect(read('public/games/fortress/index.html')).toContain('<title>Point 1-4</title>')
     expect(js).toContain("{ title: 'Point 1-4' }")
   })
-  it('is in the library: always four teams, group only, with units', () => {
-    expect(games.find((g) => g.slug === 'fortress')).toMatchObject({ status: 'ready', modes: ['group'], fixedTeams: 4, units: true, section: 'quizzes' })
+  it('lower HP for a faster game: HQ 2,400, Depot 1,600, Towers 1,800; 40 HP healing per round', () => {
+    expect(js).toContain('var MAXHP = { hq: 2400, depot: 1600, t1: 1800, t2: 1800 };')
+    expect(js).toContain('var ROUND_HEAL = 40,')
   })
-  it('bases: HQ 10,000, Depot 7,000, two Towers 8,000; 450 HP healing per round', () => {
-    expect(js).toContain('var MAXHP = { hq: 10000, depot: 7000, t1: 8000, t2: 8000 };')
-    expect(js).toContain('var ROUND_HEAL = 450,')
+  it('lower prices: 2 regular questions buy [Q] items, 5 regular buy [HQ] items; question gold unchanged', () => {
+    const price = (k: string) => Number(js.match(new RegExp(`${k}: \\{[^}]*price: (\\d+)`))![1])
+    const regular = 375
+    for (const k of ['missile', 'dual', 'jammer']) expect(price(k), k).toBeLessThanOrEqual(2 * regular)
+    for (const k of ['tos', 'avangard', 'sarmat']) expect(price(k), k).toBeLessThanOrEqual(5 * regular)
+    expect(js).toContain('var GOLD = { easy: 225, regular: 375, hard: 750, impossible: 1350 };')
   })
-  it("the store has Henry's nine items and prices", () => {
-    for (const p of ['dmg: 200, price: 200', 'dmg: 500, price: 350', 'dmg: 360, price: 500', 'dmg: 500, price: 1500', 'dmg: 350, price: 2400', 'price: 4000', 'dmg: 2000, price: 10000', 'dmg: 4000, price: 15000', 'dmg: 9000, price: 30000']) expect(js).toContain(p)
-    expect(js).toContain('var KIT = 300, KIT_RISE = 200, KIT_HP = 1000;')
+  it('the High Speed Missile does 25% more damage (625)', () => {
+    expect(js).toMatch(/missile: \{[^}]*dmg: 625,/)
   })
-  it('towers shoot down [LQ] 100%, [Q] 32%, [HQ] 16% (Sarmat 1%); 5% resistance (max 17%); allies +10% HQ', () => {
-    expect(js).toContain('var SHOOT = { LQ: 1, Q: 0.32, HQ: 0.16 };')
+  it('towers: [Q] 16%, [HQ] 8% (halved), Sarmat 1%, LQ 100%; one tower = half; 5% resistance (max 17%)', () => {
+    expect(js).toContain('var SHOOT = { LQ: 1, Q: 0.16, HQ: 0.08 };')
     expect(js).toContain('chance: 0.01')
+    expect(js).toContain('* Math.min(1, towers(id) / 2)')
     expect(js).toContain('RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1')
   })
-  it('no Depot: question gold halved, [Q] and better 1.6x, no healing; a destroyed HQ asks for a sacrifice', () => {
+  it('no Depot: question gold halved, [Q] and better 1.6x, no healing', () => {
     expect(js).toContain('NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6')
-    expect(js).toContain('var GOLD = { easy: 225, regular: 375, hard: 750, impossible: 1350 };')
+  })
+  it('repair kits are kept in the inventory and can rebuild a destroyed building; the HQ can come back with a kit', () => {
+    expect(js).toContain('d.kits++')
+    expect(js).toContain('function useKit(id)')
+    expect(js).toContain("'destroyed · rebuild it'")
     expect(js).toContain('function hqFell(id, next)')
+    expect(js).toContain('Buy and use a repair kit')
+    expect(js).toContain('EMERGENCY REPAIRS!')
   })
-  it('the TOS-2M curses the hit team: its next bomb may explode in its own Depot', () => {
-    expect(js).toContain('CURSE_CHANCE = 0.4')
-    expect(js).toContain('exploded in the Depot')
+  it('Question Change replaces +20 s: a Hard or Impossible question; it cannot be stacked with Free Answer', () => {
+    expect(js).toContain("{ id: 'change', label: '🔁 Question Change' }")
+    expect(js).not.toContain("label: '+20 s'")
+    expect(js).toContain("(p.id === 'free' && (risk || Q._changed))")
+    expect(js).toContain('function changeQuestion(tier)')
   })
-  it('power-ups: +20 s, Free Answer, Risk It, and the Alliance (both teams skip)', () => {
-    for (const p of ["{ id: 'time', label: '+20 s' }", "{ id: 'free', label: 'Free Answer' }", "{ id: 'risk', label: '🎲 Risk It' }"]) expect(js).toContain(p)
-    expect(js).toContain('S.skip[b] = true')
-    expect(js).toContain('function askPartner(a, b)')
-    expect(js).toContain('every building except the HQ loses half of its starting HP')
+  it('an eliminated team joins a remaining team and shares its points; beating an alliance is noted for the grading', () => {
+    expect(js).toContain('function joinChoice(id, done)')
+    expect(js).toContain('the team that destroyed you')
+    expect(js).toContain('return finalPts(S.joined[id])')
+    expect(js).toContain('function allianceBeaten(winner)')
+    expect(js).toContain('bonus points in the grading!')
   })
-  it('points by place: 5 / 3 / 2 / 1; last base (or allied last bases) wins', () => {
-    expect(js).toContain('var PLACE_PTS = [5, 3, 2, 1];')
-    expect(js).toContain('function checkEnd()')
-    expect(js).toContain('function dissolveAlliances()') // two bases left: every alliance ends
+  it('the game ends after 8 rounds by default (7-10): the strongest base wins', () => {
+    expect(js).toContain('var DEFAULT_ROUNDS = 8;')
+    expect(js).toContain('function timesUp()')
+    expect(read('public/games/fortress/index.html')).toContain('id="roundsRow"')
   })
-  it('credits Job by first name only, with a drawn avatar', () => {
-    const c = JSON.parse(read('public/games/fortress/content.json')) as { intro: { title: string; text: string[] }[] }
-    expect(JSON.stringify(c.intro)).toContain('Job')
-    expect(read('public/games/fortress/art.js')).toContain('job: function')
-    expect(c.intro.length).toBeLessThanOrEqual(6)
-    for (const s of c.intro) { expect(s.title.length).toBeLessThanOrEqual(30); for (const l of s.text) expect(l.length).toBeLessThanOrEqual(90) }
-  })
-  it('the store is one screen in the buying team color with a shopping cart (Henry, Nov 23)', () => {
+  it('the store is Haishi Trade Company: one screen in the buying team color, the buyer and gold together, the inventory and the cart', () => {
     const h = read('public/games/fortress/index.html')
-    expect(h).toContain('id="shopGrid"')
-    expect(h).toContain('id="shopCart"')
+    expect(h).toContain('HAISHI TRADE COMPANY')
+    for (const id of ['shopBuyer', 'shopGrid', 'shopInv', 'shopCart']) expect(h).toContain(`id="${id}"`)
     expect(js).toContain("$('shop').style.setProperty('--c', color(id));")
     expect(js).toContain('cart.items[key] = (cart.items[key] || 0) + 1;')
-    expect(read('public/games/fortress/style.css')).toContain('grid-template-columns: repeat(5, minmax(0, 1fr));')
+    expect(js).toContain(" is buying</b>'")
+  })
+  it('weapons are drawn as bombs and rockets; the bases are military', () => {
+    const art = read('public/games/fortress/art.js')
+    expect(art).toContain('weapon: function (key)')
+    for (const k of ['crude', 'bomb', 'scatter', 'missile', 'dual', 'jammer', 'tos', 'avangard', 'sarmat']) expect(art).toContain(`case '${k}'`)
+    expect(art).toContain('a command bunker')
+  })
+  it('teacher tools give gold, kits, weapons and repairs at any time', () => {
+    expect(js).toContain('function openTools()')
+    expect(read('public/games/fortress/index.html')).toContain('id="toolsBtn"')
+    for (const a of ['data-tg', 'data-tk', 'data-ti', 'data-tb']) expect(js).toContain(a)
+  })
+  it('the podium is war themed', () => {
+    expect(read('public/games/fortress/style.css')).toContain('The podium: war themed')
+  })
+  it('power-ups once each, Alliance (both teams skip); allies end at two bases', () => {
+    for (const p of ["{ id: 'free', label: 'Free Answer' }", "{ id: 'risk', label: '🎲 Risk It' }"]) expect(js).toContain(p)
+    expect(js).toContain('S.skip[b] = true')
+    expect(js).toContain('function askPartner(a, b)')
+    expect(js).toContain('function dissolveAlliances()')
+    expect(js).toContain('every building except the HQ loses half of its starting HP')
+  })
+  it('points by place: 5 / 3 / 2 / 1', () => {
+    expect(js).toContain('var PLACE_PTS = [5, 3, 2, 1];')
+    expect(js).toContain('function checkEnd()')
+  })
+  it('credits LM2, with a drawn avatar', () => {
+    const c = JSON.parse(read('public/games/fortress/content.json')) as { intro: { title: string; text: string[] }[] }
+    expect(JSON.stringify(c.intro)).toContain('LM2')
+    expect(JSON.stringify(c.intro)).not.toContain('Job')
+    expect(read('public/games/fortress/art.js')).toContain('job: function')
+    expect(c.intro.length).toBeLessThanOrEqual(6)
+    for (const s of c.intro) {
+      expect(s.title.length).toBeLessThanOrEqual(30)
+      for (const l of s.text) expect(l.length).toBeLessThanOrEqual(90)
+    }
   })
   it('firing: tap the team first, then a menu with each building and what it does, then the target', () => {
     expect(js).toContain('function openTarget(tid)')
     expect(js).toContain("var b = e.target.closest('.base.target');")
-    expect(js).toContain('The headquarters. If it falls the team is out')
+    expect(js).toContain('The command HQ. If it falls the team is out')
     expect(read('public/games/fortress/index.html')).toContain('id="aimGrid"')
-  })
-  it('towers: both standing = the full chance, one left = half; a Signal Jammer is one per team per round on any enemy', () => {
-    expect(js).toContain('* Math.min(1, towers(id) / 2)')
-    expect(js).toContain('S.jamUsed[from] = S.round')
-    expect(js).not.toContain('S.jam[jt]')
   })
 })
