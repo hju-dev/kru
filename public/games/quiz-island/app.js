@@ -556,7 +556,7 @@
         decks.push({ key: 'unit:' + s.name, label: 'Unit set: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) });
       });
     }
-    if (own.length) decks.push({ key: 'bank', label: 'Quiz Dash questions', sub: own.length + ' questions, easy to impossible', qs: deckQs(own, '', true) });
+    if (own.length) decks.push({ key: 'bank', label: 'Quiz Grand Prix questions', sub: own.length + ' questions, easy to impossible', qs: deckQs(own, '', true) });
     var every = [];
     QZ.builtIn.forEach(function (s) { every = every.concat(deckQs(s.questions, s.name)); });
     if (every.length) decks.push({ key: 'qb-all', label: 'Battle of Wits: all topics', sub: every.length + ' questions', qs: every });

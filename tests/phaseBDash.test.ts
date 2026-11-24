@@ -49,7 +49,7 @@ describe('pop-ups', () => {
   it('a wrong answer says INCORRECT with a rotating line of encouragement (also on START and with a shield)', () => {
     expect(js).toContain("wrong: ['cone', 'INCORRECT', '{e}', 'bad']")
     expect(js).toContain("wrong: ['coal', 'INCORRECT', '{e}', 'bad']")
-    expect(js).toContain("if (title === 'INCORRECT') v.e = rot(XMAS ? 'xe' : 're', XMAS ? XENC : ENC);")
+    expect(js).toContain("if (title === 'INCORRECT') v.e = rot(XMAS ? 'xe' : 're', XMAS ? XENC : RACING ? KruRacing.ENC : ENC);")
     expect(js).toContain("fx('wrong', { t: t.name }); fx('shield', { t: t.name });")
     expect(js).toContain("fx('wrong', { t: t.name }); nextTurn(); return; }")
   })

@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router'
 import { BackButton } from '../components/BackButton'
 import { findGame } from '../lib/games'
-import { loadSets, type SetOption } from '../lib/sets'
+import { SetPreviewSheet } from '../components/SetPreviewSheet'
+import { loadBankPreview, loadSets, loadUnitPreview, type SetOption, type SetPreview } from '../lib/sets'
 import { unitsFor } from '../lib/units'
 import { useApp } from '../store/app'
 import type { Level } from '../types'
@@ -25,6 +26,8 @@ export function Sets() {
   const [level, setLevel] = useState<Level>((query.get('level') as Level | null) ?? cls?.level ?? 'M.2')
   const [setKey, setSetKey] = useState(query.get('set') ?? '')
   const [unit, setUnit] = useState(query.get('unit') ?? '')
+  // the (i) button: a summary and the list of questions of one set
+  const [peek, setPeek] = useState<{ title: string; source: SetPreview | (() => Promise<SetPreview>) } | null>(null)
   const sheet = useMemo(() => (data?.questions ?? []).filter((q) => q.level === level), [data, level])
   // the sets for the current game + level; 'loading' until they arrive
   const askKey = `${slug}|${level}|${cls?.name ?? ''}|${sheet.length}`
@@ -98,19 +101,25 @@ export function Sets() {
             {g.items.map((o) => {
               const on = setKey === o.key && unit === (o.unit ?? '')
               return (
-                <button
-                  key={`${o.unit ?? ''}:${o.key}`}
-                  className={`set-opt${on ? ' on' : ''}`}
-                  role="radio"
-                  aria-checked={on}
-                  onClick={() => {
-                    setSetKey(o.key)
-                    setUnit(o.unit ?? '')
-                  }}
-                >
-                  <b>{o.label}</b>
-                  <small>{o.sub}</small>
-                </button>
+                <div key={`${o.unit ?? ''}:${o.key}`} className="set-row">
+                  <button
+                    className={`set-opt${on ? ' on' : ''}`}
+                    role="radio"
+                    aria-checked={on}
+                    onClick={() => {
+                      setSetKey(o.key)
+                      setUnit(o.unit ?? '')
+                    }}
+                  >
+                    <b>{o.label}</b>
+                    <small>{o.sub}</small>
+                  </button>
+                  {o.preview && (
+                    <button className="set-info" aria-label={`What is in ${o.label}?`} title="See the questions" onClick={() => setPeek({ title: o.label, source: o.preview! })}>
+                      ⓘ
+                    </button>
+                  )}
+                </div>
               )
             })}
           </div>
@@ -119,18 +128,32 @@ export function Sets() {
 
       {units.length > 0 && (
         <div className="set-list" role="radiogroup" aria-label="Question sets">
-          <button className={`set-opt${unit === '' ? ' on' : ''}`} role="radio" aria-checked={unit === ''} onClick={() => setUnit('')}>
-            <b>Built-in content</b>
-            <small>The questions that come with the game</small>
-          </button>
-          {units.map((u) => (
-            <button key={u.id} className={`set-opt${unit === u.id ? ' on' : ''}`} role="radio" aria-checked={unit === u.id} onClick={() => setUnit(u.id)}>
-              <b>{u.title}</b>
-              <small>From your lessons</small>
+          <div className="set-row">
+            <button className={`set-opt${unit === '' ? ' on' : ''}`} role="radio" aria-checked={unit === ''} onClick={() => setUnit('')}>
+              <b>Built-in content</b>
+              <small>The questions that come with the game</small>
             </button>
+            {slug === 'race-board' && (
+              <button className="set-info" aria-label="What is in the built-in questions?" title="See the questions" onClick={() => setPeek({ title: 'Built-in questions', source: () => loadBankPreview(level) })}>
+                ⓘ
+              </button>
+            )}
+          </div>
+          {units.map((u) => (
+            <div key={u.id} className="set-row">
+              <button className={`set-opt${unit === u.id ? ' on' : ''}`} role="radio" aria-checked={unit === u.id} onClick={() => setUnit(u.id)}>
+                <b>{u.title}</b>
+                <small>From your lessons</small>
+              </button>
+              <button className="set-info" aria-label={`What is in ${u.title}?`} title="See the questions" onClick={() => setPeek({ title: u.title, source: () => loadUnitPreview(u.id) })}>
+                ⓘ
+              </button>
+            </div>
           ))}
         </div>
       )}
+
+      {peek && <SetPreviewSheet title={peek.title} source={peek.source} onClose={() => setPeek(null)} />}
 
       <button className="btn primary step-btn" disabled={!ready} onClick={next}>
         {needsPick && setKey === '' ? 'Choose a set first' : 'Next: make the teams ▶'}

@@ -1,0 +1,34 @@
+/* The (i) pop-up on the question-set screen: summary, then every question (a wide pop-up on top of Sheet) */
+.sheet:has(.pv) { width: min(720px, 100%); }
+.pv { display: flex; flex-direction: column; gap: 10px; }
+.pv h3 { margin: 8px 0 2px; font: 800 14px var(--display); color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.pv h4.pv-part { margin: 12px 0 4px; font: 800 17px var(--display); color: var(--gold); }
+.pv-sum { padding: 10px 12px; border: 2px solid var(--line); border-radius: 12px; background: var(--bg); }
+.pv-sum p, .pv-sum ul { margin: 2px 0; }
+.pv-sum ul { padding-left: 20px; }
+.pv-total { font-size: 18px; }
+.pv-total b { font-size: 24px; color: var(--gold); }
+.pv-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.pv-q { padding: 8px 10px; border: 2px solid var(--line); border-radius: 10px; }
+.pv-qtext { display: flex; gap: 8px; align-items: baseline; font-weight: 700; }
+.pv-qtext > span:nth-child(2) { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.pv-n { color: var(--muted); font-family: var(--mono); font-size: 13px; min-width: 2.2ch; }
+.pv-tier { font: 800 11px var(--display); padding: 1px 6px; border-radius: 999px; border: 1.5px solid var(--line); color: var(--muted); }
+.pv-tier.regular { color: #7fe3b3; border-color: #7fe3b3; }
+.pv-tier.hard { color: #ffb703; border-color: #ffb703; }
+.pv-tier.impossible { color: #ff6b6b; border-color: #ff6b6b; }
+.pv-choices { margin: 4px 0 0; padding-left: 38px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; font-size: 14px; color: var(--muted); }
+.pv-choices li.right { color: #7fe3b3; font-weight: 800; }
+.pv-ans, .pv-why { margin: 3px 0 0 30px; font-size: 13px; }
+.pv-ans { color: #7fe3b3; font-weight: 800; }
+.pv-why { color: var(--muted); font-style: italic; }
+@media (max-width: 520px) { .pv-choices { grid-template-columns: 1fr; } }
+
+/* the (i) button on the right of every question set */
+.set-row { display: flex; gap: 8px; align-items: stretch; }
+.set-row > .set-opt { flex: 1; min-width: 0; }
+.set-info {
+  flex: 0 0 56px; min-width: 56px; display: grid; place-items: center; border-radius: var(--radius); border: 2px solid var(--line);
+  background: var(--surface); color: var(--gold); font: 800 22px var(--display); cursor: pointer;
+}
+.set-info:active { background: color-mix(in srgb, var(--gold) 14%, var(--surface)); }

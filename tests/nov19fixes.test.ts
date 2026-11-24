@@ -35,7 +35,7 @@ describe('settings gear and team circles', () => {
 describe('renames (title only, the ids stay)', () => {
   it('Christmas Dash, Quiz Dash, Battle of Wits, Scattergories', () => {
     expect(title('christmas-race-board')).toBe('Christmas Dash')
-    expect(title('race-board')).toBe('Quiz Dash')
+    expect(title('race-board')).toBe('Quiz Grand Prix') // was Quiz Dash (Nov 25)
     expect(title('quiz-battle')).toBe('Battle of Wits')
     expect(title('category-grid')).toBe('Scattergories')
     expect(read('public/games/quiz-battle/index.html')).toContain('<title>Battle of Wits</title>')
