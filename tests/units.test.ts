@@ -19,8 +19,8 @@ describe('units', () => {
     describe(u.title, () => {
       it('has an id that matches its file and a known level', () => {
         expect(`${u.id}.json`).toBe(f)
-        expect(['M.1', 'M.2', 'M.3']).toContain(u.level)
-        expect(unitsFor(u.level as 'M.1').map((x) => x.id)).toContain(u.id)
+        expect(['M.1', 'M.2', 'M.3', 'any']).toContain(u.level)
+        expect(unitsFor((u.level === 'any' ? 'M.1' : u.level) as 'M.1').map((x) => x.id)).toContain(u.id)
       })
       it('every question has an answer (A-D index in range, or a short answer)', () => {
         for (const s of u.sets) for (const q of s.questions) {
@@ -74,11 +74,11 @@ describe('picking a unit', () => {
   })
   it('Henry\'s current units: R&W Unit 5 for every level, and English Unit 7 for M.3', () => {
     expect(UNITS.filter((u) => !u.games).map((u) => u.id).sort()).toEqual(['m1-rw-u5', 'm2-rw-u5', 'm3-english-u7', 'm3-rw-u5'])
-    expect(unitsFor('M.1').map((u) => u.title)).toEqual(['R&W Unit 5: What Are You Afraid Of?', 'English: Grammar and Punctuation (A2-B1)'])
-    expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception', 'English: Grammar and Punctuation (B1)'])
-    expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future', 'English: Reported Speech', 'English: Grammar and Punctuation (B1-B2)', 'English: Reported Speech: Questions', 'English: Reported Speech: Mixed Bag (statements + questions)'])
+    expect(unitsFor('M.1').map((u) => u.title)).toEqual(['R&W Unit 5: What Are You Afraid Of?', 'English: Grammar and Punctuation (A2-B1)', 'Trivia'])
+    expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception', 'English: Grammar and Punctuation (B1)', 'Trivia'])
+    expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future', 'English: Reported Speech', 'English: Grammar and Punctuation (B1-B2)', 'English: Reported Speech: Questions', 'English: Reported Speech: Mixed Bag (statements + questions)', 'Trivia'])
     // every title says which course (or lesson pack) it is from
-    for (const u of UNITS) expect(u.title).toMatch(/^(((R&W|English) )?Unit \d+( L\d+| Review)?: |English: Reported Speech|English: Grammar and Punctuation \((A2-B1|B1|B1-B2)\))/)
+    for (const u of UNITS) expect(u.title).toMatch(/^(((R&W|English) )?Unit \d+( L\d+| Review)?: |English: Reported Speech|English: Grammar and Punctuation \((A2-B1|B1|B1-B2)\)|Trivia$)/)
   })
 })
 

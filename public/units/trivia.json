@@ -1,0 +1,6540 @@
+{
+ "id": "trivia",
+ "level": "any",
+ "course": "Trivia",
+ "title": "Trivia",
+ "games": [
+  "quiz-battle",
+  "race-board",
+  "quiz-island",
+  "fortress"
+ ],
+ "source": "Written for Henry (Nov 25) for his Club: 500 trivia questions for ages 12-15 in 5 sets of 100 (General Knowledge, Dictionary, History, Geography, Science & Nature). About 50% regular, 35% hard, 15% impossible; roughly 20% Thailand and Asia. Every question has a tier and a one-line why. American English. Written from memory: skim the hard ones before relying on them.",
+ "sets": [
+  {
+   "name": "General Knowledge",
+   "questions": [
+    {
+     "q": "What is the Japanese art of folding paper called?",
+     "choices": [
+      "Origami",
+      "Ikebana",
+      "Kabuki",
+      "Sumo"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Ori\" means folding and \"kami\" means paper."
+    },
+    {
+     "q": "Which painter cut off part of his own ear?",
+     "choices": [
+      "Pablo Picasso",
+      "Vincent van Gogh",
+      "Claude Monet",
+      "Salvador Dali"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "He painted \"The Starry Night\"."
+    },
+    {
+     "q": "What is a group of fish called?",
+     "choices": [
+      "A flock",
+      "A pack",
+      "A school",
+      "A herd"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Fish swim together in schools."
+    },
+    {
+     "q": "Which Thai martial art is called the \"art of eight limbs\"?",
+     "choices": [
+      "Taekwondo",
+      "Judo",
+      "Karate",
+      "Muay Thai"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It uses fists, elbows, knees and shins."
+    },
+    {
+     "q": "What is the name of the three-wheeled taxi often seen in Thailand?",
+     "choices": [
+      "Tuk-tuk",
+      "Songthaew",
+      "Rickshaw",
+      "Tram"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Its name copies the sound of its engine."
+    },
+    {
+     "q": "In chess, which piece moves only diagonally?",
+     "choices": [
+      "Rook",
+      "Bishop",
+      "Knight",
+      "Pawn"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The bishop stays on one color of squares."
+    },
+    {
+     "q": "Which sport uses a ball called a \"puck\"?",
+     "choices": [
+      "Golf",
+      "Soccer",
+      "Ice hockey",
+      "Rugby"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "A puck is a flat rubber disc."
+    },
+    {
+     "q": "Which Thai ancient capital is a UNESCO World Heritage site north of Bangkok, with many ruined temples?",
+     "choices": [
+      "Kanchanaburi",
+      "Lopburi",
+      "Nakhon Pathom",
+      "Ayutthaya"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Ayutthaya was the capital for about 400 years."
+    },
+    {
+     "q": "How many players from one team are on a basketball court at the same time?",
+     "choices": [
+      "5",
+      "6",
+      "7",
+      "4"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Five players per team play at once."
+    },
+    {
+     "q": "Which country gave the Statue of Liberty to the United States?",
+     "choices": [
+      "England",
+      "France",
+      "Italy",
+      "Spain"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "It was a gift in 1886."
+    },
+    {
+     "q": "In which sport can you win the \"Green Jacket\"?",
+     "choices": [
+      "Cricket",
+      "Tennis",
+      "Golf",
+      "Baseball"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "It is given to the winner of the Masters."
+    },
+    {
+     "q": "What is the main language spoken in Brazil?",
+     "choices": [
+      "French",
+      "Spanish",
+      "English",
+      "Portuguese"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Brazil was once a Portuguese colony."
+    },
+    {
+     "q": "What is the national animal of Thailand?",
+     "choices": [
+      "Elephant",
+      "Tiger",
+      "Crocodile",
+      "Monkey"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "The Thai elephant is the national animal."
+    },
+    {
+     "q": "How many time zones does Russia have?",
+     "choices": [
+      "2",
+      "11",
+      "5",
+      "8"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Russia is the largest country and stretches across 11 time zones."
+    },
+    {
+     "q": "Which country has won the most FIFA World Cups?",
+     "choices": [
+      "Argentina",
+      "Germany",
+      "Brazil",
+      "Italy"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Brazil has won five times."
+    },
+    {
+     "q": "Which country is the origin of the martial art taekwondo?",
+     "choices": [
+      "Thailand",
+      "Japan",
+      "China",
+      "South Korea"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Taekwondo means \"the way of the foot and fist\"."
+    },
+    {
+     "q": "Which sport is played at Wimbledon?",
+     "choices": [
+      "Tennis",
+      "Golf",
+      "Cricket",
+      "Rugby"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Wimbledon is a famous tennis tournament in London."
+    },
+    {
+     "q": "Which popular video game is a block-building sandbox game made by Mojang?",
+     "choices": [
+      "Roblox",
+      "Minecraft",
+      "Fortnite",
+      "Terraria"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Mojang was bought by Microsoft in 2014."
+    },
+    {
+     "q": "What is the Japanese word for a traditional robe?",
+     "choices": [
+      "Hanbok",
+      "Sari",
+      "Kimono",
+      "Cheongsam"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "The Korean one is hanbok."
+    },
+    {
+     "q": "Which river flows through Bangkok?",
+     "choices": [
+      "Ping",
+      "Mekong",
+      "Salween",
+      "Chao Phraya"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "The Chao Phraya flows into the Gulf of Thailand."
+    },
+    {
+     "q": "In which sport might you do a \"slam dunk\"?",
+     "choices": [
+      "Basketball",
+      "Volleyball",
+      "Soccer",
+      "Tennis"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "You jump and put the ball down through the hoop."
+    },
+    {
+     "q": "Which famous Thai landmark in Bangkok is also called the Temple of the Emerald Buddha?",
+     "choices": [
+      "Wat Arun",
+      "Wat Phra Kaew",
+      "Wat Pho",
+      "Wat Saket"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It stands inside the Grand Palace."
+    },
+    {
+     "q": "In which sport do you score a \"touchdown\"?",
+     "choices": [
+      "Baseball",
+      "Basketball",
+      "American football",
+      "Volleyball"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "A touchdown is worth six points."
+    },
+    {
+     "q": "How many hearts does an octopus have?",
+     "choices": [
+      "8",
+      "1",
+      "2",
+      "3"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Two pump blood to the gills and one to the body."
+    },
+    {
+     "q": "Which Thai festival has people float small decorated baskets on the water?",
+     "choices": [
+      "Loy Krathong",
+      "Songkran",
+      "Visakha Bucha",
+      "Chinese New Year"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Loy Krathong is held on the full moon of the 12th lunar month."
+    },
+    {
+     "q": "How many points is the letter Q worth in English Scrabble?",
+     "choices": [
+      "1",
+      "10",
+      "5",
+      "8"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Q and Z are worth 10 points."
+    },
+    {
+     "q": "What does the Japanese word \"karaoke\" mean?",
+     "choices": [
+      "Happy voice",
+      "Sing along",
+      "Empty orchestra",
+      "Music box"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Kara means empty and oke is short for orchestra."
+    },
+    {
+     "q": "What are the three primary colors of light?",
+     "choices": [
+      "Black, white and gray",
+      "Red, yellow and blue",
+      "Orange, green and violet",
+      "Red, green and blue"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Screens mix red, green and blue light."
+    },
+    {
+     "q": "In music, how many beats does a whole note usually get in 4/4 time?",
+     "choices": [
+      "4",
+      "1",
+      "2",
+      "8"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "A whole note lasts four beats."
+    },
+    {
+     "q": "Which country first used paper money?",
+     "choices": [
+      "Japan",
+      "China",
+      "India",
+      "Thailand"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Paper money appeared in China about 1,000 years ago."
+    },
+    {
+     "q": "What is the name for a baby swan?",
+     "choices": [
+      "Kit",
+      "Cub",
+      "Cygnet",
+      "Fry"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "A cygnet is a young swan."
+    },
+    {
+     "q": "Which sport uses the terms \"love\", \"deuce\" and \"advantage\"?",
+     "choices": [
+      "Swimming",
+      "Golf",
+      "Baseball",
+      "Tennis"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "These are tennis scoring words."
+    },
+    {
+     "q": "Which superhero is also known as the Caped Crusader?",
+     "choices": [
+      "Batman",
+      "Superman",
+      "Spider-Man",
+      "Iron Man"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Batman lives in Gotham City."
+    },
+    {
+     "q": "Which animal is the symbol of the World Wide Fund for Nature (WWF)?",
+     "choices": [
+      "Tiger",
+      "Giant panda",
+      "Polar bear",
+      "Elephant"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "The panda logo is black and white."
+    },
+    {
+     "q": "Which Thai city is famous for the Yi Peng lantern festival?",
+     "choices": [
+      "Pattaya",
+      "Phuket",
+      "Chiang Mai",
+      "Ayutthaya"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Thousands of lanterns are released into the sky."
+    },
+    {
+     "q": "Which is the largest coral reef system in the world?",
+     "choices": [
+      "Coral Triangle",
+      "Red Sea Reef",
+      "Belize Barrier Reef",
+      "Great Barrier Reef"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It is off the coast of Australia and more than 2,000 km long."
+    },
+    {
+     "q": "Which sport uses a shuttlecock?",
+     "choices": [
+      "Badminton",
+      "Tennis",
+      "Squash",
+      "Table tennis"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A shuttlecock has feathers or plastic skirts."
+    },
+    {
+     "q": "Which Thai fruit is called the \"king of fruits\" because of its strong smell?",
+     "choices": [
+      "Mango",
+      "Durian",
+      "Mangosteen",
+      "Rambutan"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The mangosteen is called the \"queen\"."
+    },
+    {
+     "q": "Which Thai dessert is made from mango and sticky rice?",
+     "choices": [
+      "Bua Loy",
+      "Khanom Krok",
+      "Khao Niao Mamuang",
+      "Foi Thong"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "The rice is cooked in coconut milk."
+    },
+    {
+     "q": "How many rings are on the Olympic flag?",
+     "choices": [
+      "7",
+      "4",
+      "6",
+      "5"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "They stand for five regions of the world."
+    },
+    {
+     "q": "What kind of animal is Simba in \"The Lion King\"?",
+     "choices": [
+      "A lion",
+      "A tiger",
+      "A leopard",
+      "A cheetah"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Simba is a lion cub."
+    },
+    {
+     "q": "Which Tolstoy novel is about Russia during the wars with Napoleon?",
+     "choices": [
+      "Anna Karenina",
+      "War and Peace",
+      "Crime and Punishment",
+      "The Idiot"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is more than 1,200 pages long."
+    },
+    {
+     "q": "How many players are there on a volleyball team on the court?",
+     "choices": [
+      "7",
+      "5",
+      "6",
+      "9"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Six players per team are on the court."
+    },
+    {
+     "q": "How many strings does a standard guitar have?",
+     "choices": [
+      "8",
+      "4",
+      "5",
+      "6"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Most guitars have six strings."
+    },
+    {
+     "q": "What is the pre-fight dance of Muay Thai called?",
+     "choices": [
+      "Wai Kru",
+      "Muay Kaad",
+      "Sepak",
+      "Mai Sok"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Fighters honor their teachers with it."
+    },
+    {
+     "q": "Which king founded Bangkok as the capital in 1782?",
+     "choices": [
+      "Rama V",
+      "Rama I",
+      "Rama IX",
+      "Naresuan"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Rama I started the Chakri dynasty."
+    },
+    {
+     "q": "How many continents are there?",
+     "choices": [
+      "6",
+      "5",
+      "7",
+      "8"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Asia, Africa, North America, South America, Antarctica, Europe and Australia/Oceania."
+    },
+    {
+     "q": "Which Thai dish's name means \"papaya salad\"?",
+     "choices": [
+      "Tom Yum",
+      "Larb",
+      "Yum Woon Sen",
+      "Som Tam"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Som tam is made with shredded green papaya."
+    },
+    {
+     "q": "In which sport do players try to score a \"birdie\"?",
+     "choices": [
+      "Golf",
+      "Badminton",
+      "Archery",
+      "Baseball"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A birdie is one stroke under par."
+    },
+    {
+     "q": "Which food is Japan famous for, made with vinegared rice and often raw fish?",
+     "choices": [
+      "Kimchi",
+      "Sushi",
+      "Dumplings",
+      "Ramen"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Sushi comes from Japan."
+    },
+    {
+     "q": "How many keys are on a standard modern piano?",
+     "choices": [
+      "92",
+      "76",
+      "88",
+      "100"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "There are 52 white and 36 black keys."
+    },
+    {
+     "q": "What is the term for a story that is not real and is written for children, with a moral?",
+     "choices": [
+      "Report",
+      "Biography",
+      "Novel",
+      "Fable"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Aesop wrote many fables."
+    },
+    {
+     "q": "What do you get when you mix blue and yellow paint?",
+     "choices": [
+      "Green",
+      "Purple",
+      "Orange",
+      "Brown"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Blue and yellow make green."
+    },
+    {
+     "q": "What is the national sport of Japan, in which two wrestlers push each other out of a ring?",
+     "choices": [
+      "Judo",
+      "Sumo",
+      "Kendo",
+      "Karate"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Sumo is hundreds of years old."
+    },
+    {
+     "q": "How many sides does a stop sign have?",
+     "choices": [
+      "4",
+      "6",
+      "8",
+      "10"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "A stop sign is an octagon."
+    },
+    {
+     "q": "Who composed the music for \"Swan Lake\"?",
+     "choices": [
+      "Claude Debussy",
+      "Johann Strauss",
+      "Frederic Chopin",
+      "Pyotr Tchaikovsky"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "He also composed \"The Nutcracker\"."
+    },
+    {
+     "q": "Which sport is often called \"the beautiful game\"?",
+     "choices": [
+      "Soccer",
+      "Tennis",
+      "Basketball",
+      "Golf"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Pelé made this nickname famous."
+    },
+    {
+     "q": "What is the most spoken first language in the world?",
+     "choices": [
+      "English",
+      "Mandarin Chinese",
+      "Spanish",
+      "Hindi"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "More people speak Mandarin as a first language than any other language."
+    },
+    {
+     "q": "What color is the hat of the video game character Mario?",
+     "choices": [
+      "Blue",
+      "Green",
+      "Red",
+      "Yellow"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "His brother Luigi wears green."
+    },
+    {
+     "q": "What is the currency of Japan?",
+     "choices": [
+      "Baht",
+      "Won",
+      "Yuan",
+      "Yen"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Japan uses the yen."
+    },
+    {
+     "q": "Which sport has a score called \"love\"?",
+     "choices": [
+      "Tennis",
+      "Golf",
+      "Boxing",
+      "Cricket"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Love means zero in tennis."
+    },
+    {
+     "q": "What is the main ingredient of bread?",
+     "choices": [
+      "Sugar",
+      "Flour",
+      "Rice",
+      "Corn"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Bread dough is flour, water and yeast."
+    },
+    {
+     "q": "How many days are there in a leap year?",
+     "choices": [
+      "364",
+      "365",
+      "366",
+      "367"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "A leap year adds February 29."
+    },
+    {
+     "q": "Which country is known as the \"Land of the Rising Sun\"?",
+     "choices": [
+      "Korea",
+      "China",
+      "Thailand",
+      "Japan"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "The name comes from Japan's position in the east."
+    },
+    {
+     "q": "In what year did the first iPhone go on sale?",
+     "choices": [
+      "2007",
+      "2005",
+      "2009",
+      "2010"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Steve Jobs announced it in January 2007."
+    },
+    {
+     "q": "What is the name of the famous Thai dish made with stir-fried rice noodles, egg and peanuts?",
+     "choices": [
+      "Tom Yum",
+      "Pad Thai",
+      "Green curry",
+      "Som Tam"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Pad Thai is stir-fried noodles."
+    },
+    {
+     "q": "Which country is famous for the Eiffel Tower?",
+     "choices": [
+      "Spain",
+      "Italy",
+      "France",
+      "Germany"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The tower stands in Paris."
+    },
+    {
+     "q": "What is the name of the wizard school in the Harry Potter books?",
+     "choices": [
+      "Ilvermorny",
+      "Durmstrang",
+      "Beauxbatons",
+      "Hogwarts"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Harry studies at Hogwarts."
+    },
+    {
+     "q": "What is the name of the Italian city with canals and gondolas?",
+     "choices": [
+      "Venice",
+      "Rome",
+      "Milan",
+      "Florence"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Venice is built on more than 100 small islands."
+    },
+    {
+     "q": "Which composer wrote \"The Four Seasons\"?",
+     "choices": [
+      "Wolfgang Mozart",
+      "Antonio Vivaldi",
+      "Ludwig van Beethoven",
+      "Johann Bach"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Vivaldi was Italian."
+    },
+    {
+     "q": "What is the name for the 50th birthday or 50th anniversary?",
+     "choices": [
+      "Diamond",
+      "Silver",
+      "Golden",
+      "Ruby"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Fifty years is golden; 25 is silver."
+    },
+    {
+     "q": "In which sport is the Ryder Cup played?",
+     "choices": [
+      "Rugby",
+      "Tennis",
+      "Cricket",
+      "Golf"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Teams from Europe and the USA play for it."
+    },
+    {
+     "q": "What is the name of the popular Thai soup with lemongrass, lime leaves and shrimp?",
+     "choices": [
+      "Tom Yum Goong",
+      "Tom Kha Gai",
+      "Gaeng Som",
+      "Khao Tom"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Tom Yum Goong is hot and sour."
+    },
+    {
+     "q": "Which Olympic sport uses a vault, a balance beam and uneven bars?",
+     "choices": [
+      "Wrestling",
+      "Gymnastics",
+      "Fencing",
+      "Diving"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "These are gymnastics apparatus."
+    },
+    {
+     "q": "What is the color of the middle stripe on the Thai flag?",
+     "choices": [
+      "White",
+      "Red",
+      "Blue",
+      "Yellow"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The Thai flag is red, white, blue, white, red."
+    },
+    {
+     "q": "Which country is the home of the sport of golf?",
+     "choices": [
+      "Netherlands",
+      "England",
+      "USA",
+      "Scotland"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Golf was played in Scotland in the 1400s."
+    },
+    {
+     "q": "Which Thai king is remembered for an elephant duel against a Burmese prince in 1593?",
+     "choices": [
+      "King Naresuan",
+      "King Taksin",
+      "King Rama III",
+      "King Mongkut"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "He freed Ayutthaya from Burmese rule."
+    },
+    {
+     "q": "What is the Roman numeral for 50?",
+     "choices": [
+      "C",
+      "L",
+      "D",
+      "X"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "C is 100, D is 500 and X is 10."
+    },
+    {
+     "q": "Which animal gives us wool?",
+     "choices": [
+      "Pig",
+      "Cow",
+      "Sheep",
+      "Chicken"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Sheep are shorn for their wool."
+    },
+    {
+     "q": "What do you call a baby kangaroo?",
+     "choices": [
+      "Pup",
+      "Cub",
+      "Calf",
+      "Joey"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A joey grows in its mother's pouch."
+    },
+    {
+     "q": "Which board game has the pieces king, queen, rook, bishop, knight and pawn?",
+     "choices": [
+      "Chess",
+      "Checkers",
+      "Monopoly",
+      "Scrabble"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Chess has six kinds of pieces."
+    },
+    {
+     "q": "Which cartoon character lives in a pineapple under the sea?",
+     "choices": [
+      "Patrick Star",
+      "SpongeBob SquarePants",
+      "Mr. Krabs",
+      "Squidward"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "His home is in Bikini Bottom."
+    },
+    {
+     "q": "Which Northern Thai dance is performed with long golden fingernails?",
+     "choices": [
+      "Khon",
+      "Likay",
+      "Fawn Lep",
+      "Ramwong"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Dancers wear long, curved nail covers."
+    },
+    {
+     "q": "What is Songkran?",
+     "choices": [
+      "A kite festival",
+      "A rice harvest festival",
+      "A boat race",
+      "The Thai New Year water festival"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Songkran is in April, and people splash water."
+    },
+    {
+     "q": "What is the tallest animal in the world?",
+     "choices": [
+      "Giraffe",
+      "Elephant",
+      "Camel",
+      "Horse"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A giraffe can be about 5 meters tall."
+    },
+    {
+     "q": "Which author created the detective Sherlock Holmes?",
+     "choices": [
+      "Agatha Christie",
+      "Arthur Conan Doyle",
+      "Edgar Allan Poe",
+      "Roald Dahl"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Holmes lived at 221B Baker Street."
+    },
+    {
+     "q": "What does a \"hat-trick\" mean in soccer?",
+     "choices": [
+      "Three corner kicks",
+      "Three yellow cards",
+      "Three goals by one player",
+      "Winning three games in a row"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "A player scores three goals in one game."
+    },
+    {
+     "q": "How many colors are in a rainbow?",
+     "choices": [
+      "8",
+      "5",
+      "6",
+      "7"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Red, orange, yellow, green, blue, indigo and violet."
+    },
+    {
+     "q": "Which country is called the \"Land of Fire and Ice\"?",
+     "choices": [
+      "Iceland",
+      "Norway",
+      "Finland",
+      "Greenland"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Iceland has both volcanoes and glaciers."
+    },
+    {
+     "q": "Which instrument has black and white keys?",
+     "choices": [
+      "Violin",
+      "Piano",
+      "Drum",
+      "Flute"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A piano has 88 keys."
+    },
+    {
+     "q": "What is the term for a word that is spelled the same forward and backward, like \"level\"?",
+     "choices": [
+      "Acronym",
+      "Anagram",
+      "Palindrome",
+      "Homonym"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Racecar is another palindrome."
+    },
+    {
+     "q": "Who wrote \"Romeo and Juliet\"?",
+     "choices": [
+      "Mark Twain",
+      "Charles Dickens",
+      "Jane Austen",
+      "William Shakespeare"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Shakespeare wrote it in the 1590s."
+    },
+    {
+     "q": "Which musical instrument has a bow and four strings and is played under the chin?",
+     "choices": [
+      "Violin",
+      "Drum",
+      "Trumpet",
+      "Harp"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "The violin is the smallest string instrument in an orchestra."
+    },
+    {
+     "q": "In what year were the modern Olympic Games first held in Athens?",
+     "choices": [
+      "1900",
+      "1896",
+      "1924",
+      "1948"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Pierre de Coubertin helped revive the Games."
+    },
+    {
+     "q": "Who painted the Mona Lisa?",
+     "choices": [
+      "Raphael",
+      "Michelangelo",
+      "Leonardo da Vinci",
+      "Vincent van Gogh"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Leonardo painted it in the early 1500s."
+    },
+    {
+     "q": "Which artist painted \"The Persistence of Memory\" with melting clocks?",
+     "choices": [
+      "Frida Kahlo",
+      "Pablo Picasso",
+      "Rene Magritte",
+      "Salvador Dali"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Dali was a Spanish surrealist."
+    },
+    {
+     "q": "What does \"WWW\" stand for in a web address?",
+     "choices": [
+      "World Wide Web",
+      "World Web Wide",
+      "Wide World Web",
+      "Web World Wide"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "It is the system of pages linked on the internet."
+    },
+    {
+     "q": "What is the name of the Japanese poem form with three lines of 5, 7 and 5 syllables?",
+     "choices": [
+      "Sonnet",
+      "Haiku",
+      "Limerick",
+      "Ballad"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "A haiku often describes nature."
+    },
+    {
+     "q": "How many consonants are in the Thai alphabet?",
+     "choices": [
+      "32",
+      "26",
+      "44",
+      "52"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Thai also has about 15 vowel symbols."
+    },
+    {
+     "q": "Which company makes the iPhone?",
+     "choices": [
+      "Sony",
+      "Samsung",
+      "Google",
+      "Apple"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Apple released the first iPhone in 2007."
+    }
+   ]
+  },
+  {
+   "name": "Dictionary",
+   "questions": [
+    {
+     "q": "What is the opposite of \"arrive\"?",
+     "choices": [
+      "Reach",
+      "Depart",
+      "Enter",
+      "Return"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Depart means to leave."
+    },
+    {
+     "q": "Which word means \"a person who lives next to you\"?",
+     "choices": [
+      "Visitor",
+      "Stranger",
+      "Neighbor",
+      "Cousin"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Neighbors live close to your home."
+    },
+    {
+     "q": "Which word means \"to jump quickly into the air\"?",
+     "choices": [
+      "Drift",
+      "Crawl",
+      "Slide",
+      "Leap"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A frog can leap far."
+    },
+    {
+     "q": "What does \"delicious\" mean?",
+     "choices": [
+      "Tasting very good",
+      "Smelling bad",
+      "Very hot",
+      "Very cheap"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Delicious food tastes great."
+    },
+    {
+     "q": "What does \"ambiguous\" mean?",
+     "choices": [
+      "Very clear",
+      "Having more than one possible meaning",
+      "Very old",
+      "Very loud"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "An ambiguous answer can be understood in two ways."
+    },
+    {
+     "q": "What is \"onomatopoeia\"?",
+     "choices": [
+      "A word with a hidden meaning",
+      "A word with many letters",
+      "A word that sounds like the thing it names",
+      "A word that has no vowels"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "\"Buzz\" and \"splash\" are examples."
+    },
+    {
+     "q": "What does \"bilingual\" mean?",
+     "choices": [
+      "Having two homes",
+      "Able to speak five languages",
+      "Unable to speak",
+      "Able to speak two languages"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Bi- means two."
+    },
+    {
+     "q": "What is the plural of \"mouse\" (the animal)?",
+     "choices": [
+      "Mice",
+      "Mouses",
+      "Mouse",
+      "Mices"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Mice is an irregular plural."
+    },
+    {
+     "q": "What is a \"monarch\"?",
+     "choices": [
+      "A judge",
+      "A king or queen",
+      "A soldier",
+      "A teacher"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "A monarch rules a country."
+    },
+    {
+     "q": "Which of these is a synonym of \"big\"?",
+     "choices": [
+      "Narrow",
+      "Tiny",
+      "Large",
+      "Short"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Large and big mean the same."
+    },
+    {
+     "q": "What does the word \"nocturnal\" mean?",
+     "choices": [
+      "Very large",
+      "Active in the morning",
+      "Very cold",
+      "Active at night"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Owls are nocturnal animals."
+    },
+    {
+     "q": "What does \"sycophant\" mean?",
+     "choices": [
+      "A person who flatters powerful people to get ahead",
+      "A very shy student",
+      "An ancient writer",
+      "A kind of musician"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "The word comes from Greek."
+    },
+    {
+     "q": "What does the word \"quintessential\" mean?",
+     "choices": [
+      "Very expensive",
+      "The perfect example of something",
+      "Very quiet",
+      "Very old"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Pad Thai is a quintessential Thai dish."
+    },
+    {
+     "q": "What is the difference between \"affect\" and \"effect\"?",
+     "choices": [
+      "Both are always verbs",
+      "Both are always nouns",
+      "Affect is usually a verb; effect is usually a noun",
+      "They are exactly the same"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Weather can affect your mood; it has an effect."
+    },
+    {
+     "q": "Which is the correct spelling?",
+     "choices": [
+      "Embarress",
+      "Embarass",
+      "Embaras",
+      "Embarrass"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It has a double R and a double S."
+    },
+    {
+     "q": "Which word means \"a very small piece of something\"?",
+     "choices": [
+      "Crumb",
+      "Boulder",
+      "Mountain",
+      "Forest"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A crumb of bread."
+    },
+    {
+     "q": "What does \"serendipity\" mean?",
+     "choices": [
+      "A planned meeting",
+      "Finding something good by lucky accident",
+      "A bad dream",
+      "A sudden storm"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Penicillin is often called a serendipitous discovery."
+    },
+    {
+     "q": "What does \"journey\" mean?",
+     "choices": [
+      "A school class",
+      "A short nap",
+      "A long trip",
+      "A kind of food"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "A journey is travel from one place to another."
+    },
+    {
+     "q": "What does \"dilemma\" mean?",
+     "choices": [
+      "A loud noise",
+      "A kind of food",
+      "A happy surprise",
+      "A difficult choice between two options"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "A dilemma has no easy answer."
+    },
+    {
+     "q": "What does the prefix \"re-\" mean in \"rewrite\"?",
+     "choices": [
+      "Again",
+      "Not",
+      "Before",
+      "Under"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Rewrite means write again."
+    },
+    {
+     "q": "What is the opposite of \"expensive\"?",
+     "choices": [
+      "Famous",
+      "Cheap",
+      "Heavy",
+      "Large"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Cheap things cost little."
+    },
+    {
+     "q": "What is the noun form of \"decide\"?",
+     "choices": [
+      "Deciding",
+      "Decider",
+      "Decision",
+      "Decidement"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Decide becomes decision."
+    },
+    {
+     "q": "Which word is spelled correctly?",
+     "choices": [
+      "Conscienss",
+      "Concience",
+      "Consience",
+      "Conscience"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It means your sense of right and wrong."
+    },
+    {
+     "q": "What does \"ambivalent\" mean?",
+     "choices": [
+      "Having mixed or opposite feelings",
+      "Feeling very sure",
+      "Feeling very angry",
+      "Feeling very sleepy"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "You like and dislike something at once."
+    },
+    {
+     "q": "What does \"vivid\" mean?",
+     "choices": [
+      "Very dull",
+      "Very bright or clear",
+      "Very quiet",
+      "Very small"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "A vivid color or memory is strong and clear."
+    },
+    {
+     "q": "What is a synonym of \"happy\"?",
+     "choices": [
+      "Furious",
+      "Gloomy",
+      "Cheerful",
+      "Nervous"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Cheerful means happy and bright."
+    },
+    {
+     "q": "Which word means \"to make something less severe\"?",
+     "choices": [
+      "Anticipate",
+      "Aggravate",
+      "Accumulate",
+      "Alleviate"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "You can alleviate pain."
+    },
+    {
+     "q": "What does the idiom \"under the weather\" mean?",
+     "choices": [
+      "Feeling a little sick",
+      "Standing outside in the rain",
+      "Very happy",
+      "Very rich"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It describes a mild illness."
+    },
+    {
+     "q": "Which word means \"to show that something is true\"?",
+     "choices": [
+      "Argue",
+      "Prove",
+      "Guess",
+      "Hide"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Scientists prove ideas with evidence."
+    },
+    {
+     "q": "What does \"obsequious\" mean?",
+     "choices": [
+      "Very sleepy",
+      "Very rude",
+      "Too eager to please or obey",
+      "Very silly"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "An obsequious person flatters everyone."
+    },
+    {
+     "q": "What does \"exhausted\" mean?",
+     "choices": [
+      "Very happy",
+      "Very angry",
+      "Very hungry",
+      "Very tired"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "You feel exhausted after a long run."
+    },
+    {
+     "q": "What does \"obsolete\" mean?",
+     "choices": [
+      "No longer used because something newer exists",
+      "Brand new",
+      "Very expensive",
+      "Very rare"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "A typewriter is obsolete for most people."
+    },
+    {
+     "q": "Which word means \"to look at something quickly\"?",
+     "choices": [
+      "Stare",
+      "Glance",
+      "Glare",
+      "Gaze"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A glance is a short look."
+    },
+    {
+     "q": "What is the meaning of \"ephemeral\"?",
+     "choices": [
+      "Very heavy",
+      "Lasting forever",
+      "Lasting a very short time",
+      "Very ancient"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "A rainbow is ephemeral."
+    },
+    {
+     "q": "Which word means \"a place where you borrow books\"?",
+     "choices": [
+      "Stadium",
+      "Bookstore",
+      "Museum",
+      "Library"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "You borrow books free at a library."
+    },
+    {
+     "q": "What does \"fluent\" mean when we talk about a language?",
+     "choices": [
+      "Able to speak easily and well",
+      "Unable to speak",
+      "Able to write only",
+      "Able to read only"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A fluent speaker does not stop and search for words."
+    },
+    {
+     "q": "What do we call a word that has the same meaning as another word?",
+     "choices": [
+      "Antonym",
+      "Synonym",
+      "Prefix",
+      "Suffix"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Big and large are synonyms."
+    },
+    {
+     "q": "Which of these words is an adjective?",
+     "choices": [
+      "Dance",
+      "Quickly",
+      "Colorful",
+      "Teacher"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Colorful describes a noun."
+    },
+    {
+     "q": "What is the opposite of \"ancient\"?",
+     "choices": [
+      "Slow",
+      "Old",
+      "Dirty",
+      "Modern"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Ancient things are very old; modern things are new."
+    },
+    {
+     "q": "Which of these words is a verb?",
+     "choices": [
+      "Jump",
+      "Quickly",
+      "Beautiful",
+      "Table"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Jump describes an action."
+    },
+    {
+     "q": "What does the idiom \"the elephant in the room\" mean?",
+     "choices": [
+      "A very big animal",
+      "An obvious problem nobody wants to talk about",
+      "A funny joke",
+      "A surprise party"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "People avoid the topic."
+    },
+    {
+     "q": "What does \"repair\" mean?",
+     "choices": [
+      "To buy something",
+      "To break something",
+      "To fix something",
+      "To hide something"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "You repair a broken bike."
+    },
+    {
+     "q": "Which word is the opposite of \"difficult\"?",
+     "choices": [
+      "Heavy",
+      "Hard",
+      "Strange",
+      "Easy"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Easy and difficult are opposites."
+    },
+    {
+     "q": "Which word sounds the same as \"knight\"?",
+     "choices": [
+      "Night",
+      "Kite",
+      "Neat",
+      "Not"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Knight and night are homophones."
+    },
+    {
+     "q": "What does \"enormous\" mean?",
+     "choices": [
+      "Very small",
+      "Very big",
+      "Very old",
+      "Very fast"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Enormous means extremely large."
+    },
+    {
+     "q": "What is the opposite of \"brave\"?",
+     "choices": [
+      "Strong",
+      "Bold",
+      "Cowardly",
+      "Fearless"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "A cowardly person is afraid of danger."
+    },
+    {
+     "q": "Which word means \"to get information from many different places and put it together\"?",
+     "choices": [
+      "Collapse",
+      "Confuse",
+      "Cancel",
+      "Compile"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Writers compile lists and reports."
+    },
+    {
+     "q": "What does \"reluctant\" mean?",
+     "choices": [
+      "Not willing to do something",
+      "Very excited",
+      "Very proud",
+      "Very lucky"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "A reluctant student does not want to speak."
+    },
+    {
+     "q": "Which is the correct spelling?",
+     "choices": [
+      "Acommodation",
+      "Accommodation",
+      "Accomodation",
+      "Acommodashun"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Double C and double M."
+    },
+    {
+     "q": "Which word is a synonym of \"begin\"?",
+     "choices": [
+      "Stop",
+      "Finish",
+      "Start",
+      "Wait"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Begin and start mean the same."
+    },
+    {
+     "q": "What does \"juxtapose\" mean?",
+     "choices": [
+      "To hide something",
+      "To remove something",
+      "To repeat something",
+      "To place two things side by side to compare"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Artists juxtapose light and dark."
+    },
+    {
+     "q": "What does the idiom \"hit the books\" mean?",
+     "choices": [
+      "Study hard",
+      "Fight with a friend",
+      "Throw a book",
+      "Visit a library only"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Students hit the books before exams."
+    },
+    {
+     "q": "Which is the correct spelling?",
+     "choices": [
+      "Definately",
+      "Definitely",
+      "Definitly",
+      "Defenitely"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Definitely has \"finite\" inside it."
+    },
+    {
+     "q": "What is a synonym of \"meticulous\"?",
+     "choices": [
+      "Quick",
+      "Careless",
+      "Careful",
+      "Angry"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "A meticulous person pays attention to every detail."
+    },
+    {
+     "q": "Which word means \"to give food or drink to someone\"?",
+     "choices": [
+      "Drop",
+      "Hide",
+      "Chase",
+      "Feed"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Farmers feed their animals."
+    },
+    {
+     "q": "What does \"brave\" mean?",
+     "choices": [
+      "Not afraid of danger",
+      "Very quiet",
+      "Very clever",
+      "Very lazy"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A brave person faces danger."
+    },
+    {
+     "q": "What does \"hypothesis\" mean?",
+     "choices": [
+      "A final result",
+      "An idea that can be tested",
+      "A kind of tool",
+      "A type of plant"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Scientists test a hypothesis."
+    },
+    {
+     "q": "What does \"ostentatious\" mean?",
+     "choices": [
+      "Very careful",
+      "Very shy and quiet",
+      "Showing off wealth in a way meant to impress",
+      "Very cold"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "An ostentatious house is too showy."
+    },
+    {
+     "q": "What is a \"pet\"?",
+     "choices": [
+      "A kind of plant",
+      "A wild animal",
+      "A farm tool",
+      "An animal kept at home"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Dogs and cats are common pets."
+    },
+    {
+     "q": "Which word means \"happening every year\"?",
+     "choices": [
+      "Annual",
+      "Daily",
+      "Weekly",
+      "Monthly"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Annual comes from the Latin word for year."
+    },
+    {
+     "q": "What does the suffix \"-ful\" mean in \"helpful\"?",
+     "choices": [
+      "Without",
+      "Full of",
+      "Not",
+      "Again"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Helpful means full of help."
+    },
+    {
+     "q": "What does \"benevolent\" mean?",
+     "choices": [
+      "Weak and tired",
+      "Angry and rude",
+      "Kind and generous",
+      "Quiet and shy"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Bene means \"good\" in Latin."
+    },
+    {
+     "q": "Which word describes a person who does not like to waste anything?",
+     "choices": [
+      "Gloomy",
+      "Careless",
+      "Rude",
+      "Thrifty"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Thrifty and frugal are close in meaning."
+    },
+    {
+     "q": "What does the prefix \"un-\" do in \"unhappy\"?",
+     "choices": [
+      "It means \"not\"",
+      "It means \"again\"",
+      "It means \"before\"",
+      "It means \"very\""
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Unhappy means not happy."
+    },
+    {
+     "q": "What does \"pragmatic\" mean?",
+     "choices": [
+      "Dreaming without a plan",
+      "Dealing with things in a practical way",
+      "Very emotional",
+      "Very forgetful"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "A pragmatic person is sensible and realistic."
+    },
+    {
+     "q": "What does the suffix \"-less\" mean in \"careless\"?",
+     "choices": [
+      "Again",
+      "Full of",
+      "Without",
+      "Before"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Careless means without care."
+    },
+    {
+     "q": "What is an \"oxymoron\"?",
+     "choices": [
+      "A long story",
+      "A very silly person",
+      "A type of metal",
+      "Two words with opposite meanings used together"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "\"Deafening silence\" is an oxymoron."
+    },
+    {
+     "q": "What is the opposite of \"scarce\"?",
+     "choices": [
+      "Plentiful",
+      "Rare",
+      "Costly",
+      "Tiny"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Scarce means hard to find."
+    },
+    {
+     "q": "What does \"borrow\" mean?",
+     "choices": [
+      "To give something away",
+      "To take something and give it back later",
+      "To buy something new",
+      "To lose something"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "You borrow a book from the library."
+    },
+    {
+     "q": "Which word sounds the same as \"write\" but is spelled differently?",
+     "choices": [
+      "Rite",
+      "Wrote",
+      "Right",
+      "Writ"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Write and right are homophones."
+    },
+    {
+     "q": "What does \"inevitable\" mean?",
+     "choices": [
+      "Very sudden",
+      "Impossible",
+      "Unlikely",
+      "Certain to happen"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It cannot be avoided."
+    },
+    {
+     "q": "What does \"frugal\" mean?",
+     "choices": [
+      "Careful about spending money",
+      "Very wealthy",
+      "Very hungry",
+      "Very friendly"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "A frugal person does not waste money."
+    },
+    {
+     "q": "What does \"silent\" mean?",
+     "choices": [
+      "Very loud",
+      "Making no sound",
+      "Very fast",
+      "Very bright"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A silent room is completely quiet."
+    },
+    {
+     "q": "What is a \"dictionary\"?",
+     "choices": [
+      "A book of stories",
+      "A book of maps",
+      "A book that explains the meanings of words",
+      "A book of numbers"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "You can look words up in it."
+    },
+    {
+     "q": "What does the idiom \"a piece of cake\" mean?",
+     "choices": [
+      "Something very expensive",
+      "Something very sweet",
+      "Something very rare",
+      "Something very easy"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "The test was a piece of cake."
+    },
+    {
+     "q": "What is the adjective form of \"danger\"?",
+     "choices": [
+      "Dangerous",
+      "Dangerly",
+      "Dangering",
+      "Dangerful"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Dangerous means likely to cause harm."
+    },
+    {
+     "q": "Which word means \"to make something better\"?",
+     "choices": [
+      "Destroy",
+      "Improve",
+      "Ignore",
+      "Forget"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "You improve by practicing."
+    },
+    {
+     "q": "What is a \"palindrome\"?",
+     "choices": [
+      "A very long word",
+      "A word with no vowels",
+      "A word that reads the same forward and backward",
+      "A word from Latin"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Madam\" and \"level\" are palindromes."
+    },
+    {
+     "q": "What does \"magnanimous\" mean?",
+     "choices": [
+      "Very proud",
+      "Very small",
+      "Very angry",
+      "Generous and forgiving, especially to a rival"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "A magnanimous winner is kind to the loser."
+    },
+    {
+     "q": "Which word means \"very, very hungry\"?",
+     "choices": [
+      "Starving",
+      "Sleepy",
+      "Thirsty",
+      "Tiny"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Starving can mean extremely hungry."
+    },
+    {
+     "q": "Which word means \"to say sorry\"?",
+     "choices": [
+      "Complain",
+      "Apologize",
+      "Argue",
+      "Remind"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "You apologize when you are sorry."
+    },
+    {
+     "q": "Which word means \"to talk about something with others before deciding\"?",
+     "choices": [
+      "Ignore",
+      "Whisper",
+      "Discuss",
+      "Shout"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Classmates discuss a problem together."
+    },
+    {
+     "q": "What does \"curious\" mean?",
+     "choices": [
+      "Being very rich",
+      "Feeling sleepy",
+      "Being very rude",
+      "Wanting to know or learn more"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Curious children ask many questions."
+    },
+    {
+     "q": "What is the plural of \"child\"?",
+     "choices": [
+      "Children",
+      "Childs",
+      "Childes",
+      "Childrens"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Child has an irregular plural."
+    },
+    {
+     "q": "What does \"persuade\" mean?",
+     "choices": [
+      "To force someone with anger",
+      "To make someone agree to do something",
+      "To ask someone to leave",
+      "To tell someone a secret"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "You persuade with good reasons."
+    },
+    {
+     "q": "Which word means \"money you earn from work\"?",
+     "choices": [
+      "Ticket",
+      "Receipt",
+      "Salary",
+      "Coin"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "A salary is regular pay."
+    },
+    {
+     "q": "What is a \"euphemism\"?",
+     "choices": [
+      "A word from another language",
+      "A rude word",
+      "A very long word",
+      "A mild word used instead of a harsh one"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "\"Passed away\" is a euphemism for \"died\"."
+    },
+    {
+     "q": "What does the idiom \"spill the beans\" mean?",
+     "choices": [
+      "Tell a secret",
+      "Drop food",
+      "Cook dinner",
+      "Make a mess"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "You reveal something that was hidden."
+    },
+    {
+     "q": "What do we call a word that means the opposite of another word?",
+     "choices": [
+      "Synonym",
+      "Antonym",
+      "Acronym",
+      "Homophone"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Hot and cold are antonyms."
+    },
+    {
+     "q": "Which word sounds the same as \"sea\"?",
+     "choices": [
+      "Sew",
+      "Say",
+      "See",
+      "Saw"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Sea and see are homophones."
+    },
+    {
+     "q": "Which is the correct spelling?",
+     "choices": [
+      "Sepparate",
+      "Seperate",
+      "Separete",
+      "Separate"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Remember: \"a rat\" in sepARATe."
+    },
+    {
+     "q": "Which word sounds the same as \"two\"?",
+     "choices": [
+      "Too",
+      "Tow",
+      "Toe",
+      "Tea"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Two, to and too sound the same."
+    },
+    {
+     "q": "What does \"drizzle\" mean?",
+     "choices": [
+      "Heavy storm",
+      "Light rain",
+      "Strong wind",
+      "Thick fog"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "A drizzle is gentle, fine rain."
+    },
+    {
+     "q": "What does \"ubiquitous\" mean?",
+     "choices": [
+      "Very dangerous",
+      "Very rare",
+      "Found everywhere",
+      "Very quiet"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Smartphones are ubiquitous."
+    },
+    {
+     "q": "What is the opposite of \"generous\"?",
+     "choices": [
+      "Friendly",
+      "Kind",
+      "Rich",
+      "Selfish"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A generous person gives freely."
+    },
+    {
+     "q": "What does the idiom \"break the ice\" mean?",
+     "choices": [
+      "Start a friendly conversation",
+      "Break something frozen",
+      "Make someone angry",
+      "Leave a party early"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It helps people feel comfortable."
+    },
+    {
+     "q": "Which word means \"a short sleep during the day\"?",
+     "choices": [
+      "Dream",
+      "Nap",
+      "Rest-up",
+      "Snore"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A nap is a short sleep."
+    },
+    {
+     "q": "What does an \"acronym\" do?",
+     "choices": [
+      "Changes a verb to a noun",
+      "Repeats a word",
+      "Makes a word from the first letters of other words",
+      "Joins two sentences"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "NASA stands for National Aeronautics and Space Administration."
+    },
+    {
+     "q": "Which of these words is an adverb?",
+     "choices": [
+      "Cares",
+      "Careful",
+      "Care",
+      "Carefully"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Carefully describes how you do something."
+    },
+    {
+     "q": "Which is the correct spelling?",
+     "choices": [
+      "Necessary",
+      "Neccessary",
+      "Necesary",
+      "Neccesary"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "One C and two S: necessary."
+    }
+   ]
+  },
+  {
+   "name": "History",
+   "questions": [
+    {
+     "q": "What was the Silk Road?",
+     "choices": [
+      "A famous bridge",
+      "A river in Asia",
+      "A network of trade routes linking China and Europe",
+      "A kind of cloth"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Silk, spices and ideas traveled along it."
+    },
+    {
+     "q": "Which year did the Chinese Communist Party win and Mao Zedong declare the People's Republic of China?",
+     "choices": [
+      "1976",
+      "1911",
+      "1937",
+      "1949"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "He announced it in Beijing."
+    },
+    {
+     "q": "Which ancient civilization built the pyramids at Giza?",
+     "choices": [
+      "Egypt",
+      "Greece",
+      "Rome",
+      "Persia"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "The Great Pyramid was built about 4,500 years ago."
+    },
+    {
+     "q": "In which country did the Industrial Revolution begin?",
+     "choices": [
+      "France",
+      "Britain",
+      "Germany",
+      "Japan"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Factories and steam engines grew there in the 1700s."
+    },
+    {
+     "q": "Which ship sank in 1912 after hitting an iceberg?",
+     "choices": [
+      "Bismarck",
+      "Lusitania",
+      "Titanic",
+      "Mayflower"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "It was on its first trip from England to New York."
+    },
+    {
+     "q": "Which ancient wonder was a huge tomb built for a pharaoh in Egypt?",
+     "choices": [
+      "The Lighthouse of Alexandria",
+      "The Colossus of Rhodes",
+      "The Hanging Gardens",
+      "The Great Pyramid of Giza"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It is the only ancient wonder still standing."
+    },
+    {
+     "q": "Which old Thai capital has a Buddha head wrapped in tree roots?",
+     "choices": [
+      "Ayutthaya",
+      "Sukhothai",
+      "Lopburi",
+      "Nakhon Si Thammarat"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It is at Wat Mahathat in Ayutthaya."
+    },
+    {
+     "q": "What was the old name of Thailand before 1939?",
+     "choices": [
+      "Burma",
+      "Siam",
+      "Laos",
+      "Malaya"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The country changed its name to Thailand in 1939."
+    },
+    {
+     "q": "In which country did the Renaissance begin?",
+     "choices": [
+      "England",
+      "Spain",
+      "Italy",
+      "Germany"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "It started in Florence in the 1300s."
+    },
+    {
+     "q": "Which ancient Greek thinker was the teacher of Alexander the Great?",
+     "choices": [
+      "Homer",
+      "Socrates",
+      "Plato",
+      "Aristotle"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Aristotle was a student of Plato."
+    },
+    {
+     "q": "In what year did the Black Death reach Europe, killing about a third of its people?",
+     "choices": [
+      "1347",
+      "1066",
+      "1492",
+      "1605"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It arrived by ships from the Black Sea."
+    },
+    {
+     "q": "In which year did World War II end?",
+     "choices": [
+      "1918",
+      "1945",
+      "1939",
+      "1950"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The war ended in 1945."
+    },
+    {
+     "q": "Who founded the Tokugawa shogunate, which ruled Japan for over 250 years?",
+     "choices": [
+      "Toyotomi Hideyoshi",
+      "Oda Nobunaga",
+      "Tokugawa Ieyasu",
+      "Minamoto Yoritomo"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "The shogunate lasted from 1603 to 1868."
+    },
+    {
+     "q": "What was the Berlin Wall?",
+     "choices": [
+      "A wall in Egypt",
+      "A wall around a castle",
+      "A wall in Rome",
+      "A wall that divided a city in Germany"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It stood from 1961 to 1989."
+    },
+    {
+     "q": "Who invented the telephone?",
+     "choices": [
+      "Alexander Graham Bell",
+      "Thomas Edison",
+      "Samuel Morse",
+      "Guglielmo Marconi"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "He made the first call in 1876."
+    },
+    {
+     "q": "Who was the first President of the United States?",
+     "choices": [
+      "Abraham Lincoln",
+      "George Washington",
+      "Thomas Jefferson",
+      "John Adams"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Washington led the country from 1789 to 1797."
+    },
+    {
+     "q": "Who was the first person to walk on the Moon?",
+     "choices": [
+      "Yuri Gagarin",
+      "Buzz Aldrin",
+      "Neil Armstrong",
+      "John Glenn"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "He stepped out in July 1969."
+    },
+    {
+     "q": "Which empire was ruled by Julius Caesar and Augustus?",
+     "choices": [
+      "The Ottoman Empire",
+      "The Persian Empire",
+      "The Mongol Empire",
+      "The Roman Empire"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Rome was once the capital of a huge empire."
+    },
+    {
+     "q": "Which king signed the Magna Carta in 1215?",
+     "choices": [
+      "King John",
+      "King Henry VIII",
+      "King Richard I",
+      "King Edward I"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It limited the king's power."
+    },
+    {
+     "q": "Who was known as the \"Iron Lady\" and was Britain's first woman prime minister?",
+     "choices": [
+      "Queen Victoria",
+      "Margaret Thatcher",
+      "Theresa May",
+      "Elizabeth II"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "She served from 1979 to 1990."
+    },
+    {
+     "q": "Which Thai king signed the Bowring Treaty with Britain in 1855?",
+     "choices": [
+      "King Rama I",
+      "King Chulalongkorn",
+      "King Mongkut (Rama IV)",
+      "King Rama VII"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Mongkut opened Siam to trade with the West."
+    },
+    {
+     "q": "What was the name of the sickness that killed millions in Europe in the 1300s?",
+     "choices": [
+      "Cholera",
+      "Smallpox",
+      "Malaria",
+      "The Black Death"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It spread by fleas on rats."
+    },
+    {
+     "q": "What event started on September 1, 1939 in Europe?",
+     "choices": [
+      "World War II",
+      "World War I",
+      "The Cold War",
+      "The French Revolution"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Germany invaded Poland."
+    },
+    {
+     "q": "Which wall was built in ancient China to keep invaders out?",
+     "choices": [
+      "The Berlin Wall",
+      "The Great Wall",
+      "The Wall of Troy",
+      "Hadrian's Wall"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Parts of it are more than 2,000 years old."
+    },
+    {
+     "q": "Who was the Soviet leader during most of World War II?",
+     "choices": [
+      "Nikita Khrushchev",
+      "Vladimir Lenin",
+      "Joseph Stalin",
+      "Leon Trotsky"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "He led the USSR from the 1920s to 1953."
+    },
+    {
+     "q": "What invention by Johannes Gutenberg changed Europe in the 1400s?",
+     "choices": [
+      "The compass",
+      "The telescope",
+      "The steam engine",
+      "The printing press"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Books became much cheaper."
+    },
+    {
+     "q": "Which Mongol leader founded the Yuan dynasty in China?",
+     "choices": [
+      "Kublai Khan",
+      "Genghis Khan",
+      "Ogedei Khan",
+      "Tamerlane"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "He was Genghis Khan's grandson."
+    },
+    {
+     "q": "Which ancient wonder was in the city of Babylon and had terraces of plants?",
+     "choices": [
+      "The Colossus",
+      "The Hanging Gardens",
+      "The Lighthouse",
+      "The Temple of Artemis"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Historians are not sure where exactly it was."
+    },
+    {
+     "q": "In which battle was Napoleon finally defeated in 1815?",
+     "choices": [
+      "Austerlitz",
+      "Trafalgar",
+      "Waterloo",
+      "Gettysburg"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Waterloo is in present-day Belgium."
+    },
+    {
+     "q": "Which event began in 1914 and is often called \"the Great War\"?",
+     "choices": [
+      "The Boer War",
+      "World War II",
+      "The Cold War",
+      "World War I"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It lasted from 1914 to 1918."
+    },
+    {
+     "q": "Who was the last ruling emperor of China (Qing dynasty) who gave up the throne in 1912?",
+     "choices": [
+      "Puyi",
+      "Guangxu",
+      "Kangxi",
+      "Qianlong"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "He became emperor as a small child."
+    },
+    {
+     "q": "Which Italian explorer traveled to China in the 1200s and wrote about it?",
+     "choices": [
+      "Christopher Columbus",
+      "Marco Polo",
+      "Amerigo Vespucci",
+      "Galileo"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "His book was \"The Travels of Marco Polo\"."
+    },
+    {
+     "q": "Which scientist developed the theory of relativity?",
+     "choices": [
+      "Galileo Galilei",
+      "Isaac Newton",
+      "Albert Einstein",
+      "Stephen Hawking"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "E = mc² is his famous equation."
+    },
+    {
+     "q": "Which famous French leader became emperor in 1804?",
+     "choices": [
+      "Joan of Arc",
+      "Louis XIV",
+      "Charles de Gaulle",
+      "Napoleon Bonaparte"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "He crowned himself emperor."
+    },
+    {
+     "q": "Who painted the ceiling of the Sistine Chapel?",
+     "choices": [
+      "Michelangelo",
+      "Leonardo da Vinci",
+      "Raphael",
+      "Donatello"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "He painted it between 1508 and 1512."
+    },
+    {
+     "q": "In which year was the American Declaration of Independence adopted?",
+     "choices": [
+      "1789",
+      "1776",
+      "1812",
+      "1865"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It was adopted on July 4, 1776."
+    },
+    {
+     "q": "Which South African leader spent 27 years in prison and later became president?",
+     "choices": [
+      "Thabo Mbeki",
+      "Desmond Tutu",
+      "Nelson Mandela",
+      "Steve Biko"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "He became president in 1994."
+    },
+    {
+     "q": "What is the name of the Thai city that was the first capital of the Thai kingdom in the 1200s?",
+     "choices": [
+      "Ratchaburi",
+      "Chiang Rai",
+      "Phitsanulok",
+      "Sukhothai"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Sukhothai means \"dawn of happiness\"."
+    },
+    {
+     "q": "What was the name of the first successful English colony in North America, founded in 1607?",
+     "choices": [
+      "Jamestown",
+      "Plymouth",
+      "Roanoke",
+      "Boston"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is in present-day Virginia."
+    },
+    {
+     "q": "What did the Rosetta Stone help scholars read?",
+     "choices": [
+      "Latin",
+      "Egyptian hieroglyphs",
+      "Chinese characters",
+      "Viking runes"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It had the same text in three scripts."
+    },
+    {
+     "q": "In which year did the Ayutthaya Kingdom fall to Burma?",
+     "choices": [
+      "1782",
+      "1688",
+      "1767",
+      "1932"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "After that, King Taksin made Thonburi the capital."
+    },
+    {
+     "q": "In which year did Thailand's Siam change its name to Thailand for the first time?",
+     "choices": [
+      "1957",
+      "1932",
+      "1948",
+      "1939"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Prime Minister Phibun made the change."
+    },
+    {
+     "q": "Which Indian emperor built the Taj Mahal for his wife?",
+     "choices": [
+      "Shah Jahan",
+      "Akbar",
+      "Ashoka",
+      "Babur"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "He built it for Mumtaz Mahal."
+    },
+    {
+     "q": "Which city was the capital of the Thai kingdom before Bangkok?",
+     "choices": [
+      "Sukhothai",
+      "Ayutthaya",
+      "Chiang Mai",
+      "Lopburi"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Ayutthaya was destroyed in 1767."
+    },
+    {
+     "q": "Which conference in 1945 planned the post-war world for the USA, UK and USSR?",
+     "choices": [
+      "Vienna Congress",
+      "Berlin Conference",
+      "Yalta Conference",
+      "Munich Conference"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "The leaders were Roosevelt, Churchill and Stalin."
+    },
+    {
+     "q": "In which year did Siam declare war on Germany in World War I?",
+     "choices": [
+      "1941",
+      "1932",
+      "1939",
+      "1917"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Siam sent soldiers to France in 1918."
+    },
+    {
+     "q": "Who discovered America in 1492, sailing for Spain?",
+     "choices": [
+      "Christopher Columbus",
+      "Marco Polo",
+      "Vasco da Gama",
+      "Ferdinand Magellan"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Columbus landed in the Caribbean."
+    },
+    {
+     "q": "Which ancient people invented writing called hieroglyphs?",
+     "choices": [
+      "The Romans",
+      "The Egyptians",
+      "The Vikings",
+      "The Aztecs"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Hieroglyphs are picture symbols."
+    },
+    {
+     "q": "Which empire's capital was Constantinople?",
+     "choices": [
+      "The Mongol Empire",
+      "The Persian Empire",
+      "The Byzantine Empire",
+      "The Aztec Empire"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Today the city is called Istanbul."
+    },
+    {
+     "q": "Which Chinese leader was the first emperor of a united China?",
+     "choices": [
+      "Genghis Khan",
+      "Sun Yat-sen",
+      "Kublai Khan",
+      "Qin Shi Huang"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "He is buried with thousands of clay soldiers."
+    },
+    {
+     "q": "Which ancient people wrote the stories \"The Iliad\" and \"The Odyssey\"?",
+     "choices": [
+      "The Greeks",
+      "The Romans",
+      "The Chinese",
+      "The Egyptians"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "They are attributed to Homer."
+    },
+    {
+     "q": "Who was the famous nurse of the Crimean War known as \"the Lady with the Lamp\"?",
+     "choices": [
+      "Mother Teresa",
+      "Florence Nightingale",
+      "Marie Curie",
+      "Clara Barton"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "She improved hospitals."
+    },
+    {
+     "q": "Who was the English queen when the Spanish Armada was defeated in 1588?",
+     "choices": [
+      "Mary I",
+      "Victoria",
+      "Elizabeth I",
+      "Anne"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Elizabeth I ruled from 1558 to 1603."
+    },
+    {
+     "q": "Who was the first person in space?",
+     "choices": [
+      "Valentina Tereshkova",
+      "Neil Armstrong",
+      "Alan Shepard",
+      "Yuri Gagarin"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "He orbited Earth in 1961."
+    },
+    {
+     "q": "Who was the ruler of the Mongol Empire who conquered much of Asia?",
+     "choices": [
+      "Genghis Khan",
+      "Attila",
+      "Alexander",
+      "Napoleon"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "He founded the Mongol Empire in 1206."
+    },
+    {
+     "q": "Who was the leader of India's peaceful struggle for independence from Britain?",
+     "choices": [
+      "Jawaharlal Nehru",
+      "Mahatma Gandhi",
+      "Subhas Bose",
+      "Indira Gandhi"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "He used non-violent protest."
+    },
+    {
+     "q": "Which empire ruled much of the Middle East and Europe from Istanbul until 1922?",
+     "choices": [
+      "The Persian Empire",
+      "The Roman Empire",
+      "The Ottoman Empire",
+      "The British Empire"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "The Ottoman Empire lasted more than 600 years."
+    },
+    {
+     "q": "Which treaty ended World War I with Germany?",
+     "choices": [
+      "The Treaty of Vienna",
+      "The Treaty of Rome",
+      "The Treaty of Paris",
+      "The Treaty of Versailles"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It was signed in 1919."
+    },
+    {
+     "q": "Which king of France was called the \"Sun King\"?",
+     "choices": [
+      "Louis XIV",
+      "Louis XVI",
+      "Charles VII",
+      "Henry IV"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "He built the Palace of Versailles."
+    },
+    {
+     "q": "Who was the American civil rights leader who gave the \"I Have a Dream\" speech?",
+     "choices": [
+      "Malcolm X",
+      "Martin Luther King Jr.",
+      "Rosa Parks",
+      "Barack Obama"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "He gave it in 1963."
+    },
+    {
+     "q": "Which ancient Greek city hosted the first Olympic Games?",
+     "choices": [
+      "Sparta",
+      "Athens",
+      "Olympia",
+      "Delphi"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The first Games were in 776 BCE."
+    },
+    {
+     "q": "Which ancient people built the Colosseum in Rome?",
+     "choices": [
+      "The Vikings",
+      "The Greeks",
+      "The Egyptians",
+      "The Romans"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It was used for fights and shows."
+    },
+    {
+     "q": "Who was the pilot who first flew across the Atlantic Ocean alone, nonstop?",
+     "choices": [
+      "Charles Lindbergh",
+      "Amelia Earhart",
+      "Howard Hughes",
+      "Orville Wright"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "He flew from New York to Paris in 1927."
+    },
+    {
+     "q": "Which Thai king moved the capital to Thonburi after Ayutthaya fell?",
+     "choices": [
+      "King Naresuan",
+      "King Taksin",
+      "King Rama I",
+      "King Narai"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Taksin reunited the country."
+    },
+    {
+     "q": "In what year did the French Revolution begin?",
+     "choices": [
+      "1804",
+      "1776",
+      "1789",
+      "1815"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "The Bastille was stormed on July 14, 1789."
+    },
+    {
+     "q": "Which Chinese dynasty built much of the Great Wall that tourists see today?",
+     "choices": [
+      "Qin dynasty",
+      "Han dynasty",
+      "Tang dynasty",
+      "Ming dynasty"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Most of the visible wall is from the Ming dynasty."
+    },
+    {
+     "q": "What was the name of the ancient Greek story of a giant wooden horse used to enter a city?",
+     "choices": [
+      "The Trojan Horse",
+      "The Golden Fleece",
+      "The Odyssey's Cyclops",
+      "The Minotaur"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "The Greeks hid soldiers inside."
+    },
+    {
+     "q": "Which Thai king is called the \"Father of Modern Thailand\" and ended slavery?",
+     "choices": [
+      "King Rama I",
+      "King Chulalongkorn (Rama V)",
+      "King Naresuan",
+      "King Taksin"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "He ruled from 1868 to 1910."
+    },
+    {
+     "q": "Who was the leader of the Soviet Union when it broke up in 1991?",
+     "choices": [
+      "Boris Yeltsin",
+      "Joseph Stalin",
+      "Mikhail Gorbachev",
+      "Leonid Brezhnev"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "He resigned in December 1991."
+    },
+    {
+     "q": "Which ancient Greek mathematician is known for a theorem about right triangles?",
+     "choices": [
+      "Aristotle",
+      "Archimedes",
+      "Euclid",
+      "Pythagoras"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "a² + b² = c²."
+    },
+    {
+     "q": "Which battle in 1805 saw Admiral Nelson die while defeating the French and Spanish navies?",
+     "choices": [
+      "Trafalgar",
+      "Waterloo",
+      "Jutland",
+      "Hastings"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Nelson's ship was HMS Victory."
+    },
+    {
+     "q": "Who was the famous queen of ancient Egypt who met Julius Caesar?",
+     "choices": [
+      "Nefertiti",
+      "Cleopatra",
+      "Hatshepsut",
+      "Isis"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Cleopatra ruled Egypt from 51 to 30 BCE."
+    },
+    {
+     "q": "Which war was fought between the North and the South of the USA?",
+     "choices": [
+      "The Vietnam War",
+      "The Cold War",
+      "The Civil War",
+      "The Gulf War"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "It lasted from 1861 to 1865."
+    },
+    {
+     "q": "What did the Vikings use to sail across the seas?",
+     "choices": [
+      "Rafts",
+      "Steamships",
+      "Canoes",
+      "Longships"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Viking longships were long and narrow."
+    },
+    {
+     "q": "Which US president ended slavery with the Emancipation Proclamation?",
+     "choices": [
+      "Abraham Lincoln",
+      "George Washington",
+      "Ulysses Grant",
+      "Andrew Jackson"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "He issued it in 1863."
+    },
+    {
+     "q": "What was the year Thailand changed from an absolute monarchy to a constitutional monarchy?",
+     "choices": [
+      "1782",
+      "1932",
+      "1939",
+      "1957"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A coup in 1932 brought the first constitution."
+    },
+    {
+     "q": "What was the Cold War?",
+     "choices": [
+      "A war about food",
+      "A war in the Arctic",
+      "A long political struggle between the USA and the Soviet Union",
+      "A war between two kings"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "The two sides never fought each other directly."
+    },
+    {
+     "q": "Which war was fought in Vietnam between North and South?",
+     "choices": [
+      "The Cold War",
+      "The Korean War",
+      "The Gulf War",
+      "The Vietnam War"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "The USA fought in it from the 1960s to 1973."
+    },
+    {
+     "q": "Which Roman general crossed the Alps with elephants to attack Rome?",
+     "choices": [
+      "Hannibal",
+      "Scipio",
+      "Julius Caesar",
+      "Spartacus"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Hannibal was from Carthage."
+    },
+    {
+     "q": "What was the Meiji Restoration in Japan?",
+     "choices": [
+      "A war with China",
+      "The time Japan modernized after the shogun lost power",
+      "A famous earthquake",
+      "A trade treaty with Britain"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It started in 1868."
+    },
+    {
+     "q": "Which treaty in 1893 caused Siam to give up land east of the Mekong to France?",
+     "choices": [
+      "Bowring Treaty",
+      "Treaty of Versailles",
+      "The Franco-Siamese Treaty",
+      "Treaty of Tordesillas"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "It followed the Paknam incident."
+    },
+    {
+     "q": "Which Spanish explorer conquered the Aztec Empire?",
+     "choices": [
+      "Vasco Balboa",
+      "Francisco Pizarro",
+      "Christopher Columbus",
+      "Hernan Cortes"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "He reached Tenochtitlan in 1519."
+    },
+    {
+     "q": "Who was the Egyptian pharaoh whose tomb was found nearly untouched in 1922?",
+     "choices": [
+      "Tutankhamun",
+      "Ramses II",
+      "Khufu",
+      "Akhenaten"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Howard Carter found it."
+    },
+    {
+     "q": "What was the name of the ancient Greek city-state famous for its strong soldiers?",
+     "choices": [
+      "Athens",
+      "Sparta",
+      "Troy",
+      "Corinth"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Spartan boys trained as soldiers."
+    },
+    {
+     "q": "In which year did the Berlin Wall fall?",
+     "choices": [
+      "1991",
+      "1961",
+      "1989",
+      "1975"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Germany reunited in 1990."
+    },
+    {
+     "q": "Who was the first woman to win a Nobel Prize, and won two in different sciences?",
+     "choices": [
+      "Ada Lovelace",
+      "Rosalind Franklin",
+      "Florence Nightingale",
+      "Marie Curie"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "She won in physics and chemistry."
+    },
+    {
+     "q": "Who was the first emperor of the Roman Empire?",
+     "choices": [
+      "Augustus",
+      "Julius Caesar",
+      "Nero",
+      "Constantine"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Julius Caesar never became emperor."
+    },
+    {
+     "q": "What was the name of the Soviet satellite launched in 1957 that began the Space Age?",
+     "choices": [
+      "Vostok",
+      "Sputnik",
+      "Apollo",
+      "Voyager"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It was the first artificial satellite."
+    },
+    {
+     "q": "What was Pompeii?",
+     "choices": [
+      "An Egyptian temple",
+      "A Greek island",
+      "A Roman city buried by a volcano",
+      "A Viking village"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Mount Vesuvius erupted in 79 CE."
+    },
+    {
+     "q": "Who led the Allied forces' D-Day landings in Normandy in 1944?",
+     "choices": [
+      "George Patton",
+      "Winston Churchill",
+      "Franklin Roosevelt",
+      "Dwight D. Eisenhower"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "He later became US president."
+    },
+    {
+     "q": "Who wrote the Declaration of Independence?",
+     "choices": [
+      "Thomas Jefferson",
+      "George Washington",
+      "Benjamin Franklin",
+      "Abraham Lincoln"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "The USA became independent in 1776."
+    },
+    {
+     "q": "Who was the first president of the Republic of China in 1912?",
+     "choices": [
+      "Mao Zedong",
+      "Sun Yat-sen",
+      "Chiang Kai-shek",
+      "Deng Xiaoping"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "He is called the founder of modern China."
+    },
+    {
+     "q": "Which battle in 1066 led to a Norman king in England?",
+     "choices": [
+      "Battle of Agincourt",
+      "Battle of Waterloo",
+      "Battle of Hastings",
+      "Battle of Bosworth"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "William the Conqueror won."
+    },
+    {
+     "q": "Which empire was ruled by Montezuma?",
+     "choices": [
+      "The Olmec Empire",
+      "The Inca Empire",
+      "The Maya Empire",
+      "The Aztec Empire"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "The Aztec capital was Tenochtitlan."
+    },
+    {
+     "q": "Which Spanish explorer conquered the Inca Empire?",
+     "choices": [
+      "Francisco Pizarro",
+      "Hernan Cortes",
+      "Ferdinand Magellan",
+      "Juan Ponce de Leon"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "He captured the Inca leader Atahualpa."
+    },
+    {
+     "q": "Who invented the light bulb that people could use at home?",
+     "choices": [
+      "Alexander Graham Bell",
+      "Thomas Edison",
+      "Nikola Tesla",
+      "Benjamin Franklin"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Edison made a long-lasting bulb in 1879."
+    },
+    {
+     "q": "Which famous ship carried the Pilgrims to America in 1620?",
+     "choices": [
+      "The Titanic",
+      "The Santa Maria",
+      "The Mayflower",
+      "The Beagle"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "They landed at Plymouth."
+    },
+    {
+     "q": "Which president of the USA was in office during most of World War II?",
+     "choices": [
+      "Herbert Hoover",
+      "Harry Truman",
+      "Woodrow Wilson",
+      "Franklin D. Roosevelt"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "He served from 1933 to 1945."
+    },
+    {
+     "q": "What was the name of the Thai Free movement that resisted Japan in World War II?",
+     "choices": [
+      "Seri Thai (Free Thai)",
+      "Red Shirts",
+      "Khana Ratsadon",
+      "Siam Society"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Seri Thai means \"Free Thai\"."
+    },
+    {
+     "q": "Which country's people built the temple of Angkor Wat?",
+     "choices": [
+      "Thailand",
+      "Cambodia (the Khmer)",
+      "Vietnam",
+      "Myanmar"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The Khmer Empire built it in the 1100s."
+    }
+   ]
+  },
+  {
+   "name": "Geography",
+   "questions": [
+    {
+     "q": "Which country's flag has a red circle on a white background?",
+     "choices": [
+      "Thailand",
+      "China",
+      "Indonesia",
+      "Japan"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Japan's flag is called the Hinomaru."
+    },
+    {
+     "q": "Which canal links the Mediterranean Sea and the Red Sea?",
+     "choices": [
+      "The Suez Canal",
+      "The Panama Canal",
+      "The Kiel Canal",
+      "The Erie Canal"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It opened in 1869."
+    },
+    {
+     "q": "Which is the longest river in Asia?",
+     "choices": [
+      "The Mekong",
+      "The Yangtze",
+      "The Ganges",
+      "The Indus"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The Yangtze is in China."
+    },
+    {
+     "q": "What is the capital of Kenya?",
+     "choices": [
+      "Kampala",
+      "Mombasa",
+      "Nairobi",
+      "Addis Ababa"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Nairobi is also a safari starting point."
+    },
+    {
+     "q": "What is the capital of France?",
+     "choices": [
+      "Nice",
+      "Lyon",
+      "Marseille",
+      "Paris"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Paris is on the Seine River."
+    },
+    {
+     "q": "What is the capital of Uzbekistan?",
+     "choices": [
+      "Tashkent",
+      "Samarkand",
+      "Bukhara",
+      "Almaty"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Samarkand was a famous Silk Road city."
+    },
+    {
+     "q": "Which is the highest mountain in Thailand?",
+     "choices": [
+      "Doi Suthep",
+      "Doi Inthanon",
+      "Doi Chiang Dao",
+      "Khao Yai"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It is in Chiang Mai province."
+    },
+    {
+     "q": "Which country is made up of more than 7,000 islands?",
+     "choices": [
+      "Japan",
+      "Indonesia",
+      "The Philippines",
+      "Thailand"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "It has three island groups: Luzon, Visayas and Mindanao."
+    },
+    {
+     "q": "What are the colors of the Thai flag, from top to bottom?",
+     "choices": [
+      "White, blue, white",
+      "Blue, white, red",
+      "Red, yellow, red",
+      "Red, white, blue, white, red"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Blue is the middle stripe."
+    },
+    {
+     "q": "Which is the largest lake in Southeast Asia?",
+     "choices": [
+      "Tonle Sap",
+      "Lake Toba",
+      "Songkhla Lake",
+      "Lake Inle"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Tonle Sap is in Cambodia."
+    },
+    {
+     "q": "Which strait lies between Malaysia and Sumatra and is one of the busiest shipping lanes?",
+     "choices": [
+      "The Strait of Hormuz",
+      "The Strait of Malacca",
+      "The Bering Strait",
+      "The Strait of Dover"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Many ships to East Asia pass through it."
+    },
+    {
+     "q": "Which of these is NOT in Southeast Asia?",
+     "choices": [
+      "Laos",
+      "Thailand",
+      "Bangladesh",
+      "Cambodia"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Bangladesh is in South Asia."
+    },
+    {
+     "q": "Which river forms part of the border between Thailand and Laos?",
+     "choices": [
+      "The Irrawaddy",
+      "The Chao Phraya",
+      "The Salween",
+      "The Mekong"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "The Mekong flows through six countries."
+    },
+    {
+     "q": "In which country is the city of Marrakech?",
+     "choices": [
+      "Morocco",
+      "Egypt",
+      "Tunisia",
+      "Turkey"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Marrakech is famous for its markets."
+    },
+    {
+     "q": "What is the capital of Nepal?",
+     "choices": [
+      "Pokhara",
+      "Kathmandu",
+      "Lhasa",
+      "Thimphu"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Mount Everest is on its border."
+    },
+    {
+     "q": "Which country is the Taj Mahal in?",
+     "choices": [
+      "Nepal",
+      "Pakistan",
+      "India",
+      "Bangladesh"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "It is in the city of Agra."
+    },
+    {
+     "q": "Which country is the Great Wall in?",
+     "choices": [
+      "Mongolia",
+      "Japan",
+      "India",
+      "China"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It stretches across northern China."
+    },
+    {
+     "q": "What is the largest ocean on Earth?",
+     "choices": [
+      "The Pacific Ocean",
+      "The Atlantic Ocean",
+      "The Indian Ocean",
+      "The Arctic Ocean"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "The Pacific covers about a third of the Earth."
+    },
+    {
+     "q": "What is the capital of China?",
+     "choices": [
+      "Shanghai",
+      "Beijing",
+      "Hong Kong",
+      "Guangzhou"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The Forbidden City is in Beijing."
+    },
+    {
+     "q": "What is the capital of Indonesia?",
+     "choices": [
+      "Surabaya",
+      "Bali",
+      "Jakarta",
+      "Bandung"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Jakarta is on the island of Java."
+    },
+    {
+     "q": "Which country is the Angkor Wat temple complex in?",
+     "choices": [
+      "Vietnam",
+      "Thailand",
+      "Laos",
+      "Cambodia"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It is near Siem Reap."
+    },
+    {
+     "q": "Which line divides the Earth into the Northern and Southern Hemispheres?",
+     "choices": [
+      "The Equator",
+      "The Prime Meridian",
+      "The Tropic of Cancer",
+      "The Arctic Circle"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "The Equator is at 0 degrees latitude."
+    },
+    {
+     "q": "Which is the largest country in the world by area?",
+     "choices": [
+      "Canada",
+      "Russia",
+      "China",
+      "The USA"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Russia covers about 17 million square kilometers."
+    },
+    {
+     "q": "What is the capital of Laos?",
+     "choices": [
+      "Pakse",
+      "Luang Prabang",
+      "Vientiane",
+      "Savannakhet"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Vientiane is on the Mekong."
+    },
+    {
+     "q": "What is the capital of Switzerland?",
+     "choices": [
+      "Basel",
+      "Zurich",
+      "Geneva",
+      "Bern"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Zurich is the largest city."
+    },
+    {
+     "q": "What is the capital of Mongolia?",
+     "choices": [
+      "Ulaanbaatar",
+      "Hanoi",
+      "Astana",
+      "Bishkek"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is one of the coldest capitals in the world."
+    },
+    {
+     "q": "What is the capital of Cambodia?",
+     "choices": [
+      "Siem Reap",
+      "Phnom Penh",
+      "Battambang",
+      "Sihanoukville"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Angkor Wat is near Siem Reap."
+    },
+    {
+     "q": "What is the capital of Bhutan?",
+     "choices": [
+      "Kathmandu",
+      "Paro",
+      "Thimphu",
+      "Dhaka"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Bhutan measures \"Gross National Happiness\"."
+    },
+    {
+     "q": "What is the capital of India?",
+     "choices": [
+      "Chennai",
+      "Mumbai",
+      "Kolkata",
+      "New Delhi"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Mumbai is bigger, but New Delhi is the capital."
+    },
+    {
+     "q": "What is the capital of Thailand?",
+     "choices": [
+      "Bangkok",
+      "Chiang Mai",
+      "Phuket",
+      "Pattaya"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Bangkok is also called Krung Thep."
+    },
+    {
+     "q": "Which region of Thailand is called \"Isan\"?",
+     "choices": [
+      "The North",
+      "The Northeast",
+      "The South",
+      "The East"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Isan is known for its food, such as som tam."
+    },
+    {
+     "q": "How many oceans are there on Earth?",
+     "choices": [
+      "4",
+      "3",
+      "5",
+      "7"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Pacific, Atlantic, Indian, Southern and Arctic."
+    },
+    {
+     "q": "Which sea is the saltiest and lowest place on land?",
+     "choices": [
+      "The Caspian Sea",
+      "The Red Sea",
+      "The Black Sea",
+      "The Dead Sea"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Its shore is about 430 meters below sea level."
+    },
+    {
+     "q": "What is the capital of Australia?",
+     "choices": [
+      "Canberra",
+      "Sydney",
+      "Melbourne",
+      "Perth"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Many people think it is Sydney, but it is Canberra."
+    },
+    {
+     "q": "Which is the largest freshwater lake in Thailand?",
+     "choices": [
+      "Songkhla Lake",
+      "Bueng Boraphet",
+      "Kwan Phayao",
+      "Nong Han"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Songkhla Lake is a lagoon that mixes salt and fresh water."
+    },
+    {
+     "q": "What is the capital of Egypt?",
+     "choices": [
+      "Luxor",
+      "Alexandria",
+      "Cairo",
+      "Giza"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Cairo is on the Nile."
+    },
+    {
+     "q": "Which country has the most time zones, including its overseas territories?",
+     "choices": [
+      "China",
+      "Russia",
+      "USA",
+      "France"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "France has 12 because of its overseas lands."
+    },
+    {
+     "q": "What is the name of the narrow strip of land that connects North America and South America?",
+     "choices": [
+      "Panama (the Isthmus of Panama)",
+      "Suez",
+      "Gibraltar",
+      "Malay Peninsula"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "The Panama Canal cuts through it."
+    },
+    {
+     "q": "Which country is Mount Fuji in?",
+     "choices": [
+      "China",
+      "Japan",
+      "South Korea",
+      "Thailand"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "It is Japan's tallest mountain."
+    },
+    {
+     "q": "Which continent is Egypt in?",
+     "choices": [
+      "Europe",
+      "Asia",
+      "Africa",
+      "South America"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Egypt has a small part in Asia (Sinai), but is mostly in Africa."
+    },
+    {
+     "q": "Which country has the largest population in Southeast Asia?",
+     "choices": [
+      "The Philippines",
+      "Thailand",
+      "Vietnam",
+      "Indonesia"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Indonesia has about 275 million people."
+    },
+    {
+     "q": "Which two countries share the longest border in the world?",
+     "choices": [
+      "Canada and the USA",
+      "Russia and China",
+      "India and Pakistan",
+      "Brazil and Argentina"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "The border is almost 9,000 km long."
+    },
+    {
+     "q": "What is the capital of Vietnam?",
+     "choices": [
+      "Ho Chi Minh City",
+      "Hanoi",
+      "Da Nang",
+      "Hue"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Ho Chi Minh City is bigger, but Hanoi is the capital."
+    },
+    {
+     "q": "Which is the capital of Italy?",
+     "choices": [
+      "Venice",
+      "Milan",
+      "Rome",
+      "Naples"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Rome has the Colosseum."
+    },
+    {
+     "q": "Which country is shaped like a boot?",
+     "choices": [
+      "Portugal",
+      "Spain",
+      "Greece",
+      "Italy"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Italy sticks out into the Mediterranean Sea."
+    },
+    {
+     "q": "Which is the longest river in South America?",
+     "choices": [
+      "The Amazon",
+      "The Orinoco",
+      "The Parana",
+      "The Madeira"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It carries more water than any other river."
+    },
+    {
+     "q": "Which Thai island is the largest?",
+     "choices": [
+      "Koh Samui",
+      "Phuket",
+      "Koh Phi Phi",
+      "Koh Chang"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Phuket is Thailand's largest island."
+    },
+    {
+     "q": "What is the capital of Japan?",
+     "choices": [
+      "Osaka",
+      "Kyoto",
+      "Tokyo",
+      "Seoul"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Tokyo is one of the biggest cities in the world."
+    },
+    {
+     "q": "What is the capital of Ethiopia?",
+     "choices": [
+      "Mogadishu",
+      "Nairobi",
+      "Khartoum",
+      "Addis Ababa"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is on a high plateau."
+    },
+    {
+     "q": "What is the capital of Australia's neighbor country Papua New Guinea?",
+     "choices": [
+      "Port Moresby",
+      "Honiara",
+      "Suva",
+      "Apia"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is on the island of New Guinea."
+    },
+    {
+     "q": "Which strait separates Spain from Morocco?",
+     "choices": [
+      "The Bosphorus",
+      "The Strait of Gibraltar",
+      "The Strait of Malacca",
+      "The English Channel"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It connects the Atlantic Ocean and the Mediterranean Sea."
+    },
+    {
+     "q": "Which country is both a country and a continent?",
+     "choices": [
+      "Iceland",
+      "Greenland",
+      "Australia",
+      "Madagascar"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "It is the smallest continent."
+    },
+    {
+     "q": "What is the capital of Argentina?",
+     "choices": [
+      "Montevideo",
+      "Santiago",
+      "Lima",
+      "Buenos Aires"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Tango started in Buenos Aires."
+    },
+    {
+     "q": "Which is the longest mountain range on land?",
+     "choices": [
+      "The Andes",
+      "The Himalayas",
+      "The Rocky Mountains",
+      "The Alps"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "The Andes stretch along South America."
+    },
+    {
+     "q": "What is the capital of Brazil?",
+     "choices": [
+      "Rio de Janeiro",
+      "Brasilia",
+      "Sao Paulo",
+      "Salvador"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Brasilia was built in the 1950s."
+    },
+    {
+     "q": "What is the capital of Malaysia?",
+     "choices": [
+      "Johor Bahru",
+      "Penang",
+      "Kuala Lumpur",
+      "Putrajaya"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The Petronas Towers are in Kuala Lumpur."
+    },
+    {
+     "q": "Which river is the longest in Europe?",
+     "choices": [
+      "The Seine",
+      "The Danube",
+      "The Rhine",
+      "The Volga"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "It flows through Russia into the Caspian Sea."
+    },
+    {
+     "q": "What is the name of the ocean current that warms Western Europe?",
+     "choices": [
+      "The Gulf Stream",
+      "The Humboldt Current",
+      "The Kuroshio",
+      "The Canary Current"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It carries warm water from the Gulf of Mexico."
+    },
+    {
+     "q": "In which country is the ancient trading city of Timbuktu?",
+     "choices": [
+      "Niger",
+      "Mali",
+      "Chad",
+      "Sudan"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is on the edge of the Sahara."
+    },
+    {
+     "q": "What is the capital of Canada?",
+     "choices": [
+      "Vancouver",
+      "Toronto",
+      "Ottawa",
+      "Montreal"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Toronto is bigger, but Ottawa is the capital."
+    },
+    {
+     "q": "Which country is the Amazon rainforest mostly in?",
+     "choices": [
+      "Venezuela",
+      "Peru",
+      "Colombia",
+      "Brazil"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "About 60% of it is in Brazil."
+    },
+    {
+     "q": "Which is the largest desert in the world?",
+     "choices": [
+      "The Antarctic Desert",
+      "The Sahara",
+      "The Gobi",
+      "The Arabian Desert"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "A desert is a place with very little rain, and Antarctica is very dry."
+    },
+    {
+     "q": "Which country is made up of more than 17,000 islands?",
+     "choices": [
+      "Japan",
+      "Indonesia",
+      "The Philippines",
+      "Malaysia"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Indonesia is the largest island country."
+    },
+    {
+     "q": "What is the capital of Peru?",
+     "choices": [
+      "Quito",
+      "Cusco",
+      "Lima",
+      "Bogota"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Machu Picchu is near Cusco."
+    },
+    {
+     "q": "Which two countries have no coastline and are \"double landlocked\"?",
+     "choices": [
+      "Austria and Hungary",
+      "Laos and Bolivia",
+      "Nepal and Mongolia",
+      "Liechtenstein and Uzbekistan"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "You must cross two borders to reach the sea from them."
+    },
+    {
+     "q": "Which country is the home of the kangaroo?",
+     "choices": [
+      "Australia",
+      "New Zealand",
+      "South Africa",
+      "Brazil"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Kangaroos live in the wild in Australia."
+    },
+    {
+     "q": "Which country has the most people in the world?",
+     "choices": [
+      "China",
+      "India",
+      "The USA",
+      "Indonesia"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "India passed China in 2023."
+    },
+    {
+     "q": "Which river flows through London?",
+     "choices": [
+      "The Danube",
+      "The Seine",
+      "The Thames",
+      "The Rhine"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The Thames flows into the North Sea."
+    },
+    {
+     "q": "In which country would you find the city of Hanoi?",
+     "choices": [
+      "Myanmar",
+      "Laos",
+      "Cambodia",
+      "Vietnam"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Hanoi is the capital of Vietnam."
+    },
+    {
+     "q": "Which country is Mount Kilimanjaro in?",
+     "choices": [
+      "Tanzania",
+      "Kenya",
+      "Uganda",
+      "Ethiopia"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "It is the highest mountain in Africa."
+    },
+    {
+     "q": "What is the capital of New Zealand?",
+     "choices": [
+      "Auckland",
+      "Wellington",
+      "Christchurch",
+      "Queenstown"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Wellington is on the North Island."
+    },
+    {
+     "q": "What is the capital of Turkey?",
+     "choices": [
+      "Izmir",
+      "Istanbul",
+      "Ankara",
+      "Bursa"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Istanbul is bigger, but Ankara is the capital."
+    },
+    {
+     "q": "Which is the biggest island in the world (not a continent)?",
+     "choices": [
+      "New Zealand",
+      "Borneo",
+      "Madagascar",
+      "Greenland"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Greenland belongs to Denmark."
+    },
+    {
+     "q": "What is the capital of the Philippines?",
+     "choices": [
+      "Manila",
+      "Cebu",
+      "Davao",
+      "Quezon City"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Manila is on the island of Luzon."
+    },
+    {
+     "q": "Which is the deepest lake in the world?",
+     "choices": [
+      "Lake Victoria",
+      "Lake Baikal",
+      "Lake Superior",
+      "Lake Titicaca"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It is in Siberia, Russia."
+    },
+    {
+     "q": "Which is the highest waterfall in the world?",
+     "choices": [
+      "Victoria Falls",
+      "Niagara Falls",
+      "Angel Falls",
+      "Iguazu Falls"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "It is in Venezuela and about 979 meters high."
+    },
+    {
+     "q": "Which sea is between Europe and Africa?",
+     "choices": [
+      "The Caspian Sea",
+      "The Red Sea",
+      "The Black Sea",
+      "The Mediterranean Sea"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It borders Italy, Spain, Egypt and many more countries."
+    },
+    {
+     "q": "Which famous waterfall is on the border between Argentina and Brazil?",
+     "choices": [
+      "Iguazu Falls",
+      "Niagara Falls",
+      "Victoria Falls",
+      "Angel Falls"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It has about 275 waterfalls."
+    },
+    {
+     "q": "Which continent is the largest by area?",
+     "choices": [
+      "Africa",
+      "Asia",
+      "North America",
+      "Europe"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Asia has more than 4 billion people."
+    },
+    {
+     "q": "Which is the longest river in Africa?",
+     "choices": [
+      "The Niger",
+      "The Congo",
+      "The Nile",
+      "The Zambezi"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The Nile flows north to the Mediterranean Sea."
+    },
+    {
+     "q": "Which country does the Great Barrier Reef belong to?",
+     "choices": [
+      "Fiji",
+      "Indonesia",
+      "The Philippines",
+      "Australia"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It is off the coast of Queensland."
+    },
+    {
+     "q": "Which is the smallest country in the world?",
+     "choices": [
+      "Vatican City",
+      "Monaco",
+      "Malta",
+      "Singapore"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Vatican City is inside Rome."
+    },
+    {
+     "q": "What is the capital of the United Kingdom?",
+     "choices": [
+      "Manchester",
+      "London",
+      "Edinburgh",
+      "Cardiff"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "London is on the Thames."
+    },
+    {
+     "q": "Which desert is the largest hot desert in the world?",
+     "choices": [
+      "The Kalahari",
+      "The Gobi",
+      "The Sahara",
+      "The Arabian Desert"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The Sahara is in northern Africa."
+    },
+    {
+     "q": "Which African country was never colonized by Europeans, apart from a short Italian occupation?",
+     "choices": [
+      "Ghana",
+      "Nigeria",
+      "Kenya",
+      "Ethiopia"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It is one of the oldest countries in Africa."
+    },
+    {
+     "q": "Which ocean trench is the deepest known point on Earth?",
+     "choices": [
+      "The Mariana Trench",
+      "The Java Trench",
+      "The Puerto Rico Trench",
+      "The Tonga Trench"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is deeper than Everest is high."
+    },
+    {
+     "q": "Which ocean lies between Africa and Australia?",
+     "choices": [
+      "The Pacific Ocean",
+      "The Indian Ocean",
+      "The Atlantic Ocean",
+      "The Arctic Ocean"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "It is the third-largest ocean."
+    },
+    {
+     "q": "What is the capital of Saudi Arabia?",
+     "choices": [
+      "Mecca",
+      "Jeddah",
+      "Riyadh",
+      "Medina"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Riyadh is in the center of the country."
+    },
+    {
+     "q": "Which Thai province is famous for its beautiful beaches on the Andaman Sea and the Phi Phi Islands?",
+     "choices": [
+      "Udon Thani",
+      "Chiang Rai",
+      "Nakhon Ratchasima",
+      "Krabi"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Krabi is on the Andaman coast."
+    },
+    {
+     "q": "What is the capital of Kazakhstan?",
+     "choices": [
+      "Astana",
+      "Almaty",
+      "Tashkent",
+      "Bishkek"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It was renamed Nur-Sultan for a while, then Astana again."
+    },
+    {
+     "q": "What is the capital of South Korea?",
+     "choices": [
+      "Busan",
+      "Seoul",
+      "Incheon",
+      "Pyongyang"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Pyongyang is the capital of North Korea."
+    },
+    {
+     "q": "Which Thai city is called the \"Rose of the North\"?",
+     "choices": [
+      "Lampang",
+      "Chiang Rai",
+      "Chiang Mai",
+      "Phrae"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Chiang Mai is famous for its old city and temples."
+    },
+    {
+     "q": "What is the tallest mountain in the world above sea level?",
+     "choices": [
+      "Kilimanjaro",
+      "K2",
+      "Mount Fuji",
+      "Mount Everest"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Everest is about 8,849 meters high."
+    },
+    {
+     "q": "What is the capital of Brunei?",
+     "choices": [
+      "Bandar Seri Begawan",
+      "Kuala Belait",
+      "Tutong",
+      "Muara"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Brunei is on the island of Borneo."
+    },
+    {
+     "q": "Which country has the city of Rio de Janeiro?",
+     "choices": [
+      "Argentina",
+      "Brazil",
+      "Mexico",
+      "Portugal"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The Christ the Redeemer statue is there."
+    },
+    {
+     "q": "Which country has the Atacama Desert, one of the driest places on Earth?",
+     "choices": [
+      "Peru",
+      "Argentina",
+      "Chile",
+      "Bolivia"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Some places there have had no rain for years."
+    },
+    {
+     "q": "Which country has the most pyramids in the world?",
+     "choices": [
+      "Peru",
+      "Egypt",
+      "Mexico",
+      "Sudan"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Sudan has more than 200 pyramids, though they are smaller."
+    },
+    {
+     "q": "Which is the only continent with no permanent countries or cities?",
+     "choices": [
+      "Antarctica",
+      "Australia",
+      "Europe",
+      "South America"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Only scientists live there temporarily."
+    },
+    {
+     "q": "What is the capital of Myanmar?",
+     "choices": [
+      "Yangon",
+      "Naypyidaw",
+      "Mandalay",
+      "Bago"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Yangon was the capital until 2006."
+    },
+    {
+     "q": "Which country has the most volcanoes?",
+     "choices": [
+      "Chile",
+      "Japan",
+      "Indonesia",
+      "Iceland"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Indonesia has more than 120 active volcanoes."
+    }
+   ]
+  },
+  {
+   "name": "Science & Nature",
+   "questions": [
+    {
+     "q": "Which vitamin do we get from sunlight?",
+     "choices": [
+      "Vitamin D",
+      "Vitamin A",
+      "Vitamin C",
+      "Vitamin B"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Our skin makes it in the sun."
+    },
+    {
+     "q": "Which planet is closest to the Sun?",
+     "choices": [
+      "Venus",
+      "Mercury",
+      "Earth",
+      "Mars"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "It orbits the Sun in about 88 days."
+    },
+    {
+     "q": "What force keeps us on the ground?",
+     "choices": [
+      "Friction",
+      "Magnetism",
+      "Gravity",
+      "Electricity"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Gravity pulls things toward Earth."
+    },
+    {
+     "q": "What do we call the study of rocks and the Earth's structure?",
+     "choices": [
+      "Astronomy",
+      "Biology",
+      "Chemistry",
+      "Geology"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Geo- means Earth."
+    },
+    {
+     "q": "What is the unit used to measure electric current?",
+     "choices": [
+      "Ampere",
+      "Volt",
+      "Watt",
+      "Ohm"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "The symbol is A."
+    },
+    {
+     "q": "What is the name of the biggest rainforest on Earth?",
+     "choices": [
+      "The Congo",
+      "The Amazon",
+      "The Daintree",
+      "The Sundarbans"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "It is in South America."
+    },
+    {
+     "q": "What is the chemical symbol for table salt?",
+     "choices": [
+      "NaOH",
+      "KCl",
+      "NaCl",
+      "H2SO4"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "It is sodium chloride."
+    },
+    {
+     "q": "What do bees collect from flowers to make honey?",
+     "choices": [
+      "Sap",
+      "Pollen only",
+      "Water",
+      "Nectar"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Bees also carry pollen from flower to flower."
+    },
+    {
+     "q": "What kind of animal is a dolphin?",
+     "choices": [
+      "A mammal",
+      "A fish",
+      "A reptile",
+      "An amphibian"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Dolphins breathe air and feed milk to their young."
+    },
+    {
+     "q": "Which element has the symbol \"W\"?",
+     "choices": [
+      "Tin",
+      "Tungsten",
+      "Titanium",
+      "Water"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "W comes from the German word \"Wolfram\"."
+    },
+    {
+     "q": "Which gas makes a balloon float in the air?",
+     "choices": [
+      "Carbon dioxide",
+      "Oxygen",
+      "Helium",
+      "Nitrogen"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Helium is lighter than air."
+    },
+    {
+     "q": "Which energy source comes from the Sun?",
+     "choices": [
+      "Gas",
+      "Nuclear energy",
+      "Coal",
+      "Solar energy"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Solar panels turn sunlight into electricity."
+    },
+    {
+     "q": "How many chambers does the human heart have?",
+     "choices": [
+      "4",
+      "2",
+      "3",
+      "5"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Two atria and two ventricles."
+    },
+    {
+     "q": "What is the speed of light, about?",
+     "choices": [
+      "3,000 kilometers per second",
+      "300,000 kilometers per second",
+      "30,000 kilometers per second",
+      "3 million kilometers per second"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Light can go around the Earth about 7 times in one second."
+    },
+    {
+     "q": "Which part of the cell holds its DNA?",
+     "choices": [
+      "The membrane",
+      "The cell wall",
+      "The nucleus",
+      "The cytoplasm"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "DNA is stored in the nucleus."
+    },
+    {
+     "q": "How many chromosomes do humans normally have?",
+     "choices": [
+      "48",
+      "23",
+      "44",
+      "46"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "23 pairs."
+    },
+    {
+     "q": "Which element has the symbol \"K\"?",
+     "choices": [
+      "Potassium",
+      "Krypton",
+      "Calcium",
+      "Carbon"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "K comes from the Latin \"kalium\"."
+    },
+    {
+     "q": "What is the name of the largest planet's famous storm, a huge red spot?",
+     "choices": [
+      "The Eye of the Storm",
+      "The Great Red Spot",
+      "The Dark Spot",
+      "The Big Red Eye"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It is a storm bigger than Earth."
+    },
+    {
+     "q": "Which planet is the largest in our solar system?",
+     "choices": [
+      "Neptune",
+      "Saturn",
+      "Jupiter",
+      "Earth"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Jupiter is more than 11 times wider than Earth."
+    },
+    {
+     "q": "What does DNA stand for?",
+     "choices": [
+      "Double nitrogen acid",
+      "Dynamic nuclear acid",
+      "Dioxide nucleic acid",
+      "Deoxyribonucleic acid"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It carries genetic information."
+    },
+    {
+     "q": "Which scientist is famous for the three laws of motion?",
+     "choices": [
+      "Isaac Newton",
+      "Albert Einstein",
+      "Galileo Galilei",
+      "Charles Darwin"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "He also described gravity."
+    },
+    {
+     "q": "What is the Fibonacci sequence?",
+     "choices": [
+      "Each number is double the one before it",
+      "Each number is the sum of the two before it",
+      "All prime numbers in order",
+      "Only even numbers"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "1, 1, 2, 3, 5, 8, 13..."
+    },
+    {
+     "q": "What is the term for a very large storm with a calm center that forms over warm oceans?",
+     "choices": [
+      "Monsoon",
+      "Tornado",
+      "Hurricane/typhoon",
+      "Blizzard"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "It is a tropical cyclone."
+    },
+    {
+     "q": "Which green substance in plants captures sunlight?",
+     "choices": [
+      "Insulin",
+      "Hemoglobin",
+      "Keratin",
+      "Chlorophyll"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It gives plants their green color."
+    },
+    {
+     "q": "How many planets are in our solar system?",
+     "choices": [
+      "8",
+      "7",
+      "9",
+      "10"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Pluto is now called a dwarf planet."
+    },
+    {
+     "q": "What is the pH of pure water?",
+     "choices": [
+      "0",
+      "7",
+      "14",
+      "1"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Below 7 is acid and above 7 is base."
+    },
+    {
+     "q": "Which of these animals can change its color to blend in?",
+     "choices": [
+      "Dog",
+      "Elephant",
+      "Chameleon",
+      "Horse"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Chameleons also change color to show mood."
+    },
+    {
+     "q": "Which part of the plant takes in water from the soil?",
+     "choices": [
+      "The stem",
+      "The leaves",
+      "The flowers",
+      "The roots"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Roots also hold the plant in place."
+    },
+    {
+     "q": "What is the name of the process where water turns into vapor?",
+     "choices": [
+      "Evaporation",
+      "Condensation",
+      "Precipitation",
+      "Freezing"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Heat makes water evaporate."
+    },
+    {
+     "q": "What are the three states of matter we see every day?",
+     "choices": [
+      "Hot, warm and cold",
+      "Solid, liquid and gas",
+      "Hard, soft and thin",
+      "Ice, snow and rain"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Water can be all three."
+    },
+    {
+     "q": "What is the name of the biggest moon of Saturn?",
+     "choices": [
+      "Ganymede",
+      "Europa",
+      "Titan",
+      "Io"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Titan is bigger than the planet Mercury."
+    },
+    {
+     "q": "Which planet spins on its side and has an extremely tilted axis?",
+     "choices": [
+      "Mars",
+      "Neptune",
+      "Saturn",
+      "Uranus"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Its axis is tilted about 98 degrees."
+    },
+    {
+     "q": "What is the term for an animal that hunts other animals for food?",
+     "choices": [
+      "Predator",
+      "Prey",
+      "Scavenger",
+      "Herbivore"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A tiger is a predator."
+    },
+    {
+     "q": "Which blood cells carry oxygen around the body?",
+     "choices": [
+      "White blood cells",
+      "Red blood cells",
+      "Platelets",
+      "Plasma"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "They contain hemoglobin."
+    },
+    {
+     "q": "Which part of the human body does the stethoscope listen to?",
+     "choices": [
+      "The teeth",
+      "The eyes",
+      "The heart and lungs",
+      "The ears"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Doctors use it to hear heartbeats and breathing."
+    },
+    {
+     "q": "What is the name of the layer of gases around the Earth?",
+     "choices": [
+      "The core",
+      "The crust",
+      "The mantle",
+      "The atmosphere"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It protects us and holds air."
+    },
+    {
+     "q": "Who proposed the theory of evolution by natural selection?",
+     "choices": [
+      "Charles Darwin",
+      "Gregor Mendel",
+      "Louis Pasteur",
+      "Alexander Fleming"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "He wrote \"On the Origin of Species\"."
+    },
+    {
+     "q": "Which animal is the fastest on land?",
+     "choices": [
+      "The lion",
+      "The cheetah",
+      "The horse",
+      "The leopard"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A cheetah can run about 100 km/h."
+    },
+    {
+     "q": "Which element has the atomic number 1?",
+     "choices": [
+      "Oxygen",
+      "Helium",
+      "Hydrogen",
+      "Carbon"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is the lightest element."
+    },
+    {
+     "q": "What is the process by which a caterpillar changes into a butterfly?",
+     "choices": [
+      "Hibernation",
+      "Migration",
+      "Evolution",
+      "Metamorphosis"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It changes form in a chrysalis."
+    },
+    {
+     "q": "How many bones are in an adult human body?",
+     "choices": [
+      "206",
+      "106",
+      "306",
+      "156"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Babies have about 300 bones, and some join as they grow."
+    },
+    {
+     "q": "What instrument do we use to see very tiny things?",
+     "choices": [
+      "A telescope",
+      "A microscope",
+      "A thermometer",
+      "A compass"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A microscope magnifies small things."
+    },
+    {
+     "q": "What kind of animal is a snake?",
+     "choices": [
+      "A mammal",
+      "An amphibian",
+      "A reptile",
+      "A fish"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Reptiles have scales and are cold-blooded."
+    },
+    {
+     "q": "What is the unit used to measure force?",
+     "choices": [
+      "Watt",
+      "Joule",
+      "Pascal",
+      "Newton"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It is named after Isaac Newton."
+    },
+    {
+     "q": "What is the name of the point where a black hole's gravity becomes too strong for light to escape?",
+     "choices": [
+      "The event horizon",
+      "The singularity",
+      "The corona",
+      "The orbit"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Nothing can return from beyond it."
+    },
+    {
+     "q": "What is the term for a number that has only two factors, 1 and itself?",
+     "choices": [
+      "Even number",
+      "Prime number",
+      "Square number",
+      "Factor"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "2, 3, 5 and 7 are prime."
+    },
+    {
+     "q": "What is the name of the supercontinent that existed about 300 million years ago?",
+     "choices": [
+      "Laurasia",
+      "Gondwana",
+      "Pangaea",
+      "Atlantis"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "It split into the continents we know."
+    },
+    {
+     "q": "What is the hardest natural material on Earth?",
+     "choices": [
+      "Quartz",
+      "Gold",
+      "Iron",
+      "Diamond"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Diamond is made of carbon."
+    },
+    {
+     "q": "What type of energy does a moving object have?",
+     "choices": [
+      "Kinetic energy",
+      "Potential energy",
+      "Thermal energy",
+      "Chemical energy"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Kinetic comes from the Greek word for movement."
+    },
+    {
+     "q": "Which gas do we breathe out?",
+     "choices": [
+      "Oxygen",
+      "Carbon dioxide",
+      "Helium",
+      "Hydrogen"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Our bodies make CO2 when we use energy."
+    },
+    {
+     "q": "What do we call a baby frog?",
+     "choices": [
+      "A joey",
+      "A cub",
+      "A tadpole",
+      "A fry"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Tadpoles live in water and grow legs."
+    },
+    {
+     "q": "What is the name of the galaxy we live in?",
+     "choices": [
+      "The Pinwheel",
+      "Andromeda",
+      "The Whirlpool",
+      "The Milky Way"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Our Sun is one of billions of stars in it."
+    },
+    {
+     "q": "Which planet is the hottest in our solar system?",
+     "choices": [
+      "Venus",
+      "Mercury",
+      "Mars",
+      "Jupiter"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Its thick atmosphere traps heat."
+    },
+    {
+     "q": "Which bird is famous for flying the longest distance in migration, from the Arctic to the Antarctic?",
+     "choices": [
+      "The albatross",
+      "The Arctic tern",
+      "The swallow",
+      "The eagle"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It sees two summers each year."
+    },
+    {
+     "q": "What is the name of the natural satellite that orbits the Earth?",
+     "choices": [
+      "Venus",
+      "Mars",
+      "The Moon",
+      "Titan"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "It takes about 27 days to orbit once."
+    },
+    {
+     "q": "What is the largest organ of the human body?",
+     "choices": [
+      "The heart",
+      "The liver",
+      "The brain",
+      "The skin"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It protects the body and senses touch."
+    },
+    {
+     "q": "What is the name of the longest bone in the human body?",
+     "choices": [
+      "The femur",
+      "The tibia",
+      "The humerus",
+      "The spine"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is the thigh bone."
+    },
+    {
+     "q": "Which is the largest mammal in the world?",
+     "choices": [
+      "The elephant",
+      "The blue whale",
+      "The giraffe",
+      "The hippo"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A blue whale can be 30 meters long."
+    },
+    {
+     "q": "What is the largest species of shark and the largest fish in the world?",
+     "choices": [
+      "The hammerhead",
+      "The great white shark",
+      "The whale shark",
+      "The tiger shark"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "It eats tiny plankton."
+    },
+    {
+     "q": "What is the most common blood type in the world?",
+     "choices": [
+      "A negative",
+      "AB negative",
+      "B negative",
+      "O positive"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "About 38% of people are O positive."
+    },
+    {
+     "q": "What is the chemical symbol for iron?",
+     "choices": [
+      "Fe",
+      "Ir",
+      "In",
+      "Fr"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It comes from the Latin word \"ferrum\"."
+    },
+    {
+     "q": "What is the powerhouse of the cell?",
+     "choices": [
+      "The nucleus",
+      "The mitochondria",
+      "The ribosome",
+      "The vacuole"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It makes energy for the cell."
+    },
+    {
+     "q": "What causes the tides in the oceans?",
+     "choices": [
+      "The Sun's heat",
+      "The wind",
+      "The Moon's gravity",
+      "Earth's spin only"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "The Moon pulls on the water."
+    },
+    {
+     "q": "What gas do plants take in from the air for photosynthesis?",
+     "choices": [
+      "Hydrogen",
+      "Oxygen",
+      "Nitrogen",
+      "Carbon dioxide"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Plants use it, sunlight and water to make food."
+    },
+    {
+     "q": "What do we call animals that eat only plants?",
+     "choices": [
+      "Herbivores",
+      "Carnivores",
+      "Omnivores",
+      "Insectivores"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Cows and rabbits are herbivores."
+    },
+    {
+     "q": "Which animal group do whales and bats both belong to?",
+     "choices": [
+      "Fish",
+      "Mammals",
+      "Birds",
+      "Reptiles"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Bats are the only flying mammals."
+    },
+    {
+     "q": "What is the main gas in the air we breathe?",
+     "choices": [
+      "Carbon dioxide",
+      "Oxygen",
+      "Nitrogen",
+      "Hydrogen"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "About 78% of the air is nitrogen."
+    },
+    {
+     "q": "How many legs does an insect have?",
+     "choices": [
+      "10",
+      "4",
+      "8",
+      "6"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Insects have three body parts and six legs."
+    },
+    {
+     "q": "Which animal is the largest living bird?",
+     "choices": [
+      "The ostrich",
+      "The eagle",
+      "The penguin",
+      "The albatross"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Ostriches can be 2.7 meters tall."
+    },
+    {
+     "q": "Who discovered penicillin?",
+     "choices": [
+      "Louis Pasteur",
+      "Alexander Fleming",
+      "Marie Curie",
+      "Edward Jenner"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "He noticed mold killed bacteria in 1928."
+    },
+    {
+     "q": "What is the process in which plants make their own food using sunlight?",
+     "choices": [
+      "Digestion",
+      "Respiration",
+      "Photosynthesis",
+      "Pollination"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "It happens in the chloroplasts of leaves."
+    },
+    {
+     "q": "What is the hardest part of the human body?",
+     "choices": [
+      "The nail",
+      "Bone",
+      "The skull",
+      "Tooth enamel"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Enamel is the hardest tissue in your body."
+    },
+    {
+     "q": "What gas do humans need to breathe in to live?",
+     "choices": [
+      "Oxygen",
+      "Carbon dioxide",
+      "Helium",
+      "Nitrogen"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Air is about 21% oxygen."
+    },
+    {
+     "q": "What is the chemical symbol for sodium?",
+     "choices": [
+      "So",
+      "Na",
+      "Sd",
+      "S"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "It comes from the Latin word \"natrium\"."
+    },
+    {
+     "q": "What type of rock is formed from cooled lava?",
+     "choices": [
+      "Metamorphic",
+      "Sedimentary",
+      "Igneous",
+      "Mineral"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Igneous means \"made by fire\"."
+    },
+    {
+     "q": "What is the approximate age of the Earth?",
+     "choices": [
+      "4.5 million years",
+      "450 million years",
+      "45 billion years",
+      "4.5 billion years"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Scientists measure it from rocks and meteorites."
+    },
+    {
+     "q": "What instrument do we use to look at faraway stars?",
+     "choices": [
+      "A telescope",
+      "A microscope",
+      "A stethoscope",
+      "A barometer"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Galileo made famous early telescope observations."
+    },
+    {
+     "q": "What is the name of the space telescope launched in 1990 that took many famous photos?",
+     "choices": [
+      "The Kepler Telescope",
+      "The Hubble Space Telescope",
+      "The Webb Telescope",
+      "The Spitzer Telescope"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "It orbits above Earth's atmosphere."
+    },
+    {
+     "q": "How many legs does a spider have?",
+     "choices": [
+      "4",
+      "6",
+      "8",
+      "10"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Spiders are arachnids, not insects."
+    },
+    {
+     "q": "What is the name for animals that sleep through the winter?",
+     "choices": [
+      "Nocturnal animals",
+      "Migrators",
+      "Predators",
+      "Hibernators"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Bears hibernate in winter."
+    },
+    {
+     "q": "Which animal has the longest pregnancy of any land mammal, about 22 months?",
+     "choices": [
+      "The elephant",
+      "The giraffe",
+      "The rhino",
+      "The whale"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is the longest of any land mammal."
+    },
+    {
+     "q": "What is the chemical symbol for water?",
+     "choices": [
+      "CO2",
+      "H2O",
+      "O2",
+      "NaCl"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Two hydrogen atoms and one oxygen atom."
+    },
+    {
+     "q": "What is the main job of the lungs?",
+     "choices": [
+      "To digest food",
+      "To pump blood",
+      "To take in oxygen",
+      "To think"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "They also remove carbon dioxide."
+    },
+    {
+     "q": "Which planet has the most known moons, as of the 2020s?",
+     "choices": [
+      "Neptune",
+      "Jupiter",
+      "Uranus",
+      "Saturn"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Saturn has more than 140 confirmed moons."
+    },
+    {
+     "q": "Which cycle describes water moving from the sea to the clouds and back as rain?",
+     "choices": [
+      "The water cycle",
+      "The rock cycle",
+      "The carbon cycle",
+      "The food chain"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "It includes evaporation, condensation and precipitation."
+    },
+    {
+     "q": "Which organ pumps blood around the body?",
+     "choices": [
+      "The lungs",
+      "The heart",
+      "The liver",
+      "The stomach"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The heart beats about 100,000 times a day."
+    },
+    {
+     "q": "What is the boiling point of water at sea level in Celsius?",
+     "choices": [
+      "120 degrees",
+      "90 degrees",
+      "100 degrees",
+      "80 degrees"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Water boils at 100°C."
+    },
+    {
+     "q": "What is the center of an atom called?",
+     "choices": [
+      "The orbit",
+      "The electron",
+      "The cell",
+      "The nucleus"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "It contains protons and neutrons."
+    },
+    {
+     "q": "What do we call animals that eat both plants and meat?",
+     "choices": [
+      "Omnivores",
+      "Herbivores",
+      "Carnivores",
+      "Predators"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Humans and bears are omnivores."
+    },
+    {
+     "q": "Which planet has the most visible rings?",
+     "choices": [
+      "Mars",
+      "Saturn",
+      "Venus",
+      "Earth"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Saturn's rings are made of ice and rock."
+    },
+    {
+     "q": "What is the chemical symbol for lead?",
+     "choices": [
+      "Ld",
+      "Le",
+      "Pb",
+      "Pl"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "It comes from the Latin word \"plumbum\"."
+    },
+    {
+     "q": "What is the freezing point of water in Celsius?",
+     "choices": [
+      "32 degrees",
+      "10 degrees",
+      "-10 degrees",
+      "0 degrees"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "32 is the Fahrenheit number."
+    },
+    {
+     "q": "What is the name of the smallest bone in the human body?",
+     "choices": [
+      "The stapes (in the ear)",
+      "The patella",
+      "The femur",
+      "The radius"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "It is about 3 millimeters long."
+    },
+    {
+     "q": "What is the closest star to Earth?",
+     "choices": [
+      "Proxima Centauri",
+      "The Sun",
+      "Sirius",
+      "Polaris"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The Sun is about 150 million kilometers away."
+    },
+    {
+     "q": "Which is the smallest planet in our solar system?",
+     "choices": [
+      "Venus",
+      "Mars",
+      "Mercury",
+      "Pluto"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Mercury is closest to the Sun."
+    },
+    {
+     "q": "What is the chemical symbol for gold?",
+     "choices": [
+      "Gd",
+      "Ag",
+      "Go",
+      "Au"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "It comes from the Latin word \"aurum\"."
+    },
+    {
+     "q": "What kind of animal is a frog?",
+     "choices": [
+      "An amphibian",
+      "A reptile",
+      "A mammal",
+      "A fish"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Amphibians live in water and on land."
+    },
+    {
+     "q": "Which scientist discovered radioactivity in uranium in 1896?",
+     "choices": [
+      "Marie Curie",
+      "Henri Becquerel",
+      "Ernest Rutherford",
+      "Niels Bohr"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Marie Curie later named it \"radioactivity\"."
+    },
+    {
+     "q": "What do we call a scientist who studies animals?",
+     "choices": [
+      "A geologist",
+      "A botanist",
+      "A zoologist",
+      "A chemist"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Zoo- comes from the Greek word for animal."
+    },
+    {
+     "q": "Which planet is known as the Red Planet?",
+     "choices": [
+      "Mercury",
+      "Venus",
+      "Jupiter",
+      "Mars"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Iron oxide (rust) gives Mars its red color."
+    }
+   ]
+  }
+ ]
+}

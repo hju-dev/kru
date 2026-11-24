@@ -23,7 +23,7 @@
     var id = session && session.unit;
     if (!id || !/^[a-z0-9-]+$/.test(id)) return Promise.resolve(null);
     return fetch('/units/' + id + '.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (u) {
-      if (!u || (u.level && session.level && u.level !== session.level)) return null;
+      if (!u || (u.level && u.level !== 'any' && session.level && u.level !== session.level)) return null; // 'any' = Trivia, for every level
       u.sets = (u.sets || []).map(function (s) { return { name: String(s.name), questions: (s.questions || []).filter(valid) }; })
         .filter(function (s) { return s.questions.length; });
       return u;
