@@ -130,3 +130,21 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
     expect(read('public/games/fortress/index.html')).toContain('id="aimGrid"')
   })
 })
+
+describe('Point 1-4: ties and the whole-base target menu (Nov 25)', () => {
+  const js2 = readFileSync(new URL('../public/games/fortress/app.js', import.meta.url), 'utf8')
+  const css = readFileSync(new URL('../public/games/fortress/style.css', import.meta.url), 'utf8')
+  it('equal health: the most gold left decides, then the most weapons; still equal = a shared place with shared points', () => {
+    expect(js2).toContain('return [totalHp(id), T(id).gold, T(id).bombs.length]')
+    expect(js2).toContain('cmp(survivors[i - 1], id) === 0 ? out[i - 1].rank')
+    expect(js2).toContain('return Math.floor(sum / same)')
+    expect(js2).toContain('Nobody won a fight!')
+    expect(js2).toContain('are tied for first and share the points!')
+  })
+  it('TOS-2M / Sarmat / Jammer: the Fire button is first in the target menu and the menu scrolls, so it is never off screen', () => {
+    expect(js2).toContain("$('aimGrid').className = 'aim-grid' + (whole ? ' compact' : '')")
+    expect(js2).toContain("(whole ? '<button class=\"btn gold aim-go\"")
+    expect(css).toContain('.shop.aim { overflow-y: auto; }')
+    expect(css).toContain('.aim-grid.compact .acard small { display: none; }')
+  })
+})
