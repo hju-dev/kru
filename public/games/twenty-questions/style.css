@@ -345,3 +345,18 @@ button:focus-visible {
 #menuBack .menu { width: min(680px, 100%); display: grid; grid-template-columns: 1fr 1fr; gap: 6px 8px; }
 #menuBack .menu > .menu-row, #menuBack .menu > p { grid-column: 1 / -1; margin: 0; }
 #menuBack .menu .btn.opt { width: auto; }
+
+/* The student who asks next: big, on the main screen (Henry, Nov 24) */
+.asker {
+  display: flex; align-items: baseline; justify-content: center; gap: 10px; flex-wrap: wrap;
+  padding: 4px 18px; border-radius: 18px; border: 3px solid var(--gold);
+  background: color-mix(in srgb, var(--gold) 14%, var(--stage));
+}
+.asker[hidden] { display: none; }
+.asker-lab { color: var(--muted); font-size: 18px; font-weight: 700; }
+.asker-name { font: 800 46px/1.05 var(--display); color: var(--gold); }
+.asker-team { color: var(--fg); font-size: 18px; font-weight: 700; }
+.asker.spin .asker-name { opacity: 0.8; }
+.asker.landed .asker-name { animation: asker-pop 0.5s ease-out; }
+@keyframes asker-pop { from { transform: scale(0.6); } 60% { transform: scale(1.12); } to { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .asker.landed .asker-name { animation: none; } }

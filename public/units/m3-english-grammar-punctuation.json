@@ -1,0 +1,1365 @@
+{
+ "id": "m3-english-grammar-punctuation",
+ "level": "M.3",
+ "course": "M.3 English",
+ "title": "English: Grammar and Punctuation (B1-B2)",
+ "source": "Written for Kru, Nov 24 (Henry): 100 questions on grammar, punctuation and writing skills. American English.",
+ "games": [
+  "fortress",
+  "quiz-battle",
+  "quiz-island",
+  "race-board"
+ ],
+ "sets": [
+  {
+   "name": "Perfect tenses",
+   "questions": [
+    {
+     "q": "I ___ my keys. Have you seen them?",
+     "choices": [
+      "lost",
+      "was losing",
+      "lose",
+      "have lost"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "A past action with a result now: present perfect."
+    },
+    {
+     "q": "She ___ here since 2018.",
+     "choices": [
+      "lived",
+      "lives",
+      "is living",
+      "has lived"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Since' + present perfect."
+    },
+    {
+     "q": "By the time we arrived, the show ___.",
+     "choices": [
+      "has started",
+      "had started",
+      "started",
+      "was starting"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "The show began BEFORE we arrived: past perfect."
+    },
+    {
+     "q": "I ___ for an hour when he finally arrived.",
+     "choices": [
+      "have been waiting",
+      "had been waiting",
+      "am waiting",
+      "waited"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Past perfect continuous: a longer action before another past action."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "How long are you learning English?",
+      "How long did you learning English?",
+      "How long you have learned English?",
+      "How long have you been learning English?"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'How long' + present perfect (continuous) for something that started in the past and continues."
+    },
+    {
+     "q": "This is the best pizza I ___.",
+     "choices": [
+      "have ever eaten",
+      "ever ate",
+      "am ever eating",
+      "had ever ate"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "After a superlative we use the present perfect with 'ever'."
+    },
+    {
+     "q": "She ___ the report yet, so she can't send it.",
+     "choices": [
+      "didn't finish",
+      "hadn't finish",
+      "hasn't finished",
+      "isn't finishing"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'Yet' with an unfinished action: present perfect."
+    },
+    {
+     "q": "Next June, I ___ in this company for ten years.",
+     "choices": [
+      "will work",
+      "will have worked",
+      "have worked",
+      "work"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Future perfect: will have + past participle."
+    },
+    {
+     "q": "He ___ working hard all week, so he is exhausted.",
+     "choices": [
+      "has been",
+      "was",
+      "is",
+      "have been"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Present perfect continuous: has been + -ing."
+    },
+    {
+     "q": "The ground was white. It ___ all night.",
+     "choices": [
+      "has been snowing",
+      "snowed",
+      "had been snowing",
+      "was snow"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Past perfect continuous explains the situation in the past."
+    }
+   ]
+  },
+  {
+   "name": "Conditionals and wishes",
+   "questions": [
+    {
+     "q": "If it rains, we ___ at home.",
+     "choices": [
+      "would stay",
+      "stayed",
+      "will stay",
+      "had stayed"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional: if + present, will + base verb."
+    },
+    {
+     "q": "If I were taller, I ___ play basketball.",
+     "choices": [
+      "would",
+      "will",
+      "had",
+      "am"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Second conditional: if + past, would + base verb."
+    },
+    {
+     "q": "If she ___ harder, she would have passed.",
+     "choices": [
+      "had studied",
+      "studied",
+      "studies",
+      "has studied"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Third conditional: if + past perfect, would have + past participle."
+    },
+    {
+     "q": "I wish I ___ more money.",
+     "choices": [
+      "have",
+      "had",
+      "would have",
+      "has"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "'I wish' + past simple for an unreal present."
+    },
+    {
+     "q": "If I had known, I ___ you.",
+     "choices": [
+      "would have told",
+      "would tell",
+      "will tell",
+      "told"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Third conditional result: would have + past participle."
+    },
+    {
+     "q": "Unless you hurry, you ___ the bus.",
+     "choices": [
+      "would miss",
+      "will miss",
+      "miss",
+      "missed"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "'Unless' (= if not) with a first conditional."
+    },
+    {
+     "q": "I wish he ___ so loud.",
+     "choices": [
+      "doesn't talk",
+      "wouldn't talk",
+      "didn't talk",
+      "won't talk"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Wish + would' complains about an annoying habit."
+    },
+    {
+     "q": "If only I ___ the answer yesterday!",
+     "choices": [
+      "knew",
+      "had known",
+      "have known",
+      "would know"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "A regret about the past: 'if only' + past perfect."
+    },
+    {
+     "q": "Had I known about the traffic, I ___ earlier.",
+     "choices": [
+      "would leave",
+      "left",
+      "would have left",
+      "will leave"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "'Had I known' means 'If I had known' (third conditional)."
+    },
+    {
+     "q": "I'd rather you ___ smoke here.",
+     "choices": [
+      "didn't",
+      "don't",
+      "won't",
+      "wouldn't"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Would rather' + a different person uses the past simple."
+    }
+   ]
+  },
+  {
+   "name": "Passive voice",
+   "questions": [
+    {
+     "q": "The report ___ by Friday.",
+     "choices": [
+      "will finish",
+      "is finishing",
+      "will be finished",
+      "finishes"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "The report does not finish itself: future passive."
+    },
+    {
+     "q": "Which sentence is passive?",
+     "choices": [
+      "My brother ate the cake.",
+      "My brother is eating cake.",
+      "The cake was eaten by my brother.",
+      "My brother has the cake."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "The subject receives the action: was + past participle."
+    },
+    {
+     "q": "This bridge ___ in 1932.",
+     "choices": [
+      "has built",
+      "is building",
+      "was built",
+      "built"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Past simple passive: was built."
+    },
+    {
+     "q": "The suspect ___ at the moment.",
+     "choices": [
+      "is being questioned",
+      "is questioned",
+      "has questioned",
+      "questions"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Present continuous passive: is being + past participle."
+    },
+    {
+     "q": "The documents ___ before the meeting.",
+     "choices": [
+      "had signed",
+      "have signed",
+      "had been signed",
+      "were signing"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Past perfect passive: had been + past participle."
+    },
+    {
+     "q": "Which sentence is the passive of 'They are repairing the road'?",
+     "choices": [
+      "The road is repaired.",
+      "The road was repaired.",
+      "The road is being repaired.",
+      "The road has repaired."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Present continuous passive: is being repaired."
+    },
+    {
+     "q": "I had my car ___ yesterday.",
+     "choices": [
+      "repaired",
+      "repair",
+      "repairing",
+      "to repair"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "'Have something done' uses the past participle."
+    },
+    {
+     "q": "He is said ___ very rich.",
+     "choices": [
+      "being",
+      "to be",
+      "be",
+      "that"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Is said to be' is a common passive reporting structure."
+    },
+    {
+     "q": "It ___ that the president will resign.",
+     "choices": [
+      "reports",
+      "has reporting",
+      "is reported",
+      "is reporting"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "'It is reported that...' is a passive structure."
+    },
+    {
+     "q": "Nobody knows who ___ the window.",
+     "choices": [
+      "was broken",
+      "is broken",
+      "has been broke",
+      "broke"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Who' is the subject of an active verb here."
+    }
+   ]
+  },
+  {
+   "name": "Modals of deduction and the past",
+   "questions": [
+    {
+     "q": "She ___ be at home. The lights are on.",
+     "choices": [
+      "can't",
+      "mustn't",
+      "shouldn't",
+      "must"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Must' shows we are almost sure it is true."
+    },
+    {
+     "q": "He ___ be a doctor; he is only ten!",
+     "choices": [
+      "must",
+      "might",
+      "can't",
+      "should"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "'Can't' shows we are sure it is NOT true."
+    },
+    {
+     "q": "I'm not sure, but they ___ be late.",
+     "choices": [
+      "must",
+      "should",
+      "can't",
+      "might"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Might' shows a possibility."
+    },
+    {
+     "q": "You ___ have called me. I was worried.",
+     "choices": [
+      "can",
+      "will",
+      "do",
+      "should"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Should have' + past participle criticizes a past action."
+    },
+    {
+     "q": "She ___ have left already. Her bag is gone.",
+     "choices": [
+      "can't",
+      "shouldn't",
+      "needn't",
+      "must"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Must have' + past participle is a deduction about the past."
+    },
+    {
+     "q": "I ___ have gone to the party, but I was ill.",
+     "choices": [
+      "must",
+      "could",
+      "should",
+      "needn't"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "'Could have' shows a past possibility that did not happen."
+    },
+    {
+     "q": "He ___ have done it. He was with me all day.",
+     "choices": [
+      "must",
+      "can't",
+      "might",
+      "should"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Can't have' shows we are sure it did not happen."
+    },
+    {
+     "q": "Look at the wet ground. It ___ rained last night.",
+     "choices": [
+      "can't have",
+      "must have",
+      "should have",
+      "needn't have"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Must have' + past participle: a past deduction."
+    },
+    {
+     "q": "I ___ rather stay home than go out tonight.",
+     "choices": [
+      "would",
+      "should",
+      "must",
+      "can"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "'Would rather' shows a preference."
+    },
+    {
+     "q": "You ought ___ told me. It's too late now.",
+     "choices": [
+      "to have",
+      "to",
+      "have",
+      "having"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Ought to have' + past participle shows a past obligation that was ignored."
+    }
+   ]
+  },
+  {
+   "name": "Reported speech",
+   "questions": [
+    {
+     "q": "She said, 'I am tired.' She said that she ___ tired.",
+     "choices": [
+      "is",
+      "were",
+      "will be",
+      "was"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Present simple moves back to past simple."
+    },
+    {
+     "q": "He said, 'I like pizza.' He said he ___ pizza.",
+     "choices": [
+      "likes",
+      "liked",
+      "will like",
+      "had liking"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Reported speech moves the verb one step back."
+    },
+    {
+     "q": "'I will call you,' she said. She said she ___ me.",
+     "choices": [
+      "will call",
+      "called",
+      "would call",
+      "had call"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'Will' becomes 'would' in reported speech."
+    },
+    {
+     "q": "Following the backshift rule: 'I have finished.' She said she ___.",
+     "choices": [
+      "has finished",
+      "finished",
+      "had finished",
+      "have finished"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Present perfect becomes past perfect."
+    },
+    {
+     "q": "'I can swim,' he said. He said he ___ swim.",
+     "choices": [
+      "can",
+      "would",
+      "could",
+      "should"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'Can' becomes 'could'."
+    },
+    {
+     "q": "'Don't be late,' she told us. She told us ___ late.",
+     "choices": [
+      "don't be",
+      "to don't be",
+      "not being",
+      "not to be"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Negative commands: not + to + base verb."
+    },
+    {
+     "q": "'Open the window,' he said to me. He asked me ___ the window.",
+     "choices": [
+      "opened",
+      "open",
+      "opening",
+      "to open"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Commands become to + base verb."
+    },
+    {
+     "q": "Following the backshift rule: 'I saw her yesterday,' he said. He said he ___ her the day before.",
+     "choices": [
+      "had seen",
+      "has seen",
+      "sees",
+      "will see"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Past simple becomes past perfect, and 'yesterday' becomes 'the day before'."
+    },
+    {
+     "q": "'I'll see you tomorrow,' she said. She said she would see me ___.",
+     "choices": [
+      "tomorrow",
+      "the next day",
+      "yesterday",
+      "today"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Tomorrow' becomes 'the next day'."
+    },
+    {
+     "q": "Following the backshift rule: 'Why did you leave?' she asked. She asked me why I ___.",
+     "choices": [
+      "had left",
+      "left",
+      "have left",
+      "leave"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "In reported questions the tense moves back and the word order is a statement."
+    }
+   ]
+  },
+  {
+   "name": "Relative clauses",
+   "questions": [
+    {
+     "q": "The man ___ lives next door is a pilot.",
+     "choices": [
+      "which",
+      "whose",
+      "where",
+      "who"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Who' is for people."
+    },
+    {
+     "q": "The movie ___ we watched was boring.",
+     "choices": [
+      "who",
+      "where",
+      "that",
+      "whose"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "'That' refers to a thing."
+    },
+    {
+     "q": "Is that the girl ___ bag was stolen?",
+     "choices": [
+      "who's",
+      "whose",
+      "who",
+      "which"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "'Whose' shows possession."
+    },
+    {
+     "q": "My uncle, ___ is a chef, cooks well.",
+     "choices": [
+      "which",
+      "that",
+      "who",
+      "whose"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Extra information between commas: 'who', not 'that'."
+    },
+    {
+     "q": "The reason ___ I called is important.",
+     "choices": [
+      "why",
+      "which",
+      "where",
+      "when"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'The reason why...' is a common phrase."
+    },
+    {
+     "q": "That's the town ___ I grew up.",
+     "choices": [
+      "where",
+      "which",
+      "who",
+      "whose"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Where' refers to a place."
+    },
+    {
+     "q": "The students ___ passed the test were happy.",
+     "choices": [
+      "whom",
+      "who",
+      "whose",
+      "which"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Who' is the subject of 'passed'."
+    },
+    {
+     "q": "The woman to ___ I spoke was kind.",
+     "choices": [
+      "whom",
+      "who",
+      "whose",
+      "which"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "After a preposition we use 'whom' for people."
+    },
+    {
+     "q": "The book, ___ was published in 1990, is still popular.",
+     "choices": [
+      "that",
+      "which",
+      "what",
+      "who"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Extra information between commas uses 'which'."
+    },
+    {
+     "q": "He gave me the answer, ___ surprised everyone.",
+     "choices": [
+      "that",
+      "which",
+      "what",
+      "who"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Which' can refer to the whole idea in the main clause."
+    }
+   ]
+  },
+  {
+   "name": "Gerund or infinitive",
+   "questions": [
+    {
+     "q": "I'm interested in ___ photography.",
+     "choices": [
+      "learning",
+      "to learn",
+      "learn",
+      "learned"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "After a preposition we use -ing."
+    },
+    {
+     "q": "He promised ___ on time.",
+     "choices": [
+      "being",
+      "be",
+      "to be",
+      "been"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "After 'promise' we use to + base verb."
+    },
+    {
+     "q": "I forgot ___ the milk, so we have none.",
+     "choices": [
+      "to buy",
+      "buying",
+      "buy",
+      "bought"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Forget to' = did not do it."
+    },
+    {
+     "q": "I remember ___ this song when I was young.",
+     "choices": [
+      "to hear",
+      "hear",
+      "hearing",
+      "heard"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'Remember + -ing' = a memory of the past."
+    },
+    {
+     "q": "She tried ___ the door, but it was stuck.",
+     "choices": [
+      "to open",
+      "opening",
+      "open",
+      "opened"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Try to' = make an effort."
+    },
+    {
+     "q": "We stopped ___ some water.",
+     "choices": [
+      "buying",
+      "buy",
+      "bought",
+      "to buy"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Stop to' = stop in order to do something."
+    },
+    {
+     "q": "He avoids ___ in public.",
+     "choices": [
+      "to speak",
+      "speak",
+      "speaking",
+      "spoken"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "After 'avoid' we use -ing."
+    },
+    {
+     "q": "It's no use ___ about it.",
+     "choices": [
+      "to worry",
+      "worry",
+      "worried",
+      "worrying"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "'It's no use' + -ing."
+    },
+    {
+     "q": "I can't help ___ when I hear that joke.",
+     "choices": [
+      "to laugh",
+      "laugh",
+      "laughed",
+      "laughing"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "'Can't help' + -ing."
+    },
+    {
+     "q": "She is not used ___ up early.",
+     "choices": [
+      "to get",
+      "getting",
+      "get",
+      "to getting"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Be used to' + -ing: here 'to' is a preposition."
+    }
+   ]
+  },
+  {
+   "name": "Punctuation and sentence structure",
+   "questions": [
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Hello how are you?",
+      "Hello, how are you.",
+      "Hello; how are you?",
+      "Hello, how are you?"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Put a comma after a greeting, and a question mark at the end."
+    },
+    {
+     "q": "Which sentence is a comma splice?",
+     "choices": [
+      "It was late, we went home.",
+      "It was late, so we went home.",
+      "It was late. We went home.",
+      "It was late; we went home."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "A comma alone cannot join two complete sentences."
+    },
+    {
+     "q": "Which sentence uses a semicolon correctly?",
+     "choices": [
+      "I love tea; because I am tired.",
+      "I love; tea my sister prefers coffee.",
+      "I love tea my sister; prefers coffee.",
+      "I love tea; my sister prefers coffee."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A semicolon joins two related complete sentences."
+    },
+    {
+     "q": "Which sentence uses apostrophes correctly?",
+     "choices": [
+      "The childrens' toys are in the boy's room.",
+      "The childrens toys are in the boys room.",
+      "The children's toys are in the boys' room.",
+      "The children's toy's are in the boys' room."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Irregular plural 'children' takes 's; regular plural 'boys' takes only an apostrophe."
+    },
+    {
+     "q": "Which sentence is punctuated correctly?",
+     "choices": [
+      "My favorite subjects are, math science and art.",
+      "My favorite subjects, are math, science, and art.",
+      "My favorite subjects are math, science, and art.",
+      "My favorite subjects are math science, and art."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Commas separate items in a list."
+    },
+    {
+     "q": "Which phrase uses a hyphen correctly?",
+     "choices": [
+      "a well known-author",
+      "a well-known-author",
+      "a-well known author",
+      "a well-known author"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Join the two words that work together before a noun."
+    },
+    {
+     "q": "Which sentence has parallel structure?",
+     "choices": [
+      "She likes swimming, to run, and cycling.",
+      "She likes to swim, running, and cycle.",
+      "She likes swimming, running, and cycling.",
+      "She likes swim, run, and cycling."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Items in a list should have the same form."
+    },
+    {
+     "q": "Which sentence is punctuated correctly?",
+     "choices": [
+      "\"Where are you going,\" she asked.",
+      "\"Where are you going?\", she asked.",
+      "\"Where are you going\" she asked?",
+      "\"Where are you going?\" she asked."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Keep the question mark inside the quotation marks, and do not add a comma."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "It's a long way, but the dog knows its way home.",
+      "Its a long way, but the dog knows it's way home.",
+      "It's a long way, but the dog knows it's way home.",
+      "Its a long way, but the dog knows its way home."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "'It's' = it is; 'its' shows belonging."
+    },
+    {
+     "q": "Which sentence has NO dangling modifier?",
+     "choices": [
+      "Walking to school, a rainbow appeared.",
+      "Walking to school, the rain started.",
+      "Walking to school, I saw a rainbow.",
+      "Walking to school, the bus was late."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "The person who is walking must be the subject right after the comma."
+    }
+   ]
+  },
+  {
+   "name": "Collocations, phrasal verbs and prepositions",
+   "questions": [
+    {
+     "q": "I need to ___ a decision soon.",
+     "choices": [
+      "do",
+      "make",
+      "have",
+      "put"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "We say 'make a decision'."
+    },
+    {
+     "q": "Please ___ off your shoes.",
+     "choices": [
+      "put",
+      "take",
+      "turn",
+      "give"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "'Take off' means to remove clothes."
+    },
+    {
+     "q": "Can you ___ after my cat this weekend?",
+     "choices": [
+      "look",
+      "watch",
+      "see",
+      "stare"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Look after' means to take care of."
+    },
+    {
+     "q": "We ran ___ of milk, so I went to the store.",
+     "choices": [
+      "out",
+      "off",
+      "away",
+      "down"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Run out of' means to have none left."
+    },
+    {
+     "q": "She is afraid ___ spiders.",
+     "choices": [
+      "from",
+      "at",
+      "of",
+      "with"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Afraid of + noun."
+    },
+    {
+     "q": "He is responsible ___ the project.",
+     "choices": [
+      "of",
+      "to",
+      "at",
+      "for"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Responsible for + noun."
+    },
+    {
+     "q": "I'll ___ you up at 7 a.m.",
+     "choices": [
+      "put",
+      "pick",
+      "pull",
+      "pass"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Pick up' means to collect someone."
+    },
+    {
+     "q": "The meeting was ___ off because of the storm.",
+     "choices": [
+      "called",
+      "put",
+      "turned",
+      "given"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "'Call off' means to cancel."
+    },
+    {
+     "q": "She takes ___ her mother.",
+     "choices": [
+      "on",
+      "over",
+      "after",
+      "up"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "'Take after' means to look or act like a family member."
+    },
+    {
+     "q": "I can't ___ with this noise any longer.",
+     "choices": [
+      "put off",
+      "put up",
+      "put out",
+      "put in"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Put up with' means to tolerate."
+    }
+   ]
+  },
+  {
+   "name": "Linking words and word formation",
+   "questions": [
+    {
+     "q": "___ it was cold, we went swimming.",
+     "choices": [
+      "Despite",
+      "Because of",
+      "However",
+      "Although"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Although' + a clause shows contrast."
+    },
+    {
+     "q": "She was late ___ the traffic.",
+     "choices": [
+      "because",
+      "although",
+      "so",
+      "because of"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Because of' is followed by a noun."
+    },
+    {
+     "q": "He studied hard; ___, he failed.",
+     "choices": [
+      "however",
+      "therefore",
+      "moreover",
+      "because"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'However' shows a contrast between two sentences."
+    },
+    {
+     "q": "She is a very ___ student.",
+     "choices": [
+      "hardworker",
+      "hardwork",
+      "hardly working",
+      "hardworking"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "We need an adjective before 'student'."
+    },
+    {
+     "q": "The ___ between the two cities is 300 km.",
+     "choices": [
+      "distant",
+      "distance",
+      "far",
+      "distantly"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "We need a noun after 'the'."
+    },
+    {
+     "q": "He answered the question ___.",
+     "choices": [
+      "correct",
+      "correction",
+      "correcting",
+      "correctly"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "We need an adverb to describe 'answered'."
+    },
+    {
+     "q": "___ the bad weather, the match went ahead.",
+     "choices": [
+      "Even though",
+      "In spite of",
+      "Because of",
+      "In case of"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'In spite of' + a noun shows contrast."
+    },
+    {
+     "q": "I'll lend you the book ___ you give it back.",
+     "choices": [
+      "as long as",
+      "unless",
+      "although",
+      "in case"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "'As long as' means 'if' (on condition that)."
+    },
+    {
+     "q": "She speaks English fluently; ___, she is learning Chinese.",
+     "choices": [
+      "however",
+      "furthermore",
+      "otherwise",
+      "although"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Furthermore' adds more information."
+    },
+    {
+     "q": "Hardly had she sat down ___ the phone rang.",
+     "choices": [
+      "than",
+      "when",
+      "then",
+      "while"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Hardly ... when' means 'as soon as'."
+    }
+   ]
+  }
+ ]
+}

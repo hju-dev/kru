@@ -55,4 +55,15 @@ describe('One-Word Story: timers and word conditions (Henry, Nov 23)', () => {
     expect(js).toContain('if (S.useConds === undefined)')
     expect(js).toContain('S.conds = S.useConds ? makeConds(S.words, HARD) : null')
   })
+
+  it('20 Questions: the picked student shows on the main screen; Next student counts a question, Free question does not (Henry, Nov 24)', () => {
+    const js20 = read('public/games/twenty-questions/app.js')
+    const html20 = read('public/games/twenty-questions/index.html')
+    expect(html20).toContain('id="asker"')
+    expect(html20).toContain('id="free"')
+    expect(html20).not.toContain('id="pickBack"')
+    expect(js20).toContain("S.cur ? '🎯 Next student −1' : '🎯 Who asks?'")
+    expect(js20).toContain('if (left(id) > 0) ask(id);')
+    expect(js20).toContain("toast('Free question: nobody loses a guess.', false);")
+  })
 })
