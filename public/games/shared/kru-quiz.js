@@ -99,5 +99,38 @@
   }
 
   // the line under a question with no A-D choices; a game can change it (Quiz Island: say it out loud)
-  window.KruQuiz = { shortHint: 'Short answer: write or say it', load: load, unit: unit, html: html, say: say, fit: fit, valid: valid, esc: esc };
+  var TIERS = [['easy', 'Easy'], ['regular', 'Regular'], ['hard', 'Hard'], ['impossible', 'Impossible']];
+  /** Is this difficulty switched on? `off` = { easy: true, ... } (the saved list of switched-off levels). */
+  function tierOn(off, t) { return !(off && off[t]); }
+  /**
+   * The "Question levels" switches in a game's settings (Henry, Nov 25): Easy / Regular / Hard / Impossible, on or off any time.
+   * `counts` = { easy: n, ... } questions in the deck (a level with none is greyed out); at least one level always stays on.
+   * onChange(off) runs after each tap; the game saves `off` (S.tiersOff) and its next question follows the switches.
+   */
+  function tierRow(el, off, counts, onChange) {
+    off = off || {};
+    function paint() {
+      el.className = 'kq-tiers';
+      el.innerHTML = '<span class="kq-tiers-lab">Question levels</span>' + TIERS.map(function (t) {
+        var none = el._counts && !el._counts[t[0]], on = !none && tierOn(el._off, t[0]);
+        return '<button type="button" class="btn kq-tier ' + t[0] + '" data-t="' + t[0] + '" aria-pressed="' + on + '"' + (none ? ' disabled' : '') + '>' + t[1] + '</button>';
+      }).join('');
+    }
+    if (!el._kqBound) {
+      el._kqBound = true;
+      el.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-t]');
+        if (!b || b.disabled) return;
+        var t = b.dataset.t, now = el._off, next = Object.assign({}, now);
+        if (tierOn(now, t)) next[t] = true; else delete next[t];
+        var left = TIERS.filter(function (x) { return (!el._counts || el._counts[x[0]]) && tierOn(next, x[0]); });
+        if (!left.length) return; // never switch every level off
+        el._off = next; el._cb(next); paint();
+      });
+    }
+    el._off = off; el._counts = counts; el._cb = onChange;
+    paint();
+  }
+
+  window.KruQuiz = { tierRow: tierRow, tierOn: tierOn, shortHint: 'Short answer: write or say it', load: load, unit: unit, html: html, say: say, fit: fit, valid: valid, esc: esc };
 })();

@@ -581,7 +581,8 @@
   }
   /** The next question: a tier at random (hard and impossible are rarer). */
   function pickQuestion() {
-    var avail = ORDER.filter(function (t) { return POOL[t].length; });
+    var avail = ORDER.filter(function (t) { return POOL[t].length && KruQuiz.tierOn(S.tiersOff, t); }); // the levels switched on in the settings
+    if (!avail.length) avail = ORDER.filter(function (t) { return POOL[t].length; });
     if (!avail.length) return null;
     var tier = avail[weighted(avail.map(function (t) { return TIERS[t].share; }))];
     var list = POOL[tier], order = S.order[tier], q = list[order[S.qi[tier] % order.length]];
@@ -762,7 +763,7 @@
   function renderSecs() { KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }); } // the alarm-clock timer (shared/kru-menu.js)
   function renderWho() { $('whoOn').textContent = '🎯 Who answers: ' + (S.who ? 'on' : 'off'); $('whoOn').setAttribute('aria-pressed', String(!!S.who)); }
   $('more').addEventListener('click', function () {
-    renderSecs(); renderWho(); disarm();
+    renderTiers(); renderSecs(); renderWho(); disarm();
     $('undoMove').disabled = !S.hist.length || busy;
     $('skip').disabled = busy || !!S.claim || !!S.choice || S.phase !== 'play';
     $('lastRound').disabled = busy || S.phase !== 'play';
@@ -777,6 +778,10 @@
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back to before the last question.'); });
   $('lastRound').addEventListener('click', function () { closeMenu(); unlockAudio(); lastRound(); });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Quiz Island' }); });
+  function renderTiers() {
+    var counts = {}; ORDER.forEach(function (t) { counts[t] = (POOL[t] || []).length; });
+    KruQuiz.tierRow($('tierRow'), S.tiersOff, counts, function (off) { S.tiersOff = off; save(); });
+  }
   function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
@@ -848,6 +853,7 @@
         S.level = QZ.level;
       }
       S.crew = S.crew || {};
+      S.tiersOff = S.tiersOff || {};
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.powers = S.powers || {}; S.mpicked = S.mpicked || {}; S.phase = S.phase || 'play';
       players.forEach(function (t) { shownGold[t.id] = gold(t.id); });
       INTRO = KruIntro.forLevel(mine, QZ.level);

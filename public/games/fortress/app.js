@@ -827,7 +827,7 @@
   /** The next question. */
   function pickQuestion(id, forceTier) {
     var tiers = ORDER;
-    var avail = tiers.filter(function (t) { return POOL[t].length; });
+    var avail = tiers.filter(function (t) { return POOL[t].length && KruQuiz.tierOn(S.tiersOff, t); }); // the levels switched on in the settings
     if (!avail.length) avail = ORDER.filter(function (t) { return POOL[t].length; });
     if (!avail.length) return null;
     if (forceTier && !POOL[forceTier].length) return null;
@@ -1104,7 +1104,7 @@
     S.maxRounds = Math.max(2, Math.min(15, (S.maxRounds || DEFAULT_ROUNDS) + Number(b.dataset.r))); save(); renderSecs(); render();
   });
   $('more').addEventListener('click', function () {
-    renderSecs(); disarm();
+    renderTiers(); renderSecs(); disarm();
     $('undoMove').disabled = !S.hist.length; updateRulesBtn();
     $('skip').disabled = S.phase === 'over' || !curId();
     $('menuBack').hidden = false;
@@ -1137,6 +1137,10 @@
     $('rulesBtn').disabled = !open;
   }
   $('rulesBtn').addEventListener('click', function () { closeMenu(); pickRules(function () { if (!S.deck) openDecks(); }); });
+  function renderTiers() {
+    var counts = {}; ORDER.forEach(function (t) { counts[t] = (POOL[t] || []).length; });
+    KruQuiz.tierRow($('tierRow'), S.tiersOff, counts, function (off) { S.tiersOff = off; save(); });
+  }
   function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
@@ -1171,6 +1175,7 @@
       if (saved && saved.v === 4 && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; S.rules = S.rules || 'lm2'; if (S.rulesPicked === undefined) S.rulesPicked = true; applyRules(S.rules); buildPoolKeep(); // older saves are LM2 games
       } else { S = null; fresh(session.setKey && deckByKey(session.setKey) ? session.setKey : QZ.unit ? 'unit' : ''); S.level = QZ.level; } // the deck picked before the team builder
+      S.tiersOff = S.tiersOff || {};
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.aim = null;
       skipDead();
       MINE = mine;

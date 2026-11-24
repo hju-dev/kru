@@ -60,6 +60,8 @@
     again: [['ROLL AGAIN!', '{t} gets another roll!'], ['SANTA SAYS GO!', '{t} rolls again!'], ['TWINKLE TWICE!', '{t} gets another roll!']],
     finish: [['HOME FOR CHRISTMAS!', '{t} finishes {place}!'], ['NORTH POLE REACHED!', '{t} finishes {place}!'], ['WRAPPED UP!', '{t} finishes {place}!']],
     shield: [['SNOW SHIELD!', '{t} does not move back!'], ['SNOWMAN GUARD!', '{t} stays on the track!']],
+    skip: [['FROZEN!', '{t} misses this turn: {why}. Warm up and come back stronger!'], ['COCOA BREAK!', '{t} sits this one out: {why}. Back on the snowy track next turn!'], ['SNOWED IN!', '{t} loses a turn: {why}. Hang in there, Santa believes in you!']],
+    bounce: [['EXACT FINISH!', '{t} overshot the North Pole and bounced back {n}. You must roll the exact number to arrive!'], ['TOO FAST!', '{t} zoomed past the North Pole and slid back {n}. To win, roll the exact number!'], ['WHOA, REINDEER!', '{t} overshot FINISH and rolls back {n}. Only an exact roll gets you home!']],
     free: [['FREE GIFT!', '{t} rolls for free!'], ['ELF TO THE RESCUE!', '{t} rolls for free!']],
   };
   var ENC = ['Santa still believes in you!', 'Keep your Christmas spirit up!', 'Good try! The elves are cheering!', 'Even Rudolph gets lost sometimes!',
@@ -86,7 +88,7 @@
   };
 
   window.KruRacing = {
-    REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }),
+    WHY: { skip: 'a hot cocoa break', trap: 'a snowbank trap' }, REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }),
     count: ART.length, name: name, vehicle: vehicle, overtake: overtake, shade: shade, POOLS: POOLS, ENC: ENC, CHANCE: CHANCE, SECRET: SECRET,
     PREFIX: '🎄 ', OVERTAKE: { title: 'SLEIGH SWITCH!', verb: 'swooshes past' },
   };
