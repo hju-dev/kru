@@ -148,6 +148,18 @@
         "quiz-island",
         "fortress"
       ]
+    },
+    {
+      "id": "trivia",
+      "level": "any",
+      "course": "Trivia",
+      "title": "Trivia",
+      "games": [
+        "quiz-battle",
+        "race-board",
+        "quiz-island",
+        "fortress"
+      ]
     }
   ]
 }

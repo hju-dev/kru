@@ -8,7 +8,8 @@ import type { Level } from '../types'
  */
 export interface UnitInfo {
   id: string
-  level: Level
+  /** 'any' = a pack for every level (and for classes without one), like Trivia. */
+  level: Level | 'any'
   course: string
   title: string
   /** Game slugs this pack is for; missing = a full unit, for FULL_UNIT_GAMES. */
@@ -34,7 +35,7 @@ export function classKey(name: string): string {
 export function unitsFor(level: Level | null | undefined, game?: string, className?: string): UnitInfo[] {
   return UNITS.filter(
     (u) =>
-      u.level === level &&
+      (u.level === level || u.level === 'any') &&
       (!game || (u.games ?? FULL_UNIT_GAMES).includes(game)) &&
       (className == null || !u.classes || u.classes.some((c) => classKey(c) === classKey(className))),
   )
