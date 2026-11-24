@@ -1,0 +1,340 @@
+{
+ "id": "m3-english-reported-questions",
+ "level": "M.3",
+ "course": "M.3 English",
+ "title": "English: Reported Speech: Questions",
+ "games": [
+  "quiz-battle",
+  "race-board",
+  "quiz-island",
+  "fortress"
+ ],
+ "source": "Written for Henry (Nov 25): 30 questions on reported (indirect) questions: yes/no with if/whether, wh- questions, word order, backshift, pronouns and time words. American English. Every question has a tier (easy to impossible).",
+ "sets": [
+  {
+   "name": "Reported questions",
+   "questions": [
+    {
+     "q": "\"Why are you late?\" -> He asked me why I ___ late.",
+     "choices": [
+      "am",
+      "was",
+      "is",
+      "were"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Present becomes past."
+    },
+    {
+     "q": "Change to reported speech: Tom asked Mia, \"Are you hungry?\"",
+     "answer": "Tom asked Mia if (whether) she was hungry.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"Where do you live?\" she asked me. Which is correct?",
+     "choices": [
+      "She asked me where I lived.",
+      "She asked me where did I live.",
+      "She asked me where do I live.",
+      "She asked me that where I lived."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "A reported question has statement word order, with no do/did."
+    },
+    {
+     "q": "Change to reported speech: Ann asked Ben, \"Where do you live?\"",
+     "answer": "Ann asked Ben where he lived.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"Do you like pizza?\" he asked. Which is correct?",
+     "choices": [
+      "He asked me if did I like pizza.",
+      "He asked me that I liked pizza.",
+      "He asked me do I like pizza.",
+      "He asked me if I liked pizza."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Yes/no questions use if or whether."
+    },
+    {
+     "q": "Change to reported speech: Mom asked me, \"Why are you late?\"",
+     "answer": "Mom asked me why I was late.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "In a reported question, the word order is like a ___.",
+     "choices": [
+      "command",
+      "question",
+      "statement",
+      "list"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "We say \"where I lived\", not \"where did I live\"."
+    },
+    {
+     "q": "Change to reported speech: Pim asked Nat, \"What are you doing?\"",
+     "answer": "Pim asked Nat what he was doing.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which word can start a reported yes/no question?",
+     "choices": [
+      "that",
+      "if",
+      "because",
+      "so"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Use if or whether."
+    },
+    {
+     "q": "Change to reported speech: The teacher asked us, \"Did you finish your homework?\"",
+     "answer": "The teacher asked us if (whether) we had finished our homework.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "He ___ me if I was ready.",
+     "choices": [
+      "asked",
+      "said",
+      "told",
+      "spoke"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "We ask a question; we do not \"say\" or \"tell\" it with if."
+    },
+    {
+     "q": "Change to reported speech: Dan asked Joy, \"Can you help me?\"",
+     "answer": "Dan asked Joy if (whether) she could help him.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which sentence is punctuated correctly?",
+     "choices": [
+      "He asked me where I was going?",
+      "He asked me, where was I going.",
+      "He asked me where was I going?",
+      "He asked me where I was going."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A reported question ends with a period, not a question mark."
+    },
+    {
+     "q": "Change to reported speech: Lek asked me, \"Have you seen my phone?\"",
+     "answer": "Lek asked me if (whether) I had seen his phone.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"Can you swim?\" he asked. -> He asked me ___.",
+     "choices": [
+      "if I can swim",
+      "could I swim",
+      "if I could swim",
+      "that I could swim"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "can becomes could, and the order is subject + verb."
+    },
+    {
+     "q": "Change to reported speech: Ben asked Fon, \"How long have you lived here?\"",
+     "answer": "Ben asked Fon how long she had lived there.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"What time does the movie start?\" -> She wanted to know what time ___.",
+     "choices": [
+      "did the movie start",
+      "the movie started",
+      "the movie starts",
+      "does the movie start"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Backshift and no do/does."
+    },
+    {
+     "q": "Change to reported speech: She asked him, \"Will you come to the party tomorrow?\"",
+     "answer": "She asked him if (whether) he would go to the party the next day.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"Have you finished?\" -> He asked if I ___ finished.",
+     "choices": [
+      "had",
+      "was",
+      "did",
+      "have"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Present perfect becomes past perfect."
+    },
+    {
+     "q": "Change to reported speech: The police officer asked the man, \"Where were you at 9 p.m. last night?\"",
+     "answer": "The police officer asked the man where he had been at 9 p.m. the night before.",
+     "double": false,
+     "tier": "impossible"
+    },
+    {
+     "q": "\"How many brothers do you have?\" -> She asked me how many brothers I ___.",
+     "choices": [
+      "have",
+      "did have",
+      "was having",
+      "had"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Present simple becomes past simple."
+    },
+    {
+     "q": "Which two words can start a reported yes/no question?",
+     "choices": [
+      "that and which",
+      "who and whom",
+      "if and whether",
+      "what and why"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Both mean the same."
+    },
+    {
+     "q": "Which sentence is WRONG?",
+     "choices": [
+      "She asked where I lived.",
+      "She asked where did I live.",
+      "She asked if I liked it.",
+      "She asked what I had eaten."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "No do/did in a reported question."
+    },
+    {
+     "q": "\"Where were you yesterday?\" -> He asked where I ___ the day before.",
+     "choices": [
+      "had been",
+      "have been",
+      "am",
+      "will be"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Past simple can become past perfect."
+    },
+    {
+     "q": "\"Did you see the game last night?\" -> Which is the best reported question?",
+     "choices": [
+      "He asked me if did I see the game last night.",
+      "He asked me if I will see the game the night before.",
+      "He asked me that I had seen the game the night before.",
+      "He asked me if I had seen the game the night before."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Past perfect, no inversion, and the time changes."
+    },
+    {
+     "q": "\"Whose bag is this?\" -> He asked whose bag ___.",
+     "choices": [
+      "this is",
+      "was that",
+      "that was",
+      "is that"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "The order stays like a statement; this becomes that."
+    },
+    {
+     "q": "\"Who called you?\" -> He asked me who ___ me.",
+     "choices": [
+      "did call",
+      "had called",
+      "called did",
+      "had me called"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Who is the subject here, so the order does not change."
+    },
+    {
+     "q": "\"Why didn't you call me?\" she asked him. -> She asked him why he ___ her.",
+     "choices": [
+      "hadn't called",
+      "hasn't called",
+      "doesn't call",
+      "won't call"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Past simple becomes past perfect."
+    },
+    {
+     "q": "\"Do you know when the bus will arrive?\" she asked him. -> Which is correct?",
+     "choices": [
+      "She asked him if did he know when would the bus arrive.",
+      "She asked him if he knew when would the bus arrive.",
+      "She asked him that he knew when the bus would arrive.",
+      "She asked him if he knew when the bus would arrive."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "Two clauses: both keep statement order, and will becomes would."
+    },
+    {
+     "q": "\"Are you coming here tomorrow?\" she asked me. -> Which has ALL the changes right?",
+     "choices": [
+      "She asked me if I am coming here tomorrow.",
+      "She asked me was I coming there the next day.",
+      "She asked me if I was coming there the next day.",
+      "She asked me if I was coming here the next day."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Here becomes there, tomorrow becomes the next day, am becomes was."
+    }
+   ]
+  }
+ ]
+}

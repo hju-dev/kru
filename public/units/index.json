@@ -124,6 +124,30 @@
         "quiz-island",
         "race-board"
       ]
+    },
+    {
+      "id": "m3-english-reported-questions",
+      "level": "M.3",
+      "course": "M.3 English",
+      "title": "English: Reported Speech: Questions",
+      "games": [
+        "quiz-battle",
+        "race-board",
+        "quiz-island",
+        "fortress"
+      ]
+    },
+    {
+      "id": "m3-english-reported-mixed",
+      "level": "M.3",
+      "course": "M.3 English",
+      "title": "English: Reported Speech: Mixed Bag (statements + questions)",
+      "games": [
+        "quiz-battle",
+        "race-board",
+        "quiz-island",
+        "fortress"
+      ]
     }
   ]
 }

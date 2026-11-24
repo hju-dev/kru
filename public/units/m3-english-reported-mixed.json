@@ -1,0 +1,530 @@
+{
+ "id": "m3-english-reported-mixed",
+ "level": "M.3",
+ "course": "M.3 English",
+ "title": "English: Reported Speech: Mixed Bag (statements + questions)",
+ "games": [
+  "quiz-battle",
+  "race-board",
+  "quiz-island",
+  "fortress"
+ ],
+ "source": "Written for Henry (Nov 25): 50 mixed questions on reported statements and reported questions, multiple choice and write-it answers. American English. Every question has a tier.",
+ "sets": [
+  {
+   "name": "Mixed bag: statements and questions",
+   "questions": [
+    {
+     "q": "\"I am tired,\" Tom said. -> Tom said he ___ tired.",
+     "choices": [
+      "is",
+      "was",
+      "were",
+      "will be"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Present becomes past."
+    },
+    {
+     "q": "Change to reported speech: Tom said, \"I am hungry.\"",
+     "answer": "Tom said (that) he was hungry.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I can swim,\" he said. -> He said he ___ swim.",
+     "choices": [
+      "could",
+      "would",
+      "did",
+      "can"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "can becomes could."
+    },
+    {
+     "q": "Change to reported speech: Mia said, \"I love this movie.\"",
+     "answer": "Mia said (that) she loved that movie.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "In reported speech, \"tomorrow\" often becomes ___.",
+     "choices": [
+      "the day before",
+      "yesterday",
+      "today",
+      "the next day"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "The time changes."
+    },
+    {
+     "q": "Change to reported speech: Ben said, \"We are going to the beach.\"",
+     "answer": "Ben said (that) they were going to the beach.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "In reported speech, \"yesterday\" often becomes ___.",
+     "choices": [
+      "the next day",
+      "today",
+      "the day before",
+      "tomorrow"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "The time changes."
+    },
+    {
+     "q": "Change to reported speech: My mom said, \"I will call you tomorrow.\"",
+     "answer": "My mom said (that) she would call me the next day.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "She ___ me she was busy.",
+     "choices": [
+      "said",
+      "told",
+      "spoke",
+      "talked"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Told needs a person after it."
+    },
+    {
+     "q": "Change to reported speech: Nok said, \"I have lost my keys.\"",
+     "answer": "Nok said (that) she had lost her keys.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I like this song,\" Mia said. -> Mia said she liked ___ song.",
+     "choices": [
+      "that",
+      "this",
+      "those",
+      "these"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "this becomes that."
+    },
+    {
+     "q": "Change to reported speech: Dan said, \"I can't find my phone.\"",
+     "answer": "Dan said (that) he couldn't (could not) find his phone.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"We will win,\" they said. -> They said they ___ win.",
+     "choices": [
+      "will",
+      "do",
+      "had",
+      "would"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "will becomes would."
+    },
+    {
+     "q": "Change to reported speech: Ms. Lee told us, \"I am checking your tests now.\"",
+     "answer": "Ms. Lee told us (that) she was checking our tests then.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"I have finished,\" she said. -> She said she ___ finished.",
+     "choices": [
+      "has",
+      "have",
+      "had",
+      "was"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Present perfect becomes past perfect."
+    },
+    {
+     "q": "Change to reported speech: Joe said, \"I saw her here yesterday.\"",
+     "answer": "Joe said (that) he had seen her there the day before.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"I'm going to call you,\" she told me. -> She told me she ___ going to call me.",
+     "choices": [
+      "is",
+      "was",
+      "were",
+      "will be"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "am going becomes was going."
+    },
+    {
+     "q": "Change to reported speech: Pim told me, \"I'll meet you here next week.\"",
+     "answer": "Pim told me (that) she would meet me there the following (next) week.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"I have to go,\" he said. -> He said he ___ go.",
+     "choices": [
+      "had to",
+      "has to",
+      "have to",
+      "will have to"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Backshift."
+    },
+    {
+     "q": "Change to reported speech: Ann said, \"I didn't do it, and I won't do it again.\"",
+     "answer": "Ann said (that) she hadn't (had not) done it and (that) she wouldn't (would not) do it again.",
+     "double": false,
+     "tier": "impossible"
+    },
+    {
+     "q": "\"I don't know,\" he said. -> He said he ___ know.",
+     "choices": [
+      "doesn't",
+      "won't",
+      "don't",
+      "didn't"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Present simple becomes past simple."
+    },
+    {
+     "q": "Change to reported speech: Tom asked Mia, \"Are you tired?\"",
+     "answer": "Tom asked Mia if (whether) she was tired.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I'll see you next week,\" he said. -> He said he would see me ___.",
+     "choices": [
+      "last week",
+      "next week",
+      "the following week",
+      "this week"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Next week becomes the following week."
+    },
+    {
+     "q": "Change to reported speech: Ann asked me, \"Where do you work?\"",
+     "answer": "Ann asked me where I worked.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I saw him,\" Ben said. -> Ben said he ___ him.",
+     "choices": [
+      "has seen",
+      "had seen",
+      "have seen",
+      "sees"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Past simple becomes past perfect."
+    },
+    {
+     "q": "Change to reported speech: Pim asked Joe, \"Do you like pizza?\"",
+     "answer": "Pim asked Joe if (whether) he liked pizza.",
+     "double": false,
+     "tier": "easy"
+    },
+    {
+     "q": "\"I will help you tomorrow,\" Dan told me. -> Which is correct?",
+     "choices": [
+      "Dan told me he would help me the next day.",
+      "Dan told me he will help me tomorrow.",
+      "Dan told me he would help me tomorrow.",
+      "Dan told me he will help me the next day."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Both the verb and the time word change."
+    },
+    {
+     "q": "Change to reported speech: Dad asked me, \"Who called you?\"",
+     "answer": "Dad asked me who had called me.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"I was sleeping,\" she said. -> She said she ___ sleeping.",
+     "choices": [
+      "has been",
+      "will be",
+      "is",
+      "had been"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Past continuous becomes past perfect continuous."
+    },
+    {
+     "q": "Change to reported speech: Ms. Lee asked us, \"Did you finish the homework?\"",
+     "answer": "Ms. Lee asked us if (whether) we had finished the homework.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "She says, \"I am happy.\" -> She says she ___ happy.",
+     "choices": [
+      "was",
+      "were",
+      "is",
+      "had been"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "The reporting verb is present, so no backshift."
+    },
+    {
+     "q": "Change to reported speech: Ben asked me, \"Can you play the guitar?\"",
+     "answer": "Ben asked me if (whether) I could play the guitar.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "\"Where do you live?\" she asked. -> She asked where I ___.",
+     "choices": [
+      "live",
+      "lived",
+      "did live",
+      "do live"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Present becomes past, no do."
+    },
+    {
+     "q": "Change to reported speech: Nok asked Dan, \"How long have you lived here?\"",
+     "answer": "Nok asked Dan how long he had lived there.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "\"Do you like tea?\" he asked. -> He asked if I ___ tea.",
+     "choices": [
+      "liked",
+      "do like",
+      "like",
+      "likes"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Present becomes past, no do."
+    },
+    {
+     "q": "Change to reported speech: Mom asked me, \"Why are you crying?\"",
+     "answer": "Mom asked me why I was crying.",
+     "double": false,
+     "tier": "regular"
+    },
+    {
+     "q": "Which word begins a reported yes/no question?",
+     "choices": [
+      "what",
+      "why",
+      "how",
+      "if"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Use if or whether."
+    },
+    {
+     "q": "Change to reported speech: Joy asked Ben, \"Will you come to my party tomorrow?\"",
+     "answer": "Joy asked Ben if (whether) he would go to her party the next day.",
+     "double": false,
+     "tier": "hard"
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "She asked where is he.",
+      "She asked where was he.",
+      "She asked where he was.",
+      "She asked where he is was."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Statement word order."
+    },
+    {
+     "q": "Change to reported speech: The officer asked her, \"Where were you last night?\"",
+     "answer": "The officer asked her where she had been the night before.",
+     "double": false,
+     "tier": "impossible"
+    },
+    {
+     "q": "\"Did you eat?\" -> He asked if I ___ eaten.",
+     "choices": [
+      "did",
+      "had",
+      "have",
+      "was"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Past simple becomes past perfect."
+    },
+    {
+     "q": "\"What are you reading?\" -> She asked what I ___ reading.",
+     "choices": [
+      "was",
+      "am",
+      "were",
+      "is"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Present continuous becomes past continuous."
+    },
+    {
+     "q": "\"How often do you exercise?\" -> He asked how often I ___.",
+     "choices": [
+      "exercise",
+      "did exercised",
+      "do exercise",
+      "exercised"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Present simple becomes past simple."
+    },
+    {
+     "q": "\"Will you help me?\" -> She asked if I ___ help her.",
+     "choices": [
+      "did",
+      "will",
+      "would",
+      "had"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "will becomes would."
+    },
+    {
+     "q": "\"Who is your teacher?\" -> He asked who my teacher ___.",
+     "choices": [
+      "is",
+      "was",
+      "has",
+      "did"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Present becomes past."
+    },
+    {
+     "q": "\"Why did you leave?\" -> He asked why I ___.",
+     "choices": [
+      "had left",
+      "have left",
+      "leave",
+      "did leave"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Past simple becomes past perfect."
+    },
+    {
+     "q": "\"Where have you been?\" -> She asked where I ___.",
+     "choices": [
+      "am",
+      "have been",
+      "was been",
+      "had been"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Present perfect becomes past perfect."
+    },
+    {
+     "q": "Which sentence is WRONG?",
+     "choices": [
+      "He asked me if I was late.",
+      "He asked me what time it was.",
+      "He asked me what time was it.",
+      "He asked me where I had been."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "No inversion in a reported question."
+    },
+    {
+     "q": "\"Where will you go tomorrow?\" the teacher asked Ann. -> Which is correct?",
+     "choices": [
+      "The teacher asked Ann where she will go tomorrow.",
+      "The teacher asked Ann where she would go the next day.",
+      "The teacher asked Ann where she would go tomorrow.",
+      "The teacher asked Ann where would she go the next day."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "Order, will to would, and the time word."
+    },
+    {
+     "q": "\"Didn't you see her yesterday?\" he asked me. -> Which is correct?",
+     "choices": [
+      "He asked me if I hadn't seen her the day before.",
+      "He asked me if didn't I see her the day before.",
+      "He asked me if I haven't seen her yesterday.",
+      "He asked me that I hadn't seen her the day before."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "Negative question: if + subject + hadn't."
+    }
+   ]
+  }
+ ]
+}
