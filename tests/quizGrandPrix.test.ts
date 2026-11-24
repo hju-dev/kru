@@ -18,7 +18,7 @@ describe('Quiz Grand Prix: racing theme', () => {
   it('ten different vehicles, one per team colour (by the team\'s place in the list)', () => {
     expect(racing).toContain("var NAMES = ['Formula racer', 'Sports car', 'Pickup truck', 'Motorbike', 'Monster truck', 'Tuk-tuk', 'Go-kart', 'Rocket dragster', 'Bus', 'Jeep'];")
     expect((racing.match(/^\s+\/\/ \d+ /gm) ?? []).length).toBe(10)
-    expect(js).toContain('KruRacing.vehicle(racers.indexOf(t), color(t))')
+    expect(js).toContain('KruRacing.vehicle(rideIdx(t), color(t))')
   })
   it('the vehicle shows in the pop-ups (right, wrong, moves, finish) and "is up" at the start of every turn', () => {
     expect(js).toContain("var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free'];")
@@ -41,12 +41,12 @@ describe('Quiz Grand Prix: racing theme', () => {
   })
   it('swapping places shows an overtake pop-up with both vehicles', () => {
     expect(js).toContain('title: KruRacing.OVERTAKE.title')
-    expect(js).toContain('KruRacing.overtake(racers.indexOf(fwd)')
+    expect(js).toContain('KruRacing.overtake(rideIdx(fwd)')
     expect(racing).toContain('function overtake(ia, ca, na, ib, cb, nb)')
     expect(read('public/games/race-board/style.css')).toContain('@keyframes ovt-a')
   })
   it('the podium is racing themed and shows each team\'s vehicle', () => {
-    expect(js).toContain('art: RACING ? KruRacing.vehicle(i, color(t)) : \'\'')
+    expect(js).toContain('art: RACING ? KruRacing.vehicle(rideIdx(t), color(t)) : \'\'')
     expect(read('public/games/shared/kru-end.js')).toContain('<span class="kp-art">')
     const css = read('public/games/race-board/style.css')
     expect(css).toContain('.gp .kp-step')

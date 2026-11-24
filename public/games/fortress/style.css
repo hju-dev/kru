@@ -217,7 +217,7 @@ body {
 
 
 .fx-card { position: relative; }
-.fx-job { width: 92px; height: 92px; flex-shrink: 0; align-self: flex-end; filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.35)); }
+.fx-job-unused { width: 92px; height: 92px; flex-shrink: 0; align-self: flex-end; filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.35)); }
 .fx-job svg { width: 100%; height: 100%; display: block; }
 
 /* The store: one screen in the buying team's color (no scrolling), items in a grid, the cart under it */
@@ -323,3 +323,69 @@ body {
 .p2 .kp-step { background-color: #aab4bd !important; }
 .p3 .kp-step { background-color: #9a6a3a !important; }
 .kp .ke-btn { background: rgb(8 14 10 / 0.7); color: #fff; border-color: #5f6b5a; }
+
+/* ---------- animated cartoon scenes inside the big pop-ups (art.js: ART.sc) ---------- */
+.sc { position: relative; width: 100%; height: 100%; }
+.sc > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.sc .sc-a, .sc .sc-b, .sc .sc-c { position: absolute; display: block; pointer-events: none; opacity: 0; }
+/* a weapon: streaks in from the left with speed lines, hits, and a flash bursts */
+.fx.go .sc-weapon > svg { animation: sc-fly 0.9s cubic-bezier(0.3, 0, 0.2, 1) both; }
+.sc-weapon .sc-a { left: -30%; top: 38%; width: 70%; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, #ffd25e); }
+.sc-weapon .sc-b { left: -20%; top: 56%; width: 56%; height: 4px; border-radius: 3px; background: linear-gradient(90deg, transparent, #fff); }
+.sc-weapon .sc-c { inset: 0; border-radius: 50%; background: radial-gradient(circle, #fff 0, #ffb347 35%, transparent 65%); }
+.fx.go .sc-weapon .sc-a, .fx.go .sc-weapon .sc-b { animation: sc-streak 0.9s ease-out both; }
+.fx.go .sc-weapon .sc-c { animation: sc-flash 0.5s 0.8s ease-out both; }
+/* an explosion: the burst grows, flashes and shakes */
+.fx.go .sc-boom > svg { animation: sc-boom 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) both, sc-pulse 0.9s 0.7s ease-in-out infinite alternate; }
+.sc-boom .sc-c { inset: 10%; border-radius: 50%; border: 4px solid #ffd25e; }
+.fx.go .sc-boom .sc-c { animation: sc-ring 0.9s 0.3s ease-out both; }
+/* a shield: glows and a ripple rolls out */
+.fx.go .sc-shield > svg { animation: sc-pulse 0.7s ease-in-out infinite alternate; }
+.sc-shield .sc-a, .sc-shield .sc-b { inset: 6%; border-radius: 50%; border: 4px solid #8cc8ff; }
+.fx.go .sc-shield .sc-a { animation: sc-ring 1.2s ease-out infinite; }
+.fx.go .sc-shield .sc-b { animation: sc-ring 1.2s 0.6s ease-out infinite; }
+/* repairs: the kit tilts and sparks twinkle */
+.fx.go .sc-repair > svg { animation: sc-wobble 0.5s ease-in-out infinite alternate; transform-origin: 50% 80%; }
+.sc-repair .sc-a, .sc-repair .sc-b, .sc-repair .sc-c { width: 14px; height: 14px; background: #ffe27a; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.sc-repair .sc-a { left: 8%; top: 14%; } .sc-repair .sc-b { right: 6%; top: 30%; } .sc-repair .sc-c { left: 30%; top: 2%; }
+.fx.go .sc-repair .sc-a { animation: sc-twinkle 0.8s ease-in-out infinite; }
+.fx.go .sc-repair .sc-b { animation: sc-twinkle 0.8s 0.25s ease-in-out infinite; }
+.fx.go .sc-repair .sc-c { animation: sc-twinkle 0.8s 0.5s ease-in-out infinite; }
+/* gold: the coin spins and glints */
+.fx.go .sc-coin > svg { animation: sc-spin 1.1s linear infinite; }
+.sc-coin .sc-a { left: 66%; top: 6%; width: 16px; height: 16px; background: #fff; clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
+.fx.go .sc-coin .sc-a { animation: sc-twinkle 0.9s ease-in-out infinite; }
+/* an alliance: the two hands slide together and shake */
+.fx.go .sc-alliance > svg { animation: sc-meet 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) both, sc-shake 0.4s 0.7s ease-in-out 3; }
+/* Risk It: the die tumbles and lands */
+.fx.go .sc-risk > svg { animation: sc-tumble 1s cubic-bezier(0.3, 1.3, 0.5, 1) both; }
+/* ruins: smoke puffs rise */
+.fx.go .sc-ruins > svg { animation: sc-shake 0.5s ease-in-out 2; }
+.sc-ruins .sc-a, .sc-ruins .sc-b, .sc-ruins .sc-c { width: 26px; height: 26px; border-radius: 50%; background: rgb(150 155 170 / 0.75); bottom: 40%; }
+.sc-ruins .sc-a { left: 24%; } .sc-ruins .sc-b { left: 46%; } .sc-ruins .sc-c { left: 66%; }
+.fx.go .sc-ruins .sc-a { animation: sc-smoke 2s infinite; }
+.fx.go .sc-ruins .sc-b { animation: sc-smoke 2s 0.6s infinite; }
+.fx.go .sc-ruins .sc-c { animation: sc-smoke 2s 1.2s infinite; }
+/* a trophy / an HQ: bounces, with a glint */
+.fx.go .sc-trophy > svg, .fx.go .sc-hq > svg { animation: sc-bounce 0.8s ease-in-out infinite alternate; }
+.sc-trophy .sc-a, .sc-hq .sc-a { left: 70%; top: 8%; width: 18px; height: 18px; background: #fff; clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); }
+.fx.go .sc-trophy .sc-a, .fx.go .sc-hq .sc-a { animation: sc-twinkle 1s ease-in-out infinite; }
+/* a wrong answer: the red X wobbles */
+.fx.go .sc-incorrect > svg { animation: sc-shake 0.45s ease-in-out 3; }
+@keyframes sc-fly { 0% { transform: translate(-140%, -50%) rotate(-24deg) scale(0.7); } 70% { transform: translate(0, 0) rotate(0) scale(1.05); } 100% { transform: translate(0, 0) scale(1); } }
+@keyframes sc-streak { 0% { opacity: 0.9; transform: translateX(-30%); } 100% { opacity: 0; transform: translateX(120%); } }
+@keyframes sc-flash { 0% { opacity: 1; transform: scale(0.3); } 100% { opacity: 0; transform: scale(1.5); } }
+@keyframes sc-boom { 0% { transform: scale(0.2) rotate(-20deg); } 100% { transform: scale(1) rotate(0); } }
+@keyframes sc-pulse { to { transform: scale(1.07); } }
+@keyframes sc-ring { 0% { opacity: 0.9; transform: scale(0.6); } 100% { opacity: 0; transform: scale(1.35); } }
+@keyframes sc-wobble { from { transform: rotate(-9deg); } to { transform: rotate(9deg); } }
+@keyframes sc-twinkle { 0%, 100% { opacity: 0; transform: scale(0.3) rotate(0); } 50% { opacity: 1; transform: scale(1) rotate(45deg); } }
+@keyframes sc-spin { to { transform: rotateY(360deg); } }
+@keyframes sc-meet { 0% { transform: translateX(-60%) scale(0.8); opacity: 0; } 100% { transform: none; opacity: 1; } }
+@keyframes sc-shake { 20%, 60% { transform: translateX(-6px) rotate(-2deg); } 40%, 80% { transform: translateX(6px) rotate(2deg); } }
+@keyframes sc-tumble { 0% { transform: translateY(-120%) rotate(-360deg); } 60% { transform: translateY(8%) rotate(20deg); } 100% { transform: none; } }
+@keyframes sc-smoke { 0% { opacity: 0; transform: translateY(0) scale(0.4); } 25% { opacity: 0.85; } 100% { opacity: 0; transform: translateY(-110px) scale(1.5); } }
+@keyframes sc-bounce { to { transform: translateY(-8px) scale(1.04); } }
+@media (prefers-reduced-motion: reduce) {
+  .fx.go .sc > svg, .fx.go .sc .sc-a, .fx.go .sc .sc-b, .fx.go .sc .sc-c { animation: none; }
+}

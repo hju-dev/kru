@@ -10,6 +10,8 @@
     var r = Math.max(0, Math.min(255, (n >> 16) + amt)), g = Math.max(0, Math.min(255, ((n >> 8) & 255) + amt)), b = Math.max(0, Math.min(255, (n & 255) + amt));
     return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
   }
+  var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C']; // each ride has its own colour, so a team's colour = its ride's colour
+  var REVEAL = { skin: 'workshop', title: 'Meet your rides!', sign: "SANTA'S WORKSHOP", labels: { open: 'Open the workshop ▶', who: 'gets', next: 'Next team ▶', start: 'Start the race ▶' } };
   var INK = '#1b2a3a', WOOD = '#8b5a2b', GOLD = '#e0b13c', SNOW = '#f7fbff', SKIN = '#ffd6b8', GLASS = '#cfe9ff';
   function wrap(inner) { return '<svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g stroke="' + INK + '" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">' + inner + '</g></svg>'; }
   function wheel(cx, cy, r) { return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="#2a2a32"/><circle cx="' + cx + '" cy="' + cy + '" r="' + Math.round(r * 0.45) + '" fill="#d8dde6" stroke-width="2"/>'; }
@@ -84,6 +86,7 @@
   };
 
   window.KruRacing = {
+    REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }),
     count: ART.length, name: name, vehicle: vehicle, overtake: overtake, shade: shade, POOLS: POOLS, ENC: ENC, CHANCE: CHANCE, SECRET: SECRET,
     PREFIX: '🎄 ', OVERTAKE: { title: 'SLEIGH SWITCH!', verb: 'swooshes past' },
   };
