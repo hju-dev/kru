@@ -11,15 +11,15 @@
     "rows": [
      [
       "[[hq]] HQ",
-      "2,400 HP: lose it and you are out"
+      "1,200 HP: lose it and you are out"
      ],
      [
       "[[depot]] Depot",
-      "1,600 HP: healing, cheaper weapons"
+      "800 HP: healing, cheaper weapons"
      ],
      [
       "[[tower]] 2 Towers",
-      "1,800 HP each: shoot weapons down"
+      "900 HP each: shoot weapons down"
      ]
     ]
    }
@@ -77,7 +77,7 @@
   {
    "title": "Defend your base",
    "text": [
-    "Towers shoot weapons down: [LQ] always, [Q] 16%, [HQ] 8%.",
+    "Towers shoot weapons down: [LQ] 35%, [Q] 20%, [HQ] 10%.",
     "HQ destroyed? Use a repair kit or sacrifice a building!"
    ],
    "example": {
