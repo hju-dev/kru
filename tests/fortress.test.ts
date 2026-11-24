@@ -30,8 +30,8 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
     expect(js).toContain('impossible: [0, 0, 0, 10, 15, 10, 25, 40, 0]')
     expect(js).toContain("Math.min(IORDER.indexOf('avangard'), i + 1)")
   })
-  it('towers: [Q] 16% and [HQ] 8% with both towers (8% / 4% each), [LQ] 35%, Sarmat 1%; one tower = half; 5% resistance (max 17%)', () => {
-    expect(js).toContain('var SHOOT = { LQ: 0.35, Q: 0.16, HQ: 0.08 };')
+  it('towers: [Q] 16% and [HQ] 8% with both towers (8% / 4% each), [LQ] 100%, Sarmat 1%; one tower = half; 5% resistance (max 17%)', () => {
+    expect(js).toContain('var SHOOT = { LQ: 1, Q: 0.16, HQ: 0.08 };')
     expect(js).toContain('chance: 0.01')
     expect(js).toContain('* Math.min(1, towers(id) / 2)')
     expect(js).toContain('RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1')
