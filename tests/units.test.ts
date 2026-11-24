@@ -75,15 +75,15 @@ describe('picking a unit', () => {
   it('Henry\'s current units: R&W Unit 5 for every level, and English Unit 7 for M.3', () => {
     expect(UNITS.filter((u) => !u.games).map((u) => u.id).sort()).toEqual(['m1-rw-u5', 'm2-rw-u5', 'm3-english-u7', 'm3-rw-u5'])
     expect(unitsFor('M.1').map((u) => u.title)).toEqual(['R&W Unit 5: What Are You Afraid Of?', 'English: Grammar and Punctuation (A2-B1)'])
-    expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception'])
-    expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future', 'English: Reported Speech'])
+    expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception', 'English: Grammar and Punctuation (B1)'])
+    expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future', 'English: Reported Speech', 'English: Grammar and Punctuation (B1-B2)'])
     // every title says which course (or lesson pack) it is from
-    for (const u of UNITS) expect(u.title).toMatch(/^(((R&W|English) )?Unit \d+( L\d+| Review)?: |English: Reported Speech|English: Grammar and Punctuation \(A2-B1\))/)
+    for (const u of UNITS) expect(u.title).toMatch(/^(((R&W|English) )?Unit \d+( L\d+| Review)?: |English: Reported Speech|English: Grammar and Punctuation \((A2-B1|B1|B1-B2)\))/)
   })
 })
 
-describe('M.1 English: Grammar and Punctuation (A2-B1), Nov 24', () => {
-  const u = JSON.parse(read('public/units/m1-english-grammar-punctuation.json')) as {
+for (const [level, file] of [['M.1', 'm1'], ['M.2', 'm2'], ['M.3', 'm3']] as const) describe(`${level} English: Grammar and Punctuation, Nov 24`, () => {
+  const u = JSON.parse(read(`public/units/${file}-english-grammar-punctuation.json`)) as {
     games: string[]
     sets: { name: string; questions: { q: string; choices: string[]; answer: number; tier: string; why: string }[] }[]
   }
@@ -99,8 +99,9 @@ describe('M.1 English: Grammar and Punctuation (A2-B1), Nov 24', () => {
     }
     expect(new Set(all.map((q) => q.q + q.choices.join('|'))).size).toBe(100)
   })
-  it('is offered to the quiz games for every M.1 class (Quiz Island, Point 1-4, Battle of Wits, Quiz Dash)', () => {
-    for (const g of ['quiz-island', 'fortress', 'quiz-battle', 'race-board']) expect(unitsFor('M.1', g, 'M.1/2').map((x) => x.id)).toContain('m1-english-grammar-punctuation')
-    expect(unitsFor('M.2', 'quiz-island', 'M.2/1').map((x) => x.id)).not.toContain('m1-english-grammar-punctuation')
+  it('is offered to the quiz games for every class of its level (Quiz Island, Point 1-4, Battle of Wits, Quiz Dash)', () => {
+    for (const g of ['quiz-island', 'fortress', 'quiz-battle', 'race-board']) expect(unitsFor(level, g, `${level}/2`).map((x) => x.id)).toContain(`${file}-english-grammar-punctuation`)
+    const other = level === 'M.1' ? 'M.2' : 'M.1'
+    expect(unitsFor(other, 'quiz-island', `${other}/1`).map((x) => x.id)).not.toContain(`${file}-english-grammar-punctuation`)
   })
 })

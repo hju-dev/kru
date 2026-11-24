@@ -1,7 +1,10 @@
 /* 20 Questions: Henry thinks of the answer; the board shows only the category. Teams (or the whole
    class, in Solo) count down their questions. Got it! -> the winner gets a point for every question left.
    Optional (⋯ menu, Henry Nov 10): a timer (−15 / +15, resets each round) and a name picker that spins to choose
-   the student who asks the next question (no repeats until everyone has had a turn). */
+   the student who asks the next question (no repeats until everyone has had a turn).
+   Nov 24: the picked student shows BIG on the main screen (S.cur), under "It's a… PLACE". "Next student −1" counts the
+   question for that student's team (or the class) and spins the next student; "Free question" spins the next
+   student WITHOUT taking a question away (when the answer to a yes/no question isn't known). */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
@@ -12,7 +15,7 @@
   var INTRO = [];
   var solo = false;
   var teams = [];      // group: the teams; solo: every student (for picking the winner)
-  var S = null;        // saved: { v, total, round, cat, left: {id: n}, winner, done, pts, log, opts, asked, introDone }
+  var S = null;        // saved: { v, total, round, cat, left: {id: n}, winner, done, pts, log, opts, asked, cur, introDone }
   var audio = null;
   var tLeft = 0, tTotal = 0, running = false, endAt = 0, timer = 0;
 
@@ -59,7 +62,7 @@
     $('cats').innerHTML = CATS.concat(['Random']).map(function (c) {
       return '<button class="btn" data-cat="' + esc(c) + '" aria-pressed="' + (c === S.cat) + '">' + esc(c) + '</button>';
     }).join('');
-    $('cats').hidden = S.done || anyAsked(); // choose before the first question
+    $('cats').hidden = S.done || anyAsked() || !!(S.opts.picker && S.cur); // choose before the first question
     $('soloCount').hidden = !solo;
     if (solo) {
       $('soloLeft').textContent = Math.max(0, left(CLASS));
@@ -77,7 +80,7 @@
     $('minusClass').hidden = !solo || !!S.done;
     $('minusClass').disabled = left(CLASS) <= 0;
     // Solo: the winners so far go here; Group: a short reminder once the round has a category
-    if (!solo) $('hint').textContent = S.done || !S.cat ? '' : 'Tap a team for each question it asks.';
+    if (!solo) $('hint').textContent = S.done || !S.cat ? '' : S.opts.picker ? 'Next student −1 counts it.' : 'Tap a team for each question it asks.';
     renderStrip();
     $('totalOut').textContent = S.total;
     $('undo').disabled = !S.log.length;
@@ -86,6 +89,14 @@
     // Solo with the timer and the picker on: a shorter label, so the row fits the phone
     $('minusClass').textContent = S.opts.timer && S.opts.picker ? 'Asked −1' : 'Question asked −1';
     $('pick').hidden = !S.opts.picker || !!S.done;
+    $('pick').textContent = S.cur ? '🎯 Next student −1' : '🎯 Who asks?';
+    $('free').hidden = !S.opts.picker || !S.cur || !!S.done;
+    if (S.opts.picker) $('minusClass').hidden = true; // "Next student −1" does the counting
+    $('asker').hidden = !(S.opts.picker && S.cur && !S.done) && !spinning;
+    if (S.cur && !spinning) {
+      $('askerName').textContent = S.cur.nick;
+      $('askerTeam').textContent = solo ? '' : S.cur.teamName + ' · ' + Math.max(0, left(S.cur.teamId)) + ' left';
+    }
     $('timerOpt').textContent = 'Timer: ' + (S.opts.timer ? 'ON' : 'off');
     $('timerOpt').setAttribute('aria-pressed', String(!!S.opts.timer));
     $('secsOut').textContent = fmt(S.opts.secs);
@@ -133,37 +144,48 @@
   var spinning = false;
   function pickName() {
     if (spinning) return;
+    if (!S.cat) { toast('Choose the category first.', false); return; }
     var all = askers();
     if (!all.length) { toast('Nobody has any questions left.', false); return; }
     unlockAudio();
     var fresh = all.filter(function (a) { return S.asked.indexOf(a.key) < 0; });
     if (!fresh.length) { S.asked = []; fresh = all.slice(); toast('Everyone has had a turn: starting again.', false); }
     var chosen = fresh[Math.floor(Math.random() * fresh.length)];
-    S.asked.push(chosen.key); save();
-    $('pickBack').hidden = false;
-    $('pickTeam').textContent = ''; $('pickLeft').textContent = '';
-    $('pickName').classList.remove('landed');
+    S.asked.push(chosen.key);
+    $('asker').hidden = false; $('asker').classList.remove('landed'); $('asker').classList.add('spin');
+    $('askerTeam').textContent = '';
     var steps = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 14 + Math.floor(Math.random() * 5), k = 0;
     spinning = true;
     (function step() {
       if (k < steps) {
-        $('pickName').textContent = all[Math.floor(Math.random() * all.length)].nick;
+        $('askerName').textContent = all[Math.floor(Math.random() * all.length)].nick;
         tone([420 + (k % 4) * 70], 0); k++;
         setTimeout(step, 45 + k * k * 0.6);
         return;
       }
       spinning = false;
-      $('pickName').textContent = chosen.nick;
-      $('pickName').classList.add('landed');
-      $('pickTeam').textContent = solo ? '' : chosen.team.name + ' · ' + Math.max(0, left(chosen.team.id)) + ' questions left';
-      var still = all.filter(function (a) { return S.asked.indexOf(a.key) < 0; }).length;
-      $('pickLeft').textContent = still ? still + ' still to ask' : 'Everyone has asked once';
+      S.cur = { key: chosen.key, nick: chosen.nick, teamId: chosen.team.id, teamName: chosen.team.name };
+      save();
+      $('asker').classList.remove('spin'); $('asker').classList.add('landed');
       tone([784, 1047], 0.12);
+      render();
     })();
   }
-  $('pick').addEventListener('click', pickName);
-  $('pickAgain').addEventListener('click', function () { if (!spinning) pickName(); });
-  $('pickOk').addEventListener('click', function () { if (!spinning) $('pickBack').hidden = true; });
+  /** The student just asked a question (yes/no was answered): it counts, then the next student is picked. */
+  $('pick').addEventListener('click', function () {
+    if (spinning) return;
+    if (S.cur && !S.done) {
+      var id = solo ? CLASS : S.cur.teamId;
+      if (left(id) > 0) ask(id); // takes one question away, with an Undo toast
+    }
+    pickName();
+  });
+  /** Free question: the answer wasn't known, so nobody loses a question; just the next student. */
+  $('free').addEventListener('click', function () {
+    if (spinning) return;
+    toast('Free question: nobody loses a guess.', false);
+    pickName();
+  });
   function renderStrip() {
     var strip = $('strip');
     if (solo) {
@@ -254,7 +276,7 @@
   function newRound() {
     resetTimer();
     S.round++;
-    S.cat = null; S.left = {}; S.winner = null; S.done = null;
+    S.cat = null; S.left = {}; S.winner = null; S.done = null; S.cur = null;
     S.log = S.log.filter(function (L) { return L.k === 'win'; }); // can't undo questions from old rounds
     save();
     render();
@@ -333,6 +355,7 @@
       else S = { v: 1, solo: solo, total: 20, round: 1, cat: null, left: {}, winner: null, done: null, pts: {}, log: [], introDone: false };
       S.opts = S.opts || { timer: false, secs: 60, picker: false };
       S.asked = S.asked || [];
+      S.cur = S.cur || null;
       tTotal = tLeft = S.opts.secs;
       render();
       if (!S.introDone) showIntro().then(function () { S.introDone = true; save(); });

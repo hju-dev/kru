@@ -26,6 +26,18 @@
       "title": "R&W Unit 5: Perception"
     },
     {
+      "id": "m2-english-grammar-punctuation",
+      "level": "M.2",
+      "course": "M.2 English",
+      "title": "English: Grammar and Punctuation (B1)",
+      "games": [
+        "fortress",
+        "quiz-battle",
+        "quiz-island",
+        "race-board"
+      ]
+    },
+    {
       "id": "m3-english-u7",
       "level": "M.3",
       "course": "M.3 English",
@@ -99,6 +111,18 @@
         "quiz-battle",
         "race-board",
         "quiz-island"
+      ]
+    },
+    {
+      "id": "m3-english-grammar-punctuation",
+      "level": "M.3",
+      "course": "M.3 English",
+      "title": "English: Grammar and Punctuation (B1-B2)",
+      "games": [
+        "fortress",
+        "quiz-battle",
+        "quiz-island",
+        "race-board"
       ]
     }
   ]
