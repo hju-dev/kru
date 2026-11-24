@@ -154,5 +154,312 @@
    "text": "+1 for each right answer that starts with the letter {letter}!",
    "points": 1
   }
- ]
+ ],
+ "final": {
+  "M.1": [
+   {
+    "q": "Why did the writer's family stop thinking Mr. Chai was unfriendly? Use 'because' and give TWO details from the story.",
+    "hint": "Write your answer in full sentences",
+    "answer": "Because he helped her mom push the car in the rain and he made hot tea for them, so they saw he is kind and shy.",
+    "why": "Two details: he helped push the car, he made hot tea. A 'because' sentence.",
+    "read": {
+     "title": "The Quiet Neighbor",
+     "sentences": [
+      "Mr. Chai lives next door to us.",
+      "He never says hello, and he always looks angry.",
+      "Last week my mom's car broke down in the rain.",
+      "Mr. Chai came out with an umbrella and helped her push the car.",
+      "Then he made hot tea for all of us.",
+      "Now we know he is not unfriendly. He is just shy."
+     ]
+    }
+   },
+   {
+    "q": "How do you think Anna felt at the end? Give TWO reasons from the story.",
+    "hint": "Write your answer in full sentences",
+    "answer": "She felt happy and proud because she did the right thing, and the man was very thankful, even though she didn't get a new phone.",
+    "why": "Reasons: she returned the wallet, the man thanked her. Her smile shows she was happy.",
+    "read": {
+     "title": "The Lost Wallet",
+     "sentences": [
+      "Anna found a wallet on the bus.",
+      "There was a lot of money inside, and she really wanted a new phone.",
+      "But she also saw a photo of a little girl and a name card.",
+      "Anna called the number on the card.",
+      "An hour later, a tired man thanked her again and again.",
+      "Anna went home with a big smile and no new phone."
+     ]
+    }
+   },
+   {
+    "q": "Why did Mia set TWO alarms? Answer in a full sentence and explain the lesson she learned.",
+    "hint": "Write your answer in full sentences",
+    "answer": "Because she was nearly late when her alarm didn't ring, she learned she needs a backup so she won't be late again.",
+    "why": "A cause and a lesson: one alarm failed, so she wants a backup.",
+    "read": {
+     "title": "The Broken Alarm",
+     "sentences": [
+      "Mia's alarm clock did not ring on Monday.",
+      "She woke up at 8:00 and her class started at 8:15.",
+      "She ran to the bus stop without breakfast.",
+      "The bus was just leaving, so she had to run after it.",
+      "She arrived at school out of breath, but she was on time.",
+      "That night she set TWO alarms."
+     ]
+    }
+   },
+   {
+    "q": "Write a NEW title for the story and explain why it is a good title.",
+    "hint": "Write your answer in full sentences",
+    "answer": "Example: 'A Kind Surprise' because Pim cared about the sick woman and her gift made the woman smile.",
+    "why": "Accept any logical title with a reason that matches the story (kindness, caring, a surprise).",
+    "read": {
+     "title": "Night Market",
+     "sentences": [
+      "Every Friday, Pim and her dad go to the night market.",
+      "They always buy mango sticky rice from the same old woman.",
+      "One Friday, the woman was not there.",
+      "A boy was selling the rice instead. He said, 'My grandmother is sick today.'",
+      "The next Friday, Pim brought a card and a flower for her.",
+      "The old woman smiled for the first time in weeks."
+     ]
+    }
+   },
+   {
+    "q": "How did Ben change from the beginning to the end? Describe BOTH sides with details.",
+    "hint": "Write your answer in full sentences",
+    "answer": "At first Ben was alone and shy, but Kate was kind to him, so he made friends and now he helps new students.",
+    "why": "Before: alone, ate quickly. After: four friends, helps new students.",
+    "read": {
+     "title": "The New Student",
+     "sentences": [
+      "Ben was new at school and did not know anyone.",
+      "At lunch he sat alone and ate quickly.",
+      "A girl named Kate saw him and sat down next to him.",
+      "She asked him about his old school and his favorite game.",
+      "By the end of the week, Ben had four new friends.",
+      "Now he always looks for new students at lunch."
+     ]
+    }
+   },
+   {
+    "q": "What would you do in Tom's situation? Give one choice and one reason, and say if it was the same as Tom's.",
+    "hint": "Write your answer in full sentences",
+    "answer": "Example: I would also go into the cafe because it was safe and warm; that is what Tom did, too.",
+    "why": "Accept any sensible choice with a reason. The comparison with Tom must be correct.",
+    "read": {
+     "title": "The Last Bus",
+     "sentences": [
+      "It was 10 p.m. and the last bus had left.",
+      "Tom's phone had no battery and the street was dark.",
+      "He started to walk home, which took an hour.",
+      "On the way, he saw a small cafe that was still open.",
+      "The owner let him charge his phone and gave him a free hot chocolate.",
+      "Tom called his mom and she came to pick him up."
+     ]
+    }
+   }
+  ],
+  "M.2": [
+   {
+    "q": "What is the writer's main message in this story? Support your answer with TWO pieces of evidence.",
+    "hint": "Write your answer in full sentences",
+    "answer": "Doing research before acting leads to better results. Evidence: Dara read about hydroponics and added plant food, and her plant grew twice as tall as the others.",
+    "why": "Main idea: research first. Evidence: read about hydroponics, plant food each week, plant twice as tall.",
+    "read": {
+     "title": "The Experiment",
+     "sentences": [
+      "Dara's science teacher gave the class a challenge: keep a plant alive for a month without using soil.",
+      "Most students put their seeds in water and hoped for the best.",
+      "Dara, however, read about hydroponics and added tiny amounts of plant food to the water every week.",
+      "After three weeks, her plant was twice as tall as everyone else's.",
+      "Her teacher asked how she knew what to do.",
+      "'I didn't know,' said Dara. 'I just decided to find out first.'"
+     ]
+    }
+   },
+   {
+    "q": "How and why did Nok's attitude change? Explain in 2-3 sentences using details.",
+    "hint": "Write your answer in full sentences",
+    "answer": "At first she thought the rule was boring and unfair, but after hearing her grandfather's story she enjoyed talking with him, so she stopped complaining and wanted more stories.",
+    "why": "Before: boring/unfair. Trigger: grandfather's story. After: asked for another story, no complaints.",
+    "read": {
+     "title": "The Phone-Free Dinner",
+     "sentences": [
+      "In Nok's house, nobody could use a phone at dinner.",
+      "Nok thought this rule was boring and unfair.",
+      "One evening her grandfather started telling a story about his first job on a fishing boat.",
+      "Nok had never heard it before, and she forgot to check her messages for an hour.",
+      "Afterwards she asked him to tell another story the next day.",
+      "The rule was still the same, but she did not complain again."
+     ]
+    }
+   },
+   {
+    "q": "What do you think Leo's mother will decide? Make a PREDICTION and support it with two clues from the story.",
+    "hint": "Write your answer in full sentences",
+    "answer": "She will probably let the dog stay. Clues: she put a bowl of water down, and she only sighed instead of getting angry.",
+    "why": "Prediction with clues: water bowl, sigh/no anger, they slept together.",
+    "read": {
+     "title": "The Stray Dog",
+     "sentences": [
+      "A thin brown dog started to follow Leo home from school every day.",
+      "Leo's mother said, 'We can't keep a dog. Dogs are expensive.'",
+      "So Leo began feeding the dog a little from his lunch and made a bed from old boxes outside the building.",
+      "When it rained heavily one night, he quietly let the dog sleep in the hallway.",
+      "In the morning his mother found them both asleep.",
+      "She sighed, shook her head, and put a bowl of water on the floor."
+     ]
+    }
+   },
+   {
+    "q": "Why was Sam's unplanned answer successful? Explain what the manager valued.",
+    "hint": "Write your answer in full sentences",
+    "answer": "The manager valued honesty and real passion; Sam was truthful and showed he loves the shop, which is better than a rehearsed answer.",
+    "why": "Key idea: honesty and genuine interest beat practiced answers.",
+    "read": {
+     "title": "The Interview",
+     "sentences": [
+      "Sam was nervous before his first job interview at a bookstore.",
+      "He had practiced answers all night, but when the manager asked, 'Why do you want to work here?', his mind went blank.",
+      "After a long silence, he said, 'Honestly, I don't know what to say. I just love this place.'",
+      "The manager laughed kindly and said, 'That is the best answer today.'",
+      "Sam started work the following Monday."
+     ]
+    }
+   },
+   {
+    "q": "Explain how Ms. Ploy changed the library. Give THREE details showing the effect on the students.",
+    "hint": "Write your answer in full sentences",
+    "answer": "She started a Book Swap table, so students shared books, the table emptied daily, and they wrote notes to each other; the library became livelier.",
+    "why": "Details: Book Swap, empty table by lunch, notes in books, noisy but welcome.",
+    "read": {
+     "title": "The Quiet Library",
+     "sentences": [
+      "The school library was always quiet, and most students used it only to study.",
+      "Then a new librarian, Ms. Ploy, put a 'Book Swap' table by the door.",
+      "Students could leave a book they had finished and take another one for free.",
+      "Within a month, the table was empty by lunchtime every day.",
+      "Students began leaving little notes inside the books: 'Loved chapter 3!' or 'The ending will shock you.'",
+      "The library was no longer silent, but nobody minded."
+     ]
+    }
+   },
+   {
+    "q": "Was anyone to blame? Give an opinion with reasons, and say what each person could have done better.",
+    "hint": "Write your answer in full sentences",
+    "answer": "The caretaker was partly to blame because he didn't tell anyone; the coach could have asked staff first before worrying everyone. Nobody meant harm.",
+    "why": "Accept reasoned opinions: the caretaker should have told someone; others should have asked before assuming.",
+    "read": {
+     "title": "The Missing Trophy",
+     "sentences": [
+      "On Monday morning, the soccer trophy was missing from the school cabinet.",
+      "The coach looked worried, and everyone wondered who had taken it.",
+      "The caretaker explained that he had borrowed it to polish it for Friday's ceremony.",
+      "'I should have told someone,' he said.",
+      "Everyone laughed with relief.",
+      "On Friday, the trophy shone brighter than ever."
+     ]
+    }
+   }
+  ],
+  "M.3": [
+   {
+    "q": "What is the author's attitude toward recommendation apps? Support your answer with TWO quotations or details, and explain what they show.",
+    "hint": "Write your answer in full sentences",
+    "answer": "The author is critical: the app shows 'whatever kept her watching', not what she liked, and choosing for herself felt strange, which shows the app had been choosing for her.",
+    "why": "Attitude: critical/cautious. Evidence: 'whatever kept her watching'; unfollowing and 'felt strange to choose'.",
+    "read": {
+     "title": "The Algorithm",
+     "sentences": [
+      "Every evening, Mia's phone suggested videos she would 'probably enjoy', and every evening she watched far more than she had planned.",
+      "One night she noticed that all the suggestions were about the same topic, even though she used to love many things.",
+      "She realized the app was not showing her what she liked; it was showing her whatever kept her watching.",
+      "The next day she unfollowed fifty channels and searched for something completely new.",
+      "It felt strange to choose for herself again."
+     ]
+    }
+   },
+   {
+    "q": "What does the writer mean by 'the strongest bridge'? Explain the literal and the figurative meaning.",
+    "hint": "Write your answer in full sentences",
+    "answer": "Literally it is not very strong because it moves in the wind, but figuratively it is strong because it represents the village's unity.",
+    "why": "Literal: a simple, slightly moving wooden bridge. Figurative: strength from cooperation.",
+    "read": {
+     "title": "The Bridge",
+     "sentences": [
+      "The villagers had wanted a bridge for fifty years, but every plan had failed because nobody could agree on where to build it.",
+      "Then a flood destroyed the old path, and, for the first time, the whole village worked together.",
+      "They built a simple wooden bridge in three weeks.",
+      "It was not perfect; it moved slightly when the wind blew.",
+      "Yet the elders said it was the strongest bridge they had ever seen, because everyone had built it together."
+     ]
+    }
+   },
+   {
+    "q": "Why did Kit win, and how did the experience change Ploy? Answer in 3-4 sentences with evidence.",
+    "hint": "Write your answer in full sentences",
+    "answer": "Kit won because his personal story was memorable, whereas Ploy relied on numbers. Ploy, who had been furious, learned from this and now begins speeches with a person.",
+    "why": "Cause: memorable story vs. numbers. Change: furious, then accepted, now starts with a person.",
+    "read": {
+     "title": "The Debate",
+     "sentences": [
+      "Ploy was sure she would win the school debate: she had prepared for weeks and knew every statistic.",
+      "Her opponent, Kit, spoke without notes and told a short story about his grandmother instead.",
+      "When the judges announced the result, Kit had won.",
+      "Ploy was furious at first, but later she admitted that she had remembered his story and none of her numbers.",
+      "Since then, she starts every speech with a person, not a percentage."
+     ]
+    }
+   },
+   {
+    "q": "Evaluate Ms. Arun's strategy. Was it better than protesting? Give an opinion and TWO reasons from the text.",
+    "hint": "Write your answer in full sentences",
+    "answer": "It was better because it solved the problem positively: forty families used the roof and the council cancelled the plan, whereas protesting had left the residents powerless.",
+    "why": "Opinion with evidence: residents were powerless; the garden attracted families and changed the council's mind.",
+    "read": {
+     "title": "The Garden on the Roof",
+     "sentences": [
+      "When the city announced plans to demolish the old market, the residents were angry but powerless.",
+      "Instead of protesting, Ms. Arun suggested turning the building's flat roof into a community garden.",
+      "Within a year, forty families were growing vegetables there, and the building, which had been scheduled for demolition, became a local landmark.",
+      "The council eventually cancelled the plans.",
+      "'We didn't fight the change,' Ms. Arun said. 'We gave the building a reason to stay.'"
+     ]
+    }
+   },
+   {
+    "q": "What is the theme of the story, and which sentence in the text states it most clearly? Explain your choice.",
+    "hint": "Write your answer in full sentences",
+    "answer": "The theme is that accuracy and honesty matter more than speed; the last sentence states it directly.",
+    "why": "Theme: honesty/accuracy over speed. The final sentence states it. Accept a well-explained alternative.",
+    "read": {
+     "title": "The Translator",
+     "sentences": [
+      "Hana's job was to translate for visitors at the museum, and she was proud that she never needed a dictionary.",
+      "Then a visitor used an old proverb that had no equivalent in her language.",
+      "Instead of guessing, she paused and said, 'This phrase does not translate directly; let me explain what it means.'",
+      "The visitor smiled, and the guide later said it was the most honest translation of the day.",
+      "Hana realized that being accurate sometimes matters more than being fast."
+     ]
+    }
+   },
+   {
+    "q": "How do the weather and Mr. Lek's actions each contribute to the story's message? Use details.",
+    "hint": "Write your answer in full sentences",
+    "answer": "The storm creates the challenge and tests the tradition; Mr. Lek's example inspires others, showing that traditions continue when someone takes the first step.",
+    "why": "Weather: the obstacle. Mr. Lek: leadership by example. Message: traditions survive through action and community.",
+    "read": {
+     "title": "The Last Day of Summer",
+     "sentences": [
+      "Nobody remembered who first suggested the end-of-summer picnic, but the whole street had attended it for twenty years.",
+      "This year, a heavy storm threatened to cancel it, and several neighbors wanted to stay inside.",
+      "Mr. Lek, who was eighty, simply put on his raincoat and carried a table into the road.",
+      "One by one, the others followed, holding umbrellas and laughing at the mud.",
+      "It was the muddiest picnic anyone could remember, and, according to everyone, the best."
+     ]
+    }
+   }
+  ]
+ }
 }

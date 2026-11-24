@@ -77,7 +77,7 @@
         }
         sets.push({ key: 'mixed', group: 'Built in', name: 'All tasks, mixed', questions: mixed });
         Object.keys(src).forEach(function (k) { sets.push({ key: k, group: 'Built in', name: NAMES[k], questions: make(k, src[k]) }); });
-        return { sets: sets, hidden: c.hidden, intro: KruIntro.forLevel(c, level) };
+        return { sets: sets, hidden: c.hidden, final: (c.final || {})[level] || [], intro: KruIntro.forLevel(c, level) };
       });
     },
   });

@@ -1872,5 +1872,139 @@
    "points": 1,
    "needs": "choice"
   }
- ]
+ ],
+ "final": {
+  "M.1": [
+   {
+    "q": "Fix ALL the mistakes (there are 5).",
+    "quote": "yesterday i go to the market and buyed two apple.",
+    "hint": "Write the whole sentence correctly",
+    "answer": "Yesterday I went to the market and bought two apples.",
+    "why": "1 Yesterday (capital), 2 I (capital), 3 went, 4 bought, 5 apples (plural)."
+   },
+   {
+    "q": "Rewrite as ONE sentence starting with 'Although'.",
+    "quote": "It was raining. We went to the park. We had a great time.",
+    "hint": "Write the new sentence",
+    "answer": "Although it was raining, we went to the park and had a great time.",
+    "why": "'Although' + clause, comma, then the main clause. Accept small differences if the grammar and the comma are right."
+   },
+   {
+    "q": "Write the correct form of EVERY verb in brackets.",
+    "quote": "If I ___ (be) rich, I ___ (buy) a house, but I ___ (be) not rich.",
+    "hint": "Write the three words, in order",
+    "answer": "were / would / am",
+    "why": "Second conditional: if + past (were), would + base verb. The last gap is a real present fact: am."
+   },
+   {
+    "q": "Change the whole sentence to the PAST.",
+    "quote": "Every day she gets up at six, makes breakfast and walks to school.",
+    "hint": "Write the new sentence",
+    "answer": "Every day she got up at six, made breakfast and walked to school.",
+    "why": "got up, made and walked: two irregular verbs and one regular verb."
+   },
+   {
+    "q": "Put the words in order to make TWO correct sentences.",
+    "quote": "park / went / to / the / we / Sunday / on   •   playing / were / children / the / happily",
+    "hint": "Write both sentences with capitals and periods",
+    "answer": "We went to the park on Sunday. The children were playing happily.",
+    "why": "Sentence 1: subject + verb + place + time. Sentence 2: past continuous (were playing)."
+   },
+   {
+    "q": "Complete EVERY gap with ONE word.",
+    "quote": "She ___ lived here ___ 2015, so she has known her neighbors ___ ten years.",
+    "hint": "Write the three words, in order",
+    "answer": "has / since / for",
+    "why": "Present perfect: has lived; since + a point in time (2015); for + a length of time (ten years)."
+   }
+  ],
+  "M.2": [
+   {
+    "q": "Fix ALL the mistakes (there are 6).",
+    "quote": "Last weekend my family and I has visited a beautifull temple. It were very old, and there was many tourist. I enjoyed it so much that i want to go again.",
+    "hint": "Write the whole text correctly",
+    "answer": "Last weekend my family and I visited a beautiful temple. It was very old, and there were many tourists. I enjoyed it so much that I want to go again.",
+    "why": "visited (not has visited), beautiful, It was, there were, tourists, I (capital)."
+   },
+   {
+    "q": "Join the three sentences into ONE sentence with a relative clause.",
+    "quote": "My neighbor is a doctor. She works at the city hospital. She is very kind.",
+    "hint": "Write the new sentence",
+    "answer": "My neighbor, who is a doctor and works at the city hospital, is very kind.",
+    "why": "A relative clause (who ...) with commas for extra information. Accept other correct versions."
+   },
+   {
+    "q": "Rewrite in the PASSIVE voice.",
+    "quote": "They have cancelled the match because the rain flooded the field.",
+    "hint": "Write the new sentence",
+    "answer": "The match has been cancelled because the field was flooded by the rain.",
+    "why": "Present perfect passive (has been cancelled) and past passive (was flooded)."
+   },
+   {
+    "q": "Put EVERY verb in brackets in the correct tense.",
+    "quote": "By the time we ___ (arrive), the film ___ (already start).",
+    "hint": "Write the two answers",
+    "answer": "arrived / had already started",
+    "why": "Past simple for the later action; past perfect for the earlier one."
+   },
+   {
+    "q": "Add ALL the capital letters and punctuation.",
+    "quote": "although it was late tom decided to finish his homework he opened his book took a deep breath and started writing",
+    "hint": "Write the whole text correctly",
+    "answer": "Although it was late, Tom decided to finish his homework. He opened his book, took a deep breath, and started writing.",
+    "why": "A comma after the 'although' clause, a period, and commas in the list of three actions."
+   },
+   {
+    "q": "Rewrite in REPORTED speech.",
+    "quote": "\"I'll call you tomorrow if I'm not working,\" she said to me.",
+    "hint": "Write the new sentence",
+    "answer": "She told me that she would call me the next day if she wasn't working.",
+    "why": "will becomes would, tomorrow becomes the next day, am not becomes was not."
+   }
+  ],
+  "M.3": [
+   {
+    "q": "Rewrite the sentence with 'Had' at the start.",
+    "quote": "If I had known the truth, I would have acted differently.",
+    "hint": "Write the new sentence",
+    "answer": "Had I known the truth, I would have acted differently.",
+    "why": "'Had I known' = 'If I had known' (third conditional, no 'if')."
+   },
+   {
+    "q": "Fix ALL the mistakes (there are 4).",
+    "quote": "Despite of the rain, we have went to the beach, and the sea were warmer than I have expected.",
+    "hint": "Write the whole sentence correctly",
+    "answer": "Despite the rain, we went to the beach, and the sea was warmer than I had expected.",
+    "why": "Despite (no 'of'), went (not have went), was (not were), had expected (past perfect)."
+   },
+   {
+    "q": "Join into ONE sentence using a PARTICIPLE clause.",
+    "quote": "She opened the door. She saw a strange package on the floor.",
+    "hint": "Write the new sentence",
+    "answer": "Opening the door, she saw a strange package on the floor.",
+    "why": "A participle clause (Opening ...) shares the subject of the main clause."
+   },
+   {
+    "q": "Rewrite in the PASSIVE with a reporting verb.",
+    "quote": "People say that the company is losing millions.",
+    "hint": "Write the new sentence",
+    "answer": "The company is said to be losing millions. (or: It is said that the company is losing millions.)",
+    "why": "Passive reporting structure: is said to + infinitive, or It is said that..."
+   },
+   {
+    "q": "Fill ALL four gaps with the correct form of the word in brackets.",
+    "quote": "The ___ (decide) was a ___ (surprise) to everyone, but the ___ (organize) explained it ___ (clear).",
+    "hint": "Write the four words, in order",
+    "answer": "decision / surprise / organizers / clearly",
+    "why": "A noun after 'The', a noun after 'a', a plural noun as the subject, an adverb after the verb."
+   },
+   {
+    "q": "Rewrite using 'wish'.",
+    "quote": "I'm sorry I didn't call her yesterday. It's too late now.",
+    "hint": "Write the new sentence",
+    "answer": "I wish I had called her yesterday.",
+    "why": "A regret about the past: wish + past perfect."
+   }
+  ]
+ }
 }
