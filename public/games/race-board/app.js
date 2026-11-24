@@ -40,7 +40,8 @@
     return { n: t.dice, big: t.big, back: !right };
   }
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
-  var GAME_TITLE = 'Quiz Dash';
+  var GAME_TITLE = 'Quiz Grand Prix'; // was Quiz Dash (Nov 25: racing theme)
+  var RACING = false; // the racing theme (racing.js): vehicles, puns, racing cards, overtakes, podium. Off in Christmas Dash.
   var XMAS = null; // Christmas Race Board (content.json "christmas"): { squares: [n], challenge: [{ title, text }], forfeit: [{ title, text }] }
   // chance cards (Henry's list + a few more); each is equally likely
   var CHANCE = [
@@ -107,15 +108,29 @@
     var e = (FX[XMAS ? 'xmas' : 'race'] || {})[key];
     if (!e || !window.KruFx) { if (then) then(); return; }
     v = v || {};
-    var title = e[1], sub = e[2];
+    var title = e[1], sub = e[2], art = e[0];
     if (XMAS && key === 'right') { var r = rot('xr', XRIGHT); title = r[0]; sub = r[1]; }
-    if (title === 'INCORRECT') v.e = rot(XMAS ? 'xe' : 're', XMAS ? XENC : ENC);
-    KruFx.show({ art: e[0], title: title, sub: fill(sub, v), mood: e[3], sound: e[4], wait: 2700, then: then }); // 1 s longer than before
+    if (RACING && KruRacing.POOLS[key]) { var rp = rot('rp' + key, KruRacing.POOLS[key]); title = rp[0]; sub = rp[1]; }
+    if (RACING && VEHICLE_FX.indexOf(key) >= 0) art = vehicleFor(v.id) || art;
+    if (title === 'INCORRECT') v.e = rot(XMAS ? 'xe' : 're', XMAS ? XENC : RACING ? KruRacing.ENC : ENC);
+    KruFx.show({ art: art, title: title, sub: fill(sub, v), mood: e[3], sound: e[4], wait: 2700, then: then }); // 1 s longer than before
   }
   /** A quick banner at the top (power-ups inside the question), never in the way. */
   function fxFlash(key, sub) {
     var e = (FX[XMAS ? 'xmas' : 'race'] || {})[key];
-    if (e && window.KruFx) KruFx.flash({ art: e[0], title: e[1], sub: sub, mood: key === 'skip' ? 'bad' : 'good', wait: 2400 });
+    if (e && window.KruFx) KruFx.flash({ art: RACING && key === 'skip' ? vehicleFor() || e[0] : e[0], title: e[1], sub: sub, mood: key === 'skip' ? 'bad' : 'good', wait: 2400 });
+  }
+  // the racing theme: each team drives its own vehicle (by its place in the team list); pop-ups show it
+  var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free'];
+  function vehicleFor(id) {
+    var t = racer(id || (current() && current().id));
+    return t && window.KruRacing ? KruRacing.vehicle(racers.indexOf(t), color(t)) : '';
+  }
+  /** "Team 2 is up!" in a quick banner with its vehicle (never blocks a tap). */
+  function upFlash() {
+    var t = current();
+    if (!RACING || !window.KruFx || !t || S.finished.length >= racers.length) return;
+    KruFx.flash({ art: KruRacing.vehicle(racers.indexOf(t), color(t)), title: t.name + ' is up!', sub: KruRacing.name(racers.indexOf(t)), mood: 'good', wait: 1800 });
   }
 
   var POOL = {}, MATHSCI = [], teams = [], racers = [], INTRO = [];
@@ -167,8 +182,8 @@
     var sp = SPECIAL[n], sec = S.secret;
     if (n === 0) return 'START';
     if (n === FINISH) return 'FINISH';
-    if (sec.trapUsed && n === sec.trap) return '🪤';
-    if (sec.slideUsed && n === sec.slide) return '🛝';
+    if (sec.trapUsed && n === sec.trap) return RACING ? KruRacing.SECRET.trapSq : '🪤';
+    if (sec.slideUsed && n === sec.slide) return RACING ? KruRacing.SECRET.slideSq : '🛝';
     if (!sp) return String(n);
     if (sp.t === 'xmas') return '🎄';
     return sp.t === 'go' ? '★+' + sp.n : sp.t === 'back' ? '⚠−' + sp.n : sp.t === 'again' ? '🎲' : '?';
@@ -225,6 +240,7 @@
     }
     save();
     renderTrack();
+    upFlash();
   }
   function setPos(id, n) {
     var before = points(id);
@@ -263,7 +279,7 @@
       tone([523, 659, 784, 1047], 0.12, 0.4);
       toast(t.name + ' finished ' + (['1st', '2nd', '3rd'][place] || '') + (place < 3 ? '! +' + BONUS[place] + ' bonus' : '!'));
       busy = false; nextTurn();
-      fx('finish', { t: t.name, place: ['1st', '2nd', '3rd'][place] || 'the race' });
+      fx('finish', { t: t.name, id: id, place: ['1st', '2nd', '3rd'][place] || 'the race' });
       // 1st, 2nd and 3rd are decided (or everyone is home): the podium. Keep playing to race on.
       if (S.finished.length === Math.min(3, racers.length)) { if (window.KruFx) KruFx.after(function () { KruEnd.show(); }); else setTimeout(function () { KruEnd.show(); }, 1600); }
       return;
@@ -271,11 +287,11 @@
     // the secret squares: only the first team to land there
     if (p === sec.trap && !sec.trapUsed) {
       sec.trapUsed = true; S.skip[id] = (S.skip[id] || 0) + 1; save();
-      return card('🪤 Secret trap!', t.name + ' skips the next turn.', function () { busy = false; nextTurn(); }, 'bad');
+      return card(RACING ? KruRacing.SECRET.trap[0] : '🪤 Secret trap!', RACING ? fill(KruRacing.SECRET.trap[1], { t: t.name }) : t.name + ' skips the next turn.', function () { busy = false; nextTurn(); }, 'bad');
     }
     if (p === sec.slide && !sec.slideUsed) {
       sec.slideUsed = true; save();
-      return card('🛝 Secret slide!', t.name + ' slides forward ' + SLIDE + ' squares!', function () { move(id, SLIDE, function () { landed(id); }); }, 'good');
+      return card(RACING ? KruRacing.SECRET.slide[0] : '🛝 Secret slide!', RACING ? fill(KruRacing.SECRET.slide[1], { t: t.name, n: SLIDE }) : t.name + ' slides forward ' + SLIDE + ' squares!', function () { move(id, SLIDE, function () { landed(id); }); }, 'good');
     }
     if (sp && sp.t === 'go') { fx('go', { t: t.name, n: sp.n }, function () { move(id, sp.n, function () { landed(id); }); }); return; }
     if (sp && sp.t === 'back') { fx('back', { t: t.name, n: sp.n }, function () { move(id, -sp.n, function () { landedBack(id); }); }); return; }
@@ -328,12 +344,13 @@
       },
     };
     if (cd.id === 'swap') return swapCard(id);
-    card('? Chance card', cd.text, after[cd.id], cd.id === 'back2' || cd.id === 'skip' ? 'bad' : 'good');
+    var rc = RACING ? KruRacing.CHANCE[cd.id] : null;
+    card(rc ? '🏁 ' + rc[0] : '? Chance card', rc ? rc[1] : cd.text, after[cd.id], cd.id === 'back2' || cd.id === 'skip' ? 'bad' : 'good');
   }
   function swapCard(id) {
     var t = racer(id), others = racers.filter(function (o) { return o.id !== id && S.finished.indexOf(o.id) < 0; });
     // every team's square, including the team that drew the card
-    card('? Chance card', 'Switch places! ' + t.name + ' is on ' + (pos(id) ? 'square ' + pos(id) : 'START') + '. Pick a team:', null, 'good');
+    card(RACING ? '🏁 ' + KruRacing.CHANCE.swap[0] : '? Chance card', (RACING ? 'Time to overtake! ' : 'Switch places! ') + t.name + ' is on ' + (pos(id) ? 'square ' + pos(id) : 'START') + '. Pick a team to switch places with:', null, 'good');
     if (!others.length) { $('cardText').textContent = 'No team to switch with.'; cardThen = function () { busy = false; nextTurn(); }; return; }
     $('cardOk').hidden = true;
     $('cardTeams').innerHTML = others.map(function (o) {
@@ -347,6 +364,15 @@
       if (b.dataset.swap) {
         var o = b.dataset.swap, a = pos(id), z = pos(o);
         setPos(id, z); setPos(o, a);
+        if (RACING && window.KruFx && a !== z) {
+          // a big overtake pop-up: the team that moved forward blasts past the team that dropped back
+          var fwd = z > a ? t : racer(o), bk = z > a ? racer(o) : t, sq = function (x) { return pos(x.id) ? 'square ' + pos(x.id) : 'START'; };
+          save(); renderTrack();
+          KruFx.show({ art: KruRacing.overtake(racers.indexOf(fwd), color(fwd), fwd.name, racers.indexOf(bk), color(bk), bk.name), title: 'OVERTAKE!',
+            sub: fwd.name + ' blasts past ' + bk.name + '! ' + fwd.name + ' jumps to ' + sq(fwd) + ' and ' + bk.name + ' drops to ' + sq(bk) + '.', mood: 'good', sound: 'fanfare', wait: 3800,
+            then: function () { save(); busy = false; nextTurn(); } });
+          return;
+        }
         toast('⇄ ' + t.name + ' and ' + racer(o).name + ' switched places!');
         tone([523, 784], 0.1);
       }
@@ -687,6 +713,8 @@
       var own = (c.questions && (c.questions.all || c.questions[lv])) || []; // Christmas: one bank for every level
       GAME_TITLE = c.title || GAME_TITLE;
       if (window.KruFx) KruFx.theme(c.christmas ? 'xmas' : 'race');
+      RACING = !c.christmas && !!window.KruRacing;
+      document.body.classList.toggle('racing', RACING);
       if (c.shares) ORDER.forEach(function (t) { if (c.shares[t]) TIERS[t].share = c.shares[t]; });
       if (c.christmas && c.christmas.challenge && c.christmas.challenge.length && c.christmas.forfeit && c.christmas.forfeit.length) {
         XMAS = c.christmas;
@@ -710,7 +738,7 @@
       }
       teams = Kru.allTeams();
       racers = teams.filter(function (t) { return !t.teacher; });
-      KruEnd.setup({ standings: function () { return racers.map(function (t) { return { name: t.name, points: points(t.id) }; }); } });
+      KruEnd.setup({ standings: function () { return racers.map(function (t, i) { return { name: t.name, points: points(t.id), art: RACING ? KruRacing.vehicle(i, color(t)) : '' }; }); } });
       var sizes = ORDER.map(function (t) { return POOL[t].length; }).join(',') + ':' + MATHSCI.length;
       var saved = session.resume;
       if (saved && saved.v === 2 && saved.level === QZ.level && saved.sizes === sizes) S = saved;
@@ -729,7 +757,7 @@
       });
       renderTrack();
       INTRO = KruIntro.forLevel(c, QZ.level);
-      if (!S.introDone) KruIntro.show(INTRO, { title: GAME_TITLE }).then(function () { S.introDone = true; save(); });
+      if (!S.introDone) KruIntro.show(INTRO, { title: GAME_TITLE }).then(function () { S.introDone = true; save(); upFlash(); }); else upFlash();
     }).catch(function (err) {
       $('track').textContent = 'Could not load the questions. Close the game and open it again.';
       if (window.console) console.error(err);

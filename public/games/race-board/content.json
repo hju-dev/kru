@@ -2,20 +2,20 @@
  "about": "Race Board (Henry, Nov 9): a 60-square race. questions = its own bank per level, 165 each (Henry, Nov 10: the old M.1 set was removed, old M.2 became M.1, old M.3 became M.2, and M.3 is a new harder set). A wrong answer rolls the back die. With a unit picked on the setup screen, the unit's questions are used instead (tiers guessed: A-D = regular, short answer or double = hard). Exact roll to finish (extra steps bounce back). The How to play slides live here too.",
  "intro": [
   {
-   "title": "Quiz Dash",
+   "title": "Quiz Grand Prix",
    "text": [
-    "Every team has a piece on START.",
-    "First team to land exactly on FINISH wins!"
+    "Every team drives its own vehicle. Start your engines!",
+    "First team to land exactly on FINISH wins the race!"
    ],
    "example": {
     "rows": [
      [
       "START",
-      "1 2 3 …"
+      "the starting grid"
      ],
      [
       "FINISH",
-      "59"
+      "square 59: the checkered flag"
      ]
     ]
    }
@@ -24,7 +24,7 @@
    "title": "Your turn",
    "text": [
     "Answer one question. Harder questions = more dice!",
-    "Wrong? Roll the same dice backwards."
+    "Wrong? Hit the brakes: roll the same dice backwards."
    ],
    "example": {
     "rows": [
@@ -69,22 +69,22 @@
   {
    "title": "Special squares",
    "text": [
-    "★ forward · ⚠ back · 🎲 roll again · ? chance card.",
-    "Some squares are secret…"
+    "★ turbo forward · ⚠ oil slick back · 🎲 roll again · ? chance card.",
+    "Some squares are secret road blocks and shortcuts…"
    ],
    "example": {
     "rows": [
      [
       "★ +2",
-      "Forward 2"
+      "Turbo boost: forward 2"
      ],
      [
       "⚠ −2",
-      "Back 2"
+      "Oil slick: back 2"
      ],
      [
       "?",
-      "Chance card"
+      "Chance card: anything can happen!"
      ]
     ]
    }

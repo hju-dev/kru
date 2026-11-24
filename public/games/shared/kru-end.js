@@ -118,6 +118,7 @@
 /**
  * KruPodium: the end-of-game reveal. A dark stage, a drumroll, then 3rd, 2nd and (after a longer
  * drumroll) 1st place rise up, with a fanfare and confetti for the winner. Tap to skip ahead.
+ * A standing can carry `art` (an SVG string, e.g. the team's vehicle): it shows above the name.
  * Ties share a step. The teacher's team is never on the podium. With no points yet it goes
  * straight to the score list.
  *   KruPodium.show(standings, then, actions)   standings: [{ name, points, teacher? }]   then(): the score list
@@ -224,8 +225,9 @@
           var m = window.KruMembers ? window.KruMembers(t) : '';
           return m ? (P[i].teams.length > 1 ? esc(t.name) + ': ' : '') + esc(m) : '';
         }).filter(Boolean).join(' · ');
+        var art = P[i].teams.map(function (t) { return t.art ? '<span class="kp-art">' + t.art + '</span>' : ''; }).join('');
         return '<div class="kp-col p' + (i + 1) + '" data-p="' + (i + 1) + '">' +
-          '<div class="kp-who"><span class="kp-name">' + names + '</span>' + (who ? '<span class="kp-mem">' + who + '</span>' : '') +
+          '<div class="kp-who">' + art + '<span class="kp-name">' + names + '</span>' + (who ? '<span class="kp-mem">' + who + '</span>' : '') +
           '<span class="kp-pts">' + P[i].points + (P[i].points === 1 ? ' point' : ' points') + '</span></div>' +
           '<div class="kp-step"><span>' + LABEL[i] + '</span></div></div>';
       }).join('') + '</div>' +
