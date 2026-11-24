@@ -182,3 +182,12 @@
 }
 .kbt-rquote { font-style: normal; color: var(--muted); }
 .kbt [data-do='peek'][aria-pressed='true'] { background: var(--gold); color: #111; border-color: var(--gold); }
+
+/* The material the students look at (the sentence, the question and its choices, the story) is black on white
+   (Henry, Nov 24). Instructions (the question line above a sentence) and the yellow ✍ lines keep their style. */
+.kbt-q.kbt-mat, .kbt-rq.kbt-mat { background: #fff; color: #111; border-radius: 12px; padding: 6px 14px; }
+.kbt-rq.kbt-mat .kbt-n { background: #111; color: #fff; }
+.kbt-quote { background: #fff; color: #111; }
+.kbt-choice { background: #fff; color: #111; }
+.kbt-story p { background: #fff; color: #111; border-radius: 12px; padding: 8px 14px; }
+.kbt-rquote { background: #fff; color: #111; padding: 1px 10px; border-radius: 8px; }
