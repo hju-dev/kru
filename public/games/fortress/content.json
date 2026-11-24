@@ -11,15 +11,15 @@
     "rows": [
      [
       "[[hq]] HQ",
-      "1,200 HP: lose it and you are out"
+      "10,000 HP: lose it and you are out"
      ],
      [
       "[[depot]] Depot",
-      "800 HP: healing, cheaper weapons"
+      "6,000 HP: healing, cheaper weapons"
      ],
      [
       "[[tower]] 2 Towers",
-      "900 HP each: shoot weapons down"
+      "4,000 HP each: shoot weapons down"
      ]
     ]
    }
@@ -34,11 +34,11 @@
     "rows": [
      [
       "[[bomb1]] [LQ] Crude Bomb",
-      "200 damage"
+      "250 damage"
      ],
      [
       "[[bomb2]] [Q] High Speed Missile",
-      "625 damage"
+      "1,750 damage"
      ],
      [
       "[[bomb3]] [HQ] Avangard",
@@ -46,7 +46,7 @@
      ],
      [
       "[[bomb4]] [HQ] RS-28 Sarmat",
-      "9,000 to every building"
+      "9,000 to every building (store only)"
      ]
     ]
    }
@@ -77,7 +77,7 @@
   {
    "title": "Defend your base",
    "text": [
-    "Towers shoot weapons down: [LQ] 35%, [Q] 20%, [HQ] 10%.",
+    "Towers shoot weapons down: [LQ] 35%, [Q] 16%, [HQ] 8%.",
     "HQ destroyed? Use a repair kit or sacrifice a building!"
    ],
    "example": {
