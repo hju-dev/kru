@@ -66,4 +66,12 @@ describe('One-Word Story: timers and word conditions (Henry, Nov 23)', () => {
     expect(js20).toContain('if (left(id) > 0) ask(id);')
     expect(js20).toContain("toast('Free question: nobody loses a guess.', false);")
   })
+
+  it('20 Questions, whole class mode: the entire class gets the points (Henry, Nov 24)', () => {
+    const js20 = read('public/games/twenty-questions/app.js')
+    expect(js20).toContain('function winAll()')
+    expect(js20).toContain("teams.forEach(function (t) { S.pts[t.id] = pts(t.id) + points; Kru.score(t.id, points, 'the class guessed it'); });")
+    expect(js20).toContain("'The whole class got it?'")
+    expect(js20).toContain('if (L.all)') // Undo takes the points back from everyone
+  })
 })

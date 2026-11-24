@@ -71,7 +71,9 @@
     var res = $('result');
     if (S.done) {
       var w = S.winner && team(S.winner);
-      res.textContent = w ? w.name + ' got it with ' + S.done.left + ' question' + (S.done.left === 1 ? '' : 's') + ' left! +' + S.done.points
+      var q = S.done.left + ' question' + (S.done.left === 1 ? '' : 's');
+      if (S.winner === CLASS) res.textContent = 'The whole class got it with ' + q + ' left! +' + S.done.points + ' for everyone';
+      else res.textContent = w ? w.name + ' got it with ' + S.done.left + ' question' + (S.done.left === 1 ? '' : 's') + ' left! +' + S.done.points
         : 'Nobody got it this time!';
       res.hidden = false;
     } else res.hidden = true;
@@ -190,8 +192,9 @@
     var strip = $('strip');
     if (solo) {
       // Solo: winners so far as one small line where the hint goes (never squashes the board)
-      var winners = teams.filter(function (t) { return pts(t.id); }).sort(function (a, b) { return pts(b.id) - pts(a.id); });
-      $('hint').innerHTML = winners.length ? '★ ' + winners.map(function (t) { return esc(t.name) + ' <b>' + pts(t.id) + '</b>'; }).join(' · ') : '';
+      // Whole class: everybody wins together and gets the same points
+      var each = teams.length ? Math.max.apply(null, teams.map(function (t) { return pts(t.id); })) : 0;
+      $('hint').innerHTML = each ? '★ Whole class: <b>' + each + '</b> points each' : '';
       strip.hidden = true;
       return;
     }
@@ -224,7 +227,8 @@
     if (!L) return;
     if (L.k === 'q') S.left[L.t] = left(L.t) + 1;
     else if (L.k === 'win') {
-      if (L.t) { S.pts[L.t] = pts(L.t) - L.d; Kru.score(L.t, -L.d, 'undo'); }
+      if (L.all) teams.forEach(function (t) { S.pts[t.id] = pts(t.id) - L.d; Kru.score(t.id, -L.d, 'undo'); });
+      else if (L.t) { S.pts[L.t] = pts(L.t) - L.d; Kru.score(L.t, -L.d, 'undo'); }
       S.done = null; S.winner = null;
     }
     save();
@@ -242,6 +246,14 @@
 
   // ---------- winner ----------
   function openWin() {
+    if (solo) {
+      // Whole class mode: the entire class wins together, so everybody gets the points
+      var n = Math.max(1, Math.max(0, left(CLASS)));
+      $('winTitle').textContent = 'The whole class got it?';
+      $('winList').innerHTML = '<button class="btn gold" data-w="' + CLASS + '">🎉 Yes! +' + n + ' for every student</button>';
+      $('winBack').hidden = false;
+      return;
+    }
     var list = solo ? teams.slice().sort(function (a, b) { return (a.members[0].no || 0) - (b.members[0].no || 0); }) : teams;
     $('winTitle').textContent = solo ? 'Who got it? Tap the student.' : 'Which team got it?';
     $('winList').innerHTML = list.map(function (t) {
@@ -251,7 +263,21 @@
     }).join('');
     $('winBack').hidden = false;
   }
+  function winAll() {
+    unlockAudio();
+    var n = Math.max(0, left(CLASS));
+    var points = Math.max(1, n); // at least 1 point for getting it
+    teams.forEach(function (t) { S.pts[t.id] = pts(t.id) + points; Kru.score(t.id, points, 'the class guessed it'); });
+    S.winner = CLASS;
+    S.done = { left: n, points: points };
+    S.log.push({ k: 'win', all: true, d: points });
+    save();
+    $('winBack').hidden = true;
+    tone([523, 659, 784, 1047], 0.12);
+    render();
+  }
   function win(id) {
+    if (solo) { winAll(); return; }
     unlockAudio();
     var n = Math.max(0, solo ? left(CLASS) : left(id));
     var points = Math.max(1, n); // at least 1 point for getting it
