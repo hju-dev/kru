@@ -100,6 +100,248 @@
      "q": "Spell the plural noun: our five abilities — sight, hearing, smell, taste and touch.",
      "answer": "senses",
      "double": false
+    },
+    {
+     "q": "Which word means \"to change or influence something\"?",
+     "choices": [
+      "interpret",
+      "consider",
+      "joke",
+      "affect"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to think carefully about something\"?",
+     "choices": [
+      "affect",
+      "interpret",
+      "consider",
+      "image"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"something funny you say to make people laugh\"?",
+     "choices": [
+      "factor",
+      "joke",
+      "context",
+      "lens"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the situation around a word or event that helps you understand it\"?",
+     "choices": [
+      "vision",
+      "context",
+      "lens",
+      "factor"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the curved glass in glasses or a camera\"?",
+     "choices": [
+      "image",
+      "lens",
+      "factor",
+      "joke"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"reasons that tell you why something happens\"?",
+     "choices": [
+      "perception",
+      "vision",
+      "context",
+      "explanation"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"very interested in something\"?",
+     "choices": [
+      "surrounding",
+      "logical",
+      "fascinated",
+      "clear"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"all around something\"?",
+     "choices": [
+      "surrounding",
+      "fascinated",
+      "logical",
+      "different"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a picture of something\"?",
+     "choices": [
+      "context",
+      "factor",
+      "image",
+      "joke"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a picture that tricks your eyes\"?",
+     "choices": [
+      "optical illusion",
+      "photograph",
+      "explanation",
+      "joke"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the organ in your head that helps you think\"?",
+     "choices": [
+      "eye",
+      "lens",
+      "brain",
+      "sight"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the sense you use with your eyes\"?",
+     "choices": [
+      "sight",
+      "hearing",
+      "smell",
+      "taste"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the sense you use with your ears\"?",
+     "choices": [
+      "hearing",
+      "touch",
+      "taste",
+      "sight"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the sense you use with your nose\"?",
+     "choices": [
+      "taste",
+      "smell",
+      "touch",
+      "sight"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the sense you use with your tongue\"?",
+     "choices": [
+      "smell",
+      "taste",
+      "touch",
+      "hearing"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the sense you use with your skin\"?",
+     "choices": [
+      "sight",
+      "hearing",
+      "touch",
+      "taste"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a picture taken with a camera\"?",
+     "choices": [
+      "context",
+      "factor",
+      "photograph",
+      "joke"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"your five ways of knowing the world: sight, hearing, smell, taste, touch\"?",
+     "choices": [
+      "factors",
+      "lenses",
+      "senses",
+      "contexts"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word is closest to \"understand the meaning\"?",
+     "choices": [
+      "affect",
+      "joke",
+      "interpret",
+      "photograph"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word is the noun of \"explain\"?",
+     "choices": [
+      "explanation",
+      "explainer",
+      "explaining",
+      "explained"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word is closest to \"one reason that influences a result\"?",
+     "choices": [
+      "joke",
+      "factor",
+      "image",
+      "lens"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Lights, colors and shapes are all part of ___.",
+     "choices": [
+      "taste",
+      "hearing",
+      "smell",
+      "vision"
+     ],
+     "answer": 3,
+     "double": false
     }
    ]
   },
@@ -179,6 +421,270 @@
       "lens",
       "joke",
       "sense"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "A bright ___ can make colors look different.",
+     "choices": [
+      "taste",
+      "smell",
+      "light",
+      "touch"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Our ___ helps us understand what our eyes see.",
+     "choices": [
+      "brain",
+      "lens",
+      "joke",
+      "photograph"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Different people can ___ the same picture in different ways.",
+     "choices": [
+      "affect",
+      "interpret",
+      "joke",
+      "smell"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The ___ around a word helps us understand its meaning.",
+     "choices": [
+      "brain",
+      "context",
+      "taste",
+      "touch"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Dim light can ___ how we see colors.",
+     "choices": [
+      "interpret",
+      "joke",
+      "affect",
+      "consider"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "We should ___ other people's opinions before we decide.",
+     "choices": [
+      "affect",
+      "consider",
+      "joke",
+      "smell"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "That optical ___ makes the lines look different, but they are the same.",
+     "choices": [
+      "illusion",
+      "sight",
+      "touch",
+      "context"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "I am ___ by how the eye works.",
+     "choices": [
+      "surrounding",
+      "logical",
+      "clear",
+      "fascinated"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The ___ colors changed how I saw the dress.",
+     "choices": [
+      "surrounding",
+      "fascinated",
+      "logical",
+      "serious"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "She took a ___ of the beach with her phone.",
+     "choices": [
+      "taste",
+      "photograph",
+      "smell",
+      "touch"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "We use our ___ of smell to know that food is burning.",
+     "choices": [
+      "sight",
+      "joke",
+      "lens",
+      "sense"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Your ___ tells you if the soup is hot or cold.",
+     "choices": [
+      "hearing",
+      "sight",
+      "touch",
+      "smell"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The ___ of a banana is sweet.",
+     "choices": [
+      "sight",
+      "taste",
+      "hearing",
+      "touch"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The glasses have special ___ to help you see better.",
+     "choices": [
+      "senses",
+      "lenses",
+      "contexts",
+      "factors"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Light is one important ___ in how we see color.",
+     "choices": [
+      "joke",
+      "touch",
+      "factor",
+      "image"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The teacher gave a clear ___ of how eyes work.",
+     "choices": [
+      "explanation",
+      "photograph",
+      "taste",
+      "brain"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The ___ of the sunset was beautiful, so I took a photo.",
+     "choices": [
+      "taste",
+      "image",
+      "touch",
+      "smell"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "He told a funny ___ and everybody laughed.",
+     "choices": [
+      "factor",
+      "lens",
+      "context",
+      "joke"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "I could ___ the music from the other room.",
+     "choices": [
+      "see",
+      "taste",
+      "touch",
+      "hear"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "My ___ is not good. I need glasses.",
+     "choices": [
+      "hearing",
+      "smell",
+      "vision",
+      "taste"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "People can have different ___ of the same event.",
+     "choices": [
+      "explanations",
+      "perceptions",
+      "lenses",
+      "photographs"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "We have five ___: sight, hearing, smell, taste and touch.",
+     "choices": [
+      "factors",
+      "lenses",
+      "images",
+      "senses"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The soup ___ delicious. I want more.",
+     "choices": [
+      "runs",
+      "smells",
+      "eats",
+      "writes"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "This fabric feels ___.",
+     "choices": [
+      "softly",
+      "softness",
+      "soft",
+      "soften"
      ],
      "answer": 2,
      "double": false
@@ -269,6 +775,248 @@
      "q": "Fix the mistake: \"The color appeared differently in the photograph.\" (one word)",
      "answer": "The color appeared different in the photograph.",
      "double": true
+    },
+    {
+     "q": "The soup ___ delicious. (linking verb)",
+     "choices": [
+      "runs",
+      "writes",
+      "eats",
+      "smells"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The music sounds ___.",
+     "choices": [
+      "beautifully",
+      "beauty",
+      "beautiful",
+      "beautify"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "She looks ___ in that dress.",
+     "choices": [
+      "happily",
+      "happy",
+      "happiness",
+      "happify"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "This fabric feels ___.",
+     "choices": [
+      "softly",
+      "softness",
+      "soft",
+      "softens"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The cake tastes ___.",
+     "choices": [
+      "sweetly",
+      "sweeten",
+      "sweetness",
+      "sweet"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "It ___ cold outside today.",
+     "choices": [
+      "runs",
+      "seems",
+      "jumps",
+      "eats"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "He ___ tired after the long trip.",
+     "choices": [
+      "walked",
+      "jumped",
+      "looked",
+      "ate"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The flower smells ___.",
+     "choices": [
+      "nice",
+      "nicely",
+      "nicify",
+      "niceness"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The idea ___ strange at first.",
+     "choices": [
+      "ran",
+      "wrote",
+      "sounded",
+      "read"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which is a linking verb?",
+     "choices": [
+      "run",
+      "walk",
+      "become",
+      "swim"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which is a linking verb?",
+     "choices": [
+      "seem",
+      "jump",
+      "throw",
+      "kick"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which is NOT a linking verb?",
+     "choices": [
+      "look",
+      "feel",
+      "kick",
+      "seem"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The sky ___ gray this morning.",
+     "choices": [
+      "runs",
+      "looks",
+      "reads",
+      "eats"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She ___ nervous before the show.",
+     "choices": [
+      "kicked",
+      "ran",
+      "felt",
+      "painted"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "It tastes good.",
+      "It tastes well.",
+      "It tastes goodly.",
+      "It tastes goodness."
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "The room smells terrible.",
+      "The room smells terribly.",
+      "The room smells terror.",
+      "The room smells terrify."
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "She looks angrily.",
+      "She looks angry.",
+      "She looks anger.",
+      "She looks angered at."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The noise ___ loud, so I closed the window.",
+     "choices": [
+      "seemed",
+      "ran",
+      "climbed",
+      "threw"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The milk ___ sour. Don't drink it.",
+     "choices": [
+      "jumps",
+      "drives",
+      "opens",
+      "smells"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which sentence has a linking verb?",
+     "choices": [
+      "He feels cold.",
+      "He kicks the ball.",
+      "He runs fast.",
+      "He draws a picture."
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The story ___ true, but it wasn't.",
+     "choices": [
+      "ran",
+      "wrote",
+      "sounded",
+      "rode"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "The pizza ___ great. I want another slice.",
+     "choices": [
+      "smells",
+      "runs",
+      "writes",
+      "eats"
+     ],
+     "answer": 0,
+     "double": false
     }
    ]
   },
@@ -329,6 +1077,292 @@
      ],
      "answer": 0,
      "double": false
+    },
+    {
+     "q": "\"Brain\" is a(n) ___.",
+     "choices": [
+      "verb",
+      "adjective",
+      "noun",
+      "adverb"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"Consider\" is a(n) ___.",
+     "choices": [
+      "noun",
+      "adjective",
+      "adverb",
+      "verb"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Logical\" is a(n) ___.",
+     "choices": [
+      "noun",
+      "adjective",
+      "verb",
+      "adverb"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Clearly\" is a(n) ___.",
+     "choices": [
+      "noun",
+      "adverb",
+      "verb",
+      "adjective"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Image\" is a(n) ___.",
+     "choices": [
+      "verb",
+      "adjective",
+      "adverb",
+      "noun"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Affect\" is a(n) ___.",
+     "choices": [
+      "verb",
+      "noun",
+      "adjective",
+      "adverb"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Explanation\" is a(n) ___.",
+     "choices": [
+      "verb",
+      "adjective",
+      "noun",
+      "adverb"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"Quickly\" is a(n) ___.",
+     "choices": [
+      "adjective",
+      "noun",
+      "verb",
+      "adverb"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Sight\" is a(n) ___.",
+     "choices": [
+      "verb",
+      "adjective",
+      "adverb",
+      "noun"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "\"Surrounding\" in \"surrounding colors\" is a(n) ___.",
+     "choices": [
+      "noun",
+      "verb",
+      "adjective",
+      "adverb"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "\"Light\" in \"a bright light\" is a(n) ___.",
+     "choices": [
+      "verb",
+      "adverb",
+      "noun",
+      "adjective"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word is a verb?",
+     "choices": [
+      "smell",
+      "vision",
+      "image",
+      "context"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word is a noun?",
+     "choices": [
+      "interpret",
+      "consider",
+      "affect",
+      "perception"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word is an adjective?",
+     "choices": [
+      "difference",
+      "differently",
+      "differ",
+      "different"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word is an adverb?",
+     "choices": [
+      "careful",
+      "carefully",
+      "care",
+      "cares"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The noun of \"interpret\" is ___.",
+     "choices": [
+      "interpreter",
+      "interpreting",
+      "interpreted",
+      "interpretation"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The adjective of \"fascinate\" is ___.",
+     "choices": [
+      "fascination",
+      "fascinating",
+      "fascinatingly",
+      "fascinator"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The adverb of \"clear\" is ___.",
+     "choices": [
+      "clearer",
+      "clearness",
+      "clarify",
+      "clearly"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The adjective of \"logic\" is ___.",
+     "choices": [
+      "logically",
+      "logical",
+      "logician",
+      "logics"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The noun of \"perceive\" is ___.",
+     "choices": [
+      "perceiver",
+      "perception",
+      "perceiving",
+      "perceptive"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "In \"She sees the light\", \"sees\" is a ___.",
+     "choices": [
+      "noun",
+      "verb",
+      "adjective",
+      "adverb"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "In \"a beautiful image\", \"beautiful\" is a(n) ___.",
+     "choices": [
+      "noun",
+      "verb",
+      "adjective",
+      "adverb"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "In \"He looked carefully\", \"carefully\" is a(n) ___.",
+     "choices": [
+      "adverb",
+      "adjective",
+      "noun",
+      "verb"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word can be both a noun and a verb?",
+     "choices": [
+      "vision",
+      "logical",
+      "clearly",
+      "smell"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word can be both a noun and a verb?",
+     "choices": [
+      "brain",
+      "logical",
+      "beautifully",
+      "taste"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word can be both a noun and a verb?",
+     "choices": [
+      "image",
+      "logical",
+      "touch",
+      "perception"
+     ],
+     "answer": 2,
+     "double": false
     }
    ]
   },
@@ -387,6 +1421,258 @@
       "False"
      ],
      "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The brain helps us understand what we see.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Context means a kind of photograph.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Optical illusions can trick our eyes.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "We use our ears for the sense of sight.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Everyone always sees things in exactly the same way.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Light can affect how we see colors.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Lenses can help people see better.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Interpret\" means to decide what something means.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Taste is the sense we use with our nose.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A photograph is a kind of image.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "There are five senses.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Fascinated\" means \"bored\".",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A joke is meant to make people laugh.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "An explanation tells us why something happens.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Surrounding colors can change how we see a color.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Hearing is the sense we use with our ears.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A factor is a person who works in a factory.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Vision is the ability to see.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Touch is the sense we use with our skin.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Consider\" means to think carefully.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A linking verb can be followed by an adjective.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"The soup smells deliciously\" is correct.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"The soup smells delicious\" is correct.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Perception is how we understand things through our senses.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Affect\" means to have no result at all.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "The sense of smell uses the nose.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "We can use our brain to interpret what we see.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Dark colors are always the same in every light.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
      "double": false
     }
    ]

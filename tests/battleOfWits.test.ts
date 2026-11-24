@@ -37,8 +37,11 @@ describe('Battle of Wits', () => {
     expect(c.bonus).toBeUndefined()
     expect(read('public/games/quiz-battle/index.html')).not.toContain('kru-bonus')
     const ids = c.hidden.map((b: { id: string }) => b.id)
-    for (const id of ['golden', 'perfect', 'spelling', 'longword', 'syllables', 'sentence', 'lucky']) expect(ids).toContain(id)
-    for (const b of c.hidden) { expect(b.points).toBeGreaterThan(0); expect(b.text.length).toBeLessThanOrEqual(70) }
+    // Henry, Nov 24: bonuses are quick facts about the team (siblings, birthdays...), nothing to do with English, no challenges
+    expect(ids.length).toBeGreaterThanOrEqual(30)
+    expect(new Set(ids).size).toBe(ids.length)
+    expect(ids).toEqual(expect.arrayContaining(['siblings', 'bday7']))
+    for (const b of c.hidden) { expect(b.points).toBeGreaterThan(0); expect(b.text.length).toBeLessThanOrEqual(80); expect(b.needs, b.id).toBeUndefined(); expect(b.text, b.id).not.toMatch(/\{n\}|\{letter\}|spell|word|letter|sentence|answer/i) }
     expect(engine).toContain('var pick = shuffle(ok.slice()).slice(0, 2);')
   })
   it('the slides are about writing (not saying) the answers', () => {
@@ -46,5 +49,16 @@ describe('Battle of Wits', () => {
     expect(c.intro.map((s: { title: string }) => s.title)).toEqual(['Battle of Wits', 'Be quick!', 'Check together', 'Hidden bonuses!', 'Count your points'])
     expect(text).toMatch(/writes each answer/)
     expect(text).not.toMatch(/out loud|say it|shout the/i)
+  })
+})
+
+describe('Hidden bonus cards fit (Henry, Nov 24)', () => {
+  it('the card text shrinks to fit: icon, name, text and +points all inside the card', () => {
+    const engine = readFileSync(new URL('../public/games/shared/kru-battle.js', import.meta.url), 'utf8')
+    const css = readFileSync(new URL('../public/games/shared/kru-battle.css', import.meta.url), 'utf8')
+    expect(engine).toContain('function fitCards()')
+    expect(engine).toContain('f.scrollHeight > f.clientHeight + 1')
+    expect(css).toContain('.kbt-card .front { font-size: 17px; overflow: hidden;')
+    expect(css).toContain('.kbt-card .front em { font: 900 1.6em/1')
   })
 })

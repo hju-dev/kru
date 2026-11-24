@@ -143,6 +143,266 @@
      "double": false,
      "tier": "impossible",
      "why": "We usually say 'the' with musical instruments: play the guitar."
+    },
+    {
+     "q": "She is ___ honest girl.",
+     "choices": [
+      "a",
+      "the",
+      "some",
+      "an"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Honest starts with a vowel sound (the h is silent)."
+    },
+    {
+     "q": "I eat ___ egg every morning.",
+     "choices": [
+      "an",
+      "a",
+      "the",
+      "some"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Egg starts with a vowel sound."
+    },
+    {
+     "q": "We saw ___ elephant at the zoo.",
+     "choices": [
+      "an",
+      "a",
+      "some",
+      "many"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Elephant starts with a vowel sound."
+    },
+    {
+     "q": "My brother is ___ doctor.",
+     "choices": [
+      "an",
+      "the",
+      "some",
+      "a"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Doctor starts with a consonant sound."
+    },
+    {
+     "q": "Can you close ___ door, please?",
+     "choices": [
+      "a",
+      "an",
+      "some",
+      "the"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "We both know which door, so we use \"the\"."
+    },
+    {
+     "q": "There are three ___ in the box.",
+     "choices": [
+      "watchs",
+      "watchies",
+      "watches",
+      "watch"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Words ending in -ch add -es."
+    },
+    {
+     "q": "Two ___ are playing in the park.",
+     "choices": [
+      "children",
+      "childs",
+      "childrens",
+      "childes"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Child\" is irregular: children."
+    },
+    {
+     "q": "I have two ___.",
+     "choices": [
+      "foots",
+      "feets",
+      "feet",
+      "footes"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Foot\" is irregular: feet."
+    },
+    {
+     "q": "What is the plural of \"baby\"?",
+     "choices": [
+      "babies",
+      "babys",
+      "babyes",
+      "babyies"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Consonant + y: change y to -ies."
+    },
+    {
+     "q": "What is the plural of \"knife\"?",
+     "choices": [
+      "knifes",
+      "knifs",
+      "knives",
+      "knifies"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Words ending in -fe change to -ves."
+    },
+    {
+     "q": "What is the plural of \"man\"?",
+     "choices": [
+      "mans",
+      "manes",
+      "menn",
+      "men"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Man\" is irregular: men."
+    },
+    {
+     "q": "We use ___ hour to get to school.",
+     "choices": [
+      "an",
+      "a",
+      "the",
+      "some"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Hour starts with a vowel sound."
+    },
+    {
+     "q": "She has ___ umbrella.",
+     "choices": [
+      "a",
+      "the",
+      "an",
+      "some"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Umbrella starts with a vowel sound."
+    },
+    {
+     "q": "He plays ___ guitar very well.",
+     "choices": [
+      "a",
+      "an",
+      "some",
+      "the"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "We say \"play the guitar\"."
+    },
+    {
+     "q": "___ moon goes around the Earth.",
+     "choices": [
+      "The",
+      "A",
+      "An",
+      "Some"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "There is only one moon, so \"the\"."
+    },
+    {
+     "q": "What is the plural of \"sheep\"?",
+     "choices": [
+      "sheeps",
+      "sheep",
+      "sheepes",
+      "sheepies"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Sheep\" stays the same."
+    },
+    {
+     "q": "Many ___ live in the forest.",
+     "choices": [
+      "wolves",
+      "wolfs",
+      "wolfes",
+      "wolfies"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Wolf\" changes to wolves."
+    },
+    {
+     "q": "I need ___ pair of scissors.",
+     "choices": [
+      "a",
+      "an",
+      "the",
+      "some"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "\"A pair of\" is singular."
+    },
+    {
+     "q": "What is the plural of \"tomato\"?",
+     "choices": [
+      "tomatos",
+      "tomatoes",
+      "tomatoies",
+      "tomatoz"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Words ending in -o often add -es."
+    },
+    {
+     "q": "I saw ___ movie yesterday. ___ movie was great.",
+     "choices": [
+      "the / a",
+      "an / The",
+      "a / The",
+      "a / A"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "First mention: a. Second mention: the."
     }
    ]
   },
@@ -163,7 +423,7 @@
      "why": "He, she and it take -s/-es in the present simple."
     },
     {
-     "q": "They ___ football on Saturdays.",
+     "q": "They ___ soccer on Saturdays.",
      "choices": [
       "plays",
       "play",
@@ -278,6 +538,266 @@
      "double": false,
      "tier": "impossible",
      "why": "Facts and science use the present simple."
+    },
+    {
+     "q": "Look! It ___ now.",
+     "choices": [
+      "rains",
+      "rain",
+      "raining",
+      "is raining"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Look!\" and \"now\" mean right now: present continuous."
+    },
+    {
+     "q": "She ___ to school every day.",
+     "choices": [
+      "is walking",
+      "walks",
+      "walk",
+      "walking"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Every day\" = a habit: present simple."
+    },
+    {
+     "q": "I ___ my homework at the moment.",
+     "choices": [
+      "do",
+      "am doing",
+      "does",
+      "doing"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"At the moment\": present continuous."
+    },
+    {
+     "q": "My father ___ at a bank.",
+     "choices": [
+      "is working",
+      "work",
+      "works",
+      "working"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "A job is a fact: present simple."
+    },
+    {
+     "q": "They ___ soccer now.",
+     "choices": [
+      "are playing",
+      "play",
+      "plays",
+      "playing"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Now\": present continuous."
+    },
+    {
+     "q": "We ___ TV on Sundays.",
+     "choices": [
+      "watch",
+      "are watching",
+      "watches",
+      "watching"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"On Sundays\" = habit: present simple."
+    },
+    {
+     "q": "What ___ you doing?",
+     "choices": [
+      "do",
+      "does",
+      "is",
+      "are"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"You\" + are + -ing."
+    },
+    {
+     "q": "He ___ like fish.",
+     "choices": [
+      "don't",
+      "isn't",
+      "not",
+      "doesn't"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"He\" + doesn't + base verb."
+    },
+    {
+     "q": "Mai ___ to music right now.",
+     "choices": [
+      "listens",
+      "is listening",
+      "listen",
+      "listening"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Right now\": present continuous."
+    },
+    {
+     "q": "The bus ___ at 8 o'clock every morning.",
+     "choices": [
+      "leaves",
+      "is leaving",
+      "leave",
+      "leaving"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A schedule is a fact: present simple."
+    },
+    {
+     "q": "Be quiet! The baby ___.",
+     "choices": [
+      "is sleeping",
+      "sleeps",
+      "sleep",
+      "sleeping"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Be quiet!\" = now: present continuous."
+    },
+    {
+     "q": "How often ___ you go to the movie theater?",
+     "choices": [
+      "are",
+      "does",
+      "do",
+      "is"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"How often\" asks about habits."
+    },
+    {
+     "q": "She usually ___ jeans, but today she ___ a dress.",
+     "choices": [
+      "wears / is wearing",
+      "is wearing / wears",
+      "wear / wearing",
+      "wears / wears"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Usually = simple; today = continuous."
+    },
+    {
+     "q": "I ___ understand this word. Can you help?",
+     "choices": [
+      "am not",
+      "doesn't",
+      "don't",
+      "not"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Understand\" is a state verb: use present simple."
+    },
+    {
+     "q": "Are you ___ lunch now?",
+     "choices": [
+      "have",
+      "having",
+      "has",
+      "haves"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Having lunch\" is an action in progress."
+    },
+    {
+     "q": "The earth ___ around the sun.",
+     "choices": [
+      "is going",
+      "go",
+      "going",
+      "goes"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A fact: present simple."
+    },
+    {
+     "q": "Listen! Someone ___ at the door.",
+     "choices": [
+      "is knocking",
+      "knocks",
+      "knock",
+      "knocking"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Happening now: present continuous."
+    },
+    {
+     "q": "My sister ___ a cake. It smells great!",
+     "choices": [
+      "bakes",
+      "bake",
+      "is baking",
+      "baking"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "In progress now: present continuous."
+    },
+    {
+     "q": "He always ___ late for class.",
+     "choices": [
+      "does",
+      "has",
+      "goes",
+      "is"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Always\" + present simple of \"be\"."
+    },
+    {
+     "q": "We ___ not playing, we are studying.",
+     "choices": [
+      "do",
+      "does",
+      "are",
+      "is"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"We\" + are + not + -ing."
     }
    ]
   },
@@ -413,6 +933,266 @@
      "double": false,
      "tier": "impossible",
      "why": "A longer action in the past (past continuous) is interrupted by a short one (past simple)."
+    },
+    {
+     "q": "I ___ to school by bike yesterday.",
+     "choices": [
+      "go",
+      "goed",
+      "went",
+      "gone"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Past of \"go\" is \"went\"."
+    },
+    {
+     "q": "She ___ a letter to her friend.",
+     "choices": [
+      "writed",
+      "wrote",
+      "writes",
+      "written"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Past of \"write\" is \"wrote\"."
+    },
+    {
+     "q": "We ___ pizza for dinner last night.",
+     "choices": [
+      "eated",
+      "ate",
+      "eat",
+      "eaten"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Past of \"eat\" is \"ate\"."
+    },
+    {
+     "q": "He ___ his bike last week.",
+     "choices": [
+      "selled",
+      "sold",
+      "sells",
+      "sell"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Past of \"sell\" is \"sold\"."
+    },
+    {
+     "q": "They ___ a big house two years ago.",
+     "choices": [
+      "buyed",
+      "bought",
+      "buy",
+      "buys"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Past of \"buy\" is \"bought\"."
+    },
+    {
+     "q": "Did you ___ the news?",
+     "choices": [
+      "hear",
+      "heard",
+      "hears",
+      "hearing"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "After \"did\" use the base form."
+    },
+    {
+     "q": "She didn't ___ the answer.",
+     "choices": [
+      "know",
+      "knew",
+      "knows",
+      "known"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "After \"didn't\" use the base form."
+    },
+    {
+     "q": "What is the past of \"swim\"?",
+     "choices": [
+      "swimmed",
+      "swam",
+      "swum",
+      "swims"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Swim\" is irregular: swam."
+    },
+    {
+     "q": "What is the past of \"think\"?",
+     "choices": [
+      "thought",
+      "thinked",
+      "thunk",
+      "thinks"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Think\" is irregular: thought."
+    },
+    {
+     "q": "What is the past of \"teach\"?",
+     "choices": [
+      "teached",
+      "tought",
+      "taught",
+      "teaches"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Teach\" is irregular: taught."
+    },
+    {
+     "q": "He ___ happy yesterday.",
+     "choices": [
+      "were",
+      "is",
+      "be",
+      "was"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"He\" + was."
+    },
+    {
+     "q": "We ___ at home last night.",
+     "choices": [
+      "was",
+      "were",
+      "are",
+      "is"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"We\" + were."
+    },
+    {
+     "q": "When ___ you get home?",
+     "choices": [
+      "did",
+      "do",
+      "are",
+      "does"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Past question: did."
+    },
+    {
+     "q": "I ___ my keys, so I couldn't open the door.",
+     "choices": [
+      "losed",
+      "lost",
+      "lose",
+      "loses"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Past of \"lose\" is \"lost\"."
+    },
+    {
+     "q": "She ___ up at 6 a.m. today.",
+     "choices": [
+      "get",
+      "gets",
+      "got",
+      "getted"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Past of \"get\" is \"got\"."
+    },
+    {
+     "q": "My friends ___ me a gift.",
+     "choices": [
+      "gived",
+      "give",
+      "gave",
+      "given"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Past of \"give\" is \"gave\"."
+    },
+    {
+     "q": "The movie ___ two hours long.",
+     "choices": [
+      "were",
+      "was",
+      "is",
+      "be"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Movie\" is singular: was."
+    },
+    {
+     "q": "He ___ his arm when he fell.",
+     "choices": [
+      "breaked",
+      "breaks",
+      "broke",
+      "broken"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Past of \"break\" is \"broke\"."
+    },
+    {
+     "q": "They ___ to the party because they were tired.",
+     "choices": [
+      "didn't went",
+      "don't go",
+      "not go",
+      "didn't go"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Didn't\" + base verb."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "She studyed all night.",
+      "She studys all night.",
+      "She studied all night.",
+      "She study all night."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Consonant + y: -ied."
     }
    ]
   },
@@ -548,6 +1328,279 @@
      "double": false,
      "tier": "impossible",
      "why": "The + comparative, the + comparative: the harder, the better."
+    },
+    {
+     "q": "An elephant is ___ than a horse.",
+     "choices": [
+      "biger",
+      "more big",
+      "bigger",
+      "biggest"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Double the g: big → bigger."
+    },
+    {
+     "q": "Tom is the ___ boy in our class.",
+     "choices": [
+      "taller",
+      "tallest",
+      "most tall",
+      "tallest of"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Superlative: the + -est."
+    },
+    {
+     "q": "Summer is ___ than winter.",
+     "choices": [
+      "more hot",
+      "hotter",
+      "hottest",
+      "hotter than"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Double the t: hot → hotter."
+    },
+    {
+     "q": "She is ___ than her sister.",
+     "choices": [
+      "happier",
+      "more happy",
+      "happiest",
+      "happyer"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "y → ier: happier."
+    },
+    {
+     "q": "This is the ___ cake in the shop.",
+     "choices": [
+      "more delicious",
+      "most delicious",
+      "deliciousest",
+      "deliciouser"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Long adjective superlative."
+    },
+    {
+     "q": "Today is the ___ day of the year.",
+     "choices": [
+      "colder",
+      "more cold",
+      "most cold",
+      "coldest"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Superlative: the coldest."
+    },
+    {
+     "q": "My bag is ___ than your bag.",
+     "choices": [
+      "heavyer",
+      "more heavy",
+      "heaviest",
+      "heavier"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "y → ier: heavier."
+    },
+    {
+     "q": "Which is the opposite of \"taller\"?",
+     "choices": [
+      "smaller",
+      "lower",
+      "tiny",
+      "shorter"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Opposite of taller: shorter."
+    },
+    {
+     "q": "The Mekong is ___ than the Chao Phraya.",
+     "choices": [
+      "longer",
+      "more long",
+      "long",
+      "longest"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "One-syllable: longer."
+    },
+    {
+     "q": "He runs ___ than I do.",
+     "choices": [
+      "more fast",
+      "fastest",
+      "fast",
+      "faster"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Comparative: faster."
+    },
+    {
+     "q": "She is the ___ singer in the school.",
+     "choices": [
+      "goodest",
+      "better",
+      "most good",
+      "best"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Good → better → best."
+    },
+    {
+     "q": "This is the ___ movie ever!",
+     "choices": [
+      "baddest",
+      "worst",
+      "worse",
+      "most bad"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Bad → worse → worst."
+    },
+    {
+     "q": "A cheetah is the ___ animal on land.",
+     "choices": [
+      "faster",
+      "most fast",
+      "more fast",
+      "fastest"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Superlative: the fastest."
+    },
+    {
+     "q": "My phone is as ___ as yours.",
+     "choices": [
+      "newer",
+      "newest",
+      "more new",
+      "new"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"As ... as\" uses the plain adjective."
+    },
+    {
+     "q": "Soccer is ___ popular than golf.",
+     "choices": [
+      "more",
+      "most",
+      "much",
+      "many"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"More popular than\"."
+    },
+    {
+     "q": "Is Chiang Mai ___ than Bangkok?",
+     "choices": [
+      "more cold",
+      "colder",
+      "coldest",
+      "cold"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Comparative: colder."
+    },
+    {
+     "q": "Today is ___ than yesterday. It's lovely!",
+     "choices": [
+      "better",
+      "gooder",
+      "best",
+      "more good"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Good → better."
+    },
+    {
+     "q": "Who is the ___ in your family?",
+     "choices": [
+      "younger",
+      "more young",
+      "most young",
+      "youngest"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Superlative: the youngest."
+    },
+    {
+     "q": "My house is ___ than his house.",
+     "choices": [
+      "smaller",
+      "more small",
+      "smallest",
+      "small"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Short adjective: -er."
+    },
+    {
+     "q": "This is the ___ street in town.",
+     "choices": [
+      "longer",
+      "most long",
+      "more long",
+      "longest"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Superlative: the longest."
+    },
+    {
+     "q": "Which is the best sentence?",
+     "choices": [
+      "She is more tall than me.",
+      "She is tallest than me.",
+      "She is tall than me.",
+      "She is taller than me."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "taller than."
     }
    ]
   },
@@ -683,6 +1736,266 @@
      "double": false,
      "tier": "impossible",
      "why": "We say 'on the third floor' (on a level of a building)."
+    },
+    {
+     "q": "I go to school ___ Monday to Friday.",
+     "choices": [
+      "at",
+      "on",
+      "in",
+      "from"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"From Monday to Friday\"."
+    },
+    {
+     "q": "She was born ___ 2010.",
+     "choices": [
+      "on",
+      "in",
+      "at",
+      "from"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"In\" is for years."
+    },
+    {
+     "q": "The party is ___ Saturday evening.",
+     "choices": [
+      "in",
+      "on",
+      "at",
+      "from"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"On\" is for days and parts of a day on a date."
+    },
+    {
+     "q": "We have lunch ___ noon.",
+     "choices": [
+      "in",
+      "on",
+      "at",
+      "by"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"At noon\"."
+    },
+    {
+     "q": "The cat is hiding ___ the sofa.",
+     "choices": [
+      "between",
+      "in",
+      "behind",
+      "at"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Behind\" = at the back of."
+    },
+    {
+     "q": "The shop is ___ the bank and the school.",
+     "choices": [
+      "among",
+      "behind",
+      "at",
+      "between"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Between\" two things."
+    },
+    {
+     "q": "He lives ___ a small town.",
+     "choices": [
+      "on",
+      "in",
+      "at",
+      "by"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"In\" a town."
+    },
+    {
+     "q": "She is waiting ___ the bus stop.",
+     "choices": [
+      "in",
+      "on",
+      "at",
+      "by"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"At\" the bus stop."
+    },
+    {
+     "q": "Put the lamp ___ the table.",
+     "choices": [
+      "in",
+      "at",
+      "to",
+      "on"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"On\" the table."
+    },
+    {
+     "q": "He jumped ___ the pool.",
+     "choices": [
+      "in",
+      "into",
+      "on",
+      "at"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Into\" shows movement inside."
+    },
+    {
+     "q": "They walked ___ the bridge.",
+     "choices": [
+      "between",
+      "among",
+      "across",
+      "at"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Across\" = from one side to the other."
+    },
+    {
+     "q": "I'm good ___ drawing.",
+     "choices": [
+      "at",
+      "in",
+      "on",
+      "for"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Good at\" something."
+    },
+    {
+     "q": "She is afraid ___ spiders.",
+     "choices": [
+      "from",
+      "at",
+      "of",
+      "for"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Afraid of\"."
+    },
+    {
+     "q": "We're interested ___ science.",
+     "choices": [
+      "on",
+      "at",
+      "of",
+      "in"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Interested in\"."
+    },
+    {
+     "q": "He is listening ___ music.",
+     "choices": [
+      "at",
+      "for",
+      "on",
+      "to"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Listen to\"."
+    },
+    {
+     "q": "I'm looking ___ my phone. Have you seen it?",
+     "choices": [
+      "at",
+      "to",
+      "for",
+      "on"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Look for\" = search."
+    },
+    {
+     "q": "Don't look ___ the sun!",
+     "choices": [
+      "for",
+      "to",
+      "on",
+      "at"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Look at\" = turn your eyes to."
+    },
+    {
+     "q": "I sit ___ Ben and Mai in class.",
+     "choices": [
+      "among",
+      "at",
+      "between",
+      "from"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Between\" two people."
+    },
+    {
+     "q": "The plane flew ___ the clouds.",
+     "choices": [
+      "above",
+      "at",
+      "between",
+      "into"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Above\" = higher than."
+    },
+    {
+     "q": "We arrive ___ the airport at 9.",
+     "choices": [
+      "at",
+      "in",
+      "on",
+      "to"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Arrive at\" a small place."
     }
    ]
   },
@@ -818,6 +2131,266 @@
      "double": false,
      "tier": "impossible",
      "why": "'Must' can also show that we are almost sure."
+    },
+    {
+     "q": "You ___ wear a helmet on a motorcycle. It's the law.",
+     "choices": [
+      "can",
+      "might",
+      "must",
+      "would"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Must\" for rules."
+    },
+    {
+     "q": "___ I borrow your pen, please?",
+     "choices": [
+      "Must",
+      "Can",
+      "Should",
+      "Would"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Asking permission: can."
+    },
+    {
+     "q": "You ___ see a doctor. You look ill.",
+     "choices": [
+      "must",
+      "can",
+      "will",
+      "should"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Should\" gives advice."
+    },
+    {
+     "q": "I ___ swim when I was five.",
+     "choices": [
+      "could",
+      "can",
+      "should",
+      "must"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Past ability: could."
+    },
+    {
+     "q": "He ___ speak three languages.",
+     "choices": [
+      "can",
+      "cans",
+      "must",
+      "has"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Can\" has no -s."
+    },
+    {
+     "q": "She ___ come to the party, but she isn't sure.",
+     "choices": [
+      "must",
+      "should",
+      "has to",
+      "might"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Might\" = possible."
+    },
+    {
+     "q": "You ___ park here. It's not allowed.",
+     "choices": [
+      "don't have to",
+      "needn't",
+      "shouldn't",
+      "mustn't"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Mustn't\" = it's forbidden."
+    },
+    {
+     "q": "You ___ bring a pen. We have some.",
+     "choices": [
+      "mustn't",
+      "can't",
+      "shouldn't",
+      "don't have to"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Don't have to\" = not necessary."
+    },
+    {
+     "q": "___ is your favorite color?",
+     "choices": [
+      "Who",
+      "Where",
+      "When",
+      "What"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"What\" for things."
+    },
+    {
+     "q": "___ is that girl? She's my cousin.",
+     "choices": [
+      "Who",
+      "What",
+      "Where",
+      "Why"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
+    },
+    {
+     "q": "___ do you eat lunch? At noon.",
+     "choices": [
+      "When",
+      "What",
+      "Who",
+      "Where"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"When\" for time."
+    },
+    {
+     "q": "___ is the library? Next to the school.",
+     "choices": [
+      "When",
+      "Who",
+      "What",
+      "Where"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Where\" for places."
+    },
+    {
+     "q": "___ are you crying? I lost my phone.",
+     "choices": [
+      "Where",
+      "Why",
+      "When",
+      "Who"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Why\" for reasons."
+    },
+    {
+     "q": "___ do you go to school? By bus.",
+     "choices": [
+      "How",
+      "Who",
+      "When",
+      "Why"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"How\" for ways."
+    },
+    {
+     "q": "___ much is this shirt?",
+     "choices": [
+      "What",
+      "Who",
+      "Where",
+      "How"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"How much\" for price."
+    },
+    {
+     "q": "___ books do you have?",
+     "choices": [
+      "How much",
+      "What",
+      "How many",
+      "Who"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"How many\" for countable nouns."
+    },
+    {
+     "q": "___ do you like, tea or coffee?",
+     "choices": [
+      "Which",
+      "Who",
+      "When",
+      "Where"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Which\" for a choice."
+    },
+    {
+     "q": "___ bag is this? It's mine.",
+     "choices": [
+      "Whose",
+      "Who",
+      "Which",
+      "What"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Whose\" asks about owners."
+    },
+    {
+     "q": "We ___ to wear a uniform at school.",
+     "choices": [
+      "can",
+      "might",
+      "have",
+      "would"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Have to\" = a rule."
+    },
+    {
+     "q": "___ you help me carry this bag?",
+     "choices": [
+      "Could",
+      "Must",
+      "Might",
+      "Have"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Polite request: could."
     }
    ]
   },
@@ -953,6 +2526,266 @@
      "double": false,
      "tier": "impossible",
      "why": "Sugar is uncountable; 'little' means almost none."
+    },
+    {
+     "q": "How ___ apples are in the bag?",
+     "choices": [
+      "much",
+      "many",
+      "little",
+      "a"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Apples\" is countable: how many."
+    },
+    {
+     "q": "There isn't ___ milk in the fridge.",
+     "choices": [
+      "a",
+      "many",
+      "few",
+      "any"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Negative + uncountable: any."
+    },
+    {
+     "q": "I have ___ friends in this school.",
+     "choices": [
+      "a few",
+      "a little",
+      "much",
+      "a bit"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"A few\" with countable nouns."
+    },
+    {
+     "q": "We have ___ time. Let's hurry!",
+     "choices": [
+      "a few",
+      "many",
+      "several",
+      "a little"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"A little\" with uncountable nouns."
+    },
+    {
+     "q": "Which word is uncountable?",
+     "choices": [
+      "rice",
+      "egg",
+      "banana",
+      "apple"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "You can't count \"rice\" one by one."
+    },
+    {
+     "q": "Which word is countable?",
+     "choices": [
+      "water",
+      "music",
+      "chair",
+      "sugar"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "You can say one chair, two chairs."
+    },
+    {
+     "q": "Which word is uncountable?",
+     "choices": [
+      "idea",
+      "question",
+      "information",
+      "answer"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Information\" has no plural."
+    },
+    {
+     "q": "There are too ___ people on the bus.",
+     "choices": [
+      "much",
+      "little",
+      "a bit",
+      "many"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"People\" is countable."
+    },
+    {
+     "q": "There is too ___ traffic today.",
+     "choices": [
+      "many",
+      "few",
+      "a few",
+      "much"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Traffic\" is uncountable."
+    },
+    {
+     "q": "I'd like ___ orange juice, please.",
+     "choices": [
+      "a",
+      "some",
+      "many",
+      "few"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Some\" with uncountable nouns."
+    },
+    {
+     "q": "Are there ___ eggs in the kitchen?",
+     "choices": [
+      "a",
+      "much",
+      "any",
+      "little"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Questions: any."
+    },
+    {
+     "q": "She gave me some ___.",
+     "choices": [
+      "advices",
+      "an advice",
+      "advice",
+      "a advice"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Advice\" is uncountable."
+    },
+    {
+     "q": "I need two ___ of bread.",
+     "choices": [
+      "pieces of",
+      "bits",
+      "slices",
+      "loaves of"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Two slices of bread."
+    },
+    {
+     "q": "He bought a ___ of water.",
+     "choices": [
+      "piece",
+      "slice",
+      "bottle",
+      "bar"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "A bottle of water."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "There is a lot of sugar.",
+      "There are a lot of sugar.",
+      "There is a lot of sugars.",
+      "There are lots of sugar."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Sugar\" is uncountable: is."
+    },
+    {
+     "q": "We don't have ___ chairs.",
+     "choices": [
+      "much",
+      "a little",
+      "a bit of",
+      "enough"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Enough + plural noun."
+    },
+    {
+     "q": "Do you want ___ cake?",
+     "choices": [
+      "some",
+      "a",
+      "many",
+      "few"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Offers use \"some\"."
+    },
+    {
+     "q": "There are ___ students in the room. It's almost empty.",
+     "choices": [
+      "a little",
+      "much",
+      "a bit",
+      "few"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Few\" = not many."
+    },
+    {
+     "q": "He has ___ money. He can't buy a bike.",
+     "choices": [
+      "few",
+      "many",
+      "a few",
+      "little"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Little\" = not much."
+    },
+    {
+     "q": "We don't have ___ bread.",
+     "choices": [
+      "many",
+      "a few",
+      "several",
+      "much"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Much\" with uncountable nouns in negatives."
     }
    ]
   },
@@ -1088,6 +2921,266 @@
      "double": false,
      "tier": "impossible",
      "why": "For a plural noun ending in -s, we put the apostrophe after the s."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Where do you live.",
+      "where do you live?",
+      "Where do you live?",
+      "Where do you live"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "A question ends with \"?\"."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I like pizza, pasta, and rice.",
+      "I like pizza pasta and rice.",
+      "I like, pizza pasta, and rice.",
+      "I like pizza, pasta and, rice."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Commas separate items in a list."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "We visited chiang mai in january.",
+      "We visited Chiang Mai in January.",
+      "We visited Chiang mai in January.",
+      "we visited Chiang Mai in January."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Names of places and months need capitals."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I dont like cold weather.",
+      "I don't like cold weather.",
+      "I don,t like cold weather.",
+      "I do'nt like cold weather."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Use an apostrophe in don't."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Wow. That was amazing?",
+      "Wow? that was amazing!",
+      "Wow! That was amazing!",
+      "wow! that was amazing!"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Exclamation marks show excitement."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Its my brothers bike.",
+      "It's my brother's bike.",
+      "It's my brothers' bike.",
+      "Its my brother's bike."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Brother's\" shows the bike belongs to him."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "\"Come here\" said Mom.",
+      "\"Come here,\" said Mom.",
+      "Come here, said Mom.",
+      "\"come here,\" said Mom."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Use a comma inside the quote marks."
+    },
+    {
+     "q": "Which word needs a capital letter?",
+     "choices": [
+      "monday",
+      "banana",
+      "chair",
+      "apple"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Days of the week start with capitals."
+    },
+    {
+     "q": "Which word needs a capital letter?",
+     "choices": [
+      "thailand",
+      "country",
+      "river",
+      "city"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Names of countries start with capitals."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Can you help me.",
+      "can you help me?",
+      "Can you help me!",
+      "Can you help me?"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "A question ends with \"?\"."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Yesterday, I went to the park.",
+      "Yesterday I went, to the park.",
+      "Yesterday I, went to the park.",
+      "yesterday, I went to the park."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A comma goes after an opening time word."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "She said \"I'm tired.",
+      "She said, I'm tired.",
+      "She said I'm \"tired\".",
+      "She said, \"I'm tired.\""
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Quotes show what someone says."
+    },
+    {
+     "q": "Which sentence needs a question mark?",
+     "choices": [
+      "It is six o'clock",
+      "Close the door",
+      "What time is it",
+      "I like tea"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "It is a question."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "My sister Mai, is ten.",
+      "My sister, mai, is ten.",
+      "My sister, Mai, is ten.",
+      "My sister Mai is, ten."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Commas around extra names."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Theyre happy.",
+      "They,re happy.",
+      "Their happy.",
+      "They're happy."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"They're\" = they are."
+    },
+    {
+     "q": "Which punctuation ends a command like \"Stop\"?",
+     "choices": [
+      "a period or exclamation mark",
+      "a comma",
+      "a colon",
+      "a question mark"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Commands end with . or !"
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Dont run in the hall!",
+      "Don't run in the hall?",
+      "Don't, run in the hall!",
+      "Don't run in the hall!"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Apostrophe + exclamation mark."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Mom said \"Dinner is ready.",
+      "Mom said, Dinner is ready.",
+      "mom said, \"dinner is ready.\"",
+      "Mom said, \"Dinner is ready.\""
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Capital letter at the start of the quote."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I have a cat a dog and a fish.",
+      "I have, a cat a dog and a fish.",
+      "I have a cat, a dog and, a fish.",
+      "I have a cat, a dog, and a fish."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Commas in a list."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Is it friday today?",
+      "Is it Friday today?",
+      "is it Friday today?",
+      "Is it Friday today."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Question: capital at the start, \"?\" at the end; days have capitals."
     }
    ]
   },
@@ -1223,6 +3316,266 @@
      "double": false,
      "tier": "easy",
      "why": "'Then' shows what comes next."
+    },
+    {
+     "q": "I like ___ new bike.",
+     "choices": [
+      "you're",
+      "your",
+      "yore",
+      "youre"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Your\" shows belonging."
+    },
+    {
+     "q": "___ going to the beach tomorrow.",
+     "choices": [
+      "We're",
+      "Were",
+      "Where",
+      "Wear"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"We're\" = we are."
+    },
+    {
+     "q": "They put ___ bags on the table.",
+     "choices": [
+      "their",
+      "there",
+      "they're",
+      "thare"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Their\" shows belonging."
+    },
+    {
+     "q": "Put your bag over ___.",
+     "choices": [
+      "their",
+      "they're",
+      "there",
+      "thear"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"There\" = that place."
+    },
+    {
+     "q": "I can't ___ the board. Please move.",
+     "choices": [
+      "sea",
+      "se",
+      "see",
+      "cee"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"See\" = look with eyes."
+    },
+    {
+     "q": "We swam in the ___.",
+     "choices": [
+      "see",
+      "se",
+      "cee",
+      "sea"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Sea\" = salt water."
+    },
+    {
+     "q": "I ___ a letter yesterday.",
+     "choices": [
+      "right",
+      "rote",
+      "wrote",
+      "write"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Wrote\" = past of write."
+    },
+    {
+     "q": "Turn ___ at the corner.",
+     "choices": [
+      "right",
+      "write",
+      "rite",
+      "wright"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Right\" = a direction."
+    },
+    {
+     "q": "I have ___ brothers.",
+     "choices": [
+      "too",
+      "two",
+      "to",
+      "tu"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Two\" = 2."
+    },
+    {
+     "q": "It is ___ hot today.",
+     "choices": [
+      "too",
+      "two",
+      "to",
+      "tu"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Too\" = more than needed."
+    },
+    {
+     "q": "Which spelling is correct?",
+     "choices": [
+      "beutiful",
+      "beautiful",
+      "beautifull",
+      "beatiful"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Beau-ti-ful."
+    },
+    {
+     "q": "Which spelling is correct?",
+     "choices": [
+      "friend",
+      "freind",
+      "frend",
+      "friand"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"i\" before \"e\" in friend."
+    },
+    {
+     "q": "Which spelling is correct?",
+     "choices": [
+      "diffrent",
+      "diferent",
+      "differant",
+      "different"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Dif-fer-ent."
+    },
+    {
+     "q": "Which spelling is correct?",
+     "choices": [
+      "because",
+      "becuase",
+      "becouse",
+      "becase"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Be-cause."
+    },
+    {
+     "q": "Which spelling is correct?",
+     "choices": [
+      "libary",
+      "liberry",
+      "libruary",
+      "library"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Li-brar-y."
+    },
+    {
+     "q": "Which spelling is correct?",
+     "choices": [
+      "Wensday",
+      "Wendsday",
+      "Wednesday",
+      "Wednsday"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Wed-nes-day."
+    },
+    {
+     "q": "Which spelling is correct?",
+     "choices": [
+      "February",
+      "Febuary",
+      "Feburary",
+      "Febrary"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Feb-ru-ar-y."
+    },
+    {
+     "q": "A ___ is a flying animal with fur.",
+     "choices": [
+      "bad",
+      "bet",
+      "bit",
+      "bat"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "A bat flies."
+    },
+    {
+     "q": "I ___ my keys. Can you help me look?",
+     "choices": [
+      "lost",
+      "loose",
+      "lose",
+      "loss"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Lost\" is the past of \"lose\"."
+    },
+    {
+     "q": "The ___ is shining. It's a nice day.",
+     "choices": [
+      "son",
+      "sun",
+      "sin",
+      "sum"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Sun\" shines; \"son\" is a boy."
     }
    ]
   },
@@ -1358,6 +3711,266 @@
      "double": false,
      "tier": "impossible",
      "why": "'For' + a length of time."
+    },
+    {
+     "q": "I'm tired, ___ I'm going to bed.",
+     "choices": [
+      "but",
+      "because",
+      "so",
+      "although"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"So\" shows the result."
+    },
+    {
+     "q": "I'll call you ___ I arrive.",
+     "choices": [
+      "because",
+      "when",
+      "so",
+      "but"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"When\" shows time."
+    },
+    {
+     "q": "She is going to ___ a doctor.",
+     "choices": [
+      "is",
+      "being",
+      "be",
+      "been"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Going to\" + base verb."
+    },
+    {
+     "q": "We ___ visit Grandma tomorrow.",
+     "choices": [
+      "are going to",
+      "going to",
+      "is going to",
+      "will going"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"We\" + are going to."
+    },
+    {
+     "q": "Look at those clouds! It ___ rain.",
+     "choices": [
+      "is going to",
+      "will",
+      "going",
+      "does"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A prediction from what we see."
+    },
+    {
+     "q": "I think it ___ be sunny tomorrow.",
+     "choices": [
+      "will",
+      "going",
+      "is",
+      "does"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"I think\" + will for a prediction."
+    },
+    {
+     "q": "I ___ help you with your bag.",
+     "choices": [
+      "am going",
+      "going",
+      "does",
+      "will"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A quick offer: will."
+    },
+    {
+     "q": "\"It's cold.\" \"I ___ close the window.\"",
+     "choices": [
+      "am going to",
+      "will",
+      "going to",
+      "do"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A decision made now: will."
+    },
+    {
+     "q": "Which word shows contrast?",
+     "choices": [
+      "and",
+      "but",
+      "so",
+      "because"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"But\" shows contrast."
+    },
+    {
+     "q": "Which word gives a reason?",
+     "choices": [
+      "because",
+      "but",
+      "so",
+      "and"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Because\" gives a reason."
+    },
+    {
+     "q": "I like cats ___ dogs. I like both!",
+     "choices": [
+      "and",
+      "but",
+      "so",
+      "or"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"And\" adds information."
+    },
+    {
+     "q": "Would you like tea ___ coffee?",
+     "choices": [
+      "and",
+      "but",
+      "or",
+      "so"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Or\" gives a choice."
+    },
+    {
+     "q": "He was sick, ___ he went to school.",
+     "choices": [
+      "so",
+      "but",
+      "because",
+      "and"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"But\" shows a surprise."
+    },
+    {
+     "q": "She studied hard, ___ she passed the test.",
+     "choices": [
+      "so",
+      "but",
+      "because",
+      "although"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"So\" shows the result."
+    },
+    {
+     "q": "First, mix the eggs. ___, add the flour.",
+     "choices": [
+      "But",
+      "Because",
+      "So",
+      "Then"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Then\" shows order."
+    },
+    {
+     "q": "I'm going to the shop. ___ do you want?",
+     "choices": [
+      "Who",
+      "Where",
+      "What",
+      "When"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"What\" asks about things."
+    },
+    {
+     "q": "Tom has a dog. ___ name is Max.",
+     "choices": [
+      "It's",
+      "Their",
+      "Its",
+      "His"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The dog's name = its name."
+    },
+    {
+     "q": "\"Mai is tall. She plays basketball.\" Who plays basketball?",
+     "choices": [
+      "Tom",
+      "Mai's mom",
+      "Nobody",
+      "Mai"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"She\" = Mai."
+    },
+    {
+     "q": "\"The shop opens at 9 and closes at 5.\" When does it close?",
+     "choices": [
+      "at 5",
+      "at 9",
+      "at noon",
+      "at night"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Read the text carefully."
+    },
+    {
+     "q": "\"Ben is ten. His sister is twelve.\" Who is older?",
+     "choices": [
+      "Ben",
+      "they are the same",
+      "his sister",
+      "we don't know"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Twelve is older than ten."
     }
    ]
   }

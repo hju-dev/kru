@@ -678,6 +678,114 @@
     "b": "My dog is friendly.",
     "link": "and",
     "answer": "My dog is brown and friendly."
+   },
+   {
+    "a": "I am hungry.",
+    "b": "I want some food.",
+    "link": "so",
+    "answer": "I am hungry, so I want some food."
+   },
+   {
+    "a": "My sister is tall.",
+    "b": "She plays basketball.",
+    "link": "and",
+    "answer": "My sister is tall and she plays basketball."
+   },
+   {
+    "a": "I like pizza.",
+    "b": "I don't like fish.",
+    "link": "but",
+    "answer": "I like pizza, but I don't like fish."
+   },
+   {
+    "a": "We stayed home.",
+    "b": "It was raining.",
+    "link": "because",
+    "answer": "We stayed home because it was raining."
+   },
+   {
+    "a": "He is tired.",
+    "b": "He goes to bed early.",
+    "link": "so",
+    "answer": "He is tired, so he goes to bed early."
+   },
+   {
+    "a": "I can swim.",
+    "b": "I can't dive.",
+    "link": "but",
+    "answer": "I can swim, but I can't dive."
+   },
+   {
+    "a": "She drinks milk.",
+    "b": "She drinks juice.",
+    "link": "and",
+    "answer": "She drinks milk and juice."
+   },
+   {
+    "a": "Tom is late.",
+    "b": "The bus was slow.",
+    "link": "because",
+    "answer": "Tom is late because the bus was slow."
+   },
+   {
+    "a": "I have a bike.",
+    "b": "I walk to school.",
+    "link": "but",
+    "answer": "I have a bike, but I walk to school."
+   },
+   {
+    "a": "It is cold.",
+    "b": "I wear a jacket.",
+    "link": "so",
+    "answer": "It is cold, so I wear a jacket."
+   },
+   {
+    "a": "My brother plays games.",
+    "b": "He watches videos.",
+    "link": "and",
+    "answer": "My brother plays games and watches videos."
+   },
+   {
+    "a": "We were happy.",
+    "b": "We won the game.",
+    "link": "because",
+    "answer": "We were happy because we won the game."
+   },
+   {
+    "a": "I want a dog.",
+    "b": "My mom says no.",
+    "link": "but",
+    "answer": "I want a dog, but my mom says no."
+   },
+   {
+    "a": "She is hungry.",
+    "b": "She eats lunch.",
+    "link": "so",
+    "answer": "She is hungry, so she eats lunch."
+   },
+   {
+    "a": "I study English.",
+    "b": "I study math.",
+    "link": "and",
+    "answer": "I study English and math."
+   },
+   {
+    "a": "He didn't go out.",
+    "b": "He was sick.",
+    "link": "because",
+    "answer": "He didn't go out because he was sick."
+   },
+   {
+    "a": "The cake looks good.",
+    "b": "It tastes bad.",
+    "link": "but",
+    "answer": "The cake looks good, but it tastes bad."
+   },
+   {
+    "a": "It is hot today.",
+    "b": "We go to the pool.",
+    "link": "so",
+    "answer": "It is hot today, so we go to the pool."
    }
   ],
   "describe": [
@@ -720,6 +828,86 @@
    {
     "s": "We ate soup.",
     "answer": "We ate hot, tasty soup."
+   },
+   {
+    "s": "I have a bag.",
+    "answer": "I have a new blue bag."
+   },
+   {
+    "s": "He has a dog.",
+    "answer": "He has a big brown dog."
+   },
+   {
+    "s": "We saw a movie.",
+    "answer": "We saw a funny new movie."
+   },
+   {
+    "s": "She wears shoes.",
+    "answer": "She wears white sports shoes."
+   },
+   {
+    "s": "They live in a house.",
+    "answer": "They live in a small old house."
+   },
+   {
+    "s": "I like music.",
+    "answer": "I like loud rock music."
+   },
+   {
+    "s": "My mom made soup.",
+    "answer": "My mom made hot chicken soup."
+   },
+   {
+    "s": "We have a teacher.",
+    "answer": "We have a kind young teacher."
+   },
+   {
+    "s": "The boy ate a cake.",
+    "answer": "The hungry boy ate a big chocolate cake."
+   },
+   {
+    "s": "I bought a shirt.",
+    "answer": "I bought a cheap red shirt."
+   },
+   {
+    "s": "The cat sat on the sofa.",
+    "answer": "The fat orange cat sat on the soft sofa."
+   },
+   {
+    "s": "He rides a bike.",
+    "answer": "He rides a fast black bike."
+   },
+   {
+    "s": "I have a friend.",
+    "answer": "I have a funny, clever friend."
+   },
+   {
+    "s": "She sings a song.",
+    "answer": "She sings a sweet Thai song."
+   },
+   {
+    "s": "We play in the park.",
+    "answer": "We play in the big green park."
+   },
+   {
+    "s": "The man drove a car.",
+    "answer": "The tired man drove a small white car."
+   },
+   {
+    "s": "They ate noodles.",
+    "answer": "They ate spicy hot noodles."
+   },
+   {
+    "s": "I drank tea.",
+    "answer": "I drank sweet cold tea."
+   },
+   {
+    "s": "The girl has a bag.",
+    "answer": "The little girl has a heavy school bag."
+   },
+   {
+    "s": "It is a day.",
+    "answer": "It is a hot sunny day."
    }
   ]
  },
@@ -1400,6 +1588,114 @@
     "b": "Ben is faster than Mai.",
     "link": "but",
     "answer": "Mai is taller than Ben, but Ben is faster than Mai."
+   },
+   {
+    "a": "I was tired.",
+    "b": "I finished my homework.",
+    "link": "but",
+    "answer": "I was tired, but I finished my homework."
+   },
+   {
+    "a": "We were walking home.",
+    "b": "It started to rain.",
+    "link": "when",
+    "answer": "We were walking home when it started to rain."
+   },
+   {
+    "a": "She missed the bus.",
+    "b": "She was late for school.",
+    "link": "so",
+    "answer": "She missed the bus, so she was late for school."
+   },
+   {
+    "a": "He studied hard.",
+    "b": "He passed the test.",
+    "link": "so",
+    "answer": "He studied hard, so he passed the test."
+   },
+   {
+    "a": "I stayed home.",
+    "b": "I felt sick.",
+    "link": "because",
+    "answer": "I stayed home because I felt sick."
+   },
+   {
+    "a": "Nok is good at art.",
+    "b": "She is bad at sports.",
+    "link": "but",
+    "answer": "Nok is good at art, but she is bad at sports."
+   },
+   {
+    "a": "My phone is old.",
+    "b": "It works well.",
+    "link": "but",
+    "answer": "My phone is old, but it works well."
+   },
+   {
+    "a": "We visited the beach.",
+    "b": "We went to the market.",
+    "link": "and",
+    "answer": "We visited the beach and we went to the market."
+   },
+   {
+    "a": "The food was cheap.",
+    "b": "It was delicious.",
+    "link": "and",
+    "answer": "The food was cheap and delicious."
+   },
+   {
+    "a": "I was cooking dinner.",
+    "b": "The power went out.",
+    "link": "when",
+    "answer": "I was cooking dinner when the power went out."
+   },
+   {
+    "a": "He didn't study.",
+    "b": "He failed the exam.",
+    "link": "so",
+    "answer": "He didn't study, so he failed the exam."
+   },
+   {
+    "a": "She was sad.",
+    "b": "She heard the news.",
+    "link": "when",
+    "answer": "She was sad when she heard the news."
+   },
+   {
+    "a": "The hotel was expensive.",
+    "b": "It was not clean.",
+    "link": "but",
+    "answer": "The hotel was expensive, but it was not clean."
+   },
+   {
+    "a": "We cancelled the trip.",
+    "b": "The weather was terrible.",
+    "link": "because",
+    "answer": "We cancelled the trip because the weather was terrible."
+   },
+   {
+    "a": "Ben is the tallest.",
+    "b": "Mai is the fastest.",
+    "link": "and",
+    "answer": "Ben is the tallest and Mai is the fastest."
+   },
+   {
+    "a": "I was sleeping.",
+    "b": "My phone rang.",
+    "link": "when",
+    "answer": "I was sleeping when my phone rang."
+   },
+   {
+    "a": "The train was late.",
+    "b": "We arrived on time.",
+    "link": "but",
+    "answer": "The train was late, but we arrived on time."
+   },
+   {
+    "a": "It was a long trip.",
+    "b": "We were very tired.",
+    "link": "so",
+    "answer": "It was a long trip, so we were very tired."
    }
   ],
   "describe": [
@@ -1442,6 +1738,86 @@
    {
     "s": "The food smelled good.",
     "answer": "The spicy Thai food smelled really good."
+   },
+   {
+    "s": "The dog barked at the man.",
+    "answer": "The big angry dog barked loudly at the stranger."
+   },
+   {
+    "s": "We visited a temple.",
+    "answer": "We visited a beautiful old temple in Chiang Mai."
+   },
+   {
+    "s": "She wore a dress.",
+    "answer": "She wore a long red dress to the party."
+   },
+   {
+    "s": "The students did the test.",
+    "answer": "The nervous students did the difficult test quietly."
+   },
+   {
+    "s": "He cooked dinner.",
+    "answer": "He cooked a delicious spicy dinner for his family."
+   },
+   {
+    "s": "They stayed in a hotel.",
+    "answer": "They stayed in a cheap clean hotel near the beach."
+   },
+   {
+    "s": "I read a book.",
+    "answer": "I read an exciting adventure book last weekend."
+   },
+   {
+    "s": "The bus arrived.",
+    "answer": "The crowded blue bus arrived very late."
+   },
+   {
+    "s": "We watched a show.",
+    "answer": "We watched a hilarious comedy show on TV."
+   },
+   {
+    "s": "My uncle has a car.",
+    "answer": "My rich uncle has a fast black sports car."
+   },
+   {
+    "s": "She found a wallet.",
+    "answer": "She found a heavy brown wallet under the seat."
+   },
+   {
+    "s": "The waiter brought the food.",
+    "answer": "The polite waiter brought the hot food quickly."
+   },
+   {
+    "s": "He took a photo.",
+    "answer": "He took a lovely colorful photo of the sunset."
+   },
+   {
+    "s": "They climbed a mountain.",
+    "answer": "They climbed a steep rocky mountain slowly."
+   },
+   {
+    "s": "The baby smiled.",
+    "answer": "The sleepy baby smiled sweetly at her mother."
+   },
+   {
+    "s": "I bought a gift.",
+    "answer": "I bought a special handmade gift for my best friend."
+   },
+   {
+    "s": "The storm destroyed the roof.",
+    "answer": "The terrible storm completely destroyed the old roof."
+   },
+   {
+    "s": "We ate fruit.",
+    "answer": "We ate fresh sweet fruit at the night market."
+   },
+   {
+    "s": "She has a voice.",
+    "answer": "She has a soft beautiful voice."
+   },
+   {
+    "s": "The game ended.",
+    "answer": "The exciting soccer game ended with a late goal."
    }
   ]
  },
@@ -2122,6 +2498,114 @@
     "b": "There was a storm.",
     "link": "because of",
     "answer": "We stayed inside because of the storm."
+   },
+   {
+    "a": "She worked hard.",
+    "b": "She didn't get the job.",
+    "link": "although",
+    "answer": "Although she worked hard, she didn't get the job."
+   },
+   {
+    "a": "He was exhausted.",
+    "b": "He kept running.",
+    "link": "even though",
+    "answer": "He kept running even though he was exhausted."
+   },
+   {
+    "a": "We missed the flight.",
+    "b": "The traffic was terrible.",
+    "link": "because of",
+    "answer": "We missed the flight because of the terrible traffic."
+   },
+   {
+    "a": "I was tired.",
+    "b": "I wanted to finish the book.",
+    "link": "but",
+    "answer": "I was tired, but I wanted to finish the book."
+   },
+   {
+    "a": "She is rich.",
+    "b": "She is not happy.",
+    "link": "however",
+    "answer": "She is rich; however, she is not happy."
+   },
+   {
+    "a": "It might rain.",
+    "b": "We will take umbrellas.",
+    "link": "so",
+    "answer": "It might rain, so we will take umbrellas."
+   },
+   {
+    "a": "He apologized.",
+    "b": "She didn't forgive him.",
+    "link": "but",
+    "answer": "He apologized, but she didn't forgive him."
+   },
+   {
+    "a": "The movie was long.",
+    "b": "It was very exciting.",
+    "link": "although",
+    "answer": "Although the movie was long, it was very exciting."
+   },
+   {
+    "a": "We stayed at home.",
+    "b": "The rain was heavy.",
+    "link": "because of",
+    "answer": "We stayed at home because of the heavy rain."
+   },
+   {
+    "a": "Tom practices every day.",
+    "b": "He wants to be a pilot.",
+    "link": "because",
+    "answer": "Tom practices every day because he wants to be a pilot."
+   },
+   {
+    "a": "You study hard.",
+    "b": "You will pass the exam.",
+    "link": "if",
+    "answer": "If you study hard, you will pass the exam."
+   },
+   {
+    "a": "I would travel the world.",
+    "b": "I had more money.",
+    "link": "if",
+    "answer": "I would travel the world if I had more money."
+   },
+   {
+    "a": "She was nervous.",
+    "b": "She gave a great speech.",
+    "link": "but",
+    "answer": "She was nervous, but she gave a great speech."
+   },
+   {
+    "a": "The shop was closed.",
+    "b": "We waited outside.",
+    "link": "so",
+    "answer": "The shop was closed, so we waited outside."
+   },
+   {
+    "a": "He didn't know the answer.",
+    "b": "He guessed.",
+    "link": "so",
+    "answer": "He didn't know the answer, so he guessed."
+   },
+   {
+    "a": "The food was good.",
+    "b": "The service was slow.",
+    "link": "although",
+    "answer": "Although the food was good, the service was slow."
+   },
+   {
+    "a": "We lost the match.",
+    "b": "We played well.",
+    "link": "even though",
+    "answer": "We lost the match even though we played well."
+   },
+   {
+    "a": "He is kind.",
+    "b": "He is also funny.",
+    "link": "and",
+    "answer": "He is kind and also funny."
    }
   ],
   "describe": [
@@ -2164,6 +2648,86 @@
    {
     "s": "They found a cave.",
     "answer": "They found a dark, hidden cave behind the waterfall."
+   },
+   {
+    "s": "The scientist made a discovery.",
+    "answer": "The brilliant young scientist made an astonishing discovery in her laboratory."
+   },
+   {
+    "s": "A storm hit the city.",
+    "answer": "A powerful tropical storm suddenly hit the crowded coastal city."
+   },
+   {
+    "s": "He gave a speech.",
+    "answer": "He gave an inspiring, emotional speech to the graduating students."
+   },
+   {
+    "s": "The company launched a product.",
+    "answer": "The well-known company proudly launched an innovative new product."
+   },
+   {
+    "s": "She walked through the forest.",
+    "answer": "She walked nervously through the dark, silent forest."
+   },
+   {
+    "s": "The chef prepared a meal.",
+    "answer": "The experienced chef carefully prepared a delicious, five-course meal."
+   },
+   {
+    "s": "They faced a problem.",
+    "answer": "They faced a serious, unexpected problem during the project."
+   },
+   {
+    "s": "The artist painted a portrait.",
+    "answer": "The talented artist slowly painted a realistic portrait of an elderly woman."
+   },
+   {
+    "s": "We took a trip.",
+    "answer": "We took an unforgettable, budget-friendly trip to the northern mountains."
+   },
+   {
+    "s": "The teacher gave advice.",
+    "answer": "The patient teacher kindly gave us practical advice about studying."
+   },
+   {
+    "s": "He made a decision.",
+    "answer": "He made a difficult but wise decision after long thought."
+   },
+   {
+    "s": "The river flooded the village.",
+    "answer": "The swollen river suddenly flooded the small, peaceful village."
+   },
+   {
+    "s": "She read a letter.",
+    "answer": "She read a handwritten, touching letter from her grandmother."
+   },
+   {
+    "s": "The team won the match.",
+    "answer": "The determined home team finally won the dramatic match."
+   },
+   {
+    "s": "An old man sat on a bench.",
+    "answer": "A lonely old man sat quietly on a wooden bench in the park."
+   },
+   {
+    "s": "The new law changed the city.",
+    "answer": "The controversial new law dramatically changed life in the capital."
+   },
+   {
+    "s": "The athlete trained.",
+    "answer": "The dedicated young athlete trained extremely hard every morning."
+   },
+   {
+    "s": "They built a bridge.",
+    "answer": "They built a long, sturdy bridge across the wide river."
+   },
+   {
+    "s": "The students watched a documentary.",
+    "answer": "The curious students watched an eye-opening documentary about the oceans."
+   },
+   {
+    "s": "He opened the door.",
+    "answer": "He cautiously opened the heavy, creaking wooden door."
    }
   ]
  },

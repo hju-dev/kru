@@ -121,10 +121,10 @@
     {
      "q": "Which sentence is correct?",
      "choices": [
-      "I saw that film last night.",
-      "I have seen that film last night.",
-      "I see that film last night.",
-      "I have saw that film last night."
+      "I saw that movie last night.",
+      "I have seen that movie last night.",
+      "I see that movie last night.",
+      "I have saw that movie last night."
      ],
      "answer": 0,
      "double": false,
@@ -143,6 +143,279 @@
      "double": false,
      "tier": "impossible",
      "why": "A longer activity up to now with a visible result: present perfect continuous."
+    },
+    {
+     "q": "I ___ Japan twice.",
+     "choices": [
+      "visited",
+      "visit",
+      "have visited",
+      "am visiting"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Experience up to now: present perfect."
+    },
+    {
+     "q": "She ___ to Paris in 2019.",
+     "choices": [
+      "has gone",
+      "goes",
+      "have gone",
+      "went"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "A finished time (2019): past simple."
+    },
+    {
+     "q": "We ___ lunch yet.",
+     "choices": [
+      "didn't have",
+      "haven't had",
+      "don't have",
+      "hadn't"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Yet\" goes with present perfect."
+    },
+    {
+     "q": "He ___ his keys. He can't get in.",
+     "choices": [
+      "has lost",
+      "lost yesterday",
+      "loses",
+      "is losing"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A result now: present perfect."
+    },
+    {
+     "q": "Did you ___ the movie last night?",
+     "choices": [
+      "saw",
+      "see",
+      "seen",
+      "seeing"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Did\" + base form."
+    },
+    {
+     "q": "I ___ here since 2015.",
+     "choices": [
+      "lived",
+      "have lived",
+      "live",
+      "am living"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Since\" goes with present perfect."
+    },
+    {
+     "q": "They ___ married for ten years.",
+     "choices": [
+      "have been",
+      "were",
+      "are being",
+      "was"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"For ten years\" up to now."
+    },
+    {
+     "q": "___ you ever eaten durian?",
+     "choices": [
+      "Did",
+      "Do",
+      "Are",
+      "Have"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Ever\" + present perfect."
+    },
+    {
+     "q": "When ___ you buy that phone?",
+     "choices": [
+      "have",
+      "do",
+      "did",
+      "has"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"When\" asks about a finished time: past simple."
+    },
+    {
+     "q": "I ___ my homework already.",
+     "choices": [
+      "did yesterday",
+      "do",
+      "am doing",
+      "have done"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Already\" goes with present perfect."
+    },
+    {
+     "q": "She ___ the book last week.",
+     "choices": [
+      "has finished",
+      "finishes",
+      "have finished",
+      "finished"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Last week\" = past simple."
+    },
+    {
+     "q": "He has worked here ___ three years.",
+     "choices": [
+      "since",
+      "from",
+      "during",
+      "for"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"For\" + length of time."
+    },
+    {
+     "q": "He has worked here ___ 2021.",
+     "choices": [
+      "for",
+      "since",
+      "from",
+      "during"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Since\" + starting point."
+    },
+    {
+     "q": "My brother ___ in a hospital for five years now.",
+     "choices": [
+      "worked",
+      "works",
+      "is working",
+      "has worked"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Still true now: present perfect."
+    },
+    {
+     "q": "How long ___ you known her?",
+     "choices": [
+      "did",
+      "have",
+      "do",
+      "are"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"How long\" + present perfect."
+    },
+    {
+     "q": "We ___ to the beach yesterday.",
+     "choices": [
+      "have gone",
+      "go",
+      "went",
+      "have been going"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Yesterday\" = past simple."
+    },
+    {
+     "q": "Look! It ___ snowing! It's amazing.",
+     "choices": [
+      "started yesterday",
+      "starts",
+      "was starting",
+      "has started"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Just happened: present perfect."
+    },
+    {
+     "q": "I ___ never ___ a snake.",
+     "choices": [
+      "did / touch",
+      "have / touched",
+      "am / touching",
+      "had / touched"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Never\" + present perfect."
+    },
+    {
+     "q": "She ___ just ___ home.",
+     "choices": [
+      "has / arrived",
+      "did / arrive",
+      "is / arriving",
+      "have / arrived"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Just\" + present perfect."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I have seen him an hour ago.",
+      "I see him an hour ago.",
+      "I saw him an hour ago.",
+      "I was seeing him an hour ago."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Ago\" needs past simple."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Did you finished yet?",
+      "Has you finished yet?",
+      "Have you finished yet?",
+      "Do you finished yet?"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Yet\" + present perfect."
     }
    ]
   },
@@ -163,7 +436,7 @@
      "why": "An action in progress at a time in the past: past continuous."
     },
     {
-     "q": "They ___ football when it started to rain.",
+     "q": "They ___ soccer when it started to rain.",
      "choices": [
       "were playing",
       "played",
@@ -215,7 +488,7 @@
      "why": "'While' + past continuous for the longer action."
     },
     {
-     "q": "When we arrived at the cinema, the movie ___.",
+     "q": "When we arrived at the movie theater, the movie ___.",
      "choices": [
       "already started",
       "had already started",
@@ -228,7 +501,7 @@
      "why": "The movie started BEFORE we arrived: past perfect."
     },
     {
-     "q": "She ___ the book before she saw the film.",
+     "q": "She ___ the book before she saw the movie.",
      "choices": [
       "has read",
       "reads",
@@ -278,6 +551,279 @@
      "double": false,
      "tier": "impossible",
      "why": "A longer action before another past action: past perfect continuous."
+    },
+    {
+     "q": "When I arrived, the movie ___.",
+     "choices": [
+      "has started",
+      "starts",
+      "was start",
+      "had started"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Earlier past action: past perfect."
+    },
+    {
+     "q": "She was tired because she ___ all night.",
+     "choices": [
+      "has worked",
+      "was work",
+      "had worked",
+      "works"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Reason that happened first: past perfect."
+    },
+    {
+     "q": "By the time we got there, the bus ___.",
+     "choices": [
+      "has left",
+      "had left",
+      "leaves",
+      "was leave"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"By the time\" + past perfect."
+    },
+    {
+     "q": "I ___ dinner when the lights went out.",
+     "choices": [
+      "had",
+      "have",
+      "was having",
+      "had had"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Interrupted action: past continuous."
+    },
+    {
+     "q": "They ___ to the movie theater before they ate.",
+     "choices": [
+      "have gone",
+      "go",
+      "were go",
+      "had gone"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Earlier action: past perfect."
+    },
+    {
+     "q": "He ___ his homework before his mom came home.",
+     "choices": [
+      "had finished",
+      "has finished",
+      "finishes",
+      "was finish"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Earlier action: past perfect."
+    },
+    {
+     "q": "While I ___ the dishes, he was watching TV.",
+     "choices": [
+      "had washed",
+      "washed",
+      "was washing",
+      "wash"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Two actions at the same time: past continuous."
+    },
+    {
+     "q": "She told me she ___ the book before.",
+     "choices": [
+      "had read",
+      "has read",
+      "reads",
+      "was read"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Past perfect after reported past."
+    },
+    {
+     "q": "We ___ for an hour when it started to rain.",
+     "choices": [
+      "were walk",
+      "had been walking",
+      "walked",
+      "had walk"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Longer action before another: past perfect continuous."
+    },
+    {
+     "q": "I realized I ___ my wallet at home.",
+     "choices": [
+      "have left",
+      "left",
+      "was leaving",
+      "had left"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "The leaving happened before the realizing."
+    },
+    {
+     "q": "Mom ___ in the kitchen when I came in.",
+     "choices": [
+      "was cooking",
+      "had cooked",
+      "cooked",
+      "cooks"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "She was in the middle of cooking."
+    },
+    {
+     "q": "He ___ never ___ sushi before that day.",
+     "choices": [
+      "had / eaten",
+      "has / eaten",
+      "was / eating",
+      "did / eat"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Never ... before\" + past perfect."
+    },
+    {
+     "q": "When the teacher came in, the students ___.",
+     "choices": [
+      "had talk",
+      "were talking",
+      "talked",
+      "talks"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Action in progress: past continuous."
+    },
+    {
+     "q": "After she ___ breakfast, she went to school.",
+     "choices": [
+      "has eaten",
+      "eats",
+      "had eaten",
+      "was eat"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"After\" + past perfect."
+    },
+    {
+     "q": "He ___ asleep when the phone rang.",
+     "choices": [
+      "had fall",
+      "falls",
+      "fell",
+      "was falling"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "In progress: past continuous."
+    },
+    {
+     "q": "It ___ all morning, so the ground was wet.",
+     "choices": [
+      "has rained",
+      "rains",
+      "had been raining",
+      "was rain"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Past perfect continuous gives the cause."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "I have already eaten when he called.",
+      "I already eat when he called.",
+      "I had already eaten when he called.",
+      "I was already eat when he called."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Past perfect for the earlier action."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "They had sleeping at midnight.",
+      "They was sleeping at midnight.",
+      "They sleep at midnight.",
+      "They were sleeping at midnight."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Past continuous with a time."
+    },
+    {
+     "q": "We ___ the room before the guests arrived.",
+     "choices": [
+      "have cleaned",
+      "had cleaned",
+      "cleaning",
+      "were clean"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Before\" + earlier action."
+    },
+    {
+     "q": "She ___ when she saw the accident.",
+     "choices": [
+      "was driving",
+      "had drive",
+      "drives",
+      "has driven"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "In progress when something happened."
+    },
+    {
+     "q": "I didn't know that he ___ married.",
+     "choices": [
+      "has gotten",
+      "is getting",
+      "had gotten",
+      "get"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Past perfect after \"didn't know\"."
     }
    ]
   },
@@ -360,7 +906,7 @@
      "answer": 2,
      "double": false,
      "tier": "regular",
-     "why": "Timetables use the present simple."
+     "why": "Schedules use the present simple."
     },
     {
      "q": "Don't worry. I ___ help you.",
@@ -413,6 +959,279 @@
      "double": false,
      "tier": "impossible",
      "why": "'By' + a future time: future perfect (will have + past participle)."
+    },
+    {
+     "q": "Look at the sky! It ___ rain.",
+     "choices": [
+      "is going to",
+      "will",
+      "is",
+      "does"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "A prediction from what we see."
+    },
+    {
+     "q": "I ___ my grandma this weekend. I've bought the ticket.",
+     "choices": [
+      "will visit",
+      "am visiting",
+      "visit",
+      "would visit"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A fixed plan: present continuous."
+    },
+    {
+     "q": "\"I'm cold.\" \"I ___ close the window.\"",
+     "choices": [
+      "am going to",
+      "am closing",
+      "will",
+      "close"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "A quick decision: will."
+    },
+    {
+     "q": "The train ___ at 9:15 tomorrow.",
+     "choices": [
+      "leaves",
+      "is going to leave",
+      "will leaving",
+      "has left"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A schedule: present simple."
+    },
+    {
+     "q": "She ___ be a doctor when she grows up.",
+     "choices": [
+      "going to",
+      "is going to",
+      "will going",
+      "does"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "A future plan: be going to."
+    },
+    {
+     "q": "I think it ___ be hot tomorrow.",
+     "choices": [
+      "is going",
+      "will",
+      "does",
+      "has"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"I think\" + will."
+    },
+    {
+     "q": "We ___ meet at 6. Is that OK?",
+     "choices": [
+      "going",
+      "will to",
+      "are going to",
+      "does"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "An arrangement: are going to."
+    },
+    {
+     "q": "I promise I ___ tell anyone.",
+     "choices": [
+      "am not going",
+      "don't",
+      "haven't",
+      "won't"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "A promise: will not."
+    },
+    {
+     "q": "By next year, I ___ English for ten years.",
+     "choices": [
+      "will study",
+      "am studying",
+      "will have studied",
+      "have study"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Future perfect."
+    },
+    {
+     "q": "This time tomorrow, I ___ on a beach.",
+     "choices": [
+      "will lie",
+      "lie",
+      "will be lying",
+      "am lie"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Future continuous."
+    },
+    {
+     "q": "What ___ you do tonight?",
+     "choices": [
+      "are you going to",
+      "will",
+      "did",
+      "have"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Asking about plans."
+    },
+    {
+     "q": "He ___ his driver's license next month. He has an exam on Monday.",
+     "choices": [
+      "is taking",
+      "takes",
+      "took",
+      "has taken"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A planned arrangement."
+    },
+    {
+     "q": "Perhaps it ___ rain later.",
+     "choices": [
+      "is going",
+      "does",
+      "has",
+      "will"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Perhaps\" + will."
+    },
+    {
+     "q": "Be careful! You ___ fall!",
+     "choices": [
+      "will",
+      "are",
+      "do",
+      "are going to"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Something about to happen."
+    },
+    {
+     "q": "When I ___ home, I will call you.",
+     "choices": [
+      "will get",
+      "am getting",
+      "get",
+      "got"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "After \"when\" use present for future."
+    },
+    {
+     "q": "We will go out if it ___ raining.",
+     "choices": [
+      "will stop",
+      "stopped",
+      "stops",
+      "is stop"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "After \"if\" use present for future."
+    },
+    {
+     "q": "I ___ the exam tomorrow, but I don't feel ready.",
+     "choices": [
+      "take",
+      "am taking",
+      "took",
+      "will taking"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A plan: present continuous."
+    },
+    {
+     "q": "\"Who wants to help?\" \"I ___!\"",
+     "choices": [
+      "will",
+      "am going to",
+      "am going",
+      "would"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Offering: will."
+    },
+    {
+     "q": "The meeting ___ at 3 p.m. on Friday.",
+     "choices": [
+      "starts",
+      "is going start",
+      "will starts",
+      "started"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A schedule: present simple."
+    },
+    {
+     "q": "She says she ___ the cake tomorrow.",
+     "choices": [
+      "will bake",
+      "bake",
+      "baked",
+      "bakes"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "A future statement: will."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "We're going to visit Chiang Mai.",
+      "We going to visit Chiang Mai.",
+      "We are go to visit Chiang Mai.",
+      "We going visit Chiang Mai."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Going to\" + verb."
     }
    ]
   },
@@ -548,6 +1367,266 @@
      "double": false,
      "tier": "impossible",
      "why": "Second conditional: the 'if' part uses the past simple."
+    },
+    {
+     "q": "If it rains, we ___ stay at home.",
+     "choices": [
+      "would",
+      "had",
+      "would have",
+      "will"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional: will."
+    },
+    {
+     "q": "If I ___ more money, I would buy a car.",
+     "choices": [
+      "had",
+      "have",
+      "will have",
+      "would have"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Second conditional: if + past."
+    },
+    {
+     "q": "If she ___ harder, she would pass the test.",
+     "choices": [
+      "studied",
+      "studies",
+      "had studied",
+      "will study"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Second conditional."
+    },
+    {
+     "q": "What ___ you do if you saw a ghost?",
+     "choices": [
+      "would",
+      "will",
+      "did",
+      "do"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Second conditional question."
+    },
+    {
+     "q": "If he ___ up early, he will catch the bus.",
+     "choices": [
+      "will get",
+      "got",
+      "gets",
+      "would get"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional: if + present."
+    },
+    {
+     "q": "Unless you ___ now, you'll be late.",
+     "choices": [
+      "will leave",
+      "left",
+      "would leave",
+      "leave"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Unless\" + present."
+    },
+    {
+     "q": "If I ___ the answer, I would tell you.",
+     "choices": [
+      "knew",
+      "know",
+      "had known",
+      "will know"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Second conditional."
+    },
+    {
+     "q": "If it ___ tomorrow, we'll go to the beach.",
+     "choices": [
+      "is sunny",
+      "will be sunny",
+      "were sunny",
+      "would be sunny"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional."
+    },
+    {
+     "q": "If we hurry, we ___ the train.",
+     "choices": [
+      "will catch",
+      "would catch",
+      "caught",
+      "catch"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional: will."
+    },
+    {
+     "q": "If I ___ a bird, I would fly to you.",
+     "choices": [
+      "am",
+      "will be",
+      "was being",
+      "were"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"If I were\"."
+    },
+    {
+     "q": "If you press this button, the machine ___.",
+     "choices": [
+      "will turned on",
+      "would turn on",
+      "turns on",
+      "turned on"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Zero conditional."
+    },
+    {
+     "q": "If I had known, I ___ you.",
+     "choices": [
+      "would tell",
+      "will tell",
+      "would have told",
+      "told"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Third conditional."
+    },
+    {
+     "q": "If you don't wear a coat, you ___ cold.",
+     "choices": [
+      "would catch",
+      "had caught",
+      "caught",
+      "will catch"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional."
+    },
+    {
+     "q": "What would happen if everyone ___ the same?",
+     "choices": [
+      "looks",
+      "will look",
+      "had looked",
+      "looked"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Second conditional."
+    },
+    {
+     "q": "She'd be rich if she ___ that job.",
+     "choices": [
+      "took",
+      "takes",
+      "had taken",
+      "would take"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Third conditional."
+    },
+    {
+     "q": "If you ___ something, tell me.",
+     "choices": [
+      "will need",
+      "needed",
+      "need",
+      "would need"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "If + present, imperative."
+    },
+    {
+     "q": "I will help you if you ___ me.",
+     "choices": [
+      "will ask",
+      "asked",
+      "ask",
+      "would ask"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional."
+    },
+    {
+     "q": "If I won the lottery, I ___ travel the world.",
+     "choices": [
+      "would",
+      "will",
+      "did",
+      "have"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Second conditional."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "If it will rain, I'll stay home.",
+      "If it rained, I'll stay home.",
+      "If it rains, I stay home will.",
+      "If it rains, I'll stay home."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional."
+    },
+    {
+     "q": "If I ___ free tomorrow, I'll call you.",
+     "choices": [
+      "will be",
+      "would be",
+      "am",
+      "were being"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "First conditional: if + present."
     }
    ]
   },
@@ -683,6 +1762,279 @@
      "double": false,
      "tier": "impossible",
      "why": "'Can't' shows that we are sure something is not true."
+    },
+    {
+     "q": "You ___ wear a seat belt. It's the law.",
+     "choices": [
+      "must",
+      "might",
+      "could",
+      "would"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Must\" for rules."
+    },
+    {
+     "q": "She ___ be at home. The lights are on.",
+     "choices": [
+      "must",
+      "can't",
+      "shouldn't",
+      "mustn't"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Deduction: must be."
+    },
+    {
+     "q": "He ___ be a doctor. He's only ten!",
+     "choices": [
+      "can't",
+      "must",
+      "should",
+      "has to"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Deduction: can't be."
+    },
+    {
+     "q": "You ___ eat so much sugar. It's bad for you.",
+     "choices": [
+      "must",
+      "can",
+      "may",
+      "shouldn't"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Shouldn't\" gives advice."
+    },
+    {
+     "q": "We ___ have a test tomorrow, but I'm not sure.",
+     "choices": [
+      "must",
+      "can't",
+      "should",
+      "might"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Might\" = possible."
+    },
+    {
+     "q": "___ you help me with this bag, please?",
+     "choices": [
+      "Must",
+      "Should",
+      "Might",
+      "Could"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Polite request: could."
+    },
+    {
+     "q": "I ___ run fast when I was young.",
+     "choices": [
+      "can",
+      "must",
+      "should",
+      "could"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Past ability: could."
+    },
+    {
+     "q": "You ___ pay now. You can pay later.",
+     "choices": [
+      "mustn't",
+      "can't",
+      "shouldn't",
+      "don't have to"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Not necessary: don't have to."
+    },
+    {
+     "q": "You ___ smoke here. It's forbidden.",
+     "choices": [
+      "don't have to",
+      "needn't",
+      "mustn't",
+      "might"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Forbidden: mustn't."
+    },
+    {
+     "q": "___ I come in?",
+     "choices": [
+      "Must",
+      "May",
+      "Should",
+      "Will"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Asking permission: may."
+    },
+    {
+     "q": "She ___ speak Japanese. She lived in Tokyo for 5 years.",
+     "choices": [
+      "must",
+      "should",
+      "might",
+      "can"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Ability: can."
+    },
+    {
+     "q": "You ___ see a dentist. Your tooth hurts.",
+     "choices": [
+      "should",
+      "can",
+      "might",
+      "would"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Advice: should."
+    },
+    {
+     "q": "It ___ rain later. Take an umbrella.",
+     "choices": [
+      "must",
+      "might",
+      "has to",
+      "will to"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Possibility: might."
+    },
+    {
+     "q": "We ___ leave now, or we'll miss the bus.",
+     "choices": [
+      "did better",
+      "have better",
+      "would better",
+      "had better"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Had better\" for strong advice."
+    },
+    {
+     "q": "I ___ rather stay at home tonight.",
+     "choices": [
+      "should",
+      "would",
+      "have",
+      "will"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Would rather\" = prefer."
+    },
+    {
+     "q": "You ___ have told me earlier!",
+     "choices": [
+      "must",
+      "should",
+      "would",
+      "can"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Should have\" = criticism of the past."
+    },
+    {
+     "q": "He ___ be tired. He's been working all day.",
+     "choices": [
+      "can't",
+      "mustn't",
+      "must",
+      "shouldn't"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Deduction: must be."
+    },
+    {
+     "q": "___ I open the window? It's hot in here.",
+     "choices": [
+      "Shall",
+      "Must",
+      "Ought",
+      "Might"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Shall I?\" offers to do something."
+    },
+    {
+     "q": "You ___ to study harder.",
+     "choices": [
+      "must",
+      "ought",
+      "may",
+      "will"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Ought to\" = should."
+    },
+    {
+     "q": "I ___ finished my work yesterday. I'm sorry.",
+     "choices": [
+      "can't",
+      "mustn't",
+      "couldn't",
+      "shouldn't"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Past: couldn't."
+    },
+    {
+     "q": "The door is locked. They ___ be home.",
+     "choices": [
+      "must",
+      "should",
+      "can't",
+      "might to"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Deduction: can't be."
     }
    ]
   },
@@ -818,6 +2170,266 @@
      "double": false,
      "tier": "impossible",
      "why": "Future passive: will be + past participle."
+    },
+    {
+     "q": "English ___ all over the world.",
+     "choices": [
+      "speaks",
+      "is speaking",
+      "spoke",
+      "is spoken"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Present passive: is + past participle."
+    },
+    {
+     "q": "The window ___ by the boy yesterday.",
+     "choices": [
+      "broke",
+      "was broken",
+      "is broken",
+      "has broke"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive: was + past participle."
+    },
+    {
+     "q": "This cake ___ by my mom.",
+     "choices": [
+      "was made",
+      "made",
+      "is making",
+      "makes"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive."
+    },
+    {
+     "q": "The room ___ every day.",
+     "choices": [
+      "cleans",
+      "is cleaning",
+      "is cleaned",
+      "cleaned"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Present passive."
+    },
+    {
+     "q": "A lot of rice ___ in Thailand.",
+     "choices": [
+      "grows",
+      "is growing",
+      "is grown",
+      "grew"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Present passive."
+    },
+    {
+     "q": "The Eiffel Tower ___ in 1889.",
+     "choices": [
+      "built",
+      "is built",
+      "was built",
+      "has built"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive."
+    },
+    {
+     "q": "My bike ___ last week.",
+     "choices": [
+      "was stolen",
+      "stole",
+      "is stolen",
+      "has stolen"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive."
+    },
+    {
+     "q": "The letters ___ by the mail carrier every morning.",
+     "choices": [
+      "deliver",
+      "delivered",
+      "are delivered",
+      "delivering"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Present passive."
+    },
+    {
+     "q": "The homework ___ by tomorrow.",
+     "choices": [
+      "must finish",
+      "must finished",
+      "must be finish",
+      "must be finished"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Modal passive: must be + past participle."
+    },
+    {
+     "q": "The match ___ because of the rain.",
+     "choices": [
+      "cancelled",
+      "is cancelling",
+      "was cancelled",
+      "cancels"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive."
+    },
+    {
+     "q": "Who ___ this song?",
+     "choices": [
+      "was written",
+      "wrote",
+      "is written",
+      "has written"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Active question: who wrote."
+    },
+    {
+     "q": "This song ___ by Taylor Swift.",
+     "choices": [
+      "wrote",
+      "writes",
+      "was written",
+      "is write"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Passive: was written."
+    },
+    {
+     "q": "The new school ___ next year.",
+     "choices": [
+      "will open",
+      "will be opened",
+      "opens",
+      "is opening"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Future passive."
+    },
+    {
+     "q": "The thieves ___ by the police last night.",
+     "choices": [
+      "were caught",
+      "caught",
+      "are caught",
+      "have caught"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive plural."
+    },
+    {
+     "q": "A lot of food ___ at the party.",
+     "choices": [
+      "was eaten",
+      "ate",
+      "is ate",
+      "eaten"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive."
+    },
+    {
+     "q": "Rice ___ in many Asian countries.",
+     "choices": [
+      "eats",
+      "is eating",
+      "is eaten",
+      "ate"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Present passive."
+    },
+    {
+     "q": "The windows ___ yet.",
+     "choices": [
+      "aren't cleaning",
+      "didn't cleaned",
+      "haven't been cleaned",
+      "haven't cleaned"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Present perfect passive."
+    },
+    {
+     "q": "Which sentence is passive?",
+     "choices": [
+      "She ate the cake.",
+      "She is eating cake.",
+      "She will eat cake.",
+      "The cake was eaten."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Passive = subject receives the action."
+    },
+    {
+     "q": "Which is correct?",
+     "choices": [
+      "The door locked.",
+      "The door was lock.",
+      "The door is locking yesterday.",
+      "The door was locked."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive."
+    },
+    {
+     "q": "The Mona Lisa ___ by Leonardo da Vinci.",
+     "choices": [
+      "painted",
+      "paints",
+      "is painting",
+      "was painted"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Past passive."
     }
    ]
   },
@@ -953,6 +2565,266 @@
      "double": false,
      "tier": "impossible",
      "why": "'In which' (or 'where') = the place of birth."
+    },
+    {
+     "q": "The man ___ lives next door is a pilot.",
+     "choices": [
+      "which",
+      "whose",
+      "who",
+      "where"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
+    },
+    {
+     "q": "This is the book ___ I told you about.",
+     "choices": [
+      "who",
+      "where",
+      "that",
+      "whose"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"That\" for things."
+    },
+    {
+     "q": "She is the girl ___ bag was stolen.",
+     "choices": [
+      "whose",
+      "who",
+      "which",
+      "that"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Whose\" shows possession."
+    },
+    {
+     "q": "I like people ___ make me laugh.",
+     "choices": [
+      "who",
+      "which",
+      "whose",
+      "where"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
+    },
+    {
+     "q": "The movie ___ we saw was funny.",
+     "choices": [
+      "that",
+      "who",
+      "where",
+      "whose"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"That\" for things."
+    },
+    {
+     "q": "My friend, ___ lives in Chiang Mai, called me.",
+     "choices": [
+      "which",
+      "that",
+      "who",
+      "whose"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Extra info about a person: who."
+    },
+    {
+     "q": "Bangkok, ___ is the capital, is huge.",
+     "choices": [
+      "who",
+      "which",
+      "that",
+      "whose"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Extra info about a thing: which."
+    },
+    {
+     "q": "The day ___ we met was rainy.",
+     "choices": [
+      "when",
+      "where",
+      "who",
+      "whose"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"When\" for times."
+    },
+    {
+     "q": "This is the reason ___ I am late.",
+     "choices": [
+      "where",
+      "why",
+      "who",
+      "whose"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Why\" for reasons."
+    },
+    {
+     "q": "The woman ___ car is red is my aunt.",
+     "choices": [
+      "who",
+      "whose",
+      "which",
+      "where"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Whose car\" = her car."
+    },
+    {
+     "q": "The teacher ___ taught us last year is very kind.",
+     "choices": [
+      "which",
+      "whose",
+      "where",
+      "who"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
+    },
+    {
+     "q": "This is the house ___ I was born.",
+     "choices": [
+      "which",
+      "whose",
+      "who",
+      "where"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Where\" for places."
+    },
+    {
+     "q": "Is this the bag ___ you lost?",
+     "choices": [
+      "who",
+      "that",
+      "whose",
+      "where"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"That\" for things."
+    },
+    {
+     "q": "Everything ___ she said was true.",
+     "choices": [
+      "which",
+      "who",
+      "whose",
+      "that"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "After \"everything\": that."
+    },
+    {
+     "q": "A person ___ cooks is called a cook.",
+     "choices": [
+      "who",
+      "which",
+      "whose",
+      "where"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
+    },
+    {
+     "q": "The boy ___ I sat next to was friendly.",
+     "choices": [
+      "which",
+      "who",
+      "whose",
+      "where"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
+    },
+    {
+     "q": "Tom, ___ brother is a singer, is my classmate.",
+     "choices": [
+      "who",
+      "which",
+      "where",
+      "whose"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Whose brother\" = his brother."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "The pen that I lost was new.",
+      "The pen who I lost was new.",
+      "The pen whose I lost was new.",
+      "The pen where I lost was new."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"That\" for things."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "The students which study hard pass.",
+      "The students who study hard pass.",
+      "The students whose study hard pass.",
+      "The students where study hard pass."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
+    },
+    {
+     "q": "The man ___ I met yesterday is a teacher.",
+     "choices": [
+      "which",
+      "who",
+      "whose",
+      "where"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Who\" for people."
     }
    ]
   },
@@ -1088,6 +2960,266 @@
      "double": false,
      "tier": "impossible",
      "why": "'Be used to' + -ing means something is normal for you."
+    },
+    {
+     "q": "He decided ___ the job.",
+     "choices": [
+      "taking",
+      "take",
+      "to take",
+      "took"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Decide\" + to-infinitive."
+    },
+    {
+     "q": "I'm interested in ___ photos.",
+     "choices": [
+      "to take",
+      "take",
+      "taking",
+      "took"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Preposition + -ing."
+    },
+    {
+     "q": "They stopped ___ when the bell rang.",
+     "choices": [
+      "to talk",
+      "talking",
+      "talk",
+      "talked"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Stop\" + -ing = end an action."
+    },
+    {
+     "q": "I stopped ___ some water. I was thirsty.",
+     "choices": [
+      "drinking",
+      "drink",
+      "drank",
+      "to drink"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Stop to\" = pause for a reason."
+    },
+    {
+     "q": "She avoided ___ the question.",
+     "choices": [
+      "answering",
+      "to answer",
+      "answer",
+      "answered"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Avoid\" + -ing."
+    },
+    {
+     "q": "We hope ___ you soon.",
+     "choices": [
+      "seeing",
+      "to see",
+      "see",
+      "saw"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Hope\" + to-infinitive."
+    },
+    {
+     "q": "He's good at ___ soccer.",
+     "choices": [
+      "to play",
+      "playing",
+      "play",
+      "played"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Preposition + -ing."
+    },
+    {
+     "q": "I forgot ___ the door. It was open all night.",
+     "choices": [
+      "to lock",
+      "locking",
+      "lock",
+      "locked"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Forget to\" = didn't do it."
+    },
+    {
+     "q": "Do you mind ___ the window?",
+     "choices": [
+      "to open",
+      "open",
+      "opened",
+      "opening"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Mind\" + -ing."
+    },
+    {
+     "q": "She promised ___ me.",
+     "choices": [
+      "helping",
+      "to help",
+      "help",
+      "helped"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Promise\" + to-infinitive."
+    },
+    {
+     "q": "___ is good for your health.",
+     "choices": [
+      "To swimming",
+      "Swim",
+      "Swimming",
+      "Swum"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "A gerund as a subject."
+    },
+    {
+     "q": "It's important ___ water every day.",
+     "choices": [
+      "drinking",
+      "drink",
+      "to drink",
+      "drank"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "It's important + to-infinitive."
+    },
+    {
+     "q": "I look forward to ___ you.",
+     "choices": [
+      "see",
+      "seeing",
+      "to see",
+      "saw"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Look forward to\" + -ing."
+    },
+    {
+     "q": "He refused ___ the money.",
+     "choices": [
+      "taking",
+      "take",
+      "took",
+      "to take"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Refuse\" + to-infinitive."
+    },
+    {
+     "q": "They suggested ___ to the beach.",
+     "choices": [
+      "to go",
+      "go",
+      "going",
+      "went"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Suggest\" + -ing."
+    },
+    {
+     "q": "I can't afford ___ a new phone.",
+     "choices": [
+      "buying",
+      "buy",
+      "bought",
+      "to buy"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Afford\" + to-infinitive."
+    },
+    {
+     "q": "She finished ___ her homework at nine.",
+     "choices": [
+      "to do",
+      "do",
+      "doing",
+      "did"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Finish\" + -ing."
+    },
+    {
+     "q": "I'd like ___ some tea, please.",
+     "choices": [
+      "to have",
+      "having",
+      "have",
+      "had"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Would like\" + to-infinitive."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I enjoy to swim.",
+      "I enjoy swim.",
+      "I enjoy swam.",
+      "I enjoy swimming."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Enjoy\" + -ing."
+    },
+    {
+     "q": "We plan ___ to Japan next year.",
+     "choices": [
+      "going",
+      "go",
+      "went",
+      "to go"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Plan\" + to-infinitive."
     }
    ]
   },
@@ -1223,6 +3355,279 @@
      "double": false,
      "tier": "impossible",
      "why": "A semicolon joins two closely related complete sentences."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I bought, apples bananas and milk.",
+      "I bought apples, bananas, and milk.",
+      "I bought apples bananas, and, milk.",
+      "I bought apples, bananas and, milk."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Commas separate items in a list."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Although it was raining we played, outside.",
+      "Although it was raining, we played outside.",
+      "Although, it was raining we played outside.",
+      "Although it was raining. We played outside."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A comma after the \"although\" clause."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "My brother who is ten, loves games.",
+      "My brother, who is ten loves games.",
+      "My, brother who is ten, loves games.",
+      "My brother, who is ten, loves games."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Commas around extra information."
+    },
+    {
+     "q": "Which is a complete sentence?",
+     "choices": [
+      "She runs every morning.",
+      "Running every morning.",
+      "Every morning when she runs.",
+      "Because she runs."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A complete sentence has a subject and a verb."
+    },
+    {
+     "q": "Which is a fragment (not a complete sentence)?",
+     "choices": [
+      "It was late.",
+      "Because it was late.",
+      "We went home.",
+      "I was tired."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Because ...\" alone is not complete."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Its a nice day isn't it?",
+      "It's a nice day, isn't it?",
+      "It's a nice day isnt it?",
+      "Its a nice day, isn't it."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Apostrophes and a question mark."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I like tea; and my sister likes coffee.",
+      "I like tea, my sister likes coffee.",
+      "I like tea; my sister likes coffee.",
+      "I like tea. my sister likes coffee."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "A semicolon joins two related sentences."
+    },
+    {
+     "q": "Which sentence has a run-on mistake?",
+     "choices": [
+      "I was tired, so I went to bed.",
+      "I was tired. I went to bed.",
+      "I was tired, I went to bed.",
+      "I was tired; I went to bed."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "A comma alone cannot join two sentences."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "\"Where are you going?\" she asked.",
+      "\"Where are you going\" she asked?",
+      "\"Where are you going?\", she asked.",
+      "\"Where are you going?\" She asked."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "The question mark is inside the quotes."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "The childrens toys are on the floor.",
+      "The childrens' toys are on the floor.",
+      "The children toy's are on the floor.",
+      "The children's toys are on the floor."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Irregular plural + 's."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "dr. smith lives in london.",
+      "Dr. smith lives in London.",
+      "Dr. Smith lives in London.",
+      "Dr Smith lives in london."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Capitals for titles and places."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "After school I, play soccer.",
+      "After school, I play soccer.",
+      "After, school I play soccer.",
+      "After school. I play soccer."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "A comma after an opening phrase."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "We can go by bus, or, by train.",
+      "We can go by bus or by train.",
+      "We can go, by bus or by train.",
+      "We, can go by bus or by train."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "No extra commas."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "They're house is big.",
+      "Their house is big.",
+      "There house is big.",
+      "Theyre house is big."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Their\" shows belonging."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Let's eat Grandma.",
+      "Lets eat, Grandma.",
+      "Let's eat, Grandma.",
+      "Let's, eat Grandma."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "The comma saves Grandma!"
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Your late again!",
+      "You're late again!",
+      "Youre late again!",
+      "You're late again?"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "\"You're\" = you are."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "It's tail is long.",
+      "Its tail is long.",
+      "Its' tail is long.",
+      "Its tail are long."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"Its\" shows belonging; no apostrophe."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "What a surprise!",
+      "What a surprise?",
+      "What a surprise.",
+      "what a surprise!"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Exclamation."
+    },
+    {
+     "q": "Which is the correct order?",
+     "choices": [
+      "Quickly she her ate lunch.",
+      "Ate she lunch quickly her.",
+      "She quickly ate her lunch.",
+      "Her lunch quickly she ate."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Subject + adverb + verb + object."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "When I was young, I lived in Phuket.",
+      "When I was young I lived, in Phuket.",
+      "When, I was young I lived in Phuket.",
+      "When I was young. I lived in Phuket."
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "A comma after a \"when\" clause."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Mr. Brown our teacher, is kind.",
+      "Mr. Brown, our teacher is kind.",
+      "Mr. Brown, our teacher, is kind.",
+      "Mr. Brown our teacher is kind,."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Commas around an extra phrase."
     }
    ]
   },
@@ -1358,6 +3763,279 @@
      "double": false,
      "tier": "impossible",
      "why": "'Therefore' shows a result."
+    },
+    {
+     "q": "I was tired, ___ I kept working.",
+     "choices": [
+      "so",
+      "because",
+      "or",
+      "but"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"But\" shows contrast."
+    },
+    {
+     "q": "___ it was cold, he wore shorts.",
+     "choices": [
+      "Because",
+      "So",
+      "Although",
+      "And"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Although\" shows contrast."
+    },
+    {
+     "q": "She was late ___ the bus broke down.",
+     "choices": [
+      "because",
+      "so",
+      "but",
+      "although"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Because\" gives a reason."
+    },
+    {
+     "q": "I wanted to go out. ___, it was raining.",
+     "choices": [
+      "Because",
+      "So",
+      "However",
+      "And"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "\"However\" shows contrast."
+    },
+    {
+     "q": "He studied hard. ___, he passed the test.",
+     "choices": [
+      "As a result",
+      "However",
+      "Although",
+      "Unless"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "\"As a result\" shows the effect."
+    },
+    {
+     "q": "We stayed home ___ the bad weather.",
+     "choices": [
+      "because of",
+      "because",
+      "although",
+      "so that"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "\"Because of\" + noun phrase."
+    },
+    {
+     "q": "I can't go ___ I have to work.",
+     "choices": [
+      "so",
+      "but",
+      "or",
+      "because"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Because\" gives a reason."
+    },
+    {
+     "q": "You can have tea ___ coffee.",
+     "choices": [
+      "and",
+      "but",
+      "or",
+      "so"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Or\" gives a choice."
+    },
+    {
+     "q": "He is rich ___ unhappy.",
+     "choices": [
+      "so",
+      "because",
+      "but",
+      "and"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Contrast."
+    },
+    {
+     "q": "I'll lend you the book ___ you take care of it.",
+     "choices": [
+      "although",
+      "as long as",
+      "because",
+      "unless"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "\"As long as\" = if."
+    },
+    {
+     "q": "The noun of \"happy\" is ___.",
+     "choices": [
+      "happyness",
+      "happiment",
+      "happily",
+      "happiness"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "happy → happiness."
+    },
+    {
+     "q": "The adverb of \"slow\" is ___.",
+     "choices": [
+      "slowy",
+      "slowing",
+      "slowness",
+      "slowly"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "adjective + -ly."
+    },
+    {
+     "q": "The adjective of \"danger\" is ___.",
+     "choices": [
+      "dangerous",
+      "dangerful",
+      "dangery",
+      "dangering"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "danger → dangerous."
+    },
+    {
+     "q": "The opposite of \"possible\" is ___.",
+     "choices": [
+      "unpossible",
+      "dispossible",
+      "nonpossible",
+      "impossible"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "im- before p."
+    },
+    {
+     "q": "The noun of \"decide\" is ___.",
+     "choices": [
+      "decider",
+      "deciding",
+      "decisive",
+      "decision"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "decide → decision."
+    },
+    {
+     "q": "A person who teaches is a ___.",
+     "choices": [
+      "teaching",
+      "teachment",
+      "teacher",
+      "teachful"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "teach → teacher."
+    },
+    {
+     "q": "The adjective of \"care\" (without care) is ___.",
+     "choices": [
+      "careful",
+      "caring",
+      "carely",
+      "careless"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "-less = without."
+    },
+    {
+     "q": "The noun of \"visit\" (a person) is ___.",
+     "choices": [
+      "visiter",
+      "visitor",
+      "visition",
+      "visiting"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "visit → visitor."
+    },
+    {
+     "q": "She sings ___.",
+     "choices": [
+      "beautifully",
+      "beautiful",
+      "beauty",
+      "beautify"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Adverb of \"beautiful\"."
+    },
+    {
+     "q": "The verb of \"strong\" is ___.",
+     "choices": [
+      "strongen",
+      "strongify",
+      "strongly",
+      "strengthen"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "strong → strengthen."
+    },
+    {
+     "q": "I like both tea ___ coffee.",
+     "choices": [
+      "or",
+      "but",
+      "and",
+      "so"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "\"Both ... and\"."
     }
    ]
   }

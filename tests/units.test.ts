@@ -88,16 +88,16 @@ for (const [level, file] of [['M.1', 'm1'], ['M.2', 'm2'], ['M.3', 'm3']] as con
     sets: { name: string; questions: { q: string; choices: string[]; answer: number; tier: string; why: string }[] }[]
   }
   const all = u.sets.flatMap((s) => s.questions)
-  it('100 questions in 10 sets, each with 4 choices, a tier and a reason', () => {
+  it('10 sets of at least 30 questions, each with 4 choices, a tier and a reason', () => {
     expect(u.sets).toHaveLength(10)
-    expect(all).toHaveLength(100)
+    for (const s of u.sets) expect(s.questions.length, s.name).toBeGreaterThanOrEqual(30)
     for (const q of all) {
       expect(q.choices, q.q).toHaveLength(4)
       expect(new Set(q.choices).size, q.q).toBe(4)
       expect(['easy', 'regular', 'hard', 'impossible']).toContain(q.tier)
       expect(q.why.length, q.q).toBeGreaterThan(5)
     }
-    expect(new Set(all.map((q) => q.q + q.choices.join('|'))).size).toBe(100)
+    expect(new Set(all.map((q) => q.q + q.choices.join('|'))).size).toBe(all.length)
   })
   it('is offered to the quiz games for every class of its level (Quiz Island, Point 1-4, Battle of Wits, Quiz Dash)', () => {
     for (const g of ['quiz-island', 'fortress', 'quiz-battle', 'race-board']) expect(unitsFor(level, g, `${level}/2`).map((x) => x.id)).toContain(`${file}-english-grammar-punctuation`)

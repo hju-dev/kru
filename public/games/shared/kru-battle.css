@@ -124,10 +124,11 @@
 }
 .kbt-card.on .back { transform: rotateY(-180deg); }
 .kbt-card.on .front { transform: rotateY(0); }
-.kbt-card .front i { font-style: normal; font-size: 36px; line-height: 1; }
-.kbt-card .front b { font: 900 22px/1.1 var(--display); color: var(--gold); }
-.kbt-card .front span { font-size: 17px; font-weight: 700; line-height: 1.2; }
-.kbt-card .front em { font: 900 28px var(--mono); color: var(--teal); font-style: normal; }
+.kbt-card .front { font-size: 17px; overflow: hidden; justify-content: space-evenly; padding: 6px 12px; gap: 0; }
+.kbt-card .front i { font-style: normal; font-size: 1.9em; line-height: 1; flex: none; }
+.kbt-card .front b { font: 900 1.3em/1.1 var(--display); color: var(--gold); flex: none; }
+.kbt-card .front span { font-size: 1em; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
+.kbt-card .front em { font: 900 1.6em/1 var(--mono); color: var(--teal); font-style: normal; flex: none; }
 
 /* tally and results */
 .kbt-ttitle { font: 800 22px var(--display); text-align: center; }

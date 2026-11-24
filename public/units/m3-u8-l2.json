@@ -134,6 +134,270 @@
      "answer": 1,
      "double": false,
      "read_aloud": "I wish I hadn't forgotten her birthday."
+    },
+    {
+     "q": "I'm short. \"I wish I ___ taller.\"",
+     "choices": [
+      "am",
+      "was being",
+      "were",
+      "will be"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish I were taller."
+    },
+    {
+     "q": "I have a lot of homework. \"I wish I ___ so much homework.\"",
+     "choices": [
+      "don't have",
+      "hadn't",
+      "won't have",
+      "didn't have"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I wish I didn't have so much homework."
+    },
+    {
+     "q": "I ate too much cake. \"If only I ___ so much cake.\"",
+     "choices": [
+      "didn't eat",
+      "hadn't eaten",
+      "don't eat",
+      "won't eat"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "If only I hadn't eaten so much cake."
+    },
+    {
+     "q": "I can't swim. \"I wish I ___ swim.\"",
+     "choices": [
+      "could",
+      "can",
+      "will",
+      "would"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish I could swim."
+    },
+    {
+     "q": "It's raining. \"I wish it ___ raining.\"",
+     "choices": [
+      "stops",
+      "stopped",
+      "would stop",
+      "will stop"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish it would stop raining."
+    },
+    {
+     "q": "I failed the test. \"If only I ___ harder.\"",
+     "choices": [
+      "studied",
+      "study",
+      "will study",
+      "had studied"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "If only I had studied harder."
+    },
+    {
+     "q": "I don't live near the beach. \"I wish I ___ near the beach.\"",
+     "choices": [
+      "live",
+      "will live",
+      "had lived",
+      "lived"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I wish I lived near the beach."
+    },
+    {
+     "q": "He is not here. \"I wish he ___ here.\"",
+     "choices": [
+      "is",
+      "was being",
+      "were",
+      "will be"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish he were here."
+    },
+    {
+     "q": "We missed the bus. \"If only we ___ earlier.\"",
+     "choices": [
+      "had left",
+      "left",
+      "leave",
+      "will leave"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "If only we had left earlier."
+    },
+    {
+     "q": "I lost my phone. \"I wish I ___ it.\"",
+     "choices": [
+      "didn't lose",
+      "hadn't lost",
+      "don't lose",
+      "won't lose"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish I hadn't lost it."
+    },
+    {
+     "q": "I don't have a pet. \"I wish I ___ a dog.\"",
+     "choices": [
+      "have",
+      "will have",
+      "had",
+      "would have"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish I had a dog."
+    },
+    {
+     "q": "She said something mean. \"I wish she ___ that.\"",
+     "choices": [
+      "didn't say",
+      "doesn't say",
+      "won't say",
+      "hadn't said"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I wish she hadn't said that."
+    },
+    {
+     "q": "My neighbor is noisy. \"I wish he ___ quiet.\"",
+     "choices": [
+      "would be",
+      "is",
+      "will be",
+      "was being"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish he would be quiet."
+    },
+    {
+     "q": "I'm tired. \"I wish I ___ go to bed now.\"",
+     "choices": [
+      "can",
+      "could",
+      "will",
+      "must"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish I could go to bed now."
+    },
+    {
+     "q": "It's cold. \"If only it ___ warmer.\"",
+     "choices": [
+      "is",
+      "will be",
+      "were",
+      "had been"
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "If only it were warmer."
+    },
+    {
+     "q": "I never see my cousins. \"I wish I ___ them more.\"",
+     "choices": [
+      "saw",
+      "see",
+      "will see",
+      "had seen"
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "I wish I saw them more."
+    },
+    {
+     "q": "He didn't call me. \"I wish he ___ me.\"",
+     "choices": [
+      "called",
+      "calls",
+      "will call",
+      "had called"
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I wish he had called me."
+    },
+    {
+     "q": "We have a test tomorrow. \"If only we ___ a test tomorrow.\"",
+     "choices": [
+      "don't have",
+      "didn't have",
+      "hadn't",
+      "won't have"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "If only we didn't have a test tomorrow."
+    },
+    {
+     "q": "She can't come. \"I wish she ___ come.\"",
+     "choices": [
+      "can",
+      "could",
+      "will",
+      "must"
+     ],
+     "answer": 1,
+     "double": false,
+     "read_aloud": "I wish she could come."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I wish I have more time.",
+      "I wish I will have more time.",
+      "I wish I having more time.",
+      "I wish I had more time."
+     ],
+     "answer": 3,
+     "double": false,
+     "read_aloud": "I wish I had more time."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "If only I knew the answer.",
+      "If only I know the answer.",
+      "If only I will know the answer.",
+      "If only I knowing the answer."
+     ],
+     "answer": 0,
+     "double": false,
+     "read_aloud": "If only I knew the answer."
+    },
+    {
+     "q": "Which sentence is about a regret in the past?",
+     "choices": [
+      "I wish I listened.",
+      "I wish I listen.",
+      "I wish I had listened.",
+      "I wish I will listen."
+     ],
+     "answer": 2,
+     "double": false,
+     "read_aloud": "I wish I had listened."
     }
    ]
   }

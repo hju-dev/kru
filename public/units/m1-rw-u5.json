@@ -100,6 +100,259 @@
      "q": "Spell the word: \"feeling worried about something that might happen\".",
      "answer": "nervous",
      "double": false
+    },
+    {
+     "q": "Which word means \"feeling worried or a little afraid before something\"?",
+     "choices": [
+      "relaxed",
+      "happy",
+      "normal",
+      "nervous"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"ashamed or shy in front of other people\"?",
+     "choices": [
+      "interested",
+      "relaxed",
+      "normal",
+      "embarrassed"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"very unpleasant; makes you feel sick\"?",
+     "choices": [
+      "normal",
+      "interesting",
+      "disgusting",
+      "relaxed"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the feeling you have when you think something bad can happen\"?",
+     "choices": [
+      "sweat",
+      "fear",
+      "needle",
+      "clown"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person who helps sick people with teeth problems\"?",
+     "choices": [
+      "dentist",
+      "doctor",
+      "clown",
+      "teacher"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a sharp, thin tool that goes into your skin\"?",
+     "choices": [
+      "spider",
+      "needle",
+      "snake",
+      "heights"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a test at school\"?",
+     "choices": [
+      "dentist",
+      "panic",
+      "injection",
+      "exam"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"when you want to learn more about something\"?",
+     "choices": [
+      "disgusting",
+      "interested",
+      "embarrassed",
+      "scared"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which word means \"not strange; usual\"?",
+     "choices": [
+      "phobia",
+      "panic",
+      "normal",
+      "disgusting"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"water that comes out of your skin when you are hot or nervous\"?",
+     "choices": [
+      "needle",
+      "fear",
+      "sweat",
+      "panic"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"when there is no light\"?",
+     "choices": [
+      "heights",
+      "normal",
+      "dark",
+      "relaxed"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"the shot a doctor gives you with a needle\"?",
+     "choices": [
+      "injection",
+      "exam",
+      "phobia",
+      "clown"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"very high places\"?",
+     "choices": [
+      "heights",
+      "dark",
+      "needles",
+      "spiders"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a person with a funny face and big shoes at a circus\"?",
+     "choices": [
+      "dentist",
+      "doctor",
+      "spider",
+      "clown"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"an animal with eight legs\"?",
+     "choices": [
+      "snake",
+      "dog",
+      "clown",
+      "spider"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a long animal with no legs that can bite\"?",
+     "choices": [
+      "snake",
+      "spider",
+      "dog",
+      "needle"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"feeling fear\"?",
+     "choices": [
+      "relaxed",
+      "happy",
+      "scared",
+      "interested"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word means \"a feeling of joy\"?",
+     "choices": [
+      "happy",
+      "nervous",
+      "afraid",
+      "embarrassed"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word means \"to move away from something so it doesn't happen to you\"?",
+     "choices": [
+      "panic",
+      "sweat",
+      "fear",
+      "avoid"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which word means \"not able to stay calm because of sudden fear\"?",
+     "choices": [
+      "relaxed",
+      "normal",
+      "panic",
+      "happy"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "What is a phobia?",
+     "choices": [
+      "a kind of food",
+      "a school test",
+      "a very strong fear of something",
+      "a happy feeling"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which word is the opposite of \"nervous\"?",
+     "choices": [
+      "relaxed",
+      "scared",
+      "afraid",
+      "worried"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which word is the opposite of \"normal\"?",
+     "choices": [
+      "usual",
+      "strange",
+      "common",
+      "ordinary"
+     ],
+     "answer": 1,
+     "double": false
     }
    ]
   },
@@ -182,6 +435,259 @@
      ],
      "answer": 2,
      "double": false
+    },
+    {
+     "q": "He is scared ___ the dark.",
+     "choices": [
+      "at",
+      "in",
+      "of",
+      "on"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "I am afraid ___ snakes.",
+     "choices": [
+      "in",
+      "of",
+      "on",
+      "about"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She is worried ___ her exam.",
+     "choices": [
+      "about",
+      "of",
+      "in",
+      "at"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "They are interested ___ animals.",
+     "choices": [
+      "of",
+      "in",
+      "about",
+      "at"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "My brother is good ___ drawing.",
+     "choices": [
+      "in",
+      "of",
+      "at",
+      "on"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "He is nervous ___ the test.",
+     "choices": [
+      "about",
+      "of",
+      "at",
+      "with"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "She is scared ___ dogs.",
+     "choices": [
+      "at",
+      "of",
+      "from",
+      "in"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "I'm happy ___ my new bike.",
+     "choices": [
+      "of",
+      "at",
+      "in",
+      "with"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "We were embarrassed ___ the mistake.",
+     "choices": [
+      "of",
+      "about",
+      "in",
+      "on"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "He is afraid ___ going to the dentist.",
+     "choices": [
+      "to",
+      "of",
+      "at",
+      "in"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She is angry ___ her friend.",
+     "choices": [
+      "of",
+      "at",
+      "in",
+      "with"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "He is excited ___ the trip.",
+     "choices": [
+      "of",
+      "about",
+      "in",
+      "at"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "I'm sorry ___ being late.",
+     "choices": [
+      "of",
+      "for",
+      "at",
+      "in"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She is afraid ___ speaking in class.",
+     "choices": [
+      "of",
+      "at",
+      "in",
+      "on"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Are you scared ___ heights?",
+     "choices": [
+      "at",
+      "of",
+      "in",
+      "on"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "My sister hides ___ the bed when she is scared.",
+     "choices": [
+      "at",
+      "of",
+      "in front",
+      "under"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The spider is ___ the wall.",
+     "choices": [
+      "in",
+      "at",
+      "to",
+      "on"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The snake is ___ the box.",
+     "choices": [
+      "in",
+      "on",
+      "at",
+      "to"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The dog ran ___ me.",
+     "choices": [
+      "between",
+      "at",
+      "of",
+      "towards"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "We listen ___ music when we are nervous.",
+     "choices": [
+      "at",
+      "for",
+      "to",
+      "of"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "I'm afraid ___ the dentist.",
+     "choices": [
+      "at",
+      "in",
+      "from",
+      "of"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "He looks ___ the picture of the spider.",
+     "choices": [
+      "to",
+      "at",
+      "for",
+      "of"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Don't be afraid ___ me!",
+     "choices": [
+      "at",
+      "of",
+      "in",
+      "from"
+     ],
+     "answer": 1,
+     "double": false
     }
    ]
   },
@@ -250,6 +756,270 @@
       "avoid",
       "panic",
       "normal"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "I am ___ of spiders. I run away when I see one.",
+     "choices": [
+      "afraid",
+      "relaxed",
+      "happy",
+      "interested"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "He is ___ before the exam. His hands are cold.",
+     "choices": [
+      "relaxed",
+      "normal",
+      "happy",
+      "nervous"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Many people are ___ of needles at the doctor's office.",
+     "choices": [
+      "relaxed",
+      "happy",
+      "scared",
+      "normal"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "She felt ___ when she fell in front of the class.",
+     "choices": [
+      "relaxed",
+      "interested",
+      "normal",
+      "embarrassed"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "I'm ___ in snakes. I read lots of books about them.",
+     "choices": [
+      "afraid",
+      "interested",
+      "embarrassed",
+      "nervous"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A ___ is a very strong fear of something.",
+     "choices": [
+      "exam",
+      "needle",
+      "phobia",
+      "clown"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "When I'm scared, I ___ a lot.",
+     "choices": [
+      "avoid",
+      "panic",
+      "relax",
+      "sweat"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "He tries to ___ dogs because he is afraid of them.",
+     "choices": [
+      "sweat",
+      "relax",
+      "avoid",
+      "like"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "It's ___ to feel nervous before a test. Everyone does!",
+     "choices": [
+      "disgusting",
+      "strange",
+      "rare",
+      "normal"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The cockroach is ___. I don't want to touch it!",
+     "choices": [
+      "normal",
+      "relaxed",
+      "interesting",
+      "disgusting"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "I was so scared that I started to ___.",
+     "choices": [
+      "panic",
+      "relax",
+      "enjoy",
+      "avoid"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Sit down and ___. Everything is OK.",
+     "choices": [
+      "panic",
+      "sweat",
+      "relax",
+      "avoid"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "My sister is afraid of the ___. She sleeps with a light on.",
+     "choices": [
+      "exam",
+      "clown",
+      "dark",
+      "dentist"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "She never looks down from a window because she is afraid of ___.",
+     "choices": [
+      "heights",
+      "snakes",
+      "needles",
+      "clowns"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A ___ has a funny face and big shoes.",
+     "choices": [
+      "dentist",
+      "spider",
+      "clown",
+      "snake"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "I need an ___ at the doctor's. I don't like it.",
+     "choices": [
+      "exam",
+      "phobia",
+      "heights",
+      "injection"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "The ___ cleans your teeth.",
+     "choices": [
+      "clown",
+      "dentist",
+      "farmer",
+      "driver"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "He has an English ___ tomorrow, so he is studying.",
+     "choices": [
+      "phobia",
+      "needle",
+      "clown",
+      "exam"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "She is not scared. She is very ___.",
+     "choices": [
+      "relaxed",
+      "afraid",
+      "nervous",
+      "embarrassed"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "I feel ___ when I get a good grade.",
+     "choices": [
+      "scared",
+      "disgusting",
+      "happy",
+      "nervous"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "My ___ of heights started when I was a child.",
+     "choices": [
+      "fear",
+      "sweat",
+      "dentist",
+      "panic"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Spiders have eight ___.",
+     "choices": [
+      "legs",
+      "wings",
+      "heads",
+      "ears"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "He ___ the dark, so he sleeps with the light on.",
+     "choices": [
+      "enjoys",
+      "likes",
+      "fears",
+      "loves"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Don't ___! The dog is friendly.",
+     "choices": [
+      "relax",
+      "smile",
+      "panic",
+      "sing"
      ],
      "answer": 2,
      "double": false
@@ -340,6 +1110,248 @@
      "q": "Fix the mistake: \"Phobias will gets better with the right treatment.\"",
      "answer": "Phobias will get better with the right treatment.",
      "double": true
+    },
+    {
+     "q": "You ___ be careful with that knife. (strong advice)",
+     "choices": [
+      "might",
+      "must",
+      "can",
+      "may"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "She ___ be afraid of the dark. I'm not sure.",
+     "choices": [
+      "might",
+      "must",
+      "will",
+      "can't"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "I ___ swim, but I can't dive.",
+     "choices": [
+      "must",
+      "might",
+      "can",
+      "should"
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "You ___ talk to a friend if you feel scared.",
+     "choices": [
+      "should",
+      "can't",
+      "mustn't",
+      "might not"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Which modal shows permission? \"___ I go to the bathroom, please?\"",
+     "choices": [
+      "Must",
+      "May",
+      "Might",
+      "Will"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which modal shows a rule? \"You ___ wear a helmet.\"",
+     "choices": [
+      "must",
+      "might",
+      "may",
+      "can"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "It ___ rain tomorrow. Take an umbrella.",
+     "choices": [
+      "must",
+      "might",
+      "can",
+      "will to"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "He ___ come to the party. He's not sure.",
+     "choices": [
+      "must",
+      "should",
+      "will",
+      "might"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "You ___ run in the hall. It's dangerous.",
+     "choices": [
+      "might",
+      "can",
+      "may",
+      "mustn't"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "You ___ see a doctor. You look sick.",
+     "choices": [
+      "should",
+      "might",
+      "can't",
+      "will"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "I ___ play the guitar when I was five.",
+     "choices": [
+      "could",
+      "can",
+      "must",
+      "should"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "___ you help me, please?",
+     "choices": [
+      "Must",
+      "Might",
+      "Should",
+      "Can"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Spiders ___ be dangerous, but most are harmless.",
+     "choices": [
+      "must",
+      "should",
+      "will",
+      "can"
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which is the MOST sure?",
+     "choices": [
+      "It may happen.",
+      "It will happen.",
+      "It might happen.",
+      "It could happen."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which is the LEAST sure?",
+     "choices": [
+      "It will happen.",
+      "It might happen.",
+      "It must happen.",
+      "It can happen."
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "She cans swim.",
+      "She can swims.",
+      "She can swim.",
+      "She can to swim."
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "He should studies.",
+      "He should to study.",
+      "He shoulds study.",
+      "He should study."
+     ],
+     "answer": 3,
+     "double": false
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "You mustn't to be late.",
+      "You don't must be late.",
+      "You mustn't be late.",
+      "You mustn't being late."
+     ],
+     "answer": 2,
+     "double": false
+    },
+    {
+     "q": "She ___ speak three languages. She's very smart.",
+     "choices": [
+      "can",
+      "cans",
+      "must",
+      "musts"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "You ___ tell the teacher if you feel sick.",
+     "choices": [
+      "might not",
+      "should",
+      "can't",
+      "will to"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "I'm not sure, but I ___ go to the dentist on Friday.",
+     "choices": [
+      "must",
+      "might",
+      "should",
+      "can't"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "We ___ wear a uniform at school. It's a rule.",
+     "choices": [
+      "must",
+      "might",
+      "can",
+      "may"
+     ],
+     "answer": 0,
+     "double": false
     }
    ]
   },
@@ -393,6 +1405,240 @@
     },
     {
      "q": "After a modal verb, we add -s: \"She can swims.\"",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A dentist helps with teeth.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A clown has a serious face.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Spiders have six legs.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A needle is sharp.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "When you are relaxed, you are very scared.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A snake has four legs.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "It is normal to feel nervous before an exam.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Heights means very low places.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Sweat comes out of your skin when you are hot.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "If you avoid something, you go towards it.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Disgusting means \"very nice\".",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "A doctor can give you an injection.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Being embarrassed is a feeling.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Afraid of\" and \"scared of\" have almost the same meaning.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Relaxed is the opposite of nervous.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "\"Might\" is more certain than \"will\".",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Must\" can show a rule.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "You should not worry too much about small things.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A phobia is a small, easy worry.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Panic is a calm feeling.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "You use \"can\" to talk about ability.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "A person who is interested wants to learn more.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "The dark means a place with a lot of light.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "\"Mustn't\" means \"it is not allowed\".",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 0,
+     "double": false
+    },
+    {
+     "q": "Happy is a negative feeling.",
+     "choices": [
+      "True",
+      "False"
+     ],
+     "answer": 1,
+     "double": false
+    },
+    {
+     "q": "Dogs are always dangerous.",
      "choices": [
       "True",
       "False"

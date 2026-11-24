@@ -219,6 +219,16 @@
       S.qi++; S.phase = 'ask'; lastBeep = -1;
       startClock(S.secs); render(); tone([660, 880], 0.1);
     }
+    /** Shrink each bonus card's text until the icon, name, text and +points all fit inside the card. */
+    function fitCards() {
+      requestAnimationFrame(function () {
+        Array.prototype.forEach.call(document.querySelectorAll('.kbt-card .front'), function (f) {
+          var px = 17;
+          f.style.fontSize = px + 'px';
+          while (px > 8 && (f.scrollHeight > f.clientHeight + 1 || f.scrollWidth > f.clientWidth + 1)) { px -= 1; f.style.fontSize = px + 'px'; }
+        });
+      });
+    }
     /** Two hidden bonuses that fit this round's questions (not the same ones as last round). */
     function pickBonuses() {
       var qs = roundQs(), hasShort = qs.some(function (x) { return !Array.isArray(x.choices); }), hasChoice = qs.some(function (x) { return Array.isArray(x.choices); });
@@ -300,6 +310,7 @@
           return '<button class="kbt-card' + (on ? ' on' : '') + '" data-flip="' + i + '" aria-label="' + (on ? esc(b.name + ': ' + b.text) : 'Hidden bonus ' + (i + 1) + ': tap to reveal') + '">' +
             '<span class="back">?</span><span class="front"><i>' + esc(b.icon) + '</i><b>' + esc(b.name) + '</b><span>' + esc(b.text) + '</span><em>+' + b.points + '</em></span></button>';
         }).join('') + '</div>';
+        fitCards();
         ct.innerHTML = '<span class="kbt-tip">' + (all ? 'Add the bonuses to your right answers!' : 'Tap a card to reveal it') + '</span><span class="grow"></span>' +
           '<button class="btn gold big" data-do="tally"' + (all ? '' : ' disabled') + '>Count your points ▶</button>';
       } else if (ph === 'tally') {
