@@ -63,6 +63,8 @@
     again: [['ROLL AGAIN!', '{t} gets another roll!'], ['BONUS LAP!', '{t} rolls again!'], ['SECOND GEAR!', '{t} shifts up and rolls again!']],
     finish: [['FINISH LINE!', '{t} finishes {place}!'], ['CHECKERED FLAG!', '{t} finishes {place}!'], ['WHAT A RACE!', '{t} finishes {place}!']],
     shield: [['ROLL CAGE!', '{t} does not move back!'], ['AIRBAG!', '{t} stays on the track!']],
+    skip: [['PIT STOP!', '{t} misses this turn: {why}. Your pit crew will have you roaring again soon!'], ['RED FLAG!', '{t} sits this one out: {why}. Back on the track next turn!'], ['TOWED TO THE PITS!', '{t} loses a turn: {why}. Hang in there, the race is long!']],
+    bounce: [['EXACT FINISH!', '{t} overshot the finish and bounced back {n}. You must roll the exact number to cross the line!'], ['TOO FAST!', '{t} roared past the line and bounced back {n}. To win, roll the exact number!'], ['BRAKE, BRAKE!', '{t} overshot FINISH and rolls back {n}. Only an exact roll crosses the line!']],
     free: [['FREE LAP!', '{t} rolls for free!'], ['PIT CREW TO THE RESCUE!', '{t} rolls for free!']],
   };
   // wrong answers: INCORRECT plus an encouraging racing line
@@ -90,5 +92,5 @@
     trapSq: '🚧', slideSq: '🚀',
   };
 
-  window.KruRacing = { REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }), PREFIX: '🏁 ', OVERTAKE: { title: 'OVERTAKE!', verb: 'blasts past' }, count: ART.length, name: name, vehicle: vehicle, overtake: overtake, shade: shade, POOLS: POOLS, ENC: ENC, CHANCE: CHANCE, SECRET: SECRET };
+  window.KruRacing = { WHY: { skip: 'engine trouble and a pit stop', trap: 'a hidden road block' }, REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }), PREFIX: '🏁 ', OVERTAKE: { title: 'OVERTAKE!', verb: 'blasts past' }, count: ART.length, name: name, vehicle: vehicle, overtake: overtake, shade: shade, POOLS: POOLS, ENC: ENC, CHANCE: CHANCE, SECRET: SECRET };
 })();

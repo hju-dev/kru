@@ -21,7 +21,7 @@ describe('Quiz Grand Prix: racing theme', () => {
     expect(js).toContain('KruRacing.vehicle(rideIdx(t), color(t))')
   })
   it('the vehicle shows in the pop-ups (right, wrong, moves, finish) and "is up" at the start of every turn', () => {
-    expect(js).toContain("var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free'];")
+    expect(js).toContain("var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free', 'skip', 'bounce'];")
     expect(js).toContain("title: t.name + ' is up!'")
     expect(js).toContain('upFlash();')
   })

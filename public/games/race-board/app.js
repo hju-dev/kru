@@ -69,7 +69,7 @@
       shield: ['shield', 'SHIELD UP!', '{t} does not move back!', 'good'], go: ['rocket', 'TURBO BOOST!', '{t}: forward {n}!', 'good'],
       back: ['oil', 'OIL SLICK!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
       finish: ['trophy', 'FINISH LINE!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['ticket', 'FREE PLAY!', '{t} rolls for free!', 'magic'],
-      fifty: ['fifty', '50/50!'], time: ['stopwatch', '+20 SECONDS!'], riskOn: ['flame', 'RISK IT!'], skip: ['pit', 'PIT STOP!'],
+      fifty: ['fifty', '50/50!'], time: ['stopwatch', '+20 SECONDS!'], riskOn: ['flame', 'RISK IT!'], skip: ['pit', 'PIT STOP!', '{t} loses this turn: {why}', 'bad'], bounce: ['stopwatch', 'EXACT FINISH!', '{t} bounced back {n}: roll the exact number to finish!', 'magic'],
     },
     xmas: {
       right: ['gift', 'HO HO HO!', '{t} got it right!', 'good'], wrong: ['coal', 'INCORRECT', '{e}', 'bad'],
@@ -77,7 +77,7 @@
       shield: ['shield', 'SNOW SHIELD!', '{t} does not move back!', 'good'], go: ['sleigh', 'SLEIGH RIDE!', '{t}: forward {n}!', 'good'],
       back: ['snowflake', 'SLIPPED ON THE ICE!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
       finish: ['tree', 'HOME FOR CHRISTMAS!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['gift', 'FREE GIFT!', '{t} rolls for free!', 'magic'],
-      fifty: ['fifty', '50/50!'], time: ['stopwatch', 'EXTRA TIME!'], riskOn: ['flame', 'RISK IT!'], skip: ['snowflake', 'FROZEN!'],
+      fifty: ['fifty', '50/50!'], time: ['stopwatch', 'EXTRA TIME!'], riskOn: ['flame', 'RISK IT!'], skip: ['snowflake', 'FROZEN!', '{t} loses this turn: {why}', 'bad'], bounce: ['stopwatch', 'EXACT FINISH!', '{t} bounced back {n}: roll the exact number to arrive!', 'magic'],
     },
   };
   // Christmas Dash: correct answers rotate through different cheers (title + line), never the same one twice in a row
@@ -121,7 +121,7 @@
     if (e && window.KruFx) KruFx.flash({ art: RACING && key === 'skip' ? vehicleFor() || e[0] : e[0], title: e[1], sub: sub, mood: key === 'skip' ? 'bad' : 'good', wait: 2400 });
   }
   // the racing theme: each team drives its own vehicle (by its place in the team list); pop-ups show it
-  var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free'];
+  var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free', 'skip', 'bounce'];
   function vehicleFor(id) {
     var t = racer(id || (current() && current().id));
     return t && window.KruRacing ? KruRacing.vehicle(rideIdx(t), color(t)) : '';
@@ -202,6 +202,7 @@
       var on = racers.filter(function (t) { return pos(t.id) === n; });
       var cls = 'sq' + (n === 0 ? ' start' : n === FINISH ? ' finish' : '') + (sp ? ' ' + sp.t : '') + (used ? ' secret' : '') + (on.length > 3 ? ' crowd' : '');
       var here = on.map(function (t) {
+        if (RACING && on.length > 1) return '<i class="piece orb' + (current() && t.id === current().id ? ' now' : '') + '" style="--c:' + color(t) + '" title="' + esc(t.name) + '">' + Kru.teamNo(t) + '</i>'; // several teams on one square: a glowing orb each, so every team shows
         if (RACING) return '<i class="piece ride' + (current() && t.id === current().id ? ' now' : '') + '" title="' + esc(t.name) + '">' + KruRacing.vehicle(rideIdx(t), color(t)) + '</i>';
         return '<i class="piece' + (current() && t.id === current().id ? ' now' : '') + '" style="background:' + color(t) + '">' + (racers.indexOf(t) + 1) + '</i>';
       }).join('');
@@ -258,7 +259,7 @@
       S.turn = (S.turn + 1) % racers.length;
       var id = current().id;
       if (S.finished.indexOf(id) >= 0) continue;
-      if (S.skip[id]) { S.skip[id]--; toast('⏸ ' + current().name + ' skips this turn.'); fxFlash('skip', current().name + ' skips this turn'); continue; }
+      if (S.skip[id]) { S.skip[id]--; toast('⏸ ' + current().name + ' skips this turn.'); fx('skip', { t: current().name, id: id, why: (S.skipWhy && S.skipWhy[id]) || 'a skip card' }); continue; }
       break;
     }
     save();
@@ -280,16 +281,16 @@
   }
   /** Moves a piece one square at a time. Forward past FINISH bounces back (an exact roll is needed to finish). */
   function move(id, steps, then) {
-    var dir = steps < 0 ? -1 : 1, n = Math.abs(steps), bounced = false, base = points(id);
+    var dir = steps < 0 ? -1 : 1, n = Math.abs(steps), bounced = false, base = points(id), backBy = 0;
     (function step() {
       if (!n || (dir < 0 && pos(id) <= 0)) {
         settle(id, base);
         save(); renderTrack();
-        if (bounced) toast('↩ ' + racer(id).name + ' bounced back: an exact roll is needed to finish!');
+        if (bounced) { toast('↩ ' + racer(id).name + ' bounced back: an exact roll is needed to finish!'); fx('bounce', { t: racer(id).name, id: id, n: backBy + (backBy === 1 ? ' square' : ' squares') }, then); return; } // a pop-up explains the exact-finish rule
         then(); return;
       }
       if (dir > 0 && pos(id) >= FINISH) { dir = -1; bounced = true; }
-      S.pos[id] = pos(id) + dir; n--;
+      S.pos[id] = pos(id) + dir; n--; if (bounced) backBy++;
       tone([dir > 0 ? 520 + pos(id) * 6 : 300], 0, 0.08);
       renderTrack();
       setTimeout(step, 200);
@@ -309,7 +310,7 @@
     }
     // the secret squares: only the first team to land there
     if (p === sec.trap && !sec.trapUsed) {
-      sec.trapUsed = true; S.skip[id] = (S.skip[id] || 0) + 1; save();
+      sec.trapUsed = true; S.skip[id] = (S.skip[id] || 0) + 1; (S.skipWhy = S.skipWhy || {})[id] = RACING ? KruRacing.WHY.trap : 'a secret trap'; save();
       return card(RACING ? KruRacing.SECRET.trap[0] : '🪤 Secret trap!', RACING ? fill(KruRacing.SECRET.trap[1], { t: t.name }) : t.name + ' skips the next turn.', function () { busy = false; nextTurn(); }, 'bad');
     }
     if (p === sec.slide && !sec.slideUsed) {
@@ -355,7 +356,7 @@
       roll2: function () { roll(id, { n: 2 }); },
       again: function () { roll(id, { n: 1 }); },
       dbl: function () { S.dbl[id] = true; save(); done(); },
-      skip: function () { S.skip[id] = (S.skip[id] || 0) + 1; save(); done(); },
+      skip: function () { S.skip[id] = (S.skip[id] || 0) + 1; (S.skipWhy = S.skipWhy || {})[id] = RACING ? KruRacing.WHY.skip : 'a skip card'; save(); done(); },
       mathsci: function () { S.mathsci[id] = true; save(); done(); },
       shield: function () { S.shield[id] = true; save(); done(); },
       others: function () { racers.forEach(function (o) { if (o.id !== id && S.finished.indexOf(o.id) < 0 && pos(o.id) > 0) setPos(o.id, pos(o.id) - 1); }); save(); renderTrack(); done(); },
@@ -531,7 +532,8 @@
       var ms = fresh(MATHSCI);
       if (ms.length) return useQ(ms[Math.floor(Math.random() * ms.length)]);
     }
-    var avail = ORDER.filter(function (t) { return fresh(POOL[t]).length; });
+    var avail = ORDER.filter(function (t) { return fresh(POOL[t]).length && KruQuiz.tierOn(S.tiersOff, t); });
+    if (!avail.length) avail = ORDER.filter(function (t) { return fresh(POOL[t]).length; });
     var tier = avail[weighted(avail.map(function (t) { return TIERS[t].share; }))];
     var left = fresh(POOL[tier]);
     return useQ(left[Math.floor(Math.random() * left.length)]);
@@ -544,7 +546,8 @@
       S.msI++; if (S.msI % S.msOrder.length === 0) S.msOrder = shuffle(range(MATHSCI.length));
       return m;
     }
-    var avail = ORDER.filter(function (t) { return POOL[t] && POOL[t].length; });
+    var avail = ORDER.filter(function (t) { return POOL[t] && POOL[t].length && KruQuiz.tierOn(S.tiersOff, t); }); // the levels switched on in the settings
+    if (!avail.length) avail = ORDER.filter(function (t) { return POOL[t] && POOL[t].length; });
     var tier = avail[weighted(avail.map(function (t) { return TIERS[t].share; }))];
     var list = POOL[tier], order = S.order[tier];
     var q = list[order[S.qi[tier] % order.length]];
@@ -682,8 +685,12 @@
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('restart').classList.remove('armed'); $('restart').textContent = 'New Game'; }
+  function renderTiers() {
+    var counts = {}; ORDER.forEach(function (t) { counts[t] = MEMORY ? BANK.filter(function (q) { return q.tier === t; }).length : (POOL[t] || []).length; });
+    KruQuiz.tierRow($('tierRow'), S.tiersOff, counts, function (off) { S.tiersOff = off; save(); });
+  }
   function renderSecs() { KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }); } // the alarm-clock timer (shared/kru-menu.js)
-  $('more').addEventListener('click', function () { renderSecs(); renderWho(); disarm(); $('undoMove').disabled = !S.last || busy; $('skip').disabled = busy; $('menuBack').hidden = false; });
+  $('more').addEventListener('click', function () { renderTiers(); renderSecs(); renderWho(); disarm(); $('undoMove').disabled = !S.last || busy; $('skip').disabled = busy; $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   function renderWho() { $('whoOn').textContent = '🎯 Who answers: ' + (S.who ? 'on' : 'off'); $('whoOn').setAttribute('aria-pressed', String(!!S.who)); }
@@ -774,6 +781,8 @@
       S.secs = KruMenu.snap(S.secs); // whole 10-second steps
       S.powers = S.powers || {};
       S.rides = S.rides || {};
+      S.skipWhy = S.skipWhy || {};
+      S.tiersOff = S.tiersOff || {};
       S.mpicked = S.mpicked || {};
       S.xdeck = S.xdeck || {};
       if (XMAS) ['challenge', 'forfeit'].forEach(function (k) {

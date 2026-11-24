@@ -110,3 +110,10 @@
 @media (prefers-reduced-motion: reduce) {
   .kq-pic { animation: none; }
 }
+
+/* the "Question levels" switches in a game's settings menu */
+.kq-tiers { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.kq-tiers-lab { font-weight: 700; font-size: 16px; margin-right: 4px; }
+.kq-tier { min-height: 44px; padding: 0 12px; flex: 1 1 auto; border-width: 2px; opacity: 0.55; }
+.kq-tier[aria-pressed='true'] { opacity: 1; background: var(--fg, #f6f3ec); color: var(--bg, #17151f); }
+.kq-tier:disabled { opacity: 0.25; }
