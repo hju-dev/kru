@@ -1,23 +1,23 @@
 /* Point 1-4 (folder and id: fortress; Henry, Nov 23-24; modern military / future warfare theme): four teams defend a base
    and attack each other. Made with LM2, a student who helped create the game.
-   - Every base: HQ 2,400 HP, Depot 1,600, two Towers 1,800 each; an intact Depot heals every building 40 HP per round.
+   - Every base: HQ 1,200 HP, Depot 800, two Towers 900 each; an intact Depot heals every building 20 HP per round.
    - A turn = a question. Right: the team picks 💣 a weapon (random, better ones are likelier on harder questions), 🩹 a
      repair or 🪙 gold. Power-ups (once each): Question Change (swap the question for a Hard or Impossible one: more
      gold), Free Answer, Risk It (a better weapon or 3x gold; wrong = every building except the HQ loses half its
      starting HP) and Alliance. Free Answer and Question Change cannot be combined; Risk It still can.
    - After every team had its turn: the Haishi Trade Company store (weapons and repair kits, kits are kept in the
      inventory and can bring back even a destroyed building), then FIRE, then the next round.
-   - Towers shoot weapons down: [LQ] 100%, [Q] 16%, [HQ] 8%, the Sarmat 1% with both towers; one tower left = half.
+   - Towers shoot weapons down: [LQ] 35%, [Q] 20%, [HQ] 10%, the Sarmat 1% with both towers; one tower left = half.
    - Depot destroyed: question gold is halved, no healing, [Q] and [HQ] cost 1.6x.
    - HQ destroyed: use a repair kit (kept, or bought on the spot), or sacrifice another building; nothing left = out.
      An eliminated team joins one of the remaining teams (it shares that team's final points).
-   - Games last 8 rounds by default (7-10): then the strongest base (most HP) wins. Otherwise the last base standing.
+   - Games last 4 rounds by default (2-10): then the strongest base (most HP) wins. Otherwise the last base standing.
    - Points: 5 / 3 / 2 / 1 by place. (A winner who beat an alliance gets bonus points in the grading, noted at the end.) */
 (function () {
   'use strict';
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#9B7BFF'];
   var KEYS = ['hq', 'depot', 't1', 't2'];
-  var MAXHP = { hq: 2400, depot: 1600, t1: 1800, t2: 1800 };
+  var MAXHP = { hq: 1200, depot: 800, t1: 900, t2: 900 };
   var BNAME = { hq: 'HQ', depot: 'Depot', t1: 'Tower', t2: 'Tower' };
   // the store (Haishi Trade Company): mode = one target | scatter (all but the chosen one) | dual (two targets) | all (every building of one team) | jam (skip a turn)
   var ITEMS = {
@@ -32,7 +32,7 @@
     sarmat: { name: 'RS-28 Sarmat', cls: 'HQ', dmg: 9000, price: 1875, mode: 'all', chance: 0.01, info: '9000 DMG · all targets · 1% shot down' },
   };
   var IORDER = ['crude', 'bomb', 'scatter', 'missile', 'dual', 'jammer', 'tos', 'avangard', 'sarmat'];
-  var SHOOT = { LQ: 1, Q: 0.16, HQ: 0.08 }; // halved for [Q] and [HQ] (Henry, Nov 24)
+  var SHOOT = { LQ: 0.35, Q: 0.2, HQ: 0.1 }; // Nov 25: [LQ] was 100%, so most rewards did nothing
   // the chance of each item (same order as IORDER) from a right answer, by question tier
   var ODDS = {
     easy: [60, 30, 10, 0, 0, 0, 0, 0, 0],
@@ -41,10 +41,10 @@
     impossible: [0, 0, 0, 10, 15, 10, 25, 25, 15],
   };
   var GOLD = { easy: 225, regular: 375, hard: 750, impossible: 1350 }; // x1.5 (Henry); prices were lowered instead
-  var HEAL = { easy: 200, regular: 350, hard: 500, impossible: 800 };
-  var KIT = 80, KIT_RISE = 10, KIT_HP = 500;
-  var ROUND_HEAL = 40, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1, NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6, CURSE_CHANCE = 0.4;
-  var DEFAULT_ROUNDS = 8; // 7-10 rounds, about 30 minutes
+  var HEAL = { easy: 150, regular: 250, hard: 350, impossible: 500 };
+  var KIT = 80, KIT_RISE = 10, KIT_HP = 400;
+  var ROUND_HEAL = 20, RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1, NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6, CURSE_CHANCE = 0.4;
+  var DEFAULT_ROUNDS = 4; // a round takes about 6-8 minutes with four teams: 4 rounds is about 30 minutes
   var PLACE_PTS = [5, 3, 2, 1];
   var ORDER = ['easy', 'regular', 'hard', 'impossible'];
   var TIERS = {
@@ -959,15 +959,15 @@
   function closeMenu() { $('menuBack').hidden = true; }
   function renderSecs() {
     KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); });
-    // rounds in the game: 7-10 fits about 30 minutes (the strongest base wins at the end)
+    // rounds in the game: 4 fit about 30 minutes (the strongest base wins at the end)
     var n = S.maxRounds || DEFAULT_ROUNDS;
     $('roundsRow').classList.add('ktimer');
-    $('roundsRow').innerHTML = '<button type="button" class="btn" data-r="-1"' + (n <= 3 ? ' disabled' : '') + ' aria-label="One round less">−</button><output>' + n + ' rounds</output><button type="button" class="btn" data-r="1"' + (n >= 15 ? ' disabled' : '') + ' aria-label="One round more">+</button>';
+    $('roundsRow').innerHTML = '<button type="button" class="btn" data-r="-1"' + (n <= 2 ? ' disabled' : '') + ' aria-label="One round less">−</button><output>' + n + ' rounds</output><button type="button" class="btn" data-r="1"' + (n >= 15 ? ' disabled' : '') + ' aria-label="One round more">+</button>';
   }
   $('roundsRow').addEventListener('click', function (e) {
     var b = e.target.closest('[data-r]');
     if (!b || b.disabled) return;
-    S.maxRounds = Math.max(3, Math.min(15, (S.maxRounds || DEFAULT_ROUNDS) + Number(b.dataset.r))); save(); renderSecs(); render();
+    S.maxRounds = Math.max(2, Math.min(15, (S.maxRounds || DEFAULT_ROUNDS) + Number(b.dataset.r))); save(); renderSecs(); render();
   });
   $('more').addEventListener('click', function () {
     renderSecs(); disarm();

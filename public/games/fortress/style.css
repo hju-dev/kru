@@ -226,7 +226,7 @@ body {
   --c: #f4c542;
   width: min(700px, 100%); max-height: 100%; overflow: hidden;
   display: flex; flex-direction: column; gap: 5px;
-  padding: 6px 8px 8px; border-radius: 16px;
+  padding: 5px 8px 12px; border-radius: 16px;
   background: color-mix(in srgb, var(--c) 26%, #1b1410);
   border: 4px solid var(--c);
 }
@@ -239,23 +239,25 @@ body {
 .shop-buyer .kteam { box-shadow: 0 0 0 2px #111; }
 .shop-gold { margin-left: auto; font: 800 20px var(--mono); display: inline-flex; align-items: center; gap: 4px; padding: 0 8px; border-radius: 8px; background: #111; color: var(--gold); }
 .shop-gold .coin { width: 20px; height: 20px; }
-.shop-inv { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 10px; background: rgb(0 0 0 / 0.35); font-size: 13px; min-height: 30px; max-height: 38px; overflow: hidden; }
+.shop-inv { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 10px; background: rgb(0 0 0 / 0.35); font-size: 12px; min-height: 26px; max-height: 30px; overflow: hidden; }
 .chip-c.kit { background: #1f5f3f; }
 .use-kit { min-height: 28px !important; padding: 0 10px; font-size: 13px; margin-left: auto; }
 .shop-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
 .sitem {
-  display: grid; grid-template-rows: 32px auto auto auto; justify-items: center; align-content: center; gap: 0;
-  min-height: 78px; padding: 2px 2px; border-radius: 10px; text-align: center;
+  display: grid; grid-template-rows: 26px auto auto auto; justify-items: center; align-content: center; gap: 0;
+  min-height: 66px; padding: 1px 2px; border-radius: 10px; text-align: center;
   background: rgb(0 0 0 / 0.35); border: 2px solid color-mix(in srgb, var(--c) 60%, #000); color: var(--fg);
 }
 .sitem:disabled { opacity: 0.4; }
 .sitem:not(:disabled):active { background: color-mix(in srgb, var(--c) 40%, #000); }
-.si-ico svg { width: 32px; height: 32px; display: block; }
-.sitem b { font-size: 14px; line-height: 1.1; }
+.si-ico svg { width: 26px; height: 26px; display: block; }
+.sitem b { font-size: 13px; line-height: 1.05; }
 .si-price { font: 800 15px var(--mono); color: var(--gold); display: inline-flex; align-items: center; gap: 3px; }
 .si-price .coin { width: 15px; height: 15px; }
-.sitem small { font-size: 12px; line-height: 1.1; color: var(--muted); }
-.shop-foot { display: flex; align-items: center; gap: 8px; min-height: 44px; }
+.sitem small { font-size: 11px; line-height: 1.05; color: var(--muted); }
+.shop-foot { display: flex; align-items: center; gap: 8px; min-height: 48px; }
+/* the Done button: big, and lifted off the bottom edge so the iPhone home bar does not swallow taps */
+#shopDone { flex: 0 0 auto; min-width: 150px; min-height: 48px; font-size: 18px; margin-bottom: 2px; }
 .shop-cart { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; padding: 3px 8px; border-radius: 10px; background: rgb(0 0 0 / 0.35); font-size: 13px; max-height: 44px; overflow: hidden; }
 .cart-lab { font-weight: 800; }
 .cart-empty { color: var(--muted); }

@@ -11,9 +11,9 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
     expect(read('public/games/fortress/index.html')).toContain('<title>Point 1-4</title>')
     expect(js).toContain("{ title: 'Point 1-4' }")
   })
-  it('lower HP for a faster game: HQ 2,400, Depot 1,600, Towers 1,800; 40 HP healing per round', () => {
-    expect(js).toContain('var MAXHP = { hq: 2400, depot: 1600, t1: 1800, t2: 1800 };')
-    expect(js).toContain('var ROUND_HEAL = 40,')
+  it('lower HP for a faster game: HQ 1,200, Depot 800, Towers 900; 20 HP healing per round', () => {
+    expect(js).toContain('var MAXHP = { hq: 1200, depot: 800, t1: 900, t2: 900 };')
+    expect(js).toContain('var ROUND_HEAL = 20,')
   })
   it('lower prices: 2 regular questions buy [Q] items, 5 regular buy [HQ] items; question gold unchanged', () => {
     const price = (k: string) => Number(js.match(new RegExp(`${k}: \\{[^}]*price: (\\d+)`))![1])
@@ -25,8 +25,8 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
   it('the High Speed Missile does 25% more damage (625)', () => {
     expect(js).toMatch(/missile: \{[^}]*dmg: 625,/)
   })
-  it('towers: [Q] 16%, [HQ] 8% (halved), Sarmat 1%, LQ 100%; one tower = half; 5% resistance (max 17%)', () => {
-    expect(js).toContain('var SHOOT = { LQ: 1, Q: 0.16, HQ: 0.08 };')
+  it('towers: [LQ] 35%, [Q] 20%, [HQ] 10%, Sarmat 1%; one tower = half; 5% resistance (max 17%)', () => {
+    expect(js).toContain('var SHOOT = { LQ: 0.35, Q: 0.2, HQ: 0.1 };')
     expect(js).toContain('chance: 0.01')
     expect(js).toContain('* Math.min(1, towers(id) / 2)')
     expect(js).toContain('RES = 0.05, RES_CAP = 0.17, ALLY_HQ = 0.1')
@@ -55,8 +55,8 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
     expect(js).toContain('function allianceBeaten(winner)')
     expect(js).toContain('bonus points in the grading!')
   })
-  it('the game ends after 8 rounds by default (7-10): the strongest base wins', () => {
-    expect(js).toContain('var DEFAULT_ROUNDS = 8;')
+  it('the game ends after 4 rounds by default: the strongest base wins', () => {
+    expect(js).toContain('var DEFAULT_ROUNDS = 4;')
     expect(js).toContain('function timesUp()')
     expect(read('public/games/fortress/index.html')).toContain('id="roundsRow"')
   })
