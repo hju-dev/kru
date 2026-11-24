@@ -1,0 +1,52 @@
+/* KruReveal: the "meet your ride" cut scene (a door rolls up, the ride drives out). Phone landscape 812 x 375. */
+.krv {
+  position: fixed; inset: 0; z-index: 95; display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: max(env(safe-area-inset-top), 6px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 6px) max(env(safe-area-inset-left), 12px);
+  background: var(--wall, #1d2230); color: #f6f3ec; overflow: hidden;
+  --wall: #1d2230; --door-a: #cdd5e0; --door-b: #9aa5b6; --frame: #5b6578; --sign-bg: #f2b705; --sign-fg: #231b00;
+}
+.krv.skin-workshop { --wall: #0e2a1f; --door-a: #d9453f; --door-b: #a82a2a; --frame: #2f8f56; --sign-bg: #fff; --sign-fg: #b3262b; }
+.krv.skin-cabin { --wall: #0b2438; --door-a: #9b6a3a; --door-b: #6e4724; --frame: #4a3018; --sign-bg: #e0b13c; --sign-fg: #2a1a05; }
+.krv-skip { position: absolute; top: max(env(safe-area-inset-top), 8px); right: max(env(safe-area-inset-right), 12px); min-height: 40px; padding: 0 14px; border-radius: 12px; border: 2px solid rgb(255 255 255 / 0.35); background: rgb(0 0 0 / 0.35); color: #f6f3ec; font: 700 16px var(--body, sans-serif); z-index: 3; }
+.krv-head { display: flex; align-items: baseline; gap: 12px; width: min(720px, 100%); min-height: 30px; }
+.krv-title { font: 800 22px var(--display, sans-serif); color: #ffe066; }
+.krv-count { font: 700 16px var(--mono, monospace); color: rgb(255 255 255 / 0.65); }
+.krv-stage { flex: 1; min-height: 0; width: min(560px, 100%); display: grid; place-items: center; }
+.krv-frame {
+  position: relative; width: 100%; height: 100%; max-height: 220px; border: 8px solid var(--frame); border-radius: 12px 12px 0 0; overflow: hidden; background: #0b0d12;
+  box-shadow: 0 0 0 4px rgb(0 0 0 / 0.35);
+}
+.krv-sign { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 4; padding: 1px 14px; border-radius: 0 0 8px 8px; background: var(--sign-bg); color: var(--sign-fg); font: 800 15px var(--display, sans-serif); letter-spacing: 0.08em; }
+.krv-inside { position: absolute; inset: 0; display: grid; place-items: center; background: linear-gradient(#10131b, #1c212d 70%, #2a2f3c 70%); }
+.krv-spot { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 70%, color-mix(in srgb, var(--ride, #ffb703) 38%, transparent), transparent 65%); opacity: 0; transition: opacity 0.6s 0.8s; }
+.krv.open .krv-spot { opacity: 1; }
+.krv-item { position: relative; width: min(300px, 60%); opacity: 0; transform: translateX(-35%) scale(0.8); }
+.krv-item svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 8px 0 rgb(0 0 0 / 0.4)); }
+.krv.open .krv-item { animation: krv-drive 1.3s 0.7s cubic-bezier(0.2, 0.85, 0.3, 1) both; }
+.krv.shown .krv-item { animation: krv-bob 1.2s ease-in-out infinite alternate; opacity: 1; transform: none; }
+.krv-door {
+  position: absolute; inset: 0; z-index: 3; transform-origin: top; transition: transform 1.4s cubic-bezier(0.55, 0.05, 0.3, 1);
+  background: repeating-linear-gradient(180deg, var(--door-a) 0 24px, var(--door-b) 24px 28px); border-bottom: 6px solid rgb(0 0 0 / 0.4);
+}
+.krv-door i { position: absolute; left: 50%; bottom: 10px; width: 46px; height: 10px; margin-left: -23px; border-radius: 5px; background: rgb(0 0 0 / 0.45); }
+.krv.open .krv-door { transform: translateY(-104%); }
+.krv.shake .krv-door { animation: krv-shake 0.55s linear; }
+.krv-who { min-height: 34px; display: flex; align-items: center; gap: 14px; font: 800 22px var(--display, sans-serif); }
+.krv-team { display: inline-flex; align-items: center; gap: 6px; }
+.krv-name { color: #f6f3ec; }
+.krv-btns { min-height: 56px; display: flex; }
+.krv-go { min-width: 240px; min-height: 52px; padding: 0 22px; border-radius: 14px; border: 3px solid #ffb703; background: #ffb703; color: #231b00; font: 800 21px var(--display, sans-serif); }
+.krv-go:disabled { opacity: 0.45; }
+.krv-confetti { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+.krv-confetti i { position: absolute; top: -10px; width: 9px; height: 13px; border-radius: 2px; animation: krv-fall linear both; }
+@keyframes krv-shake { 10%, 50%, 90% { transform: translateX(-4px); } 30%, 70% { transform: translateX(4px); } }
+@keyframes krv-drive { 0% { opacity: 0; transform: translateX(-35%) scale(0.8); } 30% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+@keyframes krv-bob { to { transform: translateY(-5px) rotate(1deg); } }
+@keyframes krv-fall { from { transform: translate(0, 0) rotate(0); } to { transform: translate(var(--x), 110vh) rotate(540deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .krv-door, .krv-spot { transition: none; }
+  .krv.open .krv-item, .krv.shown .krv-item { animation: none; opacity: 1; transform: none; }
+}
+/* square mascots (the pirate crew) are limited by height, wide vehicles by width */
+.krv.skin-cabin .krv-item { width: auto; }
+.krv.skin-cabin .krv-item svg { height: 176px; width: auto; margin: 0 auto; }

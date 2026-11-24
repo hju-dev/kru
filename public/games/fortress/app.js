@@ -183,7 +183,6 @@
     $('fxArt').innerHTML = o.art || '';
     $('fxTitle').textContent = o.title;
     $('fxSub').textContent = o.sub || '';
-    $('fxJob').innerHTML = ART.job(); // LM2, the student who helped create the game, is in every pop-up
     $('fxBits').innerHTML = o.mood === 'good' || o.mood === 'magic' ? range(14).map(function (i) {
       var a = (i / 14) * 360, d2 = 140 + (i % 3) * 40;
       return '<i style="--a:' + a + 'deg;--d:' + d2 + 'px;--t:' + (i % 4) * 0.05 + 's">✦</i>';
@@ -281,7 +280,7 @@
     S.round++;
     startTurns();
     var more = healed.length ? healed.join(', ') + ' healed a little.' : 'A new round begins.';
-    banner({ art: ART.shield(), title: 'ROUND ' + S.round + ' OF ' + (S.maxRounds || DEFAULT_ROUNDS) + '!', sub: more, mood: 'good', wait: 1500 });
+    banner({ art: ART.sc('shield', ART.shield()), title: 'ROUND ' + S.round + ' OF ' + (S.maxRounds || DEFAULT_ROUNDS) + '!', sub: more, mood: 'good', wait: 1500 });
     save(); render();
   }
 
@@ -306,7 +305,7 @@
     if (it.mode === 'jam') {
       var jt = picks[0].t;
       S.skip[jt] = true; S.jamUsed = S.jamUsed || {}; S.jamUsed[from] = S.round; save();
-      banner({ art: ART.risk(), title: 'SIGNAL JAMMED!', sub: tname(jt) + ' will skip its next turn.', mood: 'magic', wait: 1500 });
+      banner({ art: ART.sc('risk', ART.risk()), title: 'SIGNAL JAMMED!', sub: tname(jt) + ' will skip its next turn.', mood: 'magic', wait: 1500 });
       afterBanners(continueFire);
       return;
     }
@@ -318,7 +317,7 @@
     var landedTeams = hitTeams.filter(function (t) { return shot.indexOf(t) < 0; });
     landedTeams.forEach(function (t) { S.hitBy[t] = from; }); // the team that destroyed you can be joined later
     if (!landed.length) {
-      banner({ art: ART.shield(), title: 'SHOT DOWN!', sub: "A tower shot down " + tname(from) + "'s " + it.name + '!', mood: 'good', sound: 'magic', wait: 1500 });
+      banner({ art: ART.sc('shield', ART.shield()), title: 'SHOT DOWN!', sub: "A tower shot down " + tname(from) + "'s " + it.name + '!', mood: 'good', sound: 'magic', wait: 1500 });
       afterBanners(continueFire); save(); return;
     }
     var destroyed = 0, total = 0;
@@ -332,7 +331,7 @@
     var where = landedTeams.map(tname).join(' & ');
     var sub = tname(from) + ' hits ' + where + (landed.length > 1 ? ' (' + landed.length + ' buildings)' : "'s " + BNAME[landed[0].b]) + ' for ' + money(total) + (destroyed ? ': ' + destroyed + ' DESTROYED!' : '.') +
       (shot.length ? ' Shot down at ' + shot.map(tname).join(' & ') + '.' : '') + (it.curse ? ' Their next bomb is cursed!' : '');
-    banner({ art: ART.weapon(bomb.k), title: it.name.toUpperCase() + '!', sub: sub, mood: 'boom', wait: 1800 });
+    banner({ art: ART.sc('weapon', ART.weapon(bomb.k)), title: it.name.toUpperCase() + '!', sub: sub, mood: 'boom', wait: 1800 });
     save();
     afterBanners(function () { processFalls(landedTeams, continueFire); });
   }
@@ -353,29 +352,29 @@
     var d = T(id), rest = KEYS.filter(function (b) { return b !== 'hq' && d.hp[b] > 0; });
     var kp = kitPrice(), haveKit = d.kits > 0, canBuy = !haveKit && d.gold >= kp;
     if (!rest.length && !haveKit && !canBuy) { eliminate(id, next); return; }
-    banner({ art: ART.ruins(), title: 'HQ DESTROYED!', sub: tname(id) + ' is on the brink! It can still fight on.', mood: 'bad', wait: 1500 });
+    banner({ art: ART.sc('ruins', ART.ruins()), title: 'HQ DESTROYED!', sub: tname(id) + ' is on the brink! It can still fight on.', mood: 'bad', wait: 1500 });
     afterBanners(function () {
       var opts = [];
       if (haveKit || canBuy) opts.push({ html: '<b>🧰 ' + (haveKit ? 'Use a repair kit' : 'Buy and use a repair kit (' + money(kp) + ' gold)') + '</b><small>the HQ comes back with ' + money(KIT_HP) + ' HP' + (haveKit ? ' · you have ' + d.kits : '') + '</small>', fn: function () {
         if (haveKit) d.kits--; else d.gold -= kp;
         d.hp.hq = KIT_HP; closeChoice(); save();
-        banner({ art: ART.repair(), title: 'EMERGENCY REPAIRS!', sub: tname(id) + "'s HQ is back in action!", mood: 'magic', wait: 1500 });
+        banner({ art: ART.sc('repair', ART.repair()), title: 'EMERGENCY REPAIRS!', sub: tname(id) + "'s HQ is back in action!", mood: 'magic', wait: 1500 });
         afterBanners(next);
       } });
       rest.forEach(function (b) { opts.push({ html: '<b>Sacrifice the ' + BNAME[b] + '</b><small>the HQ takes its ' + money(d.hp[b]) + ' HP</small>', fn: function () {
         d.hp.hq = d.hp[b]; d.hp[b] = 0; closeChoice(); save();
-        banner({ art: ART.hq(color(id)), title: 'HQ RESTORED!', sub: tname(id) + ' sacrificed its ' + BNAME[b] + '.', mood: 'magic', wait: 1500 });
+        banner({ art: ART.sc('hq', ART.hq(color(id))), title: 'HQ RESTORED!', sub: tname(id) + ' sacrificed its ' + BNAME[b] + '.', mood: 'magic', wait: 1500 });
         afterBanners(next);
       } }); });
       opts.push({ html: '<b>Surrender</b><small>' + esc(tname(id)) + ' is out and joins another team</small>', fn: function () { closeChoice(); eliminate(id, next); } });
-      choose({ art: ART.hq(color(id)), title: tname(id) + ': the HQ fell. What now?', options: opts });
+      choose({ art: ART.sc('hq', ART.hq(color(id))), title: tname(id) + ': the HQ fell. What now?', options: opts });
     });
   }
   function eliminate(id, next) {
     T(id).alive = false; T(id).hp.hq = 0;
     if (S.t[id].ally && S.t[S.t[id].ally]) S.t[S.t[id].ally].ally = null;
     S.elim.push(id);
-    banner({ art: ART.ruins(), title: 'BASE FALLEN!', sub: tname(id) + ' is out of the fight.', mood: 'bad', sound: 'bad' });
+    banner({ art: ART.sc('ruins', ART.ruins()), title: 'BASE FALLEN!', sub: tname(id) + ' is out of the fight.', mood: 'bad', sound: 'bad' });
     dissolveAlliances();
     afterBanners(function () {
       var l = living();
@@ -387,10 +386,10 @@
   /** An eliminated team chooses which remaining team to join (even the one that destroyed it); it shares that team's points. */
   function joinChoice(id, done) {
     var hit = S.hitBy[id];
-    choose({ art: ART.alliance(), title: tname(id) + ' is out. Join which team?',
+    choose({ art: ART.sc('alliance', ART.alliance()), title: tname(id) + ' is out. Join which team?',
       options: living().map(function (o) { return { html: '<b>' + esc(tname(o)) + '</b><small>' + (o === hit ? 'the team that destroyed you · ' : '') + money(totalHp(o)) + ' HP left</small>', fn: function () {
         S.joined[id] = o; closeChoice(); save();
-        banner({ art: ART.alliance(), title: 'NEW RECRUITS!', sub: tname(id) + ' joins ' + tname(o) + ' and shares its points.', mood: 'magic', wait: 1600 });
+        banner({ art: ART.sc('alliance', ART.alliance()), title: 'NEW RECRUITS!', sub: tname(id) + ' joins ' + tname(o) + ' and shares its points.', mood: 'magic', wait: 1600 });
         afterBanners(done);
       } }; }) });
   }
@@ -399,7 +398,7 @@
     var l = living();
     if (l.length !== 2 || allyOf(l[0]) !== l[1]) return;
     T(l[0]).ally = null; T(l[1]).ally = null;
-    banner({ art: ART.alliance(), title: 'ALLIANCE BROKEN!', sub: 'Only two bases are left: ' + tname(l[0]) + ' and ' + tname(l[1]) + ' fight alone!', mood: 'bad', wait: 1800 });
+    banner({ art: ART.sc('alliance', ART.alliance()), title: 'ALLIANCE BROKEN!', sub: 'Only two bases are left: ' + tname(l[0]) + ' and ' + tname(l[1]) + ' fight alone!', mood: 'bad', wait: 1800 });
   }
   /** The size of the biggest alliance the winner beat (they were allied and both lost), or 0. For the grading bonus (Henry). */
   function allianceBeaten(winner) {
@@ -417,14 +416,14 @@
     S.bonusNote = n ? tname(winner) + ' beat an alliance of ' + n + ' teams: bonus points in the grading!' : '';
     S.over = true; S.phase = 'over'; S.cur = 0; S.queue = [];
     save();
-    banner({ art: ART.trophy(), title: title, sub: sub + (S.bonusNote ? ' ' + S.bonusNote : ''), mood: 'good', sound: 'fanfare', wait: S.bonusNote ? 3600 : 2600 });
+    banner({ art: ART.sc('trophy', ART.trophy()), title: title, sub: sub + (S.bonusNote ? ' ' + S.bonusNote : ''), mood: 'good', sound: 'fanfare', wait: S.bonusNote ? 3600 : 2600 });
     afterBanners(render);
   }
   /** Over when one base is left. */
   function checkEnd() {
     var l = living();
     if (l.length > 1) return false;
-    if (!l.length) { S.over = true; S.phase = 'over'; S.cur = 0; S.queue = []; save(); banner({ art: ART.trophy(), title: 'GAME OVER', sub: 'No base is left.', mood: 'bad' }); afterBanners(render); return true; }
+    if (!l.length) { S.over = true; S.phase = 'over'; S.cur = 0; S.queue = []; save(); banner({ art: ART.sc('trophy', ART.trophy()), title: 'GAME OVER', sub: 'No base is left.', mood: 'bad' }); afterBanners(render); return true; }
     finish(l[0], tname(l[0]) + ' WINS!', 'The last base standing!');
     return true;
   }
@@ -626,7 +625,7 @@
   function pickBuilding(id, title, fn) {
     var list = KEYS.filter(function (k) { return T(id).hp[k] < MAXHP[k]; }); // damaged OR destroyed (a kit rebuilds it)
     if (!list.length) { toast(tname(id) + ' has nothing to repair.'); return false; }
-    choose({ art: ART.repair(), title: title, options: list.map(function (k) { return { html: '<b>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + '</b><small>' + (T(id).hp[k] <= 0 ? 'destroyed · rebuild it' : money(T(id).hp[k]) + ' / ' + money(MAXHP[k]) + ' HP') + '</small>', fn: function () { closeChoice(); fn(k); } }; }),
+    choose({ art: ART.sc('repair', ART.repair()), title: title, options: list.map(function (k) { return { html: '<b>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + '</b><small>' + (T(id).hp[k] <= 0 ? 'destroyed · rebuild it' : money(T(id).hp[k]) + ' / ' + money(MAXHP[k]) + ' HP') + '</small>', fn: function () { closeChoice(); fn(k); } }; }),
       foot: [{ label: 'Cancel', cls: 'ghost', fn: function () { closeChoice(); reopen(); } }] });
     return true;
   }
@@ -649,7 +648,7 @@
         setHp(id, 'depot', d.hp.depot - it.dmg);
         KEYS.forEach(function (b) { if (b !== 'depot' && d.hp[b] > 0) setHp(id, b, d.hp[b] - it.dmg / 2); });
         save();
-        banner({ art: ART.boom(), title: 'CURSED WEAPON!', sub: tname(id) + "'s new " + it.name + ' exploded in the Depot!', mood: 'boom', wait: 1800 });
+        banner({ art: ART.sc('boom', ART.boom()), title: 'CURSED WEAPON!', sub: tname(id) + "'s new " + it.name + ' exploded in the Depot!', mood: 'boom', wait: 1800 });
         afterBanners(function () { processFalls([id], function () { if (S.over) return; if (alive(id)) openShop(); else advance(); }); });
         return;
       }
@@ -684,7 +683,7 @@
     var d = T(id);
     reopen = openRepair;
     var list = KEYS.filter(function (k) { return d.hp[k] < MAXHP[k]; });
-    choose({ art: ART.repair(), title: tname(id) + ': repairs (' + d.kits + ' kit' + (d.kits === 1 ? '' : 's') + ' left)',
+    choose({ art: ART.sc('repair', ART.repair()), title: tname(id) + ': repairs (' + d.kits + ' kit' + (d.kits === 1 ? '' : 's') + ' left)',
       options: list.map(function (k) {
         return { html: '<b>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + '</b><small>' + (d.hp[k] <= 0 ? 'destroyed · rebuild it' : money(d.hp[k]) + ' / ' + money(MAXHP[k]) + ' HP') + ' · +' + money(KIT_HP) + '</small>',
           fn: function () { closeChoice(); snap(); d.kits--; d.hp[k] = Math.min(MAXHP[k], d.hp[k] + KIT_HP); save(); tone([523, 659, 784], 0.08); render(); openRepair(); } };
@@ -910,7 +909,7 @@
     unlockAudio();
     var id = curId(), p = b.dataset.pw;
     if (p === 'change') {
-      choose({ art: ART.risk(), title: 'Question Change: swap it for a harder one (' + (isSmash() ? 'bigger weapons!' : 'more gold!') + ')',
+      choose({ art: ART.sc('risk', ART.risk()), title: 'Question Change: swap it for a harder one (' + (isSmash() ? 'bigger weapons!' : 'more gold!') + ')',
         options: ['hard', 'impossible'].map(function (t) { return { html: '<b>' + TIERS[t].label + ' question</b><small>' + (isSmash() ? 'a bigger weapon if you win it' : money(GOLD[t]) + ' gold if you win it') + '</small>', fn: function () { changeQuestion(t); } }; }),
         foot: [{ label: 'Cancel', cls: 'ghost', fn: closeChoice }] });
     } else if (p === 'free') { use(id, 'free'); toast('🎟 ' + tname(id) + ' used Free Answer!'); rightAnswer(); }
@@ -959,7 +958,7 @@
     risk = false;
     if (rk) use(id, 'risk');
     closeQuestion();
-    banner({ art: ART.shield(), title: 'CORRECT!', sub: tname(id) + ' earns a reward!', mood: 'good', wait: 1200 });
+    banner({ art: ART.sc('shield', ART.shield()), title: 'CORRECT!', sub: tname(id) + ' earns a reward!', mood: 'good', wait: 1200 });
     if (isSmash()) T(id).streak = (T(id).streak || 0) + 1;
     afterBanners(function () { if (isSmash()) smashReward(id, tier, rk); else rewardPanel(id, tier, rk); });
   }
@@ -967,18 +966,18 @@
   function rewardPanel(id, tier, rk) {
     var gold = Math.round(GOLD[tier] * goldBoost() * (rk ? RISK_GOLD : 1) * goldMult(id));
     reopen = function () { rewardPanel(id, tier, rk); };
-    choose({ art: ART.weapon('missile'), title: tname(id) + ': choose your reward' + (rk ? ' (Risk It!)' : ''),
+    choose({ art: ART.sc('weapon', ART.weapon('missile')), title: tname(id) + ': choose your reward' + (rk ? ' (Risk It!)' : ''),
       options: [
         { html: '<b>💣 A bomb</b><small>random: ' + oddsText(tier, rk) + '</small>', fn: function () { closeChoice(); gotBomb(id, rollItem(tier, rk)); } },
         { html: '<b>🩹 Repair</b><small>+' + money(HEAL[tier]) + ' HP to one building</small>', fn: function () {
           pickBuilding(id, 'Repair which building?', function (b) {
             T(id).hp[b] = Math.min(MAXHP[b], T(id).hp[b] + HEAL[tier]); save();
-            banner({ art: ART.repair(), title: 'REPAIRED!', sub: tname(id) + "'s " + BNAME[b] + ' is stronger.', mood: 'good', wait: 1200 });
+            banner({ art: ART.sc('repair', ART.repair()), title: 'REPAIRED!', sub: tname(id) + "'s " + BNAME[b] + ' is stronger.', mood: 'good', wait: 1200 });
             afterBanners(advance);
           }); } },
         { html: '<b>' + coinHtml() + ' Gold +' + money(gold) + '</b><small>spend it in the store</small>', fn: function () {
           closeChoice(); T(id).gold += gold; save();
-          banner({ art: ART.coin(), title: '+' + money(gold) + ' GOLD!', sub: tname(id) + ' fills its treasury.', mood: 'good', wait: 1200 });
+          banner({ art: ART.sc('coin', ART.coin()), title: '+' + money(gold) + ' GOLD!', sub: tname(id) + ' fills its treasury.', mood: 'good', wait: 1200 });
           afterBanners(advance); } },
       ] });
   }
@@ -1000,11 +999,11 @@
       closeChoice();
       pickBuilding(id, 'Repair which building?', function (b) {
         d.hp[b] = Math.min(MAXHP[b], d.hp[b] + heal); save();
-        banner({ art: ART.repair(), title: 'REPAIRED!', sub: tname(id) + "'s " + BNAME[b] + ' is stronger.', mood: 'good', wait: 1200 });
+        banner({ art: ART.sc('repair', ART.repair()), title: 'REPAIRED!', sub: tname(id) + "'s " + BNAME[b] + ' is stronger.', mood: 'good', wait: 1200 });
         afterBanners(advance);
       });
     } });
-    choose({ art: ART.weapon(streakOn ? 'sarmat' : 'missile'), title: tname(id) + ': ' + (streakOn ? '🔥 ' + SM_STREAK + ' in a row! The RS-28 Sarmat is unlocked' : 'pick your reward') + (rk ? ' (Risk It: x' + SM_RISK + ')' : ''), options: opts });
+    choose({ art: ART.sc('weapon', ART.weapon(streakOn ? 'sarmat' : 'missile')), title: tname(id) + ': ' + (streakOn ? '🔥 ' + SM_STREAK + ' in a row! The RS-28 Sarmat is unlocked' : 'pick your reward') + (rk ? ' (Risk It: x' + SM_RISK + ')' : ''), options: opts });
   }
   function smashArm(id, key, rk) {
     var d = T(id);
@@ -1014,11 +1013,11 @@
   }
   function gotBomb(id, key) {
     var ally = allyOf(id), it = ITEMS[key];
-    banner({ art: ART.weapon(key), title: it.name.toUpperCase() + '!', sub: tname(id) + ' gets a ' + it.name + ' [' + it.cls + '].', mood: 'good', sound: 'fanfare', wait: 1300 });
+    banner({ art: ART.sc('weapon', ART.weapon(key)), title: it.name.toUpperCase() + '!', sub: tname(id) + ' gets a ' + it.name + ' [' + it.cls + '].', mood: 'good', sound: 'fanfare', wait: 1300 });
     afterBanners(function () {
       if (!ally) { T(id).bombs.push({ k: key }); save(); advance(); return; }
       var weaker = IORDER[Math.max(0, IORDER.indexOf(key) - 1)];
-      choose({ art: ART.alliance(), title: 'Allies: keep it or share it?',
+      choose({ art: ART.sc('alliance', ART.alliance()), title: 'Allies: keep it or share it?',
         options: [
           { html: '<b>Keep it</b><small>Only ' + esc(tname(id)) + ' can fire the ' + it.name + '</small>', fn: function () { closeChoice(); T(id).bombs.push({ k: key }); save(); advance(); } },
           { html: '<b>Share it</b><small>a ' + ITEMS[weaker].name + ' for BOTH teams</small>', fn: function () {
@@ -1033,11 +1032,11 @@
     if (rk) use(id, 'risk');
     closeQuestion();
     if (isSmash()) T(id).streak = 0;
-    banner({ art: incorrectArt(), title: 'INCORRECT', sub: encourage(), mood: 'bad', sound: 'bad' });
+    banner({ art: ART.sc('incorrect', incorrectArt()), title: 'INCORRECT', sub: encourage(), mood: 'bad', sound: 'bad' });
     if (rk) {
       var hit = [];
       KEYS.forEach(function (k) { if (k !== 'hq' && T(id).hp[k] > 0) { T(id).hp[k] = Math.max(0, T(id).hp[k] - MAXHP[k] * RISK_LOSS); hit.push(k); } });
-      banner({ art: ART.boom(), title: 'RISK BACKFIRES!', sub: tname(id) + (isSmash() ? ': every building except the HQ loses ' + Math.round(RISK_LOSS * 100) + '% of its starting HP!' : ': every building except the HQ loses half of its starting HP!'), mood: 'boom', wait: 1800 });
+      banner({ art: ART.sc('boom', ART.boom()), title: 'RISK BACKFIRES!', sub: tname(id) + (isSmash() ? ': every building except the HQ loses ' + Math.round(RISK_LOSS * 100) + '% of its starting HP!' : ': every building except the HQ loses half of its starting HP!'), mood: 'boom', wait: 1800 });
     }
     save();
     afterBanners(advance);
@@ -1072,20 +1071,20 @@
     var id = curId();
     var others = living().filter(function (o) { return o !== id && !allyOf(o) && !used(o, 'ally'); });
     reopen = function () {};
-    choose({ art: ART.alliance(), title: tname(id) + ': ally with which team?',
+    choose({ art: ART.sc('alliance', ART.alliance()), title: tname(id) + ': ally with which team?',
       options: others.map(function (o) { return { html: '<b>' + esc(tname(o)) + '</b><small>must also skip its turn</small>', fn: function () { askPartner(id, o); } }; }),
       foot: [{ label: 'Cancel', cls: 'ghost', fn: closeChoice }] });
   }
   function askPartner(a, b) {
-    choose({ art: ART.alliance(), title: tname(b) + ': ally with ' + tname(a) + '?',
+    choose({ art: ART.sc('alliance', ART.alliance()), title: tname(b) + ': ally with ' + tname(a) + '?',
       options: [
         { html: '<b>Yes: skip my turn and ally</b><small>shared towers and depots, bombs can be shared</small>', fn: function () {
           closeChoice(); snap(); S.t[a].ally = b; S.t[b].ally = a; use(a, 'ally'); use(b, 'ally'); S.skip[b] = true; (S.allyLog = S.allyLog || []).push([a, b]); save();
-          banner({ art: ART.alliance(), title: 'ALLIANCE!', sub: tname(a) + ' and ' + tname(b) + ' join forces!', mood: 'magic', sound: 'fanfare' });
+          banner({ art: ART.sc('alliance', ART.alliance()), title: 'ALLIANCE!', sub: tname(a) + ' and ' + tname(b) + ' join forces!', mood: 'magic', sound: 'fanfare' });
           afterBanners(advance); } },
         { html: '<b>No deal</b><small>' + esc(tname(a)) + "'s power-up is wasted</small>", fn: function () {
           closeChoice(); snap(); use(a, 'ally'); save();
-          banner({ art: ART.alliance(), title: 'NO DEAL!', sub: tname(b) + ' said no. ' + tname(a) + ' skips this turn.', mood: 'bad', wait: 1500 });
+          banner({ art: ART.sc('alliance', ART.alliance()), title: 'NO DEAL!', sub: tname(b) + ' said no. ' + tname(a) + ' skips this turn.', mood: 'bad', wait: 1500 });
           afterBanners(advance); } },
       ] });
   }
@@ -1126,7 +1125,7 @@
       var deck = S.deck; S.rules = name; fresh(deck); S.rulesPicked = true; S.introDone = false; skipDead(); save(); render(); updateRulesBtn();
       next();
     }; };
-    choose({ art: ART.shield(), title: 'Choose the rules',
+    choose({ art: ART.sc('shield', ART.shield()), title: 'Choose the rules',
       options: [
         { html: '<b>SMASH</b><small>New and fast: answer a question, then fire right away. Towers are armor. About 25 minutes.</small>', fn: mk('smash') },
         { html: '<b>LM2</b><small>The original game: gold, the store, random bomb rewards and tower shoot-down.</small>', fn: mk('lm2') },

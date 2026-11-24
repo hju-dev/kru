@@ -111,5 +111,8 @@
     },
   };
   window.FtArt = A;
+  /** A pop-up picture as a little animated cartoon scene (CSS in style.css): the missile streaks in and explodes, the shield ripples,
+      the wrench spins and sparks, coins spin, smoke rises from ruins... kind = the picture's name. Only used inside the big pop-ups. */
+  A.sc = function (kind, inner) { return '<div class="sc sc-' + kind + '">' + inner + '<i class="sc-a"></i><i class="sc-b"></i><i class="sc-c"></i></div>'; };
   window.KruIntroIcons = { hq: A.hq(), depot: A.depot(), tower: A.tower(), bomb1: A.weapon('crude'), bomb2: A.weapon('missile'), bomb3: A.weapon('avangard'), bomb4: A.weapon('sarmat'), coin: A.coin(), repair: A.repair(), alliance: A.alliance(), risk: A.risk(), job: A.job(), shield: A.shield() };
 })();

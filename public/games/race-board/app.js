@@ -124,13 +124,13 @@
   var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free'];
   function vehicleFor(id) {
     var t = racer(id || (current() && current().id));
-    return t && window.KruRacing ? KruRacing.vehicle(racers.indexOf(t), color(t)) : '';
+    return t && window.KruRacing ? KruRacing.vehicle(rideIdx(t), color(t)) : '';
   }
   /** "Team 2 is up!" in a quick banner with its vehicle (never blocks a tap). */
   function upFlash() {
     var t = current();
     if (!RACING || !window.KruFx || !t || S.finished.length >= racers.length) return;
-    KruFx.flash({ art: KruRacing.vehicle(racers.indexOf(t), color(t)), title: t.name + ' is up!', sub: KruRacing.name(racers.indexOf(t)), mood: 'good', wait: 1800 });
+    KruFx.flash({ art: KruRacing.vehicle(rideIdx(t), color(t)), title: t.name + ' is up!', sub: KruRacing.name(rideIdx(t)), mood: 'good', wait: 1800 });
   }
 
   var POOL = {}, MATHSCI = [], teams = [], racers = [], INTRO = [];
@@ -149,7 +149,13 @@
   function range(n) { var a = []; for (var i = 0; i < n; i++) a.push(i); return a; }
   function pos(id) { return S.pos[id] || 0; }
   function points(id) { var f = S.finished.indexOf(id); return pos(id) + (f >= 0 && f < BONUS.length ? BONUS[f] : 0); }
-  function color(t) { return COLORS[teams.indexOf(t) % COLORS.length]; }
+  /** The ride a team drew in the reveal (0-9); before the reveal, the team's place in the list. */
+  function rideIdx(t) { var r = S && S.rides && S.rides[t.id]; return r != null ? r : Math.max(0, racers.indexOf(t)); }
+  /** A team's colour: the colour of its ride in the racing games (board piece, scoreboard, pop-ups), else by place. */
+  function color(t) {
+    if (RACING && S && S.rides && S.rides[t.id] != null) return KruRacing.color(S.rides[t.id]);
+    return COLORS[teams.indexOf(t) % COLORS.length];
+  }
   function current() { return racers[S.turn % Math.max(1, racers.length)]; }
   function racer(id) { return racers.filter(function (x) { return x.id === id; })[0]; }
   function weighted(w) { var sum = 0, i; for (i = 0; i < w.length; i++) sum += w[i]; var r = Math.random() * sum; for (i = 0; i < w.length; i++) { r -= w[i]; if (r < 0) return i; } return w.length - 1; }
@@ -196,6 +202,7 @@
       var on = racers.filter(function (t) { return pos(t.id) === n; });
       var cls = 'sq' + (n === 0 ? ' start' : n === FINISH ? ' finish' : '') + (sp ? ' ' + sp.t : '') + (used ? ' secret' : '') + (on.length > 3 ? ' crowd' : '');
       var here = on.map(function (t) {
+        if (RACING) return '<i class="piece ride' + (current() && t.id === current().id ? ' now' : '') + '" title="' + esc(t.name) + '">' + KruRacing.vehicle(rideIdx(t), color(t)) + '</i>';
         return '<i class="piece' + (current() && t.id === current().id ? ' now' : '') + '" style="background:' + color(t) + '">' + (racers.indexOf(t) + 1) + '</i>';
       }).join('');
       html += '<div class="' + cls + '" style="grid-row:' + c.row + ';grid-column:' + c.col + '"><span class="num">' + squareLabel(n) + '</span>' +
@@ -205,12 +212,28 @@
     $('legend').innerHTML = racers.map(function (t, i) {
       var f = S.finished.indexOf(t.id), flags = (S.skip[t.id] ? ' ⏸' : '') + (S.shield[t.id] ? ' 🛡' : '') + (S.dbl[t.id] ? ' 🎲🎲' : '');
       return '<button class="lg' + (current() && t.id === current().id ? ' now' : '') + '" data-team="' + esc(t.id) + '" aria-label="' + esc(t.name) + ': who is on this team?">' +
-        '<i style="background:' + color(t) + '">' + Kru.teamNo(t) + '</i>' + flags +
+        '<i style="background:' + color(t) + '">' + Kru.teamNo(t) + '</i>' + (RACING ? '<span class="lgv">' + KruRacing.vehicle(rideIdx(t), color(t)) + '</span>' : '') + flags +
         (f >= 0 && f < 3 ? ' <b>' + ['1st', '2nd', '3rd'][f] + '</b>' : f >= 3 ? ' <b>done</b>' : '') + '</button>';
     }).join('');
     var t = current(), done = S.finished.length >= racers.length;
     $('turn').innerHTML = done ? 'Race over!' : t ? '<span class="dot" style="background:' + color(t) + '"></span>' + esc(t.name) + "'s turn" : '';
     $('ask').disabled = done || busy || !t;
+  }
+
+  // ---------- the reveal: each team opens the door and a random ride drives out (shared/kru-reveal.js) ----------
+  function revealDone() { return !RACING || !window.KruReveal || racers.every(function (t) { return S.rides && S.rides[t.id] != null; }); }
+  function startReveal(then) {
+    S.rides = S.rides || {};
+    if (revealDone()) { if (then) then(); return; }
+    var R = KruRacing.REVEAL;
+    KruReveal.run({
+      skin: R.skin, title: R.title, sign: R.sign, labels: R.labels,
+      teams: racers.map(function (t) { return { id: t.id, name: t.name }; }),
+      pool: KruRacing.pool,
+      art: function (i, c) { return KruRacing.vehicle(i, c); },
+      badge: function (t, c) { return Kru.badge(t, c); },
+      done: function (assign) { S.rides = assign; save(); renderTrack(); if (then) then(); },
+    });
   }
 
   // ---------- who is on a team (tap a team in the legend) ----------
@@ -368,7 +391,7 @@
           // a big overtake pop-up: the team that moved forward blasts past the team that dropped back
           var fwd = z > a ? t : racer(o), bk = z > a ? racer(o) : t, sq = function (x) { return pos(x.id) ? 'square ' + pos(x.id) : 'START'; };
           save(); renderTrack();
-          KruFx.show({ art: KruRacing.overtake(racers.indexOf(fwd), color(fwd), fwd.name, racers.indexOf(bk), color(bk), bk.name), title: KruRacing.OVERTAKE.title,
+          KruFx.show({ art: KruRacing.overtake(rideIdx(fwd), color(fwd), fwd.name, rideIdx(bk), color(bk), bk.name), title: KruRacing.OVERTAKE.title,
             sub: fwd.name + ' ' + KruRacing.OVERTAKE.verb + ' ' + bk.name + '! ' + fwd.name + ' jumps to ' + sq(fwd) + ' and ' + bk.name + ' drops to ' + sq(bk) + '.', mood: 'good', sound: 'fanfare', wait: 3800,
             then: function () { save(); busy = false; nextTurn(); } });
           return;
@@ -680,8 +703,8 @@
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     racers.forEach(function (t) { var p = points(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
-    S.pos = {}; S.finished = []; S.turn = 0; S.last = null; S.skip = {}; S.shield = {}; S.dbl = {}; S.mathsci = {}; S.secret = newSecret(); S.powers = {};
-    save(); closeMenu(); renderTrack();
+    S.pos = {}; S.finished = []; S.turn = 0; S.last = null; S.skip = {}; S.shield = {}; S.dbl = {}; S.mathsci = {}; S.secret = newSecret(); S.powers = {}; S.rides = {};
+    save(); closeMenu(); renderTrack(); startReveal(function () { upFlash(); });
   });
 
   document.addEventListener('keydown', function (e) {
@@ -739,7 +762,7 @@
       }
       teams = Kru.allTeams();
       racers = teams.filter(function (t) { return !t.teacher; });
-      KruEnd.setup({ standings: function () { return racers.map(function (t, i) { return { name: t.name, points: points(t.id), art: RACING ? KruRacing.vehicle(i, color(t)) : '' }; }); } });
+      KruEnd.setup({ standings: function () { return racers.map(function (t) { return { name: t.name, points: points(t.id), art: RACING ? KruRacing.vehicle(rideIdx(t), color(t)) : '' }; }); } });
       var sizes = ORDER.map(function (t) { return POOL[t].length; }).join(',') + ':' + MATHSCI.length;
       var saved = session.resume;
       if (saved && saved.v === 2 && saved.level === QZ.level && saved.sizes === sizes) S = saved;
@@ -750,6 +773,7 @@
       }
       S.secs = KruMenu.snap(S.secs); // whole 10-second steps
       S.powers = S.powers || {};
+      S.rides = S.rides || {};
       S.mpicked = S.mpicked || {};
       S.xdeck = S.xdeck || {};
       if (XMAS) ['challenge', 'forfeit'].forEach(function (k) {
@@ -758,7 +782,8 @@
       });
       renderTrack();
       INTRO = KruIntro.forLevel(c, QZ.level);
-      if (!S.introDone) KruIntro.show(INTRO, { title: GAME_TITLE }).then(function () { S.introDone = true; save(); upFlash(); }); else upFlash();
+      var begin = function () { startReveal(function () { renderTrack(); upFlash(); }); };
+      if (!S.introDone) KruIntro.show(INTRO, { title: GAME_TITLE }).then(function () { S.introDone = true; save(); begin(); }); else begin();
     }).catch(function (err) {
       $('track').textContent = 'Could not load the questions. Close the game and open it again.';
       if (window.console) console.error(err);

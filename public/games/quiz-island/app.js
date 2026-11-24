@@ -60,7 +60,14 @@
   function gold(id) { return S.pts[id] || 0; }
   function team(id) { return players.filter(function (t) { return t.id === id; })[0]; }
   function tname(id) { var t = team(id); return t ? t.name : ''; }
-  function color(id) { var i = players.map(function (t) { return t.id; }).indexOf(id); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }
+  /** The crew member (0-9) a team drew in the opening reveal; before that, its place in the list. */
+  function crewIdx(id) { var r = S && S.crew && S.crew[id]; if (r != null) return r; var i = players.map(function (t) { return t.id; }).indexOf(id); return i < 0 ? 0 : i; }
+  /** A team's colour is its crew member's colour (islands, flags, scoreboard, pop-ups). */
+  function color(id) {
+    if (S && S.crew && S.crew[id] != null) return ART.crewColor(S.crew[id]);
+    var i = players.map(function (t) { return t.id; }).indexOf(id); return COLORS[(i < 0 ? 0 : i) % COLORS.length];
+  }
+  function mascot(id, cls) { return '<span class="' + (cls || 'crew') + '">' + ART.crew(crewIdx(id), color(id)) + '</span>'; }
   function current() { return players[S.turn % Math.max(1, players.length)]; }
   function tierOf(q) { return TIERS[q.tier] ? q.tier : 'regular'; }
   function round() { return Math.floor(S.turn / Math.max(1, players.length)); }
@@ -283,7 +290,7 @@
       var g = gold(t.id), bump = shownGold[t.id] !== undefined && shownGold[t.id] !== g ? (g > shownGold[t.id] ? ' up' : ' down') : '';
       shownGold[t.id] = g;
       var flags = (S.skip[t.id] ? ' ⏸' : '') + (ownsFort(t.id) ? ' 🏰' : '') + (leaders.indexOf(t.id) >= 0 ? ' 👑' : '');
-      return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '"><i style="background:' + color(t.id) + '">' + Kru.teamNo(t) + '</i>' +
+      return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '">' + (S.crew && S.crew[t.id] != null && players.length <= 5 ? mascot(t.id, 'crew') : '') + '<i style="background:' + color(t.id) + '">' + Kru.teamNo(t) + '</i>' +
         ' <b class="g' + bump + '">' + g + COIN + '</b> · ' + owned(t.id).length + '🏝' + flags + '</span>';
     }).join('');
   }
@@ -293,7 +300,7 @@
     var cur = current(), cl = S.claim, step = cl && cl.steps[0];
     $('turn').innerHTML = !cur ? 'Add students to play' : S.phase === 'done' ? '🗺 The secret islands are revealed!' :
       step ? '<i class="dot" style="background:' + color(cl.id) + '"></i>' + esc(tname(cl.id)) + ': ' + HINT[step.m] + (step.m === 'claim' ? ' (+' + (step.v + (step.dig ? DIG : 0)) + ' ' + COIN + ')' : '') :
-      '<i class="dot" style="background:' + color(cur.id) + '"></i>' + esc(cur.name) + "'s turn" + (S.lastEnd ? ' · 🏁 Last round' : '');
+      (S.crew && S.crew[cur.id] != null ? mascot(cur.id, 'crew sm') : '<i class="dot" style="background:' + color(cur.id) + '"></i>') + esc(cur.name) + "'s turn" + (S.lastEnd ? ' · 🏁 Last round' : '');
     $('ask').hidden = !!cl || S.phase === 'done';
     $('ask').disabled = busy || S.phase !== 'play';
     $('toPodium').hidden = S.phase !== 'done';
@@ -776,8 +783,10 @@
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     players.forEach(function (t) { var p = gold(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
     fresh(S.deck);
+    S.crew = {};
     $('choiceBack').hidden = true;
     save(); closeMenu(); render();
+    startReveal(function () { render(); });
   });
 
   document.addEventListener('keydown', function (e) {
@@ -807,6 +816,20 @@
     shownGold = {};
     buildPool();
   }
+  /** The opening reveal: each team opens the cabin door and a random pirate crew member steps out (shared/kru-reveal.js). */
+  function startReveal(then) {
+    S.crew = S.crew || {};
+    if (!window.KruReveal || players.every(function (t) { return S.crew[t.id] != null; })) { then(); return; }
+    KruReveal.run({
+      skin: 'cabin', title: 'Meet your crew!', sign: "CAPTAIN'S CABIN",
+      labels: { open: 'Open the cabin ▶', who: 'is joined by', next: 'Next team ▶', start: 'Set sail! ▶' },
+      teams: players.map(function (t) { return { id: t.id, name: t.name }; }),
+      pool: ART.crewPool,
+      art: function (i, c) { return ART.crew(i, c); },
+      badge: function (t, c) { return Kru.badge(t, c); },
+      done: function (assign) { S.crew = assign; save(); render(); then(); },
+    });
+  }
   var contentReady = fetch('/games/race-board/content.json').then(function (r) { return r.json(); });
   var ownReady = fetch('content.json').then(function (r) { return r.json(); }); // Quiz Island's own How to play slides
   Kru.ready(function (session) {
@@ -815,7 +838,7 @@
       DECKS = buildDecks(c, QZ, lv);
       teams = Kru.allTeams();
       players = teams.filter(function (t) { return !t.teacher; });
-      KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id) }; }); } });
+      KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id), art: S && S.crew && S.crew[t.id] != null ? ART.crew(S.crew[t.id], color(t.id)) : '' }; }); } });
       hookEnd();
       var saved = session.resume;
       if (saved && saved.v === 3 && saved.level === QZ.level && saved.map && saved.map.own && saved.map.own.length === CELLS && (!saved.deck || deckByKey(saved.deck))) {
@@ -824,15 +847,19 @@
         S = null; fresh(session.setKey && deckByKey(session.setKey) ? session.setKey : QZ.unit ? 'unit' : ''); // the deck picked before the team builder
         S.level = QZ.level;
       }
+      S.crew = S.crew || {};
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.powers = S.powers || {}; S.mpicked = S.mpicked || {}; S.phase = S.phase || 'play';
       players.forEach(function (t) { shownGold[t.id] = gold(t.id); });
       INTRO = KruIntro.forLevel(mine, QZ.level);
       render();
       var afterIntro = function () {
         S.introDone = true; save();
-        if (!S.deck) openDecks();
-        else if (S.choice) openChoice();
-        else if (S.claim) prepStep();
+        startReveal(function () {
+          render();
+          if (!S.deck) openDecks();
+          else if (S.choice) openChoice();
+          else if (S.claim) prepStep();
+        });
       };
       if (!S.introDone) KruIntro.show(INTRO, { title: 'Quiz Island' }).then(afterIntro); else afterIntro();
     }).catch(function (err) {
