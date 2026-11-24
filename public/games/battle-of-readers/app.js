@@ -50,7 +50,7 @@
         var rand = seeded(String(session.id || '') + level);
         var sets = [{ key: 'lv', group: 'Stories', name: 'Stories (' + level + ')', rounds: stories[level].map(function (s) { return round(s, rand); }) }];
         if (stories[up]) sets.push({ key: 'up', group: 'Stories', name: 'Harder stories', rounds: stories[up].map(function (s) { return round(s, rand); }) });
-        return { sets: sets, hidden: content.hidden, intro: KruIntro.forLevel(content, level) };
+        return { sets: sets, hidden: content.hidden, final: (content.final || {})[level] || [], intro: KruIntro.forLevel(content, level) };
       });
     },
   });

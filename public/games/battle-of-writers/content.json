@@ -2318,5 +2318,139 @@
    "text": "One answer has 3+ describing words? +1!",
    "points": 1
   }
- ]
+ ],
+ "final": {
+  "M.1": [
+   {
+    "q": "Add ALL the capital letters and punctuation.",
+    "quote": "my name is ben i live in chiang mai and i have two sisters their names are amy and kate",
+    "hint": "Write the whole text correctly",
+    "answer": "My name is Ben. I live in Chiang Mai, and I have two sisters. Their names are Amy and Kate.",
+    "why": "Capitals: My, Ben, I, Chiang Mai, I, Their, Amy, Kate. Periods and a comma before 'and I'."
+   },
+   {
+    "q": "Join the 4 sentences into 2 smooth sentences with linking words (because, but, and, so).",
+    "quote": "I was hungry. I had no food at home. I went to the store. It was closed.",
+    "hint": "Write your 2 sentences",
+    "answer": "Example: I was hungry, but I had no food at home, so I went to the store. Unfortunately, it was closed.",
+    "why": "Many answers are right: check for two sentences, at least two linking words and correct punctuation."
+   },
+   {
+    "q": "Put ALL the words in order to make TWO correct sentences.",
+    "quote": "park / went / to / the / we / Sunday / on   •   playing / were / children / the / happily",
+    "hint": "Write both sentences",
+    "answer": "We went to the park on Sunday. The children were playing happily.",
+    "why": "Check capital letters and periods too."
+   },
+   {
+    "q": "Describe your ideal weekend in 4 sentences.",
+    "quote": "Use: there is / there are, because, and two adjectives.",
+    "hint": "Write 4 sentences",
+    "answer": "Example: My ideal weekend is relaxing. There is a big park near my house because I love nature. On Saturday I play soccer with my friends. On Sunday there are delicious snacks and a funny movie.",
+    "why": "Check: 4 sentences, 'there is/are', 'because' and two adjectives."
+   },
+   {
+    "q": "Fix ALL the mistakes (there are 6).",
+    "quote": "Yesterday i go to the park whit my freinds. We plays soccer and eated ice cream.",
+    "hint": "Write the whole text correctly",
+    "answer": "Yesterday I went to the park with my friends. We played soccer and ate ice cream.",
+    "why": "I (capital), went, with, friends, played, ate."
+   },
+   {
+    "q": "Write ONE sentence with at least 12 words that uses 'although' and a comma.",
+    "quote": "Challenge: at least 12 words!",
+    "hint": "Write your sentence",
+    "answer": "Example: Although it was raining heavily, we decided to walk to school together.",
+    "why": "Check: 12+ words, 'although' at the start or middle, a comma, and a complete idea."
+   }
+  ],
+  "M.2": [
+   {
+    "q": "Fix ALL the mistakes (there are 6).",
+    "quote": "Last weekend my family and I has visited a beautifull temple. It were very old, and there was many tourist. I enjoyed it so much that i want to go again.",
+    "hint": "Write the whole text correctly",
+    "answer": "Last weekend my family and I visited a beautiful temple. It was very old, and there were many tourists. I enjoyed it so much that I want to go again.",
+    "why": "visited, beautiful, was, were, tourists, I."
+   },
+   {
+    "q": "Combine the three sentences into ONE sentence with a relative clause.",
+    "quote": "My neighbor is a doctor. She works at the city hospital. She is very kind.",
+    "hint": "Write the new sentence",
+    "answer": "My neighbor, who is a doctor and works at the city hospital, is very kind.",
+    "why": "Accept other correct versions with who/which and commas."
+   },
+   {
+    "q": "Rewrite in the PASSIVE.",
+    "quote": "They have cancelled the match because the rain flooded the field.",
+    "hint": "Write the new sentence",
+    "answer": "The match has been cancelled because the field was flooded by the rain.",
+    "why": "Present perfect passive + past passive."
+   },
+   {
+    "q": "Write the opening of a story (3-4 sentences).",
+    "quote": "You must use: a past continuous, a past perfect and an adverb of manner.",
+    "hint": "Write 3-4 sentences",
+    "answer": "Example: It was a dark night and the wind was howling. Mia had already locked the door when she heard a strange noise. She slowly walked to the window.",
+    "why": "Check: past continuous, past perfect, and an adverb of manner."
+   },
+   {
+    "q": "Add ALL the capital letters and punctuation.",
+    "quote": "although it was late tom decided to finish his homework he opened his book took a deep breath and started writing",
+    "hint": "Write the whole text correctly",
+    "answer": "Although it was late, Tom decided to finish his homework. He opened his book, took a deep breath, and started writing.",
+    "why": "A comma after 'late', periods, and commas in the list."
+   },
+   {
+    "q": "Write a short paragraph (4-5 sentences) giving advice to a friend who is always tired.",
+    "quote": "Use: should, shouldn't, if + present, and one linking word.",
+    "hint": "Write 4-5 sentences",
+    "answer": "Example: You should go to bed earlier. If you drink less coffee, you will sleep better. You shouldn't use your phone in bed because the light keeps you awake. Also, exercise in the afternoon.",
+    "why": "Check: should, shouldn't, a first conditional (if + present, will) and a linking word."
+   }
+  ],
+  "M.3": [
+   {
+    "q": "Fix ALL the mistakes (there are 5).",
+    "quote": "Despite of he was exhausted, he carried on working untill midnight. Neither of the students were prepared, so the teacher said them to leave early.",
+    "hint": "Write the whole text correctly",
+    "answer": "Although he was exhausted, he carried on working until midnight. Neither of the students was prepared, so the teacher told them to leave early.",
+    "why": "Although (not Despite of + clause), until, was, told."
+   },
+   {
+    "q": "Join into ONE sentence with a participle clause, a relative clause and a linking word.",
+    "quote": "The manager arrived late. She had missed her train. She apologized. The team was waiting in the meeting room.",
+    "hint": "Write ONE sentence",
+    "answer": "Example: Having missed her train, the manager, who arrived late, apologized to the team, which was waiting in the meeting room.",
+    "why": "Many answers are right: check all three structures and the punctuation."
+   },
+   {
+    "q": "Rewrite in FORMAL English.",
+    "quote": "Hey guys, we're gonna have a meeting tomorrow and everybody's gotta come, ok?",
+    "hint": "Write the formal version",
+    "answer": "Example: Dear colleagues, a meeting will be held tomorrow. Attendance is compulsory.",
+    "why": "Formal: a greeting, the passive, no contractions or slang."
+   },
+   {
+    "q": "Write 4 sentences about a regret in the past.",
+    "quote": "Use all of these: wish, if only, would have, should have.",
+    "hint": "Write 4 sentences",
+    "answer": "Example: I wish I had studied harder. If only I had asked for help! I should have started earlier. I would have passed if I had listened.",
+    "why": "Check: wish + past perfect, if only, should have, would have."
+   },
+   {
+    "q": "Rewrite in REPORTED speech with all the changes.",
+    "quote": "\"I haven't finished the report because the system crashed last night,\" said Mia. \"I'll send it tomorrow.\"",
+    "hint": "Write the new sentence",
+    "answer": "Mia said that she hadn't finished the report because the system had crashed the night before and that she would send it the next day.",
+    "why": "Backshift, last night becomes the night before, tomorrow becomes the next day."
+   },
+   {
+    "q": "Write a persuasive paragraph (5 sentences): students should have less homework.",
+    "quote": "Use: a conditional, a passive, one semicolon and one contrast linker.",
+    "hint": "Write 5 sentences",
+    "answer": "Example: If students had less homework, they would sleep more. Free time should be seen as part of learning; moreover, sleep is needed for memory. It has been shown that tired students make more mistakes. However, some homework is useful. Therefore, less but better homework is the answer.",
+    "why": "Check: a conditional, a passive, one semicolon and one contrast linker (however, although...)."
+   }
+  ]
+ }
 }

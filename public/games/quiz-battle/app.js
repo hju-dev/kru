@@ -25,7 +25,7 @@
         builtIn.forEach(function (s, i) { sets.push({ key: 'b:' + i, group: 'Built in', name: s.name, questions: s.questions }); });
         var sheet = Array.isArray(session.questions) ? session.questions.filter(function (s) { return s && Array.isArray(s.questions) && s.questions.length; }) : [];
         sheet.forEach(function (s, i) { sets.push({ key: 's:' + i, group: 'From your Sheet', name: s.name, questions: s.questions }); });
-        return { sets: sets, hidden: content.hidden, intro: KruIntro.forLevel(content, level), problems: Array.isArray(session.questionProblems) ? session.questionProblems : [] };
+        return { sets: sets, hidden: content.hidden, final: (content.final || {})[level] || [], intro: KruIntro.forLevel(content, level), problems: Array.isArray(session.questionProblems) ? session.questionProblems : [] };
       });
     },
   });

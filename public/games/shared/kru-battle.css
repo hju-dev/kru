@@ -191,3 +191,13 @@
 .kbt-choice { background: #fff; color: #111; }
 .kbt-story p { background: #fff; color: #111; border-radius: 12px; padding: 8px 14px; }
 .kbt-rquote { background: #fff; color: #111; padding: 1px 10px; border-radius: 8px; }
+
+/* After the planned rounds: add a round or the final question */
+.kbt-next { display: flex; flex-direction: column; gap: 8px; text-align: center; }
+.kbt-next .btn.big { min-height: 56px; font-size: 20px; }
+.kbt-nextsub { margin: 0; color: var(--muted); font-size: 17px; }
+/* The final question: tap the teams that got it right */
+.kbt-fteams { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.kbt-ftip { font-weight: 800; color: var(--gold); margin-right: 4px; }
+.kbt-fteam { min-width: 64px; padding: 0 10px; }
+.kbt-fteam.on { background: var(--teal); border-color: var(--teal); color: #111; }

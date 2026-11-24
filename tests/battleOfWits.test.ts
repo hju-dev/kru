@@ -17,8 +17,8 @@ describe('Battle of Wits', () => {
     expect(read('public/games/quiz-battle/index.html')).toContain('/games/shared/kru-battle.js')
   })
   it('rounds of 5; 30 / 45 / 60 s (30 to start); the next question comes by itself after a 3-second countdown', () => {
-    expect(engine).toContain('var ROUND = 5, GAP = 3;')
-    expect(engine).toContain("if (l <= 0) { S.running = false; timeUp(); return; }")
+    expect(engine).toContain('var ROUND = 5, GAP = 3, FINAL_PTS = 5, DEFAULT_ROUNDS = 3, FINAL_SECS = 120;')
+    expect(engine).toContain("if (l <= 0) { S.running = false; if (S.phase === 'fask') finalTimeUp(); else timeUp(); return; }")
     expect(engine).toContain("S.phase = 'gap'; startClock(GAP); render();")
     expect(engine).toContain("else if (S.phase === 'gap' && l <= 0) { S.running = false; nextQuestion(); return; }")
   })
