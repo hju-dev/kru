@@ -76,7 +76,7 @@ describe('picking a unit', () => {
     expect(UNITS.filter((u) => !u.games).map((u) => u.id).sort()).toEqual(['m1-rw-u5', 'm2-rw-u5', 'm3-english-u7', 'm3-rw-u5'])
     expect(unitsFor('M.1').map((u) => u.title)).toEqual(['R&W Unit 5: What Are You Afraid Of?', 'English: Grammar and Punctuation (A2-B1)'])
     expect(unitsFor('M.2').map((u) => u.title)).toEqual(['R&W Unit 5: Perception', 'English: Grammar and Punctuation (B1)'])
-    expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future', 'English: Reported Speech', 'English: Grammar and Punctuation (B1-B2)'])
+    expect(unitsFor('M.3', 'race-board').map((u) => u.title)).toEqual(['English Unit 7: Capital Punishment', 'R&W Unit 5: Careers of the Future', 'English: Reported Speech', 'English: Grammar and Punctuation (B1-B2)', 'English: Reported Speech: Questions', 'English: Reported Speech: Mixed Bag (statements + questions)'])
     // every title says which course (or lesson pack) it is from
     for (const u of UNITS) expect(u.title).toMatch(/^(((R&W|English) )?Unit \d+( L\d+| Review)?: |English: Reported Speech|English: Grammar and Punctuation \((A2-B1|B1|B1-B2)\))/)
   })

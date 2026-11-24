@@ -154,3 +154,23 @@ describe('One-Word Story writing relay', () => {
     expect(JSON.stringify(c.intro)).toContain('Word rules')
   })
 })
+
+// Reported Questions (30) and the mixed bag (50) for M.3 (Henry, Nov 25).
+describe('Reported questions + mixed bag packs', () => {
+  const load = (id: string) => JSON.parse(readFileSync(new URL(`../public/units/${id}.json`, import.meta.url), 'utf8')) as { games: string[]; sets: { name: string; questions: { q: string; choices?: string[]; answer: number | string; tier: string }[] }[] }
+  for (const [id, n] of [['m3-english-reported-questions', 30], ['m3-english-reported-mixed', 50]] as const) {
+    it(`${id}: ${n} questions, tiers, valid answers, spread, American spelling, shown for M.3 in every quiz game`, () => {
+      const qs = load(id).sets.flatMap((s) => s.questions)
+      expect(qs).toHaveLength(n)
+      for (const q of qs) {
+        expect(['easy', 'regular', 'hard', 'impossible'], q.q).toContain(q.tier)
+        if (q.choices) { expect(new Set(q.choices).size, q.q).toBe(4); expect(q.answer as number).toBeLessThan(4) } else expect(String(q.answer).length).toBeGreaterThan(5)
+      }
+      const mc = qs.filter((q) => q.choices)
+      expect(new Set(mc.map((q) => q.answer)).size).toBe(4)
+      expect(JSON.stringify(qs)).not.toMatch(/colour|favourite|realise|organise|football|cinema/i)
+      for (const g of ['quiz-battle', 'race-board', 'quiz-island', 'fortress']) expect(unitsFor('M.3', g, 'M.3/1').map((x) => x.id)).toContain(id)
+      expect(unitsFor('M.2', 'quiz-battle').map((x) => x.id)).not.toContain(id)
+    })
+  }
+})
