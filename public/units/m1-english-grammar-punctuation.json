@@ -1,0 +1,1365 @@
+{
+ "id": "m1-english-grammar-punctuation",
+ "level": "M.1",
+ "course": "M.1 English",
+ "title": "English: Grammar and Punctuation (A2-B1)",
+ "source": "Written for Kru, Nov 24 (Henry): 100 questions on grammar, punctuation and writing skills at A2-B1. American English.",
+ "games": [
+  "fortress",
+  "quiz-battle",
+  "quiz-island",
+  "race-board"
+ ],
+ "sets": [
+  {
+   "name": "Articles and plurals",
+   "questions": [
+    {
+     "q": "I have ___ apple in my bag.",
+     "choices": [
+      "a",
+      "the",
+      "an",
+      "some"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Apple starts with a vowel sound, so we use 'an'."
+    },
+    {
+     "q": "She is ___ teacher.",
+     "choices": [
+      "a",
+      "an",
+      "some",
+      "many"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Teacher starts with a consonant sound, so we use 'a'."
+    },
+    {
+     "q": "What is the plural of 'box'?",
+     "choices": [
+      "boxs",
+      "boxies",
+      "boxen",
+      "boxes"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Words ending in -x add -es."
+    },
+    {
+     "q": "What is the plural of 'child'?",
+     "choices": [
+      "childs",
+      "childes",
+      "children",
+      "childrens"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "'Child' is irregular: the plural is 'children'."
+    },
+    {
+     "q": "___ sun is very hot today.",
+     "choices": [
+      "A",
+      "An",
+      "The",
+      "Some"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "There is only one sun, so we say 'the sun'."
+    },
+    {
+     "q": "What is the plural of 'city'?",
+     "choices": [
+      "citys",
+      "cityes",
+      "cites",
+      "cities"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "Consonant + y: change y to i and add -es."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "She has two babys.",
+      "She has two babies.",
+      "She has two babyes.",
+      "She has two babis."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "baby, babies: change y to i and add -es."
+    },
+    {
+     "q": "He is ___ honest man.",
+     "choices": [
+      "a",
+      "the",
+      "some",
+      "an"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Honest' starts with a vowel SOUND (the h is silent), so we use 'an'."
+    },
+    {
+     "q": "What is the plural of 'knife'?",
+     "choices": [
+      "knifes",
+      "knives",
+      "knifs",
+      "knifeies"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Many words ending in -fe change to -ves: knife, knives."
+    },
+    {
+     "q": "My brother plays ___ guitar.",
+     "choices": [
+      "a",
+      "the",
+      "an",
+      "some"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "We usually say 'the' with musical instruments: play the guitar."
+    }
+   ]
+  },
+  {
+   "name": "Present simple and continuous",
+   "questions": [
+    {
+     "q": "She ___ to school every day.",
+     "choices": [
+      "go",
+      "going",
+      "goes",
+      "is go"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "He, she and it take -s/-es in the present simple."
+    },
+    {
+     "q": "They ___ football on Saturdays.",
+     "choices": [
+      "plays",
+      "play",
+      "playing",
+      "are play"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "They + base verb in the present simple."
+    },
+    {
+     "q": "Look! The baby ___.",
+     "choices": [
+      "is sleeping",
+      "sleeps",
+      "sleep",
+      "sleeping"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "It is happening now, so we use the present continuous."
+    },
+    {
+     "q": "He ___ breakfast every morning.",
+     "choices": [
+      "eat",
+      "is eat",
+      "eaten",
+      "eats"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "A habit: present simple. He + eats."
+    },
+    {
+     "q": "I ___ my homework right now.",
+     "choices": [
+      "am doing",
+      "do",
+      "does",
+      "doing"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Right now' = present continuous: am/is/are + -ing."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "Do she like pizza?",
+      "Does she likes pizza?",
+      "Does she like pizza?",
+      "Is she like pizza?"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "After 'does' we use the base verb: like."
+    },
+    {
+     "q": "We ___ in the library now, so please be quiet.",
+     "choices": [
+      "study",
+      "studies",
+      "is studying",
+      "are studying"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Now' = present continuous. We + are studying."
+    },
+    {
+     "q": "I usually ___ coffee, but today I ___ tea.",
+     "choices": [
+      "drinking / drink",
+      "drink / am drinking",
+      "drink / drink",
+      "am drinking / drink"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "Usually = present simple. Today (now) = present continuous."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I am knowing the answer.",
+      "I knowing the answer.",
+      "I know the answer.",
+      "I does know the answer."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "'Know' is a state verb, so we do not use it in the continuous."
+    },
+    {
+     "q": "Water ___ at 100 degrees Celsius.",
+     "choices": [
+      "is boiling",
+      "boil",
+      "boils",
+      "boiled"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Facts and science use the present simple."
+    }
+   ]
+  },
+  {
+   "name": "Past simple",
+   "questions": [
+    {
+     "q": "What is the past tense of 'go'?",
+     "choices": [
+      "goed",
+      "went",
+      "gone",
+      "goes"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "'Go' is irregular: go, went, gone."
+    },
+    {
+     "q": "What is the past tense of 'play'?",
+     "choices": [
+      "plaied",
+      "played",
+      "playd",
+      "plays"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Regular verbs add -ed."
+    },
+    {
+     "q": "Yesterday I ___ pizza.",
+     "choices": [
+      "eat",
+      "eaten",
+      "eated",
+      "ate"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Eat' is irregular: eat, ate, eaten."
+    },
+    {
+     "q": "She ___ to the park last Sunday.",
+     "choices": [
+      "went",
+      "go",
+      "goes",
+      "going"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Last Sunday' = past simple: went."
+    },
+    {
+     "q": "Did you ___ your homework?",
+     "choices": [
+      "do",
+      "did",
+      "done",
+      "does"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "After 'did' we use the base verb."
+    },
+    {
+     "q": "What is the past tense of 'buy'?",
+     "choices": [
+      "buyed",
+      "boughten",
+      "bought",
+      "buys"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'Buy' is irregular: buy, bought, bought."
+    },
+    {
+     "q": "He ___ come to school yesterday.",
+     "choices": [
+      "doesn't",
+      "don't",
+      "didn't",
+      "not"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Negative past simple: didn't + base verb."
+    },
+    {
+     "q": "What is the past tense of 'study'?",
+     "choices": [
+      "studyed",
+      "studdied",
+      "studys",
+      "studied"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "Consonant + y: change y to i and add -ed."
+    },
+    {
+     "q": "I ___ him at the mall last night.",
+     "choices": [
+      "didn't saw",
+      "not see",
+      "didn't see",
+      "don't see"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "After 'didn't' we use the base verb: see."
+    },
+    {
+     "q": "While I ___ dinner, my phone rang.",
+     "choices": [
+      "cooked",
+      "am cooking",
+      "was cooking",
+      "cook"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "A longer action in the past (past continuous) is interrupted by a short one (past simple)."
+    }
+   ]
+  },
+  {
+   "name": "Comparatives and superlatives",
+   "questions": [
+    {
+     "q": "An elephant is ___ than a dog.",
+     "choices": [
+      "more big",
+      "biggest",
+      "big",
+      "bigger"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Short adjectives: add -er. Big doubles the g: bigger."
+    },
+    {
+     "q": "Today is the ___ day of the year.",
+     "choices": [
+      "hotter",
+      "hottest",
+      "most hot",
+      "hot"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "The + adjective + -est for the highest degree."
+    },
+    {
+     "q": "She is ___ than her sister.",
+     "choices": [
+      "more tall",
+      "taller",
+      "tallest",
+      "tall"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Short adjectives: tall, taller."
+    },
+    {
+     "q": "This book is ___ than that one.",
+     "choices": [
+      "interestinger",
+      "more interesting",
+      "most interesting",
+      "more interested"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Long adjectives use 'more'."
+    },
+    {
+     "q": "What is the comparative of 'good'?",
+     "choices": [
+      "gooder",
+      "more good",
+      "better",
+      "best"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Irregular: good, better, best."
+    },
+    {
+     "q": "He is the ___ student in the class.",
+     "choices": [
+      "best",
+      "better",
+      "most good",
+      "goodest"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Superlative of good = best."
+    },
+    {
+     "q": "My bag is ___ your bag.",
+     "choices": [
+      "as heavier as",
+      "more heavy as",
+      "heavy as",
+      "as heavy as"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "as + adjective + as shows two things are equal."
+    },
+    {
+     "q": "Math is ___ than English for me.",
+     "choices": [
+      "difficulter",
+      "most difficult",
+      "more difficult",
+      "difficult"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Difficult is long, so we use 'more' + adjective + than."
+    },
+    {
+     "q": "What is the superlative of 'far'?",
+     "choices": [
+      "farthest",
+      "farest",
+      "most far",
+      "farrest"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "Far, farther (or further), farthest (or furthest)."
+    },
+    {
+     "q": "The harder you study, the ___ your grades will be.",
+     "choices": [
+      "best",
+      "good",
+      "gooder",
+      "better"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "impossible",
+     "why": "The + comparative, the + comparative: the harder, the better."
+    }
+   ]
+  },
+  {
+   "name": "Prepositions",
+   "questions": [
+    {
+     "q": "I get up ___ 6:30.",
+     "choices": [
+      "at",
+      "on",
+      "in",
+      "to"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "Use 'at' with clock times."
+    },
+    {
+     "q": "My birthday is ___ June.",
+     "choices": [
+      "on",
+      "at",
+      "in",
+      "by"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "easy",
+     "why": "Use 'in' with months."
+    },
+    {
+     "q": "The cat is ___ the box. (It is inside the box.)",
+     "choices": [
+      "in",
+      "on",
+      "at",
+      "under"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "'In' means inside."
+    },
+    {
+     "q": "We have English ___ Monday.",
+     "choices": [
+      "in",
+      "at",
+      "on",
+      "to"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Use 'on' with days."
+    },
+    {
+     "q": "She lives ___ Bangkok.",
+     "choices": [
+      "on",
+      "at",
+      "in",
+      "to"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Use 'in' with cities and countries."
+    },
+    {
+     "q": "The meeting is ___ 3 p.m.",
+     "choices": [
+      "on",
+      "at",
+      "in",
+      "by"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Use 'at' with clock times."
+    },
+    {
+     "q": "He is good ___ math.",
+     "choices": [
+      "at",
+      "in",
+      "on",
+      "with"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Good at + subject or skill."
+    },
+    {
+     "q": "I'm interested ___ music.",
+     "choices": [
+      "on",
+      "at",
+      "in",
+      "for"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Interested in + noun."
+    },
+    {
+     "q": "She walked ___ the bridge to get to the other side.",
+     "choices": [
+      "through",
+      "between",
+      "in",
+      "across"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "'Across' means from one side to the other."
+    },
+    {
+     "q": "I live ___ the third floor.",
+     "choices": [
+      "on",
+      "in",
+      "at",
+      "by"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "We say 'on the third floor' (on a level of a building)."
+    }
+   ]
+  },
+  {
+   "name": "Modals and question words",
+   "questions": [
+    {
+     "q": "I ___ swim very well.",
+     "choices": [
+      "cans",
+      "can",
+      "am can",
+      "do can"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "After 'can' we use the base verb and never add -s."
+    },
+    {
+     "q": "___ is your name?",
+     "choices": [
+      "Who",
+      "What",
+      "Where",
+      "When"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "We ask about a thing or a name with 'What'."
+    },
+    {
+     "q": "___ do you live?",
+     "choices": [
+      "Who",
+      "What",
+      "Whose",
+      "Where"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Where' asks about a place."
+    },
+    {
+     "q": "You ___ wear a seat belt. It's the law.",
+     "choices": [
+      "can",
+      "may",
+      "must",
+      "would"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'Must' shows a strong rule or duty."
+    },
+    {
+     "q": "You look sick. You ___ see a doctor.",
+     "choices": [
+      "can",
+      "should",
+      "would",
+      "might"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "'Should' gives advice."
+    },
+    {
+     "q": "___ is your birthday?",
+     "choices": [
+      "Where",
+      "Who",
+      "When",
+      "Whose"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'When' asks about time."
+    },
+    {
+     "q": "___ book is this?",
+     "choices": [
+      "Who",
+      "Who's",
+      "What",
+      "Whose"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Whose' asks who owns something."
+    },
+    {
+     "q": "You ___ bring a pen. We have extra pens.",
+     "choices": [
+      "mustn't",
+      "don't have to",
+      "can't",
+      "shouldn't"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Don't have to' means it is not necessary."
+    },
+    {
+     "q": "Would you mind ___ the window?",
+     "choices": [
+      "open",
+      "to open",
+      "opening",
+      "opened"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "After 'Would you mind' we use the -ing form."
+    },
+    {
+     "q": "She ___ be at home. Her lights are on.",
+     "choices": [
+      "must",
+      "has to",
+      "should",
+      "would"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "'Must' can also show that we are almost sure."
+    }
+   ]
+  },
+  {
+   "name": "Countable and uncountable nouns",
+   "questions": [
+    {
+     "q": "How ___ apples do you want?",
+     "choices": [
+      "much",
+      "any",
+      "a lot",
+      "many"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Apples are countable: how many."
+    },
+    {
+     "q": "I don't have ___ money.",
+     "choices": [
+      "many",
+      "a",
+      "some",
+      "any"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "In negative sentences we use 'any'."
+    },
+    {
+     "q": "Which noun is uncountable?",
+     "choices": [
+      "water",
+      "book",
+      "chair",
+      "pen"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "You cannot count water (one water, two waters)."
+    },
+    {
+     "q": "There is ___ milk in the fridge.",
+     "choices": [
+      "a",
+      "some",
+      "many",
+      "few"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Milk is uncountable, so we use 'some'."
+    },
+    {
+     "q": "How ___ water do you drink a day?",
+     "choices": [
+      "many",
+      "much",
+      "few",
+      "a few"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Uncountable nouns use 'how much'."
+    },
+    {
+     "q": "Can I have ___ advice?",
+     "choices": [
+      "some",
+      "an",
+      "many",
+      "a few"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Advice' is uncountable: some advice."
+    },
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "I need an information.",
+      "I need some information.",
+      "I need some informations.",
+      "I need many informations."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'Information' is uncountable: no 'an' and no plural."
+    },
+    {
+     "q": "There ___ a lot of people at the party.",
+     "choices": [
+      "was",
+      "were",
+      "is",
+      "be"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "hard",
+     "why": "'People' is plural, so we use 'were'."
+    },
+    {
+     "q": "I have ___ friends in this city, so I feel lonely.",
+     "choices": [
+      "a few",
+      "a little",
+      "little",
+      "few"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "'Few' means almost none (a negative idea)."
+    },
+    {
+     "q": "There is only ___ sugar left, so we can't bake a cake.",
+     "choices": [
+      "few",
+      "a few",
+      "little",
+      "many"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Sugar is uncountable; 'little' means almost none."
+    }
+   ]
+  },
+  {
+   "name": "Punctuation and capital letters",
+   "questions": [
+    {
+     "q": "Which sentence is correct?",
+     "choices": [
+      "my name is Anna.",
+      "My name is Anna.",
+      "My name is anna.",
+      "my Name is Anna"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "Start a sentence and a name with a capital letter, and end with a period."
+    },
+    {
+     "q": "Where do you live___",
+     "choices": [
+      "?",
+      ".",
+      "!",
+      ","
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "A question ends with a question mark."
+    },
+    {
+     "q": "Which sentence uses commas correctly in a list?",
+     "choices": [
+      "I like, pizza pasta and salad.",
+      "I, like pizza pasta, and salad.",
+      "I like pizza pasta, and, salad.",
+      "I like pizza, pasta, and salad."
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "Put a comma between the things in a list."
+    },
+    {
+     "q": "This is ___ bike.",
+     "choices": [
+      "Tom's",
+      "Toms",
+      "Toms'",
+      "Tom is"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Use 's to show that something belongs to one person."
+    },
+    {
+     "q": "What is the short form of 'do not'?",
+     "choices": [
+      "do'nt",
+      "dont'",
+      "don,t",
+      "don't"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "The apostrophe goes where the letter o is missing."
+    },
+    {
+     "q": "Which sentence is written correctly?",
+     "choices": [
+      "We have class on monday.",
+      "We have class on Monday.",
+      "we have class on Monday.",
+      "We have Class on monday."
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "Days of the week start with a capital letter."
+    },
+    {
+     "q": "Which sentence is punctuated correctly?",
+     "choices": [
+      "She said, \"I am tired.\"",
+      "She said \"I am tired.",
+      "She said, I am tired.\"",
+      "She said I \"am tired.\""
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "Use a comma before the quotation and quotation marks around the spoken words."
+    },
+    {
+     "q": "Which sentence needs a question mark?",
+     "choices": [
+      "I am at the library",
+      "Where is the library",
+      "Please come in",
+      "Thank you very much"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "'Where is the library' asks a question."
+    },
+    {
+     "q": "Which sentence is punctuated correctly?",
+     "choices": [
+      "I wanted to go but, it was raining.",
+      "I wanted, to go but it was raining.",
+      "I wanted to go, but it was raining.",
+      "I wanted to go but it was, raining."
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "hard",
+     "why": "Put a comma before 'but' when it joins two complete sentences."
+    },
+    {
+     "q": "The two ___ bags are in the hall.",
+     "choices": [
+      "boys'",
+      "boy's",
+      "boys's",
+      "boys"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "impossible",
+     "why": "For a plural noun ending in -s, we put the apostrophe after the s."
+    }
+   ]
+  },
+  {
+   "name": "Confusing words and spelling",
+   "questions": [
+    {
+     "q": "Tom and Anna lost ___ bags.",
+     "choices": [
+      "there",
+      "their",
+      "they're",
+      "them"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "easy",
+     "why": "'Their' shows that something belongs to them."
+    },
+    {
+     "q": "I want to come ___!",
+     "choices": [
+      "too",
+      "to",
+      "two",
+      "tow"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "'Too' means also."
+    },
+    {
+     "q": "The cat licked ___ paw.",
+     "choices": [
+      "it's",
+      "its'",
+      "it is",
+      "its"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Its' shows belonging. 'It's' means 'it is'."
+    },
+    {
+     "q": "___ going to be late.",
+     "choices": [
+      "Your",
+      "Youre",
+      "You're",
+      "Yore"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "'You're' means 'you are'."
+    },
+    {
+     "q": "She is taller ___ me.",
+     "choices": [
+      "then",
+      "that",
+      "than",
+      "them"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "regular",
+     "why": "Use 'than' to compare."
+    },
+    {
+     "q": "Which word is spelled correctly?",
+     "choices": [
+      "receive",
+      "recieve",
+      "receeve",
+      "riceive"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "I before E, except after C: receive."
+    },
+    {
+     "q": "I don't know ___ it will rain.",
+     "choices": [
+      "whether",
+      "weather",
+      "wether",
+      "whither"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "'Whether' means 'if'. 'Weather' is rain, sun and wind."
+    },
+    {
+     "q": "The weather can ___ my mood.",
+     "choices": [
+      "affect",
+      "effect",
+      "effects",
+      "effected"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "hard",
+     "why": "'Affect' is usually a verb. 'Effect' is usually a noun."
+    },
+    {
+     "q": "Which word is spelled correctly?",
+     "choices": [
+      "definately",
+      "definitly",
+      "definitely",
+      "defanitely"
+     ],
+     "answer": 2,
+     "double": false,
+     "tier": "impossible",
+     "why": "Definitely has the word 'finite' inside it."
+    },
+    {
+     "q": "First we study; ___ we play.",
+     "choices": [
+      "then",
+      "than",
+      "that",
+      "them"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "'Then' shows what comes next."
+    }
+   ]
+  },
+  {
+   "name": "Linking words, future and reading",
+   "questions": [
+    {
+     "q": "I was tired, ___ I went to bed early.",
+     "choices": [
+      "so",
+      "but",
+      "because",
+      "or"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "easy",
+     "why": "'So' shows a result."
+    },
+    {
+     "q": "I stayed home ___ it was raining.",
+     "choices": [
+      "so",
+      "but",
+      "and",
+      "because"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "'Because' gives the reason."
+    },
+    {
+     "q": "Read: 'Tom gets up at 6:30. He eats breakfast at 7:00 and goes to school at 7:30.' What time does Tom eat breakfast?",
+     "choices": [
+      "6:30",
+      "7:30",
+      "8:00",
+      "7:00"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "easy",
+     "why": "The text says he eats breakfast at 7:00."
+    },
+    {
+     "q": "It's cloudy. I think it ___ rain.",
+     "choices": [
+      "will",
+      "is",
+      "does",
+      "has"
+     ],
+     "answer": 0,
+     "double": false,
+     "tier": "regular",
+     "why": "'Will' is used for predictions."
+    },
+    {
+     "q": "We ___ visit my grandma this weekend. We bought the tickets.",
+     "choices": [
+      "will",
+      "did",
+      "have",
+      "are going to"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Be going to' is used for plans."
+    },
+    {
+     "q": "Read: 'Mia has a small dog. The dog is brown and loves to run in the park.' What does the dog love?",
+     "choices": [
+      "sleeping all day",
+      "running in the park",
+      "eating cake",
+      "swimming"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "regular",
+     "why": "The text says the dog loves to run in the park."
+    },
+    {
+     "q": "I have ___ been to Japan.",
+     "choices": [
+      "ago",
+      "yesterday",
+      "last year",
+      "never"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "regular",
+     "why": "'Never' is used with the present perfect (have + past participle)."
+    },
+    {
+     "q": "She has lived here ___ 2020.",
+     "choices": [
+      "for",
+      "from",
+      "in",
+      "since"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "'Since' + a point in time."
+    },
+    {
+     "q": "If it ___ tomorrow, we will stay home.",
+     "choices": [
+      "will rain",
+      "rain",
+      "rained",
+      "rains"
+     ],
+     "answer": 3,
+     "double": false,
+     "tier": "hard",
+     "why": "In a first conditional, the 'if' part uses the present simple."
+    },
+    {
+     "q": "I have known him ___ five years.",
+     "choices": [
+      "since",
+      "for",
+      "from",
+      "during"
+     ],
+     "answer": 1,
+     "double": false,
+     "tier": "impossible",
+     "why": "'For' + a length of time."
+    }
+   ]
+  }
+ ]
+}
