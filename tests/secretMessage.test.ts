@@ -50,3 +50,18 @@ describe('Secret Message', () => {
     expect(js).toContain('KruEnd.setup')
   })
 })
+
+describe('Secret Message: the whole team plays (Nov 25)', () => {
+  const html = read('public/games/secret-message/index.html')
+  it('every student of both teams is in the line, and the names fit in 1-3 columns at 18 px or more', () => {
+    expect(js).toContain('n = all.length; // the WHOLE team plays every round')
+    expect(js).not.toContain('S.chain')
+    expect(html).not.toContain('chainRow')
+    expect(js).toContain('for (var cols = 1; cols <= 3; cols++)')
+    expect(js).toContain('for (var px = 28; px >= 18; px--)')
+  })
+  it('one bottom row: timer, points and buttons together; no "Get in line" text', () => {
+    expect(html).toMatch(/<div class="controls">[\s\S]*id="totals"[\s\S]*id="go"/)
+    expect(js).not.toContain('Get in line')
+  })
+})

@@ -23,21 +23,19 @@
       <!-- one stage, redrawn for every phase: the lines, the un-mirror warning, the secret, the re-mirror note, the answer -->
       <section class="stage" id="stage" aria-live="polite"></section>
 
+      <!-- one bottom row: timer, the points, and the buttons, all on the same line -->
       <div class="controls">
         <div class="secs" id="secs" aria-hidden="true"></div>
+        <div class="totals" id="totals" aria-label="Points"></div>
         <span class="phase" id="phase"></span>
         <span class="grow"></span>
         <button class="btn" id="alt" hidden></button>
         <button class="btn gold" id="go"></button>
       </div>
-
-      <div class="totals" id="totals" aria-label="Points"></div>
     </main>
 
     <div class="backdrop" id="menuBack" hidden>
       <div class="menu" role="dialog" aria-label="Settings">
-        <div class="menu-label">Students in each line</div>
-        <div class="menu-row" id="chainRow"></div>
         <div class="menu-trow"><span class="menu-label">Time to whisper</span><div id="secsRow"></div></div>
         <div class="menu-trow"><span class="menu-label">Secret stays on screen</span><div id="peekRow"></div></div>
         <div class="menu-row">
