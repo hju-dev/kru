@@ -282,6 +282,11 @@ body {
 .acard .ahp { font: 700 13px var(--mono); }
 .acard small { font-size: 13px; line-height: 1.2; color: var(--muted); }
 .aim-go { grid-column: 1 / -1; min-height: 52px; font-size: 20px; }
+.shop.aim { overflow-y: auto; }
+.shop.aim > * { flex-shrink: 0; }
+.aim-grid.compact .acard { min-height: 0; }
+.aim-grid.compact .acard small { display: none; }
+.aim-grid.compact .acard .si-ico svg { width: 34px; height: 34px; }
 .aim-hint { grid-column: 1 / -1; text-align: center; font: 800 16px var(--display); color: #ff8a1f; }
 
 .b-head .kits { font: 800 14px var(--mono); color: #7fe3b3; }

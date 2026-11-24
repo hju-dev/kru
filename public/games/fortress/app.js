@@ -195,7 +195,7 @@
   }
   function fresh(deck) {
     S = { v: 4, level: S ? S.level : '', deck: deck || '', t: newTeams(), phase: 'turn', round: 1, queue: [], cur: 0, skip: {}, elim: [], over: false,
-      maxRounds: S ? S.maxRounds : DEFAULT_ROUNDS, joined: {}, hitBy: {}, allyLog: [], byHp: false, bonusNote: '',
+      maxRounds: S ? S.maxRounds : DEFAULT_ROUNDS, joined: {}, hitBy: {}, allyLog: [], byHp: false, bonusNote: '', tieNote: '',
       aim: null, secs: S ? S.secs : 30, hist: [], introDone: S ? S.introDone : false, order: {}, qi: {} };
     S.queue = living();
     buildPool();
@@ -397,23 +397,38 @@
     S.byHp = true;
     var r = ranking(), winner = r[0] && r[0].id;
     if (!winner) { checkEnd(); return; }
-    finish(winner, "TIME'S UP!", tname(winner) + ' has the strongest base and wins!');
+    var hpOf = function (x) { return totalHp(x.id); }, alive2 = r.filter(function (x) { return alive(x.id); });
+    var nobody = alive2.length > 1 && alive2.every(function (x) { return hpOf(x) === hpOf(alive2[0]); }); // nobody landed a hit that lasted
+    var sharedTop = alive2.filter(function (x) { return x.rank === 1; });
+    var sub = tname(winner) + ' has the strongest base and wins!';
+    if (sharedTop.length > 1) sub = sharedTop.map(function (x) { return tname(x.id); }).join(' and ') + ' are tied for first and share the points!';
+    else if (alive2[1] && hpOf(alive2[0]) === hpOf(alive2[1])) sub = tname(winner) + ' wins the tie: the same health, but the most gold and weapons left.';
+    if (nobody) sub = 'Nobody won a fight! ' + sub;
+    S.tieNote = nobody || sharedTop.length > 1 ? sub : '';
+    finish(winner, "TIME'S UP!", sub);
   }
 
   // ---------- ranking and points ----------
   function ranking() {
     var l = living();
-    var survivors = l.slice().sort(function (a, b) { return totalHp(b) - totalHp(a); }); // the strongest base first
+    // the strongest base first; the same health: the most gold left, then the most weapons left; still equal = a shared place
+    var key = function (id) { return [totalHp(id), T(id).gold, T(id).bombs.length]; };
+    var cmp = function (a, b) { var x = key(a), y = key(b); for (var i = 0; i < 3; i++) if (x[i] !== y[i]) return y[i] - x[i]; return 0; };
+    var survivors = l.slice().sort(cmp);
     var gone = S.elim.slice().reverse();
     var out = [], place = 1;
-    survivors.forEach(function (id) { out.push({ id: id, rank: place++ }); });
+    survivors.forEach(function (id, i) { out.push({ id: id, rank: i > 0 && cmp(survivors[i - 1], id) === 0 ? out[i - 1].rank : i + 1 }); });
+    place = survivors.length + 1;
     gone.forEach(function (id) { out.push({ id: id, rank: place++ }); });
     return out;
   }
   function finalPts(id) {
     if (S.joined && S.joined[id] && S.joined[id] !== id) return finalPts(S.joined[id]); // an eliminated team shares the points of the team it joined
-    var r = ranking().filter(function (x) { return x.id === id; })[0];
-    return r ? PLACE_PTS[Math.min(PLACE_PTS.length, r.rank) - 1] || 0 : 0;
+    var all = ranking(), r = all.filter(function (x) { return x.id === id; })[0];
+    if (!r) return 0;
+    var same = all.filter(function (x) { return x.rank === r.rank; }).length, sum = 0; // a shared place shares the points of the places it covers
+    for (var p = r.rank; p < r.rank + same; p++) sum += PLACE_PTS[Math.min(PLACE_PTS.length, p) - 1] || 0;
+    return Math.floor(sum / same);
   }
 
   // ---------- the board ----------
@@ -421,7 +436,7 @@
     if (!S) return;
     var id = curId(), phase = S.phase;
     var rl = 'R' + S.round + '/' + (S.maxRounds || DEFAULT_ROUNDS);
-    var label = phase === 'over' ? (S.bonusNote ? '🏆 ' + S.bonusNote : 'Game over') : phase === 'turn' ? rl + ' · ' + tname(id) + "'s question" : phase === 'shop' ? rl + ' · Store · ' + tname(id) : phase === 'repair' ? rl + ' · Repairs · ' + tname(id) : rl + ' · Fire · ' + tname(id);
+    var label = phase === 'over' ? (S.bonusNote ? '🏆 ' + S.bonusNote : S.tieNote ? '🏆 ' + S.tieNote : 'Game over') : phase === 'turn' ? rl + ' · ' + tname(id) + "'s question" : phase === 'shop' ? rl + ' · Store · ' + tname(id) : phase === 'repair' ? rl + ' · Repairs · ' + tname(id) : rl + ' · Fire · ' + tname(id);
     $('turn').textContent = id || phase === 'over' ? label : '';
     $('turn').style.color = id ? color(id) : '';
     var act = $('act');
@@ -484,7 +499,10 @@
         '<span class="hp"><i style="width:' + pct + '%"></i></span><span class="ahp">' + (dead ? 'destroyed' : money(hp) + ' / ' + money(MAXHP[k]) + ' HP') + '</span>' +
         '<small>' + DESC[k] + '</small></button>';
     }).join('');
-    $('aimGrid').innerHTML = cards + (it.mode === 'all' || it.mode === 'jam' ? '<button class="btn gold aim-go" data-go="1">' + (it.mode === 'jam' ? '📡 Jam ' + esc(tname(tid)) : '💥 Fire at the whole base') + '</button>' : '<div class="aim-hint">' + asText + '</div>');
+    var whole = it.mode === 'all' || it.mode === 'jam';
+    // a whole-base weapon (TOS-2M, Sarmat, Jammer): the Fire button comes FIRST so it is never pushed off the small screen
+    $('aimGrid').className = 'aim-grid' + (whole ? ' compact' : '');
+    $('aimGrid').innerHTML = (whole ? '<button class="btn gold aim-go" data-go="1">' + (it.mode === 'jam' ? '📡 Jam ' + esc(tname(tid)) : '💥 Fire at the whole base') + '</button>' : '') + cards + (whole ? '' : '<div class="aim-hint">' + asText + '</div>');
     $('aimBack').hidden = false;
   }
   function pickTarget(tid, key) {
