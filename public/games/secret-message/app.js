@@ -8,7 +8,6 @@
   'use strict';
   var $ = function (id) { return document.getElementById(id); };
   var COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#9B7BFF'];
-  var CHAINS = [3, 4, 5, 6, 7, 8];
   var KIND = { ds: 'Direct statement', dq: 'Direct question', rs: 'Reported statement', rq: 'Reported question' };
   var TO = { ds: 'REPORTED speech', dq: 'REPORTED speech', rs: 'DIRECT speech (the exact words)', rq: 'DIRECT speech (the exact words)' };
   var PT = 1;
@@ -47,7 +46,7 @@
   function lineFor(t) {
     var members = t.members || [];
     if (!members.length) return ['?'];
-    var all = members.map(mid), n = Math.min(S.chain, all.length);
+    var all = members.map(mid), n = all.length; // the WHOLE team plays every round
     var q = (S.q[t.id] || []).filter(function (id) { return all.indexOf(id) >= 0; });
     while (q.length < n) q = q.concat(shuffle(all.filter(function (id) { return q.indexOf(id) < 0; })));
     var take = q.slice(0, n);
@@ -128,7 +127,7 @@
   function lineHtml(t) {
     var line = S.lines[t.id] || [];
     var rows = line.map(function (id, i) {
-      var tag = i === 0 && line.length > 1 ? '<em class="role">sees the secret</em>' : i === line.length - 1 ? '<em class="role">says it!</em>' : '';
+      var tag = i === 0 && line.length > 1 ? '<em class="role" aria-label="sees the secret">👀</em>' : i === line.length - 1 ? '<em class="role" aria-label="says it">🎤</em>' : '';
       var cls = i === 0 ? ' first' : i === line.length - 1 ? ' last' : '';
       return '<li class="' + cls.trim() + '"><span class="no">' + (i + 1) + '</span><span class="nm">' + esc(nameOf(t, id)) + '</span>' + tag + '</li>';
     }).join('');
@@ -145,34 +144,34 @@
     $('count').textContent = 'Round ' + S.round;
     switch (phase) {
       case 'order':
-        html = linesHtml(); label = 'Get in line! The first student of each line comes to me.'; go = 'Get the secret ▶';
+        html = linesHtml(); label = '👀 sees the secret · 🎤 says it'; go = 'Get the secret ▶';
         break;
       case 'warn1':
         html = '<div class="cover warn"><div class="big">🕵️ TOP SECRET MISSION!</div>' +
           '<p>Agent Teacher, the TV must NOT see this! Un-mirror your phone now:</p>' +
           '<p class="how">Control Center → <b>Screen Mirroring</b> → <b>Stop Mirroring</b></p></div>';
-        label = 'Is the TV dark?'; go = '🔒 The TV is dark. Show me!'; alt = '◀ Back';
+        go = '🔒 TV is dark ▶'; alt = '◀ Back';
         break;
       case 'secret':
         html = '<div class="secret"><div class="kind">' + esc(KIND[p.k]) + ' → say it as ' + esc(TO[p.k]) + '</div>' +
           '<div class="phrase" id="phrase">' + esc(p.say) + '</div>' +
           '<div class="who">Show ONLY the first student of each team: <b>' + players.map(function (t) { return esc(nameOf(t, (S.lines[t.id] || [])[0])); }).join(' and ') + '</b></div></div>';
-        label = 'Shhh…'; go = 'Hide it ▶';
+        go = 'Hide it ▶';
         break;
       case 'warn2':
         html = '<div class="cover go"><div class="big">🚀 MISSION LAUNCHED!</div>' +
           '<p>The secret is safe. You may mirror your phone again!</p>' +
           '<p class="how">Control Center → <b>Screen Mirroring</b> → your TV</p></div>';
-        label = 'Back on the TV?'; go = 'Start whispering ▶'; alt = '👀 Show it again';
+        go = 'Start whispering ▶'; alt = '👀 Show again';
         break;
       case 'play':
-        html = linesHtml(); label = 'Whisper it down the line. Shhh!'; go = running ? 'Reporters are ready ▶' : 'Resume'; alt = running ? 'Pause' : '';
+        html = linesHtml(); go = running ? 'Reporters are ready ▶' : 'Resume'; alt = running ? 'Pause' : '';
         break;
       case 'judge':
         if (!revealed) {
           html = '<div class="cover judge"><div class="big">🎤 Reporters, speak!</div><p>The last student of each line says the secret the other way.</p>' +
             '<div class="reporters">' + players.map(function (t, i) { return '<span style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + reporterNames()[i] + '</b></span>'; }).join('') + '</div></div>';
-          label = 'Listen, then reveal.'; go = 'Reveal the answer ▶';
+          go = 'Reveal the answer ▶';
         } else {
           html = '<div class="answer"><div class="kind">' + esc(KIND[p.k]) + ' → ' + esc(TO[p.k]) + '</div>' +
             '<div class="phrase small">Secret: ' + esc(p.say) + '</div>' +
@@ -183,7 +182,7 @@
                 '<button class="btn ok" data-m="' + esc(t.id) + '" data-v="1" aria-pressed="' + (m === 1) + '" aria-label="' + esc(t.name) + ' right">✓ +' + PT + '</button>' +
                 '<button class="btn no" data-m="' + esc(t.id) + '" data-v="0" aria-pressed="' + (m === 0) + '" aria-label="' + esc(t.name) + ' wrong">✗</button></div>';
             }).join('') + '</div></div>';
-          label = 'Other correct versions are fine.'; go = 'Next round ▶';
+          go = 'Next round ▶';
         }
         break;
     }
@@ -202,11 +201,21 @@
   /** Long lines or long sentences: shrink the text until everything fits (never below 18 px). */
   function fit() {
     var stage = $('stage');
-    var lists = stage.querySelectorAll('.line ol'), size = 26;
+    var lists = stage.querySelectorAll('.line ol');
     if (lists.length) {
-      var set = function (px) { lists.forEach(function (o) { o.style.fontSize = px + 'px'; }); };
-      set(size);
-      while (size > 18 && stage.scrollHeight > stage.clientHeight + 1) set(size -= 1);
+      // the whole team is in line: try 1, 2 and 3 columns and keep the one that gives the biggest names (never below 18 px)
+      var layout = function (cols, px) {
+        lists.forEach(function (o) { o.style.gridTemplateRows = 'repeat(' + Math.ceil(o.children.length / cols) + ', auto)'; o.style.fontSize = px + 'px'; });
+      };
+      var fits = function () { return stage.scrollHeight <= stage.clientHeight + 1 && Array.prototype.every.call(lists, function (o) { return o.scrollWidth <= o.clientWidth + 1; }); };
+      var best = { cols: 3, px: 18 };
+      for (var cols = 1; cols <= 3; cols++) {
+        for (var px = 28; px >= 18; px--) {
+          layout(cols, px);
+          if (fits()) { if (px > best.px) best = { cols: cols, px: px }; break; }
+        }
+      }
+      layout(best.cols, best.px);
     }
     var ph = stage.querySelectorAll('.phrase');
     if (ph.length) {
@@ -242,18 +251,12 @@
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
   function renderMenu() {
-    $('chainRow').innerHTML = CHAINS.map(function (v) { return '<button class="btn" data-ch="' + v + '" aria-pressed="' + (v === S.chain) + '">' + v + '</button>'; }).join('');
     KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }, { min: 30, max: 300 });
     KruMenu.timer($('peekRow'), S.peek, function (v) { S.peek = v; save(); }, { min: 10, max: 60 });
   }
   $('more').addEventListener('click', function () { disarm(); renderMenu(); $('undo').disabled = !players.some(function (t) { return S.mark[t.id] === 1; }); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
-  $('chainRow').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-ch]');
-    if (!b) return;
-    S.chain = Number(b.dataset.ch); save(); renderMenu(); // applies from the next round
-  });
   $('undo').addEventListener('click', function () { undoLast(); closeMenu(); });
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Secret Message' }); });
   $('resetScores').addEventListener('click', function () {
