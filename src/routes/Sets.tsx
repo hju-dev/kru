@@ -1,6 +1,8 @@
-import { useState } from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router'
+import { useEffect, useMemo, useState } from 'react'
+import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router'
+import { BackButton } from '../components/BackButton'
 import { findGame } from '../lib/games'
+import { loadSets, type SetOption } from '../lib/sets'
 import { unitsFor } from '../lib/units'
 import { useApp } from '../store/app'
 import type { Level } from '../types'
@@ -9,53 +11,111 @@ import './Home.css'
 const LEVELS: Level[] = ['M.1', 'M.2', 'M.3']
 
 /**
- * Step 2 (Henry, Nov 23): the question sets. The level, then the built-in content or a unit from the lessons.
- * The team builder comes after this screen; the choice travels in the address (?level=&unit=).
+ * Step 2 (Henry, Nov 24): tap the level, then see ALL the question sets of that game and pick exactly the one you want,
+ * before the team builder. The choice travels in the address (?level=&set=&unit=) and is also kept in this screen's own
+ * address, so Back from the team builder returns here with everything still selected.
  */
 export function Sets() {
   const { game: slug = '' } = useParams()
   const navigate = useNavigate()
+  const [query] = useSearchParams()
   const game = findGame(slug)
   const { data, lastClass } = useApp()
   const cls = data?.classes.find((c) => c.name === lastClass) ?? null
-  const [level, setLevel] = useState<Level>(cls?.level ?? 'M.2')
-  const [unit, setUnit] = useState('')
+  const [level, setLevel] = useState<Level>((query.get('level') as Level | null) ?? cls?.level ?? 'M.2')
+  const [setKey, setSetKey] = useState(query.get('set') ?? '')
+  const [unit, setUnit] = useState(query.get('unit') ?? '')
+  const sheet = useMemo(() => (data?.questions ?? []).filter((q) => q.level === level), [data, level])
+  // the sets for the current game + level; 'loading' until they arrive
+  const askKey = `${slug}|${level}|${cls?.name ?? ''}|${sheet.length}`
+  const [result, setResult] = useState<{ key: string; options: SetOption[] | null } | null>(null)
+  const options: SetOption[] | null | 'loading' = result && result.key === askKey ? result.options : 'loading'
+
+  useEffect(() => {
+    if (!game || !cls) return
+    let cancelled = false
+    loadSets(slug, level, cls.name, sheet)
+      .then((o) => !cancelled && setResult({ key: askKey, options: o }))
+      .catch(() => !cancelled && setResult({ key: askKey, options: null }))
+    return () => {
+      cancelled = true
+    }
+  }, [slug, level, cls, game, sheet, askKey])
+
   if (!game || game.status !== 'ready' || !cls) return <Navigate to={game ? `/class/${game.slug}` : '/'} replace />
 
-  const units = game.units ? unitsFor(level, slug, cls.name) : []
-  const q = new URLSearchParams()
-  if (game.levels.length > 0) q.set('level', level)
-  if (unit) q.set('unit', unit)
+  const listed = Array.isArray(options)
+  // games whose content is a unit only (no list of sets): the old built-in / unit choice
+  const units = !listed && options !== 'loading' && game.units ? unitsFor(level, slug, cls.name) : []
+  const needsPick = listed && options.length > 0
+  const ready = options !== 'loading' && (!needsPick || setKey !== '')
+
+  function pickLevel(l: Level) {
+    setLevel(l)
+    setSetKey('')
+    setUnit('')
+  }
+
+  function next() {
+    const q = new URLSearchParams()
+    if (game!.levels.length > 0) q.set('level', level)
+    if (setKey) q.set('set', setKey)
+    if (unit) q.set('unit', unit)
+    const qs = q.toString()
+    // remember the choice in this screen's own address, so Back from the team builder comes back to it unchanged
+    navigate(`/sets/${slug}${qs ? `?${qs}` : ''}`, { replace: true })
+    navigate(`/setup/${slug}${qs ? `?${qs}` : ''}`)
+  }
+
+  const groups: { name: string; items: SetOption[] }[] = []
+  if (listed) for (const o of options) (groups.find((g) => g.name === o.group) ?? (groups[groups.length] = { name: o.group, items: [] })).items.push(o)
 
   return (
     <main className="screen home step">
       <header className="topbar">
-        <Link className="btn small" to={`/class/${slug}`}>
-          ◀ Back
-        </Link>
+        <BackButton fallback={`/class/${slug}`} />
         <span className="step-count">Step 2 of 3</span>
       </header>
       <h1 className="step-title">{game.title}</h1>
-      <p className="muted step-sub">
-        {cls.name} · choose the question sets
-      </p>
+      <p className="muted step-sub">{cls.name} · choose the question set</p>
 
       {game.levels.length > 0 && (
         <div className="seg lvl-seg" role="group" aria-label="Level">
           {LEVELS.filter((l) => game.levels.includes(l)).map((l) => (
-            <button
-              key={l}
-              aria-pressed={level === l}
-              onClick={() => {
-                setLevel(l)
-                setUnit('')
-              }}
-            >
+            <button key={l} aria-pressed={level === l} onClick={() => pickLevel(l)}>
               {l}
             </button>
           ))}
         </div>
       )}
+
+      {options === 'loading' && <p className="muted">Loading the sets…</p>}
+
+      {groups.map((g) => (
+        <section key={g.name} className="set-group" aria-label={g.name}>
+          <h2 className="set-group-title">{g.name}</h2>
+          <div className="set-list" role="radiogroup">
+            {g.items.map((o) => {
+              const on = setKey === o.key && unit === (o.unit ?? '')
+              return (
+                <button
+                  key={`${o.unit ?? ''}:${o.key}`}
+                  className={`set-opt${on ? ' on' : ''}`}
+                  role="radio"
+                  aria-checked={on}
+                  onClick={() => {
+                    setSetKey(o.key)
+                    setUnit(o.unit ?? '')
+                  }}
+                >
+                  <b>{o.label}</b>
+                  <small>{o.sub}</small>
+                </button>
+              )
+            })}
+          </div>
+        </section>
+      ))}
 
       {units.length > 0 && (
         <div className="set-list" role="radiogroup" aria-label="Question sets">
@@ -72,8 +132,8 @@ export function Sets() {
         </div>
       )}
 
-      <button className="btn primary step-btn" onClick={() => navigate(`/setup/${slug}${q.toString() ? `?${q.toString()}` : ''}`)}>
-        Next: make the teams ▶
+      <button className="btn primary step-btn" disabled={!ready} onClick={next}>
+        {needsPick && setKey === '' ? 'Choose a set first' : 'Next: make the teams ▶'}
       </button>
     </main>
   )

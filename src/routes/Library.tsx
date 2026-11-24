@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router'
+import { Navigate, useNavigate, useParams } from 'react-router'
+import { BackButton } from '../components/BackButton'
 import { SectionIcon } from '../components/SectionIcon'
 import { findGame, librarySections, type GameInfo, type SectionId } from '../lib/games'
 import { useApp } from '../store/app'
@@ -34,9 +35,7 @@ export function Library() {
   return (
     <main className="screen home">
       <header className="topbar">
-        <Link className="btn small" to="/">
-          ◀ Home
-        </Link>
+        <BackButton fallback="/" label="◀ Home" />
         <h1 className="lib-title" style={{ '--sec': color } as React.CSSProperties}>
           <SectionIcon id={section as SectionId | 'favorites' | 'recent'} />
           {title}

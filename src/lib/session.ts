@@ -30,6 +30,8 @@ export interface Session {
   mode: Mode
   /** a unit made from Henry's Gamma lessons (public/units/<id>.json), picked on the setup screen; none = built-in content */
   unit?: string
+  /** the question set picked before the team builder (a deck key for Quiz Island / Point 1-4, a set key for the Battle games) */
+  setKey?: string
   /** a mixed group from several classes (Christmas Race Board): the students picked, with session ids 1..n */
   mix?: MixStudent[]
 
@@ -101,6 +103,7 @@ export function initMessage(s: Session) {
       class: s.class,
       level: s.level,
       unit: s.unit ?? null,
+      setKey: s.setKey ?? null,
       mode: s.mode,
       // mixed groups: "Nok (2/3)" when two students share a nickname
       teams: displayTeams(s.teams),

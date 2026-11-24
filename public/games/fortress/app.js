@@ -584,11 +584,15 @@
       var all = [];
       QZ.unit.sets.forEach(function (s) { all = all.concat(deckQs(s.questions, s.name)); });
       decks.push({ key: 'unit', label: 'Unit: ' + QZ.unit.title, sub: all.length + ' questions', qs: all });
+      if (QZ.unit.sets.length > 1) QZ.unit.sets.forEach(function (s) {
+        decks.push({ key: 'unit:' + s.name, label: 'Unit set: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) });
+      });
     }
     if (own.length) decks.push({ key: 'bank', label: 'Quiz Dash questions', sub: own.length + ' questions, easy to impossible', qs: deckQs(own, '', true) });
     var every = [];
     QZ.builtIn.forEach(function (s) { every = every.concat(deckQs(s.questions, s.name)); });
     if (every.length) decks.push({ key: 'qb-all', label: 'Battle of Wits: all topics', sub: every.length + ' questions', qs: every });
+    QZ.builtIn.forEach(function (s) { decks.push({ key: 'qb:' + s.name, label: 'Battle of Wits: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) }); });
     QZ.fromSheet.forEach(function (s) { decks.push({ key: 'sheet:' + s.name, label: 'Your Sheet: ' + s.name, sub: s.questions.length + ' questions', qs: deckQs(s.questions, s.name) }); });
     return decks;
   }
@@ -875,7 +879,7 @@
       var saved = session.resume;
       if (saved && saved.v === 2 && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; buildPoolKeep();
-      } else { S = null; fresh(QZ.unit ? 'unit' : ''); S.level = QZ.level; }
+      } else { S = null; fresh(session.setKey && deckByKey(session.setKey) ? session.setKey : QZ.unit ? 'unit' : ''); S.level = QZ.level; } // the deck picked before the team builder
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.aim = null;
       skipDead();
       INTRO = KruIntro.forLevel(mine, QZ.level);

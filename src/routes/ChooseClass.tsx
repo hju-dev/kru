@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router'
+import { Navigate, useNavigate, useParams, useSearchParams } from 'react-router'
+import { BackButton } from '../components/BackButton'
 import { Sheet } from '../components/Sheet'
 import { findGame } from '../lib/games'
 import { quickSession, todayKey } from '../lib/session'
@@ -20,7 +21,8 @@ export function ChooseClass() {
   const game = findGame(slug)
   const { data, setLastClass } = useApp()
   const sessions = useSessions((s) => s.sessions)
-  const [chosen, setChosen] = useState<string | null>(null) // always asked: nothing is pre-selected
+  const [query] = useSearchParams()
+  const [chosen, setChosen] = useState<string | null>(query.get('class')) // asked every time; kept when you come Back to this screen
   const [pick, setPick] = useState(false)
   useEffect(() => void useSessions.getState().load(), [])
   const classes = (data?.classes ?? []).filter((c) => !c.archived)
@@ -32,6 +34,8 @@ export function ChooseClass() {
   function next() {
     if (!selected || !game) return
     setLastClass(selected.name)
+    // keep the choice in this screen's own address, so Back from the next screen returns here unchanged
+    navigate(`/class/${game.slug}?class=${encodeURIComponent(selected.name)}`, { replace: true })
     useLibrary.getState().played(game.slug)
     if (game.classTool) {
       // already open for this class? go back to it
@@ -59,9 +63,7 @@ export function ChooseClass() {
   return (
     <main className="screen home step">
       <header className="topbar">
-        <Link className="btn small" to="/">
-          ◀ Home
-        </Link>
+        <BackButton fallback={`/library/${game.section}`} />
         <span className="step-count">Step 1 of {needsSets ? 3 : 2}</span>
       </header>
       <h1 className="step-title">{game.title}</h1>

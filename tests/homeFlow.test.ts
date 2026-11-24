@@ -36,4 +36,26 @@ describe('Home and the steps before the team builder (Henry, Nov 23)', () => {
   it('the gear is an 8-tooth symmetric drawing in every game', () => {
     for (const f of ['public/games/quiz-island/index.html', 'public/games/shared/kru-cards.js', 'public/games/shared/kru-battle.js', 'public/games/fortress/index.html']) expect(read(f), f).toContain('M9.6 4.16 L10.16 1.56')
   })
+  it('the Sets step lists every set of the game for the level and passes the choice on (Henry, Nov 24)', () => {
+    const sets = read('src/routes/Sets.tsx')
+    expect(sets).toContain('loadSets(slug, level, cls.name, sheet)')
+    expect(sets).toContain("q.set('set', setKey)")
+    expect(sets).toContain('Choose a set first')
+    const lib = read('src/lib/sets.ts')
+    for (const slug of ['quiz-island', 'fortress', 'quiz-battle', 'battle-of-readers', 'battle-of-writers']) expect(lib).toContain(`'${slug}'`)
+    expect(read('src/lib/session.ts')).toContain('setKey: s.setKey ?? null')
+    expect(read('src/routes/Setup.tsx')).toContain("query.get('set')")
+  })
+  it('the games start with the chosen set', () => {
+    expect(read('public/games/quiz-island/app.js')).toContain('session.setKey && deckByKey(session.setKey)')
+    expect(read('public/games/fortress/app.js')).toContain('session.setKey && deckByKey(session.setKey)')
+    expect(read('public/games/shared/kru-battle.js')).toContain('session.setKey ? SETS.filter')
+  })
+  it('Back goes back exactly one screen and each step keeps its choice in its own address', () => {
+    const back = read('src/components/BackButton.tsx')
+    expect(back).toContain('navigate(-1)')
+    for (const f of ['src/routes/Sets.tsx', 'src/routes/ChooseClass.tsx', 'src/routes/Library.tsx', 'src/routes/Setup.tsx']) expect(read(f), f).toContain('<BackButton')
+    expect(read('src/routes/ChooseClass.tsx')).toContain('?class=${encodeURIComponent(selected.name)}')
+    expect(read('src/routes/Sets.tsx')).toContain('{ replace: true }')
+  })
 })

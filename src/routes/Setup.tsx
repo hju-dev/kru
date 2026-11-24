@@ -22,6 +22,7 @@ import {
   unassigned,
   type Bin,
 } from '../lib/teams'
+import { BackButton } from '../components/BackButton'
 import { useChipDrag } from '../lib/useChipDrag'
 import { useApp } from '../store/app'
 import { useSessions } from '../store/sessions'
@@ -41,6 +42,7 @@ export function Setup() {
   // the question sets chosen on the step before (/sets/<game>): ?level=M.2&unit=<id>
   const levelQ = (query.get('level') as Level | null) ?? null
   const unitQ = query.get('unit') || undefined
+  const setQ = query.get('set') || undefined
   const cls = mixed ? null : (data?.classes.find((c) => c.name === lastClass) ?? null)
 
   useEffect(() => void useSessions.getState().load(), [])
@@ -72,6 +74,7 @@ export function Setup() {
         game: game.slug,
         level: levelQ ?? cls.level ?? 'M.2',
         unit: unitQ,
+        setKey: setQ,
         mode: game.startMode ?? (game.modes.includes('group') ? 'group' : 'solo'),
         size,
         bins: resizeBins([], game.fixedTeams ?? (game.twoTeams ? 2 : binCountFor(present, size))),
@@ -89,15 +92,15 @@ export function Setup() {
     return () => {
       cancelled = true
     }
-  }, [mixed, loaded, cls, game, session, roster, put, levelQ, unitQ])
+  }, [mixed, loaded, cls, game, session, roster, put, levelQ, unitQ, setQ])
 
   // an unfinished setup that is picked up again after choosing question sets: use the new choice
   const applied = useRef(false)
   useEffect(() => {
     if (applied.current || !session || mixed || !levelQ) return
     applied.current = true
-    if (session.level !== levelQ || session.unit !== unitQ) patch(session.id, { level: levelQ, unit: unitQ })
-  }, [session, mixed, levelQ, unitQ, patch])
+    if (session.level !== levelQ || session.unit !== unitQ || session.setKey !== setQ) patch(session.id, { level: levelQ, unit: unitQ, setKey: setQ })
+  }, [session, mixed, levelQ, unitQ, setQ, patch])
 
   if (!game || game.status !== 'ready') return <Problem text="That game isn’t available yet." />
   if (mixed) {
@@ -276,9 +279,7 @@ function SetupBoard({ session: s, roster, gameTitle, modes, slug, patch, onStart
   return (
     <main className={`setup${selected.length ? ' placing' : ''}`}>
       <header className="setup-bar">
-        <Link className="btn small ghost" to="/" aria-label="Back to library">
-          ←
-        </Link>
+        <BackButton fallback="/" label="←" className="btn small ghost" />
         <div className="setup-title">
           <b>{gameTitle}</b>
           <span className="muted"> · {s.mix ? `🎄 Mixed group (${s.mix.length})` : s.class}</span>
