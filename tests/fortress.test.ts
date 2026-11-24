@@ -5,7 +5,12 @@ const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'u
 const js = read('public/games/fortress/app.js')
 const games = JSON.parse(read('games.json')) as { slug: string; [k: string]: unknown }[]
 
-describe('Fortress (Henry, Nov 23)', () => {
+describe('Point 1-4, id fortress (Henry, Nov 23-24)', () => {
+  it('is titled Point 1-4 everywhere the player sees it; the id stays fortress', () => {
+    expect(games.find((g) => g.slug === 'fortress')).toMatchObject({ title: 'Point 1-4' })
+    expect(read('public/games/fortress/index.html')).toContain('<title>Point 1-4</title>')
+    expect(js).toContain("{ title: 'Point 1-4' }")
+  })
   it('is in the library: always four teams, group only, with units', () => {
     expect(games.find((g) => g.slug === 'fortress')).toMatchObject({ status: 'ready', modes: ['group'], fixedTeams: 4, units: true, section: 'quizzes' })
   })

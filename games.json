@@ -401,7 +401,7 @@
   },
   {
     "slug": "fortress",
-    "title": "Fortress",
+    "title": "Point 1-4",
     "file": "public/games/fortress/index.html",
     "description": "Four teams defend a medieval base (HQ, Depot, two Towers) and bomb each other. Answer questions to win bombs, repairs or gold; shop, fire, form alliances. Last base standing wins. Made with Job.",
     "levels": [

@@ -1,4 +1,4 @@
-/* Fortress (Henry, Nov 23; store and numbers from Henry's second list): four teams defend a medieval base and attack
+/* Point 1-4 (folder and id: fortress; Henry, Nov 23; store and numbers from Henry's second list): four teams defend a medieval base and attack
    each other. Made with Job, a student who helped create the game.
    - Every base: HQ 10,000 HP, Depot 7,000, two Towers 8,000 each. Every round a base with an intact Depot heals 450 HP
      per building.
@@ -841,7 +841,7 @@
   $('deckBtn').addEventListener('click', function () { closeMenu(); openDecks(); });
   $('skip').addEventListener('click', function () { closeMenu(); snap(); closeChoice(); closeShop(); closeAim(); advance(); });
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back one step.'); });
-  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Fortress' }); });
+  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(INTRO, { title: 'Point 1-4' }); });
   function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
@@ -888,7 +888,7 @@
       render = function () { baseRender(); ally.hidden = !canAlly(); };
       render();
       var afterIntro = function () { S.introDone = true; save(); if (!S.deck) openDecks(); else if (S.phase === 'shop') openShop(); };
-      if (!S.introDone) KruIntro.show(INTRO, { title: 'Fortress' }).then(afterIntro); else afterIntro();
+      if (!S.introDone) KruIntro.show(INTRO, { title: 'Point 1-4' }).then(afterIntro); else afterIntro();
     }).catch(function (err) {
       $('board').textContent = 'Could not load the questions. Close the game and open it again.';
       if (window.console) console.error(err);

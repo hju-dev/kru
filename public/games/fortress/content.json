@@ -1,10 +1,10 @@
 {
- "about": "Fortress (Henry, Nov 23): four teams attack each other's bases. Created with Job, a student. Questions come from Quiz Dash's bank (games/race-board/content.json), Battle of Wits sets or a unit; this file only holds the How to play slides.",
+ "about": "Point 1-4 (id fortress; Henry, Nov 23): four teams attack each other's bases. Created with Job, a student. Questions come from Quiz Dash's bank (games/race-board/content.json), Battle of Wits sets or a unit; this file only holds the How to play slides.",
  "intro": [
   {
-   "title": "Fortress",
+   "title": "Point 1-4",
    "text": [
-    "Four teams defend a base and attack the others.",
+    "One HQ and four buildings: defend your base, attack the others.",
     "Answer questions to win bombs, repairs and gold!"
    ],
    "example": {
@@ -119,7 +119,7 @@
   {
    "title": "Made with Job",
    "text": [
-    "Fortress was created with Job,",
+    "Point 1-4 was created with Job,",
     "a student who helped design the game. Thank you, Job!"
    ],
    "example": {
