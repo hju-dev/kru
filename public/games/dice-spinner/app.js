@@ -1,4 +1,4 @@
-/* Dice & Spinner (a tool): 1-3 dice with 2-20 sides, a wheel with your own options, or a coin to flip.
+/* Dice, Spinner, Coin (a tool): 1-3 dice with 2-20 sides, a wheel with your own options, or a coin to flip.
    Choices are saved on the phone. */
 (function () {
   'use strict';
@@ -32,6 +32,106 @@
       o.connect(g).connect(audio.destination); o.start(t); o.stop(t + (dur || 0.06) + 0.02);
     } catch (e) {}
   }
+
+  function note(f, at, dur, vol, type) {
+    if (!audio) return;
+    try {
+      var t = audio.currentTime + (at || 0), o = audio.createOscillator(), g = audio.createGain();
+      o.type = type || 'triangle'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol || 0.3, t + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t + (dur || 0.3));
+      o.connect(g).connect(audio.destination); o.start(t); o.stop(t + (dur || 0.3) + 0.03);
+    } catch (e) {}
+  }
+  /** Someone was picked: a rising run, a big chord and a sparkle on top (much louder and longer than the old single beep). */
+  function fanfare() {
+    [523, 659, 784, 1047, 1319].forEach(function (f, i) { note(f, i * 0.09, 0.32, 0.36); });
+    [523, 659, 784, 1047].forEach(function (f) { note(f, 0.5, 1.1, 0.2, 'sawtooth'); note(f / 2, 0.5, 1.1, 0.25, 'triangle'); });
+    [1568, 2093, 1760, 2349].forEach(function (f, i) { note(f, 0.62 + i * 0.1, 0.25, 0.16); });
+    if (audio) {
+      try { // a boom
+        var t = audio.currentTime + 0.5, o = audio.createOscillator(), g = audio.createGain();
+        o.type = 'sine'; o.frequency.setValueAtTime(120, t); o.frequency.exponentialRampToValueAtTime(40, t + 0.4);
+        g.gain.setValueAtTime(0.55, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.45);
+        o.connect(g).connect(audio.destination); o.start(t); o.stop(t + 0.5);
+      } catch (e) {}
+    }
+  }
+
+  // ---------- random effects when a team is picked ----------
+  var EFFECTS = ['confetti', 'fire', 'tornado', 'fireworks', 'stars', 'lightning', 'bubbles'];
+  var fxRaf = 0;
+  function runEffect(kind) {
+    var c = $('fx'), st = $('spinStage');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    cancelAnimationFrame(fxRaf);
+    c.width = st.clientWidth; c.height = st.clientHeight;
+    var ctx = c.getContext('2d'), W = c.width, H = c.height, parts = [], t0 = performance.now(), last = t0, spawnAcc = 0, flashes = [], bolt = null;
+    var DUR = 3200;
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function star(x, y, r, rot) {
+      ctx.beginPath();
+      for (var i = 0; i < 10; i++) { var rr = i % 2 ? r * 0.45 : r, a = rot + (i * Math.PI) / 5; ctx.lineTo(x + Math.sin(a) * rr, y - Math.cos(a) * rr); }
+      ctx.closePath(); ctx.fill();
+    }
+    if (kind === 'confetti') for (var i = 0; i < 170; i++) parts.push({ x: rnd(0, W), y: rnd(-H, 0), vx: rnd(-40, 40), vy: rnd(140, 340), w: rnd(8, 16), h: rnd(5, 10), r: rnd(0, 6), vr: rnd(-8, 8), c: COLORS[i % COLORS.length] });
+    if (kind === 'stars') for (var j = 0; j < 70; j++) parts.push({ x: rnd(0, W), y: rnd(-H, 0), vx: rnd(-30, 30), vy: rnd(120, 300), s: rnd(8, 22), r: rnd(0, 6), vr: rnd(-4, 4) });
+    if (kind === 'bubbles') for (var b = 0; b < 60; b++) parts.push({ x: rnd(0, W), y: rnd(H, H * 1.6), vy: -rnd(70, 220), s: rnd(8, 34), ph: rnd(0, 6) });
+    if (kind === 'tornado') for (var k = 0; k < 150; k++) parts.push({ a: rnd(0, 6.28), h: Math.random(), w: rnd(2.5, 6), s: rnd(3, 7), tone: Math.floor(rnd(0, 3)) });
+    if (kind === 'lightning') flashes = [0.15, 0.55, 0.95].map(function (t) { return t * 1000; });
+    function makeBolt() { var x = rnd(W * 0.25, W * 0.75), y = 0, pts = [[x, y]]; while (y < H * 0.8) { x += rnd(-40, 40); y += rnd(30, 60); pts.push([x, y]); } return pts; }
+
+    function frame(now) {
+      var dt = Math.min(0.05, (now - last) / 1000), t = now - t0; last = now;
+      ctx.clearRect(0, 0, W, H);
+      var fade = t > DUR - 600 ? Math.max(0, (DUR - t) / 600) : 1;
+      ctx.globalAlpha = fade;
+      if (kind === 'confetti') parts.forEach(function (p) { p.x += p.vx * dt; p.y += p.vy * dt; p.r += p.vr * dt; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h); ctx.restore(); });
+      if (kind === 'stars') parts.forEach(function (p) { p.x += p.vx * dt; p.y += p.vy * dt; p.r += p.vr * dt; ctx.fillStyle = (Math.floor(t / 120) + p.s) % 2 ? '#ffd23f' : '#fff3b0'; star(p.x, p.y, p.s, p.r); });
+      if (kind === 'bubbles') parts.forEach(function (p) { p.y += p.vy * dt; p.x += Math.sin(t / 300 + p.ph) * 0.8; ctx.strokeStyle = 'rgb(160 225 255 / 0.9)'; ctx.fillStyle = 'rgb(160 225 255 / 0.18)'; ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, 6.28); ctx.fill(); ctx.stroke(); });
+      if (kind === 'fire') {
+        spawnAcc += dt * 140;
+        while (spawnAcc > 1) { spawnAcc--; if (t < DUR - 900) parts.push({ x: rnd(0, W), y: H + 10, vx: rnd(-25, 25), vy: -rnd(160, 380), s: rnd(16, 38), life: 0, max: rnd(0.8, 1.5) }); }
+        ctx.globalCompositeOperation = 'lighter';
+        parts = parts.filter(function (p) { p.life += dt; return p.life < p.max; });
+        parts.forEach(function (p) { p.x += p.vx * dt; p.y += p.vy * dt; var u = p.life / p.max, g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.s * (1 - u * 0.5)); g.addColorStop(0, 'rgb(255 240 150 / ' + (0.9 * (1 - u)) + ')'); g.addColorStop(0.5, 'rgb(255 120 20 / ' + (0.7 * (1 - u)) + ')'); g.addColorStop(1, 'rgb(200 20 0 / 0)'); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.s, 0, 6.28); ctx.fill(); });
+        ctx.globalCompositeOperation = 'source-over';
+      }
+      if (kind === 'tornado') {
+        var cx = W / 2 + Math.sin(t / 400) * 40;
+        parts.forEach(function (p) { p.a += dt * (6 + (1 - p.h) * 8); var rad = 12 + p.h * Math.min(W, H) * 0.34, x = cx + Math.cos(p.a) * rad + Math.sin(t / 250 + p.h * 4) * 10, y = H - p.h * H * 0.95; ctx.fillStyle = ['#c9d3df', '#8fa0b3', '#e8eef5'][p.tone]; ctx.globalAlpha = fade * (0.55 + 0.45 * Math.sin(p.a)); ctx.beginPath(); ctx.ellipse(x, y, p.w * 2.2, p.w, 0, 0, 6.28); ctx.fill(); });
+      }
+      if (kind === 'fireworks') {
+        spawnAcc += dt;
+        if (spawnAcc > 0.32 && t < DUR - 900) { spawnAcc = 0; var bx = rnd(W * 0.15, W * 0.85), by = rnd(H * 0.12, H * 0.55), hue = rnd(0, 360); for (var q = 0; q < 44; q++) { var ang = (q / 44) * 6.28, sp = rnd(90, 230); parts.push({ x: bx, y: by, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp, life: 0, max: rnd(0.9, 1.5), hue: hue + rnd(-25, 25) }); } }
+        parts = parts.filter(function (p) { p.life += dt; return p.life < p.max; });
+        parts.forEach(function (p) { p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 160 * dt; ctx.globalAlpha = fade * (1 - p.life / p.max); ctx.fillStyle = 'hsl(' + p.hue + ' 100% 62%)'; ctx.beginPath(); ctx.arc(p.x, p.y, 3.4, 0, 6.28); ctx.fill(); });
+      }
+      if (kind === 'lightning') {
+        flashes.forEach(function (f) {
+          var u = t - f;
+          if (u >= 0 && u < 220) {
+            if (!bolt || bolt.at !== f) bolt = { at: f, pts: makeBolt() };
+            ctx.globalAlpha = fade * (1 - u / 220) * 0.55; ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+            ctx.globalAlpha = fade; ctx.strokeStyle = '#fff6b0'; ctx.shadowColor = '#7fb2ff'; ctx.shadowBlur = 24; ctx.lineWidth = 6; ctx.beginPath();
+            bolt.pts.forEach(function (p2, ix) { ix ? ctx.lineTo(p2[0], p2[1]) : ctx.moveTo(p2[0], p2[1]); }); ctx.stroke(); ctx.shadowBlur = 0;
+          }
+        });
+      }
+      ctx.globalAlpha = 1;
+      if (t < DUR) fxRaf = requestAnimationFrame(frame); else ctx.clearRect(0, 0, W, H);
+    }
+    fxRaf = requestAnimationFrame(frame);
+  }
+  var popTimer = 0;
+  function announce(text) {
+    $('pickName').textContent = text;
+    $('pickPop').hidden = false;
+    clearTimeout(popTimer);
+    popTimer = setTimeout(function () { $('pickPop').hidden = true; }, 4500);
+    fanfare();
+    runEffect(EFFECTS[Math.floor(Math.random() * EFFECTS.length)]);
+  }
+  $('pickPop').addEventListener('click', function () { $('pickPop').hidden = true; clearTimeout(popTimer); });
 
   // ---------- tabs ----------
   function showTab(t) {
@@ -133,6 +233,10 @@
   function drawWheel() {
     var c = $('wheel'), ctx = c.getContext('2d'), list = live(), n = list.length, r = c.width / 2;
     ctx.clearRect(0, 0, c.width, c.height);
+    $('refill').hidden = !S.out.length;
+    $('norepeat').textContent = "Don't repeat: " + (S.noRepeat ? 'on' : 'off');
+    $('norepeat').setAttribute('aria-pressed', String(S.noRepeat));
+    $('spin').disabled = n < 1 || spinning;
     if (!n) return;
     var slice = (Math.PI * 2) / n;
     list.forEach(function (idx, i) {
@@ -149,42 +253,42 @@
       ctx.fillText(text, r - 22, 0);
       ctx.restore();
     });
-    $('refill').hidden = !S.out.length;
-    $('norepeat').textContent = "Don't repeat: " + (S.noRepeat ? 'on' : 'off');
-    $('norepeat').setAttribute('aria-pressed', String(S.noRepeat));
-    $('spin').disabled = n < 2 || spinning;
   }
   function spin() {
     var list = live();
-    if (spinning || list.length < 2) return;
+    if (spinning || list.length < 1) return;
     unlockAudio();
     spinning = true;
     $('spin').disabled = true;
     var n = list.length, slice = 360 / n, pick = Math.floor(Math.random() * n);
     // the wheel turns clockwise; slice i covers [i*slice, (i+1)*slice) from the top
     var target = 360 - (pick * slice + slice / 2) + (Math.random() - 0.5) * slice * 0.6;
-    var turns = 5 * 360;
+    var turns = 14 * 360;
     var base = angle - (angle % 360);
     angle = base + turns + target;
     $('wheel').style.transform = 'rotate(' + angle + 'deg)';
+    $('pickPop').hidden = true;
+    $('wheel').parentNode.classList.add('spinning');
     $('result').className = 'result waiting';
     $('result').textContent = 'Spinning…';
-    var ticks = 0, tick = setInterval(function () { tone(500 + (ticks++ % 3) * 60, 0.03); }, 140);
+    var tickT = 0, ticks = 0, tickDelay = 40, tick = 0;
+    (function ticker() { tone(480 + (ticks++ % 4) * 70, 0.03); tickT += tickDelay; tickDelay *= 1.07; if (tickT < 4200 && spinning) tick = setTimeout(ticker, tickDelay); })();
     setTimeout(function () {
-      clearInterval(tick);
+      clearTimeout(tick);
       spinning = false;
+      $('wheel').parentNode.classList.remove('spinning');
       var idx = list[pick];
       $('result').className = 'result';
       $('result').textContent = S.options[idx];
-      tone(988, 0.25);
+      announce(S.options[idx]);
       if (S.noRepeat) {
         S.out.push(idx); save();
         // redraw without it, keeping the wheel where it stopped
         setTimeout(function () { $('wheel').style.transition = 'none'; angle = 0; $('wheel').style.transform = 'rotate(0deg)'; drawWheel(); $('wheel').offsetWidth; $('wheel').style.transition = ''; }, 900);
-        $('note').textContent = live().length > 1 ? live().length + ' left on the wheel' : 'Last one! Tap "Put them all back" to start again.';
+        $('note').textContent = live().length > 1 ? live().length + ' left on the wheel' : live().length === 1 ? 'Last one! You can still spin it.' : 'Everyone has had a turn! Tap "Put them all back".';
       } else $('note').textContent = '';
       drawWheel();
-    }, 3300);
+    }, 4500);
   }
   $('spin').addEventListener('click', spin);
   $('norepeat').addEventListener('click', function () { S.noRepeat = !S.noRepeat; if (!S.noRepeat) S.out = []; save(); drawWheel(); });

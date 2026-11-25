@@ -20,8 +20,40 @@
     return '<g transform="translate(' + x + ' ' + y + ')"><ellipse cx="0" cy="6" rx="10" ry="4" fill="#c98a00"/><ellipse cx="0" cy="2" rx="10" ry="4" fill="#ffc94a" stroke="#c98a00" stroke-width="1.5"/>' +
       '<ellipse cx="14" cy="8" rx="9" ry="3.6" fill="#c98a00"/><ellipse cx="14" cy="4" rx="9" ry="3.6" fill="#ffd970" stroke="#c98a00" stroke-width="1.5"/></g>';
   }
+  var sun = '<circle cx="98" cy="22" r="10" fill="#ffd34d"/>';
+  function base() { return '<g transform="translate(60 92) scale(1.3)"><ellipse cx="0" cy="0" rx="36" ry="12" fill="#f0d58c"/><ellipse cx="0" cy="-3" rx="30" ry="8" fill="#ffe7a3"/></g>'; }
+  function flagAt(x, y, c) { return '<path d="M' + x + ' ' + y + 'v-34" stroke="#3a2a1a" stroke-width="3"/><path d="M' + (x + 1) + ' ' + (y - 34) + 'l20 7-20 7z" fill="' + c + '" stroke="#111" stroke-width="1.5"/>'; }
+  /** Eight different island pictures for the "claim an island" pop-up (Henry, Nov 25: not just the palm tree). */
+  var ISLES = [
+    function (c) { return svg(waves + isle(60, 92, 1.3, c) + sun); },
+    function (c) { return svg(waves + base() + '<rect x="40" y="62" width="30" height="24" fill="#b9814a" stroke="#6b4421" stroke-width="2.5"/><path d="M34 64l21-24 21 24z" fill="#d9a441" stroke="#7a5518" stroke-width="2.5"/><rect x="50" y="72" width="9" height="14" fill="#4d2a0d"/>' + flagAt(88, 88, c) + sun); },
+    function (c) { return svg(waves + base() + '<path d="M50 90l6-52h12l6 52z" fill="#fff" stroke="#333" stroke-width="2.5"/><path d="M53 72h20l-1.5 10H54.5zM56 54h14l-1.4 10H57.4z" fill="#d7263d"/><rect x="52" y="30" width="22" height="9" fill="#333"/><path d="M54 30l9-14 9 14z" fill="#d7263d"/><path d="M76 34l30-8v18z" fill="#ffe27a" fill-opacity=".75"/>' + flagAt(90, 90, c)); },
+    function (c) { return svg(waves + base() + '<path d="M26 90l20-34 20 34z" fill="' + c + '" stroke="#111" stroke-width="2.5"/><path d="M46 56v34" stroke="#111" stroke-width="2"/><path d="M42 90l4-14 4 14z" fill="#222"/><g transform="translate(86 86)"><path d="M-9 4l18-4M-9 0l18 4" stroke="#6b4421" stroke-width="4" stroke-linecap="round"/><path d="M0-2c-8-6-4-14 0-22 2 7 10 9 6 22z" fill="#ff8a1f"/><path d="M0-2c-4-3-2-8 0-13 2 3 5 5 3 13z" fill="#ffd34d"/></g>' + sun); },
+    function (c) { return svg(waves + base() + '<path d="M40 66l30 22M70 66L40 88" stroke="#d7263d" stroke-width="8" stroke-linecap="round"/><g transform="rotate(30 92 60)"><rect x="90" y="28" width="5" height="40" rx="2" fill="#8a5a2b"/><path d="M84 64h17l-3 14c-1 4-10 4-11 0z" fill="#b8c4cc" stroke="#55626b" stroke-width="2"/></g>' + flagAt(30, 86, c)); },
+    function (c) { return svg(waves + '<path d="M26 98c2-24 20-32 34-32s32 8 34 32z" fill="#8f97a6" stroke="#3b4150" stroke-width="3"/><ellipse cx="60" cy="50" rx="12" ry="17" fill="#d7263d"/><circle cx="60" cy="32" r="10" fill="#d7263d"/><path d="M66 32l12 4-10 5z" fill="#ffc94a"/><circle cx="62" cy="30" r="2.5" fill="#fff"/><path d="M52 46c-12 8-10 22-6 26 4-8 8-18 6-26z" fill="#2c7be5"/><path d="M60 66c-2 12 0 20 6 26 2-10 0-20-6-26z" fill="#2fbf71"/>' + flagAt(88, 92, c)); },
+    function (c) { return svg(waves + base() + '<path d="M28 54a32 28 0 0 1 64 0z" fill="' + c + '" stroke="#111" stroke-width="2.5"/><path d="M60 26v62" stroke="#5a3a1a" stroke-width="4"/><path d="M42 54a18 14 0 0 1 18-14" fill="#fff" fill-opacity=".5"/><path d="M68 88l8-18h16l-4 18z" fill="#4cc9f0" stroke="#0a5f80" stroke-width="2"/>' + sun); },
+    function (c) { return svg(waves + base() + '<rect x="36" y="62" width="48" height="26" fill="#e6c27a" stroke="#a87c33" stroke-width="2.5"/><path d="M36 62v-8h9v8M51 62v-8h9v8M66 62v-8h9v8M75 62v-8h9v8" fill="#e6c27a" stroke="#a87c33" stroke-width="2.5"/><path d="M52 88V76a8 8 0 0 1 16 0v12z" fill="#a87c33"/><path d="M60 54v-20" stroke="#3a2a1a" stroke-width="3"/><path d="M61 34l16 5-16 5z" fill="' + c + '" stroke="#111" stroke-width="1.5"/>'); },
+  ];
   var A = {
     island: function (c) { return svg(waves + isle(60, 92, 1.3, c) + '<circle cx="96" cy="22" r="10" fill="#ffd34d"/>'); },
+    correct: function () {
+      return svg('<circle cx="60" cy="60" r="44" fill="#2fbf71" stroke="#157a45" stroke-width="5"/><circle cx="60" cy="60" r="35" fill="none" stroke="#7df0ac" stroke-width="3"/><path d="M38 62l16 16 30-34" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
+        '<path d="M16 24l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff4b0"/><path d="M100 18l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#fff4b0"/><path d="M104 88l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#fff4b0"/>');
+    },
+    fifty: function () {
+      return svg('<circle cx="60" cy="60" r="44" fill="#1d6fa3" stroke="#0a3550" stroke-width="5"/><path d="M60 16a44 44 0 0 0 0 88z" fill="#4cc9f0"/><path d="M60 16v88" stroke="#0a3550" stroke-width="4" stroke-dasharray="6 5"/>' +
+        '<path d="M76 40l20 20M96 40L76 60M76 66l20 20M96 66L76 86" stroke="#ff5a5f" stroke-width="6" stroke-linecap="round"/><text x="20" y="68" font-size="22" font-weight="900" fill="#0a3550" font-family="sans-serif">50</text>');
+    },
+    time: function () {
+      return svg('<path d="M32 14h56M32 106h56" stroke="#8a5a2b" stroke-width="8" stroke-linecap="round"/><path d="M38 18c0 26 44 26 44 42s-44 16-44 42M82 18c0 26-44 26-44 42s44 16 44 42" fill="#bfe9ff" fill-opacity=".6" stroke="#2c7be5" stroke-width="4"/>' +
+        '<path d="M46 30h28l-14 16zM48 96c6-12 18-12 24 0z" fill="#ffc94a"/><path d="M60 52v24" stroke="#ffc94a" stroke-width="3"/><path d="M92 30h16M100 22v16" stroke="#2fbf71" stroke-width="7" stroke-linecap="round"/>');
+    },
+    free: function () {
+      return svg('<path d="M10 34h100v18a8 8 0 0 0 0 16v18H10V68a8 8 0 0 0 0-16z" fill="#ffc94a" stroke="#b07a00" stroke-width="4"/><path d="M82 34v52" stroke="#b07a00" stroke-width="3" stroke-dasharray="5 4"/>' +
+        '<path d="M44 46l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#fff" stroke="#b07a00" stroke-width="2.5"/><text x="62" y="66" font-size="13" font-weight="900" fill="#7a4b00" font-family="sans-serif">FREE</text>');
+    },
+    isleV: function (i, c) { return ISLES[((i % ISLES.length) + ISLES.length) % ISLES.length](c); },
+    isleCount: ISLES.length,
     double: function (c) { return svg(waves + isle(34, 94, 0.9, c) + isle(86, 90, 0.95, c)); },
     dig: function () {
       return svg('<ellipse cx="60" cy="96" rx="44" ry="14" fill="#c9a36a"/><ellipse cx="60" cy="92" rx="26" ry="8" fill="#5b3b1c"/>' + coins(46, 84) + coins(64, 80) +

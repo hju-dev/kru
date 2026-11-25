@@ -36,6 +36,7 @@
     { id: 'free', label: 'Free Play' },
     { id: 'raid', label: '🏴‍☠️ Pirate Raid' },
   ];
+  var PW_ICON = { fifty: '✂ ', time: '⏳ ', free: '🎟 ' };
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
   var ART = window.QIArt;
@@ -142,9 +143,18 @@
     fx.classList.add('go');
     if (SOUNDS[o.sound || o.mood]) SOUNDS[o.sound || o.mood]();
     clearTimeout(fxTimer);
-    fxTimer = setTimeout(nextBanner, (o.wait || 2600) + 1000); // every pop-up stays a second longer
+    fxTimer = setTimeout(nextBanner, o.quick ? (o.wait || 1500) : (o.wait || 2600) + 1000); // every pop-up stays a second longer; quick ones (power-ups, correct) do not
     if (o.then) fxDone = chain(fxDone, o.then);
   }
+  /** "Land ho!" and seven more sayings, each with its own island picture (never the same one twice in a row). */
+  var ISLES = [
+    { t: 'LAND HO!', s: '{t} claims a new island!', v: 0 }, { t: 'ISLAND AHOY!', s: '{t} spots a sandy shore and plants a flag!', v: 1 },
+    { t: 'LIGHTHOUSE LAND!', s: '{t} lights up a brand new island!', v: 2 }, { t: 'CAMP IS SET!', s: '{t} pitches a tent on a new island!', v: 3 },
+    { t: 'X MARKS THE SPOT!', s: '{t} lands and claims the island!', v: 4 }, { t: 'PARROT APPROVED!', s: 'The parrot cheers as {t} claims an island!', v: 5 },
+    { t: 'BEACH DAY!', s: '{t} grabs a sunny island!', v: 6 }, { t: 'SANDCASTLE SECURED!', s: '{t} builds a castle and claims the island!', v: 7 },
+  ];
+  var lastIsle = -1;
+  function nextIsle() { var i = Math.floor(Math.random() * ISLES.length); if (i === lastIsle) i = (i + 1) % ISLES.length; lastIsle = i; return ISLES[i]; }
   function chain(a, b) { return a ? function () { a(); b(); } : b; }
   function countUp(el, v) {
     var sign = v > 0 ? '+' : '−', n = Math.abs(v), t0 = performance.now();
@@ -428,7 +438,7 @@
     else if (fort) banner({ art: ART.fort(col), title: 'FORTRESS CAPTURED!', sub: 'Nobody can sink or steal it, or ' + t + "'s islands next to it!", gold: worth, mood: 'good' });
     else if (step.dig) banner({ art: ART.dig(), title: 'STRUCK GOLD!', sub: t + ' digs deep and finds extra gold!', gold: worth, mood: 'good', sound: 'gold' });
     else if (step.second) banner({ art: ART.double(col), title: 'DOUBLE CLAIM!', sub: t + ' plants a second flag!', gold: worth, mood: 'good', wait: 1800 });
-    else banner({ art: ART.island(col), title: 'LAND HO!', sub: t + ' claims a new island!', gold: worth, mood: 'good', wait: 1800 });
+    else { var is = nextIsle(); banner({ art: ART.isleV(is.v, col), title: is.t, sub: is.s.replace('{t}', t), gold: worth, mood: 'good', wait: 1800 }); }
   }
   function sink(id, c) {
     var o = S.map.own[c], g = loseIsland(o, c, 'island sunk');
@@ -656,7 +666,7 @@
       var off = used(id, p.id) || (p.id === 'fifty' && (!Array.isArray(Q.choices) || Q.choices.length < 4 || !!Q._gone)) ||
         (shown && p.id !== 'time') || (p.id === 'free' && raid); // no Free answer with a Pirate Raid
       return '<button class="btn pw' + (on ? ' on' : '') + (used(id, p.id) ? ' used' : '') + '" data-pw="' + p.id + '"' + (off && !on ? ' disabled' : '') +
-        ' aria-pressed="' + on + '">' + (on ? '🏴‍☠️ RAID: ON' : p.label) + '</button>';
+        ' aria-pressed="' + on + '">' + (on ? '🏴‍☠️ RAID: ON' : (PW_ICON[p.id] || '') + p.label) + '</button>';
     }).join('');
   }
   $('powers').addEventListener('click', function (e) {
@@ -668,17 +678,20 @@
       var wrong = Q.choices.map(function (_, i) { return i; }).filter(function (i) { return i !== Q.answer; });
       Q._gone = shuffle(wrong).slice(0, 2);
       use(id, 'fifty'); tone([523, 392], 0.1); renderQuestion();
+      banner({ art: ART.fifty(), title: '50 / 50!', sub: 'Two wrong answers sink to the bottom of the sea!', mood: 'magic', sound: 'gold', quick: true, wait: 1700 });
     } else if (p === 'time') {
       left = Math.max(0, left) + 20; total = Math.max(total, left);
       use(id, 'time'); tone([660, 880, 1047], 0.08);
       if (!running) startTimer(); else { endAt = Date.now() + left * 1000; renderClock(); }
       renderPowers();
+      banner({ art: ART.time(), title: '+20 SECONDS!', sub: current().name + ' turns the hourglass!', mood: 'magic', sound: 'gold', quick: true, wait: 1700 });
     } else if (p === 'free') {
       use(id, 'free');
-      toast('🎟 ' + current().name + ' used Free Play!');
-      rightAnswer();
+      banner({ art: ART.free(), title: 'FREE PLAY!', sub: current().name + ' sails straight past the question!', mood: 'magic', sound: 'fanfare', quick: true, wait: 1800 });
+      rightAnswer(true);
     } else if (p === 'raid') {
       raid = !raid; tone(raid ? [392, 523, 659] : [440], 0.08); renderPowers();
+      if (raid) banner({ art: ART.raid(), title: 'PIRATE RAID ARMED!', sub: 'Answer right and your pirates storm the islands!', mood: 'magic', sound: 'fanfare', quick: true, wait: 1800 });
     }
   });
   function ask() {
@@ -713,11 +726,16 @@
     startTimer();
   }
   function closeQuestion() { stopTimer(); $('qBack').hidden = true; }
-  function rightAnswer() {
+  var CHEERS = [['CORRECT!', 'Well sailed, {t}!'], ['NICE ONE!', '{t} knows these waters!'], ['AYE AYE!', 'That is the right answer, {t}!'], ['SHIVER ME TIMBERS!', '{t} gets it right!'],
+    ['YO HO HO!', 'Smart pirates, {t}!'], ['BULLSEYE!', '{t} hits the mark!'], ['TREASURE ANSWER!', '{t} is on a roll!'], ['FULL SAIL!', '{t} charges ahead!']];
+  var lastCheer = -1;
+  function cheer(t) { var i = Math.floor(Math.random() * CHEERS.length); if (i === lastCheer) i = (i + 1) % CHEERS.length; lastCheer = i; return { title: CHEERS[i][0], sub: CHEERS[i][1].replace('{t}', t) }; }
+  function rightAnswer(free) {
     var t = current(), tier = TIERS[tierOf(Q)], v = tier.pts, rd = raid;
     raid = false;
     if (rd) use(t.id, 'raid');
     closeQuestion();
+    if (!free) { var ch = cheer(t.name); banner({ art: ART.correct(), title: ch.title, sub: ch.sub, mood: 'good', sound: 'good', quick: true, wait: 1500 }); }
     if (rd || tier.reward) {
       S.choice = { id: t.id, kind: rd ? 'raid' : 'reward', v: v };
       save(); render();
