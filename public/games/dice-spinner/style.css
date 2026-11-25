@@ -1,4 +1,4 @@
-/* Dice & Spinner (a tool) */
+/* Dice, Spinner, Coin (a tool) */
 .ds { height: 100%; display: flex; flex-direction: column; gap: 6px; }
 .bar { display: flex; align-items: center; gap: 10px; min-height: var(--tap); padding-right: 56px; }
 .grow { flex: 1; }
@@ -41,7 +41,7 @@ output { font-family: var(--mono); font-size: 24px; min-width: 1.5ch; text-align
 button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .spin-stage { flex-direction: row; gap: 18px; }
 .wheel-wrap { position: relative; height: 100%; aspect-ratio: 1; max-height: 100%; }
-#wheel { width: 100%; height: 100%; border-radius: 50%; transition: transform 3.2s cubic-bezier(0.12, 0.7, 0.18, 1); }
+#wheel { width: 100%; height: 100%; border-radius: 50%; transition: transform 4.4s cubic-bezier(0.08, 0.72, 0.14, 1.012); will-change: transform; }
 .pointer { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 30px; line-height: 1; text-shadow: 0 2px 0 var(--bg); }
 .side { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
 .result { font: 800 48px/1.05 var(--display); color: var(--gold); text-wrap: balance; overflow-wrap: anywhere; }
@@ -56,3 +56,24 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .presets .btn { min-height: 44px; font-size: 15px; padding: 0 12px; }
 textarea { min-height: 110px; border-radius: 10px; border: 2px solid var(--line); background: var(--panel); color: var(--fg); font: 600 16px/1.35 var(--body); padding: 8px 10px; resize: vertical; }
 .muted { color: var(--muted); margin: 0; font-size: 14px; }
+
+/* Henry, Nov 25: the wheel and the announcement are centred, the spin is fast and dramatic, a random effect plays when someone is picked */
+.stage { position: relative; }
+.spin-stage { justify-content: center; align-items: center; gap: 26px; }
+.spin-stage .side { flex: 0 1 300px; align-items: center; text-align: center; justify-content: center; }
+.wheel-wrap.spinning { filter: drop-shadow(0 0 18px rgb(255 183 3 / 0.55)); }
+.wheel-wrap.spinning .pointer { animation: ptr 0.09s linear infinite; }
+@keyframes ptr { 50% { transform: translateX(-50%) rotate(-14deg); } }
+.fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 6; }
+.pick-pop { position: absolute; inset: 0; z-index: 5; display: grid; place-items: center; background: rgb(0 0 0 / 0.45); }
+.pick-pop[hidden] { display: none; }
+.pick-card { min-width: 300px; max-width: 88%; padding: 12px 28px 10px; text-align: center; border-radius: 26px; border: 4px solid var(--gold); background: var(--stage); box-shadow: 0 0 0 6px rgb(255 183 3 / 0.25), 0 12px 40px rgb(0 0 0 / 0.6); animation: pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+.pick-hi { color: var(--gold); font-size: 26px; line-height: 1; letter-spacing: 0.4em; }
+.pick-name { font: 900 64px/1.05 var(--display); color: var(--gold); text-wrap: balance; overflow-wrap: anywhere; }
+.pick-tap { color: var(--muted); font-size: 14px; }
+@keyframes pop { from { transform: scale(0.3) rotate(-6deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .pick-card { animation: none; } .wheel-wrap.spinning, .wheel-wrap.spinning .pointer { filter: none; animation: none; } }
+/* the coin: the Kru owl on heads, the Kru logo on tails */
+.coin .heads { background: radial-gradient(circle at 35% 30%, #ffe08a, #e09b00); }
+.coin .face svg { width: 74%; height: 74%; }
+.coin .face img { width: 70%; height: 70%; border-radius: 22%; box-shadow: 0 0 0 4px rgb(0 0 0 / 0.2); }
