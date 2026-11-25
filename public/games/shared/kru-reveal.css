@@ -50,3 +50,13 @@
 /* square mascots (the pirate crew) are limited by height, wide vehicles by width */
 .krv.skin-cabin .krv-item { width: auto; }
 .krv.skin-cabin .krv-item svg { height: 176px; width: auto; margin: 0 auto; }
+/* choosing a style (Typical / Wildcard) before the door */
+.krv-pick { flex: 1; min-height: 0; width: min(720px, 100%); display: flex; gap: 12px; align-items: stretch; padding: 4px 0; }
+.krv-pick[hidden] { display: none; }
+.krv.choosing .krv-stage, .krv.choosing .krv-btns { display: none; }
+.krv-opt { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 8px; border-radius: 18px; border: 3px solid #ffb703; background: rgb(255 255 255 / 0.06); color: #f6f3ec; }
+.krv-opt b { font: 800 28px var(--display, sans-serif); color: #ffe066; }
+.krv-opt > span { font: 700 17px var(--body, sans-serif); color: rgb(255 255 255 / 0.75); }
+.krv-opt em { display: flex; gap: 2px; width: 100%; justify-content: center; font-style: normal; }
+.krv-opt em i { display: block; flex: 1; min-width: 0; max-width: 20%; }
+.krv-opt em svg { width: 100%; height: auto; display: block; }

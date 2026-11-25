@@ -153,7 +153,7 @@
   function rideIdx(t) { var r = S && S.rides && S.rides[t.id]; return r != null ? r : Math.max(0, racers.indexOf(t)); }
   /** A team's colour: the colour of its ride in the racing games (board piece, scoreboard, pop-ups), else by place. */
   function color(t) {
-    if (RACING && S && S.rides && S.rides[t.id] != null) return KruRacing.color(S.rides[t.id]);
+    if (RACING && S && S.rides && S.rides[t.id] != null) return (S.rcol && S.rcol[t.id]) || KruRacing.color(S.rides[t.id]);
     return COLORS[teams.indexOf(t) % COLORS.length];
   }
   function current() { return racers[S.turn % Math.max(1, racers.length)]; }
@@ -183,6 +183,34 @@
     } catch (e) {}
   }
 
+  /** A boost / nitro step: a buzzing engine note that climbs higher with every square, so it sounds more powerful. */
+  function zoom(k) {
+    if (!audio) return;
+    try {
+      var t = audio.currentTime, f = Math.min(1500, 620 + k * 90), o = audio.createOscillator(), g = audio.createGain();
+      o.type = 'sawtooth';
+      o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * 1.6, t + 0.19);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.2, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.22);
+      o.connect(g).connect(audio.destination); o.start(t); o.stop(t + 0.25);
+    } catch (e) {}
+  }
+  /** Landing after going backwards: a crash (noise burst) with a low thud. */
+  function crash() {
+    if (!audio) return;
+    try {
+      var t = audio.currentTime, len = Math.floor(audio.sampleRate * 0.55), buf = audio.createBuffer(1, len, audio.sampleRate), d = buf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2);
+      var src = audio.createBufferSource(), flt = audio.createBiquadFilter(), g = audio.createGain();
+      src.buffer = buf; flt.type = 'bandpass'; flt.frequency.value = 1400; flt.Q.value = 0.6;
+      g.gain.setValueAtTime(0.7, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.55);
+      src.connect(flt); flt.connect(g); g.connect(audio.destination); src.start(t);
+      var o = audio.createOscillator(), og = audio.createGain();
+      o.type = 'sine'; o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(40, t + 0.3);
+      og.gain.setValueAtTime(0.6, t); og.gain.exponentialRampToValueAtTime(0.0001, t + 0.35);
+      o.connect(og); og.connect(audio.destination); o.start(t); o.stop(t + 0.4);
+    } catch (e) {}
+  }
+
   // ---------- the track ----------
   function squareLabel(n) {
     var sp = SPECIAL[n], sec = S.secret;
@@ -194,17 +222,20 @@
     if (sp.t === 'xmas') return '🎄';
     return sp.t === 'go' ? '★+' + sp.n : sp.t === 'back' ? '⚠−' + sp.n : sp.t === 'again' ? '🎲' : '?';
   }
+  /** Extra classes for the piece that is moving: fire for a boost, a spin going backwards, a wobble after the crash. */
+  function mv(t) { return fxMove && fxMove.id === t.id ? (fxMove.boost ? ' boost' : '') + (fxMove.back ? ' spin' : '') + (fxMove.crash ? ' crash' : '') : ''; }
   function renderTrack() {
     var html = '';
     for (var n = 0; n <= FINISH; n++) {
       var c = cell(n), sp = SPECIAL[n];
       var used = (S.secret.trapUsed && n === S.secret.trap) || (S.secret.slideUsed && n === S.secret.slide);
       var on = racers.filter(function (t) { return pos(t.id) === n; });
-      var cls = 'sq' + (n === 0 ? ' start' : n === FINISH ? ' finish' : '') + (sp ? ' ' + sp.t : '') + (used ? ' secret' : '') + (on.length > 3 ? ' crowd' : '');
+      var flame = !!(fxMove && fxMove.trail && fxMove.trail.indexOf(n) >= 0);
+      var cls = 'sq' + (n === 0 ? ' start' : n === FINISH ? ' finish' : '') + (sp ? ' ' + sp.t : '') + (used ? ' secret' : '') + (on.length > 3 ? ' crowd' : '') + (flame ? ' flame' : '');
       var here = on.map(function (t) {
-        if (RACING && on.length > 1) return '<i class="piece orb' + (current() && t.id === current().id ? ' now' : '') + '" style="--c:' + color(t) + '" title="' + esc(t.name) + '">' + Kru.teamNo(t) + '</i>'; // several teams on one square: a glowing orb each, so every team shows
-        if (RACING) return '<i class="piece ride' + (current() && t.id === current().id ? ' now' : '') + '" title="' + esc(t.name) + '">' + KruRacing.vehicle(rideIdx(t), color(t)) + '</i>';
-        return '<i class="piece' + (current() && t.id === current().id ? ' now' : '') + '" style="background:' + color(t) + '">' + (racers.indexOf(t) + 1) + '</i>';
+        if (RACING && on.length > 1) return '<i class="piece orb' + (current() && t.id === current().id ? ' now' : '') + mv(t) + '" style="--c:' + color(t) + '" title="' + esc(t.name) + '">' + Kru.teamNo(t) + '</i>'; // several teams on one square: a glowing orb each, so every team shows
+        if (RACING) return '<i class="piece ride' + (current() && t.id === current().id ? ' now' : '') + mv(t) + '" title="' + esc(t.name) + '">' + KruRacing.vehicle(rideIdx(t), color(t)) + '</i>';
+        return '<i class="piece' + (current() && t.id === current().id ? ' now' : '') + mv(t) + '" style="background:' + color(t) + '">' + (racers.indexOf(t) + 1) + '</i>';
       }).join('');
       html += '<div class="' + cls + '" style="grid-row:' + c.row + ';grid-column:' + c.col + '"><span class="num">' + squareLabel(n) + '</span>' +
         '<span class="pieces">' + here + '</span></div>';
@@ -230,10 +261,10 @@
     KruReveal.run({
       skin: R.skin, title: R.title, sign: R.sign, labels: R.labels,
       teams: racers.map(function (t) { return { id: t.id, name: t.name }; }),
-      pool: KruRacing.pool,
+      pool: KruRacing.pool, choices: KruRacing.CHOICES, palette: KruRacing.palette,
       art: function (i, c) { return KruRacing.vehicle(i, c); },
       badge: function (t, c) { return Kru.badge(t, c); },
-      done: function (assign) { S.rides = assign; save(); renderTrack(); if (then) then(); },
+      done: function (assign, colors) { S.rides = assign; S.rcol = colors || {}; save(); renderTrack(); if (then) then(); },
     });
   }
 
@@ -280,18 +311,29 @@
     if (d) Kru.score(id, d, 'race board');
   }
   /** Moves a piece one square at a time. Forward past FINISH bounces back (an exact roll is needed to finish). */
-  function move(id, steps, then) {
-    var dir = steps < 0 ? -1 : 1, n = Math.abs(steps), bounced = false, base = points(id), backBy = 0;
+  function move(id, steps, then, opt) {
+    var dir = steps < 0 ? -1 : 1, n = Math.abs(steps), bounced = false, base = points(id), backBy = 0, wentBack = dir < 0, k = 0;
+    var boost = dir > 0 && !!(opt && opt.boost);
+    fxMove = { id: id, boost: boost, back: dir < 0, trail: [], crash: false };
+    function clearFx(ms) { var mine = fxMove; setTimeout(function () { if (fxMove === mine) { fxMove = null; renderTrack(); } }, ms); }
     (function step() {
       if (!n || (dir < 0 && pos(id) <= 0)) {
         settle(id, base);
+        if (fxMove) { fxMove.back = false; fxMove.boost = false; if (wentBack) fxMove.crash = true; }
         save(); renderTrack();
-        if (bounced) { toast('↩ ' + racer(id).name + ' bounced back: an exact roll is needed to finish!'); fx('bounce', { t: racer(id).name, id: id, n: backBy + (backBy === 1 ? ' square' : ' squares') }, then); return; } // a pop-up explains the exact-finish rule
-        then(); return;
+        if (wentBack) crash();
+        clearFx(wentBack ? 900 : 1800);
+        var go = function () {
+          if (bounced) { toast('↩ ' + racer(id).name + ' bounced back: an exact roll is needed to finish!'); fx('bounce', { t: racer(id).name, id: id, n: backBy + (backBy === 1 ? ' square' : ' squares') }, then); return; } // a pop-up explains the exact-finish rule
+          then();
+        };
+        if (wentBack) setTimeout(go, 700); else go();
+        return;
       }
-      if (dir > 0 && pos(id) >= FINISH) { dir = -1; bounced = true; }
+      if (dir > 0 && pos(id) >= FINISH) { dir = -1; bounced = true; wentBack = true; if (fxMove) { fxMove.back = true; fxMove.boost = false; } }
+      if (boost && fxMove) fxMove.trail.push(pos(id));
       S.pos[id] = pos(id) + dir; n--; if (bounced) backBy++;
-      tone([dir > 0 ? 520 + pos(id) * 6 : 300], 0, 0.08);
+      if (boost && dir > 0) zoom(k++); else tone([dir > 0 ? 520 + pos(id) * 6 : 300], 0, 0.08);
       renderTrack();
       setTimeout(step, 200);
     })();
@@ -315,9 +357,9 @@
     }
     if (p === sec.slide && !sec.slideUsed) {
       sec.slideUsed = true; save();
-      return card(RACING ? KruRacing.SECRET.slide[0] : '🛝 Secret slide!', RACING ? fill(KruRacing.SECRET.slide[1], { t: t.name, n: SLIDE }) : t.name + ' slides forward ' + SLIDE + ' squares!', function () { move(id, SLIDE, function () { landed(id); }); }, 'good');
+      return card(RACING ? KruRacing.SECRET.slide[0] : '🛝 Secret slide!', RACING ? fill(KruRacing.SECRET.slide[1], { t: t.name, n: SLIDE }) : t.name + ' slides forward ' + SLIDE + ' squares!', function () { move(id, SLIDE, function () { landed(id); }, { boost: true }); }, 'good');
     }
-    if (sp && sp.t === 'go') { fx('go', { t: t.name, n: sp.n }, function () { move(id, sp.n, function () { landed(id); }); }); return; }
+    if (sp && sp.t === 'go') { fx('go', { t: t.name, n: sp.n }, function () { move(id, sp.n, function () { landed(id); }, { boost: true }); }); return; }
     if (sp && sp.t === 'back') { fx('back', { t: t.name, n: sp.n }, function () { move(id, -sp.n, function () { landedBack(id); }); }); return; }
     if (sp && sp.t === 'again') { fx('again', { t: t.name }, function () { roll(id, { n: 1 }); }); return; }
     if (sp && sp.t === 'chance') return chance(id);
@@ -344,6 +386,7 @@
     cardThen = then;
   }
   var cardThen = null;
+  var fxMove = null; // the piece being moved right now: { id, boost, back, trail: [squares left behind], crash }
   $('cardOk').addEventListener('click', function () { $('cardBack').hidden = true; var f = cardThen; cardThen = null; if (f) f(); });
 
   function chance(id) {
@@ -351,7 +394,7 @@
     var done = function () { busy = false; nextTurn(); };
     var after = {
       back2: function () { move(id, -2, function () { landedBack(id); }); },
-      ahead3: function () { move(id, 3, function () { landed(id); }); },
+      ahead3: function () { move(id, 3, function () { landed(id); }, { boost: true }); },
       ahead1: function () { move(id, 1, function () { landed(id); }); },
       roll2: function () { roll(id, { n: 2 }); },
       again: function () { roll(id, { n: 1 }); },
@@ -364,7 +407,7 @@
         var ahead = racers.filter(function (o) { return o.id !== id && S.finished.indexOf(o.id) < 0 && pos(o.id) > pos(id); })
           .map(function (o) { return pos(o.id); }).sort(function (a, b) { return a - b; })[0];
         if (ahead === undefined) { toast(t.name + ' is already in front!'); return done(); }
-        move(id, Math.min(ahead + 1, FINISH - 1) - pos(id), function () { landed(id); });
+        move(id, Math.min(ahead + 1, FINISH - 1) - pos(id), function () { landed(id); }, { boost: true });
       },
     };
     if (cd.id === 'swap') return swapCard(id);
@@ -482,7 +525,7 @@
       setTimeout(function () {
         $('diceBack').hidden = true;
         if (spec.back) move(id, -sum, function () { landedBack(id); });
-        else move(id, sum, function () { landed(id); });
+        else move(id, sum, function () { landed(id); }, { boost: spec.big || spec.n > 1 });
       }, 1100);
     })();
   }
@@ -710,7 +753,7 @@
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     racers.forEach(function (t) { var p = points(t.id); if (p) Kru.score(t.id, -p, 'reset'); });
-    S.pos = {}; S.finished = []; S.turn = 0; S.last = null; S.skip = {}; S.shield = {}; S.dbl = {}; S.mathsci = {}; S.secret = newSecret(); S.powers = {}; S.rides = {};
+    S.pos = {}; S.finished = []; S.turn = 0; S.last = null; S.skip = {}; S.shield = {}; S.dbl = {}; S.mathsci = {}; S.secret = newSecret(); S.powers = {}; S.rides = {}; S.rcol = {};
     save(); closeMenu(); renderTrack(); startReveal(function () { upFlash(); });
   });
 
@@ -781,6 +824,7 @@
       S.secs = KruMenu.snap(S.secs); // whole 10-second steps
       S.powers = S.powers || {};
       S.rides = S.rides || {};
+      S.rcol = S.rcol || {};
       S.skipWhy = S.skipWhy || {};
       S.tiersOff = S.tiersOff || {};
       S.mpicked = S.mpicked || {};

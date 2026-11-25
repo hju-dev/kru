@@ -16,7 +16,7 @@ describe('Quiz Grand Prix: racing theme', () => {
     expect(js).toContain('RACING = !!window.KruRacing')
   })
   it('ten different vehicles, one per team colour (by the team\'s place in the list)', () => {
-    expect(racing).toContain("var NAMES = ['Formula racer', 'Sports car', 'Pickup truck', 'Motorbike', 'Monster truck', 'Tuk-tuk', 'Go-kart', 'Rocket dragster', 'Bus', 'Jeep'];")
+    expect(racing).toContain("var NAMES = ['Giant sneaker', 'Flying pig buggy', 'Toilet racer', 'Motorbike', 'Monster truck', 'Tuk-tuk', 'Go-kart', 'Rocket dragster', 'Giant snail', 'Wheelbarrow'];")
     expect((racing.match(/^\s+\/\/ \d+ /gm) ?? []).length).toBe(10)
     expect(js).toContain('KruRacing.vehicle(rideIdx(t), color(t))')
   })
@@ -82,3 +82,34 @@ describe('North Pole Grand Prix (the old Christmas Dash): the same engine in Chr
     expect(js).toContain("document.body.classList.toggle('gp', RACING && !c.christmas)")
   })
 })
+
+describe('Quiz Grand Prix: Typical / Wildcard, boost fire, spin and crash', () => {
+  const racing = read('public/games/race-board/racing.js')
+  const js = read('public/games/race-board/app.js')
+  const css = read('public/games/race-board/style.css')
+  const reveal = read('public/games/shared/kru-reveal.js')
+  it('each team picks Typical or Wildcard before its garage door; the pools split the ten vehicles 5 and 5', () => {
+    expect(racing).toContain("{ id: 'typical', label: 'Typical', sub: 'Real vehicles', pool: [3, 4, 5, 6, 7] }")
+    expect(racing).toContain("{ id: 'wild', label: 'Wildcard', sub: 'Silly vehicles', pool: [0, 1, 2, 8, 9] }")
+    expect(js).toContain('choices: KruRacing.CHOICES')
+    expect(reveal).toContain('choosing')
+    expect(reveal).toContain('data-c=')
+  })
+  it('more than 5 teams on one pool: the vehicle repeats only after the pool is used up, in a different colour', () => {
+    expect(reveal).toContain('usedColors')
+    expect(js).toContain('S.rcol')
+    expect(js).toContain('(S.rcol && S.rcol[t.id]) || KruRacing.color')
+  })
+  it('big forward jumps leave a fire trail and a rising engine note; going back spins and ends with a crash', () => {
+    expect(js).toContain('function zoom(k)')
+    expect(js).toContain('function crash()')
+    expect(js).toContain('{ boost: spec.big || spec.n > 1 }')
+    expect(js).toContain('{ boost: true }')
+    expect(js).toContain('if (wentBack) crash();')
+    expect(css).toContain('.track .sq.flame::after')
+    expect(css).toContain('.piece.spin')
+    expect(css).toContain('.piece.crash')
+    expect(css).toContain('prefers-reduced-motion')
+  })
+})
+
