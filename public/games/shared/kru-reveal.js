@@ -11,7 +11,9 @@
  *     art: function (poolIndex, color) -> svg html // the picture that comes out of the door
  *     badge: function (team, color) -> html        // optional: the team's number badge
  *     labels: { open, next, start, who },          // optional button / caption words
- *     done: function (assign)                      // assign = { teamId: poolIndex }
+ *     choices: [{ id, label, sub, pool: [poolIndex...] }]   // optional: each team first picks a style, then draws from that pool
+ *     palette: [colors]                            // optional: with choices, a repeated vehicle gets an unused colour from here
+ *     done: function (assign, colors)              // assign = { teamId: poolIndex }, colors = { teamId: colour } (choices only)
  *   })
  *   KruReveal.draw(count, poolSize) -> [poolIndex...]   (pure: different random picks, for tests)
  * Skip ▶ gives every remaining team a random ride at once. Reduce Motion: no door movement, same result.
@@ -67,8 +69,15 @@
     clear(); unlock();
     var L = Object.assign({ open: 'Open the door ▶', next: 'Next team ▶', start: 'Start! ▶', who: 'gets', skip: 'Skip ▶' }, cfg.labels || {});
     var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var picks = draw(teams.length, pool.length), assign = {};
-    teams.forEach(function (t, i) { assign[t.id] = picks[i]; });
+    var choices = cfg.choices && cfg.choices.length ? cfg.choices : null, assign = {}, colors = {}, bags = {}, usedColors = {};
+    if (!choices) { var picks = draw(teams.length, pool.length); teams.forEach(function (t, i) { assign[t.id] = picks[i]; }); }
+    /** Choice mode: a team's pick of Typical / Wildcard gives it a vehicle from that pool (no repeats until the pool is used up) in its own colour. */
+    function give(t, choice) {
+      if (!bags[choice.id] || !bags[choice.id].length) bags[choice.id] = shuffle(choice.pool);
+      var idx = bags[choice.id].shift(), col = pool[idx].color;
+      if (usedColors[col]) { var spare = (cfg.palette || []).filter(function (x) { return !usedColors[x]; }); if (spare.length) col = spare[0]; }
+      usedColors[col] = 1; assign[t.id] = idx; colors[t.id] = col;
+    }
     var at = 0, opened = false;
 
     box = document.createElement('div');
@@ -80,6 +89,7 @@
       '<div class="krv-stage"><div class="krv-frame"><div class="krv-sign">' + esc(cfg.sign || '') + '</div>' +
       '<div class="krv-inside"><div class="krv-spot"></div><div class="krv-item"></div></div><div class="krv-door"><i></i></div></div></div>' +
       '<div class="krv-who"><span class="krv-team"></span><span class="krv-name" aria-live="polite"></span></div>' +
+      '<div class="krv-pick" hidden></div>' +
       '<div class="krv-btns"><button class="krv-go" type="button"></button></div>';
     document.body.appendChild(box);
     var q = function (s) { return box.querySelector(s); };
@@ -89,8 +99,17 @@
       opened = false;
       box.classList.remove('shake', 'open', 'shown');
       q('.krv-count').textContent = 'Team ' + (i + 1) + ' of ' + teams.length;
+      var choosing = !!choices && assign[t.id] == null;
+      box.classList.toggle('choosing', choosing);
+      q('.krv-pick').hidden = !choosing;
+      if (choosing) {
+        q('.krv-pick').innerHTML = choices.map(function (c) {
+          return '<button type="button" class="krv-opt" data-c="' + esc(c.id) + '"><b>' + esc(c.label) + '</b><span>' + esc(c.sub || '') + '</span>' +
+            '<em>' + c.pool.map(function (k) { return '<i>' + cfg.art(k, '#c9ced6') + '</i>'; }).join('') + '</em></button>';
+        }).join('');
+      }
       q('.krv-team').innerHTML = (cfg.badge ? cfg.badge(t, '#8a8fa0') + ' ' : '') + '<b>' + esc(t.name) + '</b>';
-      q('.krv-name').textContent = '?';
+      q('.krv-name').textContent = choosing ? (L.choose || 'Pick a style!') : '?';
       q('.krv-item').innerHTML = '';
       q('.krv-go').textContent = L.open;
       q('.krv-go').focus();
@@ -98,9 +117,10 @@
     function open() {
       if (opened) return;
       opened = true;
-      var idx = assign[teams[at].id], p = pool[idx];
-      q('.krv-item').innerHTML = cfg.art(idx, p.color);
-      box.style.setProperty('--ride', p.color);
+      var idx = assign[teams[at].id], p = pool[idx], col = colors[teams[at].id] || p.color;
+      p = { name: p.name, color: col };
+      q('.krv-item').innerHTML = cfg.art(idx, col);
+      box.style.setProperty('--ride', col);
       q('.krv-go').disabled = true;
       rumble();
       if (calm) { box.classList.add('open', 'shown'); reveal(p); return; }
@@ -127,10 +147,17 @@
     function finish() {
       clear();
       if (box) { box.remove(); box = null; }
-      if (cfg.done) cfg.done(assign);
+      if (choices) teams.forEach(function (t) { if (assign[t.id] == null) give(t, choices[Math.floor(Math.random() * choices.length)]); }); // Skip: random style for every team that has not picked
+      if (cfg.done) cfg.done(assign, colors);
     }
     box.addEventListener('click', function (e) {
       if (e.target.closest('.krv-skip')) { finish(); return; }
+      var opt = e.target.closest('.krv-opt');
+      if (opt) {
+        give(teams[at], choices.filter(function (c) { return c.id === opt.dataset.c; })[0]);
+        showTeam(at);
+        return;
+      }
       if (!e.target.closest('.krv-go')) return;
       if (!opened) open();
       else if (at < teams.length - 1) { at++; showTeam(at); }

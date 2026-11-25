@@ -514,3 +514,19 @@
   box-shadow: 0 0 7px 2px var(--c), 0 1px 0 rgb(0 0 0 / 0.5);
 }
 .racing .piece.orb.now { outline: 2px solid #fff; }
+
+/* boost / nitro: a fire trail on the squares the vehicle passed; backwards: the vehicle spins; after the crash it wobbles (Henry, Nov 25) */
+.track .sq.flame::after {
+  content: ''; position: absolute; left: 50%; bottom: 3px; width: 46%; height: 62%; transform: translateX(-50%); z-index: 1; pointer-events: none;
+  border-radius: 50% 50% 46% 46% / 68% 68% 32% 32%;
+  background: radial-gradient(ellipse at 50% 78%, #fff6b0 0 22%, #ffc233 42%, #ff6a1f 68%, rgb(255 60 20 / 0) 72%);
+  animation: flame-flicker 0.28s ease-in-out infinite alternate; filter: drop-shadow(0 0 4px #ff8a1f);
+}
+body.racing:not(.gp) .track .sq.flame::after { background: radial-gradient(ellipse at 50% 78%, #fff 0 22%, #9be4ff 42%, #3aa0ff 68%, rgb(58 160 255 / 0) 72%); filter: drop-shadow(0 0 4px #8ad8ff); }
+.piece.boost { filter: drop-shadow(0 0 5px #ff9a2e); }
+.piece.spin { animation: piece-spin 0.2s linear infinite; }
+.piece.crash { animation: piece-crash 0.7s ease-out 1; }
+@keyframes flame-flicker { from { transform: translateX(-50%) scale(1, 0.85); opacity: 0.85; } to { transform: translateX(-50%) scale(0.85, 1.1); opacity: 1; } }
+@keyframes piece-spin { to { transform: rotate(360deg); } }
+@keyframes piece-crash { 0% { transform: translateY(-6px) rotate(0); } 20% { transform: translate(-3px, 1px) rotate(-14deg); } 40% { transform: translate(3px, 0) rotate(12deg); } 60% { transform: translate(-2px, 1px) rotate(-8deg); } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .piece.spin, .piece.crash, .track .sq.flame::after { animation: none; } }

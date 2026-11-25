@@ -15,14 +15,14 @@
     return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="#1b1b1f" stroke="' + INK + '" stroke-width="2"/><circle cx="' + cx + '" cy="' + cy + '" r="' + Math.round(r * 0.45) + '" fill="#c9ced6"/>';
   }
   function wrap(inner) { return '<svg viewBox="0 0 160 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g stroke="' + INK + '" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">' + inner + '</g></svg>'; }
-  var NAMES = ['Formula racer', 'Sports car', 'Pickup truck', 'Motorbike', 'Monster truck', 'Tuk-tuk', 'Go-kart', 'Rocket dragster', 'Bus', 'Jeep'];
+  var NAMES = ['Giant sneaker', 'Flying pig buggy', 'Toilet racer', 'Motorbike', 'Monster truck', 'Tuk-tuk', 'Go-kart', 'Rocket dragster', 'Giant snail', 'Wheelbarrow'];
   var ART = [
-    // 0 Formula racer
-    function (c) { return wrap('<rect x="8" y="34" width="20" height="6" rx="2" fill="' + shade(c, -40) + '"/><path d="M16 40v22" /><path d="M16 66L40 54L64 50L82 42L106 42L114 52L140 56L156 68L150 72L16 72Z" fill="' + c + '"/><path d="M82 42L90 36L102 38L106 42Z" fill="' + GLASS + '"/><circle cx="94" cy="34" r="8" fill="#f4c542"/>' + wheel(40, 72, 14) + wheel(124, 72, 14)); },
-    // 1 Sports car
-    function (c) { return wrap('<path d="M10 64Q12 50 40 48L62 32Q70 28 96 30L120 48Q148 50 152 64L152 72L10 72Z" fill="' + c + '"/><path d="M68 35L94 34L110 47L58 47Z" fill="' + GLASS + '"/><path d="M12 58h14" stroke="#ffe066"/>' + wheel(42, 72, 13) + wheel(120, 72, 13)); },
-    // 2 Pickup truck
-    function (c) { return wrap('<rect x="10" y="46" width="62" height="26" rx="3" fill="' + shade(c, -35) + '"/><path d="M72 46L82 30L110 30L122 46L148 50L150 72L72 72Z" fill="' + c + '"/><path d="M86 34L106 34L114 46L80 46Z" fill="' + GLASS + '"/>' + wheel(36, 72, 14) + wheel(124, 72, 14)); },
+    // 0 Giant sneaker
+    function (c) { return wrap('<path d="M-4 44h12M-6 54h14M-2 64h10" stroke="#ffffff" stroke-opacity="0.7" fill="none"/><path d="M14 26L50 26L54 42Q74 54 106 52Q146 52 152 64L152 68L14 68Z" fill="' + c + '"/><path d="M26 26L44 12L54 26Z" fill="' + shade(c, -40) + '"/><path d="M20 52Q44 62 66 48" stroke="#fff" fill="none"/><path d="M62 44l8-8M78 48l8-8M94 50l8-8" stroke="#fff" fill="none"/><rect x="12" y="64" width="142" height="9" rx="4" fill="#f6f3ec"/>' + wheel(40, 78, 10) + wheel(126, 78, 10)); },
+    // 1 Flying pig buggy
+    function (c) { return wrap('<path d="M72 34Q58 6 36 14Q50 22 56 36Z" fill="#ffffff"/><path d="M84 34Q76 4 54 6Q68 16 70 36Z" fill="#ffffff"/><ellipse cx="80" cy="50" rx="40" ry="24" fill="' + c + '"/><path d="M42 46q-12-4-8-14q10 0 6 8q4 4-2 6" fill="none"/><circle cx="122" cy="44" r="17" fill="' + c + '"/><path d="M110 32L114 16L126 28Z" fill="' + shade(c, -35) + '"/><ellipse cx="136" cy="48" rx="9" ry="7" fill="' + shade(c, 30) + '"/><circle cx="133" cy="48" r="1.6" fill="#14202b"/><circle cx="139" cy="48" r="1.6" fill="#14202b"/><circle cx="124" cy="38" r="3" fill="#14202b"/><rect x="52" y="68" width="62" height="9" rx="4" fill="' + shade(c, -45) + '"/>' + wheel(64, 80, 9) + wheel(104, 80, 9)); },
+    // 2 Toilet racer
+    function (c) { return wrap('<path d="M100 40L116 12" fill="none"/><path d="M104 14Q116 0 128 14Z" fill="#d62f2f"/><rect x="18" y="12" width="34" height="38" rx="5" fill="#f6f3ec"/><path d="M26 18h14" /><rect x="34" y="52" width="62" height="16" rx="4" fill="#f6f3ec"/><path d="M40 42H122Q122 62 98 62H68Q40 62 40 42Z" fill="' + c + '"/><rect x="36" y="36" width="90" height="9" rx="4" fill="#f6f3ec"/>' + wheel(48, 78, 10) + wheel(108, 78, 10)); },
     // 3 Motorbike
     function (c) { return wrap(wheel(36, 68, 17) + wheel(126, 68, 17) + '<path d="M36 68L66 50L98 50L126 68" fill="none"/><path d="M62 46Q80 34 100 46L92 54L68 54Z" fill="' + c + '"/><path d="M66 46L74 30L86 34L82 50Z" fill="' + shade(c, -45) + '"/><circle cx="76" cy="22" r="9" fill="' + c + '"/><path d="M98 46L112 36L118 40" fill="none"/>'); },
     // 4 Monster truck
@@ -33,10 +33,10 @@
     function (c) { return wrap('<rect x="30" y="52" width="100" height="16" rx="7" fill="' + c + '"/><rect x="128" y="56" width="14" height="10" rx="4" fill="' + shade(c, -40) + '"/><path d="M104 52L112 36" fill="none"/><circle cx="82" cy="38" r="10" fill="#f4c542"/><path d="M82 48L78 54" fill="none"/>' + wheel(46, 72, 11) + wheel(114, 72, 11)); },
     // 7 Rocket dragster
     function (c) { return wrap('<path d="M16 58L-2 62L16 68Z" fill="#ff8a1f"/><path d="M12 60L110 52Q150 54 156 62Q150 70 110 70L12 66Z" fill="' + c + '"/><path d="M22 58L32 38L46 56Z" fill="' + shade(c, -45) + '"/><circle cx="96" cy="52" r="8" fill="' + GLASS + '"/>' + wheel(34, 72, 10) + wheel(132, 72, 10)); },
-    // 8 Bus
-    function (c) { return wrap('<rect x="12" y="26" width="136" height="44" rx="10" fill="' + c + '"/><path d="M24 34h20v14H24zM50 34h20v14H50zM76 34h20v14H76zM102 34h20v14h-20z" fill="' + GLASS + '"/><path d="M126 34h14v36h-14z" fill="' + shade(c, -30) + '"/>' + wheel(44, 72, 12) + wheel(116, 72, 12)); },
-    // 9 Jeep
-    function (c) { return wrap('<path d="M22 56L26 40L56 40L66 26L112 26L118 40L142 42L146 72L22 72Z" fill="' + c + '"/><path d="M70 30L108 30L112 40L64 40Z" fill="' + GLASS + '"/><circle cx="16" cy="56" r="12" fill="#1b1b1f"/>' + wheel(52, 72, 13) + wheel(122, 72, 13)); },
+    // 8 Giant snail
+    function (c) { return wrap('<g transform="translate(-4 9) scale(0.9)"><path d="M140 60L146 36M152 62L162 38" fill="none" stroke="#cfd88a" stroke-width="5"/><circle cx="146" cy="34" r="4.5" fill="#fff"/><circle cx="162" cy="36" r="4.5" fill="#fff"/><path d="M16 74Q14 62 34 62L132 62Q156 62 152 74Q150 80 134 80L26 80Q16 80 16 74Z" fill="#cfd88a"/><circle cx="140" cy="68" r="12" fill="#cfd88a"/><circle cx="72" cy="42" r="28" fill="' + c + '"/><path d="M72 42m-17 0a17 17 0 1 1 17 17M72 42m-8 0a8 8 0 1 1 8 8" fill="none" stroke="' + shade(c, -55) + '"/><circle cx="72" cy="8" r="8" fill="#f4c542"/><path d="M64 5Q72 -3 80 5Z" fill="#d62f2f"/><path d="M72 16V20" /></g>'); },
+    // 9 Wheelbarrow
+    function (c) { return wrap('<path d="M44 56L8 42M52 60L24 80M72 58L74 80" fill="none" stroke="#c9ced6" stroke-width="5"/><path d="M30 32L118 32L100 58L46 58Z" fill="' + c + '"/><circle cx="76" cy="20" r="11" fill="#f4c542"/><path d="M65 15Q76 4 87 15Z" fill="#14202b"/><path d="M69 20h4M80 20h4M72 27h8" fill="none" stroke-width="2"/><path d="M76 31V36" />' + wheel(112, 66, 15) + ''); },
   ];
 
   /** The vehicle of team number i (0-based) in the team's colour, as an SVG string. */
@@ -92,5 +92,10 @@
     trapSq: '🚧', slideSq: '🚀',
   };
 
-  window.KruRacing = { WHY: { skip: 'engine trouble and a pit stop', trap: 'a hidden road block' }, REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }), PREFIX: '🏁 ', OVERTAKE: { title: 'OVERTAKE!', verb: 'blasts past' }, count: ART.length, name: name, vehicle: vehicle, overtake: overtake, shade: shade, POOLS: POOLS, ENC: ENC, CHANCE: CHANCE, SECRET: SECRET };
+  /** Before the garage door each team picks a style (Henry, Nov 25): Typical or Wildcard. The pool is the vehicle numbers it can draw. */
+  var CHOICES = [
+    { id: 'typical', label: 'Typical', sub: 'Real vehicles', pool: [3, 4, 5, 6, 7] },
+    { id: 'wild', label: 'Wildcard', sub: 'Silly vehicles', pool: [0, 1, 2, 8, 9] },
+  ];
+  window.KruRacing = { CHOICES: CHOICES, palette: COLORS, WHY: { skip: 'engine trouble and a pit stop', trap: 'a hidden road block' }, REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }), PREFIX: '🏁 ', OVERTAKE: { title: 'OVERTAKE!', verb: 'blasts past' }, count: ART.length, name: name, vehicle: vehicle, overtake: overtake, shade: shade, POOLS: POOLS, ENC: ENC, CHANCE: CHANCE, SECRET: SECRET };
 })();

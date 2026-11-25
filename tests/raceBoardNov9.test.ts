@@ -56,7 +56,7 @@ describe('Race Board board and rules', () => {
     expect(js).toContain('var COLS = 12, FINISH = 59;')
   })
   it('exact roll to finish: extra steps bounce back', () => {
-    expect(js).toContain('if (dir > 0 && pos(id) >= FINISH) { dir = -1; bounced = true; }')
+    expect(js).toContain('if (dir > 0 && pos(id) >= FINISH) { dir = -1; bounced = true; wentBack = true;')
   })
   it('secret trap (skip a turn) and secret slide, only for the first team there', () => {
     expect(js).toContain('if (p === sec.trap && !sec.trapUsed)')

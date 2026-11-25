@@ -43,9 +43,9 @@ describe('the two Grand Prix games: a random ride per team, colours follow the r
   })
   it('the draw is saved (S.rides), runs after the slides and after New Game, and the team colour is the ride colour', () => {
     expect(race).toContain('function startReveal(then)')
-    expect(race).toContain('S.rides = assign; save()')
+    expect(race).toContain('S.rides = assign; S.rcol = colors || {}; save()')
     expect(race).toContain('S.rides = {};')
-    expect(race).toContain('return KruRacing.color(S.rides[t.id])')
+    expect(race).toContain('(S.rcol && S.rcol[t.id]) || KruRacing.color(S.rides[t.id])')
   })
   it('the board piece is the ride itself and the scoreboard shows it', () => {
     expect(race).toContain('<i class="piece ride')
