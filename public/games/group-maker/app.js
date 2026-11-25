@@ -8,6 +8,7 @@
   var $ = function (id) { return document.getElementById(id); };
   var TEACHER = '@T';
   var DEFAULT_TEACHER = 'T. Henry';
+  var TEAM_COLORS = ['#FFB703', '#FF6B6B', '#2EC4B6', '#A7D129', '#9B7BFF', '#4CC9F0', '#FF9EC7', '#FFB27A', '#7CE0B3', '#E8D38C'];
   var ROLE = { ask: ['A', 'asks'], report: ['R', 'reports'], check: ['C', 'checks'], observe: ['O', 'observes'] };
 
   var students = [];  // { key, no, nick }
@@ -31,8 +32,8 @@
 
   // ---------- group cards ----------
   /** Picks the number of columns and the biggest text size that fits every card (never below 14 px; the stage scrolls then). */
-  function fit(stage, groups, line, badge) {
-    var W = stage.clientWidth - 12, H = stage.clientHeight - 12, n = groups.length, gap = 6;
+  function fit(stage, groups, line, badge, extra) {
+    var W = stage.clientWidth - 12, H = stage.clientHeight - 12 - (extra || 0), n = groups.length, gap = 6;
     if (!n || W <= 0 || H <= 0) return;
     var maxSz = 1, maxCh = 4;
     groups.forEach(function (g) { maxSz = Math.max(maxSz, g.length); g.forEach(function (k) { maxCh = Math.max(maxCh, Math.min(14, name(k).length + (k === TEACHER ? 1 : 0))); }); });
@@ -58,7 +59,7 @@
         var inner = badge + '<span class="nm">' + esc(name(k)) + '</span>';
         return '<li class="' + cls2 + '">' + (o.preview ? '<button type="button" data-g="' + gi + '" data-i="' + i + '">' + inner + '</button>' : inner) + '</li>';
       }).join('');
-      return '<div class="card' + (bad ? ' bad' : '') + '"><span class="gn">' + (gi + 1) + '</span><ol>' + lis + '</ol></div>';
+      return '<div class="card' + (bad ? ' bad' : '') + '" style="--gc:' + TEAM_COLORS[gi % TEAM_COLORS.length] + '"><span class="gn">' + (gi + 1) + '</span><ol>' + lis + '</ol></div>';
     }).join('');
   }
 
@@ -133,10 +134,12 @@
       '<b>Question ' + r.q + ' of ' + r.qn + '</b>' +
       (last ? '<button type="button" class="btn gold" id="qDone">Finish ✓</button>' : '<button type="button" class="small" id="qNext" aria-label="Next question">▶</button>') + '</div>';
     var legend = '<div class="legend">' + ['ask', 'report', 'check', 'observe'].map(function (x) { return '<span><span class="rb ' + x + '">' + ROLE[x][0] + '</span>' + ROLE[x][1] + '</span>'; }).join('') + '</div>';
+    var tkey = r.num + ':' + r.q;
+    if (tm.key !== tkey) { tm.key = tkey; resetTimer(); } else paintTimer();
     $('left').classList.add('qbar');
     $('left').innerHTML = bar;
-    $('body').innerHTML = '<div class="stage" id="stage">' + cardsHtml(r.groups, { q: r.q }) + '</div>' + legend;
-    fit($('stage'), r.groups, 1.3, true);
+    $('body').innerHTML = '<div class="stage" id="stage">' + cardsHtml(r.groups, { q: r.q }) + legend + '</div>';
+    fit($('stage'), r.groups, 1.3, true, 34);
   }
 
   // ---------- actions ----------
@@ -231,6 +234,7 @@
     $('tname').value = K.set.tname || DEFAULT_TEACHER;
     KruMenu.stepper($('sizeStep'), K.set.size, function (v) { K.set.size = v; saveKeep(); }, { min: 3, max: 5, label: 'students in a group' });
     KruMenu.stepper($('qStep'), K.set.qn, function (v) { K.set.qn = v; saveKeep(); if (S.round) { S.round.qn = v; if (S.round.q > v) S.round.q = v; save(); } }, { min: 3, max: 30, label: 'questions' });
+    KruMenu.timer($('timerStep'), tsecs(), function (v) { K.set.tsecs = v; saveKeep(); if (!tm.running) { tm.left = v; paintTimer(); } }, { min: 10, max: 300 });
     $('menuBack').hidden = false;
   }
   function closeMenu() { $('menuBack').hidden = true; render(); }
@@ -241,10 +245,12 @@
   $('confirmNo').addEventListener('click', function () { $('confirmBack').hidden = true; });
   $('confirmYes').addEventListener('click', doReset);
 
-  // ---------- timer (same presets as Talk Timer) ----------
-  var presets = [{ name: '30 s', phases: [{ label: 'Go!', secs: 30 }] }, { name: '1 min', phases: [{ label: 'Go!', secs: 60 }] }, { name: '2 min', phases: [{ label: 'Go!', secs: 120 }] }];
-  var tm = { preset: null, phase: 0, endAt: 0, left: 0, running: false, timer: null };
+  // ---------- question timer: the global timer control (KruMenu.timer) in the settings, a || / |> button in the bar ----------
+  var PAUSE_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1.5" fill="currentColor"/><rect x="14" y="4" width="5" height="16" rx="1.5" fill="currentColor"/></svg>';
+  var PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12-7.5z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+  var tm = { left: 60, running: false, endAt: 0, iv: null, key: '' };
   var audio = null;
+  function tsecs() { return KruMenu.snap(K.set.tsecs || 60, 10, 300); }
   function unlock() {
     try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch (e) {}
     try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); if (audio.state === 'suspended') audio.resume(); } catch (e) {}
@@ -260,51 +266,26 @@
       } catch (e) {}
     });
   }
-  function mmss(s) { s = Math.max(0, Math.ceil(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function mmss(s2) { s2 = Math.max(0, Math.ceil(s2)); return Math.floor(s2 / 60) + ':' + String(s2 % 60).padStart(2, '0'); }
   function paintTimer() {
     var left = tm.running ? (tm.endAt - Date.now()) / 1000 : tm.left;
-    $('tmrBig').textContent = mmss(left);
-    $('tmrBig').classList.toggle('zero', !!tm.preset && left <= 0);
-    var ph = tm.preset && tm.preset.phases[tm.phase];
-    $('tmrName').textContent = tm.preset ? tm.preset.name + (ph && ph.label ? ' · ' + ph.label : '') : 'Pick a timer';
-    $('timerBtn').textContent = tm.preset && (tm.running || tm.left > 0) ? '⏱ ' + mmss(left) : '⏱ Timer';
-    $('tmrPause').disabled = !tm.preset || (!tm.running && tm.left <= 0);
-    $('tmrPause').textContent = tm.running ? 'Pause' : 'Resume';
+    $('timerBtn').innerHTML = (tm.running ? PAUSE_ICON : PLAY_ICON) + '<span>' + mmss(left) + '</span>';
+    $('timerBtn').classList.toggle('zero', left <= 0);
+    $('timerBtn').classList.toggle('run', tm.running);
+    $('timerBtn').setAttribute('aria-label', tm.running ? 'Pause the timer' : 'Start the timer');
   }
+  function resetTimer() { clearInterval(tm.iv); tm.running = false; tm.left = tsecs(); paintTimer(); }
   function tick() {
     if (!tm.running) return;
-    if (tm.endAt - Date.now() <= 0) {
-      chime();
-      if (tm.preset && tm.phase < tm.preset.phases.length - 1) { tm.phase++; tm.endAt = Date.now() + tm.preset.phases[tm.phase].secs * 1000; }
-      else { tm.running = false; tm.left = 0; clearInterval(tm.timer); }
-    }
+    if (tm.endAt - Date.now() <= 0) { chime(); tm.running = false; tm.left = 0; clearInterval(tm.iv); }
     paintTimer();
   }
-  function runPreset(p) {
+  $('timerBtn').addEventListener('click', function () {
     unlock();
-    tm.preset = p; tm.phase = 0; tm.running = true; tm.endAt = Date.now() + p.phases[0].secs * 1000;
-    clearInterval(tm.timer); tm.timer = setInterval(tick, 250);
-    paintTimer();
-  }
-  function paintPresets() {
-    $('tmrPresets').innerHTML = presets.map(function (p, i) { return '<button type="button" data-p="' + i + '">' + esc(p.name) + '</button>'; }).join('');
-  }
-  $('tmrPresets').addEventListener('click', function (e) { var b = e.target.closest('[data-p]'); if (b) runPreset(presets[+b.dataset.p]); });
-  $('tmrPause').addEventListener('click', function () {
-    unlock();
-    if (tm.running) { tm.left = (tm.endAt - Date.now()) / 1000; tm.running = false; }
-    else if (tm.left > 0) { tm.endAt = Date.now() + tm.left * 1000; tm.running = true; }
+    if (tm.running) { tm.left = (tm.endAt - Date.now()) / 1000; tm.running = false; clearInterval(tm.iv); }
+    else { if (tm.left <= 0) tm.left = tsecs(); tm.endAt = Date.now() + tm.left * 1000; tm.running = true; clearInterval(tm.iv); tm.iv = setInterval(tick, 250); }
     paintTimer();
   });
-  $('timerBtn').addEventListener('click', function () { paintPresets(); paintTimer(); $('timerBack').hidden = false; });
-  $('tmrClose').addEventListener('click', function () { $('timerBack').hidden = true; });
-  function loadPresets() {
-    fetch('/games/talk-timer/content.json').then(function (r) { return r.json(); }).then(function (d) {
-      (d.presets || []).forEach(function (p) {
-        if (p && p.name && Array.isArray(p.phases) && p.phases.length && p.phases.every(function (x) { return x.secs > 0; })) presets.push({ name: p.name, phases: p.phases });
-      });
-    }).catch(function () {});
-  }
 
   Kru.onFinishRequest(function () { Kru.finish([]); }); // a tool: nothing to save
 
@@ -322,7 +303,8 @@
     var kp = session.keep;
     K = kp && kp.v === 1 && Array.isArray(kp.rounds) ? kp : { v: 1, rounds: [], names: {}, set: {} };
     K.names = K.names || {};
-    K.set = Object.assign({ teacher: 'auto', tname: DEFAULT_TEACHER, size: 3, qn: 15 }, K.set || {});
+    K.set = Object.assign({ teacher: 'auto', tname: DEFAULT_TEACHER, size: 3, qn: 3 }, K.set || {});
+    if (!K.set.qnV) { K.set.qn = 3; K.set.qnV = 1; }
     students.forEach(function (s) { K.names[s.key] = s.nick; });
 
     var d = session.day;
@@ -336,6 +318,5 @@
     S = rs && rs.v === 1 ? rs : { v: 1, phase: 'setup', tForce: null, preview: null, round: null };
     if ((S.phase === 'preview' && !S.preview) || (S.phase === 'round' && !S.round)) S.phase = 'setup';
     render();
-    loadPresets();
   });
 })();

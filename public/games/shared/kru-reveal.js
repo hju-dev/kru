@@ -78,6 +78,7 @@
       if (usedColors[col]) { var spare = (cfg.palette || []).filter(function (x) { return !usedColors[x]; }); if (spare.length) col = spare[0]; }
       usedColors[col] = 1; assign[t.id] = idx; colors[t.id] = col;
     }
+    if (choices && choices.length === 1) teams.forEach(function (t) { give(t, choices[0]); }); // one pool: no pick screen
     var at = 0, opened = false;
 
     box = document.createElement('div');
