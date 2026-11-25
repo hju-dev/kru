@@ -75,3 +75,17 @@ describe('Quiz Island (Nov 25 tweaks)', () => {
     expect((art.match(/^ {4}function \(c\) \{ return svg\(waves/gm) ?? []).length).toBeGreaterThanOrEqual(8)
   })
 })
+
+describe('Grand Prix dice: easy and regular questions roll one fair die', () => {
+  const js = read('public/games/race-board/app.js')
+  it('easy and regular = 1 ordinary die (1-6, every face equally likely), no weighting anywhere in the roll', () => {
+    expect(js).toContain("easy: { label: 'Easy', share: 30, dice: 1, big: false, note: '1 die' }")
+    expect(js).toContain("regular: { label: 'Regular', share: 45, dice: 1, big: false, note: '1 die' }")
+    expect(js).toContain('function face(big) { return big ? BIG_MIN + Math.floor(Math.random() * 6) : 1 + Math.floor(Math.random() * 6); }')
+    const roll = js.slice(js.indexOf('function roll(id, spec)'), js.indexOf('// ---------- undo'))
+    expect(roll).not.toContain('weighted(')
+  })
+  it('the North Pole Grand Prix runs the same engine, so it rolls the same fair die', () => {
+    expect(read('public/games/christmas-race-board/index.html')).toContain('race-board/app.js')
+  })
+})
