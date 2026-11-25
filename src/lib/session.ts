@@ -71,8 +71,9 @@ export function quickSession(
   roster: { id: number; no: number; nick: string; active: boolean }[],
   absent: number[],
   now = new Date(),
+  fullRoster = false,
 ): Session {
-  const present = roster.filter((s) => s.active && !absent.includes(s.id))
+  const present = roster.filter((s) => s.active && (fullRoster || !absent.includes(s.id)))
   return {
     id: newSessionId(now),
     createdAt: now.getTime(),
@@ -107,6 +108,8 @@ export function initMessage(s: Session) {
       mode: s.mode,
       // mixed groups: "Nok (2/3)" when two students share a nickname
       teams: displayTeams(s.teams),
+      // team ids of students marked absent today (only set for tools that get the full roster)
+      absentIds: (s.absent ?? []).map((id) => `s${id}`),
       teacherTeam: s.teacherTeam,
       resume: s.state,
     },
