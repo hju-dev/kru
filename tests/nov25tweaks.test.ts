@@ -76,16 +76,17 @@ describe('Quiz Island (Nov 25 tweaks)', () => {
   })
 })
 
-describe('Grand Prix dice: easy and regular questions roll one fair die', () => {
+describe('Grand Prix dice lean high (Nov 25)', () => {
   const js = read('public/games/race-board/app.js')
-  it('easy and regular = 1 ordinary die (1-6, every face equally likely), no weighting anywhere in the roll', () => {
-    expect(js).toContain("easy: { label: 'Easy', share: 30, dice: 1, big: false, note: '1 die' }")
-    expect(js).toContain("regular: { label: 'Regular', share: 45, dice: 1, big: false, note: '1 die' }")
-    expect(js).toContain('function face(big) { return big ? BIG_MIN + Math.floor(Math.random() * 6) : 1 + Math.floor(Math.random() * 6); }')
-    const roll = js.slice(js.indexOf('function roll(id, spec)'), js.indexOf('// ---------- undo'))
-    expect(roll).not.toContain('weighted(')
+  it('ordinary forward dice: 4, 5, 6 are twice as likely as 1, 2, 3; Golden Dice and backward dice stay fair', () => {
+    expect(js).toContain('var DIE_WEIGHTS = [1, 1, 1, 2, 2, 2];')
+    expect(js).toContain('1 + weighted(DIE_WEIGHTS)')
+    expect(js).toContain('values.push(face(spec.big, spec.back))')
+    const w = [1, 1, 1, 2, 2, 2]
+    const mean = w.reduce((a, v, i) => a + v * (i + 1), 0) / w.reduce((a, v) => a + v, 0)
+    expect(mean).toBeCloseTo(4, 5)
   })
-  it('the North Pole Grand Prix runs the same engine, so it rolls the same fair die', () => {
+  it('the North Pole Grand Prix runs the same engine', () => {
     expect(read('public/games/christmas-race-board/index.html')).toContain('race-board/app.js')
   })
 })

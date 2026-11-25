@@ -496,7 +496,9 @@
     return h;
   }
   /** spec: { n: 1-3 dice, big: Golden Dice (4-9), back: move backwards }. */
-  function face(big) { return big ? BIG_MIN + Math.floor(Math.random() * 6) : 1 + Math.floor(Math.random() * 6); }
+  /** One die face. Ordinary forward dice lean high (Henry, Nov 25: games were not finishing): 4, 5 and 6 are twice as likely as 1, 2 and 3 (average 4.0 instead of 3.5). Golden Dice and backward dice stay fair; `show` = the fair faces used while the die tumbles. */
+  var DIE_WEIGHTS = [1, 1, 1, 2, 2, 2];
+  function face(big, fair) { return big ? BIG_MIN + Math.floor(Math.random() * 6) : fair ? 1 + Math.floor(Math.random() * 6) : 1 + weighted(DIE_WEIGHTS); }
   function roll(id, spec) {
     unlockAudio();
     busy = true; renderTrack();
@@ -504,7 +506,7 @@
     // the "double dice next time" chance card: the next ordinary forward roll uses 2 dice
     if (S.dbl[id] && !spec.back && !spec.big && spec.n === 1) { spec.n = 2; S.dbl[id] = false; }
     var values = [];
-    for (var d = 0; d < spec.n; d++) values.push(face(spec.big));
+    for (var d = 0; d < spec.n; d++) values.push(face(spec.big, spec.back));
     var sum = values.reduce(function (a, b) { return a + b; }, 0), k = 0;
     var t = racer(id), dice = [$('die'), $('die2'), $('die3')];
     dice.forEach(function (el, i) { el.hidden = i >= spec.n; el.classList.toggle('big', spec.big); el.classList.add('rolling'); });
@@ -515,7 +517,7 @@
     S.last = snapshot();
     (function spin() {
       var last = k >= 11;
-      dice.forEach(function (el, i) { if (i < spec.n) el.innerHTML = dieHtml(last ? values[i] : face(spec.big)); });
+      dice.forEach(function (el, i) { if (i < spec.n) el.innerHTML = dieHtml(last ? values[i] : face(spec.big, true)); });
       tone([300 + k * 35], 0, 0.05);
       if (++k <= 11) { setTimeout(spin, 50 + k * 14); return; }
       dice.forEach(function (el) { el.classList.remove('rolling'); });
