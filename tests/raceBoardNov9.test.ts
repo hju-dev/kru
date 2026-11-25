@@ -16,7 +16,7 @@ describe('Race Board dice (Henry, Nov 11)', () => {
   })
   it('a big die shows 4 to 9, so two big dice are never less than 8', () => {
     expect(js).toContain('var BIG_MIN = 4;')
-    expect(js).toContain('return big ? BIG_MIN + Math.floor(Math.random() * 6) : 1 + Math.floor(Math.random() * 6);')
+    expect(js).toContain('return big ? BIG_MIN + Math.floor(Math.random() * 6) : fair ? 1 + Math.floor(Math.random() * 6) : 1 + weighted(DIE_WEIGHTS)')
   })
   it('a wrong answer rolls the same dice backwards; Risk It = 2 big (3 on impossible) or 2 big back dice', () => {
     expect(js).toContain("if (risk) return { n: right && tier === 'impossible' ? 3 : 2, big: true, back: !right };")
