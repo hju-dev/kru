@@ -440,5 +440,23 @@
     "status": "ready",
     "section": "quizzes",
     "units": true
+  },
+  {
+    "slug": "group-maker",
+    "title": "Gossip Circle",
+    "file": "public/games/group-maker/index.html",
+    "description": "A tool: makes groups of 3 for the Gossip Circle (ask, report, check). Every round is new groups: nobody sits together twice until it can't be avoided. Teacher can join. No points.",
+    "levels": [],
+    "type": "tool",
+    "minutes": null,
+    "modes": [
+      "solo"
+    ],
+    "classTool": true,
+    "fullRoster": true,
+    "results": "scored",
+    "phoneLandscape": true,
+    "status": "ready",
+    "section": "speaking"
   }
 ]

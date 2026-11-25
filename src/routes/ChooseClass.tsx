@@ -44,7 +44,7 @@ export function ChooseClass() {
       // Name Picker / Class Order: no team setup; today's absent students (from team setup) are left out
       const roster = data?.rosters[selected.name] ?? []
       void storage.getAbsent(selected.name, todayKey()).then((absent = []) => {
-        const s = quickSession(selected, game.slug, roster, absent)
+        const s = quickSession(selected, game.slug, roster, absent, new Date(), !!game.fullRoster)
         useSessions.getState().put(s)
         navigate(`/play/${s.id}`)
       })

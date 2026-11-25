@@ -24,6 +24,8 @@ export interface GameInfo {
   results?: 'scored' | 'scored-solo'
   /** true = a class tool (Name Picker): pick a class, then it opens straight away with no team setup */
   classTool?: boolean
+  /** a class tool that gets every active student, with today's absent ones listed in `absent` (Gossip Circle has its own present / absent toggles) */
+  fullRoster?: boolean
   /** true = the game gets the Sheet's Questions tab sets for its level (Quiz Battle) */
   sheetQuestions?: boolean
   /** true = the setup screen offers a unit (content from Henry's Gamma lessons) for the level */
