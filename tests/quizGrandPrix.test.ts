@@ -15,9 +15,9 @@ describe('Quiz Grand Prix: racing theme', () => {
     expect(read('public/games/christmas-race-board/index.html')).toContain('<script src="xmas-rides.js"></script>')
     expect(js).toContain('RACING = !!window.KruRacing')
   })
-  it('ten different vehicles, one per team colour (by the team\'s place in the list)', () => {
-    expect(racing).toContain("var NAMES = ['Giant sneaker', 'Flying pig buggy', 'Toilet racer', 'Motorbike', 'Monster truck', 'Tuk-tuk', 'Go-kart', 'Rocket dragster', 'Giant snail', 'Wheelbarrow'];")
-    expect((racing.match(/^\s+\/\/ \d+ /gm) ?? []).length).toBe(10)
+  it('nine different vehicles, one per team colour (by the team\'s place in the list)', () => {
+    expect(racing).toContain("var NAMES = ['Giant sneaker', 'Flying pig buggy', 'Toilet racer', 'Biplane', 'Monster truck', 'Tuk-tuk', 'Tank', 'Rocket dragster', 'Giant snail'];")
+    expect((racing.match(/^\s+\/\/ \d+ /gm) ?? []).length).toBe(9)
     expect(js).toContain('KruRacing.vehicle(rideIdx(t), color(t))')
   })
   it('the vehicle shows in the pop-ups (right, wrong, moves, finish) and "is up" at the start of every turn', () => {
@@ -88,14 +88,12 @@ describe('Quiz Grand Prix: Typical / Wildcard, boost fire, spin and crash', () =
   const js = read('public/games/race-board/app.js')
   const css = read('public/games/race-board/style.css')
   const reveal = read('public/games/shared/kru-reveal.js')
-  it('each team picks Typical or Wildcard before its garage door; the pools split the ten vehicles 5 and 5', () => {
-    expect(racing).toContain("{ id: 'typical', label: 'Typical', sub: 'Real vehicles', pool: [3, 4, 5, 6, 7] }")
-    expect(racing).toContain("{ id: 'wild', label: 'Wildcard', sub: 'Silly vehicles', pool: [0, 1, 2, 8, 9] }")
+  it('one pool of nine vehicles, no Typical / Wildcard choice (a single choice skips the pick screen)', () => {
+    expect(racing).toContain("var CHOICES = [{ id: 'all', label: 'All', sub: 'Every vehicle', pool: [0, 1, 2, 3, 4, 5, 6, 7, 8] }];")
     expect(js).toContain('choices: KruRacing.CHOICES')
-    expect(reveal).toContain('choosing')
-    expect(reveal).toContain('data-c=')
+    expect(reveal).toContain('choices.length === 1')
   })
-  it('more than 5 teams on one pool: the vehicle repeats only after the pool is used up, in a different colour', () => {
+  it('a tenth team: the vehicle repeats only after the pool is used up, in a different colour', () => {
     expect(reveal).toContain('usedColors')
     expect(js).toContain('S.rcol')
     expect(js).toContain('(S.rcol && S.rcol[t.id]) || KruRacing.color')

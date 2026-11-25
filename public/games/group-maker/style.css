@@ -64,12 +64,6 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .row2 { display: flex; gap: 8px; }
 .row2 .btn { flex: 1; }
 
-.tmr { align-items: stretch; text-align: center; }
-.tmr-name { font-weight: 700; font-size: 18px; color: var(--muted); }
-.tmr-big { font: 800 84px/1 var(--mono); }
-.tmr-big.zero { color: var(--coral); }
-.tmr-presets { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-height: 110px; overflow-y: auto; }
-.tmr-presets button { min-height: 44px; padding: 0 12px; border-radius: 12px; border: 2px solid var(--line); background: var(--panel); font-weight: 700; font-size: 16px; }
 .tip { line-height: 1; }
 .rn { font: 800 22px var(--display); }
 .left.qbar { display: flex; align-items: center; gap: 12px; overflow: visible; font-family: var(--body); font-size: inherit; color: var(--fg); }
@@ -84,3 +78,15 @@ button:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 /* pop-ups (settings, confirm, timer) */
 .backdrop { position: fixed; inset: 0; z-index: 5; background: rgb(0 0 0 / 0.55); display: flex; align-items: center; justify-content: center; padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px); }
 .menu { width: min(460px, 100%); max-height: 100%; overflow-y: auto; background: var(--stage); border: 2px solid var(--line); border-radius: 18px; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 6px; }
+
+/* team colours: every group has its own colour so students can find their team; the number circle is a lighter shade of it */
+.card { border: 3px solid var(--gc, var(--line)); background: color-mix(in srgb, var(--gc, #3e3950) 16%, var(--panel)); }
+.card .gn { background: color-mix(in srgb, var(--gc, #ffb703) 70%, #ffffff); color: #14202b; }
+.card.bad { box-shadow: 0 0 0 3px var(--coral); }
+.stage { align-content: stretch; grid-auto-rows: 1fr; }
+.stage .legend { grid-column: 1 / -1; justify-content: center; align-self: end; min-height: 28px; }
+.card ol { justify-content: space-evenly; }
+.tbtn { display: inline-flex; align-items: center; gap: 6px; font: 800 20px var(--mono); }
+.tbtn svg { width: 20px; height: 20px; }
+.tbtn.run { border-color: var(--gold); color: var(--gold); }
+.tbtn.zero { border-color: var(--coral); color: var(--coral); }

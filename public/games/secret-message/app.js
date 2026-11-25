@@ -137,7 +137,7 @@
     var rows = line.map(function (id, i) {
       var tag = i === 0 && line.length > 1 ? '<em class="role" aria-label="sees the secret">👀</em>' : i === line.length - 1 ? '<em class="role" aria-label="says it">🎤</em>' : '';
       var cls = i === 0 ? ' first' : i === line.length - 1 ? ' last' : '';
-      return '<li class="' + cls.trim() + '"><span class="no">' + (i + 1) + '</span><span class="nm">' + esc(nameOf(t, id)) + '</span>' + tag + '</li>';
+      return '<li class="' + cls.trim() + '"><span class="no">' + (i + 1) + '</span><span class="nm">' + esc(nameOf(t, id)) + '</span>' + tag + (i < line.length - 1 ? '<i class="arr" aria-hidden="true"></i>' : '') + '</li>';
     }).join('');
     return '<div class="line" style="--c:' + color(t.id) + '"><div class="lh">' + Kru.badge(t, color(t.id)) + '<span>' + esc(t.name) + '</span></div><ol>' + rows + '</ol></div>';
   }
@@ -149,31 +149,31 @@
   function render() {
     var p = PHRASES[S.cur] || { k: 'ds', say: '', answer: '' };
     var stage = $('stage'), html = '', go = '', alt = '', label = '';
-    $('count').textContent = 'Round ' + S.round;
+    $('count').textContent = 'R' + S.round;
     switch (phase) {
       case 'order':
-        html = linesHtml(); go = 'Get the secret ▶';
+        html = linesHtml(); go = 'Secret';
         break;
       case 'warn1':
         html = '<div class="cover warn"><div class="big">🕵️ TOP SECRET MISSION!</div>' +
           '<p>Agent Teacher, the TV must NOT see this! Un-mirror your phone now:</p>' +
           '<p class="how">Control Center → <b>Screen Mirroring</b> → <b>Stop Mirroring</b></p></div>';
-        go = '🔒 TV is dark ▶'; alt = '◀ Back';
+        go = '🔒'; alt = '←';
         break;
       case 'secret':
         html = '<div class="secret"><div class="kind">' + esc(KIND[p.k]) + ' → ' + (p.answer === p.say ? 'say it ' + esc(TO[p.k]) : 'say it as ' + esc(TO[p.k])) + '</div>' +
           '<div class="phrase" id="phrase">' + esc(p.say) + '</div>' +
           '<div class="who">Show ONLY the first student of each team: <b>' + players.map(function (t) { return esc(nameOf(t, (S.lines[t.id] || [])[0])); }).join(' and ') + '</b></div></div>';
-        go = 'Hide it ▶';
+        go = 'Hide';
         break;
       case 'warn2':
         html = '<div class="cover go"><div class="big">🚀 MISSION LAUNCHED!</div>' +
           '<p>The secret is safe. You may mirror your phone again!</p>' +
           '<p class="how">Control Center → <b>Screen Mirroring</b> → your TV</p></div>';
-        go = 'Start whispering ▶'; alt = '👀 Show again';
+        go = 'Start'; alt = '👀';
         break;
       case 'play':
-        html = linesHtml(); go = running ? 'Reporters are ready ▶' : 'Resume'; alt = running ? 'Pause' : '';
+        html = linesHtml(); go = running ? 'Ready' : '▶'; alt = running ? '||' : '';
         break;
       case 'judge':
         if (!revealed) {
@@ -196,8 +196,9 @@
     }
     stage.innerHTML = html;
     $('phase').textContent = label;
-    $('go').textContent = go; $('go').hidden = !go;
-    $('alt').textContent = alt; $('alt').hidden = !alt;
+    var LBL = { '🔒': 'The TV is dark: show the secret', '←': 'Back', '👀': 'Show the secret again', '||': 'Pause', '▶': 'Resume', 'Ready': 'The reporters are ready' };
+    $('go').textContent = go; $('go').hidden = !go; $('go').setAttribute('aria-label', LBL[go] || go);
+    $('alt').textContent = alt; $('alt').hidden = !alt; $('alt').setAttribute('aria-label', LBL[alt] || alt);
     document.body.className = 'ph-' + phase;
     paintClock(); renderTotals(); fit();
   }
@@ -213,8 +214,22 @@
     if (lists.length) {
       // the whole team is in line (names read left to right, then down): try 1 to 4 columns and keep the one with the biggest
       // names where NO name wraps or is cut and nothing scrolls. 18 px is the goal; a very long name may push it a little lower.
+      // a snake: row 1 goes left to right, row 2 right to left, ... with an arrow to the next student
       var layout = function (cols, px) {
-        lists.forEach(function (o) { o.style.gridTemplateColumns = 'repeat(' + cols + ', minmax(0, 1fr))'; o.style.fontSize = px + 'px'; });
+        lists.forEach(function (o) {
+          o.style.gridTemplateColumns = 'repeat(' + cols + ', minmax(0, 1fr))'; o.style.fontSize = px + 'px';
+          var items = o.querySelectorAll('li'), n = items.length;
+          Array.prototype.forEach.call(items, function (li, i) {
+            var row = Math.floor(i / cols), k = i % cols, col = row % 2 ? cols - 1 - k : k;
+            li.style.gridRow = String(row + 1); li.style.gridColumn = String(col + 1);
+            var arr = li.querySelector('.arr');
+            if (arr) {
+              var rowEnd = k === cols - 1;
+              arr.textContent = rowEnd ? '↓' : row % 2 ? '←' : '→';
+              if (cols === 1) arr.textContent = '↓';
+            }
+          });
+        });
       };
       var fits = function () {
         if (stage.scrollHeight > stage.clientHeight + 1) return false;

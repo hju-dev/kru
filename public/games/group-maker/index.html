@@ -14,7 +14,7 @@
         <span class="logo">Gossip <b>Circle</b></span>
         <div class="left" id="left"></div>
         <span class="grow"></span>
-        <button class="small" id="timerBtn" aria-label="Timer" hidden>⏱ Timer</button>
+        <button class="small tbtn" id="timerBtn" aria-label="Start the timer" hidden></button>
         <button class="small" id="more" aria-haspopup="dialog" aria-label="Settings"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M9.6 4.16 L10.16 1.56 L13.84 1.56 L14.4 4.16 L15.14 4.42 L15.85 4.76 L18.08 3.32 L20.68 5.92 L19.24 8.15 L19.58 8.86 L19.84 9.6 L22.44 10.16 L22.44 13.84 L19.84 14.4 L19.58 15.14 L19.24 15.85 L20.68 18.08 L18.08 20.68 L15.85 19.24 L15.14 19.58 L14.4 19.84 L13.84 22.44 L10.16 22.44 L9.6 19.84 L8.86 19.58 L8.15 19.24 L5.92 20.68 L3.32 18.08 L4.76 15.85 L4.42 15.14 L4.16 14.4 L1.56 13.84 L1.56 10.16 L4.16 9.6 L4.42 8.86 L4.76 8.15 L3.32 5.92 L5.92 3.32 L8.15 4.76 L8.86 4.42 Z M15.6 12a3.6 3.6 0 1 0-7.2 0 3.6 3.6 0 1 0 7.2 0z"/></svg></button>
       </header>
       <section class="body" id="body" aria-live="polite"></section>
@@ -25,6 +25,7 @@
         <label class="menu-trow"><span class="menu-label">Teacher's name</span><input id="tname" class="txt" maxlength="14" autocomplete="off" /></label>
         <div class="menu-trow"><span class="menu-label">Students in a group</span><div id="sizeStep"></div></div>
         <div class="menu-trow"><span class="menu-label">Questions per round</span><div id="qStep"></div></div>
+        <div class="menu-trow"><span class="menu-label">Time per question</span><div id="timerStep"></div></div>
         <button class="btn" id="endRound" hidden>End this round</button>
         <button class="btn ghost" id="menuClose">Close</button>
       </div>
@@ -34,15 +35,6 @@
       <div class="menu" role="dialog" aria-label="Clear history">
         <p class="confirm" id="confirmText"></p>
         <div class="row2"><button class="btn ghost" id="confirmNo">Cancel</button><button class="btn danger armed" id="confirmYes">Clear history</button></div>
-      </div>
-    </div>
-
-    <div class="backdrop" id="timerBack" hidden>
-      <div class="menu tmr" role="dialog" aria-label="Timer">
-        <div class="tmr-name" id="tmrName">Pick a timer</div>
-        <div class="tmr-big" id="tmrBig">0:00</div>
-        <div class="tmr-presets" id="tmrPresets"></div>
-        <div class="row2"><button class="btn" id="tmrPause" disabled>Pause</button><button class="btn ghost" id="tmrClose">Close</button></div>
       </div>
     </div>
 

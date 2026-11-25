@@ -18,20 +18,16 @@
         <span class="count" id="count" aria-live="polite"></span>
         <div class="totals" id="totals" aria-label="Points"></div>
         <span class="grow"></span>
+        <div class="secs" id="secs" aria-hidden="true"></div>
+        <span class="phase" id="phase"></span>
+        <button class="btn" id="alt" hidden></button>
+        <button class="btn gold" id="go"></button>
         <button class="small" id="more" aria-haspopup="dialog" aria-label="Settings"><svg class="gear" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" fill-rule="evenodd" d="M9.6 4.16 L10.16 1.56 L13.84 1.56 L14.4 4.16 L15.14 4.42 L15.85 4.76 L18.08 3.32 L20.68 5.92 L19.24 8.15 L19.58 8.86 L19.84 9.6 L22.44 10.16 L22.44 13.84 L19.84 14.4 L19.58 15.14 L19.24 15.85 L20.68 18.08 L18.08 20.68 L15.85 19.24 L15.14 19.58 L14.4 19.84 L13.84 22.44 L10.16 22.44 L9.6 19.84 L8.86 19.58 L8.15 19.24 L5.92 20.68 L3.32 18.08 L4.76 15.85 L4.42 15.14 L4.16 14.4 L1.56 13.84 L1.56 10.16 L4.16 9.6 L4.42 8.86 L4.76 8.15 L3.32 5.92 L5.92 3.32 L8.15 4.76 L8.86 4.42 Z M15.6 12a3.6 3.6 0 1 0-7.2 0 3.6 3.6 0 1 0 7.2 0z"/></svg></button>
       </header>
 
       <!-- one stage, redrawn for every phase: the lines, the un-mirror warning, the secret, the re-mirror note, the answer -->
       <section class="stage" id="stage" aria-live="polite"></section>
 
-      <!-- one bottom row: the timer and the buttons (the points sit at the top, next to the round) -->
-      <div class="controls">
-        <div class="secs" id="secs" aria-hidden="true"></div>
-        <span class="phase" id="phase"></span>
-        <span class="grow"></span>
-        <button class="btn" id="alt" hidden></button>
-        <button class="btn gold" id="go"></button>
-      </div>
     </main>
 
     <div class="backdrop" id="menuBack" hidden>
