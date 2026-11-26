@@ -465,3 +465,17 @@ body {
 .powers .pw:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 #0a2a40; }
 .powers .pw:disabled { opacity: 0.38; box-shadow: none; }
 .powers .pw-lab { color: #fff; }
+/* Nov 26: new cartoons: the orders slide in and flutter, the radio crackles, the captor's flag drops onto the ruins */
+.fx.go .sc-orders > svg { animation: sc-orders 0.6s cubic-bezier(0.2, 1.4, 0.4, 1) both, sc-wobble 0.6s 0.6s ease-in-out infinite alternate; transform-origin: 50% 90%; }
+.fx.go .sc-jammed > svg { animation: sc-shake 0.3s ease-in-out infinite; }
+.sc-jammed .sc-a, .sc-jammed .sc-b { left: 70%; top: 4%; width: 14px; height: 14px; border-radius: 50%; border: 3px solid #e63946; }
+.fx.go .sc-jammed .sc-a { animation: sc-ring 1s ease-out infinite; }
+.fx.go .sc-jammed .sc-b { animation: sc-ring 1s 0.5s ease-out infinite; }
+.fx.go .sc-captured > svg { animation: sc-capture 0.8s cubic-bezier(0.3, 1.4, 0.5, 1) both, sc-pulse 0.9s 0.8s ease-in-out infinite alternate; }
+.sc-captured .sc-a, .sc-captured .sc-b { width: 26px; height: 26px; border-radius: 50%; background: rgb(150 155 170 / 0.75); bottom: 30%; }
+.sc-captured .sc-a { left: 20%; } .sc-captured .sc-b { left: 70%; }
+.fx.go .sc-captured .sc-a { animation: sc-smoke 2s infinite; }
+.fx.go .sc-captured .sc-b { animation: sc-smoke 2s 0.8s infinite; }
+@keyframes sc-orders { 0% { transform: translateX(120%) rotate(30deg); } 100% { transform: none; } }
+@keyframes sc-capture { 0% { transform: translateY(-120%) scale(1.2); } 70% { transform: translateY(4%) scale(0.98, 1.04); } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .fx.go .sc-orders > svg, .fx.go .sc-jammed > svg, .fx.go .sc-captured > svg, .fx.go .sc-jammed .sc-a, .fx.go .sc-jammed .sc-b, .fx.go .sc-captured .sc-a, .fx.go .sc-captured .sc-b { animation: none; } }

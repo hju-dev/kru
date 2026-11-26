@@ -60,3 +60,37 @@ describe('RedPoint fixes (Henry, Nov 26, round 2)', () => {
     for (const t of ['easy', 'regular', 'hard', 'impossible']) expect(css).toContain(`.tp-${t} {`)
   })
 })
+
+describe('Nov 26 round 3', () => {
+  it('RedPoint: Question Change and a missed turn have their own cartoons (no die); a fallen base is captured by its attacker', () => {
+    const js3 = read('public/games/fortress/app.js'), art = read('public/games/fortress/art.js')
+    expect(art).toContain('orders: function ()')
+    expect(art).toContain('jammed: function ()')
+    expect(art).toContain('captured: function (c)')
+    expect(js3).toContain("title: 'NEW ORDERS!'")
+    expect(js3).toContain("ART.sc('orders', ART.orders())")
+    expect(js3).toContain("title: 'RADIO SILENCE!'")
+    expect(js3).not.toContain("ART.sc('risk', ART.risk()), title: 'NEW ORDERS!'")
+    expect(js3).toContain('function captorOf(id)')
+    expect(js3).not.toContain('Join which team?')
+  })
+  it('Quiz Island: slide wording, and a Pirate Raid that cannot use all three attacks can be kept', () => {
+    const qi = read('public/games/quiz-island/content.json'), app = read('public/games/quiz-island/app.js')
+    for (const w of ['Forces of Nature', '🏴‍☠️ Pirate Raid', '☠ Pirates: miss a turn', 'Kraken: lose half your gold']) expect(qi).toContain(w)
+    expect(qi).not.toContain('Storm')
+    expect(app).toContain("if (ch.banked || (ch.kind === 'raid' && !enemy)) opts.push({ k: 'keep'")
+    expect(app).toContain('rew: !!tier.reward')
+  })
+  it('North Pole Grand Prix: TEAM 2 label; challenge and forfeit screens with Santa picks, a manual timer and a done button', () => {
+    const rb = read('public/games/race-board/app.js'), st = read('public/games/christmas-race-board/xmas-stage.js')
+    expect(rb).toContain("'\"></span>TEAM ' + esc(Kru.teamNo(t))")
+    expect(rb).toContain("XmasStage.run({ kind: 'challenge'")
+    expect(rb).toContain("XmasStage.run({ kind: 'forfeit'")
+    expect(read('public/games/christmas-race-board/index.html')).toContain('<script src="xmas-stage.js"></script>')
+    for (const w of ['🎅 Santa picks a student', '✅ Take Forfeit', 'Challenge complete', 'Forfeit done: stay put', 'Refuse: roll the back dice']) expect(st).toContain(w)
+    // every card in the decks has its own scene
+    const c = JSON.parse(read('public/games/christmas-race-board/content.json')).christmas as Record<string, { title: string }[]>
+    const titles = [...c.challenge, ...c.forfeit].map((x) => x.title)
+    for (const t of titles) expect(st.includes(`'${t}': [`) || st.includes(`"${t}": [`), t).toBe(true)
+  })
+})

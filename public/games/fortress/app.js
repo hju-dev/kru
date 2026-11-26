@@ -207,7 +207,7 @@
     while (S.cur < S.queue.length) {
       var id = S.queue[S.cur];
       if (!alive(id)) { S.cur++; continue; }
-      if (S.phase === 'turn' && S.skip[id]) { S.skip[id] = false; toast(tname(id) + ' skips this turn.'); S.cur++; continue; }
+      if (S.phase === 'turn' && S.skip[id]) { S.skip[id] = false; banner({ art: ART.sc('jammed', ART.jammed()), title: 'RADIO SILENCE!', sub: tname(id) + ' misses this turn. Stand by, soldiers!', mood: 'bad', wait: 1800 }); S.cur++; continue; }
       if (S.phase === 'shop' && !T(id).gold) { S.cur++; continue; }
       if (S.phase === 'fire' && !T(id).bombs.length) { S.cur++; continue; }
       if (S.phase === 'repair' && !canRepair(id)) { S.cur++; continue; }
@@ -285,7 +285,7 @@
     if (it.mode === 'jam') {
       var jt = picks[0].t;
       S.skip[jt] = true; S.jamUsed = S.jamUsed || {}; S.jamUsed[from] = S.round; save();
-      banner({ art: ART.sc('risk', ART.risk()), title: 'SIGNAL JAMMED!', sub: tname(jt) + ' will skip its next turn.', mood: 'magic', wait: 1500 });
+      banner({ art: ART.sc('jammed', ART.jammed()), title: 'SIGNAL JAMMED!', sub: tname(jt) + ' will skip its next turn.', mood: 'magic', wait: 1500 });
       afterBanners(continueFire);
       return;
     }
@@ -363,15 +363,20 @@
     });
     save();
   }
-  /** An eliminated team chooses which remaining team to join (even the one that destroyed it); it shares that team's points. */
+  /** Nov 26 (Henry): a destroyed team that cannot rebuild is CAPTURED by the team that destroyed it (no choice any more;
+   *  alliances only work while a base still stands). It shares the captor's points. If that team has fallen too, its own
+   *  captor takes over; with no attacker on record, the strongest base takes it. */
+  function captorOf(id) {
+    var c = S.hitBy[id], seen = {};
+    while (c && !alive(c) && !seen[c]) { seen[c] = 1; c = S.joined[c] || S.hitBy[c]; }
+    if (c && alive(c) && c !== id) return c;
+    return living().slice().sort(function (a, b) { return totalHp(b) - totalHp(a); })[0];
+  }
   function joinChoice(id, done) {
-    var hit = S.hitBy[id];
-    choose({ art: ART.sc('alliance', ART.alliance()), title: tname(id) + ' is out. Join which team?',
-      options: living().map(function (o) { return { html: '<b>' + esc(tname(o)) + '</b><small>' + (o === hit ? 'the team that destroyed you · ' : '') + money(totalHp(o)) + ' HP left</small>', fn: function () {
-        S.joined[id] = o; closeChoice(); save();
-        banner({ art: ART.sc('alliance', ART.alliance()), title: 'NEW RECRUITS!', sub: tname(id) + ' joins ' + tname(o) + ' and shares its points.', mood: 'magic', wait: 1600 });
-        afterBanners(done);
-      } }; }) });
+    var o = captorOf(id);
+    S.joined[id] = o; save();
+    banner({ art: ART.sc('captured', ART.captured(color(o))), title: 'CAPTURED!', sub: tname(o) + ' captures ' + tname(id) + '! They share ' + tname(o) + "'s points now.", mood: 'boom', sound: 'boom', wait: 2200 });
+    afterBanners(done);
   }
   /** Two bases left: every alliance ends. */
   function dissolveAlliances() {
@@ -873,7 +878,7 @@
     unlockAudio();
     var id = curId(), p = b.dataset.pw;
     if (p === 'change') {
-      choose({ art: ART.sc('risk', ART.risk()), title: 'Question Change: swap it for a harder one (more gold!)',
+      choose({ art: ART.sc('orders', ART.orders()), title: 'Question Change: swap it for a harder one (more gold!)',
         options: ['hard', 'impossible'].map(function (t) { return { html: '<b>' + TIERS[t].label + ' question</b><small>' + money(GOLD[t]) + ' gold if you win it</small>', fn: function () { changeQuestion(t); } }; }),
         foot: [{ label: 'Cancel', cls: 'ghost', fn: closeChoice }] });
     } else if (p === 'free') { use(id, 'free'); banner({ art: ART.sc('coin', ART.coin()), title: 'INTEL LEAK!', sub: tname(id) + ' gets the answer from a spy. Free Answer!', mood: 'magic', wait: 1500 }); rightAnswer(); }
@@ -891,7 +896,7 @@
     Q = Object.assign({}, q, { _changed: true }); shown = false;
     stopTimer(); total = left = S.secs; renderClock(); renderQuestion(); startTimer();
     tone([523, 659, 784], 0.08);
-    banner({ art: ART.sc('risk', ART.risk()), title: 'NEW ORDERS!', sub: tname(id) + ' gets a ' + TIERS[tier].label + ' question. More gold if you win it!', mood: 'magic', wait: 1500 });
+    banner({ art: ART.sc('orders', ART.orders()), title: 'NEW ORDERS!', sub: tname(id) + ' gets a ' + TIERS[tier].label + ' question. More gold if you win it!', mood: 'magic', wait: 1500 });
   }
   // ---------- Nov 26: the team chooses its challenge (no more luck of the draw) ----------
   var TP_ART = {

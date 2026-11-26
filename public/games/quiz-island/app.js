@@ -492,13 +492,14 @@
       { k: 'sink', art: ART.boom(), title: '💣 Sink', sub: 'Blast an enemy island', off: !enemy },
       { k: 'steal', art: ART.steal(), title: '⚔ Steal', sub: 'Take an enemy island', off: !enemy },
       { k: 'two', art: ART.double(color(id)), title: '🏝🏝 Claim 2', sub: '2 new islands (+' + ch.v + ' each)' },
-    ].filter(function (o) { return !(ch.free && o.k === 'two'); }) : [
+    ].filter(function (o) { return !(ch.free && !ch.v && o.k === 'two'); }) : [
       { k: 'dig', art: ART.dig(), title: '💰 Gold Dig', sub: 'Island + ' + DIG + ' extra gold' },
       { k: 'cannon', art: ART.cannon(), title: '💣 Cannon Fire', sub: 'Claim 1, then sink an enemy island', off: !enemy },
       { k: 'two', art: ART.double(color(id)), title: '🏝🏝 Double Claim', sub: '2 islands (+' + ch.v + ' each)' },
     ];
     art.innerHTML = ch.kind === 'raid' ? ART.raid() : ART.chest();
-    if (ch.banked) opts.push({ k: 'keep', art: ART.chest(), title: '🗝 Keep it', sub: 'Save the raid for a later turn' });
+    // Nov 26: a raid is only played when all three attacks are possible; otherwise (or any time it is banked) it can be kept
+    if (ch.banked || (ch.kind === 'raid' && !enemy)) opts.push({ k: 'keep', art: ART.chest(), title: '🗝 Keep it', sub: 'Save the raid for a later turn' });
     $('choiceTitle').textContent = ch.kind === 'raid' ? '🏴‍☠️ ' + (ch.banked ? 'YOUR BANKED ' : ch.free ? 'FREE ' : '') + 'PIRATE RAID! ' + tname(id) + ', ' + (ch.banked ? 'use it now?' : 'choose your attack') : '⭐ BIG ANSWER! ' + tname(id) + ', choose your reward';
     $('choices').innerHTML = opts.map(function (o) {
       return '<button class="btn ch" data-ch="' + o.k + '"' + (o.off ? ' disabled' : '') + '><span class="ch-art">' + o.art + '</span><b>' + o.title + '</b><small>' + (o.off ? 'No enemy island to hit yet' : o.sub) + '</small></button>';
@@ -515,7 +516,20 @@
       if (k === 'end') endGame(); else nextTurn();
       return;
     }
-    if (k === 'keep') { S.choice = null; $('choiceBack').hidden = true; save(); nextTurn(); return; } // the banked raid waits
+    if (k === 'keep') { // the raid waits in the bank; it is offered again at the end of this team's later turns
+      S.choice = null; $('choiceBack').hidden = true; S.bankAsk = S.turn;
+      if (!ch.banked) {
+        S.bank = S.bank || {}; S.bank[ch.id] = (S.bank[ch.id] || 0) + 1; S.bankV = S.bankV || {}; S.bankV[ch.id] = Math.max(S.bankV[ch.id] || 0, v || 0);
+        banner({ art: ART.raid(), title: 'RAID BANKED!', sub: tname(ch.id) + ' keeps the Pirate Raid. Use it at the end of your next turn!', mood: 'magic', wait: 2400 });
+      }
+      // a Pirate Raid power-up that was kept: the right answer still earns its normal island (or the big-answer reward)
+      if (!ch.banked && !ch.free) {
+        if (ch.rew) { S.choice = { id: ch.id, kind: 'reward', v: v }; save(); render(); afterBanners(openChoice); }
+        else { save(); afterBanners(function () { startSteps(ch.id, [{ m: 'claim', v: v }]); }); }
+        return;
+      }
+      save(); afterBanners(nextTurn); return;
+    }
     if (ch.banked) S.bank[ch.id] = Math.max(0, (S.bank[ch.id] || 0) - 1);
     if (k === 'dig') steps = [{ m: 'claim', v: v, dig: true }];
     else if (k === 'cannon') steps = [{ m: 'claim', v: v }, { m: 'sink', announce: true }];
@@ -538,7 +552,7 @@
     // Nov 26: a banked free Pirate Raid: at the end of that team's turn, offer it (once per turn) while there is an enemy island to hit
     var me = current();
     if (S.phase === 'play' && me && S.bank && S.bank[me.id] > 0 && S.bankAsk !== S.turn && targets(me.id).length) {
-      S.bankAsk = S.turn; S.choice = { id: me.id, kind: 'raid', free: true, banked: true, v: 0 }; save(); render(); afterBanners(openChoice);
+      S.bankAsk = S.turn; S.choice = { id: me.id, kind: 'raid', free: true, banked: true, v: (S.bankV && S.bankV[me.id]) || 0 }; save(); render(); afterBanners(openChoice);
       return;
     }
     if (advance()) return;
@@ -769,7 +783,7 @@
     closeQuestion();
     if (!free) { var ch = cheer(t.name); banner({ art: ART.correct(), title: ch.title, sub: ch.sub, mood: 'good', sound: 'good', quick: true, wait: 1500 }); }
     if (rd || tier.reward) {
-      S.choice = { id: t.id, kind: rd ? 'raid' : 'reward', v: v };
+      S.choice = { id: t.id, kind: rd ? 'raid' : 'reward', v: v, rew: !!tier.reward };
       save(); render();
       if (rd) banner({ art: ART.raid(), title: 'RAID SUCCESS!', sub: t.name + "'s pirates storm the islands!", mood: 'magic', sound: 'fanfare', wait: 1800 });
       afterBanners(openChoice);

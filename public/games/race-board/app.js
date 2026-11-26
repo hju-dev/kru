@@ -257,7 +257,7 @@
         (f >= 0 && f < 3 ? ' <b>' + ['1st', '2nd', '3rd'][f] + '</b>' : f >= 3 ? ' <b>done</b>' : '') + '</button>';
     }).join('');
     var t = current(), done = S.finished.length >= racers.length;
-    $('turn').innerHTML = done ? 'Race over!' : t ? '<span class="dot" style="background:' + color(t) + '"></span>' + esc(t.name) + "'s turn" : '';
+    $('turn').innerHTML = done ? 'Race over!' : t ? '<span class="dot" style="background:' + color(t) + '"></span>TEAM ' + esc(Kru.teamNo(t)) : ''; // Nov 26: just "TEAM 2"
     $('ask').disabled = done || busy || !t;
   }
 
@@ -468,9 +468,14 @@
   }
   /** Landing on a 🎄 square: draw a Challenge card. The team just does it (no points). */
   function challenge(id) {
-    var c = draw('challenge');
+    var c = draw('challenge'), t = racer(id);
+    // Nov 26: North Pole Grand Prix shows the challenge on its own themed screen (xmas-stage.js): Santa picks a student,
+    // a timer Henry starts himself, then "Challenge complete"
+    if (window.XmasStage) { busy = true; XmasStage.run({ kind: 'challenge', card: c, team: t, badge: Kru.badge(t, color(t)), picked: xpick(id), done: function () { busy = false; save(); nextTurn(); } }); return; }
     card('🎄 Challenge: ' + c.title, c.text, function () { busy = false; nextTurn(); }, 'good');
   }
+  /** The students Santa already picked in this team (no repeats until everyone had a go). */
+  function xpick(id) { S.xpick = S.xpick || {}; return (S.xpick[id] = S.xpick[id] || []); }
   /** A wrong answer: the team can take a Forfeit (done = stay put, refused = the back dice) instead of rolling back. */
   function forfeitOffer(id, spec) {
     var t = racer(id);
@@ -485,6 +490,17 @@
       var what = b.dataset.fo;
       if (what === 'draw') {
         var f = draw('forfeit');
+        if (window.XmasStage) { // Nov 26: the forfeit card, then "✅ Take Forfeit" flashes to a screen that fits it
+          $('cardTeams').onclick = null; $('cardBack').hidden = true;
+          XmasStage.run({ kind: 'forfeit', card: f, team: t, badge: Kru.badge(t, color(t)), picked: xpick(id),
+            refuse: function () { roll(id, spec); },
+            done: function () {
+              S.last = snapshot();
+              toast('🎭 ' + t.name + ' did the forfeit and stays on ' + (pos(id) ? 'square ' + pos(id) : 'START') + '!');
+              busy = false; save(); nextTurn();
+            } });
+          return;
+        }
         card('🎭 Forfeit: ' + f.title, f.text, null, 'good');
         $('cardOk').hidden = true;
         choices(['done', '✓ Done: stay put'], 'Refuse: roll the back dice');

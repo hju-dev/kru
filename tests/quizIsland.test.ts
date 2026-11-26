@@ -43,7 +43,7 @@ describe('Quiz Island', () => {
   it('the free raid comes after the claim (sink or steal only); a full map asks once whether to end the game', () => {
     expect(js).toContain('if (S.claim) S.claim.raidAfter = true;')
     expect(js).toContain("S.choice = { id: free, kind: 'raid', free: true, v: 0 };")
-    expect(js).toContain("return !(ch.free && o.k === 'two');")
+    expect(js).toContain("return !(ch.free && !ch.v && o.k === 'two');")
     expect(js).toContain('if (S.phase === \'play\' && !S.fullAsked && !emptyCells().length) {')
     expect(js).toContain("if (k === 'end') endGame(); else nextTurn();")
     expect(js).toContain("var half = Math.floor(gold(id) / 2)")

@@ -84,6 +84,25 @@
     risk: function () {
       return svg('<rect x="22" y="22" width="76" height="76" rx="14" fill="#fff" stroke="#222" stroke-width="5"/><circle cx="42" cy="42" r="7" fill="#222"/><circle cx="78" cy="42" r="7" fill="#222"/><circle cx="60" cy="60" r="7" fill="#222"/><circle cx="42" cy="78" r="7" fill="#222"/><circle cx="78" cy="78" r="7" fill="#222"/>');
     },
+    /** Question Change: sealed new orders with a red stamp and a swap arrow (Nov 26: was a die) */
+    orders: function () {
+      return svg('<rect x="22" y="14" width="66" height="86" rx="6" fill="#efe6cf" stroke="#8a7a52" stroke-width="4"/><path d="M34 32h42M34 44h42M34 56h30" stroke="#8a7a52" stroke-width="4" stroke-linecap="round"/>' +
+        '<g transform="rotate(-14 56 78)"><rect x="30" y="66" width="52" height="20" rx="4" fill="none" stroke="#d62839" stroke-width="4"/><text x="56" y="81" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="13" fill="#d62839">ORDERS</text></g>' +
+        '<circle cx="92" cy="88" r="20" fill="#2f7fe0" stroke="#123a7a" stroke-width="4"/><path d="M82 84a11 11 0 0 1 18-4M102 92a11 11 0 0 1-18 4" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M100 74v7h-7M84 102v-7h7" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>');
+    },
+    /** A turn is missed / a base is jammed: a field radio full of static, a red slash and "zzz" (Nov 26: was a die) */
+    jammed: function () {
+      return svg('<rect x="34" y="34" width="52" height="72" rx="8" fill="#4b5a3a" stroke="#222a1a" stroke-width="4"/><rect x="74" y="10" width="6" height="26" rx="3" fill="#222a1a"/>' +
+        '<rect x="42" y="44" width="36" height="24" rx="4" fill="#9fb38a"/><path d="M44 56l5-7 5 12 5-14 5 16 5-11 5 6" stroke="#e63946" stroke-width="3" fill="none" stroke-linejoin="round"/>' +
+        '<circle cx="50" cy="84" r="6" fill="#222a1a"/><circle cx="70" cy="84" r="6" fill="#222a1a"/><path d="M28 98L92 28" stroke="#e63946" stroke-width="8" stroke-linecap="round"/>' +
+        '<text x="96" y="30" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="16" fill="#fff" stroke="#222" stroke-width="1">z</text><text x="104" y="18" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="12" fill="#fff" stroke="#222" stroke-width="1">z</text>');
+    },
+    /** CAPTURED: a flag in the captor's colour planted on the ruins, with a chain */
+    captured: function (c) {
+      return svg('<path d="M14 106V80l14-6 8 10 10-16 14 10 10-6 14 12 8-2v24z" fill="#8d92a3" stroke="#5c6173" stroke-width="3"/>' +
+        '<rect x="58" y="14" width="6" height="70" rx="3" fill="#3a3f4f"/><path d="M64 16h40l-10 14 10 14H64z" fill="' + (c || '#e63946') + '" stroke="#222" stroke-width="3"/>' +
+        '<path d="M22 64q10-10 20 0t20 0" stroke="#c7ccd6" stroke-width="5" fill="none" stroke-dasharray="7 4" stroke-linecap="round"/>');
+    },
     ruins: function () {
       return svg('<path d="M18 104V70l14-6 8 10 10-18 14 12 10-8 14 14 8-2v28z" fill="#8d92a3" stroke="#5c6173" stroke-width="3"/><path d="M30 60l8-26M60 66l6-34M86 74l10-22" stroke="#555a6d" stroke-width="4" stroke-linecap="round"/><circle cx="74" cy="26" r="9" fill="#999"/><circle cx="88" cy="16" r="6" fill="#bbb"/>');
     },
