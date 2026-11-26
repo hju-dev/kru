@@ -277,6 +277,8 @@
     $('teamName').textContent = t.name;
     $('teamName').style.color = color(t);
     $('teamWho').textContent = (t.members || []).map(function (m) { return m.nick; }).join(', ') || '—';
+    // Nov 26: the members line opens the roster pop-up (move, add or remove students)
+    if (window.KruRoster) KruRoster.link($('teamWho'), t.id, { color: function (x) { var r = racer(x); return r ? color(r) : ''; } });
     $('teamWhere').textContent = pos(t.id) === 0 ? 'On START' : pos(t.id) === FINISH ? 'Finished!' : 'On square ' + pos(t.id) + ' · ' + points(t.id) + ' points';
     $('teamBack').hidden = false;
   });

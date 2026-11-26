@@ -217,9 +217,14 @@
     }
     save(); render();
   });
+  // Nov 26: tap a team's score -> its students (move, add or remove them)
+  $('totals').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-tm]');
+    if (b && window.KruRoster) KruRoster.open(b.dataset.tm, { color: color, teams: players.map(function (t) { return t.id; }) });
+  });
   function renderTotals() {
     $('totals').innerHTML = players.map(function (t) {
-      return '<span class="tot" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + pts(t.id) + '</b></span>';
+      return '<span class="tot" data-tm="' + esc(t.id) + '" role="button" tabindex="0" aria-label="' + esc(t.name) + ': team members" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + pts(t.id) + '</b></span>';
     }).join('');
   }
 
@@ -243,6 +248,7 @@
     KruMenu.timer($('writeRow'), S.write, function (v) { S.write = v; save(); }, { min: 10, max: 60 }); // time to write
   }
   function closeMenu() { $('menuBack').hidden = true; }
+  Kru.onTeams(function () { if (S) render(); });
   $('more').addEventListener('click', function () { renderCondToggle(); renderMenu(); $('menuBack').hidden = false; });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });

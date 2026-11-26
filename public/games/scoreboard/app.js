@@ -52,11 +52,16 @@
 
   $('teams').addEventListener('click', function (e) {
     var n = e.target.closest('[data-members]');
-    if (n) { showMembers(n.dataset.members); return; }
+    if (n) {
+      // Nov 26: group mode opens the roster pop-up (move, add or remove students); Solo keeps the plain list
+      if (window.KruRoster && KruRoster.open(n.dataset.members, { color: function (x) { var i = teams.map(function (o) { return o.id; }).indexOf(x); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; } })) return;
+      showMembers(n.dataset.members); return;
+    }
     var b = e.target.closest('button[data-t]');
     if (b) change(b.dataset.t, Number(b.dataset.d));
   });
 
+  Kru.onTeams(function () { render(); }); // the members under each team name
   $('undo').addEventListener('click', function () {
     var last = state.log.pop();
     if (!last) return;

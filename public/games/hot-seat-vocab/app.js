@@ -347,6 +347,8 @@
     if (!t) return;
     $('teamName').textContent = t.name;
     $('teamMembers').innerHTML = t.teacher ? 'Teacher' : (t.members || []).length ? t.members.map(function (m) { return '<span>' + esc(m.nick) + '</span>'; }).join('') : 'No students';
+    // Nov 26: change the students on this team (roster pop-up)
+    if (!t.teacher && window.KruRoster) KruRoster.addButton($('teamMembers'), t.id, { color: function (x) { var i = teams.map(function (o) { return o.id; }).indexOf(x); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }, onChange: function () { renderPop(); render(); } });
     $('teamPts').textContent = pts(t.id);
     var idle = phase === 'ready' || phase === 'over';
     $('teamSeat').disabled = !idle;

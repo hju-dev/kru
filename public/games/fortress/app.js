@@ -471,7 +471,12 @@
   // tap the team you want to hit; then a bigger menu shows its buildings
   $('board').addEventListener('click', function (e) {
     var b = e.target.closest('.base.target');
-    if (!b || !S.aim) return;
+    if (!S.aim) { // Nov 26: not aiming -> tap a base's team number to see its students (move, add or remove them)
+      var h = e.target.closest('.b-head'), base = h && h.closest('.base');
+      if (base && window.KruRoster) KruRoster.open(base.dataset.t, { color: color, teams: players.map(function (t) { return t.id; }) });
+      return;
+    }
+    if (!b) return;
     unlockAudio();
     openTarget(b.dataset.t);
   });

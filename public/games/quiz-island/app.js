@@ -300,7 +300,7 @@
       var g = gold(t.id), bump = shownGold[t.id] !== undefined && shownGold[t.id] !== g ? (g > shownGold[t.id] ? ' up' : ' down') : '';
       shownGold[t.id] = g;
       var flags = (S.skip[t.id] ? ' ⏸' : '') + (ownsFort(t.id) ? ' 🏰' : '') + (leaders.indexOf(t.id) >= 0 ? ' 👑' : '');
-      return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '">' + (S.crew && S.crew[t.id] != null && players.length <= 5 ? mascot(t.id, 'crew') : '') + '<i style="background:' + color(t.id) + '">' + Kru.teamNo(t) + '</i>' +
+      return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '" data-t="' + esc(t.id) + '" role="button" tabindex="0" aria-label="' + esc(t.name) + ': team members">' + (S.crew && S.crew[t.id] != null && players.length <= 5 ? mascot(t.id, 'crew') : '') + '<i style="background:' + color(t.id) + '">' + Kru.teamNo(t) + '</i>' +
         ' <b class="g' + bump + '">' + g + COIN + '</b> · ' + owned(t.id).length + '🏝' + flags + '</span>';
     }).join('');
   }
@@ -451,6 +451,11 @@
     addPts(id, w, 'stole an island'); addPts(o, -w, 'island stolen');
     banner({ art: ART.steal(), title: 'STOLEN!', sub: tname(id) + ' takes an island from ' + tname(o) + '! 🔒 Safe for one round.', gold: w, mood: 'good', sound: 'gold' });
   }
+  // Nov 26: tap a team in the score strip -> its students (move, add or remove them)
+  $('legend').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-t]');
+    if (b && window.KruRoster) KruRoster.open(b.dataset.t, { color: color, teams: players.map(function (t) { return t.id; }) });
+  });
   $('map').addEventListener('click', function (e) { var b = e.target.closest('[data-c]'); if (b) tapIsland(+b.dataset.c); });
 
   // ---------- reward choices: hard / impossible answers and Pirate Raid ----------

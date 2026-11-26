@@ -331,7 +331,13 @@
   // ---------- ⋯ menu ----------
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
-  $('more').addEventListener('click', function () { disarm(); render(); $('menuBack').hidden = false; });
+  $('more').addEventListener('click', function () { disarm(); render(); $('teamsBtn').hidden = solo || !window.KruRoster || !teams.length; $('menuBack').hidden = false; });
+  // Nov 26: a tap on a team tile takes a question, so the team roster opens from Settings (team tabs inside it)
+  $('teamsBtn').addEventListener('click', function () {
+    $('menuBack').hidden = true;
+    KruRoster.open(teams[0].id, { color: function (x) { var i = teams.map(function (o) { return o.id; }).indexOf(x); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }, teams: teams.map(function (t) { return t.id; }) });
+  });
+  Kru.onTeams(function () { render(); });
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   document.querySelectorAll('[data-q]').forEach(function (b) {

@@ -211,6 +211,7 @@
     }
 
     // ---------- teams + points ----------
+    function teamColor(id) { var i = teams.map(function (t) { return t.id; }).indexOf(id); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }
     function renderTeams() {
       if (cfg.noScores) { $('strip').hidden = true; return; }
       var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }));
@@ -263,6 +264,8 @@
       $('panelName').textContent = t.name;
       $('panelPts').textContent = pts(id) + ' points';
       $('panelMembers').textContent = t.teacher ? 'Teacher' : t.members.map(function (m) { return m.nick; }).join(', ');
+      // Nov 26: the members line opens the roster pop-up (move, add or remove students)
+      if (!t.teacher && window.KruRoster) KruRoster.link($('panelMembers'), id, { color: teamColor, onChange: function () { if (panelTeam) openPanel(panelTeam.id); } });
       var x = mult();
       $('panelBtns').innerHTML = (cfg.points || [{ d: -1, label: '−1' }, { d: 1, label: '+1' }, { d: 2, label: '+2' }]).map(function (b) {
         return '<button class="btn' + (b.d > 0 ? ' gold' : '') + '" data-d="' + b.d * x + '" data-why="' + esc((b.why || b.label) + (x > 1 ? ' (challenge ×2)' : '')) + '">' +

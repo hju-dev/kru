@@ -381,7 +381,7 @@
     function renderStrip() {
       var max = Math.max.apply(null, teams.map(function (t) { return pts(t.id); }).concat([0]));
       $('kbtStrip').innerHTML = teams.map(function (t, i) {
-        return '<div class="tile' + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points">' +
+        return '<div class="tile' + (max > 0 && pts(t.id) === max ? ' lead' : '') + '" data-tm="' + esc(t.id) + '" role="button" tabindex="0" style="--c:' + COLORS[i % COLORS.length] + '" aria-label="' + esc(t.name) + ', ' + pts(t.id) + ' points. Tap for the team members">' +
           '<span class="tn">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="tp">' + pts(t.id) + '</span></div>';
       }).join('');
     }
@@ -403,6 +403,9 @@
 
     // ---------- taps ----------
     main.addEventListener('click', function (e) {
+      // Nov 26: tap a team in the score strip -> its students (move, add or remove them)
+      var tm = e.target.closest('#kbtStrip [data-tm]');
+      if (tm && window.KruRoster) { KruRoster.open(tm.dataset.tm, { color: function (x) { return color(teams.filter(function (o) { return o.id === x; })[0]); } }); return; }
       var b = e.target.closest('[data-do],[data-flip],[data-d],[data-ft]');
       if (!b || b.disabled) return;
       unlockAudio();
