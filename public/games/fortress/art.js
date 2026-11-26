@@ -1,4 +1,4 @@
-/* Point 1-4: vector pictures (viewBox 0 0 120 120) for the bases, weapons, banners and LM2, the student who helped
+/* RedPoint: vector pictures (viewBox 0 0 120 120) for the bases, weapons, banners and LM2, the student who helped
    create the game. Every function returns an SVG string. */
 (function () {
   'use strict';

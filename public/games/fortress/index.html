@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
-    <title>Point 1-4</title>
+    <title>RedPoint</title>
     <link rel="stylesheet" href="/games/shared/kru-game.css" />
     <link rel="stylesheet" href="/games/shared/kru-intro.css" />
     <link rel="stylesheet" href="/games/shared/kru-end.css" />
@@ -16,7 +16,7 @@
   <body>
     <main class="game kc rb ft">
       <header class="bar">
-        <span class="logo">[ <b>Point 1-4</b> ]</span>
+        <span class="logo"><b>Red</b>Point</span>
         <span class="turn" id="turn" aria-live="polite"></span>
         <span class="grow"></span>
         <button class="btn gold" id="act">Question ▶</button>
@@ -63,10 +63,10 @@
       </div>
     </div>
 
-    <!-- The store: Haishi Trade Company. One screen in the buying team's color; the team, its gold, its inventory and the cart. -->
+    <!-- The store. One screen in the buying team's color; the team, its gold, its inventory and the cart. -->
     <div class="backdrop shop-back" id="shopBack" hidden>
       <div class="shop" id="shop" role="dialog" aria-labelledby="shopTitle">
-        <div class="shop-head"><b id="shopTitle" class="company">HAISHI TRADE COMPANY</b><small>weapons · repairs · supplies</small></div>
+        <div class="shop-head"><b id="shopTitle" class="company">THE STORE</b><small>weapons · repairs · supplies</small></div>
         <div class="shop-buyer" id="shopBuyer"></div>
         <div class="shop-grid" id="shopGrid"></div>
         <div class="shop-inv" id="shopInv"></div>
@@ -77,10 +77,10 @@
       </div>
     </div>
 
-    <!-- HTT (Haishi Trade Terminal): give gold, kits, weapons or repairs at any time -->
+    <!-- ✦ teacher tools (a plain star in Settings, so the class never suspects): give gold, kits, weapons or repairs at any time -->
     <div class="backdrop shop-back" id="toolsBack" hidden>
       <div class="shop tools" id="tools" role="dialog" aria-labelledby="toolsTitle">
-        <div class="shop-head"><b id="toolsTitle" class="company">Haishi Trade Terminal</b><span class="grow"></span><button class="btn ghost" id="toolsClose">Close</button></div>
+        <div class="shop-head"><b id="toolsTitle" class="company">✦</b><span class="grow"></span><button class="btn ghost" id="toolsClose">Close</button></div>
         <div class="tools-body" id="toolsBody"></div>
       </div>
     </div>
@@ -114,14 +114,13 @@
         <div class="menu-trow"><span class="menu-label">Rounds in the game</span><div id="roundsRow"></div></div>
         <div class="menu-row" id="tierRow"></div>
         <div class="menu-row">
-          <button class="btn" id="toolsBtn">HTT</button>
+          <button class="btn sq" id="toolsBtn" aria-label="Tools">✦</button>
           <button class="btn" id="deckBtn">Question deck</button>
           <button class="btn" id="skip">Skip to the next step</button>
         </div>
         <div class="menu-row">
           <button class="btn" id="undoMove">Undo last action</button>
           <button class="btn" id="howTo">How to play</button>
-          <button class="btn" id="rulesBtn">Rules</button>
         </div>
         <div class="menu-row">
           <button class="btn ghost danger" id="newGame">New Game</button>

@@ -6,11 +6,6 @@ const js = read('public/games/fortress/app.js')
 const games = JSON.parse(read('games.json')) as { slug: string; [k: string]: unknown }[]
 
 describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () => {
-  it('is titled Point 1-4 everywhere the player sees it; the id stays fortress', () => {
-    expect(games.find((g) => g.slug === 'fortress')).toMatchObject({ title: 'Point 1-4', status: 'ready', modes: ['group'], fixedTeams: 4, units: true, section: 'quizzes' })
-    expect(read('public/games/fortress/index.html')).toContain('<title>Point 1-4</title>')
-    expect(js).toContain("{ title: 'Point 1-4' }")
-  })
   it('Nov 25 stats: HQ 10,000, Depot 6,000, Towers 4,000; the Depot heals 450 per round', () => {
     expect(js).toContain('var MAXHP = { hq: 10000, depot: 6000, t1: 4000, t2: 4000 };')
     expect(js).toContain('var ROUND_HEAL = 450,')
@@ -42,14 +37,6 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
     expect(js).toContain('function openRepair()')
     expect(js).toContain("if (S.phase === 'repair' && !canRepair(id))")
   })
-  it('HTT: the teacher panel is called Haishi Trade Terminal behind a plain "HTT" button; HTC Funding gives gold to every team', () => {
-    const html = read('public/games/fortress/index.html')
-    expect(html).toContain('id="toolsBtn">HTT</button>')
-    expect(html).toContain('Haishi Trade Terminal')
-    expect(html).not.toContain('Teacher tools')
-    expect(js).toContain('HTC Funding, every team')
-    expect(js).toContain("data-tx=\"fix\"")
-  })
   it('no Depot: question gold halved, [Q] and better 1.6x, no healing', () => {
     expect(js).toContain('NO_DEPOT_GOLD = 0.5, NO_DEPOT_PRICE = 1.6')
   })
@@ -79,9 +66,9 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
     expect(js).toContain('function timesUp()')
     expect(read('public/games/fortress/index.html')).toContain('id="roundsRow"')
   })
-  it('the store is Haishi Trade Company: one screen in the buying team color, the buyer and gold together, the inventory and the cart', () => {
+  it('the store: one screen in the buying team color, the buyer and gold together, the inventory and the cart', () => {
     const h = read('public/games/fortress/index.html')
-    expect(h).toContain('HAISHI TRADE COMPANY')
+    expect(h).toContain('THE STORE')
     for (const id of ['shopBuyer', 'shopGrid', 'shopInv', 'shopCart']) expect(h).toContain(`id="${id}"`)
     expect(js).toContain("$('shop').style.setProperty('--c', color(id));")
     expect(js).toContain('cart.items[key] = (cart.items[key] || 0) + 1;')

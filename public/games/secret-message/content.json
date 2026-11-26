@@ -1689,19 +1689,19 @@
    }
   },
   {
-   "title": "Get in line",
+   "title": "Who is picked?",
    "text": [
-    "The screen shows each team's line.",
-    "A new first and last student every round!"
+    "Stand in a line with your team, in any order.",
+    "The spinner picks the front and the back student!"
    ],
    "example": {
     "rows": [
      [
-      "1st",
+      "Front",
       "Messenger: sees the secret"
      ],
      [
-      "Last",
+      "Back",
       "Reporter: says it the other way"
      ]
     ]

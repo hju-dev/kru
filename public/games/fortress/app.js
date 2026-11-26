@@ -1,11 +1,11 @@
-/* Point 1-4 (folder and id: fortress; Henry, Nov 23-24; modern military / future warfare theme): four teams defend a base
+/* RedPoint (was Point 1-4; folder and id: fortress; Henry, Nov 23-24; modern military / future warfare theme): four teams defend a base
    and attack each other. Made with LM2, a student who helped create the game.
    - Every base: HQ 10,000 HP, Depot 6,000, two Towers 4,000 each; an intact Depot heals every building 450 HP per round.
    - A turn = a question. Right: the team picks 💣 a weapon (random, better ones are likelier on harder questions), 🩹 a
      repair or 🪙 gold. Power-ups (once each): Question Change (swap the question for a Hard or Impossible one: more
      gold), Free Answer, Risk It (a better weapon or 5x gold; wrong = every building except the HQ loses half its
      starting HP) and Alliance. Free Answer and Question Change cannot be combined; Risk It still can.
-   - After every team had its turn: the Haishi Trade Company store (weapons and repair kits, kits are kept in the
+   - After every team had its turn: the store (weapons and repair kits, kits are kept in the
      inventory and can bring back even a destroyed building), then FIRE, then the next round.
    - Towers shoot weapons down: [LQ] 100%, [Q] 16%, [HQ] 8%, the Sarmat 1% with both towers; one tower left = half.
    - Depot destroyed: question gold is halved, no healing, [Q] and [HQ] cost 1.6x.
@@ -19,7 +19,7 @@
   var KEYS = ['hq', 'depot', 't1', 't2'];
   var MAXHP = { hq: 10000, depot: 6000, t1: 4000, t2: 4000 };
   var BNAME = { hq: 'HQ', depot: 'Depot', t1: 'Tower', t2: 'Tower' };
-  // the store (Haishi Trade Company): mode = one target | scatter (all but the chosen one) | dual (two targets) | all (every building of one team) | jam (skip a turn)
+  // the store: mode = one target | scatter (all but the chosen one) | dual (two targets) | all (every building of one team) | jam (skip a turn)
   var ITEMS = {
     crude: { name: 'Crude Bomb', cls: 'LQ', dmg: 250, price: 200, mode: 'one', info: '250 DMG · one target' },
     bomb: { name: 'Bomb', cls: 'LQ', dmg: 750, price: 350, mode: 'one', info: '750 DMG · one target' },
@@ -56,37 +56,7 @@
     impossible: { label: 'Impossible', share: 8 },
   };
   var POWERS = [{ id: 'change', label: '🔁 Question Change' }, { id: 'free', label: 'Free Answer' }, { id: 'risk', label: '🎲 Risk It' }];
-  // ---------- two rule sets (Henry, Nov 25) ----------
-  // LM2 = the student's version, exactly as built above (nothing in it changes). SMASH = a faster, fairer version:
-  // every weapon works the first time you play it (no tower shoot-down: towers are ARMOR), a right answer is an
-  // attack straight away (no gold, no store), and a wrong answer simply means no attack.
-  function clone(o) { return JSON.parse(JSON.stringify(o)); }
-  var RISK_LOSS = 0.5; // Risk It, wrong answer: every building except the HQ loses this share of its starting HP
-  var SM_ITEMS = {
-    crude: { name: 'Crude Bomb', cls: 'LQ', dmg: 600, price: 0, mode: 'one' },
-    bomb: { name: 'Bomb', cls: 'LQ', dmg: 1000, price: 0, mode: 'one' },
-    scatter: { name: 'Scatter Bomb', cls: 'LQ', dmg: 700, price: 0, mode: 'scatter' },
-    missile: { name: 'High Speed Missile', cls: 'Q', dmg: 1800, price: 0, mode: 'one' },
-    dual: { name: 'Dual Headed Missile', cls: 'Q', dmg: 1100, price: 0, mode: 'dual' },
-    jammer: { name: 'Signal Jammer', cls: 'Q', dmg: 0, price: 0, mode: 'jam' },
-    tos: { name: 'TOS-2M', cls: 'HQ', dmg: 1300, price: 0, mode: 'all' },
-    avangard: { name: 'Avangard', cls: 'HQ', dmg: 3200, price: 0, mode: 'one' },
-    sarmat: { name: 'RS-28 Sarmat', cls: 'HQ', dmg: 2000, price: 0, mode: 'all' },
-  };
-  var SM_OPTS = { easy: ['crude'], regular: ['bomb', 'scatter'], hard: ['missile', 'dual', 'jammer'], impossible: ['avangard', 'tos', 'jammer'] }; // a right answer: pick one of these (or Repair)
-  var SM_REPAIR = { easy: 800, regular: 1200, hard: 1800, impossible: 3000 };
-  var SM_STREAK = 3, SM_RISK = 1.5; // 3 right answers in a row unlock the RS-28 Sarmat; Risk It = x1.5 damage
-  var RULESETS = {
-    lm2: { MAXHP: clone(MAXHP), ITEMS: clone(ITEMS), SHOOT: clone(SHOOT), RES: RES, RES_CAP: RES_CAP, ROUND_HEAL: ROUND_HEAL, DEFAULT_ROUNDS: DEFAULT_ROUNDS, RISK_LOSS: 0.5, share: [30, 45, 17, 8] },
-    smash: { MAXHP: { hq: 3200, depot: 2000, t1: 1400, t2: 1400 }, ITEMS: SM_ITEMS, SHOOT: { LQ: 0, Q: 0, HQ: 0 }, RES: 0.15, RES_CAP: 0.3, ROUND_HEAL: 250, DEFAULT_ROUNDS: 6, RISK_LOSS: 0.3, share: [20, 40, 28, 12] },
-  };
-  function applyRules(name) {
-    var r = RULESETS[name] || RULESETS.lm2;
-    MAXHP = r.MAXHP; ITEMS = r.ITEMS; SHOOT = r.SHOOT; RES = r.RES; RES_CAP = r.RES_CAP; ROUND_HEAL = r.ROUND_HEAL; DEFAULT_ROUNDS = r.DEFAULT_ROUNDS; RISK_LOSS = r.RISK_LOSS;
-    ORDER.forEach(function (t, i) { TIERS[t].share = r.share[i]; });
-    DESC = name === 'smash' ? DESC_SMASH : DESC_LM2;
-  }
-  function isSmash() { return !!S && S.rules === 'smash'; }
+  var RISK_LOSS = 0.5; // Risk It, wrong answer: every building except the HQ loses half of its starting HP
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
   var ART = window.FtArt;
@@ -224,9 +194,7 @@
     return t;
   }
   function fresh(deck) {
-    var rules = S && S.rules ? S.rules : 'smash', picked = S ? !!S.rulesPicked : false; // the rules survive a New Game
-    applyRules(rules);
-    S = { v: 4, rules: rules, rulesPicked: picked, started: false, level: S ? S.level : '', deck: deck || '', t: newTeams(), phase: 'turn', round: 1, queue: [], cur: 0, skip: {}, elim: [], over: false,
+    S = { v: 4, rules: 'lm2', started: false, level: S ? S.level : '', deck: deck || '', t: newTeams(), phase: 'turn', round: 1, queue: [], cur: 0, skip: {}, elim: [], over: false,
       maxRounds: S ? S.maxRounds : DEFAULT_ROUNDS, joined: {}, hitBy: {}, allyLog: [], byHp: false, bonusNote: '', tieNote: '',
       aim: null, secs: S ? S.secs : 30, hist: [], introDone: S ? S.introDone : false, order: {}, qi: {} };
     S.queue = living();
@@ -248,11 +216,9 @@
   }
   function advance() {
     if (S.over) return;
-    if (isSmash() && S.queue[S.cur] && S.t[S.queue[S.cur]]) S.t[S.queue[S.cur]].bombs = []; // an unfired weapon does not carry over
     S.cur++; S.aim = null; skipDead();
     if (S.cur < S.queue.length) { save(); render(); if (S.phase === 'shop') afterBanners(openShop); else if (S.phase === 'repair') afterBanners(openRepair); return; }
-    if (S.phase === 'turn' && isSmash()) { endRound(); return; }
-    if (S.phase === 'turn') { startPhase('shop', 'HAISHI TRADE COMPANY IS OPEN!', 'Spend your gold on weapons and repair kits.', ART.coin()); }
+    if (S.phase === 'turn') { startPhase('shop', 'THE STORE IS OPEN!', 'Spend your gold on weapons and repair kits.', ART.coin()); }
     else if (S.phase === 'shop') { startPhase('fire', 'FIRE AT WILL!', 'Aim your bombs at an enemy building.', ART.boom()); }
     else if (S.phase === 'fire') { startPhase('repair', 'END OF ROUND!', 'Use your repair kits as often as you like.', ART.repair()); }
     else endRound();
@@ -300,7 +266,7 @@
     if (bi < 0) bi = T(from).bombs.map(function (x) { return x.k; }).indexOf(bomb.k);
     T(from).bombs.splice(bi, 1);
     S.aim = null;
-    var boost = S.boost || 1; S.boost = 0; // SMASH: Risk It = x1.5 damage
+    var boost = 1;
     boom();
     if (it.mode === 'jam') {
       var jt = picks[0].t;
@@ -475,7 +441,7 @@
     $('turn').textContent = id || phase === 'over' ? label : '';
     $('turn').style.color = id ? color(id) : '';
     var act = $('act');
-    act.hidden = phase === 'fire' || (isSmash() && !!S.aim) || (!id && phase !== 'over');
+    act.hidden = phase === 'fire' || (!id && phase !== 'over');
     act.textContent = phase === 'over' ? '🏆 Podium ▶' : phase === 'shop' ? 'Open the store ▶' : phase === 'repair' ? 'Repair ▶' : 'Question ▶';
     $('board').innerHTML = players.map(function (t) { return baseHtml(t); }).join('');
     renderTray();
@@ -497,9 +463,9 @@
         '<span class="hp"><i class="' + (pct < 34 ? 'low' : pct < 67 ? 'mid' : '') + '" style="width:' + pct + '%"></i></span><span class="num">' + kfmt(hp) + '</span></button>';
     }).join('');
     return '<section class="base' + (cur ? ' cur' : '') + (d.alive ? '' : ' out') + (aim ? ' target' : '') + '" data-t="' + esc(id) + '" style="--c:' + color(id) + '">' +
-      '<div class="b-head">' + Kru.badge(t, color(id)) + (isSmash() ? (d.streak > 0 ? '<span class="gold" title="Right answers in a row (3 unlocks the Sarmat)">🔥' + d.streak + '</span>' : '') : '<span class="gold">' + coinHtml() + kfmt(d.gold) + '</span>' + (d.kits ? '<span class="kits" title="Repair kits">🧰' + d.kits + '</span>' : '')) + (ally ? '<span class="ally" title="Allied with ' + esc(tname(ally)) + '">🤝</span>' : '') + '</div>' +
+      '<div class="b-head">' + Kru.badge(t, color(id)) + '<span class="gold">' + coinHtml() + kfmt(d.gold) + '</span>' + (d.kits ? '<span class="kits" title="Repair kits">🧰' + d.kits + '</span>' : '') + (ally ? '<span class="ally" title="Allied with ' + esc(tname(ally)) + '">🤝</span>' : '') + '</div>' +
       (S.joined && S.joined[id] ? '<div class="joined">joined ' + Kru.badge(team(S.joined[id]), color(S.joined[id])) + '</div>' : '') +
-      (isSmash() ? '' : '<div class="b-bombs">' + (bombs || '<span class="none">no bombs</span>') + '</div>') + rows + '</section>';
+      '<div class="b-bombs">' + (bombs || '<span class="none">no bombs</span>') + '</div>' + rows + '</section>';
   }
   function coinHtml() { return '<span class="coin">' + ART.coin() + '</span>'; }
   // tap the team you want to hit; then a bigger menu shows its buildings
@@ -515,13 +481,6 @@
     t1: 'Shoots weapons down and gives all buildings 5% resistance.',
     t2: 'Shoots weapons down and gives all buildings 5% resistance.',
   };
-  var DESC_LM2 = DESC;
-  var DESC_SMASH = {
-    hq: 'The command HQ. If it falls the team is out, unless it sacrifices a building.',
-    depot: 'Heals every damaged building 250 HP at the end of each round.',
-    t1: 'ARMOR: each standing tower blocks 15% of all damage to this base.',
-    t2: 'ARMOR: each standing tower blocks 15% of all damage to this base.',
-  };
   function closeAim() { $('aimBack').hidden = true; }
   function openTarget(tid) {
     var a = S.aim, it = ITEMS[a.k], t = T(tid), from = curId();
@@ -530,10 +489,6 @@
     $('aimTitle').textContent = tname(tid) + ' · ' + it.name + (it.mode === 'dual' ? ' (target ' + (a.picks.length + 1) + ' of 2)' : '');
     var n = towers(tid), chance = shootChance(it, tid);
     $('aimNote').textContent = 'Towers standing: ' + n + (n ? ' · they shoot this ' + it.name + ' down ' + (Math.round(chance * 1000) / 10) + '% of the time' + (n < 2 ? ' (halved: a tower is gone)' : '') : ' · nothing can shoot it down') + ' · resistance ' + Math.round(Math.min(RES_CAP, RES * n) * 100) + '%' + (depotOk(tid) ? '' : ' · their Depot is down: no healing');
-    if (isSmash()) {
-      var armor = Math.min(RES_CAP, RES * n), hitDmg = Math.round(it.dmg * (S.boost || 1) * (1 - armor));
-      $('aimNote').textContent = 'Towers standing: ' + n + ' · armor blocks ' + Math.round(armor * 100) + '% of the damage' + (it.mode === 'jam' ? '' : ' · hits for ' + money(hitDmg) + (it.mode === 'scatter' || it.mode === 'all' ? ' each building' : '')) + (depotOk(tid) ? '' : ' · their Depot is down: no healing');
-    }
     var asText = { one: 'Tap the building to hit', scatter: 'Tap the building to SPARE: all the others are hit', dual: 'Tap the building to hit', all: 'Every building of this team is hit', jam: 'This team skips its next turn' }[it.mode];
     var cards = KEYS.map(function (k) {
       var hp = t.hp[k], dead = hp <= 0, taken = (a.picks || []).some(function (p) { return p.t === tid && p.b === k; });
@@ -573,11 +528,6 @@
   var AIMTEXT = { one: 'tap the team to hit', scatter: 'tap the team to hit', dual: 'tap the team to hit', all: 'tap the team to hit', jam: 'tap the team to jam' };
   function renderTray() {
     var id = curId(), tray = $('tray');
-    if (isSmash() && S.aim && id && alive(id) && !fxOn) {
-      tray.hidden = false;
-      tray.innerHTML = '<span class="tray-lab" style="color:' + color(id) + '">' + esc(tname(id)) + ': ' + ITEMS[S.aim.k].name + ' ready: ' + AIMTEXT[ITEMS[S.aim.k].mode] + (ITEMS[S.aim.k].mode === 'dual' ? ' (' + (S.aim.picks.length + 1) + ' of 2)' : '') + '</span><button class="btn" id="smChange">↩ Pick another</button>';
-      return;
-    }
     if (S.phase !== 'fire' || !id || !alive(id) || fxOn) { tray.hidden = true; return; }
     var d = T(id), counts = {};
     d.bombs.forEach(function (b) { counts[b.k] = (counts[b.k] || 0) + 1; });
@@ -590,9 +540,6 @@
   }
   $('tray').addEventListener('click', function (e) {
     unlockAudio();
-    if (e.target.closest('#smChange') && S.pending) { // SMASH: take the weapon back and pick again (the question stays answered)
-      var p = S.pending; T(p.id).bombs = []; S.aim = null; S.boost = 0; save(); render(); smashReward(p.id, p.tier, p.rk); return;
-    }
     var b = e.target.closest('[data-k]');
     if (b) {
       if (b.dataset.k === 'jammer' && S.jamUsed && S.jamUsed[curId()] === S.round) { toast(tname(curId()) + ' already used a Signal Jammer this round.'); return; }
@@ -631,7 +578,7 @@
   }
   var reopen = function () {};
 
-  // ---------- the store: Haishi Trade Company (one screen in the buying team's color; inventory and the cart) ----------
+  // ---------- the store (one screen in the buying team's color; inventory and the cart) ----------
   var cart = null, cartFor = '';
   function closeShop() { $('shopBack').hidden = true; }
   /** buy a weapon; a team hit by the TOS-2M has a 40% chance that its next weapon explodes in its own Depot */
@@ -751,7 +698,7 @@
       return '<button class="btn tt-team' + (i === toolTeam ? ' on' : '') + '" data-tt="' + esc(i) + '" style="--c:' + color(i) + '">' + Kru.badge(team(i), color(i)) + '</button>';
     }).join('') + '</div>' +
       '<div class="tt-row"><b>🪙 Gold: ' + money(d.gold) + '</b>' + [-5000, -1000, 1000, 5000, 10000, 25000].map(function (v) { return '<button class="btn" data-tg="' + v + '">' + (v > 0 ? '+' : '−') + money(Math.abs(v)) + '</button>'; }).join('') + '</div>' +
-      '<div class="tt-row"><b>🏦 HTC Funding, every team:</b>' + [1000, 5000, 10000, 25000].map(function (v) { return '<button class="btn" data-ta="' + v + '">+' + money(v) + '</button>'; }).join('') + '</div>' +
+      '<div class="tt-row"><b>🪙 Gold for every team:</b>' + [1000, 5000, 10000, 25000].map(function (v) { return '<button class="btn" data-ta="' + v + '">+' + money(v) + '</button>'; }).join('') + '</div>' +
       '<div class="tt-row"><b>⚙ This team:</b><button class="btn" data-tx="fix">Fully repair all</button><button class="btn" data-tx="skip">' + (S.skip[toolTeam] ? 'Cancel skip' : 'Skip its next turn') + '</button><button class="btn" data-tx="round">Add a round (' + (S.maxRounds || DEFAULT_ROUNDS) + ')</button></div>' +
       '<div class="tt-row"><b>🧰 Repair kits: ' + d.kits + '</b><button class="btn" data-tk="-1">−1</button><button class="btn" data-tk="1">+1</button></div>' +
       '<div class="tt-row"><b>🚀 Give a weapon:</b>' + IORDER.map(function (k) { return '<button class="btn tt-w" data-ti="' + k + '" title="' + ITEMS[k].name + '"><span class="bi">' + ART.weapon(k) + '</span>' + ITEMS[k].name + '</button>'; }).join('') + '</div>' +
@@ -759,7 +706,6 @@
         return '<span class="tt-b"><i>' + BNAME[k] + (k.charAt(0) === 't' ? ' ' + k.charAt(1) : '') + ': ' + money(d.hp[k]) + '/' + money(MAXHP[k]) + '</i>' +
           '<button class="btn" data-tb="' + k + ':-1000">−1k</button><button class="btn" data-tb="' + k + ':1000">+1k</button><button class="btn" data-tb="' + k + ':full">full</button></span>';
       }).join('') + '</div>';
-    if (isSmash()) body = body.replace(/<div class="tt-row"><b>(🪙 Gold|🏦 HTC|🧰 Repair kits|🚀 Give a weapon)[\s\S]*?<\/div>/g, ''); // no gold or kits in SMASH
     $('toolsBody').innerHTML = body;
   }
   function openTools() { renderTools(); $('toolsBack').hidden = false; }
@@ -909,8 +855,8 @@
     unlockAudio();
     var id = curId(), p = b.dataset.pw;
     if (p === 'change') {
-      choose({ art: ART.sc('risk', ART.risk()), title: 'Question Change: swap it for a harder one (' + (isSmash() ? 'bigger weapons!' : 'more gold!') + ')',
-        options: ['hard', 'impossible'].map(function (t) { return { html: '<b>' + TIERS[t].label + ' question</b><small>' + (isSmash() ? 'a bigger weapon if you win it' : money(GOLD[t]) + ' gold if you win it') + '</small>', fn: function () { changeQuestion(t); } }; }),
+      choose({ art: ART.sc('risk', ART.risk()), title: 'Question Change: swap it for a harder one (more gold!)',
+        options: ['hard', 'impossible'].map(function (t) { return { html: '<b>' + TIERS[t].label + ' question</b><small>' + money(GOLD[t]) + ' gold if you win it</small>', fn: function () { changeQuestion(t); } }; }),
         foot: [{ label: 'Cancel', cls: 'ghost', fn: closeChoice }] });
     } else if (p === 'free') { use(id, 'free'); toast('🎟 ' + tname(id) + ' used Free Answer!'); rightAnswer(); }
     else if (p === 'risk') { risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers(); }
@@ -959,8 +905,7 @@
     if (rk) use(id, 'risk');
     closeQuestion();
     banner({ art: ART.sc('shield', ART.shield()), title: 'CORRECT!', sub: tname(id) + ' earns a reward!', mood: 'good', wait: 1200 });
-    if (isSmash()) T(id).streak = (T(id).streak || 0) + 1;
-    afterBanners(function () { if (isSmash()) smashReward(id, tier, rk); else rewardPanel(id, tier, rk); });
+    afterBanners(function () { rewardPanel(id, tier, rk); });
   }
   /** The reward after a right answer: a bomb, a repair or gold. */
   function rewardPanel(id, tier, rk) {
@@ -981,62 +926,17 @@
           afterBanners(advance); } },
       ] });
   }
-  /** SMASH: a right answer = pick a weapon for this difficulty (or a repair), then tap the base to fire at. No gold, no store, no dice. */
-  function smashReward(id, tier, rk) {
-    var d = T(id), boost = rk ? SM_RISK : 1;
-    S.pending = { id: id, tier: tier, rk: rk };
-    reopen = function () { smashReward(id, tier, rk); };
-    var keys = SM_OPTS[tier].filter(function (k) { return !(k === 'jammer' && S.jamUsed && S.jamUsed[id] === S.round); });
-    var streakOn = (d.streak || 0) >= SM_STREAK;
-    if (streakOn) keys.unshift('sarmat');
-    var modeText = { one: '1 target', scatter: 'all but 1', dual: '2 targets', all: 'whole base' };
-    var opts = keys.map(function (k) {
-      var it = ITEMS[k];
-      return { html: '<b>' + it.name + '</b><small>[' + it.cls + '] ' + (it.mode === 'jam' ? 'the target skips its next turn' : money(Math.round(it.dmg * boost)) + ' · ' + modeText[it.mode]) + '</small>', fn: function () { closeChoice(); smashArm(id, k, rk); } };
-    });
-    var heal = Math.round(SM_REPAIR[tier] * boost);
-    opts.push({ html: '<b>🛠 Repair</b><small>+' + money(heal) + ' HP to one building</small>', off: !KEYS.some(function (b) { return d.hp[b] < MAXHP[b]; }), fn: function () {
-      closeChoice();
-      pickBuilding(id, 'Repair which building?', function (b) {
-        d.hp[b] = Math.min(MAXHP[b], d.hp[b] + heal); save();
-        banner({ art: ART.sc('repair', ART.repair()), title: 'REPAIRED!', sub: tname(id) + "'s " + BNAME[b] + ' is stronger.', mood: 'good', wait: 1200 });
-        afterBanners(advance);
-      });
-    } });
-    choose({ art: ART.sc('weapon', ART.weapon(streakOn ? 'sarmat' : 'missile')), title: tname(id) + ': ' + (streakOn ? '🔥 ' + SM_STREAK + ' in a row! The RS-28 Sarmat is unlocked' : 'pick your reward') + (rk ? ' (Risk It: x' + SM_RISK + ')' : ''), options: opts });
-  }
-  function smashArm(id, key, rk) {
-    var d = T(id);
-    if (key === 'sarmat') d.streak = 0;
-    d.bombs = [{ k: key }]; S.boost = rk ? SM_RISK : 0; S.aim = { k: key, picks: [] };
-    save(); render(); tone([523, 659, 784], 0.08);
-  }
-  function gotBomb(id, key) {
-    var ally = allyOf(id), it = ITEMS[key];
-    banner({ art: ART.sc('weapon', ART.weapon(key)), title: it.name.toUpperCase() + '!', sub: tname(id) + ' gets a ' + it.name + ' [' + it.cls + '].', mood: 'good', sound: 'fanfare', wait: 1300 });
-    afterBanners(function () {
-      if (!ally) { T(id).bombs.push({ k: key }); save(); advance(); return; }
-      var weaker = IORDER[Math.max(0, IORDER.indexOf(key) - 1)];
-      choose({ art: ART.sc('alliance', ART.alliance()), title: 'Allies: keep it or share it?',
-        options: [
-          { html: '<b>Keep it</b><small>Only ' + esc(tname(id)) + ' can fire the ' + it.name + '</small>', fn: function () { closeChoice(); T(id).bombs.push({ k: key }); save(); advance(); } },
-          { html: '<b>Share it</b><small>a ' + ITEMS[weaker].name + ' for BOTH teams</small>', fn: function () {
-            closeChoice(); T(id).bombs.push({ k: weaker }); T(ally).bombs.push({ k: weaker }); save(); advance(); } },
-        ] });
-    });
-  }
   function missed() {
     unlockAudio();
     var id = curId(), rk = risk;
     risk = false;
     if (rk) use(id, 'risk');
     closeQuestion();
-    if (isSmash()) T(id).streak = 0;
     banner({ art: ART.sc('incorrect', incorrectArt()), title: 'INCORRECT', sub: encourage(), mood: 'bad', sound: 'bad' });
     if (rk) {
       var hit = [];
       KEYS.forEach(function (k) { if (k !== 'hq' && T(id).hp[k] > 0) { T(id).hp[k] = Math.max(0, T(id).hp[k] - MAXHP[k] * RISK_LOSS); hit.push(k); } });
-      banner({ art: ART.sc('boom', ART.boom()), title: 'RISK BACKFIRES!', sub: tname(id) + (isSmash() ? ': every building except the HQ loses ' + Math.round(RISK_LOSS * 100) + '% of its starting HP!' : ': every building except the HQ loses half of its starting HP!'), mood: 'boom', wait: 1800 });
+      banner({ art: ART.sc('boom', ART.boom()), title: 'RISK BACKFIRES!', sub: tname(id) + ': every building except the HQ loses half of its starting HP!', mood: 'boom', wait: 1800 });
     }
     save();
     afterBanners(advance);
@@ -1064,7 +964,7 @@
   // ---------- alliance (a power-up: skip your turn, the other team must skip too) ----------
   function canAlly() {
     var id = curId();
-    return !isSmash() && S.phase === 'turn' && id && living().length > 2 && !used(id, 'ally') && !allyOf(id) && living().filter(function (o) { return o !== id && !allyOf(o); }).length > 0;
+    return S.phase === 'turn' && id && living().length > 2 && !used(id, 'ally') && !allyOf(id) && living().filter(function (o) { return o !== id && !allyOf(o); }).length > 0;
   }
   function openAlly() {
     if (!canAlly() || fxOn) return;
@@ -1105,7 +1005,7 @@
   });
   $('more').addEventListener('click', function () {
     renderTiers(); renderSecs(); disarm();
-    $('undoMove').disabled = !S.hist.length; updateRulesBtn();
+    $('undoMove').disabled = !S.hist.length;
     $('skip').disabled = S.phase === 'over' || !curId();
     $('menuBack').hidden = false;
   });
@@ -1115,28 +1015,8 @@
   $('skip').addEventListener('click', function () { closeMenu(); snap(); closeChoice(); closeShop(); closeAim(); advance(); });
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back one step.'); });
   var MINE = {};
-  function introSlides() { return isSmash() && MINE.introSmash ? KruIntro.forLevel({ intro: MINE.introSmash }, S.level) : KruIntro.forLevel(MINE, S.level); }
-  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(introSlides(), { title: 'Point 1-4' }); });
-  /** Choose the rules before the first question: SMASH (new, faster) or LM2 (the original). */
-  function pickRules(next) {
-    reopen = function () {};
-    var mk = function (name) { return function () {
-      closeChoice();
-      var deck = S.deck; S.rules = name; fresh(deck); S.rulesPicked = true; S.introDone = false; skipDead(); save(); render(); updateRulesBtn();
-      next();
-    }; };
-    choose({ art: ART.sc('shield', ART.shield()), title: 'Choose the rules',
-      options: [
-        { html: '<b>SMASH</b><small>New and fast: answer a question, then fire right away. Towers are armor. About 25 minutes.</small>', fn: mk('smash') },
-        { html: '<b>LM2</b><small>The original game: gold, the store, random bomb rewards and tower shoot-down.</small>', fn: mk('lm2') },
-      ] });
-  }
-  function updateRulesBtn() {
-    var open = !S.started && S.round === 1;
-    $('rulesBtn').textContent = 'Rules: ' + (isSmash() ? 'SMASH' : 'LM2') + (open ? '' : ' 🔒');
-    $('rulesBtn').disabled = !open;
-  }
-  $('rulesBtn').addEventListener('click', function () { closeMenu(); pickRules(function () { if (!S.deck) openDecks(); }); });
+  function introSlides() { return KruIntro.forLevel(MINE, S.level); }
+  $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(introSlides(), { title: 'RedPoint' }); });
   function renderTiers() {
     var counts = {}; ORDER.forEach(function (t) { counts[t] = (POOL[t] || []).length; });
     KruQuiz.tierRow($('tierRow'), S.tiersOff, counts, function (off) { S.tiersOff = off; save(); });
@@ -1172,8 +1052,8 @@
       players = teams.filter(function (t) { return !t.teacher; }).slice(0, 4);
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: finalPts(t.id) }; }); } });
       var saved = session.resume;
-      if (saved && saved.v === 4 && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
-        S = saved; S.rules = S.rules || 'lm2'; if (S.rulesPicked === undefined) S.rulesPicked = true; applyRules(S.rules); buildPoolKeep(); // older saves are LM2 games
+      if (saved && saved.v === 4 && saved.rules !== 'smash' && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
+        S = saved; S.rules = 'lm2'; buildPoolKeep();
       } else { S = null; fresh(session.setKey && deckByKey(session.setKey) ? session.setKey : QZ.unit ? 'unit' : ''); S.level = QZ.level; } // the deck picked before the team builder
       S.tiersOff = S.tiersOff || {};
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.aim = null;
@@ -1188,8 +1068,8 @@
       render = function () { baseRender(); ally.hidden = !canAlly(); };
       render();
       var afterIntro = function () { S.introDone = true; save(); if (!S.deck) openDecks(); else if (S.phase === 'shop') openShop(); else if (S.phase === 'repair') openRepair(); };
-      var startFlow = function () { if (!S.introDone) KruIntro.show(introSlides(), { title: 'Point 1-4' }).then(afterIntro); else afterIntro(); };
-      if (!S.rulesPicked) pickRules(startFlow); else startFlow();
+      var startFlow = function () { if (!S.introDone) KruIntro.show(introSlides(), { title: 'RedPoint' }).then(afterIntro); else afterIntro(); };
+      startFlow();
     }).catch(function (err) {
       $('board').textContent = 'Could not load the questions. Close the game and open it again.';
       if (window.console) console.error(err);

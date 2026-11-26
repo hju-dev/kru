@@ -78,7 +78,7 @@ describe('Point 1-4: LM2 only on his credit slide; pop-ups are animated cartoons
     expect(read('public/games/fortress/content.json')).toContain('Made with LM2')
   })
   it('every pop-up picture is wrapped in an animated scene (ART.sc), with CSS animations, no emoji', () => {
-    expect((fo.match(/art: ART\.sc\(/g) ?? []).length).toBeGreaterThanOrEqual(30)
+    expect((fo.match(/art: ART\.sc\(/g) ?? []).length).toBeGreaterThanOrEqual(25) // SMASH (removed Nov 26) had a few of its own
     const css = read('public/games/fortress/style.css')
     for (const k of ['sc-weapon', 'sc-boom', 'sc-shield', 'sc-repair', 'sc-coin', 'sc-alliance', 'sc-risk', 'sc-ruins', 'sc-trophy', 'sc-incorrect']) expect(css, k).toContain(`.${k}`)
     for (const k of ['sc-fly', 'sc-smoke', 'sc-spin', 'sc-ring']) expect(css, k).toContain(`@keyframes ${k}`)

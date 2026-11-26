@@ -1,8 +1,8 @@
 {
- "about": "Point 1-4 (id fortress; Henry, Nov 23-24; modern military theme): four teams attack each other's bases. Created with LM2, a student. Questions come from Quiz Dash's bank, Battle of Wits sets or a unit; this file only holds the How to play slides.",
+ "about": "RedPoint (id fortress; Henry, Nov 23-24; modern military theme): four teams attack each other's bases. Created with LM2, a student. Questions come from Quiz Dash's bank, Battle of Wits sets or a unit; this file only holds the How to play slides.",
  "intro": [
   {
-   "title": "Point 1-4",
+   "title": "RedPoint",
    "text": [
     "One HQ and four buildings: defend your base, attack the others.",
     "Answer questions to win weapons, repairs and gold!"
@@ -54,7 +54,7 @@
   {
    "title": "The store",
    "text": [
-    "After every team has had a turn: Haishi Trade Company opens.",
+    "After every team has had a turn: the store opens.",
     "Then fire your weapons at any enemy base!"
    ],
    "example": {
@@ -127,7 +127,7 @@
   {
    "title": "Made with LM2",
    "text": [
-    "Point 1-4 was created with LM2,",
+    "RedPoint was created with LM2,",
     "a student who helped design the game. Thank you, LM2!"
    ],
    "example": {
@@ -139,146 +139,6 @@
      [
       "Winning",
       "last base, or the strongest after the rounds"
-     ]
-    ]
-   }
-  }
- ],
- "introSmash": [
-  {
-   "title": "SMASH",
-   "text": [
-    "Four teams attack each other's bases.",
-    "Answer a question, then FIRE right away!"
-   ],
-   "example": {
-    "rows": [
-     [
-      "[[hq]] HQ",
-      "3,200 HP: lose it and you are out"
-     ],
-     [
-      "[[depot]] Depot",
-      "2,000 HP: heals everything each round"
-     ],
-     [
-      "[[tower]] 2 Towers",
-      "1,400 HP each: ARMOR blocks 15% each"
-     ]
-    ]
-   }
-  },
-  {
-   "title": "Right answer = fire!",
-   "text": [
-    "The harder the question, the bigger the weapon.",
-    "Pick one, then tap the base you want to hit."
-   ],
-   "example": {
-    "rows": [
-     [
-      "Easy",
-      "Crude Bomb"
-     ],
-     [
-      "Regular",
-      "Bomb or Scatter Bomb"
-     ],
-     [
-      "Hard",
-      "Missile, Dual Missile or Jammer"
-     ],
-     [
-      "Impossible",
-      "Avangard, TOS-2M or Jammer"
-     ]
-    ]
-   }
-  },
-  {
-   "title": "Armor, not luck",
-   "text": [
-    "Nothing gets shot down! Each standing tower blocks 15%.",
-    "The menu shows exactly how much damage you will do."
-   ],
-   "example": {
-    "rows": [
-     [
-      "2 towers",
-      "30% of the damage blocked"
-     ],
-     [
-      "1 tower",
-      "15% blocked"
-     ],
-     [
-      "No towers",
-      "full damage"
-     ]
-    ]
-   }
-  },
-  {
-   "title": "Streaks and Risk It",
-   "text": [
-    "3 right answers in a row unlock the RS-28 Sarmat!",
-    "Risk It: 1.5x damage, but a wrong answer hurts."
-   ],
-   "example": {
-    "rows": [
-     [
-      "[[bomb4]] RS-28 Sarmat",
-      "2,000 to every building"
-     ],
-     [
-      "[[risk]] Risk It",
-      "one use per game"
-     ],
-     [
-      "Wrong answer",
-      "no attack, streak ends"
-     ]
-    ]
-   }
-  },
-  {
-   "title": "Repair or attack",
-   "text": [
-    "Not in the mood to fight? Pick Repair instead.",
-    "If your HQ falls, sacrifice a building to fight on."
-   ],
-   "example": {
-    "rows": [
-     [
-      "Repair",
-      "fix any building, even rebuild one"
-     ],
-     [
-      "HQ falls",
-      "sacrifice a building or you are out"
-     ],
-     [
-      "Out?",
-      "join a team and share its points"
-     ]
-    ]
-   }
-  },
-  {
-   "title": "Made with LM2",
-   "text": [
-    "The weapons and bases come from LM2,",
-    "a student who helped design the game. Thank you, LM2!"
-   ],
-   "example": {
-    "rows": [
-     [
-      "[[job]] LM2",
-      "game designer"
-     ],
-     [
-      "Winning",
-      "last base, or the strongest after 6 rounds"
      ]
     ]
    }
