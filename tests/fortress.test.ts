@@ -55,7 +55,7 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
   })
   it('an eliminated team joins a remaining team and shares its points; beating an alliance is noted for the grading', () => {
     expect(js).toContain('function joinChoice(id, done)')
-    expect(js).toContain('the team that destroyed you')
+    expect(js).toContain("title: 'CAPTURED!'") // Nov 26: captured by the team that destroyed it (no choice)
     expect(js).toContain('return finalPts(S.joined[id])')
     expect(js).toContain('function allianceBeaten(winner)')
     expect(js).toContain('bonus points in the grading!')

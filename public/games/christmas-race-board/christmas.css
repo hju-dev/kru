@@ -283,3 +283,73 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .kp::after { animation: none; }
 }
+
+/* ---------- Nov 26: Challenge and Forfeit screens (xmas-stage.js) ---------- */
+.xstage { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; overflow: hidden; color: #fff; background: rgb(8 20 16 / 0.85);
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 14px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 14px); font-family: var(--body); }
+.xs-card, .xs-live { position: relative; z-index: 2; width: min(660px, 100%); display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.xs-card { padding: 14px 18px 16px; border-radius: 24px; color: #1b2a22; border: 6px solid transparent;
+  background-image: linear-gradient(#fbf7ef, #fbf7ef), repeating-linear-gradient(-45deg, #d7263d 0 12px, #fff 12px 24px); background-origin: border-box; background-clip: padding-box, border-box;
+  box-shadow: 0 14px 40px rgb(0 0 0 / 0.5); animation: xs-pop 0.45s cubic-bezier(0.2, 1.5, 0.4, 1) both; }
+.xs-top { display: flex; align-items: center; gap: 8px; font: 800 17px var(--display); letter-spacing: 0.08em; }
+.xs-kind { color: #d7263d; }
+.xs-live .xs-kind { color: #ffd23f; }
+.xs-title { font: 900 32px/1.05 var(--display); }
+.xs-title.big { font-size: 42px; text-shadow: 0 4px 0 rgb(0 0 0 / 0.45); animation: xs-slam 0.5s 0.15s cubic-bezier(0.2, 1.8, 0.4, 1) both; }
+.xs-text { font: 700 21px/1.25 var(--body); max-width: 600px; }
+.xs-live .xs-text { padding: 6px 14px; border-radius: 14px; background: rgb(0 0 0 / 0.45); color: #fff; }
+.xs-who { min-height: 34px; font: 900 26px var(--display); color: #d7263d; }
+.xs-who.land { animation: xs-pop 0.4s cubic-bezier(0.2, 1.8, 0.4, 1) both; }
+.xs-who.on { color: #ffd23f; text-shadow: 0 3px 0 rgb(0 0 0 / 0.5); font-size: 30px; }
+.xs-btns { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin-top: 4px; }
+.xs-btn { min-height: 50px; padding: 0 16px; border-radius: 14px; border: 3px solid #1b2a22; background: #fff; color: #1b2a22; font: 800 18px var(--display); box-shadow: 0 4px 0 #1b2a22; }
+.xs-btn:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 #1b2a22; }
+.xs-btn:disabled { opacity: 0.5; }
+.xs-btn.go { background: #2fbf71; color: #fff; border-color: #0e5a33; box-shadow: 0 4px 0 #0e5a33; }
+.xs-btn.pick { background: #d7263d; color: #fff; border-color: #7a0f1a; box-shadow: 0 4px 0 #7a0f1a; }
+.xs-btn.ghost { background: transparent; }
+.xs-clock { min-width: 3.2em; font: 900 40px/1 var(--mono); color: #fff; text-shadow: 0 3px 0 rgb(0 0 0 / 0.5); }
+.xs-clock.hot, .times-up .xs-clock { color: #ff5a5f; }
+.times-up .xs-clock { animation: xs-pulse 0.5s ease-in-out infinite alternate; }
+.xs-flash { position: absolute; inset: 0; z-index: 3; background: #fff; pointer-events: none; animation: xs-flash 0.5s ease-out forwards; }
+.xs-float { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.xs-float i { position: absolute; bottom: -60px; font-style: normal; font-size: var(--s); animation: xs-up var(--d) var(--t) linear infinite; opacity: 0.85; }
+
+/* the scenes: each card gets a background that fits it */
+.xstage.live { background: #0b1e3f; }
+.xstage.live::before, .xstage.live::after { content: ""; position: absolute; pointer-events: none; z-index: 0; }
+.xs-snow.live { background: linear-gradient(#0b1e3f, #2a5a8f 70%, #dbe9f7 70%); }
+.xs-snow.live::before { inset: 0; background: radial-gradient(circle, #fff 1.5px, transparent 2px) 0 0 / 34px 34px, radial-gradient(circle, #fff 1px, transparent 1.5px) 17px 17px / 34px 34px; opacity: 0.6; animation: xs-snowfall 6s linear infinite; }
+.xs-ice.live { background: radial-gradient(ellipse at 50% 85%, #f4fbff 0 35%, #bfe6ff 36% 60%, #6fb8e6 61%); }
+.xs-ice.live::before { left: 10%; right: 10%; top: 55%; height: 40%; border: 4px solid rgb(255 255 255 / 0.7); border-radius: 50%; }
+.xs-stage.live { background: radial-gradient(ellipse at 50% 30%, #fff3c4 0, #6b4b16 30%, #1a0d05 65%); }
+.xs-stage.live::before { left: 0; top: 0; bottom: 0; width: 18%; background: repeating-linear-gradient(90deg, #7a0d16 0 16px, #b0141f 16px 32px); box-shadow: 4px 0 12px rgb(0 0 0 / 0.6); }
+.xs-stage.live::after { right: 0; top: 0; bottom: 0; width: 18%; background: repeating-linear-gradient(90deg, #b0141f 0 16px, #7a0d16 16px 32px); box-shadow: -4px 0 12px rgb(0 0 0 / 0.6); }
+.xs-party.live { background: #140a24; }
+.xs-party.live::before { inset: -50%; background: conic-gradient(from 0deg, rgb(255 60 120 / 0.35) 0 20deg, transparent 20deg 60deg, rgb(60 200 255 / 0.35) 60deg 80deg, transparent 80deg 130deg, rgb(255 210 60 / 0.35) 130deg 150deg, transparent 150deg 210deg, rgb(120 255 120 / 0.3) 210deg 230deg, transparent 230deg); animation: xs-spin 6s linear infinite; }
+.xs-gifts.live { background: repeating-linear-gradient(45deg, #b3172a 0 40px, #1f7a45 40px 80px); }
+.xs-gifts.live::before { inset: 0; background: radial-gradient(circle at 50% 50%, rgb(255 230 140 / 0.45), transparent 60%); }
+.xs-workshop.live { background: repeating-linear-gradient(0deg, #7a4a24 0 34px, #6a3f1e 34px 36px); }
+.xs-workshop.live::before { inset: 0; background: radial-gradient(ellipse at 50% 20%, rgb(255 214 140 / 0.45), transparent 60%); }
+.xs-cocoa.live { background: radial-gradient(ellipse at 50% 110%, #f3d9b5 0 25%, #7b4a2a 26% 55%, #3a2214 56%); }
+.xs-jungle.live { background: linear-gradient(#0f5132, #1f8a4c); }
+.xs-jungle.live::before { inset: 0; background: radial-gradient(ellipse 60px 30px at 10% 20%, #2fbf71 0 98%, transparent), radial-gradient(ellipse 70px 34px at 90% 30%, #2fbf71 0 98%, transparent), radial-gradient(ellipse 60px 28px at 20% 85%, #2a9d5f 0 98%, transparent), radial-gradient(ellipse 80px 36px at 82% 88%, #2a9d5f 0 98%, transparent); }
+.xs-rooftop.live { background: radial-gradient(circle at 82% 18%, #fff7cf 0 34px, transparent 36px), linear-gradient(#0a1230, #243a6e); }
+.xs-rooftop.live::after { left: 0; right: 0; bottom: 0; height: 32%; background: #3b2a33; clip-path: polygon(0 40%, 25% 0, 50% 40%, 62% 40%, 62% 0, 74% 0, 74% 40%, 100% 10%, 100% 100%, 0 100%); }
+.xs-city.live { background: linear-gradient(#3a7bd5, #ff9f5a); }
+.xs-city.live::after { left: 0; right: 0; bottom: 0; height: 40%; background: #1b2238; clip-path: polygon(0 60%, 8% 60%, 8% 20%, 16% 20%, 16% 50%, 24% 50%, 24% 0, 32% 0, 32% 45%, 42% 45%, 42% 25%, 52% 25%, 52% 55%, 62% 55%, 62% 10%, 70% 10%, 70% 40%, 80% 40%, 80% 30%, 90% 30%, 90% 60%, 100% 60%, 100% 100%, 0 100%); }
+.xs-royal.live { background: radial-gradient(circle, rgb(255 215 0 / 0.25) 2px, transparent 3px) 0 0 / 28px 28px, linear-gradient(#3a0f5c, #6b1f9a); }
+.xs-bedroom.live { background: radial-gradient(circle at 20% 25%, #fff 1.5px, transparent 2px), radial-gradient(circle at 70% 15%, #fff 1.5px, transparent 2px), radial-gradient(circle at 85% 60%, #fff 1px, transparent 2px), radial-gradient(circle at 80% 22%, #fff4b8 0 30px, transparent 32px), linear-gradient(#0b1030, #20285a); }
+.xs-gym.live { background: linear-gradient(#bff0dc 0 62%, transparent 62%), repeating-linear-gradient(90deg, #d7263d 0 30px, #fff 30px 60px); }
+.xs-gym.live .xs-title.big, .xs-gym.live .xs-clock, .xs-gym.live .xs-top { color: #1b2a22; text-shadow: 0 3px 0 rgb(255 255 255 / 0.6); }
+
+@keyframes xs-pop { from { transform: scale(0.5); opacity: 0; } }
+@keyframes xs-slam { 0% { transform: scale(2.2); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+@keyframes xs-flash { from { opacity: 1; } to { opacity: 0; } }
+@keyframes xs-up { 0% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-55vh) rotate(8deg); } 100% { transform: translateY(-115vh) rotate(-8deg); } }
+@keyframes xs-snowfall { to { background-position: 0 340px, 17px 357px; } }
+@keyframes xs-spin { to { transform: rotate(360deg); } }
+@keyframes xs-pulse { to { transform: scale(1.12); } }
+@media (prefers-reduced-motion: reduce) { .xstage *, .xstage::before, .xstage::after { animation: none !important; } .xs-flash { display: none; } }
+.xs-gym.live .xs-who.on, .xs-gym.live .xs-kind, .xs-ice.live .xs-kind { color: #d7263d; text-shadow: none; }
+.xs-ice.live .xs-title.big, .xs-ice.live .xs-clock, .xs-ice.live .xs-top { color: #0b2a4a; text-shadow: 0 3px 0 rgb(255 255 255 / 0.6); }
