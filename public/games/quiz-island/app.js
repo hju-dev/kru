@@ -128,7 +128,8 @@
     fxOn = true;
     var fx = $('fx');
     fx.className = 'fx ' + (o.mood || 'good');
-    $('fxArt').innerHTML = o.art || '';
+    // Nov 26: the picture moves (shared kru-scene.js), like RedPoint's pop-ups: ships zoom in, cannons explode, gold spins...
+    $('fxArt').innerHTML = window.KruScene && o.art ? KruScene.wrap(o.motion || motionFor(o), o.art) : o.art || '';
     $('fxTitle').textContent = o.title;
     $('fxSub').textContent = o.sub || '';
     var g = $('fxGold');
@@ -141,10 +142,24 @@
     fx.hidden = false;
     void fx.offsetWidth; // restart the animations
     fx.classList.add('go');
+    if (window.KruScene) KruScene.extras(fx.querySelector('.fx-card'), fx, o.mood || 'good');
     if (SOUNDS[o.sound || o.mood]) SOUNDS[o.sound || o.mood]();
     clearTimeout(fxTimer);
     fxTimer = setTimeout(nextBanner, o.quick ? (o.wait || 1500) : (o.wait || 2600) + 1000); // every pop-up stays a second longer; quick ones (power-ups, correct) do not
     if (o.then) fxDone = chain(fxDone, o.then);
+  }
+  // which scene each pop-up plays (by its title; otherwise by its mood)
+  var MOTION = {
+    'CANNON FIRE!': 'boom', 'KABOOM!': 'boom', 'PIRATE AMBUSH!': 'zoom', 'STILL CAPTURED!': 'shake', 'TREASURE CHEST!': 'bounce',
+    'SPARKLING TREASURE!': 'spin', 'FORTRESS CAPTURED!': 'bounce', 'STRUCK GOLD!': 'tumble', 'DOUBLE CLAIM!': 'bounce', 'STOLEN!': 'zoom',
+    'MESSAGE IN A BOTTLE!': 'swim', 'THE TREASURE MAP!': 'wobble', 'ISLAND EMPIRE!': 'bounce', 'LAST ROUND!': 'wobble', '50 / 50!': 'pop',
+    '+20 SECONDS!': 'tumble', 'FREE PLAY!': 'zoom', 'PIRATE RAID ARMED!': 'zoom', 'RAID SUCCESS!': 'zoom', 'FREE PIRATE RAID!': 'zoom',
+    'VOLCANO!': 'boom', 'HURRICANE!': 'spinout', 'TSUNAMI!': 'swim', 'INCORRECT': 'shake', 'SILENCE ON DECK!': 'shake', 'RAID FAILED!': 'spinout', "BLACKBEARD'S TREASURE!": 'spin', "CAPTAIN KIDD'S TREASURE!": 'spin',
+  };
+  function motionFor(o) {
+    if (MOTION[o.title]) return MOTION[o.title];
+    if (ISLES.some(function (x) { return x.t === o.title; })) return 'bounce'; // a new island: the flag drops in
+    return { good: 'bounce', bad: 'shake', boom: 'boom', sea: 'swim', magic: 'spin' }[o.mood] || 'pop';
   }
   /** "Land ho!" and seven more sayings, each with its own island picture (never the same one twice in a row). */
   var ISLES = [
