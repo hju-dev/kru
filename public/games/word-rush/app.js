@@ -160,7 +160,7 @@
     $('teams').innerHTML = teams.map(function (t, i) {
       var e = entry(t.id), pts = roundPoints(t.id);
       return '<div class="team' + (max > 0 && total_(t.id) === max ? ' lead' : '') + (S.added ? ' done-entry' : '') + '" data-t="' + esc(t.id) + '" style="--c:' + COLORS[i % COLORS.length] + '">' +
-        '<span class="name">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="total">' + total_(t.id) + '</span>' +
+        '<span class="name" data-tm="' + esc(t.id) + '" role="button" tabindex="0" aria-label="' + esc(t.name) + ': team members">' + Kru.badge(t, COLORS[i % COLORS.length]) + '</span><span class="total">' + total_(t.id) + '</span>' +
         '<div class="row"><span class="lab">Words</span>' +
           '<button class="step" data-k="w" data-d="-1" aria-label="' + esc(t.name) + ' one word less">−</button>' +
           '<output>' + e.w + '</output>' +
@@ -180,6 +180,9 @@
     $('nextRound').textContent = isFinal() ? 'See the winner ▶' : 'Next round ▶';
   }
   $('teams').addEventListener('click', function (e) {
+    // Nov 26: tap a team's number -> its students (move, add or remove them)
+    var tm = e.target.closest('[data-tm]');
+    if (tm && window.KruRoster) { KruRoster.open(tm.dataset.tm, { color: function (x) { var i = teams.map(function (o) { return o.id; }).indexOf(x); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; } }); return; }
     var b = e.target.closest('[data-k]');
     if (!b || S.added) return;
     var id = b.closest('[data-t]').dataset.t, en = entry(id), d = Number(b.dataset.d);

@@ -1,6 +1,7 @@
 import type { Level } from '../types'
 import type { Bin } from './teams'
 import { displayTeams, type MixStudent } from './mix'
+import { memberKey } from './roster'
 
 export type Mode = 'solo' | 'group'
 export type SessionStatus = 'setup' | 'playing' | 'review' | 'submitted' | 'discarded'
@@ -96,7 +97,10 @@ export function quickSession(
   }
 }
 
-export function initMessage(s: Session) {
+export function initMessage(s: Session, bench: Member[] = []) {
+  // every member gets a key: the roster pop-up sends keys back (kru:teams), never the display names
+  const keyed = (m: Member) => ({ ...m, key: memberKey(m) })
+  const shown = displayTeams([...s.teams.map((t) => ({ ...t, members: t.members.map(keyed) })), { id: '', name: '', members: bench.map(keyed) }])
   return {
     type: 'kru:init',
     session: {
@@ -107,7 +111,9 @@ export function initMessage(s: Session) {
       setKey: s.setKey ?? null,
       mode: s.mode,
       // mixed groups: "Nok (2/3)" when two students share a nickname
-      teams: displayTeams(s.teams),
+      teams: shown.slice(0, -1),
+      // students who are on no team and can be added during the game (group games only)
+      bench: shown[shown.length - 1].members,
       // team ids of students marked absent today (only set for tools that get the full roster)
       absentIds: (s.absent ?? []).map((id) => `s${id}`),
       teacherTeam: s.teacherTeam,

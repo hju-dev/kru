@@ -9,6 +9,9 @@
  *   Kru.saveDay(data)                     // memory for this class today; comes back as session.day
  *   Kru.saveKeep(data)                    // memory for this class across lessons; comes back as session.keep
  *   Kru.onFinishRequest(function () { Kru.finish([{ teamId, points }], notes) })
+ *   Kru.saveTeams()                       // Henry changed the students on the teams (kru-roster.js): Kru rewrites session.teams
+ *   Kru.onTeams(function (teams) { ... }) // a game that shows names redraws them after such a change
+ *   Kru.bench()                           // class students who are on no team (absent today or removed): they can be added
  *
  * Opened on its own (not inside Kru) or with ?mock=1, the game gets a fake class of 30
  * placeholder students. Extra mock options: &mode=solo  &level=M.1  &teams=6  &teacher=0  &unit=m3-rw-u5
@@ -21,6 +24,8 @@
   var mockKey = 'kru-mock-state:' + location.pathname;
   var mockDayKey = 'kru-mock-day:' + location.pathname;
   var mockKeepKey = 'kru-mock-keep:' + location.pathname;
+  var mockTeamsKey = 'kru-mock-teams:' + location.pathname;
+  var teamCallbacks = [];
 
   var session = null;
   var readyCallbacks = [];
@@ -53,6 +58,15 @@
       for (var t = 0; t < n; t++) teams.push({ id: 't' + (t + 1), name: (longTeams ? 'Super Team ' : 'Team ') + (t + 1), members: [] });
       students.forEach(function (s, k) { teams[k % n].members.push(s); });
     }
+    // every member has a key (the shell gives real ones); three extra placeholder students sit on the bench
+    teams.forEach(function (t) { t.members.forEach(function (m) { m.key = 'mock|' + m.no; }); });
+    var bench = [31, 32, 33].map(function (no) { return { no: no, nick: (long ? 'Student ' : 'S') + no, key: 'mock|' + no }; });
+    if (mode === 'group') {
+      try {
+        var kept = JSON.parse(sessionStorage.getItem(mockTeamsKey) || 'null');
+        if (kept && kept.teams && kept.teams.length === teams.length) { teams = kept.teams; bench = kept.bench || []; }
+      } catch (e) {}
+    }
     var resume, day = null;
     try { resume = JSON.parse(sessionStorage.getItem(mockKey) || 'null') || undefined; } catch (e) {}
     try { day = JSON.parse(sessionStorage.getItem(mockDayKey) || 'null'); } catch (e) {}
@@ -65,6 +79,7 @@
       unit: /^[a-z0-9-]+$/.test(params.get('unit') || '') ? params.get('unit') : null,
       mode: mode,
       teams: teams,
+      bench: mode === 'group' ? bench : [],
       teacherTeam: params.get('teacher') === '0' ? null : { id: 't0', name: 'T. Henry' },
       resume: resume,
       day: day,
@@ -141,6 +156,28 @@
       if (mock) {
         try { sessionStorage.setItem(mockKeepKey, JSON.stringify(data)); } catch (e) {}
       } else post({ type: 'kru:keep', data: data });
+    },
+
+    /** Students of this class who are on no team (absent today, or taken off a team during the game). */
+    bench: function () {
+      return (session && session.bench) || [];
+    },
+
+    /** The students on the teams changed during the game (kru-roster.js moved, added or removed someone in
+     *  session.teams). Kru rebuilds the session's teams from the member keys, so the Results rows follow. */
+    saveTeams: function () {
+      if (!session) return;
+      if (mock) {
+        try { sessionStorage.setItem(mockTeamsKey, JSON.stringify({ teams: session.teams, bench: session.bench || [] })); } catch (e) {}
+      } else {
+        post({ type: 'kru:teams', teams: session.teams.map(function (t) { return { id: t.id, keys: t.members.map(function (m) { return m.key; }) }; }) });
+      }
+      teamCallbacks.forEach(function (cb) { try { cb(session.teams); } catch (e) {} });
+    },
+
+    /** cb(teams) runs after Henry changes the students on the teams. */
+    onTeams: function (cb) {
+      teamCallbacks.push(cb);
     },
 
     score: function (teamId, delta, reason) {

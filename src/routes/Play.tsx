@@ -10,6 +10,7 @@ import { useSessions } from '../store/sessions'
 import { FrameStuck } from '../components/FrameStuck'
 import { TeamsReveal } from '../components/TeamsReveal'
 import { useFrameReady } from '../lib/useFrameReady'
+import { applyTeamLayout, benchFor } from '../lib/roster'
 import './Play.css'
 
 const FADE_MS = 3000
@@ -115,7 +116,7 @@ function PlayFrame({ session }: { session: Session }) {
             storage.getDayState(current.game, ck, todayKey()).catch(() => undefined),
             storage.getKeepState(current.game, ck).catch(() => undefined),
           ]).then(([day, keep]) => {
-              const msg = initMessage(current)
+              const msg = initMessage(current, benchFor(current, useApp.getState().data?.rosters[current.class]))
               const extra: Record<string, unknown> = { day: day ?? null, keep: keep ?? null }
               if (findGame(current.game)?.sheetQuestions) {
                 // Quiz Battle: the Questions tab sets for this level (from the last Sync)
@@ -136,6 +137,12 @@ function PlayFrame({ session }: { session: Session }) {
         case 'kru:state':
           patch(session.id, { state: d.state })
           break
+        case 'kru:teams': {
+          // Henry moved, added or removed students in the game's roster pop-up: rebuild the teams from the keys
+          const teams = applyTeamLayout(current.teams, benchFor(current, useApp.getState().data?.rosters[current.class]), (d as { teams?: unknown }).teams)
+          if (teams) patch(session.id, { teams })
+          break
+        }
         case 'kru:score':
           if (d.teamId && typeof d.delta === 'number') {
             patch(session.id, (s) => ({ log: [...s.log, { teamId: d.teamId!, delta: d.delta!, reason: d.reason, at: Date.now() }] }))

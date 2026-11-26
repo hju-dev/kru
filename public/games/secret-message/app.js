@@ -270,9 +270,14 @@
     document.body.className = 'ph-' + phase;
     paintClock(); renderTotals(); fit();
   }
+  // Nov 26: tap a team's score -> its students (move, add or remove them)
+  $('totals').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-tm]');
+    if (b && window.KruRoster) KruRoster.open(b.dataset.tm, { color: color, teams: players.map(function (t) { return t.id; }) });
+  });
   function renderTotals() {
     $('totals').innerHTML = players.map(function (t) {
-      return '<span class="tot" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + pts(t.id) + '</b></span>';
+      return '<span class="tot" data-tm="' + esc(t.id) + '" role="button" tabindex="0" aria-label="' + esc(t.name) + ': team members" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + pts(t.id) + '</b></span>';
     }).join('');
   }
   /** A long name shrinks until it fits its slot window (never below 18 px). */
@@ -347,6 +352,15 @@
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
   window.addEventListener('resize', fit);
 
+  // Nov 26: a picked Messenger or Reporter was moved or taken out in the roster pop-up -> pick that team's pair again
+  Kru.onTeams(function () {
+    if (!S) return;
+    players.forEach(function (t) {
+      var ids = (t.members || []).map(mid), r = S.roles[t.id] || [];
+      if (r.some(function (x) { return ids.indexOf(x) < 0; })) S.roles[t.id] = rolesFor(t);
+    });
+    save(); render();
+  });
   Kru.onFinishRequest(function () {
     Kru.finish(players.map(function (t) { return { teamId: t.id, points: pts(t.id) }; }));
   });

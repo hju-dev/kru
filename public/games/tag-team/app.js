@@ -382,6 +382,8 @@
     $('panelName').textContent = t.name;
     $('panelPts').textContent = pts(id) + ' points';
     $('panelMembers').textContent = t.teacher ? 'Teacher' : t.members.map(function (m) { return m.nick; }).join(', ');
+    // Nov 26: the members line opens the roster pop-up (move, add or remove students); the speaking order follows
+    if (!t.teacher && window.KruRoster) KruRoster.link($('panelMembers'), id, { color: function (x) { var i = teams.map(function (o) { return o.id; }).indexOf(x); return COLORS[(i < 0 ? 0 : i) % COLORS.length]; }, onChange: function () { if (panelTeam) openPanel(panelTeam.id); render(); } });
     $('panelBack').hidden = false;
   }
   function closePanel() { $('panelBack').hidden = true; panelTeam = null; }
