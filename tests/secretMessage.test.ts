@@ -68,7 +68,7 @@ describe('Secret Message: whole team by default, a stepper, scores on top, twist
     expect(js).toContain("'R' + S.round")
   })
   it('short button words: Secret, a lock, a back arrow, Hide, eyes, Start, ||, Ready', () => {
-    for (const w of ["go = '🎲 Pick';", "go = 'Secret';", "go = '🔒'; alt = '←';", "go = 'Hide';", "go = 'Start'; alt = '👀';", "go = running ? 'Ready' : '▶'; alt = running ? '||' : '';"]) expect(js).toContain(w)
+    for (const w of ["go = 'Pick';", "go = 'Secret';", "go = '🔒'; alt = '←';", "go = 'Hide';", "go = 'Start'; alt = '👀';", "go = running ? 'Ready' : '▶'; alt = running ? '||' : '';"]) expect(js).toContain(w)
   })
   for (const lv of ['M.1', 'M.2', 'M.3']) {
     it(`${lv}: 60 phrases, all four kinds, each secret has a different model answer, American spelling`, () => {

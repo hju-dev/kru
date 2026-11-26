@@ -530,3 +530,23 @@ body.racing:not(.gp) .track .sq.flame::after { background: radial-gradient(ellip
 @keyframes piece-spin { to { transform: rotate(360deg); } }
 @keyframes piece-crash { 0% { transform: translateY(-6px) rotate(0); } 20% { transform: translate(-3px, 1px) rotate(-14deg); } 40% { transform: translate(3px, 0) rotate(12deg); } 60% { transform: translate(-2px, 1px) rotate(-8deg); } 100% { transform: none; } }
 @media (prefers-reduced-motion: reduce) { .piece.spin, .piece.crash, .track .sq.flame::after { animation: none; } }
+/* Nov 26: a vehicle on a right-to-left row faces the way it drives */
+.racing .piece.ride.left svg { transform: scaleX(-1); }
+
+/* Nov 26 (Henry): power-up buttons in Quiz Island's style: big solid colours, a dark edge that presses down, an icon in front */
+.powers .pw { min-height: 50px; padding: 0 10px; font: 800 17px/1 var(--display); color: #0a2a40; background: #fff; border: 3px solid #0a2a40; border-radius: 14px; box-shadow: 0 4px 0 #0a2a40; }
+.powers .pw[data-pw='fifty'] { background: #ffe566; }
+.powers .pw[data-pw='time'] { background: #9be564; }
+.powers .pw[data-pw='free'] { background: #ff9ec7; }
+.powers .pw[data-pw='change'] { background: #8cc8ff; }
+.powers .pw[data-pw='risk'] { background: #16161c; color: #ffd23f; border-color: #ffd23f; box-shadow: 0 4px 0 #8a6a00; }
+.powers .pw.on { background: #ffd23f; color: #16161c; border-color: #16161c; box-shadow: 0 0 0 4px #ff5a5f, 0 4px 0 #16161c; }
+.powers .pw:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 #0a2a40; }
+.powers .pw:disabled { opacity: 0.38; box-shadow: none; }
+.powers .pw-lab { color: #fff; }
+/* the answer buttons in the same style (Quiz Grand Prix, North Pole Grand Prix, RedPoint, Quiz Island): Reveal white, ✗ red with a white X, ✓ gold */
+.rb-q #reveal, .rb-q #wrong, .rb-q #right { border: 3px solid #0a2a40; border-radius: 14px; box-shadow: 0 4px 0 #0a2a40; font-family: var(--display); font-weight: 800; }
+.rb-q #reveal { background: #fff; color: #0a2a40; }
+.rb-q #wrong { background: #e63946; color: #fff; border-color: #7a0f1a; box-shadow: 0 4px 0 #7a0f1a; font-size: 26px; }
+.rb-q #right { background: #ffd23f; color: #0a2a40; }
+.rb-q #reveal:active, .rb-q #wrong:active, .rb-q #right:active { transform: translateY(3px); box-shadow: 0 1px 0 #0a2a40; }

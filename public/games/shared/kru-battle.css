@@ -202,3 +202,8 @@
 .kbt-ftip { font-weight: 800; color: var(--gold); margin-right: 4px; }
 .kbt-fteam { min-width: 64px; padding: 0 10px; }
 .kbt-fteam.on { background: var(--teal); border-color: var(--teal); color: #111; }
+/* Nov 26: the final-question team buttons live in the bottom row, so every team (up to 10) can be tapped */
+.kbt-fteams { flex-wrap: nowrap; min-width: 0; }
+.kbt-fteam { min-width: 52px; padding: 0 6px; }
+.kbt-fteams.many .kbt-fteam { min-width: 44px; padding: 0 2px; }
+.kbt-fteams.many .kbt-ftip { display: none; }

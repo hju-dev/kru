@@ -94,3 +94,27 @@
 @media (prefers-reduced-motion: reduce) {
   .slot .nm, .slot .win, .whisper i, .duo.spinning .tcard::before, .slot.lock .win::after { animation: none !important; }
 }
+
+/* Nov 26: each team's score on the right of its card header (no scores in the top bar) */
+.tcard .lh { justify-content: flex-start; cursor: pointer; }
+.tscore { margin-left: auto; min-width: 46px; padding: 2px 10px; border-radius: 12px; background: var(--c); color: #111; font: 900 28px/1.1 var(--mono); text-align: center; }
+.mk .tscore { margin: 0 4px; font-size: 22px; }
+
+/* Nov 26: a spy podium. Dark ops room, sweeping red laser beams, a TOP SECRET stamp, steel safes for steps, agents on top. */
+body .kp { background: radial-gradient(ellipse at 50% 20%, #1c2438 0%, #07090f 70%) !important; }
+body .kp-lights { background: repeating-linear-gradient(115deg, transparent 0 60px, rgb(255 40 70 / 0.55) 60px 62px, transparent 62px 140px) !important; opacity: 0.6 !important; animation: sm-laser 3s linear infinite !important; }
+body .kp-title { font-family: var(--mono) !important; letter-spacing: 0.12em; text-transform: uppercase; color: #e9edf5 !important; text-shadow: 0 0 10px rgb(255 40 70 / 0.6) !important; }
+body .kp::after { content: 'TOP SECRET'; position: absolute; top: 14px; right: 18px; padding: 4px 12px; border: 4px solid #ff3355; border-radius: 8px; color: #ff3355; font: 900 20px var(--mono); letter-spacing: 0.1em;
+  transform: rotate(8deg); opacity: 0.85; pointer-events: none; animation: sm-stamp 0.5s 0.4s cubic-bezier(0.2, 1.6, 0.4, 1) both; }
+body .kp-step { background: linear-gradient(180deg, #5b6476, #2c3240) !important; border: 3px solid #8a93a6; border-bottom: 0; border-radius: 10px 10px 0 0; position: relative; }
+body .kp-step::before { content: ''; position: absolute; left: 50%; top: 42%; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%; border: 4px solid #c7ccd6; background: radial-gradient(circle, #9aa2b1 0 30%, #3a4050 32%); }
+body .p1 .kp-step { box-shadow: 0 0 30px rgb(255 40 70 / 0.5) !important; border-color: #ffd25e; }
+body .p1 .kp-step span { color: #ffd25e; }
+body .kp-art { display: block; width: min(70px, 100%); margin: 0 auto -2px; }
+body .kp-art svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.5)); }
+body .p1 .kp-art { width: min(86px, 100%); }
+@keyframes sm-laser { from { background-position: 0 0; } to { background-position: 280px 0; } }
+@keyframes sm-stamp { from { transform: rotate(8deg) scale(2.4); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { body .kp-lights, body .kp::after { animation: none !important; } }
+.sm .bar .secs, .sm .bar #alt, .sm .bar #go { flex: none; }
+.sm .bar .secs { min-width: 3.4em; text-align: right; }

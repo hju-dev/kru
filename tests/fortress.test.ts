@@ -88,7 +88,7 @@ describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () 
     expect(read('public/games/fortress/style.css')).toContain('The podium: war themed')
   })
   it('power-ups once each, Alliance (both teams skip); allies end at two bases', () => {
-    for (const p of ["{ id: 'free', label: 'Free Answer' }", "{ id: 'risk', label: '🎲 Risk It' }"]) expect(js).toContain(p)
+    for (const p of ["{ id: 'free', label: '🎟 Free Answer' }", "{ id: 'risk', label: '🎲 Risk It' }"]) expect(js).toContain(p)
     expect(js).toContain('S.skip[b] = true')
     expect(js).toContain('function askPartner(a, b)')
     expect(js).toContain('function dissolveAlliances()')

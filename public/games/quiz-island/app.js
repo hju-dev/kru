@@ -314,7 +314,7 @@
     $('legend').innerHTML = players.map(function (t, i) {
       var g = gold(t.id), bump = shownGold[t.id] !== undefined && shownGold[t.id] !== g ? (g > shownGold[t.id] ? ' up' : ' down') : '';
       shownGold[t.id] = g;
-      var flags = (S.skip[t.id] ? ' ⏸' : '') + (ownsFort(t.id) ? ' 🏰' : '') + (leaders.indexOf(t.id) >= 0 ? ' 👑' : '');
+      var flags = (S.skip[t.id] ? ' ⏸' : '') + (S.bank && S.bank[t.id] > 0 ? ' 🏴‍☠️' + (S.bank[t.id] > 1 ? S.bank[t.id] : '') : '') + (ownsFort(t.id) ? ' 🏰' : '') + (leaders.indexOf(t.id) >= 0 ? ' 👑' : '');
       return '<span class="lg' + (cur && t.id === cur.id && S.phase === 'play' ? ' now' : '') + '" data-t="' + esc(t.id) + '" role="button" tabindex="0" aria-label="' + esc(t.name) + ': team members">' + (S.crew && S.crew[t.id] != null && players.length <= 5 ? mascot(t.id, 'crew') : '') + '<i style="background:' + color(t.id) + '">' + Kru.teamNo(t) + '</i>' +
         ' <b class="g' + bump + '">' + g + COIN + '</b> · ' + owned(t.id).length + '🏝' + flags + '</span>';
     }).join('');
@@ -371,7 +371,10 @@
       var free = cl && cl.raidAfter ? cl.id : null; // a raid island was claimed: a free Pirate Raid before the turn ends
       S.claim = null;
       if (free && targets(free).length) { S.choice = { id: free, kind: 'raid', free: true, v: 0 }; save(); render(); afterBanners(openChoice); return; }
-      if (free) toast('No enemy island to attack yet.');
+      if (free) { // Nov 26: nobody to attack yet: the team keeps (banks) the free raid and is asked again at the end of its next turns
+        S.bank = S.bank || {}; S.bank[free] = (S.bank[free] || 0) + 1;
+        banner({ art: ART.raid(), title: 'RAID BANKED!', sub: tname(free) + ' keeps the free Pirate Raid. Use it at the end of your next turn!', mood: 'magic', wait: 2400 });
+      }
       nextTurn(); return;
     }
     var step = cl.steps[0];
@@ -495,7 +498,8 @@
       { k: 'two', art: ART.double(color(id)), title: '🏝🏝 Double Claim', sub: '2 islands (+' + ch.v + ' each)' },
     ];
     art.innerHTML = ch.kind === 'raid' ? ART.raid() : ART.chest();
-    $('choiceTitle').textContent = ch.kind === 'raid' ? '🏴‍☠️ ' + (ch.free ? 'FREE ' : '') + 'PIRATE RAID! ' + tname(id) + ', choose your attack' : '⭐ BIG ANSWER! ' + tname(id) + ', choose your reward';
+    if (ch.banked) opts.push({ k: 'keep', art: ART.chest(), title: '🗝 Keep it', sub: 'Save the raid for a later turn' });
+    $('choiceTitle').textContent = ch.kind === 'raid' ? '🏴‍☠️ ' + (ch.banked ? 'YOUR BANKED ' : ch.free ? 'FREE ' : '') + 'PIRATE RAID! ' + tname(id) + ', ' + (ch.banked ? 'use it now?' : 'choose your attack') : '⭐ BIG ANSWER! ' + tname(id) + ', choose your reward';
     $('choices').innerHTML = opts.map(function (o) {
       return '<button class="btn ch" data-ch="' + o.k + '"' + (o.off ? ' disabled' : '') + '><span class="ch-art">' + o.art + '</span><b>' + o.title + '</b><small>' + (o.off ? 'No enemy island to hit yet' : o.sub) + '</small></button>';
     }).join('');
@@ -511,6 +515,8 @@
       if (k === 'end') endGame(); else nextTurn();
       return;
     }
+    if (k === 'keep') { S.choice = null; $('choiceBack').hidden = true; save(); nextTurn(); return; } // the banked raid waits
+    if (ch.banked) S.bank[ch.id] = Math.max(0, (S.bank[ch.id] || 0) - 1);
     if (k === 'dig') steps = [{ m: 'claim', v: v, dig: true }];
     else if (k === 'cannon') steps = [{ m: 'claim', v: v }, { m: 'sink', announce: true }];
     else if (k === 'two') steps = [{ m: 'claim', v: v }, { m: 'claim', v: v, second: true }];
@@ -527,6 +533,12 @@
     // the map just got full: ask once whether to end the game (they can keep playing)
     if (S.phase === 'play' && !S.fullAsked && !emptyCells().length) {
       S.fullAsked = true; S.choice = { kind: 'full' }; save(); render(); afterBanners(openChoice);
+      return;
+    }
+    // Nov 26: a banked free Pirate Raid: at the end of that team's turn, offer it (once per turn) while there is an enemy island to hit
+    var me = current();
+    if (S.phase === 'play' && me && S.bank && S.bank[me.id] > 0 && S.bankAsk !== S.turn && targets(me.id).length) {
+      S.bankAsk = S.turn; S.choice = { id: me.id, kind: 'raid', free: true, banked: true, v: 0 }; save(); render(); afterBanners(openChoice);
       return;
     }
     if (advance()) return;

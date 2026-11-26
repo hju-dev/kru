@@ -69,7 +69,7 @@
       shield: ['shield', 'SHIELD UP!', '{t} does not move back!', 'good'], go: ['rocket', 'TURBO BOOST!', '{t}: forward {n}!', 'good'],
       back: ['oil', 'OIL SLICK!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
       finish: ['trophy', 'FINISH LINE!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['ticket', 'FREE PLAY!', '{t} rolls for free!', 'magic'],
-      fifty: ['fifty', '50/50!'], time: ['stopwatch', '+20 SECONDS!'], riskOn: ['flame', 'RISK IT!'], skip: ['pit', 'PIT STOP!', '{t} loses this turn: {why}', 'bad'], bounce: ['stopwatch', 'EXACT FINISH!', '{t} bounced back {n}: roll the exact number to finish!', 'magic'],
+      fifty: ['fifty', 'PIT CREW 50/50!', 'Two wrong answers spin off the track!', 'magic'], time: ['stopwatch', 'EXTRA LAP TIME!', '+20 seconds for {t}!', 'magic'], riskOn: ['flame', 'PEDAL TO THE METAL!', 'Right: 2 Golden Dice. Wrong: 2 Golden Dice back!', 'boom'], skip: ['pit', 'PIT STOP!', '{t} loses this turn: {why}', 'bad'], bounce: ['stopwatch', 'EXACT FINISH!', '{t} bounced back {n}: roll the exact number to finish!', 'magic'],
     },
     xmas: {
       right: ['gift', 'HO HO HO!', '{t} got it right!', 'good'], wrong: ['coal', 'INCORRECT', '{e}', 'bad'],
@@ -77,7 +77,7 @@
       shield: ['shield', 'SNOW SHIELD!', '{t} does not move back!', 'good'], go: ['sleigh', 'SLEIGH RIDE!', '{t}: forward {n}!', 'good'],
       back: ['snowflake', 'SLIPPED ON THE ICE!', '{t}: back {n}!', 'bad'], again: ['dice', 'ROLL AGAIN!', '{t} gets another roll!', 'magic'],
       finish: ['tree', 'HOME FOR CHRISTMAS!', '{t} finishes {place}!', 'good', 'fanfare'], free: ['gift', 'FREE GIFT!', '{t} rolls for free!', 'magic'],
-      fifty: ['fifty', '50/50!'], time: ['stopwatch', 'EXTRA TIME!'], riskOn: ['flame', 'RISK IT!'], skip: ['snowflake', 'FROZEN!', '{t} loses this turn: {why}', 'bad'], bounce: ['stopwatch', 'EXACT FINISH!', '{t} bounced back {n}: roll the exact number to arrive!', 'magic'],
+      fifty: ['fifty', 'ELF HELP 50/50!', 'Two wrong answers melt like snow!', 'magic'], time: ['stopwatch', 'EXTRA COCOA TIME!', '+20 seconds for {t}!', 'magic'], riskOn: ['flame', 'NAUGHTY OR NICE?', 'Right: 2 Golden Dice. Wrong: 2 Golden Dice back!', 'boom'], skip: ['snowflake', 'FROZEN!', '{t} loses this turn: {why}', 'bad'], bounce: ['stopwatch', 'EXACT FINISH!', '{t} bounced back {n}: roll the exact number to arrive!', 'magic'],
     },
   };
   // Christmas Dash: correct answers rotate through different cheers (title + line), never the same one twice in a row
@@ -104,7 +104,7 @@
   }
   function fill(text, v) { return String(text || '').replace(/\{(\w+)\}/g, function (m, k) { return v[k] != null ? v[k] : m; }); }
   /** A big banner for an event, then `then` (straight away if the banners aren't loaded). */
-  function fx(key, v, then) {
+  function fx(key, v, then, wait) {
     var e = (FX[XMAS ? 'xmas' : 'race'] || {})[key];
     if (!e || !window.KruFx) { if (then) then(); return; }
     v = v || {};
@@ -115,7 +115,7 @@
     if (title === 'INCORRECT') v.e = rot(XMAS ? 'xe' : 're', XMAS ? XENC : RACING ? KruRacing.ENC : ENC);
     // Nov 26: the vehicle moves in the pop-up: zooms in on a right answer, spins out on a wrong one, bounces at the finish...
     var motion = RACING && VEHICLE_FX.indexOf(key) >= 0 ? VMOTION[key] : undefined;
-    KruFx.show({ art: art, title: title, sub: fill(sub, v), mood: e[3], sound: e[4], motion: motion, wait: 2700, then: then }); // 1 s longer than before
+    KruFx.show({ art: art, title: title, sub: fill(sub, v), mood: e[3], sound: e[4], motion: motion, wait: wait || 2700, then: then }); // 1 s longer than before
   }
   /** A quick banner at the top (power-ups inside the question), never in the way. */
   function fxFlash(key, sub) {
@@ -227,6 +227,12 @@
   }
   /** Extra classes for the piece that is moving: fire for a boost, a spin going backwards, a wobble after the crash. */
   function mv(t) { return fxMove && fxMove.id === t.id ? (fxMove.boost ? ' boost' : '') + (fxMove.back ? ' spin' : '') + (fxMove.crash ? ' crash' : '') : ''; }
+  /** Nov 26: on a row that runs right to left the vehicle is mirrored, so it drives forward instead of reversing. */
+  function goesLeft(n) {
+    var a = cell(n), b = n < FINISH ? cell(n + 1) : null, d = b && b.row === a.row ? b.col - a.col : 0;
+    if (!d && n > 0) { var p = cell(n - 1); if (p.row === a.row) d = a.col - p.col; }
+    return d < 0;
+  }
   function renderTrack() {
     var html = '';
     for (var n = 0; n <= FINISH; n++) {
@@ -237,7 +243,7 @@
       var cls = 'sq' + (n === 0 ? ' start' : n === FINISH ? ' finish' : '') + (sp ? ' ' + sp.t : '') + (used ? ' secret' : '') + (on.length > 3 ? ' crowd' : '') + (flame ? ' flame' : '');
       var here = on.map(function (t) {
         if (RACING && on.length > 1) return '<i class="piece orb' + (current() && t.id === current().id ? ' now' : '') + mv(t) + '" style="--c:' + color(t) + '" title="' + esc(t.name) + '">' + Kru.teamNo(t) + '</i>'; // several teams on one square: a glowing orb each, so every team shows
-        if (RACING) return '<i class="piece ride' + (current() && t.id === current().id ? ' now' : '') + mv(t) + '" title="' + esc(t.name) + '">' + KruRacing.vehicle(rideIdx(t), color(t)) + '</i>';
+        if (RACING) return '<i class="piece ride' + (goesLeft(n) ? ' left' : '') + (current() && t.id === current().id ? ' now' : '') + mv(t) + '" title="' + esc(t.name) + '">' + KruRacing.vehicle(rideIdx(t), color(t)) + '</i>';
         return '<i class="piece' + (current() && t.id === current().id ? ' now' : '') + mv(t) + '" style="background:' + color(t) + '">' + (racers.indexOf(t) + 1) + '</i>';
       }).join('');
       html += '<div class="' + cls + '" style="grid-row:' + c.row + ';grid-column:' + c.col + '"><span class="num">' + squareLabel(n) + '</span>' +
@@ -630,6 +636,7 @@
     { id: 'risk', label: 'Risk it' },
   ];
   var risk = false; // Risk It is on for the question on screen
+  var PW_ICON = { fifty: '✂ ', time: '⏳ ', free: '🎟 ', risk: '🎲 ' }; // Nov 26: Quiz Island's power-up buttons (solid colors, an icon in front)
   function used(id, p) { return !!(S.powers[id] && S.powers[id][p]); }
   function use(id, p) { (S.powers[id] = S.powers[id] || {})[p] = true; save(); }
   function renderPowers() {
@@ -639,7 +646,7 @@
         (shown && p.id !== 'time');
       var on = p.id === 'risk' && risk;
       return '<button class="btn pw' + (on ? ' on' : '') + (used(id, p.id) ? ' used' : '') + '" data-pw="' + p.id + '"' + (off && !on ? ' disabled' : '') +
-        ' aria-pressed="' + on + '">' + (on ? '🎲 Risk it: ON' : p.label) + '</button>';
+        ' aria-pressed="' + on + '">' + (on ? '🎲 Risk it: ON' : (PW_ICON[p.id] || '') + p.label) + '</button>';
     }).join('');
   }
   $('powers').addEventListener('click', function (e) {
@@ -650,11 +657,11 @@
     if (p === 'fifty') {
       var wrong = Q.choices.map(function (_, i) { return i; }).filter(function (i) { return i !== Q.answer; });
       Q._gone = shuffle(wrong).slice(0, 2);
-      use(id, 'fifty'); tone([523, 392], 0.1); renderQuestion(); fxFlash('fifty', 'Two wrong answers are gone');
+      use(id, 'fifty'); tone([523, 392], 0.1); renderQuestion(); fx('fifty', { t: current().name }, null, 1700); // Nov 26: themed power-up pop-ups, like Quiz Island
     } else if (p === 'time') {
       // +20 s, even after the clock has hit zero
       left = Math.max(0, left) + 20; total = Math.max(total, left);
-      use(id, 'time'); tone([660, 880, 1047], 0.08); fxFlash('time', current().name);
+      use(id, 'time'); tone([660, 880, 1047], 0.08); fx('time', { t: current().name }, null, 1700);
       if (!running) startTimer(); else { endAt = Date.now() + left * 1000; renderClock(); }
       renderPowers();
     } else if (p === 'free') {
@@ -664,7 +671,7 @@
       closeQuestion(); fx('free', { t: tn }, function () { roll(id, spec); });
     } else if (p === 'risk') {
       risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers();
-      if (risk) fxFlash('riskOn', 'Right: 2 Golden Dice. Wrong: 2 Golden Dice back!');
+      if (risk) fx('riskOn', { t: current().name }, null, 1900);
     }
   });
   /** "Who answers" (optional): the team's random student is picked first (no repeats until the whole team has answered), then the question opens. */

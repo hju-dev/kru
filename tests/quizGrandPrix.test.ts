@@ -89,7 +89,7 @@ describe('Quiz Grand Prix: Typical / Wildcard, boost fire, spin and crash', () =
   const css = read('public/games/race-board/style.css')
   const reveal = read('public/games/shared/kru-reveal.js')
   it('one pool of nine vehicles, no Typical / Wildcard choice (a single choice skips the pick screen)', () => {
-    expect(racing).toContain("var CHOICES = [{ id: 'all', label: 'All', sub: 'Every vehicle', pool: [0, 1, 2, 3, 4, 5, 6, 7, 8] }];")
+    expect(racing).toContain("var CHOICES = [{ id: 'all', label: 'All', sub: 'Every vehicle', pool: [1, 2, 3, 4, 5, 6, 7, 8] }];") // Nov 26: no Giant sneaker
     expect(js).toContain('choices: KruRacing.CHOICES')
     expect(reveal).toContain('choices.length === 1')
   })

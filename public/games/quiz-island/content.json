@@ -67,20 +67,16 @@
       "+30"
      ],
      [
-      "🌋🌀🌊 Volcano, hurricane, tsunami",
-      "lose your newest island"
-     ],
-     [
-      "☠ Pirates (3x)",
-      "miss a turn"
-     ],
-     [
-      "[[kraken]] The Kraken (3x)",
-      "hunts you: half your gold"
-     ],
-     [
-      "🏴‍☠️ Raid island",
+      "🏴‍☠️ Raid Island",
       "free Pirate Raid"
+     ],
+     [
+      "☠ Pirates · [[kraken]] Kraken",
+      "miss a turn · lose half your gold"
+     ],
+     [
+      "🌋🌀🌊 Storm",
+      "lose your newest island"
      ]
     ]
    }
