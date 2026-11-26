@@ -41,8 +41,9 @@ describe('Secret Message', () => {
     expect(cardFn).not.toContain('p.say')
   })
   it('each round picks a Messenger and a Reporter; each role goes round the whole team before it repeats', () => {
-    expect(js).toContain('var f = takeFrom(S.fq, t.id, all, null);')
-    expect(js).toContain('var b = takeFrom(S.bq, t.id, all, all.length > 1 ? f : null);')
+    expect(js).toContain('function rolesFor(t)')
+    expect(js).toContain('S.fq[t.id] = fq.filter(')
+    expect(js).toContain('S.bq[t.id] = bq.filter(')
   })
   it('+1 per correct team, answers behind a Reveal tap, End game podium wired', () => {
     expect(js).toContain('var PT = 1;')
@@ -97,8 +98,9 @@ describe('Secret Message: whole team by default, a stepper, scores on top, twist
     expect(cardFn).not.toContain('p.say')
   })
   it('each round picks a Messenger and a Reporter; each role goes round the whole team before it repeats', () => {
-    expect(js).toContain('var f = takeFrom(S.fq, t.id, all, null);')
-    expect(js).toContain('var b = takeFrom(S.bq, t.id, all, all.length > 1 ? f : null);')
+    expect(js).toContain('function rolesFor(t)')
+    expect(js).toContain('S.fq[t.id] = fq.filter(')
+    expect(js).toContain('S.bq[t.id] = bq.filter(')
   })
   it('+1 per correct team, answers behind a Reveal tap, End game podium wired', () => {
     expect(js).toContain('var PT = 1;')
@@ -149,13 +151,17 @@ describe('Secret Message: Messenger and Reporter picks (Nov 26)', () => {
     const S = { fq: {}, bq: {} }, roles = make(S, shuffle)
     for (let r = 0; r < 200; r++) { const [f, b] = roles(team(5)); expect(f).not.toBe(b) }
   })
-  it('everybody is Messenger once and Reporter once before anyone gets a role twice', () => {
-    for (const n of [2, 3, 5, 8, 15]) {
-      const S = { fq: {}, bq: {} }, roles = make(S, shuffle)
-      const fs: string[] = [], bs: string[] = []
-      for (let r = 0; r < n; r++) { const [f, b] = roles(team(n)); fs.push(f); bs.push(b) }
-      expect(new Set(fs).size, `messengers, team of ${n}`).toBe(n)
-      expect(new Set(bs).size, `reporters, team of ${n}`).toBe(n)
+  it('everybody is Messenger once and Reporter once before anyone gets a role twice (many games, many cycles)', () => {
+    for (const n of [2, 3, 4, 5, 8, 15]) {
+      for (let trial = 0; trial < 300; trial++) {
+        const S = { fq: {}, bq: {} }, roles = make(S, shuffle)
+        for (let cycle = 0; cycle < 3; cycle++) {
+          const fs: string[] = [], bs: string[] = []
+          for (let r = 0; r < n; r++) { const [f, b] = roles(team(n)); expect(f).not.toBe(b); fs.push(f); bs.push(b) }
+          expect(new Set(fs).size, `messengers, team of ${n}`).toBe(n)
+          expect(new Set(bs).size, `reporters, team of ${n}`).toBe(n)
+        }
+      }
     }
   })
   it('the spin is cinematic: four slot machines that stop one after another, a drum roll, a flash on landing', () => {

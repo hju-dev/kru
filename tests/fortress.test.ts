@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest'
 
 const read = (p: string) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8')
 const js = read('public/games/fortress/app.js')
-const games = JSON.parse(read('games.json')) as { slug: string; [k: string]: unknown }[]
 
 describe('Point 1-4, id fortress (Henry, Nov 23-24): modern military theme', () => {
   it('Nov 25 stats: HQ 10,000, Depot 6,000, Towers 4,000; the Depot heals 450 per round', () => {

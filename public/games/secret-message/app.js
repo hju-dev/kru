@@ -52,23 +52,34 @@
 
   // ---------- who is at the front (Messenger) and the back (Reporter) ----------
   function mid(m) { return String(m.id != null ? m.id : m.no); }
-  /** Take a random student from a role queue (refilled with the whole team once everybody had that role), never `not`. */
-  function takeFrom(qs, id, all, not) {
-    var q = (qs[id] || []).filter(function (x) { return all.indexOf(x) >= 0; });
-    var ok = q.filter(function (x) { return x !== not; });
-    if (!ok.length) { q = q.concat(shuffle(all.filter(function (x) { return q.indexOf(x) < 0; }))); ok = q.filter(function (x) { return x !== not; }); }
-    if (!ok.length) return all[0] || '?'; // a team of one
-    var pick = ok[Math.floor(Math.random() * ok.length)];
-    qs[id] = q.filter(function (x) { return x !== pick; });
-    return pick;
-  }
-  /** [Messenger, Reporter] for one team: never the same student; each role goes round the whole team before it repeats. */
+  /** [Messenger, Reporter] for one team, picked TOGETHER: never the same student; each role goes round the whole team
+   *  before anyone gets it again (queues S.fq / S.bq, refilled only when empty). A pair that would leave both queues
+   *  holding the same last student is skipped, so the last round of a cycle never gets stuck. */
   function rolesFor(t) {
     var all = (t.members || []).map(mid);
     if (!all.length) return ['?', '?'];
-    var f = takeFrom(S.fq, t.id, all, null);
-    var b = takeFrom(S.bq, t.id, all, all.length > 1 ? f : null);
-    return [f, b];
+    if (all.length === 1) return [all[0], all[0]];
+    var keep = function (q) { return (q || []).filter(function (x) { return all.indexOf(x) >= 0; }); };
+    var fq = keep(S.fq[t.id]), bq = keep(S.bq[t.id]);
+    if (!fq.length) fq = shuffle(all);
+    if (!bq.length) bq = shuffle(all);
+    var pairs = [], stuck = [];
+    fq.forEach(function (f) {
+      bq.forEach(function (b) {
+        if (f === b) return;
+        var f2 = fq.filter(function (x) { return x !== f; }), b2 = bq.filter(function (x) { return x !== b; });
+        (f2.length === 1 && b2.length === 1 && f2[0] === b2[0] ? stuck : pairs).push([f, b]);
+      });
+    });
+    var list = pairs.length ? pairs : stuck;
+    if (!list.length) { // fq and bq are the same single student (a roster change): start the Reporter queue again
+      bq = shuffle(all.filter(function (x) { return x !== fq[0]; }));
+      list = [[fq[0], bq[0]]];
+    }
+    var pick = list[Math.floor(Math.random() * list.length)];
+    S.fq[t.id] = fq.filter(function (x) { return x !== pick[0]; });
+    S.bq[t.id] = bq.filter(function (x) { return x !== pick[1]; });
+    return pick;
   }
   function nameOf(t, id) {
     var m = (t.members || []).filter(function (x) { return mid(x) === id; })[0];
