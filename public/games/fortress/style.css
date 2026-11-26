@@ -389,3 +389,11 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .fx.go .sc > svg, .fx.go .sc .sc-a, .fx.go .sc .sc-b, .fx.go .sc .sc-c { animation: none; }
 }
+
+/* RedPoint (Henry, Nov 26): the title is plain text, "Red" in red with a pulsing dot; the ✦ teacher tools button is a small square */
+.ft .bar .logo { letter-spacing: 0.02em; }
+.ft .bar .logo b { color: #ff3b3b; }
+.ft .bar .logo::before { content: ''; display: inline-block; width: 0.42em; height: 0.42em; margin-right: 0.3em; vertical-align: 0.12em; border-radius: 50%; background: #ff3b3b; box-shadow: 0 0 8px #ff3b3b; animation: rp-pulse 1.6s ease-in-out infinite; }
+@keyframes rp-pulse { 50% { opacity: 0.35; box-shadow: 0 0 2px #ff3b3b; } }
+@media (prefers-reduced-motion: reduce) { .ft .bar .logo::before { animation: none; } }
+#toolsBtn.sq { flex: 0 0 auto; width: 48px; min-width: 48px; height: 48px; padding: 0; font-size: 22px; line-height: 1; }

@@ -36,13 +36,14 @@ describe('Secret Message', () => {
     expect(js).toContain('Stop Mirroring')
     expect(js).toContain("hideSecret()")
     expect(js).toContain('MISSION LAUNCHED')
-    // the lines screen (the one that can be mirrored) never prints the phrase text
-    const lineFn = js.slice(js.indexOf('function lineHtml'), js.indexOf('function linesHtml'))
-    expect(lineFn).not.toContain('p.say')
+    // the picks screen (the one that can be mirrored) never prints the phrase text
+    const cardFn = js.slice(js.indexOf('function teamCard'), js.indexOf('function reporterNames'))
+    expect(cardFn).not.toContain('p.say')
   })
-  it('a new first and last student each round; everybody goes before anyone repeats', () => {
-    expect(js).toContain('line[0] === prev[0] || line[n - 1] === prev[1]')
-    expect(js).toContain('S.q[t.id] = q.slice(n)')
+  it('each round picks a Messenger and a Reporter; each role goes round the whole team before it repeats', () => {
+    expect(js).toContain('function rolesFor(t)')
+    expect(js).toContain('S.fq[t.id] = fq.filter(')
+    expect(js).toContain('S.bq[t.id] = bq.filter(')
   })
   it('+1 per correct team, answers behind a Reveal tap, End game podium wired', () => {
     expect(js).toContain('var PT = 1;')
@@ -53,19 +54,10 @@ describe('Secret Message', () => {
 
 describe('Secret Message: whole team by default, a stepper, scores on top, twisters (Nov 25)', () => {
   const html = read('public/games/secret-message/index.html')
-  it('the line length is a stepper like the timer, default 15 (the whole team)', () => {
-    expect(js).toContain("KruMenu.stepper($('chainRow'), S.chain || 15")
-    expect(js).toContain('Math.min(S.chain || 15, all.length)')
-    expect(js).toContain('chain: 15')
-    expect(html).toContain('id="chainRow"')
-    expect(read('public/games/shared/kru-menu.js')).toContain('function stepper(el, value, onChange, o)')
-  })
-  it('names read left to right in 1-4 columns, the biggest size where nothing wraps or is cut; no legend text', () => {
-    expect(js).toContain('for (var cols = 1; cols <= 4; cols++)')
-    expect(js).toContain("li.scrollWidth <= li.clientWidth + 1")
-    expect(js).not.toContain('sees the secret · ')
-    expect(js).not.toContain('Get in line')
-    expect(read('public/games/secret-message/style.css')).toContain('.line li .nm { font-weight: 800; white-space: nowrap; }')
+  it('no line-length setting and no whole line on screen any more (Nov 26)', () => {
+    expect(html).not.toContain('chainRow')
+    expect(js).not.toContain('function lineFor')
+    expect(js).not.toContain('S.chain =')
   })
   it('the points and the buttons sit at the top (R1, scores, timer, buttons); there is no bottom row', () => {
     const top = html.slice(html.indexOf('<header'), html.indexOf('</header>'))
@@ -76,11 +68,7 @@ describe('Secret Message: whole team by default, a stepper, scores on top, twist
     expect(js).toContain("'R' + S.round")
   })
   it('short button words: Secret, a lock, a back arrow, Hide, eyes, Start, ||, Ready', () => {
-    for (const w of ["go = 'Secret';", "go = '🔒'; alt = '←';", "go = 'Hide';", "go = 'Start'; alt = '👀';", "go = running ? 'Ready' : '▶'; alt = running ? '||' : '';"]) expect(js).toContain(w)
-  })
-  it('the names run in a snake with an arrow to the next student', () => {
-    expect(js).toContain("arr.textContent = rowEnd ? '↓' : row % 2 ? '←' : '→';")
-    expect(js).toContain('cols - 1 - k')
+    for (const w of ["go = '🎲 Pick';", "go = 'Secret';", "go = '🔒'; alt = '←';", "go = 'Hide';", "go = 'Start'; alt = '👀';", "go = running ? 'Ready' : '▶'; alt = running ? '||' : '';"]) expect(js).toContain(w)
   })
   for (const lv of ['M.1', 'M.2', 'M.3']) {
     it(`${lv}: 60 phrases, all four kinds, each secret has a different model answer, American spelling`, () => {
@@ -105,13 +93,14 @@ describe('Secret Message: whole team by default, a stepper, scores on top, twist
     expect(js).toContain('Stop Mirroring')
     expect(js).toContain("hideSecret()")
     expect(js).toContain('MISSION LAUNCHED')
-    // the lines screen (the one that can be mirrored) never prints the phrase text
-    const lineFn = js.slice(js.indexOf('function lineHtml'), js.indexOf('function linesHtml'))
-    expect(lineFn).not.toContain('p.say')
+    // the picks screen (the one that can be mirrored) never prints the phrase text
+    const cardFn = js.slice(js.indexOf('function teamCard'), js.indexOf('function reporterNames'))
+    expect(cardFn).not.toContain('p.say')
   })
-  it('a new first and last student each round; everybody goes before anyone repeats', () => {
-    expect(js).toContain('line[0] === prev[0] || line[n - 1] === prev[1]')
-    expect(js).toContain('S.q[t.id] = q.slice(n)')
+  it('each round picks a Messenger and a Reporter; each role goes round the whole team before it repeats', () => {
+    expect(js).toContain('function rolesFor(t)')
+    expect(js).toContain('S.fq[t.id] = fq.filter(')
+    expect(js).toContain('S.bq[t.id] = bq.filter(')
   })
   it('+1 per correct team, answers behind a Reveal tap, End game podium wired', () => {
     expect(js).toContain('var PT = 1;')
@@ -122,20 +111,6 @@ describe('Secret Message: whole team by default, a stepper, scores on top, twist
 
 describe('Secret Message: whole team by default, a stepper, scores on top, twisters (Nov 25)', () => {
   const html = read('public/games/secret-message/index.html')
-  it('the line length is a stepper like the timer, default 15 (the whole team)', () => {
-    expect(js).toContain("KruMenu.stepper($('chainRow'), S.chain || 15")
-    expect(js).toContain('Math.min(S.chain || 15, all.length)')
-    expect(js).toContain('chain: 15')
-    expect(html).toContain('id="chainRow"')
-    expect(read('public/games/shared/kru-menu.js')).toContain('function stepper(el, value, onChange, o)')
-  })
-  it('names read left to right in 1-4 columns, the biggest size where nothing wraps or is cut; no legend text', () => {
-    expect(js).toContain('for (var cols = 1; cols <= 4; cols++)')
-    expect(js).toContain("li.scrollWidth <= li.clientWidth + 1")
-    expect(js).not.toContain('sees the secret · ')
-    expect(js).not.toContain('Get in line')
-    expect(read('public/games/secret-message/style.css')).toContain('.line li .nm { font-weight: 800; white-space: nowrap; }')
-  })
   it('the points sit at the top next to the round; the bottom row has only the timer and the buttons', () => {
     const top = html.slice(html.indexOf('<header'), html.indexOf('</header>'))
     expect(top).toContain('id="totals"')
@@ -161,5 +136,40 @@ describe('Secret Message: whole team by default, a stepper, scores on top, twist
     expect(js).toContain('function poolFor(set)')
     expect(js).toContain('EXACTLY the same')
     expect(html).toContain('id="setRow"')
+  })
+})
+
+// Henry, Nov 26: only the front and the back student matter; a cinematic random pick, no repeats in a game.
+describe('Secret Message: Messenger and Reporter picks (Nov 26)', () => {
+  type Team = { id: string; members: { no: number; nick: string }[] }
+  // load the two pure helpers out of app.js
+  const src = js.slice(js.indexOf('  function mid(m)'), js.indexOf('  function nameOf('))
+  const make = new Function('S', 'shuffle', `${src}; return rolesFor;`) as (S: unknown, sh: (a: string[]) => string[]) => (t: Team) => [string, string]
+  const shuffle = (a: string[]) => { a = a.slice(); for (let j = a.length - 1; j > 0; j--) { const k = Math.floor(Math.random() * (j + 1)); [a[j], a[k]] = [a[k], a[j]] } return a }
+  const team = (n: number): Team => ({ id: 't1', members: Array.from({ length: n }, (_, i) => ({ no: i + 1, nick: `S${i + 1}` })) })
+  it('a student is never Messenger and Reporter in the same round', () => {
+    const S = { fq: {}, bq: {} }, roles = make(S, shuffle)
+    for (let r = 0; r < 200; r++) { const [f, b] = roles(team(5)); expect(f).not.toBe(b) }
+  })
+  it('everybody is Messenger once and Reporter once before anyone gets a role twice (many games, many cycles)', () => {
+    for (const n of [2, 3, 4, 5, 8, 15]) {
+      for (let trial = 0; trial < 300; trial++) {
+        const S = { fq: {}, bq: {} }, roles = make(S, shuffle)
+        for (let cycle = 0; cycle < 3; cycle++) {
+          const fs: string[] = [], bs: string[] = []
+          for (let r = 0; r < n; r++) { const [f, b] = roles(team(n)); expect(f).not.toBe(b); fs.push(f); bs.push(b) }
+          expect(new Set(fs).size, `messengers, team of ${n}`).toBe(n)
+          expect(new Set(bs).size, `reporters, team of ${n}`).toBe(n)
+        }
+      }
+    }
+  })
+  it('the spin is cinematic: four slot machines that stop one after another, a drum roll, a flash on landing', () => {
+    expect(js).toContain('function spin()')
+    expect(js).toContain('1500 + i * 650')
+    expect(js).toContain('function drum()')
+    const css = read('public/games/secret-message/style.css')
+    for (const k of ['@keyframes sm-roll', '@keyframes sm-lock', '@keyframes sm-flash', '@keyframes sm-sweep']) expect(css).toContain(k)
+    expect(css).toContain('prefers-reduced-motion')
   })
 })

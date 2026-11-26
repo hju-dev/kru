@@ -60,3 +60,37 @@
 .sm .bar #alt { min-width: 44px; padding: 0 10px; }
 .line li .arr { margin-left: auto; font-style: normal; font-weight: 800; color: var(--gold); flex: none; padding-left: 4px; }
 .line li .role + .arr { margin-left: 4px; }
+
+/* Nov 26: no whole line any more. Each team card shows its Messenger (front) and Reporter (back), picked by a slot-machine spin. */
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; width: 100%; height: 100%; min-height: 0; }
+.tcard { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 8px 12px 10px; border: 4px solid var(--c); border-radius: 20px; overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--c) 32%, var(--stage)), var(--stage) 70%); min-width: 0; }
+.tcard .lh { display: flex; align-items: center; justify-content: center; gap: 8px; font: 800 22px/1.1 var(--display); }
+.slot { display: flex; flex-direction: column; align-items: stretch; gap: 2px; min-width: 0; }
+.slot .rl { font: 800 18px/1.1 var(--display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+.slot .win { position: relative; display: grid; place-items: center; height: 64px; border-radius: 14px; overflow: hidden; background: #0b0d14; border: 3px solid color-mix(in srgb, var(--c) 60%, #000);
+  box-shadow: inset 0 10px 14px rgb(0 0 0 / 0.6), inset 0 -10px 14px rgb(0 0 0 / 0.6); }
+.slot .nm { font: 900 40px/1 var(--display); white-space: nowrap; color: #fff; }
+.slot:not(.shown):not(.lock):not(.spin) .nm { color: var(--muted); animation: sm-q 1.4s ease-in-out infinite; }
+.slot.spin .win { border-color: var(--gold); animation: sm-flick 0.18s steps(2) infinite; }
+.slot.spin .nm { color: var(--gold); filter: blur(1.2px); animation: sm-roll 0.09s linear infinite; }
+.slot.lock .win { border-color: var(--c); animation: sm-lock 0.7s cubic-bezier(.2, 1.6, .4, 1) both; box-shadow: 0 0 22px var(--c), inset 0 0 18px color-mix(in srgb, var(--c) 40%, transparent); }
+.slot.lock .win::after { content: ''; position: absolute; inset: 0; background: #fff; animation: sm-flash 0.5s ease-out forwards; pointer-events: none; }
+.slot.lock .nm { animation: sm-pop 0.7s cubic-bezier(.2, 1.6, .4, 1) both; text-shadow: 0 0 14px var(--c); }
+.slot.shown .win { border-color: var(--c); box-shadow: 0 0 14px color-mix(in srgb, var(--c) 70%, transparent), inset 0 0 14px color-mix(in srgb, var(--c) 30%, transparent); }
+.duo.spinning .tcard::before { content: ''; position: absolute; inset: -40%; background: conic-gradient(from 0deg, transparent 0 70%, rgb(255 255 255 / 0.16) 80%, transparent 90%); animation: sm-sweep 1.1s linear infinite; pointer-events: none; }
+.whisper { display: flex; justify-content: center; gap: 10px; height: 14px; }
+.whisper i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); opacity: 0.35; animation: sm-dot 1.2s ease-in-out infinite; }
+.whisper i:nth-child(2) { animation-delay: 0.2s; }
+.whisper i:nth-child(3) { animation-delay: 0.4s; }
+@keyframes sm-roll { 0% { transform: translateY(-40%); opacity: 0.4; } 50% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(40%); opacity: 0.4; } }
+@keyframes sm-flick { 50% { border-color: #fff; } }
+@keyframes sm-lock { 0% { transform: scale(1.18); } 100% { transform: scale(1); } }
+@keyframes sm-flash { from { opacity: 0.85; } to { opacity: 0; } }
+@keyframes sm-pop { 0% { transform: scale(0.4); } 100% { transform: scale(1); } }
+@keyframes sm-sweep { to { transform: rotate(360deg); } }
+@keyframes sm-dot { 0%, 100% { opacity: 0.25; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-4px); } }
+@keyframes sm-q { 50% { opacity: 0.45; transform: scale(0.92); } }
+@media (prefers-reduced-motion: reduce) {
+  .slot .nm, .slot .win, .whisper i, .duo.spinning .tcard::before, .slot.lock .win::after { animation: none !important; }
+}

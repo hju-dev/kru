@@ -1,5 +1,8 @@
 /* Secret Message (Henry, Nov 25): a whisper-down-the-line speaking game for TWO teams about reported speech.
-   Round: new random lines (nobody is first or last twice in a row, and everybody goes before anyone repeats) -> the teacher
+   Nov 26: the line order does not matter, only who is at the FRONT (the Messenger, sees the secret) and the BACK (the
+   Reporter, says it). Each round a cinematic slot-machine spin picks both for each team; every student is Messenger once
+   and Reporter once before anybody gets the same role again (two queues per team, S.fq / S.bq).
+   Round: the spin picks the Messenger and the Reporter of each team -> the teacher
    is told to UN-MIRROR the phone -> the secret sentence shows on the phone only for the first student of each line ->
    "mirror again" -> the teams whisper it down the line (timer) -> the LAST student of each line says it the other way
    (direct becomes reported, reported becomes direct) -> the teacher reveals the model answer and taps right / wrong
@@ -18,7 +21,7 @@
   var phase = 'order', running = false, left = 0, endAt = 0, timer = 0, peekLeft = 0, peekTimer = 0, audio = null, revealed = false;
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
-  function save() { S.phase = phase; Kru.saveState(S); }
+  function save() { S.phase = phase === 'spin' ? 'pick' : phase; Kru.saveState(S); }
   function shuffle(a) { a = a.slice(); for (var j = a.length - 1; j > 0; j--) { var k = Math.floor(Math.random() * (j + 1)); var x = a[j]; a[j] = a[k]; a[k] = x; } return a; }
   function range(n) { var a = []; for (var i = 0; i < n; i++) a.push(i); return a; }
   function pts(id) { return S.pts[id] || 0; }
@@ -47,40 +50,102 @@
     } catch (e) {}
   }
 
-  // ---------- the lines: who is first and last ----------
+  // ---------- who is at the front (Messenger) and the back (Reporter) ----------
   function mid(m) { return String(m.id != null ? m.id : m.no); }
-  /** One line for one team: the next students in a rotating queue (everybody goes before anyone repeats), shuffled so the
-   *  first (Messenger) and the last (Reporter) are never the same people as in the round before. */
-  function lineFor(t) {
-    var members = t.members || [];
-    if (!members.length) return ['?'];
-    var all = members.map(mid), n = Math.max(2, Math.min(S.chain || 15, all.length)); // default 15 = the whole team plays
-    var q = (S.q[t.id] || []).filter(function (id) { return all.indexOf(id) >= 0; });
-    while (q.length < n) q = q.concat(shuffle(all.filter(function (id) { return q.indexOf(id) < 0; })));
-    var take = q.slice(0, n);
-    S.q[t.id] = q.slice(n);
-    var prev = S.prev[t.id] || [];
-    var line = shuffle(take), tries = 0;
-    while (n >= 3 && tries++ < 40 && (line[0] === prev[0] || line[n - 1] === prev[1])) line = shuffle(take);
-    S.prev[t.id] = [line[0], line[n - 1]];
-    return line;
+  /** [Messenger, Reporter] for one team, picked TOGETHER: never the same student; each role goes round the whole team
+   *  before anyone gets it again (queues S.fq / S.bq, refilled only when empty). A pair that would leave both queues
+   *  holding the same last student is skipped, so the last round of a cycle never gets stuck. */
+  function rolesFor(t) {
+    var all = (t.members || []).map(mid);
+    if (!all.length) return ['?', '?'];
+    if (all.length === 1) return [all[0], all[0]];
+    var keep = function (q) { return (q || []).filter(function (x) { return all.indexOf(x) >= 0; }); };
+    var fq = keep(S.fq[t.id]), bq = keep(S.bq[t.id]);
+    if (!fq.length) fq = shuffle(all);
+    if (!bq.length) bq = shuffle(all);
+    var pairs = [], stuck = [];
+    fq.forEach(function (f) {
+      bq.forEach(function (b) {
+        if (f === b) return;
+        var f2 = fq.filter(function (x) { return x !== f; }), b2 = bq.filter(function (x) { return x !== b; });
+        (f2.length === 1 && b2.length === 1 && f2[0] === b2[0] ? stuck : pairs).push([f, b]);
+      });
+    });
+    var list = pairs.length ? pairs : stuck;
+    if (!list.length) { // fq and bq are the same single student (a roster change): start the Reporter queue again
+      bq = shuffle(all.filter(function (x) { return x !== fq[0]; }));
+      list = [[fq[0], bq[0]]];
+    }
+    var pick = list[Math.floor(Math.random() * list.length)];
+    S.fq[t.id] = fq.filter(function (x) { return x !== pick[0]; });
+    S.bq[t.id] = bq.filter(function (x) { return x !== pick[1]; });
+    return pick;
   }
   function nameOf(t, id) {
     var m = (t.members || []).filter(function (x) { return mid(x) === id; })[0];
     if (m) return m.nick;
     return 'Next student';
   }
+  function front(t) { return nameOf(t, (S.roles[t.id] || [])[0]); }
+  function back(t) { return nameOf(t, (S.roles[t.id] || [])[1]); }
   function newRound(first) {
-    stopTimer(); stopPeek();
+    stopTimer(); stopPeek(); stopSpin();
     if (!first) S.round++;
     if (S.pos >= S.order.length) { S.order = shuffle(range(PHRASES.length)); S.pos = 0; }
     S.cur = S.order[S.pos++];
-    S.lines = {}; players.forEach(function (t) { S.lines[t.id] = lineFor(t); });
+    S.roles = {}; players.forEach(function (t) { S.roles[t.id] = rolesFor(t); });
     S.mark = {}; revealed = false;
-    phase = 'order'; save(); render();
+    phase = 'pick'; save(); render();
   }
 
-  // ---------- timers ----------
+  // ---------- the cinematic pick: four slot machines (Messenger + Reporter for both teams) stop one after the other ----------
+  var spinTimers = [];
+  function stopSpin() { spinTimers.forEach(clearTimeout); spinTimers = []; }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function drum() {
+    if (!audio) return;
+    try { // a short drum roll under the spin
+      for (var i = 0; i < 18; i++) {
+        var t = audio.currentTime + i * 0.09, o = audio.createOscillator(), g = audio.createGain();
+        o.type = 'square'; o.frequency.value = 90 + (i % 2) * 20;
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.12 + i * 0.006, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+        o.connect(g).connect(audio.destination); o.start(t); o.stop(t + 0.09);
+      }
+    } catch (e) {}
+  }
+  function spin() {
+    unlockAudio(); stopSpin();
+    phase = 'spin'; render();
+    var slots = Array.prototype.slice.call($('stage').querySelectorAll('.slot'));
+    if (reduce) { slots.forEach(function (el) { land(el); }); done(); return; }
+    drum();
+    var left = slots.length;
+    slots.forEach(function (el, i) {
+      var t = players[Number(el.dataset.ti)], names = (t.members || []).map(function (m) { return m.nick; });
+      var stopAt = Date.now() + 1500 + i * 650, delay = 45, last = '';
+      el.classList.add('spin');
+      var step = function () {
+        if (Date.now() >= stopAt) { land(el); if (--left === 0) spinTimers.push(setTimeout(done, 700)); return; }
+        var n = names.length > 1 ? names.filter(function (x) { return x !== last; }) : names;
+        last = n[Math.floor(Math.random() * n.length)] || '?';
+        el.querySelector('.nm').textContent = last;
+        if (stopAt - Date.now() < 900) delay = Math.min(260, delay * 1.22); // slow down at the end
+        tone([300 + Math.random() * 300], 0, 0.04, 0.08);
+        spinTimers.push(setTimeout(step, delay));
+      };
+      step();
+    });
+  }
+  function land(el) {
+    var t = players[Number(el.dataset.ti)];
+    el.classList.remove('spin'); el.classList.add('lock');
+    el.querySelector('.nm').textContent = el.dataset.r === 'f' ? front(t) : back(t);
+    fitSlot(el);
+    tone(el.dataset.r === 'f' ? [523, 784, 1047] : [440, 659, 880], 0.06, 0.25, 0.32);
+  }
+  function done() { phase = 'order'; save(); render(); tone([523, 659, 784, 1047], 0.09, 0.35, 0.35); }
+
+    // ---------- timers ----------
   function stopTimer() { running = false; clearInterval(timer); }
   function startTimer() { left = S.secs; endAt = Date.now() + left * 1000; running = true; clearInterval(timer); timer = setInterval(tick, 100); }
   function tick() {
@@ -132,27 +197,30 @@
   }
 
   // ---------- drawing ----------
-  function lineHtml(t) {
-    var line = S.lines[t.id] || [];
-    var rows = line.map(function (id, i) {
-      var tag = i === 0 && line.length > 1 ? '<em class="role" aria-label="sees the secret">👀</em>' : i === line.length - 1 ? '<em class="role" aria-label="says it">🎤</em>' : '';
-      var cls = i === 0 ? ' first' : i === line.length - 1 ? ' last' : '';
-      return '<li class="' + cls.trim() + '"><span class="no">' + (i + 1) + '</span><span class="nm">' + esc(nameOf(t, id)) + '</span>' + tag + (i < line.length - 1 ? '<i class="arr" aria-hidden="true"></i>' : '') + '</li>';
-    }).join('');
-    return '<div class="line" style="--c:' + color(t.id) + '"><div class="lh">' + Kru.badge(t, color(t.id)) + '<span>' + esc(t.name) + '</span></div><ol>' + rows + '</ol></div>';
+  /** One team: its Messenger (front, sees the secret) and its Reporter (back, says it). `hide` = still a mystery. */
+  function teamCard(t, i, hide) {
+    var slot = function (r, icon, label, name) {
+      return '<div class="slot' + (hide ? '' : ' shown') + '" data-ti="' + i + '" data-r="' + r + '"><span class="rl">' + icon + ' ' + label + '</span><span class="win"><span class="nm">' + (hide ? '?' : esc(name)) + '</span></span></div>';
+    };
+    return '<div class="tcard" style="--c:' + color(t.id) + '"><div class="lh">' + Kru.badge(t, color(t.id)) + '<span>' + esc(t.name) + '</span></div>' +
+      slot('f', '👀', 'Messenger', front(t)) + '<div class="whisper" aria-hidden="true"><i></i><i></i><i></i></div>' + slot('b', '🎤', 'Reporter', back(t)) + '</div>';
   }
-  function linesHtml() { return '<div class="lines">' + players.map(lineHtml).join('') + '</div>'; }
-  function reporterNames() {
-    return players.map(function (t) { var l = S.lines[t.id] || []; return esc(nameOf(t, l[l.length - 1])); });
-  }
+  function duoHtml(hide) { return '<div class="duo' + (phase === 'spin' ? ' spinning' : '') + '">' + players.map(function (t, i) { return teamCard(t, i, hide); }).join('') + '</div>'; }
+  function reporterNames() { return players.map(function (t) { return esc(back(t)); }); }
 
   function render() {
     var p = PHRASES[S.cur] || { k: 'ds', say: '', answer: '' };
     var stage = $('stage'), html = '', go = '', alt = '', label = '';
     $('count').textContent = 'R' + S.round;
     switch (phase) {
+      case 'pick':
+        html = duoHtml(true); go = '🎲 Pick';
+        break;
+      case 'spin':
+        html = duoHtml(true);
+        break;
       case 'order':
-        html = linesHtml(); go = 'Secret';
+        html = duoHtml(false); go = 'Secret';
         break;
       case 'warn1':
         html = '<div class="cover warn"><div class="big">🕵️ TOP SECRET MISSION!</div>' +
@@ -163,7 +231,7 @@
       case 'secret':
         html = '<div class="secret"><div class="kind">' + esc(KIND[p.k]) + ' → ' + (p.answer === p.say ? 'say it ' + esc(TO[p.k]) : 'say it as ' + esc(TO[p.k])) + '</div>' +
           '<div class="phrase" id="phrase">' + esc(p.say) + '</div>' +
-          '<div class="who">Show ONLY the first student of each team: <b>' + players.map(function (t) { return esc(nameOf(t, (S.lines[t.id] || [])[0])); }).join(' and ') + '</b></div></div>';
+          '<div class="who">Show ONLY the Messenger of each team: <b>' + players.map(function (t) { return esc(front(t)); }).join(' and ') + '</b></div></div>';
         go = 'Hide';
         break;
       case 'warn2':
@@ -173,11 +241,11 @@
         go = 'Start'; alt = '👀';
         break;
       case 'play':
-        html = linesHtml(); go = running ? 'Ready' : '▶'; alt = running ? '||' : '';
+        html = duoHtml(false); go = running ? 'Ready' : '▶'; alt = running ? '||' : '';
         break;
       case 'judge':
         if (!revealed) {
-          html = '<div class="cover judge"><div class="big">🎤 Reporters, speak!</div><p>' + (p.answer === p.say ? 'The last student of each line says the secret EXACTLY the same.' : 'The last student of each line says the secret the other way.') + '</p>' +
+          html = '<div class="cover judge"><div class="big">🎤 Reporters, speak!</div><p>' + (p.answer === p.say ? 'Each Reporter says the secret EXACTLY the same.' : 'Each Reporter says the secret the other way.') + '</p>' +
             '<div class="reporters">' + players.map(function (t, i) { return '<span style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + reporterNames()[i] + '</b></span>'; }).join('') + '</div></div>';
           go = 'Reveal the answer ▶';
         } else {
@@ -196,7 +264,7 @@
     }
     stage.innerHTML = html;
     $('phase').textContent = label;
-    var LBL = { '🔒': 'The TV is dark: show the secret', '←': 'Back', '👀': 'Show the secret again', '||': 'Pause', '▶': 'Resume', 'Ready': 'The reporters are ready' };
+    var LBL = { '🎲 Pick': 'Pick the Messengers and Reporters', '🔒': 'The TV is dark: show the secret', '←': 'Back', '👀': 'Show the secret again', '||': 'Pause', '▶': 'Resume', 'Ready': 'The reporters are ready' };
     $('go').textContent = go; $('go').hidden = !go; $('go').setAttribute('aria-label', LBL[go] || go);
     $('alt').textContent = alt; $('alt').hidden = !alt; $('alt').setAttribute('aria-label', LBL[alt] || alt);
     document.body.className = 'ph-' + phase;
@@ -207,43 +275,17 @@
       return '<span class="tot" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + ' <b>' + pts(t.id) + '</b></span>';
     }).join('');
   }
-  /** Long lines or long sentences: shrink the text until everything fits (never below 18 px). */
+  /** A long name shrinks until it fits its slot window (never below 18 px). */
+  function fitSlot(el) {
+    var nm = el.querySelector('.nm'), win = el.querySelector('.win');
+    if (!nm || !win) return;
+    var px = 40; nm.style.fontSize = px + 'px';
+    while (px > 18 && nm.scrollWidth > win.clientWidth - 8) nm.style.fontSize = (px -= 2) + 'px';
+  }
+  /** Long names or long sentences: shrink the text until everything fits (never below 18 px). */
   function fit() {
     var stage = $('stage');
-    var lists = stage.querySelectorAll('.line ol');
-    if (lists.length) {
-      // the whole team is in line (names read left to right, then down): try 1 to 4 columns and keep the one with the biggest
-      // names where NO name wraps or is cut and nothing scrolls. 18 px is the goal; a very long name may push it a little lower.
-      // a snake: row 1 goes left to right, row 2 right to left, ... with an arrow to the next student
-      var layout = function (cols, px) {
-        lists.forEach(function (o) {
-          o.style.gridTemplateColumns = 'repeat(' + cols + ', minmax(0, 1fr))'; o.style.fontSize = px + 'px';
-          var items = o.querySelectorAll('li'), n = items.length;
-          Array.prototype.forEach.call(items, function (li, i) {
-            var row = Math.floor(i / cols), k = i % cols, col = row % 2 ? cols - 1 - k : k;
-            li.style.gridRow = String(row + 1); li.style.gridColumn = String(col + 1);
-            var arr = li.querySelector('.arr');
-            if (arr) {
-              var rowEnd = k === cols - 1;
-              arr.textContent = rowEnd ? '↓' : row % 2 ? '←' : '→';
-              if (cols === 1) arr.textContent = '↓';
-            }
-          });
-        });
-      };
-      var fits = function () {
-        if (stage.scrollHeight > stage.clientHeight + 1) return false;
-        return Array.prototype.every.call(stage.querySelectorAll('.line li'), function (li) { return li.scrollWidth <= li.clientWidth + 1; });
-      };
-      var best = null;
-      for (var cols = 1; cols <= 4; cols++) {
-        for (var px = 30; px >= 12; px--) {
-          layout(cols, px);
-          if (fits()) { if (!best || px > best.px) best = { cols: cols, px: px }; break; }
-        }
-      }
-      layout((best || { cols: 4 }).cols, (best || { px: 12 }).px);
-    }
+    stage.querySelectorAll('.slot.shown, .slot.lock').forEach(fitSlot);
     var ph = stage.querySelectorAll('.phrase');
     if (ph.length) {
       var s = 40, setp = function (px) { ph.forEach(function (e) { if (!e.classList.contains('small')) e.style.fontSize = px + 'px'; }); };
@@ -255,7 +297,8 @@
   // ---------- buttons ----------
   $('go').addEventListener('click', function () {
     unlockAudio();
-    if (phase === 'order') toWarn();
+    if (phase === 'pick') spin();
+    else if (phase === 'order') toWarn();
     else if (phase === 'warn1') showSecret();
     else if (phase === 'secret') hideSecret();
     else if (phase === 'warn2') toPlay();
@@ -278,7 +321,6 @@
   function closeMenu() { $('menuBack').hidden = true; }
   function disarm() { $('resetScores').classList.remove('armed'); $('resetScores').textContent = 'New Game'; }
   function renderMenu() {
-    KruMenu.stepper($('chainRow'), S.chain || 15, function (v) { S.chain = v; S.chainSet = true; save(); }, { min: 2, max: 15, label: 'student in each line', icon: '<svg class="ktimer-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M3.2 19c0-3.2 2.6-5.4 5.8-5.4s5.8 2.2 5.8 5.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="17" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M16 14c3 0 5 1.8 5 4.6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>' });
     $('setRow').innerHTML = SETS.map(function (x) { return '<button class="btn" data-set="' + x[0] + '" aria-pressed="' + (x[0] === (S.set || 'reported')) + '">' + x[1] + '</button>'; }).join('');
     KruMenu.timer($('secsRow'), S.secs, function (v) { S.secs = v; save(); }, { min: 30, max: 300 });
     KruMenu.timer($('peekRow'), S.peek, function (v) { S.peek = v; save(); }, { min: 10, max: 60 });
@@ -290,7 +332,7 @@
     var b = e.target.closest('[data-set]');
     if (!b || b.dataset.set === (S.set || 'reported')) return;
     S.set = b.dataset.set; PHRASES = poolFor(S.set); S.order = shuffle(range(PHRASES.length)); S.pos = 0;
-    if (phase === 'order') { S.cur = S.order[S.pos++]; } // before the secret is shown: use it now; otherwise from the next round
+    if (phase === 'pick' || phase === 'spin' || phase === 'order') { S.cur = S.order[S.pos++]; } // before the secret is shown: use it now; otherwise from the next round
     save(); renderMenu(); render();
   });
   $('undo').addEventListener('click', function () { undoLast(); closeMenu(); });
@@ -299,7 +341,7 @@
     var btn = this;
     if (!btn.classList.contains('armed')) { btn.classList.add('armed'); btn.textContent = 'Tap again to confirm'; setTimeout(disarm, 3500); return; }
     players.forEach(function (t) { if (pts(t.id)) Kru.score(t.id, -pts(t.id), 'reset'); });
-    S.pts = {}; S.round = 1; S.q = {}; S.prev = {};
+    S.pts = {}; S.round = 1; S.fq = {}; S.bq = {};
     closeMenu(); newRound(true);
   });
   document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') tick(); });
@@ -320,15 +362,17 @@
       var wantSet = saved && saved.v === 1 && saved.set ? saved.set : 'reported';
       PHRASES = poolFor(wantSet);
       if (saved && saved.v === 1 && saved.level === level && Array.isArray(saved.order) && saved.order.length === PHRASES.length) S = saved;
-      else S = { v: 1, level: level, set: 'reported', order: shuffle(range(PHRASES.length)), pos: 0, round: 1, chain: 15, secs: 120, peek: 10, pts: {}, q: {}, prev: {}, lines: {}, mark: {}, cur: 0, phase: 'order', introDone: false };
-      S.q = S.q || {}; S.prev = S.prev || {}; S.mark = S.mark || {}; S.set = S.set || 'reported';
-      if (!S.chainSet) S.chain = 15; // the whole team by default (an older session had 6)
+      else S = { v: 1, level: level, set: 'reported', order: shuffle(range(PHRASES.length)), pos: 0, round: 1, secs: 120, peek: 10, pts: {}, fq: {}, bq: {}, roles: {}, mark: {}, cur: 0, phase: 'pick', introDone: false };
+      S.fq = S.fq || {}; S.bq = S.bq || {}; S.mark = S.mark || {}; S.set = S.set || 'reported';
+      delete S.q; delete S.prev; delete S.lines; delete S.chain; delete S.chainSet; // the old whole-line game (before Nov 26)
       S.secs = KruMenu.snap(S.secs || 120, 30, 300); S.peek = KruMenu.snap(S.peek || 10, 10, 60);
       KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: pts(t.id) }; }); } });
       INTRO = KruIntro.forLevel(c, level);
       // a reload never goes back into the secret or the whispering: a judging round stays, anything else restarts the line-up
-      if (saved === S && S.phase === 'judge' && S.lines && Object.keys(S.lines).length) { phase = 'judge'; render(); }
-      else if (saved === S && S.lines && Object.keys(S.lines).length === players.length) { phase = 'order'; render(); }
+      var picked = saved === S && S.roles && Object.keys(S.roles).length === players.length;
+      if (picked && S.phase === 'judge') { phase = 'judge'; render(); }
+      else if (picked && S.phase === 'order') { phase = 'order'; render(); }
+      else if (picked) { phase = 'pick'; render(); } // the spin shows the same picks again
       else newRound(true);
       if (!S.introDone) KruIntro.show(INTRO, { title: 'Secret Message' }).then(function () { S.introDone = true; save(); });
     }).catch(function () { $('stage').textContent = 'Could not load the phrases. Close the game and open it again.'; });
