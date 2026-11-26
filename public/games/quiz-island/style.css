@@ -417,3 +417,15 @@ body {
 .powers .pw:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 #0a2a40; }
 .powers .pw:disabled { opacity: 0.38; box-shadow: none; }
 .powers .pw.used { text-decoration: line-through; }
+
+/* Nov 26 (Henry): answer buttons in the power-up style, easy to read on the ocean blue.
+   Reveal = white with dark text, ✗ = red with a white X, No Answer = white, the revealed answer = white card, dark text. */
+.rb-q #reveal, .rb-q #wrong, .rb-q #noAnswer, .rb-q #right { border: 3px solid #0a2a40; border-radius: 14px; box-shadow: 0 4px 0 #0a2a40; font-family: var(--display); font-weight: 800; }
+.rb-q #reveal { background: #fff; color: #0a2a40; }
+.rb-q #wrong { background: #e63946; color: #fff; border-color: #7a0f1a; box-shadow: 0 4px 0 #7a0f1a; font-size: 26px; }
+.rb-q #right { background: #ffd23f; color: #0a2a40; }
+.rb-q #noAnswer { background: #fff; color: #b3172a; border-color: #b3172a; box-shadow: 0 4px 0 #b3172a; }
+.rb-q #reveal:active, .rb-q #wrong:active, .rb-q #noAnswer:active, .rb-q #right:active { transform: translateY(3px); box-shadow: 0 1px 0 #0a2a40; }
+.rb-q .kq-choice.right { background: #fff; color: #0a2a40; border-color: #9be564; box-shadow: 0 0 0 3px #9be564; }
+.rb-q .kq-choice.right .kq-letter { background: #2fbf71; color: #fff; }
+.rb-q .kq-ans, .rb-q .kq-say { background: #fff; color: #0a2a40; border-radius: 12px; padding: 4px 12px; }

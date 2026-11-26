@@ -37,7 +37,7 @@ describe('question level switches (Easy / Regular / Hard / Impossible) in the se
     expect(quiz).toContain('if (!left.length) return; // never switch every level off')
     expect(quiz).toContain("(none ? ' disabled' : '')")
   })
-  for (const [name, f, html] of [['Quiz Grand Prix / North Pole', 'public/games/race-board/app.js', 'public/games/race-board/index.html'], ['Quiz Island', 'public/games/quiz-island/app.js', 'public/games/quiz-island/index.html'], ['Point 1-4', 'public/games/fortress/app.js', 'public/games/fortress/index.html']] as const) {
+  for (const [name, f, html] of [['Quiz Grand Prix / North Pole', 'public/games/race-board/app.js', 'public/games/race-board/index.html'], ['Quiz Island', 'public/games/quiz-island/app.js', 'public/games/quiz-island/index.html']] as const) { // RedPoint: the team picks the level itself (Nov 26)
     it(`${name}: a "Question levels" row in the settings; the next question follows the switches`, () => {
       expect(read(html), html).toContain('id="tierRow"')
       const j = read(f)

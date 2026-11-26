@@ -35,7 +35,7 @@ describe('animated pop-up scenes', () => {
     const rb = read('public/games/race-board/app.js')
     expect(rb).toContain("var VMOTION = { right: 'zoom', go: 'zoom'")
     expect(rb).toContain("wrong: 'spinout'")
-    expect(rb).toContain('motion: motion, wait: 2700')
+    expect(rb).toContain('motion: motion, wait: wait || 2700')
   })
   it('Quiz Island: its own banner plays a scene per pop-up (cannons explode, the Kraken swims, gold spins)', () => {
     const qi = read('public/games/quiz-island/app.js')

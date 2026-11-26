@@ -35,3 +35,28 @@ describe('RedPoint (was Point 1-4)', () => {
     expect(js).toContain('Gold for every team')
   })
 })
+
+describe('RedPoint fixes (Henry, Nov 26, round 2)', () => {
+  const js2 = read('public/games/fortress/app.js')
+  it('a bomb reward works again (gotBomb was lost with SMASH; the game got stuck on the last team)', () => {
+    expect(js2).toContain('function gotBomb(id, key)')
+    expect(js2).toContain('gotBomb(id, rollItem(tier, rk))')
+  })
+  it('short top label: "1/6 · TEAM 2"', () => {
+    expect(js2).toContain("var rl = S.round + '/' + (S.maxRounds || DEFAULT_ROUNDS), tn = id ? 'TEAM ' + Kru.teamNo(team(id)) : ''")
+    expect(js2).not.toContain("\"'s question\"")
+  })
+  it('rounds can be added any time (up to 30) and when the last round ends', () => {
+    expect(js2).toContain('function lastRoundDone(healed)')
+    expect(js2).toContain('One more round')
+    expect(js2).toContain('Math.min(30,')
+  })
+  it('the team chooses its question level on four different-looking cards; no level switches in the settings', () => {
+    expect(js2).toContain('function openTierPick(id)')
+    expect(js2).toContain('askTier(b.dataset.tier)')
+    expect(js2).not.toContain('tiersOff')
+    expect(read('public/games/fortress/index.html')).not.toContain('tierRow')
+    const css = read('public/games/fortress/style.css')
+    for (const t of ['easy', 'regular', 'hard', 'impossible']) expect(css).toContain(`.tp-${t} {`)
+  })
+})

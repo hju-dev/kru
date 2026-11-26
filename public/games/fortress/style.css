@@ -397,3 +397,71 @@ body {
 @keyframes rp-pulse { 50% { opacity: 0.35; box-shadow: 0 0 2px #ff3b3b; } }
 @media (prefers-reduced-motion: reduce) { .ft .bar .logo::before { animation: none; } }
 #toolsBtn.sq { flex: 0 0 auto; width: 48px; min-width: 48px; height: 48px; padding: 0; font-size: 22px; line-height: 1; }
+
+/* Nov 26: the team picks its challenge. Four cards that look and move differently: a clean green Recruit shield that bobs,
+   a steel-blue Soldier helmet with a glint, a scuffed orange Commando flame that flickers, a battered black Legend skull with
+   hazard stripes that glitches. */
+.tpick-back { position: fixed; inset: 0; z-index: 30; display: grid; place-items: center; background: rgb(6 10 14 / 0.82);
+  padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 12px) max(env(safe-area-inset-bottom), 8px) max(env(safe-area-inset-left), 12px); }
+.tpick-back[hidden] { display: none; }
+.tpick { width: min(760px, 100%); display: flex; flex-direction: column; gap: 10px; }
+.tpick-head { display: flex; align-items: baseline; justify-content: center; gap: 12px; font: 900 28px var(--display); color: #e9f1f6; letter-spacing: 0.04em; }
+.tpick-head span { font-size: 20px; color: #b8c4cc; text-transform: uppercase; }
+.tpick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.tp { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 230px; padding: 10px 6px 12px; border-radius: 18px;
+  color: #fff; border: 4px solid; text-align: center; animation: tp-in 0.45s cubic-bezier(0.2, 1.5, 0.4, 1) both; }
+.tp:nth-child(2) { animation-delay: 0.07s; } .tp:nth-child(3) { animation-delay: 0.14s; } .tp:nth-child(4) { animation-delay: 0.21s; }
+.tp:disabled { opacity: 0.35; filter: grayscale(1); }
+.tp:active:not(:disabled) { transform: scale(0.96); }
+.tp-ico { width: 78px; height: 78px; display: block; position: relative; z-index: 1; }
+.tp-ico svg { width: 100%; height: 100%; filter: drop-shadow(0 4px 0 rgb(0 0 0 / 0.35)); }
+.tp-name { position: relative; z-index: 1; font: 900 26px/1 var(--display); letter-spacing: 0.05em; text-shadow: 0 3px 0 rgb(0 0 0 / 0.45); }
+.tp-rank { position: relative; z-index: 1; font: 800 15px var(--display); text-transform: uppercase; letter-spacing: 0.14em; opacity: 0.9; }
+.tp-gold { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; padding: 3px 12px; border-radius: 999px; background: rgb(0 0 0 / 0.45); font: 800 22px var(--mono); color: #ffe27a; }
+.tp-gold .coin { width: 22px; height: 22px; display: inline-block; }
+.tp-gold .coin svg { width: 100%; height: 100%; }
+.tp small { position: relative; z-index: 1; font-size: 15px; font-weight: 700; line-height: 1.2; opacity: 0.92; }
+.tp-wear { position: absolute; inset: 0; pointer-events: none; }
+
+.tp-easy { background: linear-gradient(170deg, #36c47c, #127046); border-color: #9af0c3; border-radius: 26px; }
+.tp-easy .tp-ico { animation: tp-bob 1.6s ease-in-out infinite alternate; }
+
+.tp-regular { background: linear-gradient(170deg, #4b8df0, #1a3f86); border-color: #b9d3ff; }
+.tp-regular .tp-wear { background: linear-gradient(110deg, transparent 40%, rgb(255 255 255 / 0.28) 50%, transparent 60%) -200% 0 / 200% 100% no-repeat; animation: tp-glint 2.4s ease-in-out infinite; }
+.tp-regular .tp-ico { animation: tp-pulse 1.2s ease-in-out infinite alternate; }
+
+.tp-hard { background: linear-gradient(170deg, #f07b23, #8a2c0a); border-color: #ffc27a; border-radius: 14px 22px 12px 20px; }
+.tp-hard .tp-wear { background:
+  repeating-linear-gradient(115deg, transparent 0 22px, rgb(0 0 0 / 0.16) 22px 24px),
+  radial-gradient(circle at 20% 80%, rgb(0 0 0 / 0.25) 0 10%, transparent 11%),
+  radial-gradient(circle at 85% 25%, rgb(0 0 0 / 0.2) 0 8%, transparent 9%); }
+.tp-hard .tp-flame { transform-origin: 50% 90%; animation: tp-flicker 0.35s ease-in-out infinite alternate; }
+
+.tp-impossible { background: linear-gradient(170deg, #2a1236, #07040b); border-color: transparent; border-image: repeating-linear-gradient(45deg, #ffd23f 0 10px, #111 10px 20px) 4; border-radius: 6px; }
+.tp-impossible .tp-wear { background:
+  repeating-linear-gradient(-20deg, transparent 0 15px, rgb(255 255 255 / 0.05) 15px 16px),
+  radial-gradient(circle at 70% 75%, rgb(255 45 85 / 0.25), transparent 45%),
+  radial-gradient(circle at 15% 20%, rgb(0 0 0 / 0.5) 0 9%, transparent 10%); animation: tp-glow 1.1s ease-in-out infinite alternate; }
+.tp-impossible .tp-ico { animation: tp-glitch 2.2s steps(1) infinite; }
+.tp-impossible .tp-name { color: #ff4d6d; }
+
+@keyframes tp-in { from { transform: translateY(40px) scale(0.85); opacity: 0; } }
+@keyframes tp-bob { to { transform: translateY(-6px); } }
+@keyframes tp-glint { to { background-position: 200% 0; } }
+@keyframes tp-pulse { to { transform: scale(1.07); } }
+@keyframes tp-flicker { from { transform: scale(1, 1) rotate(-2deg); } to { transform: scale(1.06, 1.12) rotate(2deg); } }
+@keyframes tp-glow { from { opacity: 0.6; } to { opacity: 1; } }
+@keyframes tp-glitch { 0%, 86%, 100% { transform: none; } 88% { transform: translate(-3px, 1px) skewX(8deg); } 90% { transform: translate(3px, -1px); } 92% { transform: translate(-2px, 0) skewX(-6deg); } }
+@media (prefers-reduced-motion: reduce) { .tp, .tp-ico, .tp-flame, .tp-wear { animation: none !important; } }
+
+/* Nov 26 (Henry): power-up buttons in Quiz Island's style: big solid colours, a dark edge that presses down, an icon in front */
+.powers .pw { min-height: 50px; padding: 0 10px; font: 800 17px/1 var(--display); color: #0a2a40; background: #fff; border: 3px solid #0a2a40; border-radius: 14px; box-shadow: 0 4px 0 #0a2a40; }
+.powers .pw[data-pw='fifty'] { background: #ffe566; }
+.powers .pw[data-pw='time'] { background: #9be564; }
+.powers .pw[data-pw='free'] { background: #ff9ec7; }
+.powers .pw[data-pw='change'] { background: #8cc8ff; }
+.powers .pw[data-pw='risk'] { background: #16161c; color: #ffd23f; border-color: #ffd23f; box-shadow: 0 4px 0 #8a6a00; }
+.powers .pw.on { background: #ffd23f; color: #16161c; border-color: #16161c; box-shadow: 0 0 0 4px #ff5a5f, 0 4px 0 #16161c; }
+.powers .pw:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 1px 0 #0a2a40; }
+.powers .pw:disabled { opacity: 0.38; box-shadow: none; }
+.powers .pw-lab { color: #fff; }

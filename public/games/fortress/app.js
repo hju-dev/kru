@@ -55,7 +55,7 @@
     hard: { label: 'Hard', share: 17 },
     impossible: { label: 'Impossible', share: 8 },
   };
-  var POWERS = [{ id: 'change', label: '🔁 Question Change' }, { id: 'free', label: 'Free Answer' }, { id: 'risk', label: '🎲 Risk It' }];
+  var POWERS = [{ id: 'change', label: '🔁 Question Change' }, { id: 'free', label: '🎟 Free Answer' }, { id: 'risk', label: '🎲 Risk It' }];
   var RISK_LOSS = 0.5; // Risk It, wrong answer: every building except the HQ loses half of its starting HP
   var $ = function (id) { return document.getElementById(id); };
   var esc = KruQuiz.esc;
@@ -242,7 +242,21 @@
       KEYS.forEach(function (k) { var h = T(id).hp[k]; if (h > 0 && h < MAXHP[k]) { T(id).hp[k] = Math.min(MAXHP[k], h + ROUND_HEAL); any = true; } });
       if (any) healed.push(tname(id));
     });
-    if (S.round >= (S.maxRounds || DEFAULT_ROUNDS)) { timesUp(); return; } // the planned rounds are over: the strongest base wins
+    if (S.round >= (S.maxRounds || DEFAULT_ROUNDS)) { lastRoundDone(healed); return; } // the planned rounds are over: more, or the strongest base wins
+    nextRound(healed);
+  }
+  /** Nov 26: when the planned rounds are over the teacher may add more rounds instead of ending the game. */
+  function lastRoundDone(healed) {
+    save(); render();
+    reopen = function () { lastRoundDone(healed); };
+    choose({ art: ART.sc('trophy', ART.trophy()), title: 'The last round is over! Keep fighting?',
+      options: [
+        { html: '<b>➕ One more round</b><small>round ' + (S.round + 1) + ' of ' + (S.round + 1) + '</small>', fn: function () { closeChoice(); S.maxRounds = S.round + 1; nextRound(healed); } },
+        { html: '<b>➕➕ Two more rounds</b><small>up to round ' + (S.round + 2) + '</small>', fn: function () { closeChoice(); S.maxRounds = S.round + 2; nextRound(healed); } },
+        { html: '<b>🏆 End the game</b><small>the strongest base wins</small>', fn: function () { closeChoice(); timesUp(); } },
+      ] });
+  }
+  function nextRound(healed) {
     S.round++;
     startTurns();
     var more = healed.length ? healed.join(', ') + ' healed a little.' : 'A new round begins.';
@@ -436,8 +450,8 @@
   function render() {
     if (!S) return;
     var id = curId(), phase = S.phase;
-    var rl = 'R' + S.round + '/' + (S.maxRounds || DEFAULT_ROUNDS);
-    var label = phase === 'over' ? (S.bonusNote ? '🏆 ' + S.bonusNote : S.tieNote ? '🏆 ' + S.tieNote : 'Game over') : phase === 'turn' ? rl + ' · ' + tname(id) + "'s question" : phase === 'shop' ? rl + ' · Store · ' + tname(id) : phase === 'repair' ? rl + ' · Repairs · ' + tname(id) : rl + ' · Fire · ' + tname(id);
+    var rl = S.round + '/' + (S.maxRounds || DEFAULT_ROUNDS), tn = id ? 'TEAM ' + Kru.teamNo(team(id)) : ''; // Nov 26: short, so it is never cut off
+    var label = phase === 'over' ? (S.bonusNote ? '🏆 ' + S.bonusNote : S.tieNote ? '🏆 ' + S.tieNote : 'Game over') : phase === 'turn' ? rl + ' · ' + tn : phase === 'shop' ? rl + ' · 🛒 ' + tn : phase === 'repair' ? rl + ' · 🛠 ' + tn : rl + ' · 💥 ' + tn;
     $('turn').textContent = id || phase === 'over' ? label : '';
     $('turn').style.color = id ? color(id) : '';
     var act = $('act');
@@ -778,8 +792,7 @@
   /** The next question. */
   function pickQuestion(id, forceTier) {
     var tiers = ORDER;
-    var avail = tiers.filter(function (t) { return POOL[t].length && KruQuiz.tierOn(S.tiersOff, t); }); // the levels switched on in the settings
-    if (!avail.length) avail = ORDER.filter(function (t) { return POOL[t].length; });
+    var avail = tiers.filter(function (t) { return POOL[t].length; });
     if (!avail.length) return null;
     if (forceTier && !POOL[forceTier].length) return null;
     var tier = forceTier || avail[weighted(avail.map(function (t) { return TIERS[t].share; }))];
@@ -851,7 +864,7 @@
       // no stacking: Question Change and Free Answer cannot be combined (Risk It still works with them)
       var off = used(id, p.id) || shown || (p.id === 'free' && (risk || Q._changed)) || (p.id === 'change' && Q._changed);
       return '<button class="btn pw' + (on ? ' on' : '') + (used(id, p.id) ? ' used' : '') + '" data-pw="' + p.id + '"' + (off && !on ? ' disabled' : '') +
-        ' aria-pressed="' + on + '">' + (on ? '🎲 RISK IT: ON' : p.label) + '</button>';
+        ' aria-pressed="' + on + '">' + (on ? '🎲 RISK IT: ON' : p.label) + '</button>'; // Nov 26: Quiz Island-style buttons (style.css)
     }).join('');
   }
   $('powers').addEventListener('click', function (e) {
@@ -863,8 +876,11 @@
       choose({ art: ART.sc('risk', ART.risk()), title: 'Question Change: swap it for a harder one (more gold!)',
         options: ['hard', 'impossible'].map(function (t) { return { html: '<b>' + TIERS[t].label + ' question</b><small>' + money(GOLD[t]) + ' gold if you win it</small>', fn: function () { changeQuestion(t); } }; }),
         foot: [{ label: 'Cancel', cls: 'ghost', fn: closeChoice }] });
-    } else if (p === 'free') { use(id, 'free'); toast('🎟 ' + tname(id) + ' used Free Answer!'); rightAnswer(); }
-    else if (p === 'risk') { risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers(); }
+    } else if (p === 'free') { use(id, 'free'); banner({ art: ART.sc('coin', ART.coin()), title: 'INTEL LEAK!', sub: tname(id) + ' gets the answer from a spy. Free Answer!', mood: 'magic', wait: 1500 }); rightAnswer(); }
+    else if (p === 'risk') {
+      risk = !risk; tone(risk ? [392, 523, 659] : [440], 0.08); renderPowers();
+      if (risk) banner({ art: ART.sc('risk', ART.risk()), title: 'ALL-IN STRIKE!', sub: 'Right: a better weapon or 5x gold. Wrong: every building but the HQ loses half!', mood: 'boom', wait: 1700 });
+    }
   });
   /** Question Change: the question is replaced by a Hard or an Impossible one (a bigger reward). */
   function changeQuestion(tier) {
@@ -875,13 +891,56 @@
     Q = Object.assign({}, q, { _changed: true }); shown = false;
     stopTimer(); total = left = S.secs; renderClock(); renderQuestion(); startTimer();
     tone([523, 659, 784], 0.08);
-    toast('🔁 Question changed to ' + TIERS[tier].label + '!');
+    banner({ art: ART.sc('risk', ART.risk()), title: 'NEW ORDERS!', sub: tname(id) + ' gets a ' + TIERS[tier].label + ' question. More gold if you win it!', mood: 'magic', wait: 1500 });
+  }
+  // ---------- Nov 26: the team chooses its challenge (no more luck of the draw) ----------
+  var TP_ART = {
+    easy: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l20 8v15c0 14-9 24-20 29C21 53 12 43 12 29V14z" fill="#2fbf71" stroke="#0e5a33" stroke-width="3"/><path d="M22 30l8 8 13-15" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    regular: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 38c0-15 10-26 22-26s22 11 22 26z" fill="#3a86ff" stroke="#123a7a" stroke-width="3"/><rect x="6" y="37" width="52" height="8" rx="4" fill="#2a64c4" stroke="#123a7a" stroke-width="3"/><path d="M24 22h16" stroke="#cfe0ff" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="30" r="4" fill="#ffd23f"/></svg>',
+    hard: '<svg viewBox="0 0 64 64" aria-hidden="true"><path class="tp-flame" d="M32 4c4 10 16 16 16 32a16 16 0 0 1-32 0c0-9 5-13 7-20 3 6 5 8 8 9-2-8-1-14 1-21z" fill="#ff7a1a" stroke="#7a2a00" stroke-width="3"/><path d="M32 30c3 6 8 8 8 15a8 8 0 0 1-16 0c0-5 4-8 8-15z" fill="#ffd23f"/></svg>',
+    impossible: '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6c14 0 24 9 24 22 0 8-4 13-9 16v8H17v-8c-5-3-9-8-9-16C8 15 18 6 32 6z" fill="#e9e3f5" stroke="#1a0f24" stroke-width="3"/><circle cx="23" cy="29" r="6" fill="#1a0f24"/><circle cx="41" cy="29" r="6" fill="#1a0f24"/><path d="M32 36l-4 6h8z" fill="#1a0f24"/><path d="M24 52v-6M32 52v-6M40 52v-6" stroke="#1a0f24" stroke-width="3"/><circle cx="23" cy="29" r="2" fill="#ff2d55"/><circle cx="41" cy="29" r="2" fill="#ff2d55"/></svg>',
+  };
+  var TP_RANK = { easy: 'Recruit', regular: 'Soldier', hard: 'Commando', impossible: 'Legend' };
+  var TP_LINE = { easy: 'Safe and steady', regular: 'A fair fight', hard: 'High risk, high reward', impossible: 'Only for heroes' };
+  function tierPickEl() {
+    var el = $('tierPick');
+    if (el) return el;
+    el = document.createElement('div');
+    el.id = 'tierPick'; el.className = 'tpick-back'; el.hidden = true;
+    el.innerHTML = '<div class="tpick" role="dialog" aria-label="Choose your challenge"><div class="tpick-head"><b id="tpWho"></b><span>choose your challenge</span></div><div class="tpick-grid" id="tpGrid"></div></div>';
+    document.body.appendChild(el);
+    el.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-tier]');
+      if (!b || b.disabled) return;
+      unlockAudio();
+      el.hidden = true;
+      askTier(b.dataset.tier);
+    });
+    return el;
+  }
+  function openTierPick(id) {
+    var el = tierPickEl();
+    $('tpWho').textContent = 'TEAM ' + Kru.teamNo(team(id));
+    $('tpWho').style.color = color(id);
+    $('tpGrid').innerHTML = ORDER.map(function (t) {
+      var n = (POOL[t] || []).length, gold = Math.round(GOLD[t] * goldBoost() * goldMult(id));
+      return '<button class="tp tp-' + t + '" data-tier="' + t + '"' + (n ? '' : ' disabled') + '><span class="tp-wear"></span><span class="tp-ico">' + TP_ART[t] + '</span>' +
+        '<b class="tp-name">' + TIERS[t].label.toUpperCase() + '</b><span class="tp-rank">' + TP_RANK[t] + '</span>' +
+        '<span class="tp-gold">' + coinHtml() + money(gold) + '</span><small>' + (n ? TP_LINE[t] : 'no questions in this deck') + '</small></button>';
+    }).join('');
+    el.hidden = false;
+    tone([392, 523], 0.1);
   }
   function ask() {
     var id = curId();
     if (!id || S.phase !== 'turn' || fxOn || !$('choiceBack').hidden) return;
     if (!S.deck) { openDecks(); return; }
-    var q = pickQuestion(id);
+    openTierPick(id);
+  }
+  function askTier(tier) {
+    var id = curId();
+    if (!id || S.phase !== 'turn') return;
+    var q = pickQuestion(id, tier);
     if (!q) { toast('This deck has no questions. Choose another deck.'); openDecks(); return; }
     snap(); unlockAudio(); S.started = true;
     Q = Object.assign({}, q); shown = false; risk = false;
@@ -930,6 +989,20 @@
           banner({ art: ART.sc('coin', ART.coin()), title: '+' + money(gold) + ' GOLD!', sub: tname(id) + ' fills its treasury.', mood: 'good', wait: 1200 });
           afterBanners(advance); } },
       ] });
+  }
+  function gotBomb(id, key) {
+    var ally = allyOf(id), it = ITEMS[key];
+    banner({ art: ART.sc('weapon', ART.weapon(key)), title: it.name.toUpperCase() + '!', sub: tname(id) + ' gets a ' + it.name + ' [' + it.cls + '].', mood: 'good', sound: 'fanfare', wait: 1300 });
+    afterBanners(function () {
+      if (!ally) { T(id).bombs.push({ k: key }); save(); advance(); return; }
+      var weaker = IORDER[Math.max(0, IORDER.indexOf(key) - 1)];
+      choose({ art: ART.sc('alliance', ART.alliance()), title: 'Allies: keep it or share it?',
+        options: [
+          { html: '<b>Keep it</b><small>Only ' + esc(tname(id)) + ' can fire the ' + it.name + '</small>', fn: function () { closeChoice(); T(id).bombs.push({ k: key }); save(); advance(); } },
+          { html: '<b>Share it</b><small>a ' + ITEMS[weaker].name + ' for BOTH teams</small>', fn: function () {
+            closeChoice(); T(id).bombs.push({ k: weaker }); T(ally).bombs.push({ k: weaker }); save(); advance(); } },
+        ] });
+    });
   }
   function missed() {
     unlockAudio();
@@ -1001,15 +1074,15 @@
     // rounds in the game: 4 fit about 30 minutes (the strongest base wins at the end)
     var n = S.maxRounds || DEFAULT_ROUNDS;
     $('roundsRow').classList.add('ktimer');
-    $('roundsRow').innerHTML = '<button type="button" class="btn" data-r="-1"' + (n <= 2 ? ' disabled' : '') + ' aria-label="One round less">−</button><output>' + n + ' rounds</output><button type="button" class="btn" data-r="1"' + (n >= 15 ? ' disabled' : '') + ' aria-label="One round more">+</button>';
+    $('roundsRow').innerHTML = '<button type="button" class="btn" data-r="-1"' + (n <= Math.max(2, S.round) ? ' disabled' : '') + ' aria-label="One round less">−</button><output>' + n + ' rounds</output><button type="button" class="btn" data-r="1"' + (n >= 30 ? ' disabled' : '') + ' aria-label="One round more">+</button>';
   }
   $('roundsRow').addEventListener('click', function (e) {
     var b = e.target.closest('[data-r]');
     if (!b || b.disabled) return;
-    S.maxRounds = Math.max(2, Math.min(15, (S.maxRounds || DEFAULT_ROUNDS) + Number(b.dataset.r))); save(); renderSecs(); render();
+    S.maxRounds = Math.max(2, S.round, Math.min(30, (S.maxRounds || DEFAULT_ROUNDS) + Number(b.dataset.r))); save(); renderSecs(); render(); // add rounds at any time
   });
   $('more').addEventListener('click', function () {
-    renderTiers(); renderSecs(); disarm();
+    renderSecs(); disarm();
     $('undoMove').disabled = !S.hist.length;
     $('skip').disabled = S.phase === 'over' || !curId();
     $('menuBack').hidden = false;
@@ -1017,15 +1090,11 @@
   $('menuClose').addEventListener('click', closeMenu);
   $('menuBack').addEventListener('click', function (e) { if (e.target === this) closeMenu(); });
   $('deckBtn').addEventListener('click', function () { closeMenu(); openDecks(); });
-  $('skip').addEventListener('click', function () { closeMenu(); snap(); closeChoice(); closeShop(); closeAim(); advance(); });
+  $('skip').addEventListener('click', function () { closeMenu(); if ($('tierPick')) $('tierPick').hidden = true; snap(); closeChoice(); closeShop(); closeAim(); advance(); });
   $('undoMove').addEventListener('click', function () { closeMenu(); if (undo()) toast('Back one step.'); });
   var MINE = {};
   function introSlides() { return KruIntro.forLevel(MINE, S.level); }
   $('howTo').addEventListener('click', function () { closeMenu(); KruIntro.show(introSlides(), { title: 'RedPoint' }); });
-  function renderTiers() {
-    var counts = {}; ORDER.forEach(function (t) { counts[t] = (POOL[t] || []).length; });
-    KruQuiz.tierRow($('tierRow'), S.tiersOff, counts, function (off) { S.tiersOff = off; save(); });
-  }
   function disarm() { $('newGame').classList.remove('armed'); $('newGame').textContent = 'New Game'; }
   $('newGame').addEventListener('click', function () {
     var btn = this;
@@ -1060,7 +1129,6 @@
       if (saved && saved.v === 4 && saved.rules !== 'smash' && saved.level === QZ.level && saved.t && players.every(function (p) { return saved.t[p.id]; }) && (!saved.deck || deckByKey(saved.deck))) {
         S = saved; S.rules = 'lm2'; buildPoolKeep();
       } else { S = null; fresh(session.setKey && deckByKey(session.setKey) ? session.setKey : QZ.unit ? 'unit' : ''); S.level = QZ.level; } // the deck picked before the team builder
-      S.tiersOff = S.tiersOff || {};
       S.secs = KruMenu.snap(S.secs); S.hist = S.hist || []; S.skip = S.skip || {}; S.aim = null;
       skipDead();
       MINE = mine;

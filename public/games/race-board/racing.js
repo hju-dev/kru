@@ -90,7 +90,8 @@
     trapSq: '🚧', slideSq: '🚀',
   };
 
-  /** One pool of nine vehicles (Henry, Nov 25: no Typical / Wildcard choice). A single choice = every team draws from it, no pick screen. */
-  var CHOICES = [{ id: 'all', label: 'All', sub: 'Every vehicle', pool: [0, 1, 2, 3, 4, 5, 6, 7, 8] }];
+  /** One pool of eight vehicles (Henry, Nov 25: no Typical / Wildcard choice). A single choice = every team draws from it, no pick screen. */
+  // Nov 26: the Giant sneaker (0) was taken out of the draw (its drawing stays, so an older saved race still shows it)
+  var CHOICES = [{ id: 'all', label: 'All', sub: 'Every vehicle', pool: [1, 2, 3, 4, 5, 6, 7, 8] }];
   window.KruRacing = { CHOICES: CHOICES, palette: COLORS, WHY: { skip: 'engine trouble and a pit stop', trap: 'a hidden road block' }, REVEAL: REVEAL, color: function (i) { return COLORS[((i % COLORS.length) + COLORS.length) % COLORS.length]; }, pool: NAMES.map(function (n, i) { return { name: n, color: COLORS[i % COLORS.length] }; }), PREFIX: '🏁 ', OVERTAKE: { title: 'OVERTAKE!', verb: 'blasts past' }, count: ART.length, name: name, vehicle: vehicle, overtake: overtake, shade: shade, POOLS: POOLS, ENC: ENC, CHANCE: CHANCE, SECRET: SECRET };
 })();

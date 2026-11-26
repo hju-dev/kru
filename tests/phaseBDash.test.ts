@@ -54,7 +54,7 @@ describe('pop-ups', () => {
     expect(js).toContain("fx('wrong', { t: t.name }); nextTurn(); return; }")
   })
   it('they stay a second longer (2.7 s; the quick top ones 2.4 s)', () => {
-    expect(js).toContain('wait: 2700,')
+    expect(js).toContain('wait: wait || 2700,')
     expect(js).toContain("wait: 2400 });")
   })
   it('Christmas Dash rotates its cheers instead of always "Ho Ho Ho!", never the same one twice in a row', () => {

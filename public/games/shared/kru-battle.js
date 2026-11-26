@@ -347,12 +347,13 @@
         where.textContent = '🏆 Final question · Answer';
         st.innerHTML = '<div class="kbt-rq' + (f.quote ? '' : ' kbt-mat') + '"><span class="kbt-n">🏆</span>' + esc(f.q) + (f.quote ? ' <i class="kbt-rquote">' + esc(f.quote) + '</i>' : '') + '</div>' +
           '<div class="kbt-ans">✓ ' + (cfg.answer ? cfg.answer(f, { esc: esc }) : defaultAnswer(f)) + '</div>' +
-          (f.why ? '<div class="kbt-why">💡 ' + esc(f.why) + '</div>' : '') +
-          '<div class="kbt-fteams"><span class="kbt-ftip">' + (done ? 'Points added.' : 'Tap the teams that got it right (+' + FINAL_PTS + ' each):') + '</span>' + players().map(function (t) {
+          (f.why ? '<div class="kbt-why">💡 ' + esc(f.why) + '</div>' : '');
+        // Nov 26: the team buttons sit in the bottom row (with 5+ teams they were pushed off the stage and could not be tapped)
+        var many = players().length > 6;
+        ct.innerHTML = '<div class="kbt-fteams' + (many ? ' many' : '') + '"><span class="kbt-ftip">' + (done ? 'Points added.' : 'Right? +' + FINAL_PTS) + '</span>' + players().map(function (t) {
             var on = !!S.final.marks[t.id];
-            return '<button class="btn kbt-fteam' + (on ? ' on' : '') + '" data-ft="' + esc(t.id) + '" aria-pressed="' + on + '"' + (done ? ' disabled' : '') + '>' + Kru.badge(t, color(t)) + (on ? ' ✓' : '') + '</button>';
-          }).join('') + '</div>';
-        ct.innerHTML = '<span class="grow"></span>' + (done ? '<button class="btn gold big" data-do="final">🏆 Final scores</button>' : '<button class="btn gold big" data-do="faward">Add the points ✓</button>');
+            return '<button class="btn kbt-fteam' + (on ? ' on' : '') + '" data-ft="' + esc(t.id) + '" aria-pressed="' + on + '" aria-label="' + esc(t.name) + (on ? ' got it right' : '') + '"' + (done ? ' disabled' : '') + '>' + Kru.badge(t, color(t)) + (on ? '✓' : '') + '</button>';
+          }).join('') + '</div><span class="grow"></span>' + (done ? '<button class="btn gold big" data-do="final">🏆 Final scores</button>' : '<button class="btn gold big" data-do="faward">Add points ✓</button>');
         fit();
       } else if (ph === 'result') {
         var last = S.round + 1 >= nr, got = S.roundPts[S.round] || {};

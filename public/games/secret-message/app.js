@@ -196,13 +196,21 @@
     mark(ids[ids.length - 1].id, undefined); return true;
   }
 
+  /** A secret agent (hat, dark glasses, coat collar) in the team colour, for the spy podium. */
+  function spyArt(c) {
+    return '<svg viewBox="0 0 80 80" aria-hidden="true"><path d="M14 78c2-16 12-24 26-24s24 8 26 24z" fill="#1d2230"/><path d="M40 54l-9 24h18z" fill="' + c + '"/><path d="M27 56l13 14 13-14" fill="none" stroke="#e9edf5" stroke-width="3"/>' +
+      '<circle cx="40" cy="36" r="15" fill="#f1c9a5"/><rect x="26" y="31" width="12" height="7" rx="3" fill="#0b0d14"/><rect x="42" y="31" width="12" height="7" rx="3" fill="#0b0d14"/><path d="M38 34h4" stroke="#0b0d14" stroke-width="2"/>' +
+      '<path d="M18 26c6-3 38-3 44 0l-4 3H22z" fill="#2a2f3f"/><path d="M26 25c0-9 6-15 14-15s14 6 14 15z" fill="#2a2f3f"/><rect x="26" y="21" width="28" height="4" fill="' + c + '"/><path d="M35 45q5 3 10 0" stroke="#8a4b2f" stroke-width="2" fill="none"/></svg>';
+  }
+
   // ---------- drawing ----------
   /** One team: its Messenger (front, sees the secret) and its Reporter (back, says it). `hide` = still a mystery. */
   function teamCard(t, i, hide) {
     var slot = function (r, icon, label, name) {
       return '<div class="slot' + (hide ? '' : ' shown') + '" data-ti="' + i + '" data-r="' + r + '"><span class="rl">' + icon + ' ' + label + '</span><span class="win"><span class="nm">' + (hide ? '?' : esc(name)) + '</span></span></div>';
     };
-    return '<div class="tcard" style="--c:' + color(t.id) + '"><div class="lh">' + Kru.badge(t, color(t.id)) + '<span>' + esc(t.name) + '</span></div>' +
+    // Nov 26: the team's score sits on the right of its own card (not in the top bar); tap the header for the team roster
+    return '<div class="tcard" style="--c:' + color(t.id) + '"><div class="lh" data-tm="' + esc(t.id) + '" role="button" tabindex="0" aria-label="' + esc(t.name) + ': team members">' + Kru.badge(t, color(t.id)) + '<span>' + esc(t.name) + '</span><b class="tscore" aria-label="' + pts(t.id) + ' points">' + pts(t.id) + '</b></div>' +
       slot('f', '👀', 'Messenger', front(t)) + '<div class="whisper" aria-hidden="true"><i></i><i></i><i></i></div>' + slot('b', '🎤', 'Reporter', back(t)) + '</div>';
   }
   function duoHtml(hide) { return '<div class="duo' + (phase === 'spin' ? ' spinning' : '') + '">' + players.map(function (t, i) { return teamCard(t, i, hide); }).join('') + '</div>'; }
@@ -214,7 +222,7 @@
     $('count').textContent = 'R' + S.round;
     switch (phase) {
       case 'pick':
-        html = duoHtml(true); go = '🎲 Pick';
+        html = duoHtml(true); go = 'Pick';
         break;
       case 'spin':
         html = duoHtml(true);
@@ -254,7 +262,7 @@
             '<div class="phrase ans">' + esc(p.answer) + '</div>' +
             '<div class="marks">' + players.map(function (t) {
               var m = S.mark[t.id];
-              return '<div class="mk" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) +
+              return '<div class="mk" style="--c:' + color(t.id) + '">' + Kru.badge(t, color(t.id)) + '<b class="tscore">' + pts(t.id) + '</b>' +
                 '<button class="btn ok" data-m="' + esc(t.id) + '" data-v="1" aria-pressed="' + (m === 1) + '" aria-label="' + esc(t.name) + ' right">✓ +' + PT + '</button>' +
                 '<button class="btn no" data-m="' + esc(t.id) + '" data-v="0" aria-pressed="' + (m === 0) + '" aria-label="' + esc(t.name) + ' wrong">✗</button></div>';
             }).join('') + '</div></div>';
@@ -264,13 +272,17 @@
     }
     stage.innerHTML = html;
     $('phase').textContent = label;
-    var LBL = { '🎲 Pick': 'Pick the Messengers and Reporters', '🔒': 'The TV is dark: show the secret', '←': 'Back', '👀': 'Show the secret again', '||': 'Pause', '▶': 'Resume', 'Ready': 'The reporters are ready' };
+    var LBL = { 'Pick': 'Pick the Messengers and Reporters', '🔒': 'The TV is dark: show the secret', '←': 'Back', '👀': 'Show the secret again', '||': 'Pause', '▶': 'Resume', 'Ready': 'The reporters are ready' };
     $('go').textContent = go; $('go').hidden = !go; $('go').setAttribute('aria-label', LBL[go] || go);
     $('alt').textContent = alt; $('alt').hidden = !alt; $('alt').setAttribute('aria-label', LBL[alt] || alt);
     document.body.className = 'ph-' + phase;
     paintClock(); renderTotals(); fit();
   }
   // Nov 26: tap a team's score -> its students (move, add or remove them)
+  $('stage').addEventListener('click', function (e) {
+    var h = e.target.closest('.lh[data-tm]');
+    if (h && window.KruRoster) KruRoster.open(h.dataset.tm, { color: color, teams: players.map(function (t) { return t.id; }) });
+  });
   $('totals').addEventListener('click', function (e) {
     var b = e.target.closest('[data-tm]');
     if (b && window.KruRoster) KruRoster.open(b.dataset.tm, { color: color, teams: players.map(function (t) { return t.id; }) });
@@ -380,7 +392,7 @@
       S.fq = S.fq || {}; S.bq = S.bq || {}; S.mark = S.mark || {}; S.set = S.set || 'reported';
       delete S.q; delete S.prev; delete S.lines; delete S.chain; delete S.chainSet; // the old whole-line game (before Nov 26)
       S.secs = KruMenu.snap(S.secs || 120, 30, 300); S.peek = KruMenu.snap(S.peek || 10, 10, 60);
-      KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: pts(t.id) }; }); } });
+      KruEnd.setup({ standings: function () { return players.map(function (t) { return { name: t.name, points: pts(t.id), art: spyArt(color(t.id)) }; }); } });
       INTRO = KruIntro.forLevel(c, level);
       // a reload never goes back into the secret or the whispering: a judging round stays, anything else restarts the line-up
       var picked = saved === S && S.roles && Object.keys(S.roles).length === players.length;
