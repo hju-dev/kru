@@ -1,0 +1,127 @@
+/* Animated cartoon scenes for big pop-ups (Henry, Nov 26: "the energy of RedPoint's pop-ups" in Quiz Grand Prix,
+   North Pole Grand Prix, Quiz Island, the Battle games and Think Tank). The picture is wrapped like this:
+     <div class="ksc ksc-zoom"><svg…/><i class="ksc-a"></i><i class="ksc-b"></i><i class="ksc-c"></i><i class="ksc-d"></i></div>
+   (kru-fx.js `scene()`, quiz-island `scene()`). The scene is new HTML for every pop-up, so the animations start fresh.
+   Kinds: zoom (drives in with speed lines and dust), spinout (spins, shakes, smoke), boom (explodes in, shock rings, flash),
+   bounce (drops in and bounces, twinkles), spin (coin spin, twinkles), tumble (falls tumbling, then wobbles),
+   shake (shakes, falling drops), ripple (pulses, rings), wobble (wobbles, sparks), swim (sways, bubbles), pop (pops in, confetti). */
+.ksc { position: relative; width: 100%; height: 100%; }
+.ksc > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ksc > i { position: absolute; display: block; pointer-events: none; opacity: 0; font-style: normal; }
+.ksc .star4 { clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+
+/* zoom: the picture races in from the left, then rumbles; speed lines keep streaking, a dust puff behind it */
+.ksc-zoom > svg { animation: ksc-zoom 0.75s cubic-bezier(0.25, 0.9, 0.3, 1.15) both, ksc-rumble 0.16s 0.8s linear infinite; }
+.ksc-zoom > i:not(.ksc-d) { left: -40%; height: 5px; border-radius: 3px; background: linear-gradient(90deg, transparent, var(--glow, #ffd25e)); }
+.ksc-zoom .ksc-a { top: 34%; width: 70%; animation: ksc-streak 0.6s 0.1s ease-out infinite; }
+.ksc-zoom .ksc-b { top: 52%; width: 55%; background: linear-gradient(90deg, transparent, #fff) !important; animation: ksc-streak 0.6s 0.3s ease-out infinite; }
+.ksc-zoom .ksc-c { top: 70%; width: 62%; animation: ksc-streak 0.6s 0.45s ease-out infinite; }
+.ksc-zoom .ksc-d { left: -6%; bottom: 4%; width: 40px; height: 40px; border-radius: 50%; background: rgb(220 210 190 / 0.8); animation: ksc-dust 0.9s 0.55s ease-out infinite; }
+
+/* spinout: spins in a circle twice, shakes, smoke puffs rise */
+.ksc-spinout > svg { animation: ksc-spinout 0.9s cubic-bezier(0.3, 0.6, 0.4, 1) both, ksc-shake 0.4s 0.9s ease-in-out 2; }
+.ksc-spinout > i { width: 28px; height: 28px; border-radius: 50%; background: rgb(150 155 170 / 0.8); bottom: 30%; }
+.ksc-spinout .ksc-a { left: 18%; animation: ksc-smoke 1.6s 0.5s infinite; }
+.ksc-spinout .ksc-b { left: 44%; animation: ksc-smoke 1.6s 0.9s infinite; }
+.ksc-spinout .ksc-c { left: 68%; animation: ksc-smoke 1.6s 1.3s infinite; }
+.ksc-spinout .ksc-d { left: 32%; width: 18px; height: 18px; animation: ksc-smoke 1.6s 0.7s infinite; }
+
+/* boom: explodes in, two shock rings, a white flash, then pulses */
+.ksc-boom > svg { animation: ksc-boom 0.6s cubic-bezier(0.2, 1.5, 0.4, 1) both, ksc-pulse 0.8s 0.6s ease-in-out infinite alternate; }
+.ksc-boom .ksc-a, .ksc-boom .ksc-b { inset: 8%; border-radius: 50%; border: 5px solid var(--glow, #ffd25e); }
+.ksc-boom .ksc-a { animation: ksc-ring 0.9s 0.15s ease-out both; }
+.ksc-boom .ksc-b { animation: ksc-ring 0.9s 0.4s ease-out both; }
+.ksc-boom .ksc-c { inset: -20%; border-radius: 50%; background: radial-gradient(circle, #fff 0, #ffd25e 30%, transparent 62%); animation: ksc-flash 0.5s ease-out both; }
+.ksc-boom .ksc-d { inset: 0; border-radius: 50%; border: 3px dashed #fff; animation: ksc-ring 1.2s 0.6s ease-out infinite; }
+
+/* bounce: drops in and bounces, then hops; twinkles around it */
+.ksc-bounce > svg { animation: ksc-drop 0.8s cubic-bezier(0.3, 0, 0.3, 1) both, ksc-hop 0.7s 0.9s ease-in-out infinite alternate; }
+.ksc-bounce > i, .ksc-spin > i, .ksc-wobble > i { width: 18px; height: 18px; background: #fff; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); }
+.ksc-bounce .ksc-a, .ksc-spin .ksc-a, .ksc-wobble .ksc-a { left: 4%; top: 12%; animation: ksc-twinkle 0.9s 0.6s ease-in-out infinite; }
+.ksc-bounce .ksc-b, .ksc-spin .ksc-b, .ksc-wobble .ksc-b { right: 2%; top: 26%; animation: ksc-twinkle 0.9s 0.85s ease-in-out infinite; }
+.ksc-bounce .ksc-c, .ksc-spin .ksc-c, .ksc-wobble .ksc-c { left: 34%; top: -2%; background: var(--glow, #ffd25e); animation: ksc-twinkle 0.9s 1.1s ease-in-out infinite; }
+.ksc-bounce .ksc-d, .ksc-spin .ksc-d, .ksc-wobble .ksc-d { right: 18%; bottom: 4%; background: var(--glow, #ffd25e); animation: ksc-twinkle 0.9s 1.3s ease-in-out infinite; }
+
+/* spin: spins like a coin */
+.ksc-spin > svg { animation: ksc-pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both, ksc-coin 1.1s 0.45s linear infinite; }
+
+/* tumble: falls in tumbling, lands, then rocks */
+.ksc-tumble > svg { animation: ksc-tumble 0.9s cubic-bezier(0.3, 1.3, 0.5, 1) both, ksc-rock 0.6s 0.9s ease-in-out infinite alternate; }
+.ksc-tumble > i { width: 12px; height: 12px; border-radius: 3px; background: var(--glow, #ffd25e); bottom: 6%; }
+.ksc-tumble .ksc-a { left: 20%; animation: ksc-kick-l 0.7s 0.75s ease-out both; }
+.ksc-tumble .ksc-b { right: 20%; animation: ksc-kick-r 0.7s 0.75s ease-out both; }
+
+/* shake: a hard shake, then droops; blue drops fall */
+.ksc-shake > svg { animation: ksc-shake 0.42s ease-in-out 3, ksc-droop 0.8s 1.3s ease-in-out infinite alternate; }
+.ksc-shake > i { width: 10px; height: 14px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #7cc8ff; top: 10%; }
+.ksc-shake .ksc-a { left: 16%; animation: ksc-fall 1.2s 0.2s ease-in infinite; }
+.ksc-shake .ksc-b { left: 48%; animation: ksc-fall 1.2s 0.6s ease-in infinite; }
+.ksc-shake .ksc-c { left: 78%; animation: ksc-fall 1.2s 0.9s ease-in infinite; }
+
+/* ripple: pulses, rings spread out (shields) */
+.ksc-ripple > svg { animation: ksc-pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both, ksc-pulse 0.7s 0.45s ease-in-out infinite alternate; }
+.ksc-ripple > i { inset: 6%; border-radius: 50%; border: 4px solid var(--glow, #8cc8ff); }
+.ksc-ripple .ksc-a { animation: ksc-ring 1.2s ease-out infinite; }
+.ksc-ripple .ksc-b { animation: ksc-ring 1.2s 0.4s ease-out infinite; }
+.ksc-ripple .ksc-c { animation: ksc-ring 1.2s 0.8s ease-out infinite; }
+
+/* wobble: wobbles side to side with sparks */
+.ksc-wobble > svg { animation: ksc-pop 0.45s cubic-bezier(0.2, 1.6, 0.4, 1) both, ksc-wobble 0.45s 0.45s ease-in-out infinite alternate; transform-origin: 50% 85%; }
+
+/* swim: sways on the waves, bubbles rise */
+.ksc-swim > svg { animation: ksc-rise 0.8s cubic-bezier(0.2, 1.3, 0.4, 1) both, ksc-sway 1.2s 0.8s ease-in-out infinite alternate; }
+.ksc-swim > i { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #bfefff; bottom: 0; }
+.ksc-swim .ksc-a { left: 12%; animation: ksc-bubble 1.8s 0.3s ease-in infinite; }
+.ksc-swim .ksc-b { left: 50%; width: 10px; height: 10px; animation: ksc-bubble 1.8s 0.9s ease-in infinite; }
+.ksc-swim .ksc-c { left: 82%; animation: ksc-bubble 1.8s 1.4s ease-in infinite; }
+
+/* pop: pops in big with confetti, then breathes */
+.ksc-pop > svg { animation: ksc-pop 0.5s cubic-bezier(0.2, 1.8, 0.4, 1) both, ksc-pulse 0.9s 0.5s ease-in-out infinite alternate; }
+.ksc-pop > i { left: 46%; top: 46%; width: 10px; height: 14px; border-radius: 2px; }
+.ksc-pop .ksc-a { background: #ff6b6b; animation: ksc-conf 1s 0.15s ease-out both; --x: -90px; --y: -70px; --r: 300deg; }
+.ksc-pop .ksc-b { background: #4cc9f0; animation: ksc-conf 1s 0.2s ease-out both; --x: 95px; --y: -60px; --r: -260deg; }
+.ksc-pop .ksc-c { background: #ffd23f; animation: ksc-conf 1s 0.25s ease-out both; --x: -70px; --y: 70px; --r: 200deg; }
+.ksc-pop .ksc-d { background: #a7d129; animation: ksc-conf 1s 0.3s ease-out both; --x: 80px; --y: 80px; --r: -320deg; }
+
+@keyframes ksc-zoom { 0% { transform: translateX(-170%) skewX(-14deg) scale(0.8); } 65% { transform: translateX(8%) skewX(8deg); } 100% { transform: none; } }
+@keyframes ksc-rumble { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+@keyframes ksc-streak { 0% { opacity: 0.95; transform: translateX(-20%) scaleX(0.6); } 100% { opacity: 0; transform: translateX(150%) scaleX(1.2); } }
+@keyframes ksc-dust { 0% { opacity: 0.8; transform: scale(0.4); } 100% { opacity: 0; transform: translateX(-40px) scale(1.6); } }
+@keyframes ksc-spinout { 0% { transform: translateX(-60%) rotate(0); } 100% { transform: translateX(0) rotate(720deg); } }
+@keyframes ksc-shake { 20%, 60% { transform: translateX(-8px) rotate(-3deg); } 40%, 80% { transform: translateX(8px) rotate(3deg); } }
+@keyframes ksc-smoke { 0% { opacity: 0; transform: translateY(0) scale(0.4); } 25% { opacity: 0.85; } 100% { opacity: 0; transform: translateY(-100px) scale(1.6); } }
+@keyframes ksc-boom { 0% { transform: scale(0.15) rotate(-25deg); } 100% { transform: scale(1) rotate(0); } }
+@keyframes ksc-pulse { to { transform: scale(1.08); } }
+@keyframes ksc-ring { 0% { opacity: 0.95; transform: scale(0.5); } 100% { opacity: 0; transform: scale(1.5); } }
+@keyframes ksc-flash { 0% { opacity: 1; transform: scale(0.3); } 100% { opacity: 0; transform: scale(1.4); } }
+@keyframes ksc-drop { 0% { transform: translateY(-160%); } 55% { transform: translateY(0) scale(1.1, 0.85); } 72% { transform: translateY(-14%) scale(0.95, 1.05); } 88% { transform: translateY(0) scale(1.04, 0.96); } 100% { transform: none; } }
+@keyframes ksc-hop { to { transform: translateY(-9px) scale(1.04); } }
+@keyframes ksc-twinkle { 0%, 100% { opacity: 0; transform: scale(0.3) rotate(0); } 50% { opacity: 1; transform: scale(1.1) rotate(45deg); } }
+@keyframes ksc-coin { to { transform: rotateY(360deg); } }
+@keyframes ksc-tumble { 0% { transform: translateY(-130%) rotate(-400deg); } 60% { transform: translateY(6%) rotate(15deg); } 100% { transform: none; } }
+@keyframes ksc-rock { from { transform: rotate(-6deg); } to { transform: rotate(6deg); } }
+@keyframes ksc-kick-l { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate(-50px, -40px) rotate(-200deg); } }
+@keyframes ksc-kick-r { 0% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translate(50px, -40px) rotate(200deg); } }
+@keyframes ksc-droop { from { transform: translateY(0) rotate(0); } to { transform: translateY(5px) rotate(-3deg); } }
+@keyframes ksc-fall { 0% { opacity: 0; transform: translateY(0); } 20% { opacity: 0.9; } 100% { opacity: 0; transform: translateY(110px); } }
+@keyframes ksc-wobble { from { transform: rotate(-10deg); } to { transform: rotate(10deg); } }
+@keyframes ksc-rise { 0% { transform: translateY(70%) scale(0.8); opacity: 0; } 100% { transform: none; opacity: 1; } }
+@keyframes ksc-sway { from { transform: translateX(-6px) rotate(-5deg); } to { transform: translateX(6px) rotate(5deg); } }
+@keyframes ksc-bubble { 0% { opacity: 0; transform: translateY(0) scale(0.5); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateY(-130px) scale(1.2); } }
+@keyframes ksc-pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+@keyframes ksc-conf { 0% { opacity: 1; transform: translate(0, 0) rotate(0); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) rotate(var(--r)); } }
+
+/* the whole pop-up gets more life too: a shine sweeps across the card, confetti for good news, a screen flash for a boom */
+.ksc-shine { position: absolute; inset: 0; pointer-events: none; overflow: hidden; border-radius: inherit; }
+.ksc-shine::after { content: ''; position: absolute; top: -20%; bottom: -20%; width: 34%; left: -50%; background: linear-gradient(100deg, transparent, rgb(255 255 255 / 0.28), transparent); transform: skewX(-18deg); animation: ksc-sweep 1.1s 0.45s ease-in-out both; }
+.ksc-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.ksc-confetti i { position: absolute; top: -20px; width: 10px; height: 16px; border-radius: 2px; opacity: 0; animation: ksc-confall var(--dur, 1.8s) var(--t, 0s) ease-in both; }
+.ksc-flashbg { position: absolute; inset: 0; pointer-events: none; background: #fff; animation: ksc-bgflash 0.45s ease-out both; }
+@keyframes ksc-sweep { from { left: -50%; } to { left: 130%; } }
+@keyframes ksc-confall { 0% { opacity: 1; transform: translateY(0) rotate(0); } 100% { opacity: 0.9; transform: translateY(110vh) translateX(var(--dx, 0)) rotate(var(--r, 540deg)); } }
+@keyframes ksc-bgflash { from { opacity: 0.7; } to { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ksc > svg, .ksc > i, .ksc-shine::after, .ksc-confetti i, .ksc-flashbg { animation: none !important; }
+  .ksc > i, .ksc-confetti, .ksc-flashbg { display: none; }
+}

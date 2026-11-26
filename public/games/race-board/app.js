@@ -113,7 +113,9 @@
     if (RACING && KruRacing.POOLS[key]) { var rp = rot('rp' + key, KruRacing.POOLS[key]); title = rp[0]; sub = rp[1]; }
     if (RACING && VEHICLE_FX.indexOf(key) >= 0) art = vehicleFor(v.id) || art;
     if (title === 'INCORRECT') v.e = rot(XMAS ? 'xe' : 're', XMAS ? XENC : RACING ? KruRacing.ENC : ENC);
-    KruFx.show({ art: art, title: title, sub: fill(sub, v), mood: e[3], sound: e[4], wait: 2700, then: then }); // 1 s longer than before
+    // Nov 26: the vehicle moves in the pop-up: zooms in on a right answer, spins out on a wrong one, bounces at the finish...
+    var motion = RACING && VEHICLE_FX.indexOf(key) >= 0 ? VMOTION[key] : undefined;
+    KruFx.show({ art: art, title: title, sub: fill(sub, v), mood: e[3], sound: e[4], motion: motion, wait: 2700, then: then }); // 1 s longer than before
   }
   /** A quick banner at the top (power-ups inside the question), never in the way. */
   function fxFlash(key, sub) {
@@ -122,6 +124,7 @@
   }
   // the racing theme: each team drives its own vehicle (by its place in the team list); pop-ups show it
   var VEHICLE_FX = ['right', 'wrong', 'riskWin', 'riskLose', 'shield', 'go', 'back', 'again', 'finish', 'free', 'skip', 'bounce'];
+  var VMOTION = { right: 'zoom', go: 'zoom', free: 'zoom', riskWin: 'zoom', finish: 'bounce', again: 'tumble', shield: 'ripple', bounce: 'bounce', wrong: 'spinout', riskLose: 'spinout', back: 'spinout', skip: 'shake' };
   function vehicleFor(id) {
     var t = racer(id || (current() && current().id));
     return t && window.KruRacing ? KruRacing.vehicle(rideIdx(t), color(t)) : '';

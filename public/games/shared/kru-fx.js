@@ -7,6 +7,8 @@
  *   KruFx.after(fn)                            // run fn once the banners on screen are done
  *
  * art: a name from window.KruFxArt (kru-fx-art.js) or an SVG string. mood: good | bad | boom | magic.
+ * motion (optional): the scene the picture plays (kru-scene.js: zoom, spinout, boom, bounce, spin, tumble, shake, ripple,
+ * wobble, swim, pop); without it the art name or the mood picks one.
  * A banner waits ~2.2 s (or a tap), banners queue up, and `then` runs when that banner has gone.
  * Sounds play only after the first tap on the page (iOS). Reduce Motion: no movement, same banners.
  */
@@ -79,7 +81,9 @@
     }
     on = true;
     box.className = 'kfx t-' + (themeName || 'none') + ' ' + (o.mood || 'good');
-    box.querySelector('.kfx-art').innerHTML = art(o.art, o.color);
+    // Nov 26: the picture moves (kru-scene.js): it zooms in, explodes, spins, shakes... like RedPoint's pop-ups
+    var pic = art(o.art, o.color);
+    box.querySelector('.kfx-art').innerHTML = window.KruScene && pic ? KruScene.wrap(o.motion || KruScene.kindFor(o.art, o.mood), pic) : pic;
     box.querySelector('.kfx-title').textContent = o.title || '';
     box.querySelector('.kfx-sub').textContent = o.sub || '';
     var dl = box.querySelector('.kfx-delta');
@@ -91,6 +95,7 @@
     }).join('') : '';
     box.hidden = false;
     box.classList.remove('go'); void box.offsetWidth; box.classList.add('go');
+    if (window.KruScene) KruScene.extras(box.querySelector('.kfx-card'), box, o.mood || 'good');
     var snd = SOUND[o.sound || o.mood];
     if (snd) snd();
     clearTimeout(timer);
